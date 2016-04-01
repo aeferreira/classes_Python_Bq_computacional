@@ -1,4 +1,3 @@
 .ipynb_checkpoints
 *.html
-reveal.js/*
-*.rst
+_build/*
