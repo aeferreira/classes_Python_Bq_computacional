@@ -8,9 +8,18 @@
 @import url('http://fonts.googleapis.com/css?family=Source+Code+Pro');
 
 /* Change code font */
+.reveal pre {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    font-family: monospace,sans-serif;
+    font-size: 90%;
+    margin: 0;
+    padding: 0.4em;
+    width: inherit;
+}
+
 .input_area pre {
     font-family: 'Source Code Pro', Consolas, monocco, monospace;
-	font-size: 18px;
+	font-size: 17.5px;
 }
 
 .prompt.input_prompt {
@@ -25,7 +34,7 @@ div.input_area {
 }
 
 div.text_cell {
-    max-width: 105ex; /* instead of 100%, */
+    max-width: 110ex; /* instead of 100%, */
 }
 
 div.output_area pre {
@@ -33,6 +42,12 @@ div.output_area pre {
     font-size: 100%;
 }
 
+.rendered_html h1 {
+    font-size: 200%;
+}
+.rendered_html h2 {
+    font-size: 180%;
+}
 /*
 div.text_cell_render {
     font-family: "Crimson Text";

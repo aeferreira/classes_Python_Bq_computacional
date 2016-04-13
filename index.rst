@@ -14,7 +14,7 @@ Este site disponibiliza as aulas teóricas da disciplina de Bioquímica Computac
 
    aulas/1_basicos
    aulas/2_iteracoes
-   aulas/listas
+   aulas/3_listas_dicts
    aulas/strings
    aulas/ficheiros
    aulas/defs
