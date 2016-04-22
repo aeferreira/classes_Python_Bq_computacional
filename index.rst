@@ -15,13 +15,11 @@ Este site disponibiliza as aulas teóricas da disciplina de Bioquímica Computac
    aulas/1_basicos
    aulas/2_iteracoes
    aulas/3_listas_dicts
-   aulas/strings
-   aulas/ficheiros
-   aulas/defs
+   aulas/4_strings
+   aulas/5_ficheiros
+   aulas/6_defs
    aulas/use_requests
    aulas/scientific_modules
    aulas/pH
    aulas/algoritmos
-   aulas/leftovers
-   aulas/leftovers2
    aulas/pandas

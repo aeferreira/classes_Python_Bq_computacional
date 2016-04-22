@@ -19,7 +19,8 @@
 
 .input_area pre {
     font-family: 'Source Code Pro', Consolas, monocco, monospace;
-	font-size: 17.5px;
+	font-size: 19.5px;
+	overflow:hidden;
 }
 
 .prompt.input_prompt {
@@ -39,7 +40,7 @@ div.text_cell {
 
 div.output_area pre {
     font-family: monospace,sans-serif;
-    font-size: 100%;
+    font-size: 95%;
 }
 
 .rendered_html h1 {

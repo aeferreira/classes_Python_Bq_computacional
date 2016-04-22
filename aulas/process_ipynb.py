@@ -6,14 +6,15 @@ import os
 nbfiles = [
            {'nb':'1_basicos.ipynb', 'name':'1_basicos'},
            {'nb':'2_iteracoes.ipynb', 'name':'2_iteracoes'},
-           {'nb':'listas.ipynb', 'name':'lista'},
-           {'nb':'strings.ipynb', 'name':'strings'},
-           {'nb':'defs.ipynb', 'name':'defs'},
+           {'nb':'3_listas_dicts.ipynb', 'name':'3_listas_dicts'},
+           {'nb':'4_strings.ipynb', 'name':'4_strings'},
+           {'nb':'5_ficheiros.ipynb', 'name':'5_ficheiros'},
+           {'nb':'6_defs.ipynb', 'name':'6_defs'},
            {'nb':'scientific_modules.ipynb', 'name':'scientific_modules'},
            {'nb':'pH.ipynb', 'name':'pH'},
            {'nb':'algoritmos.ipynb', 'name':'algoritmos'},
-           {'nb':'leftovers.ipynb', 'name':'leftovers'},
-           {'nb':'leftovers2.ipynb', 'name':'leftovers2'},
+##            {'nb':'leftovers.ipynb', 'name':'leftovers'},
+##            {'nb':'leftovers2.ipynb', 'name':'leftovers2'},
            {'nb':'pandas.ipynb', 'name':'pandas'}]
 
 def process_list(nbfiles):
@@ -21,7 +22,7 @@ def process_list(nbfiles):
         name = nbf['nb']
         
         print ('--------- converting notebook {0} -----------'.format(name))
-        aaa = ('ipython nbconvert --to rst %s'% name).split()
+        aaa = ('jupyter nbconvert --to rst %s'% name).split()
         print (subprocess.check_output(aaa))
 
         # MS-Windows fix of image links:
