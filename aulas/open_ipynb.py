@@ -1,3 +1,3 @@
 import os
 
-os.system('ipython notebook')
+os.system('jupyter notebook')

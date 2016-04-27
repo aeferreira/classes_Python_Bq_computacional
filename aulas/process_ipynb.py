@@ -10,6 +10,7 @@ nbfiles = [
            {'nb':'4_strings.ipynb', 'name':'4_strings'},
            {'nb':'5_ficheiros.ipynb', 'name':'5_ficheiros'},
            {'nb':'6_defs.ipynb', 'name':'6_defs'},
+           {'nb':'8_requests.ipynb', 'name':'8_requests'},
            {'nb':'scientific_modules.ipynb', 'name':'scientific_modules'},
            {'nb':'pH.ipynb', 'name':'pH'},
            {'nb':'algoritmos.ipynb', 'name':'algoritmos'},
