@@ -10,14 +10,15 @@ nbfiles = [
            {'nb':'4_strings.ipynb', 'name':'4_strings'},
            {'nb':'5_ficheiros.ipynb', 'name':'5_ficheiros'},
            {'nb':'6_defs.ipynb', 'name':'6_defs'},
+           {'nb':'7_import.ipynb', 'name':'7_import'},
            {'nb':'8_requests.ipynb', 'name':'8_requests'},
-           {'nb':'scientific_modules.ipynb', 'name':'scientific_modules'},
-           {'nb':'pH.ipynb', 'name':'pH'},
+           {'nb':'10_scientific_modules.ipynb', 'name':'10_scientific_modules'},
+           {'nb':'11_scipy_regression.ipynb', 'name':'11_scipy_regression'},
+           {'nb':'12_scipy_pH.ipynb', 'name':'12_scipy_pH'},
            {'nb':'algoritmos.ipynb', 'name':'algoritmos'},
 ##            {'nb':'leftovers.ipynb', 'name':'leftovers'},
 ##            {'nb':'leftovers2.ipynb', 'name':'leftovers2'},
            {'nb':'pandas.ipynb', 'name':'pandas'}]
-
 def process_list(nbfiles):
     for nbf in nbfiles:
         name = nbf['nb']
@@ -39,6 +40,10 @@ def process_list(nbfiles):
         print ('writing %s' % rst_name)
         with open (rst_name, 'w') as f:
             f.write(alltext)
+        
+        print ('--------- converting notebook {0} to slides'.format(name))
+        aaa = ('jupyter nbconvert --to slides %s'% name).split()
+        print (subprocess.check_output(aaa))
 
         print ('--------- Done -----------------------------')
 
