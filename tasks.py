@@ -15,10 +15,10 @@ nbfiles = [
            {'nb':'10_scientific_modules.ipynb', 'name':'10_scientific_modules'},
            {'nb':'11_scipy_regression.ipynb', 'name':'11_scipy_regression'},
            {'nb':'12_scipy_pH.ipynb', 'name':'12_scipy_pH'},
-           {'nb':'algoritmos.ipynb', 'name':'algoritmos'},
+           {'nb':'13_algoritmos.ipynb', 'name':'algoritmos'},
 ##            {'nb':'leftovers.ipynb', 'name':'leftovers'},
 ##            {'nb':'leftovers2.ipynb', 'name':'leftovers2'},
-           {'nb':'pandas.ipynb', 'name':'pandas'}]
+           {'nb':'14_pandas.ipynb', 'name':'pandas'}]
 
 
 def generate_rsts(nbfiles):

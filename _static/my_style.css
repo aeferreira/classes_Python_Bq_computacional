@@ -4,11 +4,16 @@
     background-color: #ffffff;
 }
 
-.python pre {
+.python .highlight pre {
     background-color: #f5f5f5;
 }
 
 pre{
+	color:#333333;
+}
+
+.highlight-default pre {
+    background-color: #ffffff;
 	color:#333333;
 }
 
