@@ -12,15 +12,16 @@ Gzero = f1 * Gplus
 Gminus = f2 * Gzero
 nOH = Gzero + 2 * Gminus
 
-pl.plot(pH, Gplus, 'r-')
-pl.plot(pH, Gzero, color='darkgreen')
-pl.plot(pH, Gminus, color='darkblue')
+pl.plot(pH, Gplus)
+pl.plot(pH, Gzero)
+pl.plot(pH, Gminus)
 pl.ylabel('concentration')
 pl.xlabel('pH')
 pl.legend(('$G^+$','$G^0$', '$G^-$'))
 pl.title('Species distribution')
+
 pl.figure()
-pl.plot(nOH, pH, color='teal')
+pl.plot(nOH, pH)
 pl.ylabel('pH')
 pl.xlabel('$nOH^{-}$')
 pl.grid()
