@@ -71,10 +71,18 @@ def generate_rsts(nbfiles):
 
 def generate_slides(nbfiles):
     for nbf in nbfiles:
-        name = nbf
+        name = _AULAS_DIR + nbf
         print ('--------------------'.format(name))
-        run('jupyter nbconvert --to slides %s'% name)
-        #rst_name = name.replace('.ipynb', '.rst')
+        aaa = ('jupyter nbconvert --to slides %s'% name).split()
+        try:
+            retcode = subprocess.call(aaa, shell=True)
+            if retcode < 0:
+                print("terminated by signal", -retcode, file=sys.stderr)
+            elif retcode > 0:
+                print("returned", retcode, file=sys.stderr)
+        except OSError as e:
+            print("Execution of failed:", e, file=sys.stderr)    
+        #run('jupyter nbconvert --to slides %s'% name)
 
 
 @task
