@@ -15,7 +15,10 @@ nbfiles = ['1_basicos.ipynb', '2_iteracoes.ipynb',
            '12_scipy_pH.ipynb', '13_algoritmos.ipynb',
 ##            {'nb':'leftovers.ipynb', 'name':'leftovers'},
 ##            {'nb':'leftovers2.ipynb', 'name':'leftovers2'},
-           '14_pandas.ipynb']
+           '14_pandas.ipynb',
+           'data_software.ipynb']
+
+no_exec_nbfiles = ['1_basicos.ipynb', 'data_software.ipynb']
 
 
 def generate_rsts(nbfiles):
@@ -29,16 +32,17 @@ def generate_rsts(nbfiles):
         backupname = name + '.bak'
         shutil.copy(name, backupname)
         
-        aaa =('jupyter nbconvert --execute --inplace --ExecutePreprocessor.kernel_name=python3 --allow-errors --to notebook %s'% name).split()
-        try:
-            retcode = subprocess.call(aaa, shell=True)
-            if retcode < 0:
-                print("terminated by signal", -retcode, file=sys.stderr)
-            elif retcode > 0:
-                print("returned", retcode, file=sys.stderr)
-        except OSError as e:
-            print("Execution of failed:", e, file=sys.stderr)    
-        #print(subprocess.check_output(aaa))
+        if nbf not in no_exec_nbfiles:
+            aaa =('jupyter nbconvert --execute --inplace --ExecutePreprocessor.kernel_name=python3 --allow-errors --to notebook %s'% name).split()
+            try:
+                retcode = subprocess.call(aaa, shell=True)
+                if retcode < 0:
+                    print("terminated by signal", -retcode, file=sys.stderr)
+                elif retcode > 0:
+                    print("returned", retcode, file=sys.stderr)
+            except OSError as e:
+                print("Execution of failed:", e, file=sys.stderr)    
+            #print(subprocess.check_output(aaa))
 
         rst_name = name.replace('.ipynb', '.rst')
         # print ('-- converting to {0}'.format(rst_name))

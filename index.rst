@@ -25,3 +25,8 @@ Este site disponibiliza as aulas teóricas da disciplina de Bioquímica Computac
    aulas/12_scipy_pH
    aulas/13_algoritmos
    aulas/14_pandas
+
+.. toctree::
+   :hidden:
+
+   aulas/data_software

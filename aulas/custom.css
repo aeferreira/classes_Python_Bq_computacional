@@ -22,8 +22,9 @@
 }
 
 .input_area pre {
-    font-family: 'Source Code Pro', Consolas, monocco, monospace;
-	font-size: 19.5px;
+    font-family: Consolas, monocco, monospace;
+	font-size: 23.5px;
+	/*font-size:130%*/
 	overflow:hidden;
 }
 
@@ -43,8 +44,8 @@ div.text_cell {
 }
 
 div.output_area pre {
-    font-family: monospace,sans-serif;
-    font-size: 95%;
+    font-family: Consolas, monospace,sans-serif;
+    font-size: 120%;
 }
 
 .rendered_html h1 {
@@ -53,6 +54,15 @@ div.output_area pre {
 .rendered_html h2 {
     font-size: 220%;
 }
+
+.highlight .mi {
+  color: #000066;
+}
+
+.highlight .mf {
+    color: #000088;
+}
+
 /*
 div.text_cell_render {
     font-family: "Crimson Text";
