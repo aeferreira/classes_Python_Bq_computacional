@@ -23,7 +23,7 @@
 
 .input_area pre {
     font-family: Consolas, monocco, monospace;
-	font-size: 23.5px;
+	font-size: 25px;
 	/*font-size:130%*/
 	overflow:hidden;
 }
@@ -35,7 +35,8 @@
 
 
 div.input_area {
-    border-color: rgba(0,0,0,0.10);
+    border-color: rgba(0,0,0,0.80);
+	border-radius: 4px;
     background: rbga(0,0,0,0.5);
 }
 
