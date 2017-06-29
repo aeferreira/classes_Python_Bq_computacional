@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Funções definidas pelo programador &mdash; Bq computacional (FCUL) 1617.3 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/my_style.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1617.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Bq computacional (FCUL) 1617.3 documentation" href="../index.html" />
+    <link rel="next" title="Módulos e import" href="7_import.html" />
+    <link rel="prev" title="Ficheiros de texto" href="5_ficheiros.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Bq. computacional</a>
+        <span class="navbar-text navbar-version pull-left"><b>1617.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Capítulo <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_basicos.html">Conceitos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_iteracoes.html">Coleções e iterações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_listas_dicts.html">Listas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_listas_dicts.html#dicionarios">Dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_listas_dicts.html#funcao-zip">Função <code class="docutils literal"><span class="pre">zip()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_strings.html"><em>Strings</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Funções definidas pelo programador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal"><span class="pre">.format()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_scientific_modules.html">Python &#8220;científico&#8221;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_algoritmos.html">Algoritmos numéricos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_pandas.html">Python &#8220;científico&#8221;: biblioteca <em>pandas</em></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_software.html">Instalação de software</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="5_ficheiros.html" title="Previous Chapter: Ficheiros de texto"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Ficheiros de ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="7_import.html" title="Next Chapter: Módulos e import"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Módulos e import &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="funcoes-definidas-pelo-programador">
+<h1>Funções definidas pelo programador<a class="headerlink" href="#funcoes-definidas-pelo-programador" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introducao-ao-problema">
+<h2>Introdução ao problema<a class="headerlink" href="#introducao-ao-problema" title="Permalink to this headline">¶</a></h2>
+<p>Num problema das TPs, tivemos de separar uma sequência em codões e
+&#8220;hifenar&#8221;, várias vezes ao longo de um programa:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="s2">&quot;AGCTGGATCCTGAACGCATAGACTAGCATGGGACTAAAGGTCCATTACTGA&quot;</span>
+<span class="n">btrans</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">}</span>
+
+<span class="n">comp</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">btrans</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">])</span>
+<span class="n">comprev</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">comp</span><span class="p">))</span>
+
+<span class="n">codsseq</span> <span class="o">=</span> <span class="p">[</span><span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">cadseq</span> <span class="o">=</span> <span class="s2">&quot;5&#39;-&quot;</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">codsseq</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;-3&#39;&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">cadseq</span><span class="p">)</span>
+
+<span class="n">codscomp</span> <span class="o">=</span> <span class="p">[</span><span class="n">comp</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">comp</span><span class="p">),</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">cadcomp</span> <span class="o">=</span> <span class="s2">&quot;3&#39;-&quot;</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">codscomp</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;-5&#39;&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">cadcomp</span><span class="p">)</span>
+
+<span class="n">codscomprev</span> <span class="o">=</span> <span class="p">[</span><span class="n">comprev</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">comprev</span><span class="p">),</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">cadcomprev</span> <span class="o">=</span> <span class="s2">&quot;5&#39;-&quot;</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">codscomprev</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;-3&#39;&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Complemento reverso&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">cadcomprev</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>5&#39;-AGC-TGG-ATC-CTG-AAC-GCA-TAG-ACT-AGC-ATG-GGA-CTA-AAG-GTC-CAT-TAC-TGA-3&#39;
+3&#39;-TCG-ACC-TAG-GAC-TTG-CGT-ATC-TGA-TCG-TAC-CCT-GAT-TTC-CAG-GTA-ATG-ACT-5&#39;
+Complemento reverso
+5&#39;-TCA-GTA-ATG-GAC-CTT-TAG-TCC-CAT-GCT-AGT-CTA-TGC-GTT-CAG-GAT-CCA-GCT-3&#39;
+</pre></div>
+</div>
+<p>A parte do programa</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">codsseq</span> <span class="o">=</span> <span class="p">[</span><span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">cadseq</span> <span class="o">=</span> <span class="s2">&quot;5&#39;-&quot;</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">codsseq</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;-3&#39;&quot;</span>
+</pre></div>
+</div>
+<p>repete-se várias vezes, mudando a sequência sobre a qual é aplicada
+(<code class="docutils literal"><span class="pre">seq</span></code>, <code class="docutils literal"><span class="pre">comp</span></code>, <code class="docutils literal"><span class="pre">comprev</span></code>).</p>
+<p>Como podemos não repetir o &#8220;texto&#8221; desta parte do programa, embora
+aplicando a diferentes sequências?</p>
+<p><strong>Solução: funções</strong></p>
+<p>(também conhecidas como <em>subprogramas</em>, <em>subrotinas</em>, isto é,
+mini-programas dentro de programas)</p>
+<p>Já vimos várias funções, sempre disponíveis ou disponíveis após
+importação de módulos:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Uma pequena string&#39;</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">4.2</span><span class="p">)</span>
+
+<span class="n">nA</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">33</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="definicao-de-funcoes-com-def">
+<h2>Definição de funções com <code class="docutils literal"><span class="pre">def</span></code><a class="headerlink" href="#definicao-de-funcoes-com-def" title="Permalink to this headline">¶</a></h2>
+<p><strong>Podemos escrever outras funções para &#8220;aumentar&#8221; a linguagem.</strong></p>
+<p>Tal como na matemática, as funções transformam objetos noutros objetos:</p>
+<div class="figure">
+<img alt="" src="../_images/genf.png" />
+</div>
+<p>Mas, tal como na matemática, as funções são escritas para atuar sobre
+objetos genéricos (<code class="docutils literal"><span class="pre">x</span></code>):</p>
+<div class="figure">
+<img alt="" src="../_images/genfx.png" />
+</div>
+<p><strong>Problema</strong>: escrever uma função que, dada uma sequência, devolva a
+sequência com os codoes separados por <code class="docutils literal"><span class="pre">-</span></code>.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">seqcods</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">cods</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)]</span>
+    <span class="n">comhifen</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cods</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">comhifen</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="anatomia-de-uma-funcao">
+<h2>Anatomia de uma função:<a class="headerlink" href="#anatomia-de-uma-funcao" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<img alt="" src="../_images/anatf.png" />
+</div>
+<p>A definição de uma função (<code class="docutils literal"><span class="pre">def</span></code>) não executa nada imediatamente.</p>
+<p>É necessário <strong>chamar</strong> (ou &#8220;<em>invocar</em>&#8221;) a função para esta ser usada:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">seqcods</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">cods</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)]</span>
+    <span class="n">comhifen</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cods</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">comhifen</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;ATGGTTACCTAGTATTTAGGATTA&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># A função é chamada aqui:</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">seqcods</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ATGGTTACCTAGTATTTAGGATTA</span>
+<span class="n">ATG</span><span class="o">-</span><span class="n">GTT</span><span class="o">-</span><span class="n">ACC</span><span class="o">-</span><span class="n">TAG</span><span class="o">-</span><span class="n">TAT</span><span class="o">-</span><span class="n">TTA</span><span class="o">-</span><span class="n">GGA</span><span class="o">-</span><span class="n">TTA</span>
+</pre></div>
+</div>
+<p><strong>NOTA</strong>: O comando <code class="docutils literal"><span class="pre">return</span></code> pode &#8220;devolver&#8221; uma expressão complicada
+(não só o nome de um objeto):</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">seqcods</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)])</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;ATGGTTACCTAGTATTTAGGATTA&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># A função é chamada aqui:</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">seqcods</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ATGGTTACCTAGTATTTAGGATTA</span>
+<span class="n">ATG</span><span class="o">-</span><span class="n">GTT</span><span class="o">-</span><span class="n">ACC</span><span class="o">-</span><span class="n">TAG</span><span class="o">-</span><span class="n">TAT</span><span class="o">-</span><span class="n">TTA</span><span class="o">-</span><span class="n">GGA</span><span class="o">-</span><span class="n">TTA</span>
+</pre></div>
+</div>
+<p><strong>Em resumo:</strong></p>
+<p>A linha</p>
+<p><code class="docutils literal"><span class="pre">def</span> <span class="pre">seqcods(x):</span></code></p>
+<p>&#8220;regista&#8221; uma nova função, chamada <code class="docutils literal"><span class="pre">seqcods</span></code>, que pode ser usada em
+qualquer ponto do programa, da forma seguinte:</p>
+<p><code class="docutils literal"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">seqcods(a)</span></code></p>
+<p><strong>Entrada e saída de valores quando uma função é chamada</strong>:</p>
+<div class="figure">
+<img alt="" src="../_images/fargs_ret.png" />
+</div>
+<div class="section" id="exemplo-funcao-factorial">
+<h3>Exemplo: função <code class="docutils literal"><span class="pre">factorial()</span></code>:<a class="headerlink" href="#exemplo-funcao-factorial" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">*</span> <span class="n">k</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">788657867364790503552363213932185062295135977687173263294742533244359449963403342920304284011984623904177212138919638830257642790242637105061926624952829931113462857270763317237396988943922445621451664240254033291864131227428294853277524242407573903240321257405579568660226031904170324062351700858796178922222789623703897374720000000000000000000000000000000000000000000000000</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="varios-tipos-de-funcoes">
+<h3>Vários tipos de funções<a class="headerlink" href="#varios-tipos-de-funcoes" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Uma pequena string&#39;</span>
+
+<span class="c1">#1 argumento, 1 resultado</span>
+<span class="k">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="c1">#1 arg, 1 res, associada a um objeto (string a)</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="c1">#0 arg, 1 res, associada a um objeto (string a)</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">a</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>18
+2
+UMA PEQUENA STRING
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="c1">#1 arg, 0 res, associada a um objeto (lista b)</span>
+<span class="c1"># modifica o objeto (a lista b)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span> <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span> <span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="bp">None</span>
+<span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Além da função <code class="docutils literal"><span class="pre">.append()</span></code>, recordar que <strong>as listas</strong> têm outras duas
+funções deste tipo, que modificam a lista sem produzir nenhum resultado
+(o resultado é a constante <code class="docutils literal"><span class="pre">None</span></code>): <code class="docutils literal"><span class="pre">.reverse()</span></code> e <code class="docutils literal"><span class="pre">.sort()</span></code>.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">36</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>As funções podem ter mais de um argumento.</p>
+<p>O resultado pode não ser apenas um número ou uma <em>string</em>: as funções
+podem devolver uma lista inteira, um dicionário ou outros objetos mais
+complexos.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mf">6.0</span>
+<span class="n">time</span><span class="o">.</span><span class="n">struct_time</span><span class="p">(</span><span class="n">tm_year</span><span class="o">=</span><span class="mi">2017</span><span class="p">,</span> <span class="n">tm_mon</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tm_mday</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">tm_hour</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">tm_min</span><span class="o">=</span><span class="mi">36</span><span class="p">,</span> <span class="n">tm_sec</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">tm_wday</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tm_yday</span><span class="o">=</span><span class="mi">169</span><span class="p">,</span> <span class="n">tm_isdst</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Problema</strong>: eliminar valores de uma lista que pertençam a uma &#8220;lista
+negra&#8221;</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">elimin_black</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">,</span> <span class="n">black_list</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uma_lista</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">black_list</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;um&#39;</span><span class="p">,</span> <span class="s1">&#39;dois&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;quatro&#39;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">black</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;um&#39;</span><span class="p">,</span> <span class="s1">&#39;dois&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">A eliminar:&#39;</span><span class="p">,</span> <span class="n">black</span><span class="p">)</span>
+
+<span class="n">clean</span> <span class="o">=</span> <span class="n">elimin_black</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">black</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>[1, 2, 4, &#39;um&#39;, &#39;dois&#39;, 3, 42, &#39;quatro&#39;]
+
+A eliminar: [1, 2, &#39;um&#39;, &#39;dois&#39;]
+[4, 3, 42, &#39;quatro&#39;]
+</pre></div>
+</div>
+<p><strong>Problema</strong>: dado um <strong>nome</strong> de um ficheiro de texto, escrever uma
+função para <strong>ler o conteúdo do ficheiro para uma lista de linhas sem o
+``n`` no final, excluíndo as linhas vazias</strong>.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ler_fich</span><span class="p">(</span><span class="n">nome</span><span class="p">):</span>
+    <span class="n">linhas</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nome</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+            <span class="n">linha</span> <span class="o">=</span> <span class="n">linha</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">linhas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">linhas</span>
+
+<span class="n">todos</span> <span class="o">=</span> <span class="n">ler_fich</span><span class="p">(</span><span class="s1">&#39;gre3.txt&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">todos</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR
+KAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVP
+FEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDL
+LRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTL
+FENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQEL
+KDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+</div>
+<p><strong>Problema</strong>: eliminar valores repetidos numa lista</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">elimin_reps</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uma_lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="n">uma_lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">)</span>
+
+<span class="n">clean</span> <span class="o">=</span> <span class="n">elimin_reps</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Note-se que na função é criada uma lista nova:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>res = []
+
+...
+      res.append(i)
+</pre></div>
+</div>
+<p>e é esta lista que é o <strong>resultado</strong> da função.</p>
+<p><strong>Problema</strong>: eliminar valores repetidos numa lista, mas sem ser
+devolvida uma lista nova como resultado. Isto é, a função recebe uma
+lista e modifica-a, não havendo <code class="docutils literal"><span class="pre">return</span></code>.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">elimin_reps2</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uma_lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">uma_lista</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="n">uma_lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Antes&#39;</span><span class="p">,</span> <span class="n">uma_lista</span><span class="p">)</span>
+
+<span class="n">elimin_reps2</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">)</span>
+<span class="c1"># não havendo return NÃO se dá um nome</span>
+<span class="c1"># ao resultado</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Depois&#39;</span><span class="p">,</span> <span class="n">uma_lista</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Antes</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">Depois</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>O que significa <code class="docutils literal"><span class="pre">uma_lista[:]</span> <span class="pre">=</span> <span class="pre">res</span></code> ?</p>
+<p>Usa-se um <em>slice</em> para toda a lista (<code class="docutils literal"><span class="pre">uma_lista[:]</span></code> significa todos os
+elementos do princípio o fim)e atribuí-se a esse <em>slice</em> uma lista nova.
+Assim, toda a lista é modificada.</p>
+<p><strong>Nota</strong>: não é possível usar esta técnica com <em>strings</em>. As <em>strings</em>
+são imutáveis.</p>
+<p>Se as funções tiverem resultados é possível usá-las em cadeia:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">elimin_reps</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uma_lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+<span class="k">def</span> <span class="nf">elimin_black</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">,</span> <span class="n">black_list</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uma_lista</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">black_list</span><span class="p">]</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;um&#39;</span><span class="p">,</span> <span class="s1">&#39;dois&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;quatro&#39;</span><span class="p">]</span>
+<span class="n">black</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;um&#39;</span><span class="p">,</span> <span class="s1">&#39;dois&#39;</span><span class="p">]</span>
+
+<span class="n">clean</span> <span class="o">=</span> <span class="n">elimin_reps</span><span class="p">(</span><span class="n">elimin_black</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">black</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;quatro&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ambito-dos-nomes-dentro-de-uma-funcao">
+<h2>Âmbito dos nomes dentro de uma função<a class="headerlink" href="#ambito-dos-nomes-dentro-de-uma-funcao" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recta</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Para x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;com m =&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;com b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span>
+    <span class="n">r0</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">r1</span> <span class="o">+</span> <span class="n">r0</span><span class="p">)</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c0</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">recta</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Resultado:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Para x = 2.0
+com m = 3.0
+com b = 2.0
+Resultado: 8.0
+</pre></div>
+</div>
+<p>Este programa corre sem problemas.</p>
+<p>Note-se que podemos usar a função <code class="docutils literal"><span class="pre">print()</span></code> dentro de uma função.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recta</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">r1</span><span class="p">,</span> <span class="n">r0</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">r1</span> <span class="o">+</span> <span class="n">r0</span>
+
+<span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">recta</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Para x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;m =&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m*x =&#39;</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Resultado:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Para x = 2.0 m = 2.0 b = 3.0
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-17-f26c93717bbe&gt; in &lt;module&gt;()
+      7
+      8 print(&#39;Para x =&#39;, x, &#39;m =&#39;, m, &#39;b =&#39;, b)
+----&gt; 9 print(&#39;m*x =&#39;, r1, &#39;b =&#39;, r0)
+     10 print(&#39;Resultado:&#39;, res)
+
+
+NameError: name &#39;r1&#39; is not defined
+</pre></div>
+</div>
+<p>O que se passou aqui?</p>
+<p>Os nomes usados dentro da função <code class="docutils literal"><span class="pre">r1</span></code> e <code class="docutils literal"><span class="pre">r0</span></code> são locais: pertencem
+ao <strong>âmbito</strong> da função.</p>
+<p>Qualquer parte do programa &#8220;exterior&#8221; à função não consegue &#8220;ver&#8221; esses
+nomes. Daí o erro durante a execução.</p>
+<p>O mesmo acontece aos próprios nomes locais dos <strong>argumentos</strong> da função:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recta2</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">r1</span><span class="p">,</span> <span class="n">r0</span> <span class="o">=</span> <span class="n">m2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">b2</span>
+    <span class="k">return</span> <span class="n">r1</span> <span class="o">+</span> <span class="n">r0</span>
+
+<span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">recta2</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Para x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;m2 =&#39;</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="s1">&#39;b2 =&#39;</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Resultado:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-18-92c7134da27b&gt; in &lt;module&gt;()
+      6 res = recta2(m, b, x)
+      7
+----&gt; 8 print(&#39;Para x =&#39;, x, &#39;m2 =&#39;, m2, &#39;b2 =&#39;, b2)
+      9 print(&#39;Resultado:&#39;, res)
+
+
+NameError: name &#39;m2&#39; is not defined
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recta</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Dentro da função --------&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;m =&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">recta</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m =&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Resultado:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Dentro da função --------
+m = 5 b = 5 x = 16
+-------------------------
+m = 2 b = 2 x = 4
+
+Resultado: 85
+</pre></div>
+</div>
+<p>Este programa corre sem problemas!</p>
+<p>Mas cada um dos nomes <code class="docutils literal"><span class="pre">m</span></code>, <code class="docutils literal"><span class="pre">b</span></code>, <code class="docutils literal"><span class="pre">x</span></code> é usado em dois contextos e
+tem valores diferentes:</p>
+<ul class="simple">
+<li>O contexto local, quando estão &#8220;dentro&#8221; da função.</li>
+<li>O contexto global, quando estão &#8220;fora da função&#8221;.</li>
+</ul>
+<p>Fora da função, os valores globais são:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>Estes valores não são modificados fora da função e são apresentados pela
+função <code class="docutils literal"><span class="pre">print()</span></code> no final.</p>
+<p>Dentro da função estes nomes são, em primeiro lugar, usados como os
+argumentos da função.</p>
+<p>Pela <strong>maneira como a função é chamada</strong>, estes valores são:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">16</span>
+</pre></div>
+</div>
+<p>O nome <code class="docutils literal"><span class="pre">x</span></code> é modificado dentro da função (<code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">m</span> <span class="pre">*</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">b</span></code>) ficando
+com o valor final 85 e é este valor que é o resultado da função
+(<code class="docutils literal"><span class="pre">return</span> <span class="pre">x</span></code>).</p>
+<p>Quando a função termina e estamos de novo &#8220;de fora&#8221; da função, o valor
+de <code class="docutils literal"><span class="pre">x</span></code> volta a ser 4, uma vez que voltamos a um contexto &#8220;global&#8221;.</p>
+</div>
+<div class="section" id="valores-por-omissao-em-argumentos-de-funcoes">
+<h2>Valores <em>por omissão</em> em argumentos de funções<a class="headerlink" href="#valores-por-omissao-em-argumentos-de-funcoes" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mix</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;a =&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;--&gt; return =&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">c</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">mix</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>a = 1 b = 0 --&gt; return = 1
+a = 1 b = 3 --&gt; return = 4
+a = 2 b = 3 --&gt; return = 5
+a = 2 b = 3 --&gt; return = 5
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+
+<span class="n">f20</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;O factorial de 20 é&#39;</span><span class="p">,</span> <span class="n">f20</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>O factorial de 20 é 2432902008176640000
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+
+<span class="n">f20</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;O factorial de 20 é&#39;</span><span class="p">,</span> <span class="n">f20</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>2 2
+3 6
+4 24
+5 120
+6 720
+7 5040
+8 40320
+9 362880
+10 3628800
+11 39916800
+12 479001600
+13 6227020800
+14 87178291200
+15 1307674368000
+16 20922789888000
+17 355687428096000
+18 6402373705728000
+19 121645100408832000
+20 2432902008176640000
+O factorial de 20 é 2432902008176640000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="formatacao-de-strings-com-format">
+<h1>Formatação de <em>strings</em> com <code class="docutils literal"><span class="pre">.format()</span></code><a class="headerlink" href="#formatacao-de-strings-com-format" title="Permalink to this headline">¶</a></h1>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;x = {}, y = {}, z = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;O elemento com n = {1} é o {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>O elemento com n = 3 é o Li
+O elemento com n = 1 é o H
+O elemento com n = 19 é o K
+O elemento com n = 11 é o Na
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;O elemento com  n = {1:2} é o {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>O elemento com  n =  3 é o Li
+O elemento com  n =  1 é o H
+O elemento com  n = 19 é o K
+O elemento com  n = 11 é o Na
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;O elemento com  n = {1:&lt;2} é o {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>O elemento com  n = 3  é o Li
+O elemento com  n = 1  é o H
+O elemento com  n = 19 é o K
+O elemento com  n = 11 é o Na
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">log2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">soma</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># acumula a soma parcial da série</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+    <span class="n">soma</span> <span class="o">=</span> <span class="n">soma</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">i</span>
+    <span class="n">dif</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">soma</span> <span class="o">-</span> <span class="n">log2</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span> <span class="p">,</span> <span class="n">soma</span> <span class="p">,</span> <span class="n">dif</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>1 1.0 0.3068528194400547
+2 0.5 0.1931471805599453
+3 0.8333333333333333 0.14018615277338797
+4 0.5833333333333333 0.10981384722661203
+5 0.7833333333333332 0.09018615277338793
+6 0.6166666666666666 0.0764805138932787
+7 0.7595238095238095 0.0663766289638642
+8 0.6345238095238095 0.058623371036135796
+9 0.7456349206349207 0.052487740074975364
+10 0.6456349206349207 0.047512259925024614
+11 0.7365440115440116 0.043396830984066326
+12 0.6532106782106782 0.039936502349267045
+13 0.7301337551337552 0.03698657457380994
+14 0.6587051837051838 0.03444199685476146
+15 0.7253718503718505 0.03222466981190519
+16 0.6628718503718505 0.030275330188094807
+17 0.7216953797836152 0.028548199223669912
+18 0.6661398242280596 0.027007356331885668
+19 0.718771403175428 0.025624222615482695
+20 0.6687714031754279 0.02437577738451735
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">log2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">soma</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># acumula a soma parcial da série</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;{:&gt;4} {:^9} {:^9}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;n&#39;</span> <span class="p">,</span> <span class="s1">&#39;S&#39;</span> <span class="p">,</span> <span class="s1">&#39;dif&#39;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+    <span class="n">soma</span> <span class="o">=</span> <span class="n">soma</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">i</span>
+    <span class="n">dif</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">soma</span> <span class="o">-</span> <span class="n">log2</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{:4d} {:9.6f} {:9.6f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">soma</span><span class="p">,</span><span class="n">dif</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span> n     S        dif
+ 1  1.000000  0.306853
+ 2  0.500000  0.193147
+ 3  0.833333  0.140186
+ 4  0.583333  0.109814
+ 5  0.783333  0.090186
+ 6  0.616667  0.076481
+ 7  0.759524  0.066377
+ 8  0.634524  0.058623
+ 9  0.745635  0.052488
+10  0.645635  0.047512
+11  0.736544  0.043397
+12  0.653211  0.039937
+13  0.730134  0.036987
+14  0.658705  0.034442
+15  0.725372  0.032225
+16  0.662872  0.030275
+17  0.721695  0.028548
+18  0.666140  0.027007
+19  0.718771  0.025624
+20  0.668771  0.024376
+</pre></div>
+</div>
+<p>Consultar a documentação da <a class="reference external" href="https://docs.python.org/3/library/string.html#formatspec">Format Specification
+Mini-Language</a></p>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/aulas/6_defs.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016-2017, António Ferreira.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

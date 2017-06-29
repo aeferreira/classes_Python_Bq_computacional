@@ -1,0 +1,788 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Algoritmos numéricos &mdash; Bq computacional (FCUL) 1617.3 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/my_style.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1617.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Bq computacional (FCUL) 1617.3 documentation" href="../index.html" />
+    <link rel="next" title="Python “científico”: biblioteca pandas" href="14_pandas.html" />
+    <link rel="prev" title="Example: Simulation of the acid-base changes in an amino-acid solution" href="12_scipy_pH.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Bq. computacional</a>
+        <span class="navbar-text navbar-version pull-left"><b>1617.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Capítulo <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_basicos.html">Conceitos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_iteracoes.html">Coleções e iterações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_listas_dicts.html">Listas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_listas_dicts.html#dicionarios">Dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_listas_dicts.html#funcao-zip">Função <code class="docutils literal"><span class="pre">zip()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_strings.html"><em>Strings</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_defs.html">Funções definidas pelo programador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal"><span class="pre">.format()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_scientific_modules.html">Python &#8220;científico&#8221;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Algoritmos numéricos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_pandas.html">Python &#8220;científico&#8221;: biblioteca <em>pandas</em></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_software.html">Instalação de software</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="12_scipy_pH.html" title="Previous Chapter: Example: Simulation of the acid-base changes in an amino-acid solution"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Example: Simu...</span>
+    </a>
+  </li>
+  <li>
+    <a href="14_pandas.html" title="Next Chapter: Python “científico”: biblioteca pandas"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Python “cient... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="algoritmos-numericos">
+<h1>Algoritmos numéricos<a class="headerlink" href="#algoritmos-numericos" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introducao-algoritmo-babilonico">
+<h2>Introdução (algoritmo babilónico)<a class="headerlink" href="#introducao-algoritmo-babilonico" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Um <strong>algoritmo</strong> é um procedimento, indicado passo a passo,
+destinado a resolver um problema num intervalo de tempo finito.</div></blockquote>
+<p><strong>Algoritmo para calcular raízes quadradas</strong></p>
+<p>Para calcular a raíz quadrada de um número a:</p>
+<ol class="arabic simple">
+<li>Fazer <span class="math">\(x = 1\)</span></li>
+<li>Fazer <span class="math">\(x = \frac{1}{2} \left( x + a/x \right)\)</span></li>
+<li>Repetir 20 vezes o passo 2</li>
+</ol>
+<p><span class="math">\(x\)</span> é a raíz quadrada de <span class="math">\(a\)</span>.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;a =&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">novo</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">novo</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1.414213562373095</span>
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">novo</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">novo</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A raíz quadrada de {} é {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>1.0
+1.5
+1.4166666666666665
+1.4142156862745097
+1.4142135623746899
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+1.414213562373095
+A raíz quadrada de 2.0 é 1.414213562373095
+</pre></div>
+</div>
+<p><strong>Algoritmo para calcular raízes quadradas</strong></p>
+<p>Para calcular a raíz quadrada de um número a:</p>
+<ol class="arabic simple">
+<li>Fazer <span class="math">\(x_0 = 1\)</span></li>
+<li>Fazer <span class="math">\(x_{i+1} = \frac{1}{2} \left( x_i + a/x_i \right)\)</span></li>
+<li>Repetir o passo 2 até <span class="math">\(|x_{i+1} - x_i| &lt; 10^{-10}\)</span></li>
+</ol>
+<p>x é a raíz quadrada de a.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">novo</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">novo</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">novo</span>
+        <span class="k">break</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">novo</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A raíz quadrada de {} é {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>1.0
+1.5
+1.4166666666666665
+1.4142156862745097
+1.4142135623746899
+A raíz quadrada de 2.0 é 1.414213562373095
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">babilonico</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">show_iters</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">show_iters</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">novo</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">novo</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">novo</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">novo</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">babilonico</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">show_iters</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A raíz quadrada de {} é {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span><span class="n">r</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>1.0
+1.5
+1.4166666666666665
+1.4142156862745097
+1.4142135623746899
+A raíz quadrada de 2.0 é 1.414213562373095
+</pre></div>
+</div>
+</div>
+<div class="section" id="metodo-das-bissecoes-sucessivas">
+<h2>Método das bisseções sucessivas<a class="headerlink" href="#metodo-das-bissecoes-sucessivas" title="Permalink to this headline">¶</a></h2>
+<p><strong>Método das bisseções sucessivas</strong> (para calcular a raíz de uma função)</p>
+<div class="figure">
+<img alt="" src="../_images/bissect_idea.png" />
+</div>
+<div class="figure">
+<img alt="" src="../_images/bissect_1st.png" />
+</div>
+<div class="figure">
+<img alt="" src="../_images/bissect.png" />
+</div>
+<p>Para calcular a raíz de uma função <span class="math">\(f(x)\)</span>, contínua sabendo que
+existe <strong>uma raíz</strong> no intervalo <span class="math">\(]a, b[\)</span>:</p>
+<ol class="arabic simple">
+<li>Calcular o ponto médio <span class="math">\(x_m = (a+b) / 2\)</span> e o valôr da função
+<span class="math">\(f(x_m)\)</span></li>
+<li>Se o sinal de <span class="math">\(f(x_m)\)</span> for igual ao sinal de <span class="math">\(f(a)\)</span> então
+fazer <span class="math">\(a\)</span> = <span class="math">\(x_m\)</span>. Se o sinal de <span class="math">\(f(x_m)\)</span> for igual
+ao sinal de <span class="math">\(f(b)\)</span> então fazer <span class="math">\(b\)</span> = <span class="math">\(x_m\)</span></li>
+<li>Repetir o passo 2 até à &#8220;convergência&#8221;:</li>
+<li>Quando <span class="math">\(|b-a| &lt; \epsilon\)</span> (um numero pequeno), o processo deve
+parar ou</li>
+<li>Quando <span class="math">\(f(x_m) &lt; \epsilon_2\)</span> (um numero pequeno), o processo
+deve parar</li>
+</ol>
+<p><span class="math">\(x_m\)</span> é a raíz da função <span class="math">\(f(x)\)</span>, isto é
+<span class="math">\(f(x_m) \approx 0\)</span>.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bissect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
+
+    <span class="n">fa</span><span class="p">,</span> <span class="n">fb</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">epsilon</span><span class="p">:</span>
+        <span class="n">xm</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span>
+        <span class="n">fm</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xm</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">fm</span><span class="o">*</span><span class="n">fa</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">,</span><span class="n">fa</span> <span class="o">=</span> <span class="n">xm</span><span class="p">,</span><span class="n">fm</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span><span class="p">,</span><span class="n">fb</span> <span class="o">=</span> <span class="n">xm</span><span class="p">,</span><span class="n">fm</span>
+    <span class="k">return</span> <span class="n">a</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span><span class="mi">2</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">bissect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Raíz encontrada:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Raíz encontrada:
+1.2599201202392578
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bissect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">epsilon</span><span class="p">,</span> <span class="n">epsilonf</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1e-10</span>
+    <span class="n">fa</span><span class="p">,</span> <span class="n">fb</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">epsilon</span><span class="p">:</span>
+        <span class="n">xm</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span>
+        <span class="n">fm</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xm</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fm</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilonf</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">xm</span><span class="p">,</span> <span class="n">fm</span>
+
+        <span class="k">if</span> <span class="n">fm</span><span class="o">*</span><span class="n">fa</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">,</span><span class="n">fa</span> <span class="o">=</span> <span class="n">xm</span><span class="p">,</span><span class="n">fm</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span><span class="p">,</span><span class="n">fb</span> <span class="o">=</span> <span class="n">xm</span><span class="p">,</span><span class="n">fm</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span><span class="mi">2</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">fx</span> <span class="o">=</span> <span class="n">bissect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x = {}, f(x) = {:9.7f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fx</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.2599201202392578</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.0000044</span>
+</pre></div>
+</div>
+<p>Monitorizando as bisseções:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bissect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">epsilon</span><span class="p">,</span> <span class="n">epsilonf</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1e-10</span>
+    <span class="n">fa</span><span class="p">,</span> <span class="n">fb</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Uma lista de listas com a &quot;história&quot; das iterações</span>
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">epsilon</span><span class="p">:</span>
+        <span class="n">xm</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span>
+        <span class="n">fm</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xm</span><span class="p">)</span>
+
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">fm</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fm</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilonf</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">xm</span><span class="p">,</span> <span class="n">fm</span><span class="p">,</span> <span class="n">history</span>
+
+        <span class="k">if</span> <span class="n">fm</span><span class="o">*</span><span class="n">fa</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">,</span><span class="n">fa</span> <span class="o">=</span> <span class="n">xm</span><span class="p">,</span><span class="n">fm</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span><span class="p">,</span><span class="n">fb</span> <span class="o">=</span> <span class="n">xm</span><span class="p">,</span><span class="n">fm</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">history</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span><span class="mi">2</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">bissect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x = {}, f(x) = {:9.7f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fx</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Bisseções:</span>
+<span class="s1">a       b       |b-a|       f(xm)&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">fm</span> <span class="ow">in</span> <span class="n">h</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0:7.5f} {1:7.5f} {3:10.8f} {2:10.7f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">fm</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>x = 1.2599201202392578, f(x) = -0.0000044
+
+Bisseções:
+a       b       |b-a|       f(xm)
+1.00000 2.00000 1.00000000  1.3750000
+1.00000 1.50000 0.50000000 -0.0468750
+1.25000 1.50000 0.25000000  0.5996094
+1.25000 1.37500 0.12500000  0.2609863
+1.25000 1.31250 0.06250000  0.1033020
+1.25000 1.28125 0.03125000  0.0272865
+1.25000 1.26562 0.01562500 -0.0100245
+1.25781 1.26562 0.00781250  0.0085732
+1.25781 1.26172 0.00390625 -0.0007401
+1.25977 1.26172 0.00195312  0.0039130
+1.25977 1.26074 0.00097656  0.0015855
+1.25977 1.26025 0.00048828  0.0004225
+1.25977 1.26001 0.00024414 -0.0001588
+1.25989 1.26001 0.00012207  0.0001318
+1.25989 1.25995 0.00006104 -0.0000135
+1.25992 1.25995 0.00003052  0.0000592
+1.25992 1.25993 0.00001526  0.0000228
+1.25992 1.25993 0.00000763  0.0000047
+1.25992 1.25992 0.00000381 -0.0000044
+1.25992 1.25992 0.00000191  0.0000001
+</pre></div>
+</div>
+</div>
+<div class="section" id="metodo-de-newton">
+<h2>Método de newton<a class="headerlink" href="#metodo-de-newton" title="Permalink to this headline">¶</a></h2>
+<p><strong>Método de Newton</strong> (para calcular a raíz de uma função)</p>
+<div class="figure">
+<img alt="" src="../_images/newton.png" />
+</div>
+<p>Para calcular a raíz de uma função <span class="math">\(f(x)\)</span>, conhecendo também a sua
+derivada <span class="math">\(f'(x)\)</span>:</p>
+<ol class="arabic simple">
+<li>Partir de uma estimativa inicial <span class="math">\(x_0\)</span></li>
+<li>Fazer <span class="math">\(x_{i+1} = x_i - f(x_i)/f'(x_i)\)</span></li>
+<li>Repetir o passo 2 até <span class="math">\(|f(x_i)| &lt; \epsilon\)</span> (um numero pequeno)</li>
+</ol>
+<p><span class="math">\(x_{final}\)</span> é a raíz da função <span class="math">\(f(x)\)</span>, isto é
+<span class="math">\(f(x_{final}) \approx 0\)</span>.</p>
+<p><strong>NOTA</strong>: O algoritmo babilónico é um caso particular do método de
+Newton para <span class="math">\(f(x) = x^2 -a\)</span></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
+    <span class="n">fx</span><span class="p">,</span> <span class="n">dfx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">epsilon</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">fx</span> <span class="o">/</span> <span class="n">dfx</span>
+        <span class="n">fx</span><span class="p">,</span> <span class="n">dfx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">fx</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x = {}, f(x) = {:9.7f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fx</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.2599210498953948</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0000000</span>
+</pre></div>
+</div>
+<p>Monitorizando as iterações:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
+
+    <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">fx</span><span class="p">,</span><span class="n">dfx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">epsilon</span><span class="p">:</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">fx</span><span class="p">])</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">fx</span> <span class="o">/</span> <span class="n">dfx</span>
+        <span class="n">fx</span><span class="p">,</span> <span class="n">dfx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">history</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x = {}, f(x) = {:9.7f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fx</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Iterações:</span>
+<span class="s1">x         f(x)&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">fx</span> <span class="ow">in</span> <span class="n">h</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0:9.7f} {1:9.7f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>x = 1.2599210498953948, f(x) = 0.0000000
+
+Iterações:
+x         f(x)
+1.5000000 1.3750000
+1.2962963 0.1782757
+1.2609322 0.0048193
+1.2599219 0.0000039
+</pre></div>
+</div>
+<p>Compare-se a rapidez da convergência dos 2 métodos, para
+<span class="math">\(\epsilon = 10^{-6}\)</span></p>
+<p>Método das bisseções sucessivas:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Bisseções:
+a       b       |b-a|       f(xm)
+1.00000 2.00000 1.00000000  1.3750000
+1.00000 1.50000 0.50000000 -0.0468750
+1.25000 1.50000 0.25000000  0.5996094
+1.25000 1.37500 0.12500000  0.2609863
+1.25000 1.31250 0.06250000  0.1033020
+1.25000 1.28125 0.03125000  0.0272865
+1.25000 1.26562 0.01562500 -0.0100245
+1.25781 1.26562 0.00781250  0.0085732
+1.25781 1.26172 0.00390625 -0.0007401
+1.25977 1.26172 0.00195312  0.0039130
+1.25977 1.26074 0.00097656  0.0015855
+1.25977 1.26025 0.00048828  0.0004225
+1.25977 1.26001 0.00024414 -0.0001588
+1.25989 1.26001 0.00012207  0.0001318
+1.25989 1.25995 0.00006104 -0.0000135
+1.25992 1.25995 0.00003052  0.0000592
+1.25992 1.25993 0.00001526  0.0000228
+1.25992 1.25993 0.00000763  0.0000047
+1.25992 1.25992 0.00000381 -0.0000044
+1.25992 1.25992 0.00000191  0.0000001
+</pre></div>
+</div>
+<p>Método de Newton:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Iterações:
+x         f(x)
+1.5000000 1.3750000
+1.2962963 0.1782757
+1.2609322 0.0048193
+1.2599219 0.0000039
+</pre></div>
+</div>
+<p>Método de Newton com a função <span class="math">\(sin(x)\)</span></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
+
+    <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">fx</span><span class="p">,</span><span class="n">dfx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">epsilon</span><span class="p">:</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">fx</span><span class="p">])</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">fx</span> <span class="o">/</span> <span class="n">dfx</span>
+        <span class="n">fx</span><span class="p">,</span> <span class="n">dfx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">history</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">x0</span> <span class="ow">in</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">6.1</span><span class="p">,</span> <span class="mf">12.1</span><span class="p">:</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+
+    <span class="n">pi_x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">pi</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;x0 = {:&lt;7.2f} x = {:4.1f} pi&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">pi_x</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>x0 = 0.10    x =  0.0 pi
+x0 = 1.10    x =  0.0 pi
+x0 = 3.10    x =  1.0 pi
+x0 = 4.10    x =  1.0 pi
+x0 = 5.10    x = 58.0 pi
+x0 = 6.10    x =  2.0 pi
+x0 = 12.10   x =  4.0 pi
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
+
+    <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">fx</span><span class="p">,</span><span class="n">dfx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">epsilon</span><span class="p">:</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">fx</span><span class="p">])</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">fx</span> <span class="o">/</span> <span class="n">dfx</span>
+        <span class="n">fx</span><span class="p">,</span> <span class="n">dfx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">history</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">x0</span> <span class="ow">in</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">6.1</span><span class="p">,</span> <span class="mf">12.1</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;----------------</span><span class="se">\n</span><span class="s1">x0 = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x0</span><span class="p">))</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">fx</span> <span class="ow">in</span> <span class="n">h</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x = {:8.5f}, f(x)={:8.5f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fx</span><span class="p">))</span>
+
+    <span class="n">pi_x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">pi</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;para x0 = {},    x = {:4.1f} pi&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">pi_x</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>----------------
+x0 = 0.1
+x =  0.10000, f(x)= 0.09983
+x = -0.00033, f(x)=-0.00033
+para x0 = 0.1,    x = -0.0 pi
+----------------
+x0 = 1.1
+x =  1.10000, f(x)= 0.89121
+x = -0.86476, f(x)=-0.76094
+x =  0.30804, f(x)= 0.30319
+x = -0.01013, f(x)=-0.01013
+para x0 = 1.1,    x = -0.0 pi
+----------------
+x0 = 3.1
+x =  3.10000, f(x)= 0.04158
+x =  3.14162, f(x)=-0.00002
+para x0 = 3.1,    x =  1.0 pi
+----------------
+x0 = 4.1
+x =  4.10000, f(x)=-0.81828
+x =  2.67647, f(x)= 0.44853
+x =  3.17831, f(x)=-0.03671
+x =  3.14158, f(x)= 0.00002
+para x0 = 4.1,    x =  1.0 pi
+----------------
+x0 = 5.1
+x =  5.10000, f(x)=-0.92581
+x =  7.54939, f(x)= 0.95397
+x =  4.36848, f(x)=-0.94144
+x =  1.57632, f(x)= 0.99998
+x = 182.69881, f(x)= 0.46748
+x = 182.16999, f(x)=-0.04237
+x = 182.21240, f(x)= 0.00003
+para x0 = 5.1,    x = 58.0 pi
+----------------
+x0 = 6.1
+x =  6.10000, f(x)=-0.18216
+x =  6.28526, f(x)= 0.00208
+para x0 = 6.1,    x =  2.0 pi
+----------------
+x0 = 12.1
+x = 12.10000, f(x)=-0.44965
+x = 12.60341, f(x)= 0.03703
+x = 12.56635, f(x)=-0.00002
+para x0 = 12.1,    x =  4.0 pi
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">pl</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span>
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;teal&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">z</span> <span class="o">*</span> <span class="n">pi</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/13_algoritmos_29_0.png" src="../_images/13_algoritmos_29_0.png" />
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">newton_points</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="c1"># h = [(x0, fx0), (x1, fx1), ...]</span>
+    <span class="n">xvalues</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">yvalues</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">h</span><span class="p">:</span>
+        <span class="n">xvalues</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">])</span>
+        <span class="n">yvalues</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">xvalues</span><span class="p">,</span><span class="n">yvalues</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkred&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">x0</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="p">[(</span><span class="mf">0.5</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="s1">&#39;darkred&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="s1">&#39;teal&#39;</span><span class="p">)]:</span>
+
+    <span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Para x0 = {}, raíz = {:6.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+    <span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span> <span class="o">=</span> <span class="n">newton_points</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Para x0 = 0.5, raíz = -0.000
+Para x0 = 1.1, raíz =  0.000
+Para x0 = 2.2, raíz =  3.142
+</pre></div>
+</div>
+<img alt="../_images/13_algoritmos_30_1.png" src="../_images/13_algoritmos_30_1.png" />
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkred&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">x0</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="p">[(</span><span class="mf">5.1</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">)]:</span>
+
+    <span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Para x0 = {}, raíz = {:6.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+    <span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span> <span class="o">=</span> <span class="n">newton_points</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Para x0 = 5.1, raíz = 182.212
+</pre></div>
+</div>
+<img alt="../_images/13_algoritmos_31_1.png" src="../_images/13_algoritmos_31_1.png" />
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">185</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkred&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">x0</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="p">[(</span><span class="mf">5.1</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">)]:</span>
+
+    <span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Para x0 = {}, raíz = {:6.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+    <span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span> <span class="o">=</span> <span class="n">newton_points</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span><span class="mi">185</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Para x0 = 5.1, raíz = 182.212
+</pre></div>
+</div>
+<img alt="../_images/13_algoritmos_32_1.png" src="../_images/13_algoritmos_32_1.png" />
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_newton</span><span class="p">(</span><span class="n">x0</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkred&#39;</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span>
+
+    <span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+    <span class="n">x_pi</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">pi</span>
+    <span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span> <span class="o">=</span> <span class="n">newton_points</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="c1">#pl.show()</span>
+    <span class="c1">#print(&#39;Para x0 = {}, raíz = {:4.2f} pi&#39;.format(x0, x_pi))</span>
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="kn">as</span> <span class="nn">widgets</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">plot_newton</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">2.5</span><span class="p">))</span>
+</pre></div>
+</div>
+<img alt="../_images/13_algoritmos_34_0.png" src="../_images/13_algoritmos_34_0.png" />
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/aulas/13_algoritmos.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016-2017, António Ferreira.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

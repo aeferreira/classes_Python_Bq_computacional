@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Instalação de software &mdash; Bq computacional (FCUL) 1617.3 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/my_style.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1617.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Bq computacional (FCUL) 1617.3 documentation" href="../index.html" />
+    <link rel="prev" title="Python “científico”: biblioteca pandas" href="14_pandas.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Bq. computacional</a>
+        <span class="navbar-text navbar-version pull-left"><b>1617.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Capítulo <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="1_basicos.html">Conceitos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_iteracoes.html">Coleções e iterações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_listas_dicts.html">Listas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_listas_dicts.html#dicionarios">Dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_listas_dicts.html#funcao-zip">Função <code class="docutils literal"><span class="pre">zip()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_strings.html"><em>Strings</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_defs.html">Funções definidas pelo programador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal"><span class="pre">.format()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_scientific_modules.html">Python &#8220;científico&#8221;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_algoritmos.html">Algoritmos numéricos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_pandas.html">Python &#8220;científico&#8221;: biblioteca <em>pandas</em></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Instalação de software</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="14_pandas.html" title="Previous Chapter: Python “científico”: biblioteca pandas"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Python “cient...</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="instalacao-de-software">
+<h1>Instalação de software<a class="headerlink" href="#instalacao-de-software" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="distribuicoes-cientificas-da-linguagem-python">
+<h2>Distribuições científicas da linguagem Python<a class="headerlink" href="#distribuicoes-cientificas-da-linguagem-python" title="Permalink to this headline">¶</a></h2>
+<p>A linguagem Python tem uma <em>distribuição</em> oficial que pode ser obtida a
+partir do portal da linguagem
+<a class="reference external" href="http://www.python.org">www.python.org</a>.</p>
+<p>Esta distribuição contem mais de uma centena de módulos que aumentam a
+funcionalidade da linguagem base. Esta funcionalidade fica acessível
+pela disponibilização de novas funções via comandos <code class="docutils literal"><span class="pre">import</span></code>. Os
+módulos não precisão de ser instalados, eles vêm com a distribuição e
+constituem a chamada <em>biblioteca padrão</em> da linguagem Python.</p>
+<p>Para as aulas da UC de Bioquímica Computacional, em que se procura
+mostrar as vertentes de cálculo científico vetorial, capacidades
+gráficas e tratamento de dados estruturados em tabelas, são necessários
+<strong>módulos adicionais</strong> a instalar &#8220;sobre&#8221; a distribuição oficial.</p>
+<p>Embora pudessem ser baixados dos respetivos sites, estes módulos
+adicionais já foram integrados em distribuições alternativas da
+linguagem Python orientados para o uso da linguagem em contextos de
+ciência ou de engenharia.</p>
+<p><strong>É de toda a conveniência que seja instalada uma destas distribuições
+&#8220;científicas&#8221;</strong>. Existem várias, mas aconselhamos a distribuição
+<strong>Anaconda</strong> da empresa <em>Continuum Analytics</em>. Em alternativa, existe
+uma versão &#8220;lite&#8221; da distribuição Anaconda designada por <strong>Miniconda</strong>.</p>
+</div>
+<div class="section" id="instalacao-da-distribuicao-anaconda-ou-miniconda">
+<h2>Instalação da distribuição Anaconda ou Miniconda<a class="headerlink" href="#instalacao-da-distribuicao-anaconda-ou-miniconda" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="anaconda-fortemente-aconselhada">
+<h3>Anaconda (fortemente aconselhada):<a class="headerlink" href="#anaconda-fortemente-aconselhada" title="Permalink to this headline">¶</a></h3>
+<p>Basta correr o instalador, que pode ser baixado a partir de:</p>
+<p><a class="reference external" href="https://www.continuum.io/downloads">https://www.continuum.io/downloads</a></p>
+<p>Deve-se escolher a última versão do Python (3.6) e o instalador
+apropriado ao sistema operativo do computador (win 32 bit, win 64 bit,
+OS ou Linux).</p>
+<p>A distribuição é &#8220;grande&#8221; (mais de 1 GB), aconselha-se a instalação
+&#8220;para o utilizador&#8221;.</p>
+</div>
+<div class="section" id="miniconda-para-os-que-tem-problemas-de-falta-de-espaco-em-disco">
+<h3>Miniconda (para os que têm problemas de falta de espaço em disco):<a class="headerlink" href="#miniconda-para-os-que-tem-problemas-de-falta-de-espaco-em-disco" title="Permalink to this headline">¶</a></h3>
+<p>Obter e correr o instalador do Miniconda, que pode ser baixado a partir
+de :</p>
+<p><a class="reference external" href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
+<p>Deve-se escolher a última versão do Python (3.6) e o instalador
+apropriado ao sistema operativo do computador (win 32 bit, win 64 bit,
+OS ou Linux).</p>
+<p>No final da instalação deve ser executado, numa <em>linha de comando do
+sistema operativo</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>conda install six numpy sympy scipy matplotlib jupyter pandas
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/aulas/data_software.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016-2017, António Ferreira.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

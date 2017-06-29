@@ -1,5 +1,4 @@
 .ipynb_checkpoints
-*.html
 _build/*
 aula9/*
 demos*
