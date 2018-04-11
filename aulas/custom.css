@@ -9,6 +9,7 @@
 
 .reveal div p{
 	font-size: 140%;
+	font-family: "Lato", "News Cycle", Impact, sans-serif;	
 }
 
 /* Change code font */
@@ -51,9 +52,15 @@ div.output_area pre {
 
 .rendered_html h1 {
     font-size: 300%;
+	font-family: "Lato", "News Cycle", Impact, sans-serif;	
 }
 .rendered_html h2 {
     font-size: 220%;
+	font-family: "Lato", "News Cycle", Impact, sans-serif;	
+}
+.rendered_html h3 {
+    font-size: 180%;
+	font-family: "Lato", "News Cycle", Impact, sans-serif;	
 }
 
 .highlight .mi {
