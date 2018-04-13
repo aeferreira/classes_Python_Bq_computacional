@@ -12,21 +12,21 @@ Este site disponibiliza as aulas teóricas da disciplina de Bioquímica Computac
 .. toctree::
    :maxdepth: 3
 
-   aulas/1_basicos
-   aulas/2_iteracoes
-   aulas/3_listas_dicts
-   aulas/4_strings
-   aulas/5_ficheiros
-   aulas/6_defs
-   aulas/7_import
-   aulas/8_requests
-   aulas/10_scientific_modules
-   aulas/11_scipy_regression
-   aulas/12_scipy_pH
-   aulas/13_algoritmos
-   aulas/14_pandas
+   source/1_basicos
+   source/2_iteracoes
+   source/3_listas_dicts
+   source/4_strings
+   source/5_ficheiros
+   source/6_defs
+   source/7_import
+   source/8_requests
+   source/10_scientific_modules
+   source/11_scipy_regression
+   source/12_scipy_pH
+   source/13_algoritmos
+   source/14_pandas
 
 .. toctree::
    :hidden:
 
-   aulas/data_software
+   source/data_software
