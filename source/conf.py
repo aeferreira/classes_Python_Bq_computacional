@@ -74,7 +74,7 @@ release = 'Apr 2018'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+#exclude_patterns = ['build']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -129,19 +129,10 @@ html_theme = "sphinx_rtd_theme"
 #if using sphinx_rtd_theme...
 
 html_theme_options = {
-    'canonical_url': '',
-    'analytics_id': '',
     'logo_only': False,
-    'display_version': True,
     'prev_next_buttons_location': 'bottom',
     'style_external_links': False,
-    'vcs_pageview_mode': '',
-    # Toc options
-    'collapse_navigation': False,
-    'sticky_navigation': True,
-    'navigation_depth': 2,
     'includehidden': True,
-    'titles_only': False
 }
 
 

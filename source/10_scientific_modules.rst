@@ -366,7 +366,7 @@ listas:
     
 
 **Problema: mostrar que as diferenças entre os quadrados perfeitos
-sucessivos são os numeros ímpares **
+sucessivos são os numeros ímpares**
 
 .. code:: ipython3
 
@@ -649,7 +649,7 @@ Obter valores aleatórios das seguintes distribuições:
     
 
 **Problema**: "Provar" que a média e a variância da distribuição de
-Poisson são ambas iguais a $ :raw-latex:`\lambda `$.
+Poisson são ambas iguais a $:raw-latex:`\lambda `$.
 
 .. code:: ipython3
 

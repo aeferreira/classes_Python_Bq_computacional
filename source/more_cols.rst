@@ -1,9 +1,19 @@
 
-Listas
-======
+Listas e dicionários
+====================
 
-Algumas funções associadas a listas
------------------------------------
+No capítulo anterior, definiu-se o conceito de coleção e mostrou-se 3 dos tipos
+fundamentais de coleções na linguagem Python: as listas, as *strings* e os
+dicionários.
+
+Uma das mais poderosas técnicas associadas às coleções é a sua iteração, usando
+o comando ``for``.
+
+Neste capítulo mostra-se algumas **funções** que são específicas de cada coleção,
+começando pelas **listas** e **dicionários**.
+
+Listas
+------
 
 Recordemos: em comum com as outras coleções,
 
@@ -480,8 +490,8 @@ Leitura interessante:
 `Comprehensions in Python the Jedi
 way <https://gist.github.com/bearfrieze/a746c6f12d8bada03589>`__
 
-Mais funções de listas
-----------------------
+Mais algumas funções de listas
+------------------------------
 
 ``.pop()``, ``.reverse()``, ``.sort()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -543,13 +553,13 @@ Todas estas funções **modificam** uma lista, tal como ``.append()``.
     
 
 Dicionários
-===========
+-----------
 
 Os dicionários são associações não ordenadas entre **chaves** e
 **valores**. Cada chave é única.
 
 Indexação e iteração
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 A maneira de ler, inserir e modificar valores num dicionário é através
 das suas chaves. O operador ``in`` testa a existência de uma chave num
@@ -611,7 +621,7 @@ A **iteração** percorre as **chaves** de um dicionário:
     
 
 ``.update()``
--------------
+~~~~~~~~~~~~~
 
 .. code:: ipython3
 
@@ -630,7 +640,7 @@ A **iteração** percorre as **chaves** de um dicionário:
     
 
 ``.clear()``
-------------
+~~~~~~~~~~~~
 
 .. code:: ipython3
 
@@ -648,7 +658,7 @@ A **iteração** percorre as **chaves** de um dicionário:
     
 
 ``.values()``,\ ``.items()``, ``.keys()``
------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: ipython3
 
@@ -790,7 +800,7 @@ o par de valores e dar dois nomes diferentes:
     
 
 Dicionários em compreensão
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: ipython3
 
@@ -831,8 +841,8 @@ Dicionários em compreensão
     {1: 'H', 3: 'Li', 11: 'Na', 19: 'K', 18: 'O'}
     
 
-``.dict()``
------------
+``dict()``
+~~~~~~~~~~
 
 A função ``dict()`` que tenta transformar o seu argumento num
 dicionário. Em particular, pode aceitar pares de valores,
@@ -852,7 +862,7 @@ interpretando-os como associações de chaves a valores.
     
 
 Função ``zip()``
-================
+----------------
 
 .. code:: ipython3
 

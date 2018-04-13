@@ -229,8 +229,8 @@ o **número de elementos** contidos nessa coleção.
     4
     
 
-Comando ``for``: iteração de coleções
--------------------------------------
+Iteração: comando ``for``
+-------------------------
 
 Iteração é um conceito geral, que consiste em aplicar um conjunto de
 instruções ou comandos a **cada um dos elementos de uma coleção**, um a
@@ -418,8 +418,8 @@ ordem desejada:
     K 19
     
 
-Exemplos de iteração (e acumulação)
------------------------------------
+Exemplos de iteração
+--------------------
 
 **Problema: somar todos os numeros de 1 a 10**
 
@@ -918,8 +918,8 @@ Podemos usar um "contador" das **posições** dos aminoácidos,
 e, simultaneamente, aceder às posições desses elementos, que a linguagem
 Python tem uma função para combinar os dois "aos pares":
 
-Função ``enumerate()``: pares (posição, elemento)
--------------------------------------------------
+Função ``enumerate()``
+----------------------
 
 Vejamos o que resulta da aplicação da função ``enumerate()`` a uma
 sequência:
