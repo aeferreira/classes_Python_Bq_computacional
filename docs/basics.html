@@ -1,0 +1,1109 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Conceitos básicos &mdash; Bq computacional (FCUL) Apr 2018 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/my_style.css" type="text/css" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Coleções e iterações" href="cols_iters.html" />
+    <link rel="prev" title="Introdução a programação em Python" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Bq computacional (FCUL)
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.2018
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Conceitos básicos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#objetos-e-funcao-print">Objetos e função <code class="docutils literal notranslate"><span class="pre">print()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#atribuicao-de-nomes-a-objetos">Atribuição de nomes a “objetos”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alteracao-dos-objetos-associados-a-um-nome">Alteração dos objetos associados a um nome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comentarios">Comentários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcoes-disponiveis-integradas-na-linguagem-ex-print-abs-e-int">Funções disponíveis “integradas” na linguagem (ex. <code class="docutils literal notranslate"><span class="pre">print()</span></code>, <code class="docutils literal notranslate"><span class="pre">abs()</span></code> e <code class="docutils literal notranslate"><span class="pre">int()</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conversao-entre-varios-tipos-de-objetos-int-float-complex-e-str">Conversão entre vários tipos de objetos (<code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code>, <code class="docutils literal notranslate"><span class="pre">complex()</span></code> e <code class="docutils literal notranslate"><span class="pre">str()</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modulos-funcoes-adicionais">Módulos: funções adicionais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exemplo-raizes-da-equacao-do-2o-grau">Exemplo: raízes da equação do 2º grau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alternativa-if-else">Alternativa <code class="docutils literal notranslate"><span class="pre">if...else</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alternativas-if-elif-else">Alternativas <code class="docutils literal notranslate"><span class="pre">if...elif...else</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcao-input">Função <code class="docutils literal notranslate"><span class="pre">input()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cols_iters.html">Coleções e iterações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more_cols.html">Listas e dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_strings.html"><em>Strings</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_defs.html">Funções definidas pelo programador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal notranslate"><span class="pre">import</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code>).</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_scientific_modules.html">Python “científico”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal notranslate"><span class="pre">numpy</span></code> e <code class="docutils literal notranslate"><span class="pre">scipy</span></code>: regressão linear.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_algoritmos.html">Algoritmos numéricos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_pandas.html">Python “científico”: biblioteca <em>pandas</em></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_software.html">Instalação de software</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bq computacional (FCUL)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Conceitos básicos</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/basics.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conceitos-basicos">
+<h1>Conceitos básicos<a class="headerlink" href="#conceitos-basicos" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objetos-e-funcao-print">
+<h2>Objetos e função <code class="docutils literal notranslate"><span class="pre">print()</span></code><a class="headerlink" href="#objetos-e-funcao-print" title="Permalink to this headline">¶</a></h2>
+<p>Essencialmente, um programa em Python consiste num conjunto de comandos
+a ser executados.</p>
+<p>Muitas vezes esses comandos consistem na manipulação de <strong>objetos</strong>.</p>
+<p>Estes objetos estão representados na memória do computador, a cada
+momento, e têm um determinado valor.</p>
+<p>Dois tipos básicos de objetos que podemos criar e manipular num programa
+são:</p>
+<ul class="simple">
+<li>números</li>
+<li><em>strings</em></li>
+</ul>
+<p>Num programa, podemos <strong>apresentar</strong> o valor que um objeto tem com a
+função <code class="docutils literal notranslate"><span class="pre">print()</span></code>.</p>
+<p>Um exemplo com números:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">3.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">9.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(((</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">9</span><span class="p">)</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>4
+3.2
+9.0
+2.0
+</pre></div>
+</div>
+<p>Nas expressões podemos usar:</p>
+<ul class="simple">
+<li>os cinco operadores <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">-</span> <span class="pre">*</span> <span class="pre">/</span> <span class="pre">**</span></code> (<code class="docutils literal notranslate"><span class="pre">**</span></code> é a potenciação)</li>
+<li>vários níveis de <code class="docutils literal notranslate"><span class="pre">()</span></code></li>
+<li>o operador <code class="docutils literal notranslate"><span class="pre">%</span></code>: o resto da divisão (por exemplo, <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">%</span> <span class="pre">3</span></code> tem como
+resultado <code class="docutils literal notranslate"><span class="pre">2</span></code>)</li>
+</ul>
+<p>Um exemplo com <em>strings</em>:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;quinta feira&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hoje&#39;</span><span class="p">,</span> <span class="s1">&#39;é&#39;</span><span class="p">,</span> <span class="s2">&quot;quinta feira,&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>quinta feira
+hoje é quinta feira, 16
+</pre></div>
+</div>
+<p>Pequenos textos entre <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> ou <code class="docutils literal notranslate"><span class="pre">''</span></code> são <em>strings</em>. São sequências de
+caracteres (os espaços e pontuação, desde que estejam entre as aspas
+contam como caracteres.</p>
+<p>A função <code class="docutils literal notranslate"><span class="pre">print()</span></code> pode ser usada com vários objetos a apresentar,
+<strong>separados por vírgulas</strong>. É inserido um espaço entre os vários
+objetos. Note-se que, com as <em>strings</em>, as aspas são eliminadas.</p>
+</div>
+<div class="section" id="atribuicao-de-nomes-a-objetos">
+<h2>Atribuição de nomes a “objetos”<a class="headerlink" href="#atribuicao-de-nomes-a-objetos" title="Permalink to this headline">¶</a></h2>
+<p><strong>Este é um dos mais fundamentais comandos em programação!</strong></p>
+<p>A forma geral é</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">nome</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">expressão</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Depois de uma atribuição, <strong>o nome pode ser usado em vez do valor do
+objeto ou expressão</strong>. Mesmo em atribuições seguintes, no comando
+<code class="docutils literal notranslate"><span class="pre">print()</span></code>, etc.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">3.2</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>4
+3.2
+7.2 2.6832815729997477
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hoje</span> <span class="o">=</span> <span class="s2">&quot;Olá, quinta feira &quot;</span>
+<span class="n">local</span> <span class="o">=</span> <span class="s2">&quot;sala 8.2.39&quot;</span>
+<span class="n">onde</span> <span class="o">=</span> <span class="n">hoje</span> <span class="o">+</span> <span class="n">local</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hoje</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">local</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">onde</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Olá, quinta feira
+sala 8.2.39
+Olá, quinta feira sala 8.2.39
+</pre></div>
+</div>
+<p><strong>Que nomes podemos usar?</strong></p>
+<p>As regras são:</p>
+<ol class="arabic simple">
+<li>Um nome é uma combinação de letras minúsculas (a to z) ou maiúsculas
+(A to Z) não acentuadas ou dígitos (0 to 9) ou o <em>underscore</em>. Nomes
+como <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">Km_1</span></code> ou <code class="docutils literal notranslate"><span class="pre">velocidade_da_reaccao</span></code> são exemplos
+válidos.</li>
+<li>Um nome não pode começar com um dígito. <code class="docutils literal notranslate"><span class="pre">1x</span></code> é inválido, mas <code class="docutils literal notranslate"><span class="pre">x1</span></code>
+é aceitável.</li>
+<li>Palavras usadas como comandos da linguagem (<em>keywords</em>) não são
+permitidas (por exemplo, <code class="docutils literal notranslate"><span class="pre">print</span></code>).</li>
+</ol>
+<div class="figure">
+<img alt="" src="_images/piso_2.jpg" />
+</div>
+<p>Não são permitidos espaços ou símbolos como <code class="docutils literal notranslate"><span class="pre">!,</span> <span class="pre">&#64;,</span> <span class="pre">#,</span> <span class="pre">%</span></code> nos nomes.</p>
+<p><strong>tipos de objetos vistos até agora</strong></p>
+<ul class="simple">
+<li><strong>inteiros</strong></li>
+<li><em>floats</em></li>
+<li><em>strings</em></li>
+</ul>
+<p>Existem também os <strong>complexos</strong> (em que <code class="docutils literal notranslate"><span class="pre">j</span></code> é a unidade imaginária):</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">4</span><span class="o">+</span><span class="mi">2</span><span class="n">j</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c =&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="mi">4</span><span class="n">j</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c * d =&#39;</span><span class="p">,</span> <span class="n">c</span> <span class="o">*</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>c = (4+2j)
+4.0
+2.0
+c * d = (-8+16j)
+</pre></div>
+</div>
+</div>
+<div class="section" id="alteracao-dos-objetos-associados-a-um-nome">
+<h2>Alteração dos objetos associados a um nome<a class="headerlink" href="#alteracao-dos-objetos-associados-a-um-nome" title="Permalink to this headline">¶</a></h2>
+<p>Durante a execução de um programa, os objetos associados a um mesmo nome
+podem variar:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;Olá&#39;</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c =&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a = 3
+b = 5
+c = 8
+</pre></div>
+</div>
+</div>
+<div class="section" id="comentarios">
+<h2>Comentários<a class="headerlink" href="#comentarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Esta linha é um comentários (começa por #)</span>
+
+<span class="c1"># Podemos dar nomes a vários objetos de uma só vez:</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;experiência&quot;</span>
+<span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="o">+</span><span class="mi">4</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;c =&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s2">&quot;d =&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a = 3 b = experiência c = 2.5 d = 7
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Podemos trocar dois nomes desta maneira</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a = 3 b = 4
+
+a = 4 b = 3
+</pre></div>
+</div>
+<p>Nota: quando numa <em>string</em> aparece o caractere “especial” <code class="docutils literal notranslate"><span class="pre">\n</span></code>, este
+provoca uma linha suplementar quando a <em>string</em> é apresentada com a
+função <code class="docutils literal notranslate"><span class="pre">print()</span></code>.</p>
+</div>
+<div class="section" id="funcoes-disponiveis-integradas-na-linguagem-ex-print-abs-e-int">
+<h2>Funções disponíveis “integradas” na linguagem (ex. <code class="docutils literal notranslate"><span class="pre">print()</span></code>, <code class="docutils literal notranslate"><span class="pre">abs()</span></code> e <code class="docutils literal notranslate"><span class="pre">int()</span></code>)<a class="headerlink" href="#funcoes-disponiveis-integradas-na-linguagem-ex-print-abs-e-int" title="Permalink to this headline">¶</a></h2>
+<p>Além da função <code class="docutils literal notranslate"><span class="pre">print()</span></code>, as funções <code class="docutils literal notranslate"><span class="pre">int()</span></code> e <code class="docutils literal notranslate"><span class="pre">abs()</span></code> fazem parte
+integrante da linguagem Python.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numero</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.8</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">numero</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>-3.8
+
+-3
+3.8
+</pre></div>
+</div>
+<p>Podemos encontrar a lista destas funções na documentação oficial da
+linguagem Pyhton:</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/functions.html">Python Built-in
+functions</a></p>
+</div>
+<div class="section" id="conversao-entre-varios-tipos-de-objetos-int-float-complex-e-str">
+<h2>Conversão entre vários tipos de objetos (<code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code>, <code class="docutils literal notranslate"><span class="pre">complex()</span></code> e <code class="docutils literal notranslate"><span class="pre">str()</span></code>)<a class="headerlink" href="#conversao-entre-varios-tipos-de-objetos-int-float-complex-e-str" title="Permalink to this headline">¶</a></h2>
+<p>As funções <code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code>, <code class="docutils literal notranslate"><span class="pre">complex()</span></code> e <code class="docutils literal notranslate"><span class="pre">str()</span></code> fazem
+conversões para os vários <strong>tipos</strong> de objetos:</p>
+<ul class="simple">
+<li><strong>inteiros</strong></li>
+<li><em>floats</em></li>
+<li><strong>complexos</strong> (em que <code class="docutils literal notranslate"><span class="pre">j</span></code> é a unidade imaginária)</li>
+<li><em>strings</em></li>
+</ul>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">3.8</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">complex</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>3.8
+
+3
+(3.8+0j)
+3.8
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;3.4e4&#39;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>3.4e4
+
+34000.0
+(34000+0j)
+</pre></div>
+</div>
+<p>As conversões nem sempre são possíveis…</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Vamos ver...&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Vamos ver...
+
+
+---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+&lt;ipython-input-15-8e9521c426a4&gt; in &lt;module&gt;()
+      2 print(s, &#39;\n&#39;)
+      3
+----&gt; 4 print(float(s))
+
+
+ValueError: could not convert string to float: &#39;Vamos ver...&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="modulos-funcoes-adicionais">
+<h2>Módulos: funções adicionais<a class="headerlink" href="#modulos-funcoes-adicionais" title="Permalink to this headline">¶</a></h2>
+<p>Além das funções integradas, existem muitos <strong>módulos</strong> contendo funções
+adicionais.</p>
+<p>Estes módulos têm de ser <em>importados</em> para que as funções fiquem
+disponíveis.</p>
+<p>Um exemplo é o módulo <strong>math</strong> que contem muitas funções (e algumas
+constantes) matemáticas:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ln(2.0) =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ln10(2.0 * 5) =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exp(2.0) =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sin(2.0) =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ln(2.0) = 0.6931471805599453
+ln10(2.0 * 5) = 1.0
+exp(2.0) = 7.38905609893065
+sin(2.0) = 0.9092974268256817
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">90</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sin(90°) =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pi =&#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;e =&#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sin(π / 2) =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sin(90°) = 1.0
+pi = 3.141592653589793
+e = 2.718281828459045
+sin(π / 2) = 1.0
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;100! =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>100! = 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+</pre></div>
+</div>
+<p>Um outro exemplo é o módulo <strong>calendar</strong> que contem muitas funções
+relacionadas com datas e calendário.</p>
+<p>Um exemplo é a função <code class="docutils literal notranslate"><span class="pre">weekday()</span></code>, que, ao ser dado um ano, mês e dia,
+calcula um número que representa o dia da semana. (0 - seg, 1 - ter, 2 - qua,
+3 - qui, 4 - sex, 5 - sab, 6 - dom)</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">calendar</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">calendar</span><span class="o">.</span><span class="n">weekday</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="c1">#nota: 0:seg 1:ter 2:qua 3:qui 4:sex 5:sab 6:dom</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+<p>Outro exemplo é a função <code class="docutils literal notranslate"><span class="pre">calendar()</span></code>, que constrói uma <em>string</em> com
+um calendário de um determinado ano:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">calendar</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calendar</span><span class="o">.</span><span class="n">calendar</span><span class="p">(</span><span class="mi">2017</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                  2017
+
+      January                   February                   March
+Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su
+                   1             1  2  3  4  5             1  2  3  4  5
+ 2  3  4  5  6  7  8       6  7  8  9 10 11 12       6  7  8  9 10 11 12
+ 9 10 11 12 13 14 15      13 14 15 16 17 18 19      13 14 15 16 17 18 19
+16 17 18 19 20 21 22      20 21 22 23 24 25 26      20 21 22 23 24 25 26
+23 24 25 26 27 28 29      27 28                     27 28 29 30 31
+30 31
+
+       April                      May                       June
+Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su
+                1  2       1  2  3  4  5  6  7                1  2  3  4
+ 3  4  5  6  7  8  9       8  9 10 11 12 13 14       5  6  7  8  9 10 11
+10 11 12 13 14 15 16      15 16 17 18 19 20 21      12 13 14 15 16 17 18
+17 18 19 20 21 22 23      22 23 24 25 26 27 28      19 20 21 22 23 24 25
+24 25 26 27 28 29 30      29 30 31                  26 27 28 29 30
+
+        July                     August                  September
+Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su
+                1  2          1  2  3  4  5  6                   1  2  3
+ 3  4  5  6  7  8  9       7  8  9 10 11 12 13       4  5  6  7  8  9 10
+10 11 12 13 14 15 16      14 15 16 17 18 19 20      11 12 13 14 15 16 17
+17 18 19 20 21 22 23      21 22 23 24 25 26 27      18 19 20 21 22 23 24
+24 25 26 27 28 29 30      28 29 30 31               25 26 27 28 29 30
+31
+
+      October                   November                  December
+Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su
+                   1             1  2  3  4  5                   1  2  3
+ 2  3  4  5  6  7  8       6  7  8  9 10 11 12       4  5  6  7  8  9 10
+ 9 10 11 12 13 14 15      13 14 15 16 17 18 19      11 12 13 14 15 16 17
+16 17 18 19 20 21 22      20 21 22 23 24 25 26      18 19 20 21 22 23 24
+23 24 25 26 27 28 29      27 28 29 30               25 26 27 28 29 30 31
+30 31
+</pre></div>
+</div>
+</div>
+<div class="section" id="exemplo-raizes-da-equacao-do-2o-grau">
+<h2>Exemplo: raízes da equação do 2º grau<a class="headerlink" href="#exemplo-raizes-da-equacao-do-2o-grau" title="Permalink to this headline">¶</a></h2>
+<p>Exemplo:</p>
+<p>Calcular as soluções da equação do 2º grau</p>
+<p><span class="math notranslate">\(a x^2 + b x + c = 0\)</span></p>
+<p>ou seja</p>
+<p>Dados <span class="math notranslate">\(a, b\)</span> e <span class="math notranslate">\(c\)</span>, calcular</p>
+<p><span class="math notranslate">\(x_1 = \frac{-b + \sqrt{b^2 -4 a c}}{2 a}\)</span> e
+<span class="math notranslate">\(x_2 = \frac{-b - \sqrt{b^2 -4 a c}}{2 a}\)</span></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Este programa calcula x tal que a x2 + b x + c = 0&#39;</span><span class="p">)</span>
+<span class="c1"># testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">rdelta</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">-</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="n">rdelta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">-</span> <span class="n">rdelta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1 =&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x2 =&quot;</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Da matemática, sabemos que uma equação do segundo grau pode ter 2
+soluções reais, uma solução real “dupla”, ou duas soluções complexas,
+que neste caso serão complexos conjugados.</p>
+<p>Podemos correr o programa várias vezes, para diferentes valores de
+<span class="math notranslate">\(a\)</span>, <span class="math notranslate">\(b\)</span>, <span class="math notranslate">\(c\)</span>, tentando obter as três situações. Ao
+fazer isto estamos a <strong>testar</strong> o programa.</p>
+<p>Para fazer estes testes, basta modificar as linhas que definem os
+valores para <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> e <code class="docutils literal notranslate"><span class="pre">c</span></code> e voltar a executar o program.</p>
+<p>Com a = 1, b = 4, c = 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2679491924311228</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.732050807568877</span>
+</pre></div>
+</div>
+<p>Com a = 1, b = 2, c = 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+</pre></div>
+</div>
+<p>Com a = 1, b = 1, c = 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.49999999999999994</span><span class="o">+</span><span class="mf">0.8660254037844386</span><span class="n">j</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">0.8660254037844386</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>O programa funciona e parece dar resultados corretos para as três
+situações pretendidas (embora se note um pequeno erro no caso das duas
+soluções complexas que deveria ser, exatamente, dois complexos
+conjugados).</p>
+<p>No entanto, seria mais adequado se o programa pudesse apresentar uma
+pequena mensagem que indicasse em qual das três situações está o
+resultado (2 soluções reais ou uma solução real dupla ou duas soluções
+complexas).</p>
+<p>(Podemos também tentar corrigir o pequeno erro).</p>
+<p>Para isto, o programa deve ter um <strong>comportamento diferente</strong>, consoante
+o tipo de resultado.</p>
+<p>Da matemática, sabemos que o que define o tipo de resultado é o valor do
+“discriminante”, <span class="math notranslate">\(\Delta = b^2 - 4 a c\)</span>..</p>
+<ul class="simple">
+<li>quando <span class="math notranslate">\(\Delta &gt; 0\)</span> temos duas soluções reais.</li>
+<li>quando <span class="math notranslate">\(\Delta = 0\)</span> temos uma solução real (solução dupla).</li>
+<li>quando <span class="math notranslate">\(\Delta &lt; 0\)</span> temos duas uma soluções complexas
+(complexos conjugados).</li>
+</ul>
+<p>Podemos reescrever o programa de modo a realizar o cálculo das soluções
+e apresentar uma mensagem de um modo diferente, consoante o valor de
+<span class="math notranslate">\(\Delta\)</span> ?</p>
+</div>
+<div class="section" id="alternativa-if-else">
+<h2>Alternativa <code class="docutils literal notranslate"><span class="pre">if...else</span></code><a class="headerlink" href="#alternativa-if-else" title="Permalink to this headline">¶</a></h2>
+<p>A linguagem Python permite a execução <strong>alternativa</strong> de blocos de
+comandos.</p>
+<p>Continuando com o exemplo anterior, vamos primeiro distinguir o caso das
+soluções reais (<span class="math notranslate">\(\Delta \geqslant 0\)</span>) do caso das soluções
+complexas (<span class="math notranslate">\(\Delta &lt; 0\)</span>).</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Este programa calcula x tal que a x2 + b x + c = 0</span>
+<span class="c1"># testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a =&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span><span class="s1">&#39;c =&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># cálculo do discriminante</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span>
+
+<span class="c1"># separar soluções reais das complexas</span>
+<span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
+    <span class="n">r_delta</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soluções complexas:&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">r_delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soluções reais:&#39;</span><span class="p">)</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">-</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1 =&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;, x2 =&quot;</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Testando agora o programa para as três situações possíveis:</p>
+<p><span class="math notranslate">\(\Delta &gt; 0\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">Soluções</span> <span class="n">reais</span><span class="p">:</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2679491924311228</span> <span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.732050807568877</span>
+</pre></div>
+</div>
+<p><span class="math notranslate">\(\Delta = 0\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">Soluções</span> <span class="n">reais</span><span class="p">:</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+</pre></div>
+</div>
+<p><span class="math notranslate">\(\Delta &lt; 0\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">Soluções</span> <span class="n">complexas</span><span class="p">:</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">+</span><span class="mf">0.8660254037844386</span><span class="n">j</span><span class="p">)</span> <span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">0.8660254037844386</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>O programa funciona, agora, sem problemas.</p>
+<p>É feito um teste ao valor de <code class="docutils literal notranslate"><span class="pre">delta</span></code> à frente do comando <code class="docutils literal notranslate"><span class="pre">if</span></code> e é
+executado <strong>um</strong> de dois blocos alternativos:</p>
+<ul class="simple">
+<li>as linhas entre <code class="docutils literal notranslate"><span class="pre">if</span></code> e <code class="docutils literal notranslate"><span class="pre">else:</span></code>, caso <code class="docutils literal notranslate"><span class="pre">delta</span></code> seja negativo, ou</li>
+<li>as duas linhas depois de <code class="docutils literal notranslate"><span class="pre">else:</span></code>, caso <code class="docutils literal notranslate"><span class="pre">delta</span></code> seja positivo.</li>
+</ul>
+<p>A forma geral de incluir <strong>blocos alternativos</strong> com <code class="docutils literal notranslate"><span class="pre">if...else</span></code> é:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">&lt;</span><span class="n">condição</span><span class="o">&gt;</span> <span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">comandos</span> <span class="n">para</span> <span class="n">condição</span> <span class="n">verdadeira</span><span class="o">&gt;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">comandos</span> <span class="n">para</span> <span class="n">condição</span> <span class="n">falsa</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Podemos ter várias linhas no bloco <code class="docutils literal notranslate"><span class="pre">if</span></code> e no bloco <code class="docutils literal notranslate"><span class="pre">else</span></code>.</p>
+<p>É o <strong>alinhamento</strong> das linhas do programa (também chamada identação)
+que define define os dois blocos:</p>
+<div class="figure">
+<img alt="" src="_images/blocks_if_else.png" />
+</div>
+<p>Note-se que, no porgrama anterior, as linhas</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">-</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>já <strong>não pertencem</strong> ao bloco <code class="docutils literal notranslate"><span class="pre">else</span></code>. Isto porque o seu alinhamento é
+(de novo) igual ao de todas as outras linhas fora dos blocos
+<code class="docutils literal notranslate"><span class="pre">if...else</span></code> (e estão alinhadas com as próprias linhas dos comandos
+<code class="docutils literal notranslate"><span class="pre">if</span></code> e <code class="docutils literal notranslate"><span class="pre">else</span></code>)</p>
+<p>NOTA: no teste da condição podemos usar:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> (maior)</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> (menor)</p>
+<p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> (maior ou igual)</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> (menor ou igual)</p>
+<p><code class="docutils literal notranslate"><span class="pre">==</span></code> (igual. Nota: <strong>são dois sinais de igual consecutivos</strong>)</p>
+<p><code class="docutils literal notranslate"><span class="pre">!=</span></code> (diferente)</p>
+<p>O programa está bem melhor na maneira de apresentar os resultados,
+separando o caso real do complexo.</p>
+<p>Mas, perfeito, perfeito, seria tratar o caso em que <span class="math notranslate">\(\Delta = 0\)</span>
+de uma forma diferente, tendo o cuidado de apresentar <strong>um único valor,
+no caso de uma raíz dupla</strong>.</p>
+<p>Precisamos, para isso, que o programa possa se adaptar a cada uma das
+<strong>três alternativas</strong>.</p>
+</div>
+<div class="section" id="alternativas-if-elif-else">
+<h2>Alternativas <code class="docutils literal notranslate"><span class="pre">if...elif...else</span></code><a class="headerlink" href="#alternativas-if-elif-else" title="Permalink to this headline">¶</a></h2>
+<p>Usando o comando <code class="docutils literal notranslate"><span class="pre">elif</span></code> podemos testar <strong>mais do que uma condição</strong> e
+executar em alternativa e, consequentemente, <strong>mais do que dois blocos</strong>
+de comandos.</p>
+<p>Seguindo o exemplo da resolução de uma equação do segundo grau, podemos
+separar os três casos associados ao valor de <span class="math notranslate">\(\Delta\)</span> da seguinte
+forma:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Este programa calcula x tal que a x2 + b x + c = 0</span>
+<span class="c1"># testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a =&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span><span class="s1">&#39;c =&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># cálculo do discriminante</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span>
+
+<span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soluções complexas:&#39;</span><span class="p">)</span>
+    <span class="n">r_delta</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">-</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1 =&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;, x2 =&quot;</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">delta</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soluções reais:&#39;</span><span class="p">)</span>
+    <span class="n">r_delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">-</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1 =&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;, x2 =&quot;</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Solução real (dupla):&#39;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a = 1 b = 4 c = 1
+
+Soluções reais:
+x1 = -0.2679491924311228 , x2 = -3.732050807568877
+</pre></div>
+</div>
+<p>O comando <code class="docutils literal notranslate"><span class="pre">elif</span></code> é uma abreviatura de <em>else</em> + <em>if</em> e possibilita o
+teste de uma nova condição para além daquela já usada no comando <code class="docutils literal notranslate"><span class="pre">if</span></code>.</p>
+<p>Podem ser usados <strong>vários comandos</strong> <code class="docutils literal notranslate"><span class="pre">elif</span></code>.</p>
+<p>E note-se que, mais uma vez, podemos ter várias linhas em cada bloco : o
+<strong>alinhamento</strong> (<em>identação</em>) define os blocos:</p>
+<div class="figure">
+<img alt="" src="_images/blocks_if_elif.png" />
+</div>
+<p>Testando agora o programa para as três situações possíveis:</p>
+<p><span class="math notranslate">\(\Delta &gt; 0\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">Soluções</span> <span class="n">reais</span><span class="p">:</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2679491924311228</span> <span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.732050807568877</span>
+</pre></div>
+</div>
+<p><span class="math notranslate">\(\Delta = 0\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">Solução</span> <span class="n">real</span> <span class="p">(</span><span class="n">dupla</span><span class="p">):</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+</pre></div>
+</div>
+<p><span class="math notranslate">\(\Delta &lt; 0\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">Soluções</span> <span class="n">complexas</span><span class="p">:</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">+</span><span class="mf">0.8660254037844386</span><span class="n">j</span><span class="p">)</span> <span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">0.8660254037844386</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Pode ser usado todo um conjunto de blocos <code class="docutils literal notranslate"><span class="pre">if...else...</span></code> <strong>“dentro”</strong>
+de um bloco <code class="docutils literal notranslate"><span class="pre">if</span></code> ou <code class="docutils literal notranslate"><span class="pre">elif</span></code> ou <code class="docutils literal notranslate"><span class="pre">else</span></code>.</p>
+<p>Por exemplo, o o programa também poderia ser escrito da seguinte forma:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Este programa calcula x tal que a x2 + b x + c = 0</span>
+<span class="c1"># testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a =&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span><span class="s1">&#39;c =&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># cálculo do discriminante</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span>
+
+<span class="k">if</span> <span class="n">delta</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Solução real (dupla):&#39;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soluções complexas:&#39;</span><span class="p">)</span>
+        <span class="n">r_delta</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soluções reais:&#39;</span><span class="p">)</span>
+        <span class="n">r_delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+
+    <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">-</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1 =&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;, x2 =&quot;</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Algumas notas:</p>
+<p>NOTA: o bloco <code class="docutils literal notranslate"><span class="pre">else</span></code> não é obrigatório. Se não fizer sentido a
+existência de uma condição alternativa ao <code class="docutils literal notranslate"><span class="pre">if</span></code>, este bloco pode ser
+omitido.</p>
+<p>NOTA: no teste da condição podemos usar:</p>
+<ul class="simple">
+<li>Conjunção lógica: <code class="docutils literal notranslate"><span class="pre">and</span></code></li>
+<li>Disjunção lógica: <code class="docutils literal notranslate"><span class="pre">or</span></code></li>
+<li>Negação: <code class="docutils literal notranslate"><span class="pre">not</span></code></li>
+</ul>
+<p>Existem também em Python duas “constantes” booleanas:</p>
+<ul class="simple">
+<li>Verdade: <code class="docutils literal notranslate"><span class="pre">True</span></code></li>
+<li>Falsidade: <code class="docutils literal notranslate"><span class="pre">False</span></code></li>
+</ul>
+<p>Vejamos agora um outro exemplo da utilização de blocos alternativos.</p>
+<p><strong>Exemplo: Regra dos anos bissextos</strong></p>
+<ul class="simple">
+<li>Se o ano é divisível por 4, então é bissexto</li>
+</ul>
+<p>Regra em vigor até 1582 (calendário Juliano, de Júlio César)</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Este programa determina de um ano é bissexto</span>
+<span class="c1"># Testar com 2015 N, 2012 S, 1900 N, 2000 S</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2015</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="p">,</span> <span class="s2">&quot;é bissexto&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&quot;não é bissexto&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2015 não é bissexto
+</pre></div>
+</div>
+<p>Correndo o programa com diferentes valores de a:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2015</span> <span class="n">nao</span> <span class="n">é</span> <span class="n">bissexto</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2012</span> <span class="n">é</span> <span class="n">bissexto</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1900</span> <span class="n">é</span> <span class="n">bissexto</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2000</span> <span class="n">é</span> <span class="n">bissexto</span>
+</pre></div>
+</div>
+<p>Este programa parece falhar para 1900. Isto acontece porque, na
+realidade, a regra actual dos anos bissextos é um pouco mais complexa.</p>
+<p><strong>Exemplo: Regra dos anos bissextos (calendário moderno)</strong></p>
+<ul class="simple">
+<li>Se o ano é divisível por 4, então é bissexto</li>
+<li>Excepto os que são divisíveis por 100: não são bissextos</li>
+<li>Excepto os divisíveis por 100 que sejam exactamente divisíveis por
+400: são bissextos.</li>
+</ul>
+<p>Esta regra entrou em vigor após 1582 (calendário Gregoriano, do papa
+Gregorio XIII)</p>
+<p>Da aplicação desta regra resulta que alguns anos de mudança de século
+(sempre divisíveis por 4) não sejam bissextos. É o caso de 1900. E
+alguns anos de mudança de século, por exemplo os anos 1600; 2000; 2400,
+sejam bissextos.</p>
+<p>Podemos adaptar o programa anterior para incluir as duas últimas regras:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2015</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="p">,</span> <span class="s2">&quot;é bissexto&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&quot;não é bissexto&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2015 não é bissexto
+</pre></div>
+</div>
+<p>Correndo o programa com diferentes valores:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2015</span> <span class="n">nao</span> <span class="n">é</span> <span class="n">bissexto</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2012</span> <span class="n">é</span> <span class="n">bissexto</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1900</span> <span class="n">nao</span> <span class="n">é</span> <span class="n">bissexto</span>
+</pre></div>
+</div>
+<p>Reparar que o resultado é diferente para 1900.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2000</span> <span class="n">é</span> <span class="n">bissexto</span>
+</pre></div>
+</div>
+<p>Os interessados na história da introdução do calendário gregoriano podem
+consultar o artigo</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Gregorian_calendar">http://en.wikipedia.org/wiki/Gregorian_calendar</a></p>
+<p>É desaconselhável escrever uma condição tão complicada num comando
+<code class="docutils literal notranslate"><span class="pre">if</span></code>: prejudica muito a legibilidade do programa.</p>
+<p>Um programa equivalente, combinando vários blocos de <code class="docutils literal notranslate"><span class="pre">if...else...</span></code> e
+a negação lógica <code class="docutils literal notranslate"><span class="pre">not</span></code> que será (possivelmente) mais fácil de perceber
+é:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2015</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&quot;não é bissexto&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="p">,</span> <span class="s2">&quot;é bissexto&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="p">,</span> <span class="s2">&quot;é bissexto&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="p">,</span> <span class="s2">&quot;não é bissexto&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2015 não é bissexto
+</pre></div>
+</div>
+<p>Correndo o programa com diferentes valores de a:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2015</span> <span class="n">não</span> <span class="n">é</span> <span class="n">bissexto</span>
+<span class="mi">2012</span> <span class="n">é</span> <span class="n">bissexto</span>
+<span class="mi">1900</span> <span class="n">não</span> <span class="n">é</span> <span class="n">bissexto</span>
+<span class="mi">2000</span> <span class="n">é</span> <span class="n">bissexto</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="funcao-input">
+<h2>Função <code class="docutils literal notranslate"><span class="pre">input()</span></code><a class="headerlink" href="#funcao-input" title="Permalink to this headline">¶</a></h2>
+<p>Até agora, nos exemplos foram apresentados, são incluídos no programa os
+valores a partir dos quais se fazem os cálculos (tradicionalmente
+chamados o <em>input</em> do programa).</p>
+<p>Por exemplo, nos exemplos da resolução de uma equação do segundo grau
+incluímos no princípio do programa os valores dos coeficientes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Os programas partem destes valores, realizam cálculos e apresentam
+resultados.</p>
+<p>A linguagem Python suporta também um outro mecanismo: <strong>o pedido de
+valores ao</strong> <em>utilizador</em> durante a execução do programa.</p>
+<p>A função <code class="docutils literal notranslate"><span class="pre">input()</span></code> tem este papel: duarnte a execução de um programa,
+ao passar por uma função <code class="docutils literal notranslate"><span class="pre">input()</span></code> o programa pára esperando que seja
+introduzido uma <em>string</em>. A função permite também seja apresentada uma
+mensagem de indicação do que está a ser pedido.</p>
+<p>Vejamos com um exemplo:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Valor de a? &#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Valor de b? &#39;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Valor de c? &#39;</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># cálculo do discriminante</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span>
+
+<span class="k">if</span> <span class="n">delta</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Solução real (dupla):&#39;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soluções complexas:&#39;</span><span class="p">)</span>
+        <span class="n">r_delta</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soluções reais:&#39;</span><span class="p">)</span>
+        <span class="n">r_delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+
+    <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">-</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1 =&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;, x2 =&quot;</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Valor de a? 1
+Valor de b? 1
+Valor de c? 1
+Soluções complexas:
+x1 = (-0.5+0.8660254037844386j) , x2 = (-0.5-0.8660254037844386j)
+</pre></div>
+</div>
+<p>Executando este programa várias vezes, testeando com os diferentes
+casos, agora os valores dos coeficientes são “pedidos” pelo programa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Valor de a? 1
+Valor de b? 4
+Valor de c? 1
+Soluções reais:
+x1 = -0.2679491924311228 , x2 = -3.732050807568877
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Valor de a? 1
+Valor de b? 2
+Valor de c? 1
+Solução real (dupla):
+x = -1.0
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Valor de a? 1
+Valor de b? 1
+Valor de c? 1
+Soluções complexas:
+x1 = (-0.5+0.8660254037844386j) , x2 = (-0.5-0.8660254037844386j)
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cols_iters.html" class="btn btn-neutral float-right" title="Coleções e iterações" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Introdução a programação em Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2017, António Ferreira.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Apr 2018',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
