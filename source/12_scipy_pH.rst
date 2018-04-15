@@ -81,14 +81,14 @@ Computation
 
 Make the necessary imports
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     from numpy import linspace
 
 Use derived equations to compute species distribution and the amount of
 base necessary to change the solution into a given pH value.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     pK1 = 2.3
     pK2 = 9.6
@@ -109,13 +109,13 @@ Plots
 Obtain a plot of the distribution of the three different species of the
 amino acid as a function of pH.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     %matplotlib inline 
     # This is to be used in IPython/Jupyter notebooks
     # This makes plots appear "inline" as part of cell's outputs.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import matplotlib.pyplot as pl
     
@@ -137,7 +137,7 @@ Plot also the amount of base necessary to change the pH of the solution,
 but **exchange the x and y axis**, so that it looks like we are
 titrating the solution.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     pl.plot(nOH, pH)
     

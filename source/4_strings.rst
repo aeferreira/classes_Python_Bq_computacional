@@ -23,7 +23,7 @@ aspas**: ``"``, ``'`` ou ``"""``.
 As *aspas triplas* permitem definir literalmente uma *string* com várias
 linhas.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = "O Neo tomou o comprimido vermelho"
     
@@ -42,7 +42,7 @@ linhas.
 O operador ``+`` serve para "juntar" várias *strings*, uma operação
 designada por *concatenação*.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     c = "There's no spoon"
     print('c = ', c)
@@ -52,7 +52,7 @@ designada por *concatenação*.
     print('c = ', c)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     c =  There's no spoon
     c =  There's no spoon, really, none.
@@ -70,7 +70,7 @@ caracteres**, tal como uma lista é uma sequência de quaisquer objetos.
 Funções ``len()``, ``.count()``, operador ``in``.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     c = "There's no spoon"
     print('c = ', c)
@@ -83,7 +83,7 @@ Funções ``len()``, ``.count()``, operador ``in``.
     print('ere' in c)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     c =  There's no spoon
     len(c) = 16
@@ -96,7 +96,7 @@ Funções ``len()``, ``.count()``, operador ``in``.
 Iteração e indexação.
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     frase = "There's no spoon"
     
@@ -104,7 +104,7 @@ Iteração e indexação.
         print(i, c)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     0 T
     1 h
@@ -124,7 +124,7 @@ Iteração e indexação.
     15 n
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     frase = "There's no spoon"
     
@@ -132,7 +132,7 @@ Iteração e indexação.
         print(i, frase[i])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     -1 n
     -2 o
@@ -187,7 +187,7 @@ Algumas funções úteis
 Funções ``.strip()``, ``.startswith()``.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     c = "    There's no spoon      "
     print('c:')
@@ -198,7 +198,7 @@ Funções ``.strip()``, ``.startswith()``.
     print(s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     c:
         There's no spoon      
@@ -206,7 +206,7 @@ Funções ``.strip()``, ``.startswith()``.
     There's no spoon
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     c = "    There's no spoon      "
     
@@ -214,7 +214,7 @@ Funções ``.strip()``, ``.startswith()``.
         print('Começa por Th')
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Começa por Th
     
@@ -222,7 +222,7 @@ Funções ``.strip()``, ``.startswith()``.
 Funções ``.upper()``, ``.lower()``.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     c = "    There's no spoon      "
     
@@ -233,7 +233,7 @@ Funções ``.upper()``, ``.lower()``.
     print('c.lower():',c_lower)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     c.upper():     THERE'S NO SPOON      
     c.lower():     there's no spoon      
@@ -242,7 +242,7 @@ Funções ``.upper()``, ``.lower()``.
 Função ``.replace()``.
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     palavra = 'pois'
     print(palavra)
@@ -251,7 +251,7 @@ Função ``.replace()``.
     print(palavra)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     pois
     dois
@@ -260,7 +260,7 @@ Função ``.replace()``.
 Funções ``.split()`` e ``.join()``
 ----------------------------------
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = "There's no spoon"
     
@@ -273,7 +273,7 @@ Funções ``.split()`` e ``.join()``
     print(d)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ["There's", 'no', 'spoon']
     ['Th', 'r', "'s no spoon"]
@@ -293,7 +293,7 @@ A função ``.join()`` é uma espécie de inversa de ``.split()``:
 transforma **uma lista** de *strings* **numa única** *string*,
 interpondo um separador:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     aas = ['Arg', 'Tyr', 'Gly', 'Asp']
     
@@ -304,7 +304,7 @@ interpondo um separador:
     print("-CONH-".join(aas))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Arg Tyr Gly Asp
     Arg-Tyr-Gly-Asp
@@ -316,7 +316,7 @@ interpondo um separador:
 **Problema: transformar** ``AUGUUCAAGGAGUAAUGCCCCCGACUA`` **em**
 ``AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA``
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
     print(s)
@@ -333,7 +333,7 @@ interpondo um separador:
     print(final)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     AUGUUCAAGGAGUAAUGCCCCCGACUA
     ['AUG', 'UUC', 'AAG', 'GAG', 'UAA', 'UGC', 'CCC', 'CGA', 'CUA']
@@ -346,7 +346,7 @@ consecutivos!
 Função ``.splitlines()``
 ------------------------
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = """ Um pequeno texto que até
     ocupa várias linhas
@@ -356,7 +356,7 @@ Função ``.splitlines()``
     print(d.splitlines())
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [' Um pequeno texto que até', 'ocupa várias linhas', '', 'algumas das linhas estão em branco']
     
@@ -370,7 +370,7 @@ conjunção com listas em compreensão:
 **Problema: num texto com várias linhas, obter numa lista as linhas que
 começam por uma vogal e têm menos de 20 caracteres**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     txt = """ 
      Um pequeno texto que até
@@ -388,7 +388,7 @@ começam por uma vogal e têm menos de 20 caracteres**
     print(a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ['', 'Um pequeno texto que até', 'ocupa várias', 'linhas', '', 'mas haverá', 'Algumas em branco']
     ['ocupa várias', 'linhas', 'mas haverá', 'Algumas em branco']
@@ -410,7 +410,7 @@ mais de um elemento.
 A forma geral é ``[início : fim(exclusivé) : passo]``. O ``passo`` é
 opcional.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = "O Neo tomou o comprimido vermelho"
     #    012345678901234567890123456789012
@@ -420,14 +420,14 @@ opcional.
     print(a[6:-1])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Neo
     O Neo
     tomou o comprimido vermelh
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = "O Neo tomou o comprimido vermelho"
     #    012345678901234567890123456789012
@@ -438,7 +438,7 @@ opcional.
     print(a[0:12:2])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     O Neo
     tomou o comprimido vermelho
@@ -449,7 +449,7 @@ opcional.
 **Problema: transformar** ``AUGUUCAAGGAGUAAUGCCCCCGACUA`` **em**
 ``AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA``
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
     print(s)
@@ -466,7 +466,7 @@ opcional.
     print(final)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     AUGUUCAAGGAGUAAUGCCCCCGACUA
     AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
@@ -475,7 +475,7 @@ opcional.
 Usando uma lista em compreensão como argumento da função ``.join()`` o
 programa pode ficar mais compacto:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s = "AUGTTCAAGGAGUAAUGCCCCCGACUA"
     sf = "-".join([s[i:i+3] for i in range(0,len(s),3)])
@@ -484,7 +484,7 @@ programa pode ficar mais compacto:
     print(sf)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     AUGTTCAAGGAGUAAUGCCCCCGACUA
     AUG-TTC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
@@ -492,7 +492,7 @@ programa pode ficar mais compacto:
 
 **Os** *slices* **também funcionam com listas**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     aas = ['Arg', 'Tyr', 'Gly', 'Asp']
     
@@ -505,7 +505,7 @@ programa pode ficar mais compacto:
     print(s3)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ['Arg', 'Tyr']
     ['Gly', 'Asp']
@@ -517,7 +517,7 @@ programa pode ficar mais compacto:
 **No caso de uma lista**, podemos **atribuír valores a um** *slice* **da
 lista**, mudando alguns elementos de uma só vez:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     nums = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
     print(nums)
@@ -525,7 +525,7 @@ lista**, mudando alguns elementos de uma só vez:
     print(nums)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
     [1, 2, 2, 8, 9, 3, 4, 4, 4, 4]
@@ -538,7 +538,7 @@ conversão.**
 Numa secção anterior, este problema foi resolvido anteriormente da
 seguinte forma:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     trans = {'A': 'Ala', 'C': 'Cys', 'E': 'Glu', 'D': 'Asp', 'G': 'Gly', 'F': 'Phe', 'I': 'Ile', 'H': 'His', 'K': 'Lys', 'M': 'Met', 'L': 'Leu', 'N': 'Asn', 'Q': 'Gln', 'P': 'Pro', 'S': 'Ser', 'R': 'Arg', 'T': 'Thr', 'W': 'Trp', 'V': 'Val', 'Y': 'Tyr'}
     
@@ -553,7 +553,7 @@ seguinte forma:
     print(s1, 'é o mesmo que ', s3)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ADKLITCWFHHWE é o mesmo que  Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu-
     
@@ -564,7 +564,7 @@ Por um lado, podemos usar uma lista em compreensão para gerar os códigos
 de 3 letras (em vez de uma *string*), por outro podemos usar a função
 ``.join()`` para apresenta-los separados por ``-``.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     trans = {'A': 'Ala', 'C': 'Cys', 'E': 'Glu', 'D': 'Asp', 'G': 'Gly', 'F': 'Phe', 'I': 'Ile', 'H': 'His', 'K': 'Lys', 'M': 'Met', 'L': 'Leu', 'N': 'Asn', 'Q': 'Gln', 'P': 'Pro', 'S': 'Ser', 'R': 'Arg', 'T': 'Thr', 'W': 'Trp', 'V': 'Val', 'Y': 'Tyr'}
     
@@ -575,7 +575,7 @@ de 3 letras (em vez de uma *string*), por outro podemos usar a função
     print(s1, 'é o mesmo que', s3)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ADKLITCWFHHWE é o mesmo que Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu
     
@@ -583,7 +583,7 @@ de 3 letras (em vez de uma *string*), por outro podemos usar a função
 **Problema: calcular o complemento reverso de uma sequência, mas
 separando os codões por "-".**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     bcompl = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}
     
@@ -597,7 +597,7 @@ separando os codões por "-".**
     print('-'.join([c[i:i+3] for i in range(0,len(c),3)]))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Seq:
     ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA

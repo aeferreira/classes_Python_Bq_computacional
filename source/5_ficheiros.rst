@@ -24,7 +24,7 @@ um ficheiro e que o acesso vai terminar, o *fecho* de um ficheiro.
 ``.read()``, com ``open()`` e ``close()`` explícitos
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = open('eno1.fasta')
     seq = a.read()
@@ -36,7 +36,7 @@ um ficheiro e que o acesso vai terminar, o *fecho* de um ficheiro.
     print(seq)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     <class 'str'>
     A sequência, em FASTA é
@@ -58,7 +58,7 @@ um ficheiro e que o acesso vai terminar, o *fecho* de um ficheiro.
 Numa versão mais "moderna" podemos abrir e **automaticamente fechar** o
 ficheiro é utilizar o comando ``with``:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('eno1.fasta') as a:
         seq = a.read()
@@ -67,7 +67,7 @@ ficheiro é utilizar o comando ``with``:
     print(seq)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     A sequência, em FASTA é
     >gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
@@ -96,7 +96,7 @@ uma *string*, existem outras maneiras de ler um ficheiro.
 A função ``readlines()`` lê e separa **as linhas** de um ficheiro para
 uma lista:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('eno1.fasta') as a:
         seq = a.readlines()
@@ -104,7 +104,7 @@ uma lista:
     print(seq)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ['>gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]\n', 'MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN\n', 'DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS\n', 'KTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVG\n', 'DEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLA\n', 'DLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQI\n', 'GTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL\n', 'GDNAVFAGENFHHGDKL\n', '\n']
     
@@ -120,7 +120,7 @@ linha.
 Muitas vezes, é necessário elimina-los. Para isso podemos usar a função
 ``.strip()``:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('eno1.fasta') as a:
         seq = a.readlines()
@@ -129,21 +129,21 @@ Muitas vezes, é necessário elimina-los. Para isso podemos usar a função
     print(seq)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ['>gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]', 'MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN', 'DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS', 'KTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVG', 'DEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLA', 'DLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQI', 'GTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL', 'GDNAVFAGENFHHGDKL', '']
     
 
 Ou, de uma forma sucinta, usando uma lista em compreensão:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('eno1.fasta') as a:
         seq = [linha.strip() for linha in a.readlines()]
     print(seq)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ['>gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]', 'MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN', 'DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS', 'KTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVG', 'DEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLA', 'DLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQI', 'GTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL', 'GDNAVFAGENFHHGDKL', '']
     
@@ -160,7 +160,7 @@ Iteração de ficheiros com ``for``.
 
 **A iteração de um ficheiro "percorre" as linhas do ficheiro**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('eno1.fasta') as a:
         for linha in a:
@@ -168,7 +168,7 @@ Iteração de ficheiros com ``for``.
             print('Linha:', linha)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Linha: >gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
     Linha: MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN
@@ -186,7 +186,7 @@ os pares de valores
 
 ``(num linha, linha)``.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('eno1.fasta') as a:
         for i, linha in enumerate(a):
@@ -194,7 +194,7 @@ os pares de valores
             print('linha', i, ':', linha)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     linha 0 : >gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
     linha 1 : MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN
@@ -210,7 +210,7 @@ os pares de valores
 **Problema: ler uma ficheiro FASTA e separar o cabeçalho da sequência em
 duas strings (juntando toda a sequência numa só string)**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('eno1.fasta') as a:
         linhas = [k.strip() for k in a.readlines()]
@@ -227,7 +227,7 @@ duas strings (juntando toda a sequência numa só string)**
     print(seq)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     cabeçalho: >gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
     sequência, com 437 aminoácidos:
@@ -237,7 +237,7 @@ duas strings (juntando toda a sequência numa só string)**
 Às vezes os ficheiros não têm cabeçalho! É melhor testar se a primeira
 linha começa por ">" !
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('eno1.fasta') as a:
         linhas = [k.strip() for k in a]
@@ -254,7 +254,7 @@ linha começa por ">" !
     print(seq)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     cabeçalho: >gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
     sequência, com 437 aminoácidos:
@@ -284,7 +284,7 @@ Vamos supor que o ficheiro **gre3.txt** tem o seguinte conteúdo:
 
 Como separar o cabeçalho da sequência?
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('gre3.txt') as a:
         linhas = [k.strip() for k in a]
@@ -304,7 +304,7 @@ Como separar o cabeçalho da sequência?
     print(seq)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     cabeçalho:
     >sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
@@ -319,7 +319,7 @@ Exemplo: Extração de informação de um ficheiro FASTA múltiplo.
 múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
 (W)**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('proteins.fasta') as a:
         tudo = a.read()
@@ -329,7 +329,7 @@ múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
         print(len(p))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     0
     1121
@@ -342,7 +342,7 @@ múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
     556
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('proteins.fasta') as a:
         tudo = a.read()
@@ -354,7 +354,7 @@ múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
         print(p[:30])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     1121
     sp|P16862|PFKA2_YEAST ATP-depe
@@ -374,7 +374,7 @@ múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
     sp|P40370|ENO11_SCHPO Enolase 
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('proteins.fasta') as a:
         tudo = a.read()
@@ -392,7 +392,7 @@ múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
         print(h)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     sp|P16862|PFKA2_YEAST ATP-dependent 6-phosphofructokinase subunit beta OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=PFK2 PE=1 SV=4
     sp|P16861|PFKA1_YEAST ATP-dependent 6-phosphofructokinase subunit alpha OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=PFK1 PE=1 SV=1
@@ -404,7 +404,7 @@ múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
     sp|P40370|ENO11_SCHPO Enolase 1-1 OS=Schizosaccharomyces pombe (strain 972 / ATCC 24843) GN=eno101 PE=1 SV=2
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('proteins.fasta') as a:
         tudo = a.read()
@@ -427,7 +427,7 @@ múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
         print(i, 'tem', len(s), 'aminoácidos,', s.count('W'), 'são triptofanos')
 
 
-.. parsed-literal::
+.. code-block:: text
 
     P16862 tem 959 aminoácidos, 10 são triptofanos
     P16861 tem 987 aminoácidos, 12 são triptofanos
@@ -450,7 +450,7 @@ função ``open()``. Depois, modificar a função ``print()``, com o
 argumento ``file``, indicando que o resultado da escrita deve ser
 *enviado* para o ficheiro.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('exp.txt', 'w') as a:
         print('1, 2, 3, experiência, som, som', file=a)
@@ -461,13 +461,13 @@ Aparentemente não aconteceu nada, mas um ficheiro novo foi criado
 
 Vamos ler o ficheiro:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('exp.txt') as a:
         print(a.read())
 
 
-.. parsed-literal::
+.. code-block:: text
 
     1, 2, 3, experiência, som, som
     0 0.0
@@ -509,7 +509,7 @@ Função ``.write()``
 Também existe a função ``.write()`` que funciona como o contrário de
 ``.read()``:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     tudo = """
     Um texto que ocupa
@@ -524,7 +524,7 @@ Também existe a função ``.write()`` que funciona como o contrário de
         print(a.read())
 
 
-.. parsed-literal::
+.. code-block:: text
 
     
     Um texto que ocupa
@@ -540,7 +540,7 @@ decimal em vírgula decimal**
 No ficheiro ``exp.txt``, recentemente criado, podemos, de uma form
 sucinta, passar os ``.`` a ``,`` ?
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     with open('exp.txt') as a:
         tudo = a.read().replace('.', ',')
@@ -552,7 +552,7 @@ sucinta, passar os ``.`` a ``,`` ?
         print(a.read())
 
 
-.. parsed-literal::
+.. code-block:: text
 
     1, 2, 3, experiência, som, som
     0 0,0
@@ -619,7 +619,7 @@ Exploração do formato
 Vamos ler o ficheiro ``masses.annotated.reformat.tsv``, separar todas as
 linhas para uma lista e mostrar a primeira e a última:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     name = 'masses.annotated.reformat.tsv'
     with open(name) as a:
@@ -631,7 +631,7 @@ linhas para uma lista e mostrar a primeira e a última:
     print(all_lines[-1])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     FIRST line ----------------------------
     154.97517	7.25775e+06	120.005768420091	4	154.975098039829#154.975098039829#154.975274805989	0.464333550973771#0.464333550973771#-0.676276005999922	C00988#HMDB00816#C02287	C2H5O6P#C2H5O6P#C3H4O5	2-Phosphoglycolate;Phosphoglycolic acid ([M-H]-)#Phosphoglycolic acid (see KEGG C00988); 2-phosphonooxyacetic acid [carboxylic acid] ([M-H]-)#Hydroxymalonate;Tartronic acid;Hydroxymalonic acid;2-Hydroxymalonate;2-Hydroxymalonic acid;2-Tartronic acid ([M+Cl35]-)													ko00630;ko01100#null#null	;Glyoxylate and dicarboxylate metabolism;Metabolic pathways#null#null	null#null#null
@@ -652,7 +652,7 @@ MS.
 Já agora, vamos obter os nomes de cada campo, fazendo o mesmo à última
 linha:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     name = 'masses.annotated.reformat.tsv'
     with open(name) as a:
@@ -663,7 +663,7 @@ linha:
         print(h)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     raw_mass
     peak_height
@@ -691,7 +691,7 @@ linha:
     Compound in Organism(X)
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     name = 'masses.annotated.reformat.tsv'
     with open(name) as a:
@@ -706,7 +706,7 @@ linha:
         print(h, ':', info[h])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     raw_mass : 154.97517
     peak_height : 7.25775e+06
@@ -748,7 +748,7 @@ o caractere ``#``.
 
 Podemos já separar a informação por composto.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     name = 'masses.annotated.reformat.tsv'
     use_only = ['raw_mass', 'peak_height', 'KEGG_cid', 'KEGG_name', 'KEGG Pathways', 'KEGG Pathways descriptions']
@@ -771,7 +771,7 @@ Podemos já separar a informação por composto.
         print(h, ':', info[h])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     raw_mass : 154.97517
     peak_height : 7.25775e+06
@@ -795,7 +795,7 @@ quer as descrições) em **listas**.
 Repare-se que ainda são *strings* e que usam como separador o ``;`` para
 delimitar várias vias.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     name = 'masses.annotated.reformat.tsv'
     use_only = ['raw_mass', 'peak_height', 'KEGG_cid', 'KEGG_name', 'KEGG Pathways', 'KEGG Pathways descriptions']
@@ -822,7 +822,7 @@ delimitar várias vias.
         print(h, ':', info[h])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     raw_mass : 154.97517
     peak_height : 7.25775e+06
@@ -835,7 +835,7 @@ delimitar várias vias.
 Agora **tudo junto, aplicando ao ficheiro inteiro**. Para controlo,
 podemos contar os compostos obtidos.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     name = 'masses.annotated.reformat.tsv'
     use_only = ['raw_mass', 'peak_height', 'KEGG_cid', 'KEGG_name', 'KEGG Pathways', 'KEGG Pathways descriptions']
@@ -870,7 +870,7 @@ podemos contar os compostos obtidos.
         print(h, ':', peaks[0][h])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     São 482 massas
     
@@ -896,7 +896,7 @@ Para isso vamos criar dois dicionários:
 -  outro chamado ``descriptions``, que associa cada Id de via à sua
    descrição.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     paths = {}
     descriptions = {}
@@ -927,7 +927,7 @@ Para isso vamos criar dois dicionários:
         print(c, '-->', ' AND '.join(p_desc))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     São 327 compostos com anotações de vias
     
@@ -968,7 +968,7 @@ Agora com estes dois dicionários podemos responder a várias questões:
 Exemplo: Como obter uma **lista** com nomes das vias, mas sem
 repetições?
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     names = []
     
@@ -983,7 +983,7 @@ repetições?
         print(name)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Glyoxylate and dicarboxylate metabolism
     Metabolic pathways
@@ -1011,7 +1011,7 @@ repetições?
 Exemplo: Como obter um **dicionário** com os **Ids das vias como
 chaves** e o **número de vezes que aparecem como valores**?
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     counts = {}
     
@@ -1030,7 +1030,7 @@ chaves** e o **número de vezes que aparecem como valores**?
         print(counts[pId], '\t', pId, '\t', descriptions[pId])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     São 150 vias
     
@@ -1064,7 +1064,7 @@ Estratégia:
 -  Criar uma lista com os pares (contagens, Id da via)
 -  Ordenar a lista
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     counts_list = [(counts[k], k) for k in counts]
     
@@ -1073,7 +1073,7 @@ Estratégia:
         print(i)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     (8, 'ko00630')
     (113, 'ko01100')
@@ -1082,7 +1082,7 @@ Estratégia:
     (4, 'ko00620')
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     counts_list.sort(reverse=True)
     # reverse=True indica que a ordenação é por ordem decrescente
@@ -1092,7 +1092,7 @@ Estratégia:
         print(c, ':', descriptions[pId])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     As 20 vias com mais compostos associados:
     
@@ -1132,7 +1132,7 @@ Os campos são:
 -  O número de ocorrências
 -  Os Ids dos compostos associados à via, separados por ``;``
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     file_name = 'pathways.txt'
     
@@ -1160,7 +1160,7 @@ Os campos são:
         for c, Id in counts_list:
             print(Id, descriptions[Id], c, compounds[Id], file=f, sep='\t')
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # verificar se correu bem...
     file_name = 'pathways.txt'
@@ -1170,7 +1170,7 @@ Os campos são:
         print(linhas[14])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ko00010	Glycolysis / Gluconeogenesis	14	['C00111', 'C00118', 'C00031', 'C00221', 'C00267', 'C00631', 'C00197', 'C00103', 'C00668', 'C01172', 'C05345', 'C00236', 'C01159', 'C16255']
     

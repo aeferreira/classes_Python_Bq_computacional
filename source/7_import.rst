@@ -44,7 +44,7 @@ de autores e em permanente crescimento.
 Exemplo de um módulo e ``import``
 ---------------------------------
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def readFASTA(filename):
         """This function reads a FASTA format file and
@@ -65,7 +65,7 @@ Exemplo de um módulo e ``import``
     print('Header:\n{}\n\nSequence:\n{}'.format(h, s))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Header:
     >sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
@@ -88,7 +88,7 @@ Este ficheiro constitui um módulo que pode ser usado num programa.
 
 Para isso, é necessário usar o comando ``import``:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import biosequences
     
@@ -97,7 +97,7 @@ Para isso, é necessário usar o comando ``import``:
     print('Header:\n{}\n\nSequence:\n{}'.format(h, s))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Header:
     >sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
@@ -108,7 +108,7 @@ Para isso, é necessário usar o comando ``import``:
 
 Há mais duas maneiras de utilizar o comando ``import``:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     from biosequences import readFASTA
     
@@ -117,7 +117,7 @@ Há mais duas maneiras de utilizar o comando ``import``:
     print('Header:\n{}\n\nSequence:\n{}'.format(h, s))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Header:
     >sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
@@ -126,7 +126,7 @@ Há mais duas maneiras de utilizar o comando ``import``:
     MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     from biosequences import *
     
@@ -135,7 +135,7 @@ Há mais duas maneiras de utilizar o comando ``import``:
     print('Header:\n{}\n\nSequence:\n{}'.format(h, s))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Header:
     >sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
@@ -188,7 +188,7 @@ as seguintes atribuições:
 Sabemos que o módulo ``biosequences`` tem um dicionário chamado
 ``gencode``.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     from biosequences import gencode
     
@@ -208,7 +208,7 @@ Sabemos que o módulo ``biosequences`` tem um dicionário chamado
     print(translation(seq))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA
     SWILNDA
@@ -229,7 +229,7 @@ Se usarmos a primeira forma do comando ``import``, é possível mudar o
 nome do módulo (para uma forma mais abreviada), um *alias*, da seginte
 forma:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import biosequences as bs
     
@@ -238,7 +238,7 @@ forma:
     print('Header:\n{}\n\nSequence:\n{}'.format(h, s))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Header:
     >sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1

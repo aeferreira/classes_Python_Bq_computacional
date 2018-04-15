@@ -24,7 +24,7 @@ função ``print()``.
 
 Um exemplo com números:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print(4)
     print(3.2)
@@ -32,7 +32,7 @@ Um exemplo com números:
     print(((3 + 9) / 3.0)**0.5)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     4
     3.2
@@ -49,13 +49,13 @@ Nas expressões podemos usar:
 
 Um exemplo com *strings*:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print('quinta feira')
     print('hoje', 'é', "quinta feira,", 16)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     quinta feira
     hoje é quinta feira, 16
@@ -84,7 +84,7 @@ Depois de uma atribuição, **o nome pode ser usado em vez do valor do
 objeto ou expressão**. Mesmo em atribuições seguintes, no comando
 ``print()``, etc.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = 4
     b = 3.2
@@ -95,14 +95,14 @@ objeto ou expressão**. Mesmo em atribuições seguintes, no comando
     print(c, d)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     4
     3.2
     7.2 2.6832815729997477
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     hoje = "Olá, quinta feira "
     local = "sala 8.2.39"
@@ -112,7 +112,7 @@ objeto ou expressão**. Mesmo em atribuições seguintes, no comando
     print(onde)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Olá, quinta feira 
     sala 8.2.39
@@ -145,7 +145,7 @@ Não são permitidos espaços ou símbolos como ``!, @, #, %`` nos nomes.
 
 Existem também os **complexos** (em que ``j`` é a unidade imaginária):
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     c = 4+2j
     
@@ -159,7 +159,7 @@ Existem também os **complexos** (em que ``j`` é a unidade imaginária):
     print('c * d =', c * d)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     c = (4+2j)
     4.0
@@ -173,7 +173,7 @@ Alteração dos objetos associados a um nome
 Durante a execução de um programa, os objetos associados a um mesmo nome
 podem variar:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = 2
     b = 3
@@ -188,7 +188,7 @@ podem variar:
     print("c =", c)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a = 3
     b = 5
@@ -198,7 +198,7 @@ podem variar:
 Comentários
 -----------
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Esta linha é um comentários (começa por #)
     
@@ -209,12 +209,12 @@ Comentários
     print("a =", a, "b =", b, "c =", c, "d =", d)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a = 3 b = experiência c = 2.5 d = 7
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a, b = 3, 4
     print("a =", a, "b =", b, '\n')
@@ -224,7 +224,7 @@ Comentários
     print("a =", a, "b =", b)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a = 3 b = 4 
     
@@ -241,7 +241,7 @@ Funções disponíveis "integradas" na linguagem (ex. ``print()``, ``abs()`` e `
 Além da função ``print()``, as funções ``int()`` e ``abs()`` fazem parte
 integrante da linguagem Python.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     numero = -3.8
     x = int(numero)
@@ -252,7 +252,7 @@ integrante da linguagem Python.
     print(y)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     -3.8 
     
@@ -277,7 +277,7 @@ conversões para os vários **tipos** de objetos:
 -  **complexos** (em que ``j`` é a unidade imaginária)
 -  *strings*
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = 3.8
     
@@ -287,7 +287,7 @@ conversões para os vários **tipos** de objetos:
     print(str(x))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     3.8 
     
@@ -296,7 +296,7 @@ conversões para os vários **tipos** de objetos:
     3.8
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s = '3.4e4'
     f = float(s)
@@ -307,7 +307,7 @@ conversões para os vários **tipos** de objetos:
     print(c)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     3.4e4 
     
@@ -317,7 +317,7 @@ conversões para os vários **tipos** de objetos:
 
 As conversões nem sempre são possíveis...
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s = 'Vamos ver...'
     print(s, '\n')
@@ -325,14 +325,10 @@ As conversões nem sempre são possíveis...
     print(float(s))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Vamos ver... 
     
-    
-
-::
-
 
     ---------------------------------------------------------------------------
 
@@ -359,7 +355,7 @@ disponíveis.
 Um exemplo é o módulo **math** que contem muitas funções (e algumas
 constantes) matemáticas:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import math
     
@@ -378,7 +374,7 @@ constantes) matemáticas:
     print('sin(2.0) =', y)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ln(2.0) = 0.6931471805599453
     ln10(2.0 * 5) = 1.0
@@ -386,10 +382,10 @@ constantes) matemáticas:
     sin(2.0) = 0.9092974268256817
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     y = math.sin(math.radians(90))
-    print('sin(90º) =', y)
+    print('sin(90°) =', y)
     
     print('pi =', math.pi)
     
@@ -399,21 +395,21 @@ constantes) matemáticas:
     print('sin(π / 2) =', y)
 
 
-.. parsed-literal::
+.. code-block:: text
 
-    sin(90º) = 1.0
+    sin(90°) = 1.0
     pi = 3.141592653589793
     e = 2.718281828459045
     sin(π / 2) = 1.0
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     y = math.factorial(100)
     print('100! =', y)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     100! = 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
     
@@ -422,10 +418,10 @@ Um outro exemplo é o módulo **calendar** que contem muitas funções
 relacionadas com datas e calendário.
 
 Um exemplo é a função ``weekday()``, que, ao ser dado um ano, mês e dia,
-calcula um número que representa o dia da semana. (0:seg; 1:ter; 2:qua;
-3:qui; 4:sex; 5:sa;b 6:dom)
+calcula um número que representa o dia da semana. (0 - seg, 1 - ter, 2 - qua,
+3 - qui, 4 - sex, 5 - sab, 6 - dom)
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import calendar
     
@@ -433,7 +429,7 @@ calcula um número que representa o dia da semana. (0:seg; 1:ter; 2:qua;
     #nota: 0:seg 1:ter 2:qua 3:qui 4:sex 5:sab 6:dom
 
 
-.. parsed-literal::
+.. code-block:: text
 
     3
     
@@ -441,13 +437,13 @@ calcula um número que representa o dia da semana. (0:seg; 1:ter; 2:qua;
 Outro exemplo é a função ``calendar()``, que constrói uma *string* com
 um calendário de um determinado ano:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import calendar
     print(calendar.calendar(2017))
 
 
-.. parsed-literal::
+.. code-block:: text
 
                                       2017
     
@@ -504,7 +500,7 @@ Dados :math:`a, b` e :math:`c`, calcular
 :math:`x_1 = \frac{-b + \sqrt{b^2 -4 a c}}{2 a}` e
 :math:`x_2 = \frac{-b - \sqrt{b^2 -4 a c}}{2 a}`
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print('Este programa calcula x tal que a x2 + b x + c = 0')
     # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
@@ -590,7 +586,7 @@ Continuando com o exemplo anterior, vamos primeiro distinguir o caso das
 soluções reais (:math:`\Delta \geqslant 0`) do caso das soluções
 complexas (:math:`\Delta < 0`).
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Este programa calcula x tal que a x2 + b x + c = 0
     # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
@@ -715,7 +711,7 @@ Seguindo o exemplo da resolução de uma equação do segundo grau, podemos
 separar os três casos associados ao valor de :math:`\Delta` da seguinte
 forma:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Este programa calcula x tal que a x2 + b x + c = 0
     # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
@@ -744,7 +740,7 @@ forma:
         print("x =", x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a = 1 b = 4 c = 1 
     
@@ -797,7 +793,7 @@ de um bloco ``if`` ou ``elif`` ou ``else``.
 
 Por exemplo, o o programa também poderia ser escrito da seguinte forma:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Este programa calcula x tal que a x2 + b x + c = 0
     # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
@@ -850,7 +846,7 @@ Vejamos agora um outro exemplo da utilização de blocos alternativos.
 
 Regra em vigor até 1582 (calendário Juliano, de Júlio César)
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Este programa determina de um ano é bissexto
     # Testar com 2015 N, 2012 S, 1900 N, 2000 S
@@ -863,7 +859,7 @@ Regra em vigor até 1582 (calendário Juliano, de Júlio César)
         print(a, "não é bissexto")
 
 
-.. parsed-literal::
+.. code-block:: text
 
     2015 não é bissexto
     
@@ -908,7 +904,7 @@ sejam bissextos.
 
 Podemos adaptar o programa anterior para incluir as duas últimas regras:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = 2015
     
@@ -918,7 +914,7 @@ Podemos adaptar o programa anterior para incluir as duas últimas regras:
         print(a, "não é bissexto")
 
 
-.. parsed-literal::
+.. code-block:: text
 
     2015 não é bissexto
     
@@ -955,7 +951,7 @@ Um programa equivalente, combinando vários blocos de ``if...else...`` e
 a negação lógica ``not`` que será (possivelmente) mais fácil de perceber
 é:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = 2015
     
@@ -971,7 +967,7 @@ a negação lógica ``not`` que será (possivelmente) mais fácil de perceber
                 print(a , "não é bissexto")
 
 
-.. parsed-literal::
+.. code-block:: text
 
     2015 não é bissexto
     
@@ -1012,7 +1008,7 @@ mensagem de indicação do que está a ser pedido.
 
 Vejamos com um exemplo:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = input('Valor de a? ')
     b = input('Valor de b? ')
@@ -1042,7 +1038,7 @@ Vejamos com um exemplo:
         print("x1 =", x1, ", x2 =", x2)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Valor de a? 1
     Valor de b? 1

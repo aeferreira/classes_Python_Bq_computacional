@@ -2,7 +2,7 @@
 Exemplo do uso de ``numpy`` e ``scipy``: regressão linear.
 ==========================================================
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import numpy as np
     %matplotlib inline
@@ -11,12 +11,12 @@ Exemplo do uso de ``numpy`` e ``scipy``: regressão linear.
 .. figure:: images/dataregress.png
    :alt: 
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
     y = np.array([1.0, 2.1, 2.8, 4.1, 5.2])
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     p = pl.plot(x,y, 'o')
 
@@ -31,11 +31,11 @@ Exemplo do uso de ``numpy`` e ``scipy``: regressão linear.
 .. figure:: images/scipydocs_regress.png
    :alt: 
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     from scipy.stats import linregress
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     m, b, R, p, SEm = linregress(x, y)
 
@@ -47,7 +47,7 @@ Exemplo do uso de ``numpy`` e ``scipy``: regressão linear.
 
 Falta calcular o SE da ordenada na origem.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def lin_regression(x, y):
         """Simple linear regression (y = m * x + b + error)."""
@@ -61,11 +61,11 @@ Falta calcular o SE da ordenada na origem.
     
         return m, b, SEm, SEb, R, p
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     m, b, Sm, Sb, R, p = lin_regression(x, y)
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print('m = {:>.4g} +- {:6.4f}'.format(m, Sm))
     print('b = {:>.4g} +- {:6.4f}\n'.format(b, Sb))
@@ -74,7 +74,7 @@ Falta calcular o SE da ordenada na origem.
     print('p of test F : {:<8.6f}'.format(p))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     m = 1.04 +- 0.0503
     b = -0.08 +- 0.1669
@@ -83,7 +83,7 @@ Falta calcular o SE da ordenada na origem.
     p of test F : 0.000248
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     pl.plot(x,y, 'o')
     pl.xlim(0,None)

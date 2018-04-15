@@ -2,14 +2,14 @@
 Informação obtida por acesso à Internet: (módulo ``requests``).
 ===============================================================
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import requests
     r = requests.get('http://www.uniprot.org/uniprot/P00924.fasta')
     print(r.text)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     >sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
     MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGK
@@ -23,7 +23,7 @@ Informação obtida por acesso à Internet: (módulo ``requests``).
     
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     linhas = r.text.split('\n')
     
@@ -39,21 +39,21 @@ Informação obtida por acesso à Internet: (módulo ``requests``).
     print(seq)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     cabeçalho:  >sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
     sequência:
     MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEELGDNAVFAGENFHHGDKL
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import requests
     r = requests.get('http://www.uniprot.org/uniprot/P00924.txt')
     print(r.text)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ID   ENO1_YEAST              Reviewed;         437 AA.
     AC   P00924; D6VV34; P99013;
@@ -530,7 +530,7 @@ A linha tem o formato
 
 ``SQ   SEQUENCE XXXX AA; XXXXX MW; XXXXXXXXXXXXXXXX CRC64;``
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import requests
     info = requests.get('http://www.uniprot.org/uniprot/P00924.txt').text
@@ -551,7 +551,7 @@ A linha tem o formato
     print(partes[4], 'Da')
 
 
-.. parsed-literal::
+.. code-block:: text
 
     linha SQ:
     SQ   SEQUENCE   437 AA;  46816 MW;  69F45214DBD375BE CRC64;

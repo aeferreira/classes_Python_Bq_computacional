@@ -28,11 +28,11 @@ Estas bibliotecas são:
 Operações "vectoriais"
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import numpy as np
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     numbers = [0.0, 0.2, 0.5, 1.0, 1.1]
     x = np.array(numbers)
@@ -46,7 +46,7 @@ Operações "vectoriais"
     print(y)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     x = 
     [ 0.   0.2  0.5  1.   1.1]
@@ -64,7 +64,7 @@ Estes objetos suportam operações aritméticas "vetoriais": na expressão
 Por outro lado, as operações aritméticas entre dois *arrays* são
 realizadas elemento a elemento:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = np.array([0.0, 0.2, -0.5, 1.0, 1.1])
     b = np.array([0.0, 0.1, -1.0, 1.0, 1.0])
@@ -77,7 +77,7 @@ realizadas elemento a elemento:
     print(y)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a =  [ 0.   0.2 -0.5  1.   1.1]
     b =  [ 0.   0.1 -1.   1.   1. ]
@@ -89,40 +89,40 @@ realizadas elemento a elemento:
 Criação de *arrays* com as funções ``.array()``, ``.arange()`` e ``.linspace()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.array([1, 1.2, 3, 3.5])
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [ 1.   1.2  3.   3.5]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.arange(1.5, 2.0, 0.1)
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [ 1.5  1.6  1.7  1.8  1.9]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.linspace(1, 2, 5)
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [ 1.    1.25  1.5   1.75  2.  ]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.linspace(1, 2, 6)
     print('x')
@@ -134,7 +134,7 @@ Criação de *arrays* com as funções ``.array()``, ``.arange()`` e ``.linspace
     print(y)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     x
     [ 1.   1.2  1.4  1.6  1.8  2. ]
@@ -143,14 +143,14 @@ Criação de *arrays* com as funções ``.array()``, ``.arange()`` e ``.linspace
     [  1.     2.76   4.84   7.24   9.96  13.  ]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # só necessário em Jupyter notebooks
     %matplotlib inline
     
     from matplotlib import pyplot as pl
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.linspace(-2, 2, 100)
     y = 4 * x**3 -3
@@ -165,12 +165,12 @@ Criação de *arrays* com as funções ``.array()``, ``.arange()`` e ``.linspace
 
 **Problema: somar os primeiros 1000 quadrados perfeitos**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print(sum(np.arange(1000)**2))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     332833500
     
@@ -178,7 +178,7 @@ Criação de *arrays* com as funções ``.array()``, ``.arange()`` e ``.linspace
 Dimensões (``shape``)
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.arange(1, 13)
     print(x)
@@ -189,7 +189,7 @@ Dimensões (``shape``)
     print('\nApós mudar "shape" para (4,3)\nx =\n{}'.format(x))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [ 1  2  3  4  5  6  7  8  9 10 11 12]
     
@@ -204,14 +204,14 @@ Dimensões (``shape``)
 Criação de *arrays* com ``.array()``, ``.ones()``, ``.zeros()``, ``.eye()``, ``.diag()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.array( [[1, 1.2, 3], [1.3,5.1,1.3]] )
     print(x)
     print('\nshape =', x.shape)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[ 1.   1.2  3. ]
      [ 1.3  5.1  1.3]]
@@ -219,52 +219,52 @@ Criação de *arrays* com ``.array()``, ``.ones()``, ``.zeros()``, ``.eye()``, `
     shape = (2, 3)
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.ones((3,2))
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[ 1.  1.]
      [ 1.  1.]
      [ 1.  1.]]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.zeros((3,2))
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[ 0.  0.]
      [ 0.  0.]
      [ 0.  0.]]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.eye(3)
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[ 1.  0.  0.]
      [ 0.  1.  0.]
      [ 0.  0.  1.]]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.diag([1.2, 3.2, 4.1, 6.3])
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[ 1.2  0.   0.   0. ]
      [ 0.   3.2  0.   0. ]
@@ -275,13 +275,13 @@ Criação de *arrays* com ``.array()``, ``.ones()``, ``.zeros()``, ``.eye()``, `
 Indexação a várias dimensões
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.linspace(1,20,20).reshape((5,4))
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[  1.   2.   3.   4.]
      [  5.   6.   7.   8.]
@@ -290,7 +290,7 @@ Indexação a várias dimensões
      [ 17.  18.  19.  20.]]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = x[3,1]
     
@@ -298,7 +298,7 @@ Indexação a várias dimensões
     print('\nx[3,1] =', a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[  1.   2.   3.   4.]
      [  5.   6.   7.   8.]
@@ -309,7 +309,7 @@ Indexação a várias dimensões
     x[3,1] = 14.0
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = x[3, :]
     
@@ -317,7 +317,7 @@ Indexação a várias dimensões
     print('\nx[3, :] =', a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[  1.   2.   3.   4.]
      [  5.   6.   7.   8.]
@@ -328,7 +328,7 @@ Indexação a várias dimensões
     x[3, :] = [ 13.  14.  15.  16.]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = x[1:4, 1:4]
     
@@ -337,7 +337,7 @@ Indexação a várias dimensões
     print(a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[  1.   2.   3.   4.]
      [  5.   6.   7.   8.]
@@ -354,13 +354,13 @@ Indexação a várias dimensões
 Mas os slices de ``arrays`` unidimensionais também existem, tal como nas
 listas:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x =np.arange(0, 1.1, 0.1)[2:]
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [ 0.2  0.3  0.4  0.5  0.6  0.7  0.8  0.9  1. ]
     
@@ -368,7 +368,7 @@ listas:
 **Problema: mostrar que as diferenças entre os quadrados perfeitos
 sucessivos são os numeros ímpares**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     quads = np.arange(12)**2
     print(quads)
@@ -377,7 +377,7 @@ sucessivos são os numeros ímpares**
     print(difs)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [  0   1   4   9  16  25  36  49  64  81 100 121]
     [ 1  3  5  7  9 11 13 15 17 19 21]
@@ -386,7 +386,7 @@ sucessivos são os numeros ímpares**
 Indexação booleana
 ~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.linspace(1, 10, 6)
     print('x =', x)
@@ -400,7 +400,7 @@ Indexação booleana
     print(y)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     x = [  1.    2.8   4.6   6.4   8.2  10. ]
     
@@ -414,7 +414,7 @@ Indexação booleana
 **Problema: somar as raízes quadradas dos números inteiros até 100, mas
 só as que sejam números inteiros**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     roots = np.arange(0,101)**0.5
     
@@ -424,7 +424,7 @@ só as que sejam números inteiros**
     print(s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     55.0
     
@@ -432,7 +432,7 @@ só as que sejam números inteiros**
 Indexação com listas de inteiros ou outros *arrays*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = np.linspace(5, 15, 6)
     print('x =', x)
@@ -444,7 +444,7 @@ Indexação com listas de inteiros ou outros *arrays*
     print('\nx[i] =', y)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     x = [  5.   7.   9.  11.  13.  15.]
     
@@ -476,13 +476,13 @@ podemos especifica um "eixo" para aplicar o cálculo.
 
 Vejamos a aplicação da função ``.sum()`` a um *array* unidimensional:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = np.linspace(1,20,20).sum()
     print(a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     210.0
     
@@ -490,7 +490,7 @@ Vejamos a aplicação da função ``.sum()`` a um *array* unidimensional:
 E agora 3 maneiras de aplicar a função ``.sum()`` a um array
 multidimensional
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Como se fosse unidimensional
     # aplicando a todos os elementos
@@ -501,7 +501,7 @@ multidimensional
     print('\n', s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[  1.   2.   3.   4.]
      [  5.   6.   7.   8.]
@@ -512,7 +512,7 @@ multidimensional
      210.0
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Ao longo do eixo 0
     x = np.linspace(1,20,20).reshape((5,4))
@@ -522,7 +522,7 @@ multidimensional
     print('\n', s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[  1.   2.   3.   4.]
      [  5.   6.   7.   8.]
@@ -533,7 +533,7 @@ multidimensional
      [ 45.  50.  55.  60.]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Ao longo do eixo 1
     x = np.linspace(1,20,20).reshape((5,4))
@@ -543,7 +543,7 @@ multidimensional
     print('\n', s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [[  1.   2.   3.   4.]
      [  5.   6.   7.   8.]
@@ -557,7 +557,7 @@ multidimensional
 **Problema: mostrar que a série alternada dos inversos converge para log
 2**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     i = np.arange(1,80)
     termos = (-1)**(i+1) * 1/i 
@@ -565,12 +565,12 @@ multidimensional
     print(s[:4])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [ 1.          0.5         0.83333333  0.58333333]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     i = np.arange(1,80)
     termos = (-1)**(i+1) * 1/i 
@@ -585,7 +585,7 @@ multidimensional
 .. image:: 10_scientific_modules_files/10_scientific_modules_51_0.png
 
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Agora com 300 termos
     i = np.arange(1, 300)
@@ -619,7 +619,7 @@ Obter valores aleatórios das seguintes distribuições:
 :math:`f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2}` com
 :math:`x \in [-\infty, \infty]`
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print('20 valores aleatórios da dist. de Poisson')
     print(' com lambda = 3')
@@ -628,21 +628,21 @@ Obter valores aleatórios das seguintes distribuições:
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     20 valores aleatórios da dist. de Poisson
      com lambda = 3
     [6 2 0 4 1 9 1 4 2 5 0 3 4 7 7 2 3 5 1 4]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print('5 valores aleatórios da distribuição N(0,1)')
     x = np.random.randn(5)
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     5 valores aleatórios da distribuição N(0,1)
     [ 1.04529894 -0.26523157  0.94498444  0.63413472 -1.38915953]
@@ -651,7 +651,7 @@ Obter valores aleatórios das seguintes distribuições:
 **Problema**: "Provar" que a média e a variância da distribuição de
 Poisson são ambas iguais a $:raw-latex:`\lambda `$.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     sample = np.random.poisson(3, 100000)
     
@@ -660,7 +660,7 @@ Poisson são ambas iguais a $:raw-latex:`\lambda `$.
     print('Variância =', sample.var())
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Média =  2.99868
     Variância = 3.0185382576
@@ -669,7 +669,7 @@ Poisson são ambas iguais a $:raw-latex:`\lambda `$.
 **Problema**: Mostar numericamente o *Teorema do Limite Central* para
 uma distribuição de Poisson.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Distribuição de médias de amostras de 2
     sample = np.random.poisson(3, (100000,2) )
@@ -686,7 +686,7 @@ uma distribuição de Poisson.
 .. image:: 10_scientific_modules_files/10_scientific_modules_61_0.png
 
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Distribuição de médias de amostras de 20
     sample = np.random.poisson(3, (100000,20) )
@@ -704,7 +704,7 @@ uma distribuição de Poisson.
 Matrizes e álgebra linear
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     A = np.matrix([[1, 2, 3], [2, 1, 6], [1, 7, 4]])
     print('A\n', A)
@@ -715,7 +715,7 @@ Matrizes e álgebra linear
     print('\nC = A * B\n', C)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     A
      [[1 2 3]
@@ -732,7 +732,7 @@ Matrizes e álgebra linear
      [27]]
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     A = np.matrix([[1.0, 2, 3], [2, 1, 6], [1, 7, 4]])
     B = np.matrix([1,2,3]).T
@@ -742,7 +742,7 @@ Matrizes e álgebra linear
     print(X)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Solução de A*X = B
     [[-5.]
@@ -756,7 +756,7 @@ Matrizes e álgebra linear
 Símbolos e álgebra básica
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     from sympy import Symbol
     
@@ -766,12 +766,12 @@ Símbolos e álgebra básica
     print(x + y + x -y)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     2*x
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = (x+y)**2
     print(a)
@@ -780,7 +780,7 @@ Símbolos e álgebra básica
     print(a.subs(x, 1).expand().subs(y, 1))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     (x + y)**2
     x**2 + 2*x*y + y**2
@@ -791,7 +791,7 @@ Símbolos e álgebra básica
 Limites
 ~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     from sympy import Symbol, limit, diff, integrate, sin, oo
     
@@ -803,7 +803,7 @@ Limites
     print(limit(1/x, x, oo))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     1
     oo
@@ -813,7 +813,7 @@ Limites
 Derivadas e integrais
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print(diff(sin(x), x))
     print(diff(sin(2*x), x))
@@ -824,7 +824,7 @@ Derivadas e integrais
     print(diff(expr, x, 3))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     cos(x)
     2*cos(2*x)
@@ -834,12 +834,12 @@ Derivadas e integrais
     2**x*log(2)**3
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print(integrate(sin(x), x))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     -cos(x)
     

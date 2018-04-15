@@ -8,7 +8,7 @@ Introdução ao problema
 Num problema das TPs, tivemos de separar uma sequência em codões e
 "hifenar", várias vezes ao longo de um programa:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = "AGCTGGATCCTGAACGCATAGACTAGCATGGGACTAAAGGTCCATTACTGA"
     btrans = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}
@@ -30,7 +30,7 @@ Num problema das TPs, tivemos de separar uma sequência em codões e
     print(cadcomprev)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     5'-AGC-TGG-ATC-CTG-AAC-GCA-TAG-ACT-AGC-ATG-GGA-CTA-AAG-GTC-CAT-TAC-TGA-3'
     3'-TCG-ACC-TAG-GAC-TTG-CGT-ATC-TGA-TCG-TAC-CCT-GAT-TTC-CAG-GTA-ATG-ACT-5'
@@ -59,7 +59,7 @@ mini-programas dentro de programas)
 Já vimos várias funções, sempre disponíveis ou disponíveis após
 importação de módulos:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = 'Uma pequena string'
     n = len(a)
@@ -93,7 +93,7 @@ objetos genéricos (``x``):
 **Problema**: escrever uma função que, dada uma sequência, devolva a
 sequência com os codoes separados por ``-``.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def seqcods(x):
         cods = [x[i:i+3] for i in range(0,len(x),3)]
@@ -110,7 +110,7 @@ A definição de uma função (``def``) não executa nada imediatamente.
 
 É necessário **chamar** (ou "*invocar*") a função para esta ser usada:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def seqcods(x):
         cods = [x[i:i+3] for i in range(0,len(x),3)]
@@ -126,7 +126,7 @@ A definição de uma função (``def``) não executa nada imediatamente.
     print(s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ATGGTTACCTAGTATTTAGGATTA
     ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
@@ -135,7 +135,7 @@ A definição de uma função (``def``) não executa nada imediatamente.
 **NOTA**: O comando ``return`` pode "devolver" uma expressão complicada
 (não só o nome de um objeto):
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def seqcods(x):
         return '-'.join( [x[i:i+3] for i in range(0,len(x),3)])
@@ -149,7 +149,7 @@ A definição de uma função (``def``) não executa nada imediatamente.
     print(s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ATGGTTACCTAGTATTTAGGATTA
     ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
@@ -174,7 +174,7 @@ qualquer ponto do programa, da forma seguinte:
 Exemplo: função ``factorial()``:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def factorial(n):
         res = 1
@@ -185,7 +185,7 @@ Exemplo: função ``factorial()``:
     print(factorial(200))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     788657867364790503552363213932185062295135977687173263294742533244359449963403342920304284011984623904177212138919638830257642790242637105061926624952829931113462857270763317237396988943922445621451664240254033291864131227428294853277524242407573903240321257405579568660226031904170324062351700858796178922222789623703897374720000000000000000000000000000000000000000000000000
     
@@ -193,7 +193,7 @@ Exemplo: função ``factorial()``:
 Vários tipos de funções
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = 'Uma pequena string'
     
@@ -207,14 +207,14 @@ Vários tipos de funções
     print( a.upper() )
 
 
-.. parsed-literal::
+.. code-block:: text
 
     18
     2
     UMA PEQUENA STRING
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     #1 arg, 0 res, associada a um objeto (lista b)
     # modifica o objeto (a lista b)
@@ -224,7 +224,7 @@ Vários tipos de funções
     print(b)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     None
     [12, 24, 36]
@@ -234,7 +234,7 @@ Além da função ``.append()``, recordar que **as listas** têm outras duas
 funções deste tipo, que modificam a lista sem produzir nenhum resultado
 (o resultado é a constante ``None``): ``.reverse()`` e ``.sort()``.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     b = [12, 24, 36]
     print(b)
@@ -246,7 +246,7 @@ funções deste tipo, que modificam a lista sem produzir nenhum resultado
     print(b)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [12, 24, 36]
     [36, 24, 12]
@@ -259,7 +259,7 @@ O resultado pode não ser apenas um número ou uma *string*: as funções
 podem devolver uma lista inteira, um dicionário ou outros objetos mais
 complexos.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import math
     print( math.log(64, 2) )
@@ -269,7 +269,7 @@ complexos.
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     6.0
     time.struct_time(tm_year=2018, tm_mon=4, tm_mday=8, tm_hour=18, tm_min=39, tm_sec=43, tm_wday=6, tm_yday=98, tm_isdst=1)
@@ -278,7 +278,7 @@ complexos.
 **Problema**: eliminar valores de uma lista que pertençam a uma "lista
 negra"
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def elimin_black(uma_lista, black_list):
         res = [i for i in uma_lista if i not in black_list]
@@ -294,7 +294,7 @@ negra"
     print(clean)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [1, 2, 4, 'um', 'dois', 3, 42, 'quatro']
     
@@ -306,7 +306,7 @@ negra"
 função para **ler o conteúdo do ficheiro para uma lista de linhas sem o
 ``\n`` no final, excluíndo as linhas vazias**.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def ler_fich(nome):
         linhas = []
@@ -323,7 +323,7 @@ função para **ler o conteúdo do ficheiro para uma lista de linhas sem o
         print(i)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     >sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
     MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR
@@ -336,7 +336,7 @@ função para **ler o conteúdo do ficheiro para uma lista de linhas sem o
 
 **Problema**: eliminar valores repetidos numa lista
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def elimin_reps(uma_lista):
         res = []
@@ -352,7 +352,7 @@ função para **ler o conteúdo do ficheiro para uma lista de linhas sem o
     print(clean)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [1, 2, 4, 7, 7, 5, 8, 8, 9, 10]
     [1, 2, 4, 7, 5, 8, 9, 10]
@@ -373,7 +373,7 @@ e é esta lista que é o **resultado** da função.
 devolvida uma lista nova como resultado. Isto é, a função recebe uma
 lista e modifica-a, não havendo ``return``.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def elimin_reps2(uma_lista):
         res = []
@@ -392,7 +392,7 @@ lista e modifica-a, não havendo ``return``.
     print('Depois', uma_lista)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Antes [1, 2, 4, 7, 7, 5, 8, 8, 9, 10]
     Depois [1, 2, 4, 7, 5, 8, 9, 10]
@@ -409,7 +409,7 @@ são imutáveis.
 
 Se as funções tiverem resultados é possível usá-las em cadeia:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def elimin_reps(uma_lista):
         res = []
@@ -427,7 +427,7 @@ Se as funções tiverem resultados é possível usá-las em cadeia:
     print(clean)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [4, 3, 37, 42, 'quatro']
     
@@ -435,7 +435,7 @@ Se as funções tiverem resultados é possível usá-las em cadeia:
 Âmbito dos nomes dentro de uma função
 -------------------------------------
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def recta(m, b, x):
         print('Para x =', x)
@@ -452,7 +452,7 @@ Se as funções tiverem resultados é possível usá-las em cadeia:
     print('Resultado:', res)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Para x = 2.0
     com m = 3.0
@@ -464,7 +464,7 @@ Este programa corre sem problemas.
 
 Note-se que podemos usar a função ``print()`` dentro de uma função.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def recta(m, b, x):
         r1, r0 = m*x, b
@@ -478,7 +478,7 @@ Note-se que podemos usar a função ``print()`` dentro de uma função.
     print('Resultado:', res)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Para x = 2.0 m = 2.0 b = 3.0
     
@@ -510,7 +510,7 @@ nomes. Daí o erro durante a execução.
 
 O mesmo acontece aos próprios nomes locais dos **argumentos** da função:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def recta2(m2, b2, x):
         r1, r0 = m2*x, b2
@@ -540,7 +540,7 @@ O mesmo acontece aos próprios nomes locais dos **argumentos** da função:
     NameError: name 'm2' is not defined
 
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def recta(m, b, x):
         print('Dentro da função --------')
@@ -559,7 +559,7 @@ O mesmo acontece aos próprios nomes locais dos **argumentos** da função:
     print('\nResultado:', res)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Dentro da função --------
     m = 5 b = 5 x = 16
@@ -609,7 +609,7 @@ de ``x`` volta a ser 4, uma vez que voltamos a um contexto "global".
 Valores *por omissão* em argumentos de funções
 ----------------------------------------------
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def mix(a=1, b=0):
         c = a + b
@@ -625,7 +625,7 @@ Valores *por omissão* em argumentos de funções
     x = mix(2,3)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a = 1 b = 0 --> return = 1
     a = 1 b = 3 --> return = 4
@@ -633,7 +633,7 @@ Valores *por omissão* em argumentos de funções
     a = 2 b = 3 --> return = 5
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def factorial(n, trace=False):
         p = 1
@@ -647,12 +647,12 @@ Valores *por omissão* em argumentos de funções
     print('O factorial de 20 é', f20)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     O factorial de 20 é 2432902008176640000
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def factorial(n, trace=False):
         p = 1
@@ -666,7 +666,7 @@ Valores *por omissão* em argumentos de funções
     print('O factorial de 20 é', f20)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     2 2
     3 6
@@ -693,7 +693,7 @@ Valores *por omissão* em argumentos de funções
 Formatação de *strings* com ``.format()``
 =========================================
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = 11
     y = 20
@@ -702,12 +702,12 @@ Formatação de *strings* com ``.format()``
     print('x = {}, y = {}, z = {}'.format(x, y, z))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     x = 11, y = 20, z = 3
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H':1, 'Li':3, 'Na':11, 'K':19}
     
@@ -715,7 +715,7 @@ Formatação de *strings* com ``.format()``
         print('O elemento com n = {1} é o {0}'.format(k, v))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     O elemento com n = 1 é o H
     O elemento com n = 3 é o Li
@@ -723,7 +723,7 @@ Formatação de *strings* com ``.format()``
     O elemento com n = 19 é o K
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H':1, 'Li':3, 'Na':11, 'K':19}
     
@@ -731,7 +731,7 @@ Formatação de *strings* com ``.format()``
         print('O elemento com  n = {1:2} é o {0}'.format(k, v))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     O elemento com  n =  1 é o H
     O elemento com  n =  3 é o Li
@@ -739,7 +739,7 @@ Formatação de *strings* com ``.format()``
     O elemento com  n = 19 é o K
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H':1, 'Li':3, 'Na':11, 'K':19}
     
@@ -747,7 +747,7 @@ Formatação de *strings* com ``.format()``
         print('O elemento com  n = {1:<2} é o {0}'.format(k, v))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     O elemento com  n = 1  é o H
     O elemento com  n = 3  é o Li
@@ -755,7 +755,7 @@ Formatação de *strings* com ``.format()``
     O elemento com  n = 19 é o K
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import math
     log2 = math.log(2)
@@ -768,7 +768,7 @@ Formatação de *strings* com ``.format()``
         print(i , soma , dif)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     1 1.0 0.3068528194400547
     2 0.5 0.1931471805599453
@@ -792,7 +792,7 @@ Formatação de *strings* com ``.format()``
     20 0.6687714031754279 0.02437577738451735
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import math
     log2 = math.log(2)
@@ -806,7 +806,7 @@ Formatação de *strings* com ``.format()``
         print('{:4d} {:9.6f} {:9.6f}'.format(i,soma,dif))
 
 
-.. parsed-literal::
+.. code-block:: text
 
        n     S        dif   
        1  1.000000  0.306853

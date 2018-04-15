@@ -39,14 +39,14 @@ As principais coleções usadas em Python são:
 Listas
 ~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [2, 4, 3.1415, 'eu aqui', "fim da lista"]
     
     print(a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [2, 4, 3.1415, 'eu aqui', 'fim da lista']
     
@@ -71,7 +71,7 @@ outro lado, como se pode ver no exemplo, foi atribuído um único nome
 As listas podem ter elementos de vários tipos e estes elementos podem
 até ser o resultado de expressões:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [19, 14/2, 5.0**3, 'Bom dia']
     b = 1
@@ -81,7 +81,7 @@ até ser o resultado de expressões:
     print('c =', c)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a = [19, 7.0, 125.0, 'Bom dia']
     c = [1, 2, 27]
@@ -97,7 +97,7 @@ elementos da lista.
 Uma propriedade fundamental das listas é que a **ordem dos elementos tem
 significado** e uma lista pode ser "**indexável**" com numeros inteiros.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [19, 14/2, 5.0**3, 'Bom dia']
     
@@ -108,7 +108,7 @@ significado** e uma lista pode ser "**indexável**" com numeros inteiros.
     print(a[3])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a = [19, 7.0, 125.0, 'Bom dia']
     19
@@ -136,7 +136,7 @@ As *strings* podem ser entendidas como **coleções de caracteres**
 As *strings* também têm uma numeração implícita, a contar do zero, sendo
 também "indexáveis".
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s = 'Eu sou uma pequena string'
     print(s)
@@ -145,7 +145,7 @@ também "indexáveis".
     print(s[3])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Eu sou uma pequena string
     E
@@ -165,7 +165,7 @@ Dicionários são *associações* entre **chaves** e **valores**.
 
    </div>
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H': 1, 'Li': 3, 'Na': 11, 'K': 19}
 
@@ -179,7 +179,7 @@ Ao contrário das listas e das *strings*, a **ordem dos elementos num
 dicionário não tem significado** mas um dicionário pode ser
 "**indexável**" com as *chaves*:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H':1, 'Li':3, 'Na':11, 'K':19}
     
@@ -189,7 +189,7 @@ dicionário não tem significado** mas um dicionário pode ser
     print(d['Li'])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     d = {'H': 1, 'Li': 3, 'Na': 11, 'K': 19}
     19
@@ -211,7 +211,7 @@ coleções:
 A função ``len()`` **pode ser aplicada a qualquer coleção**, devolvendo
 o **número de elementos** contidos nessa coleção.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [2,4,6,8,10, 'viria o 12', 'e depois o 14']
     s = 'Eu sou uma pequena string'
@@ -222,7 +222,7 @@ o **número de elementos** contidos nessa coleção.
     print(len(d))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     7
     25
@@ -238,7 +238,7 @@ um.
 
 Em Python é usado o comado ``for`` para esse efeito.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [2,4,6,8,10, 'viria o 12', 'e depois o 14']
     
@@ -246,7 +246,7 @@ Em Python é usado o comado ``for`` para esse efeito.
         print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     2
     4
@@ -273,7 +273,7 @@ Vamos ver alguns exemplos da utilização de um comando ``for``:
 
 **Problema: mostrar uma tabela de raízes quadradas de 1 a 10**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print('tabela de raízes quadradas')
     
@@ -283,7 +283,7 @@ Vamos ver alguns exemplos da utilização de um comando ``for``:
         print(x, x**0.5)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     tabela de raízes quadradas
     1 1.0
@@ -298,7 +298,7 @@ Vamos ver alguns exemplos da utilização de um comando ``for``:
     10 3.1622776601683795
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Programa dos anos bissextos sem input
     
@@ -311,7 +311,7 @@ Vamos ver alguns exemplos da utilização de um comando ``for``:
             print(a, "nao é bissexto")
 
 
-.. parsed-literal::
+.. code-block:: text
 
     2015 nao é bissexto
     2014 nao é bissexto
@@ -325,7 +325,7 @@ Vamos ver alguns exemplos da utilização de um comando ``for``:
 A iteração de uma *string* "percorre" os seus **caracteres**. Os espaços
 e a pontuação também são considerados caracteres.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s = 'Eu sou uma string'
     
@@ -333,7 +333,7 @@ e a pontuação também são considerados caracteres.
         print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     E
     u
@@ -357,7 +357,7 @@ e a pontuação também são considerados caracteres.
 Finalmente, a iteração de dicionários "percorre" as suas **chaves**
 (apenas as chaves).
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H':1, 'Li':3, 'Na':11, 'K':19}
     
@@ -365,7 +365,7 @@ Finalmente, a iteração de dicionários "percorre" as suas **chaves**
         print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     H
     Li
@@ -375,7 +375,7 @@ Finalmente, a iteração de dicionários "percorre" as suas **chaves**
 
 Mas é fácil usar as chaves para obter uma tabela de chaves-valores:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
     
@@ -385,7 +385,7 @@ Mas é fácil usar as chaves para obter uma tabela de chaves-valores:
         print(e, grupo1[e])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     elementos do grupo 1
     H 1
@@ -399,7 +399,7 @@ A ordem da iteração das chaves num dicionário é "incerta".
 Podemos forçar uma ordem, iterando sobre uma **lista** com as chaves, na
 ordem desejada:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
     
@@ -409,7 +409,7 @@ ordem desejada:
         print(e, grupo1[e])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     elementos do grupo 1
     H 1
@@ -423,7 +423,7 @@ Exemplos de iteração
 
 **Problema: somar todos os numeros de 1 a 10**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     nums = [1,2,3,4,5,6,7,8,9,10]
     
@@ -434,7 +434,7 @@ Exemplos de iteração
     print('a soma de', nums, 'é', s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a soma de [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] é 55
     
@@ -452,7 +452,7 @@ conseguimos acumular a soma de todos os ``i``.
 Desta vez não vamos criar a lista de numeros explicitamente (e
 manualmente)
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s = 0
     
@@ -462,7 +462,7 @@ manualmente)
     print('a soma dos números de 1 a 1000 é', s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a soma dos números de 1 a 1000 é 500500
     
@@ -495,7 +495,7 @@ Nunca esquecer que o valor do ``fim`` **é excluído da lista**
 
 Exemplos:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print('-- range(12) ----------')
     # acaba em 12 (exclusivé), começa em 0 e percorre de 1 em 1.
@@ -504,7 +504,7 @@ Exemplos:
         print(i)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     -- range(12) ----------
     0
@@ -521,7 +521,7 @@ Exemplos:
     11
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print('-- range(5, 12) ----------')
     # começa em 5, acaba em 12 (exclusivé) e percorre de 1 em 1.
@@ -530,7 +530,7 @@ Exemplos:
         print(i)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     -- range(5, 12) ----------
     5
@@ -542,7 +542,7 @@ Exemplos:
     11
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print('-- range(5, 12, 2) ----------')
     # começa em 5, acaba em 12 (exclusivé) e percorre de 2 em 2.
@@ -551,7 +551,7 @@ Exemplos:
         print(i)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     -- range(5, 12, 2) ----------
     5
@@ -562,7 +562,7 @@ Exemplos:
 
 **Problema: calcular o factorial de 1000**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     fact = 1
     for i in range(1, 1001):
@@ -571,7 +571,7 @@ Exemplos:
     print('o factorial de 100 é', fact)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     o factorial de 100 é 402387260077093773543702433923003985719374864210714632543799910429938512398629020592044208486969404800479988610197196058631666872994808558901323829669944590997424504087073759918823627727188732519779505950995276120874975462497043601418278094646496291056393887437886487337119181045825783647849977012476632889835955735432513185323958463075557409114262417474349347553428646576611667797396668820291207379143853719588249808126867838374559731746136085379534524221586593201928090878297308431392844403281231558611036976801357304216168747609675871348312025478589320767169132448426236131412508780208000261683151027341827977704784635868170164365024153691398281264810213092761244896359928705114964975419909342221566832572080821333186116811553615836546984046708975602900950537616475847728421889679646244945160765353408198901385442487984959953319101723355556602139450399736280750137837615307127761926849034352625200015888535147331611702103968175921510907788019393178114194545257223865541461062892187960223838971476088506276862967146674697562911234082439208160153780889893964518263243671616762179168909779911903754031274622289988005195444414282012187361745992642956581746628302955570299024324153181617210465832036786906117260158783520751516284225540265170483304226143974286933061690897968482590125458327168226458066526769958652682272807075781391858178889652208164348344825993266043367660176999612831860788386150279465955131156552036093988180612138558600301435694527224206344631797460594682573103790084024432438465657245014402821885252470935190620929023136493273497565513958720559654228749774011413346962715422845862377387538230483865688976461927383814900140767310446640259899490222221765904339901886018566526485061799702356193897017860040811889729918311021171229845901641921068884387121855646124960798722908519296819372388642614839657382291123125024186649353143970137428531926649875337218940694281434118520158014123344828015051399694290153483077644569099073152433278288269864602789864321139083506217095002597389863554277196742822248757586765752344220207573630569498825087968928162753848863396909959826280956121450994871701244516461260379029309120889086942028510640182154399457156805941872748998094254742173582401063677404595741785160829230135358081840096996372524230560855903700624271243416909004153690105933983835777939410970027753472000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     
@@ -589,7 +589,7 @@ DNA**
 Se num programa tivermos uma *string* contendo uma sequência de um ácido
 nucleico, então podemos percorrer todas as "bases" da sequência:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
     
@@ -597,7 +597,7 @@ nucleico, então podemos percorrer todas as "bases" da sequência:
         print(b, end=' ')
 
 
-.. parsed-literal::
+.. code-block:: text
 
     A T G G T C A A A C T T G T T G A C T G C A A A T G C G T A C G T 
 
@@ -609,7 +609,7 @@ Agora podemos resolver o problema do cálculo da sequência complementar.
 Parte da estratégia consiste em ir adicionando cada base complementar a
 uma *string* de acumulação do resultado, que, inicialmente, está vazia:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
     
@@ -630,7 +630,7 @@ uma *string* de acumulação do resultado, que, inicialmente, está vazia:
     print('complementar:', seqcomp)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     sequência:    ATGGTCAAACTTGTTGACTGCAAATGCGTACGT
     complementar: TACCAGTTTGAACAACTGACGTTTACGCATGCA
@@ -648,7 +648,7 @@ O programa pode ser modificado elminando os ``if...elif...elif...else``.
 A ideia é usar um dicionário que associe cada base à sua base
 complementar:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
     
@@ -663,7 +663,7 @@ complementar:
     print('complementar:', seqcomp)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     sequência:    ATGGTCAAACTTGTTGACTGCAAATGCGTACGT
     complementar: TACCAGTTTGAACAACTGACGTTTACGCATGCA
@@ -673,7 +673,7 @@ Sem muito esforço, podemos formatar um pouco a apresentação das duas
 cadeias, na vertical e pondo em evidência a correspondência entre as
 bases:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
     
@@ -683,7 +683,7 @@ bases:
         print(b, '-', complementares[b])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     A - T
     T - A
@@ -725,7 +725,7 @@ Agora um problema mais elaborado:
 **converter uma sequência com códigos de uma letra de aminoácidos para
 códigos de 3 letras, usando um dicionário para a conversão.**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     trans = {'A': 'Ala', 'C': 'Cys', 'E': 'Glu', 'D': 'Asp', 'G': 'Gly', 'F': 'Phe', 'I': 'Ile', 'H': 'His', 'K': 'Lys', 'M': 'Met', 'L': 'Leu', 'N': 'Asn', 'Q': 'Gln', 'P': 'Pro', 'S': 'Ser', 'R': 'Arg', 'T': 'Thr', 'W': 'Trp', 'V': 'Val', 'Y': 'Tyr'}
     
@@ -739,7 +739,7 @@ códigos de 3 letras, usando um dicionário para a conversão.**
     print(seq1, 'é o mesmo que ', seq3)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ADKLITCWFHHWE é o mesmo que  Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu-
     
@@ -750,7 +750,7 @@ códigos de 3 letras, usando um dicionário para a conversão.**
 Por sua vez, podemos usar o "operador" ``in`` como teste de inclusão de
 um elemento numa coleção.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     nums = [1,2,3,4,5,6,7,8,9,10]
     if 4 in nums:
@@ -759,12 +759,12 @@ um elemento numa coleção.
         print(4, 'não existe')
 
 
-.. parsed-literal::
+.. code-block:: text
 
     4 existe
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     nums = [1,2,3,4,5,6,7,8,9,10]
     
@@ -775,7 +775,7 @@ um elemento numa coleção.
             print(n, 'não existe')
 
 
-.. parsed-literal::
+.. code-block:: text
 
     1 existe
     4 existe
@@ -784,7 +784,7 @@ um elemento numa coleção.
     40 não existe
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
     
@@ -799,20 +799,20 @@ um elemento numa coleção.
         print('Não existe', 'TGT')
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Não existe U
     Existe TGT
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
     
     print('Mg' in grupo1)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     False
     
@@ -825,7 +825,7 @@ lisinas (K)**
 Percorrer os aminoácidos da sequência é simples, usamos um comando
 ``for``. Para testar se estamos na presença de um K, usamos um ``if``:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
     
@@ -834,7 +834,7 @@ Percorrer os aminoácidos da sequência é simples, usamos um comando
             print(aa)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     K
     K
@@ -850,7 +850,7 @@ Mais uma vez, percorremos os aminoácidos da sequência com ``for``. Para
 testar se estamos na presença de um K ou um L, usamos um teste de
 inclusão na *string* ``"KL"``
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
     
@@ -859,7 +859,7 @@ inclusão na *string* ``"KL"``
             print(aa)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     K
     L
@@ -870,7 +870,7 @@ inclusão na *string* ``"KL"``
 
 Ou, para visualizar bem a posição das lisinas e leucinas:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
     
@@ -881,7 +881,7 @@ Ou, para visualizar bem a posição das lisinas e leucinas:
             print('-', end='')
 
 
-.. parsed-literal::
+.. code-block:: text
 
     --K-L-L----------------K----K--
 
@@ -894,7 +894,7 @@ códigos K ou L**
 Podemos usar um "contador" das **posições** dos aminoácidos,
 "acumulando" a soma de 1 por letra:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
     
@@ -905,7 +905,7 @@ Podemos usar um "contador" das **posições** dos aminoácidos,
         i = i + 1
 
 
-.. parsed-literal::
+.. code-block:: text
 
     2 : K
     4 : L
@@ -924,7 +924,7 @@ Função ``enumerate()``
 Vejamos o que resulta da aplicação da função ``enumerate()`` a uma
 sequência:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
     
@@ -932,7 +932,7 @@ sequência:
         print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     (0, 'A')
     (1, 'D')
@@ -974,7 +974,7 @@ O mais interessante é que, no ciclo ``for`` com a função
 ``enumerate()``\ podemos usar um **par de nomes** para nos referirmos
 simultaneamente à posição e ao elemento. Isto é chamado *desdobramento*.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
     
@@ -982,7 +982,7 @@ simultaneamente à posição e ao elemento. Isto é chamado *desdobramento*.
         print(i, ':', a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     0 : A
     1 : D
@@ -1028,7 +1028,7 @@ Usando a função ``enumerate()``, o problema de tabelar as posições das
 lisinas e argininas pode ser escrito de uma forma mais compacta, sem
 usar explicitamente um "contador da posição":
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
     
@@ -1037,7 +1037,7 @@ usar explicitamente um "contador da posição":
             print(i, ':', aa)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     2 : K
     4 : L
@@ -1059,7 +1059,7 @@ comandos ``for``:
 
 **Problema: gerar os 64 codões do código genético**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     bases = 'AUGC'
     
@@ -1070,7 +1070,7 @@ comandos ``for``:
                 print(c)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     AAA
     AAU
@@ -1152,7 +1152,7 @@ condição.
 DNA e a sequência complementar, mas parar assim que for encontrado um
 par C - G.**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ATGGTTAAACTTGTTGACTGCAAATGCGTACGT'
     
@@ -1164,7 +1164,7 @@ par C - G.**
             break
 
 
-.. parsed-literal::
+.. code-block:: text
 
     A - T
     T - A
@@ -1193,7 +1193,7 @@ Vejamos com um exemplo:
 **Problema: obter um esquema das correspondências entre uma sequência de
 DNA e a sequência complementar. Saltar todos as ligações A - T.**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     seq = 'ATGGTTAAACTTGTTGACTGCAAATGCGTACGT'
     
@@ -1205,7 +1205,7 @@ DNA e a sequência complementar. Saltar todos as ligações A - T.**
         print(b, '-', complementares[b])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     G - C
     G - C
@@ -1236,7 +1236,7 @@ ter nada a ver com os elementos de uma coleção.
 O comando ``while`` é escrito como um bloco de linhas que é executado
 enquanto uma condição for verdadeira:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     #contagem decrescente
     count = 10
@@ -1246,7 +1246,7 @@ enquanto uma condição for verdadeira:
     print('kabum!')
 
 
-.. parsed-literal::
+.. code-block:: text
 
     10
     9

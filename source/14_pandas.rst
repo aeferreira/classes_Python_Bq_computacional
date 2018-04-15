@@ -18,7 +18,7 @@ Python "científico": biblioteca *pandas*
     objects, etc.). The axis labels are collectively referred to as the
     **index**.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import pandas as pd
 
@@ -30,14 +30,14 @@ Ao conjunto das etiquetas dá-se o nome de "**índice**".
 Quando construímos uma Série, usando a função ``Series()``, podemos
 indicar o índice.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s = pd.Series([1.4, 2.2, 3.2, 6.5, 12],
                   index=['a', 'b', 'c', 'd', 'e'])
     print(s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a     1.4
     b     2.2
@@ -50,13 +50,13 @@ indicar o índice.
 Se não indicarmos um índice, o conjunto dos inteiros sucessivos será o
 índice.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s = pd.Series([1.4,2.2,3.2,6.5,12])
     print(s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     0     1.4
     1     2.2
@@ -69,14 +69,14 @@ Se não indicarmos um índice, o conjunto dos inteiros sucessivos será o
 As Séries podem ser construídas a partir de um dicionário, em que as
 chaves são o índice.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a' : 0., 'b' : 1., 'c' : 2.}
     s = pd.Series(d)
     print(s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a    0.0
     b    1.0
@@ -88,14 +88,14 @@ Podemos, mesmo neste caso, indicar um índice. Caso o índice tenha
 elementos para além das chaves do dicionário, haverá **valores em
 falta**.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a' : 0., 'b' : 1., 'c' : 2.}
     s = pd.Series(d, index=['b', 'c', 'd', 'a'])
     print(s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     b    1.0
     c    2.0
@@ -117,7 +117,7 @@ utilidade.
 Note-se que, em geral, **os valores em falta são ignorados nos
 cálculos**.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a' : 0., 'b' : 1., 'c' : 2.}
     s = pd.Series(d, index=['b', 'c', 'd', 'a'])
@@ -125,7 +125,7 @@ cálculos**.
     print('\nMédia =', s.mean())
 
 
-.. parsed-literal::
+.. code-block:: text
 
     b    1.0
     c    2.0
@@ -136,7 +136,7 @@ cálculos**.
     Média = 1.0
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a' : 0., 'b' : 1., 'c' : 2.}
     s = pd.Series(d, index=['b', 'c', 'd', 'a'])
@@ -145,7 +145,7 @@ cálculos**.
     print(s.describe())
 
 
-.. parsed-literal::
+.. code-block:: text
 
     b    1.0
     c    2.0
@@ -164,14 +164,14 @@ cálculos**.
     dtype: float64
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a' : 0., 'b' : 1., 'c' : 2.}
     s = pd.Series(d, index=['b', 'c', 'd', 'a'])
     print(s.cumsum())
 
 
-.. parsed-literal::
+.. code-block:: text
 
     b    1.0
     c    3.0
@@ -180,7 +180,7 @@ cálculos**.
     dtype: float64
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a' : 0., 'b' : 1., 'c' : 2.}
     s = pd.Series(d, index=['b', 'c', 'd', 'a'])
@@ -189,7 +189,7 @@ cálculos**.
     print(s.index.values)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [  1.   2.  nan   0.]
     ['b' 'c' 'd' 'a']
@@ -203,7 +203,7 @@ comportando-se como uma lista ou um *array* do ``numpy``.
 
 A função ``len()``\ também funciona com séries.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a' : 0., 'b' : 1., 'c' : 2.}
     s = pd.Series(d, index=['b', 'c', 'd', 'a'])
@@ -212,7 +212,7 @@ A função ``len()``\ também funciona com séries.
     print(s[-1])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     4
     1.0
@@ -226,7 +226,7 @@ como chaves** e são usadas para indexar uma Série. para obter um valor
 Tal como nos dicionários, o operador ``in`` **testa a existência de uma
 etiqueta**.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a' : 0., 'b' : 1., 'c' : 2.}
     s = pd.Series(d, index=['b', 'c', 'd', 'a'])
@@ -238,7 +238,7 @@ etiqueta**.
     print('d' in s)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     b    1.0
     c    2.0
@@ -258,7 +258,7 @@ do módulo ``numpy``. Podemos usar:
 -  *slices*
 -  **operações vetoriais**.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
     s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
@@ -267,7 +267,7 @@ do módulo ``numpy``. Podemos usar:
     print(s[:3])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     b    1.0
     c    3.0
@@ -281,7 +281,7 @@ do módulo ``numpy``. Podemos usar:
     dtype: float64
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
     s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
@@ -290,7 +290,7 @@ do módulo ``numpy``. Podemos usar:
     print(s**2)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     b    1.0
     c    3.0
@@ -306,7 +306,7 @@ do módulo ``numpy``. Podemos usar:
     dtype: float64
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
     s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
@@ -315,7 +315,7 @@ do módulo ``numpy``. Podemos usar:
     print(s[s > 1.1])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     b    1.0
     c    3.0
@@ -333,7 +333,7 @@ vetoriais sobre Séries (por exemplo, na soma de duas séries), **os
 valores são "alinhados" pelos respetivos *labels*** antes da operação.
 Vejamos estas duas séries:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s1 = pd.Series({'a' : 0.5, 'b' : 1.0, 'e': 1.8})
     s2 = pd.Series({'a' : 0.5, 'b' : 1.0, 'f': 1.8})
@@ -342,7 +342,7 @@ Vejamos estas duas séries:
     print(s1 + s2)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Soma
     a    1.0
@@ -360,7 +360,7 @@ valor ``NaN``, terão o valor ``NaN`` no resultado final.
 
 A função ``.dropna()`` permite eliminar os *valores em falta*.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     s1 = pd.Series({'a' : 0.5, 'b' : 1.0, 'e': 1.8})
     s2 = pd.Series({'a' : 0.5, 'b' : 1.0, 'f': 1.8})
@@ -369,7 +369,7 @@ A função ``.dropna()`` permite eliminar os *valores em falta*.
     print(s3.dropna())
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a    1.0
     b    2.0
@@ -394,7 +394,7 @@ informação da UniProt sobre a levedura *S. cerevisiae*.
 A ``DataFrame`` terá as colunas "**ac**", "**rev**", "**n**" e
 "**sequence**"
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def get_prots(filename):
         with open(filename) as big:
@@ -421,105 +421,239 @@ A ``DataFrame`` terá as colunas "**ac**", "**rev**", "**n**" e
     print('A primeira proteína tem', pinfo[0]['n'], 'aminoácidos')
 
 
-::
+.. code-block:: text
 
-
-    ---------------------------------------------------------------------------
-
-    FileNotFoundError                         Traceback (most recent call last)
-
-    <ipython-input-17-2bebe47c11d0> in <module>()
-          4     return [p for p in tudo.split('//\n') if len(p) != 0]
-          5 
-    ----> 6 prots = get_prots('uniprot_s_cerevisiae.txt')
-          7 
-          8 def process_prot(p):
+    Numero total de proteínas: 6816
+    A primeira proteína tem 316 aminoácidos
     
-
-    <ipython-input-17-2bebe47c11d0> in get_prots(filename)
-          1 def get_prots(filename):
-    ----> 2     with open(filename) as big:
-          3         tudo = big.read()
-          4     return [p for p in tudo.split('//\n') if len(p) != 0]
-          5 
-    
-
-    FileNotFoundError: [Errno 2] No such file or directory: 'uniprot_s_cerevisiae.txt'
-
 
 Podemos construir uma ``DataFrame`` a partir de uma lista de
 dicionários. As **chaves dos dicionários serão as colunas**.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     prots = pd.DataFrame(pinfo)
     print(len(prots))
     prots[:3]
 
 
-::
+.. code-block:: text
 
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-18-b95f7c7c35b6> in <module>()
-    ----> 1 prots = pd.DataFrame(pinfo)
-          2 print(len(prots))
-          3 prots[:3]
+    6816
     
 
-    NameError: name 'pinfo' is not defined
+
+
+.. raw:: html
+
+    <div>
+    <style>
+        .dataframe thead tr:only-child th {
+            text-align: right;
+        }
+    
+        .dataframe thead th {
+            text-align: left;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>ac</th>
+          <th>n</th>
+          <th>rev</th>
+          <th>seq</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>0</th>
+          <td>P29703</td>
+          <td>316</td>
+          <td>Reviewed</td>
+          <td>MEEYDYSDVKPLPIETDLQDELCRIMYTEDYKRLMGLARALISLNE...</td>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td>P36001</td>
+          <td>430</td>
+          <td>Reviewed</td>
+          <td>MDDISGRQTLPRINRLLEHVGNPQDSLSILHIAGTNGKETVSKFLT...</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>P08524</td>
+          <td>352</td>
+          <td>Reviewed</td>
+          <td>MASEKEIRRERFLNVFPKLVEELNASLLAYGMPKEACDWYAHSLNY...</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
 
 
 Para inspeção rápida, as funções ``.head()`` e ``.tail()`` apresentam o
 início e o fim da ``DataFrame``
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     prots = pd.DataFrame(pinfo)
     #prots.head()
     prots.tail()
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. raw:: html
 
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-19-a6febca4a1a1> in <module>()
-    ----> 1 prots = pd.DataFrame(pinfo)
-          2 #prots.head()
-          3 prots.tail()
+    <div>
+    <style>
+        .dataframe thead tr:only-child th {
+            text-align: right;
+        }
     
+        .dataframe thead th {
+            text-align: left;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>ac</th>
+          <th>n</th>
+          <th>rev</th>
+          <th>seq</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>6811</th>
+          <td>A0A1S0T058</td>
+          <td>133</td>
+          <td>Unreviewed</td>
+          <td>MSETCSSSLALLHKILHIHSHTPSVYYNICISVRILTSERLQCFFF...</td>
+        </tr>
+        <tr>
+          <th>6812</th>
+          <td>A0A1S0T090</td>
+          <td>108</td>
+          <td>Unreviewed</td>
+          <td>MYKVSACGVRIMSGISEIWIGELRDYKYALRLDREEYPAVLVYEYD...</td>
+        </tr>
+        <tr>
+          <th>6813</th>
+          <td>A0A1S0T072</td>
+          <td>145</td>
+          <td>Unreviewed</td>
+          <td>MAILLPLKSILPWCCITFSFLLSSSGSISHSTASSSITLTKSSKPT...</td>
+        </tr>
+        <tr>
+          <th>6814</th>
+          <td>A0A1S0T069</td>
+          <td>239</td>
+          <td>Unreviewed</td>
+          <td>MMPTYLGKLTWSYFFTTLGLACAYNVTEQMEFDQFKSDYLACLAPE...</td>
+        </tr>
+        <tr>
+          <th>6815</th>
+          <td>A0A1S0T004</td>
+          <td>163</td>
+          <td>Unreviewed</td>
+          <td>MEMHWITLVAFIATFFNLAATSINNSSLPDVDLTNPLRFFTNIPAG...</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
 
-    NameError: name 'pinfo' is not defined
 
 
 Podemos mudar o índice para uma das colunas.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     prots = prots.set_index('ac')
     prots.head()
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. raw:: html
 
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-20-a06942729c02> in <module>()
-    ----> 1 prots = prots.set_index('ac')
-          2 prots.head()
+    <div>
+    <style>
+        .dataframe thead tr:only-child th {
+            text-align: right;
+        }
     
+        .dataframe thead th {
+            text-align: left;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>n</th>
+          <th>rev</th>
+          <th>seq</th>
+        </tr>
+        <tr>
+          <th>ac</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>P29703</th>
+          <td>316</td>
+          <td>Reviewed</td>
+          <td>MEEYDYSDVKPLPIETDLQDELCRIMYTEDYKRLMGLARALISLNE...</td>
+        </tr>
+        <tr>
+          <th>P36001</th>
+          <td>430</td>
+          <td>Reviewed</td>
+          <td>MDDISGRQTLPRINRLLEHVGNPQDSLSILHIAGTNGKETVSKFLT...</td>
+        </tr>
+        <tr>
+          <th>P08524</th>
+          <td>352</td>
+          <td>Reviewed</td>
+          <td>MASEKEIRRERFLNVFPKLVEELNASLLAYGMPKEACDWYAHSLNY...</td>
+        </tr>
+        <tr>
+          <th>P28003</th>
+          <td>413</td>
+          <td>Reviewed</td>
+          <td>MGLYSPESEKSQLNMNYIGKDDSQSIFRRLNQNLKASNNNNDSNKN...</td>
+        </tr>
+        <tr>
+          <th>Q99341</th>
+          <td>161</td>
+          <td>Reviewed</td>
+          <td>MSLYQSIVFIARNVVNSITRILHDHPTNSSLITQTYFITPNHSGKN...</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
 
-    NameError: name 'prots' is not defined
 
 
 A indexação com o nome de uma coluna devolve essa coluna (mas associada
@@ -527,26 +661,82 @@ ao índice).
 
 Cada coluna comporta-se como uma Série.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     prots['n']
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. code-block:: text
 
-    NameError                                 Traceback (most recent call last)
+    ac
+    P29703         316
+    P36001         430
+    P08524         352
+    P28003         413
+    Q99341         161
+    P53913         173
+    P38297         855
+    P39012         614
+    P22146         559
+    P38631        1876
+    P43557         207
+    P53233         369
+    Q12676         427
+    P32614         470
+    P32791         686
+    P38310         465
+    P18852         110
+    P42837         879
+    Q08967         793
+    P23900         669
+    Q05015         223
+    P11710         512
+    Q08559         129
+    P36033         711
+    Q12473         712
+    Q12209         686
+    Q12029         327
+    P32805         299
+    P36170        1169
+    P39712        1322
+                  ... 
+    A0A1S0T076     103
+    A0A1S0T0A7     110
+    A0A1S0T0B4     122
+    A0A1S0T0A4     124
+    A0A1S0T0C1     109
+    A0A1S0T0A9     120
+    A0A1S0T066     135
+    A0A1S0T088     113
+    A0A1S0T045     103
+    A0A1S0T073     164
+    A0A1S0T062     147
+    A0A1S0SZZ3     104
+    A0A1S0SZN9     130
+    A0A1S0T0D1     108
+    A0A1S0T0A0     125
+    A0A1S0T093     113
+    A0A1S0SZW7     133
+    A0A1S0T0B3     101
+    A0A1S0T034     149
+    A0A1S0T0B0     113
+    A0A1S0T059     101
+    A0A1S0T0A8     108
+    A0A1S0T086     136
+    A0A1S0T0B6     113
+    A0A1S0T065     137
+    A0A1S0T058     133
+    A0A1S0T090     108
+    A0A1S0T072     145
+    A0A1S0T069     239
+    A0A1S0T004     163
+    Name: n, Length: 6816, dtype: int64
 
-    <ipython-input-21-3164baf8fe02> in <module>()
-    ----> 1 prots['n']
-    
-
-    NameError: name 'prots' is not defined
 
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     print(prots['n']['P31383'])
     print(prots['n'].max())
@@ -554,43 +744,33 @@ Cada coluna comporta-se como uma Série.
     print(prots['n'].mean())
 
 
-::
+.. code-block:: text
 
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-22-ab0a3cfb0aa7> in <module>()
-    ----> 1 print(prots['n']['P31383'])
-          2 print(prots['n'].max())
-          3 print(prots['n'].min())
-          4 print(prots['n'].mean())
+    635
+    4910
+    16
+    445.49838615023475
     
 
-    NameError: name 'prots' is not defined
-
-
-.. code:: ipython3
+.. code-block:: ipython3
 
     print(prots['n'].describe())
 
 
-::
+.. code-block:: text
 
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-23-d18956a71c5a> in <module>()
-    ----> 1 print(prots['n'].describe())
+    count    6816.000000
+    mean      445.498386
+    std       380.358091
+    min        16.000000
+    25%       169.000000
+    50%       352.000000
+    75%       585.000000
+    max      4910.000000
+    Name: n, dtype: float64
     
 
-    NameError: name 'prots' is not defined
-
-
-.. code:: ipython3
+.. code-block:: ipython3
 
     desc = prots['n'].describe()
     min_aa = desc['min']
@@ -600,300 +780,683 @@ Cada coluna comporta-se como uma Série.
     print('Maior proteína:', max_aa)
 
 
-::
+.. code-block:: text
 
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-24-de754f1e2db9> in <module>()
-    ----> 1 desc = prots['n'].describe()
-          2 min_aa = desc['min']
-          3 max_aa = desc['max']
-          4 
-          5 print('Menor proteína:', min_aa)
+    Menor proteína: 16.0
+    Maior proteína: 4910.0
     
-
-    NameError: name 'prots' is not defined
-
 
 Quais são as proteínas menores e maiores?
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     min_aa = prots['n'].describe()['min']
     
     prots[prots['n'] == min_aa]
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. raw:: html
 
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-25-0cc7991238d5> in <module>()
-    ----> 1 min_aa = prots['n'].describe()['min']
-          2 
-          3 prots[prots['n'] == min_aa]
+    <div>
+    <style>
+        .dataframe thead tr:only-child th {
+            text-align: right;
+        }
     
+        .dataframe thead th {
+            text-align: left;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>n</th>
+          <th>rev</th>
+          <th>seq</th>
+        </tr>
+        <tr>
+          <th>ac</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Q3E775</th>
+          <td>16</td>
+          <td>Reviewed</td>
+          <td>MLSLIFYLRFPSYIRG</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
 
-    NameError: name 'prots' is not defined
 
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     max_aa = prots['n'].describe()['max']
     
     prots[prots['n'] == max_aa]
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. raw:: html
 
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-26-abd9ebf3b827> in <module>()
-    ----> 1 max_aa = prots['n'].describe()['max']
-          2 
-          3 prots[prots['n'] == max_aa]
+    <div>
+    <style>
+        .dataframe thead tr:only-child th {
+            text-align: right;
+        }
     
+        .dataframe thead th {
+            text-align: left;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>n</th>
+          <th>rev</th>
+          <th>seq</th>
+        </tr>
+        <tr>
+          <th>ac</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Q12019</th>
+          <td>4910</td>
+          <td>Reviewed</td>
+          <td>MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
 
-    NameError: name 'prots' is not defined
 
 
 Para obter uma linha usamos ``.loc`` e indexação por um *label*.
 
 A linha obtida é uma *Series*.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     prots.loc['P31383']
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. code-block:: text
 
-    NameError                                 Traceback (most recent call last)
+    n                                                    635
+    rev                                             Reviewed
+    seq    MSGARSTTAGAVPSAATTSTTSTTSNSKDSDSNESLYPLALLMDEL...
+    Name: P31383, dtype: object
 
-    <ipython-input-27-06c5a4fa61c3> in <module>()
-    ----> 1 prots.loc['P31383']
-    
-
-    NameError: name 'prots' is not defined
 
 
 Quantos triptofanos tem a proteína P31383?
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     prots.loc['P31383']['seq'].count('W')
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. code-block:: text
 
-    NameError                                 Traceback (most recent call last)
+    7
 
-    <ipython-input-28-0f1604ad8dfa> in <module>()
-    ----> 1 prots.loc['P31383']['seq'].count('W')
-    
-
-    NameError: name 'prots' is not defined
 
 
 A indexação com condições sobre as colunas é muito poderosa.
 
 Qauntas proteínas têm mais de 2000 aminoácidos?
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     bigs = prots[prots['n'] > 2000]
     print(len(bigs))
     bigs
 
 
-::
+.. code-block:: text
 
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-29-f19a0a283b3d> in <module>()
-    ----> 1 bigs = prots[prots['n'] > 2000]
-          2 print(len(bigs))
-          3 bigs
+    37
     
 
-    NameError: name 'prots' is not defined
 
 
-.. code:: ipython3
+.. raw:: html
+
+    <div>
+    <style>
+        .dataframe thead tr:only-child th {
+            text-align: right;
+        }
+    
+        .dataframe thead th {
+            text-align: left;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>n</th>
+          <th>rev</th>
+          <th>seq</th>
+        </tr>
+        <tr>
+          <th>ac</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Q06179</th>
+          <td>2628</td>
+          <td>Reviewed</td>
+          <td>MMFPINVLLYKWLIFAVTFLWSCKILLRKLLGINITWINLFKLEIC...</td>
+        </tr>
+        <tr>
+          <th>P33892</th>
+          <td>2672</td>
+          <td>Reviewed</td>
+          <td>MTAILNWEDISPVLEKGTRESHVSKRVPFLQDISQLVRQETLEKPQ...</td>
+        </tr>
+        <tr>
+          <th>Q12680</th>
+          <td>2145</td>
+          <td>Reviewed</td>
+          <td>MPVLKSDNFDPLEEAYEGGTIQNYNDEHHLHKSWANVIPDKRGLYD...</td>
+        </tr>
+        <tr>
+          <th>P32874</th>
+          <td>2273</td>
+          <td>Reviewed</td>
+          <td>KGKTITHGQSWGARRIHSHFYITIFTITCIRIGQYKLALYLDPYRF...</td>
+        </tr>
+        <tr>
+          <th>P19158</th>
+          <td>3079</td>
+          <td>Reviewed</td>
+          <td>MSQPTKNKKKEHGTDSKSSRMTRTLVNHILFERILPILPVESNLST...</td>
+        </tr>
+        <tr>
+          <th>P39526</th>
+          <td>2014</td>
+          <td>Reviewed</td>
+          <td>MANRSLKKVIETSSNNGHDLLTWITTNLEKLICLKEVNDNEIQEVK...</td>
+        </tr>
+        <tr>
+          <th>P18963</th>
+          <td>3092</td>
+          <td>Reviewed</td>
+          <td>MNQSDPQDKKNFPMEYSLTKHLFFDRLLLVLPIESNLKTYADVEAD...</td>
+        </tr>
+        <tr>
+          <th>Q12019</th>
+          <td>4910</td>
+          <td>Reviewed</td>
+          <td>MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...</td>
+        </tr>
+        <tr>
+          <th>P25655</th>
+          <td>2108</td>
+          <td>Reviewed</td>
+          <td>MLSATYRDLNTASNLETSKEKQAAQIVIAQISLLFTTLNNDNFESV...</td>
+        </tr>
+        <tr>
+          <th>P33334</th>
+          <td>2413</td>
+          <td>Reviewed</td>
+          <td>MSGLPPPPPGFEEDSDLALPPPPPPPPGYEIEELDNPMVPSSVNED...</td>
+        </tr>
+        <tr>
+          <th>Q00416</th>
+          <td>2231</td>
+          <td>Reviewed</td>
+          <td>MNSNNPDNNNSNNINNNNKDKDIAPNSDVQLATVYTKAKSYIPQIE...</td>
+        </tr>
+        <tr>
+          <th>P48415</th>
+          <td>2195</td>
+          <td>Reviewed</td>
+          <td>MTPEAKKRKNQKKKLKQKQKKAAEKAASHSEEPLELPESTINSSFN...</td>
+        </tr>
+        <tr>
+          <th>P32600</th>
+          <td>2474</td>
+          <td>Reviewed</td>
+          <td>MNKYINKYTTPPNLLSLRQRAEGKHRTRKKLTHKSHSHDDEMSTTS...</td>
+        </tr>
+        <tr>
+          <th>P38811</th>
+          <td>3744</td>
+          <td>Reviewed</td>
+          <td>MSLTEQIEQFASRFRDDDATLQSRYSTLSELYDIMELLNSPEDYHF...</td>
+        </tr>
+        <tr>
+          <th>Q03280</th>
+          <td>3268</td>
+          <td>Reviewed</td>
+          <td>MVLFTRCEKARKEKLAAGYKPLVDYLIDCDTPTFLERIEAIQEWDR...</td>
+        </tr>
+        <tr>
+          <th>P35169</th>
+          <td>2470</td>
+          <td>Reviewed</td>
+          <td>MEPHEEQIWKSKLLKAANNDMDMDRNVPLAPNLNVNMNMKMNASRN...</td>
+        </tr>
+        <tr>
+          <th>P35194</th>
+          <td>2493</td>
+          <td>Reviewed</td>
+          <td>MAKQRQTTKSSKRYRYSSFKARIDDLKIEPARNLEKRVHDYVESSH...</td>
+        </tr>
+        <tr>
+          <th>Q07878</th>
+          <td>3144</td>
+          <td>Reviewed</td>
+          <td>MLESLAANLLNRLLGSYVENFDPNQLNVGIWSGDVKLKNLKLRKDC...</td>
+        </tr>
+        <tr>
+          <th>Q00955</th>
+          <td>2233</td>
+          <td>Reviewed</td>
+          <td>MSEESLFESSPQKMEYEITNYSERHTELPGHFIGLNTVDKLEESPL...</td>
+        </tr>
+        <tr>
+          <th>P38111</th>
+          <td>2368</td>
+          <td>Reviewed</td>
+          <td>MESHVKYLDELILAIKDLNSGVDSKVQIKKVPTDPSSSQEYAKSLK...</td>
+        </tr>
+        <tr>
+          <th>P38110</th>
+          <td>2787</td>
+          <td>Reviewed</td>
+          <td>MEDHGIVETLNFLSSTKIKERNNALDELTTILKEDPERIPTKALST...</td>
+        </tr>
+        <tr>
+          <th>P39960</th>
+          <td>2167</td>
+          <td>Reviewed</td>
+          <td>MKGLLWSKNRKSSTASASSSSTSTSHKTTTASTASSSSPSSSSQTI...</td>
+        </tr>
+        <tr>
+          <th>P43583</th>
+          <td>2143</td>
+          <td>Reviewed</td>
+          <td>MTANNDDDIKSPIPITNKTLSQLKRFERSPGRPSSSQGEIKRKKSR...</td>
+        </tr>
+        <tr>
+          <th>P25356</th>
+          <td>2167</td>
+          <td>Reviewed</td>
+          <td>MNSIINAASKVLRLQDDVKKATIILGDILILQPINHEVEPDVENLV...</td>
+        </tr>
+        <tr>
+          <th>P32639</th>
+          <td>2163</td>
+          <td>Reviewed</td>
+          <td>MTEHETKDKAKKIREIYRYDEMSNKVLKVDKRFMNTSQNPQRDAEI...</td>
+        </tr>
+        <tr>
+          <th>P50077</th>
+          <td>2039</td>
+          <td>Reviewed</td>
+          <td>MQGRKRTLTEPFEPNTNPFGDNAAVMTENVEDNSETDGNRLESKPQ...</td>
+        </tr>
+        <tr>
+          <th>Q12150</th>
+          <td>2958</td>
+          <td>Reviewed</td>
+          <td>MEAISQLRGVPLTHQKDFSWVFLVDWILTVVVCLTMIFYMGRIYAY...</td>
+        </tr>
+        <tr>
+          <th>P08678</th>
+          <td>2026</td>
+          <td>Reviewed</td>
+          <td>MSSKPDTGSEISGPQRQEEQEQQIEQSSPTEANDRSIHDEVPKVKK...</td>
+        </tr>
+        <tr>
+          <th>P21951</th>
+          <td>2222</td>
+          <td>Reviewed</td>
+          <td>MMFGKKKNNGGSSTARYSAGNKYNTLSNNYALSAQQLLNASKIDDI...</td>
+        </tr>
+        <tr>
+          <th>P36022</th>
+          <td>4092</td>
+          <td>Reviewed</td>
+          <td>MCKNEARLANELIEFVAATVTGIKNSPKENEQAFIDYLHCQYLERF...</td>
+        </tr>
+        <tr>
+          <th>P07149</th>
+          <td>2051</td>
+          <td>Reviewed</td>
+          <td>MDAYSTRPLTLSHGSLEHVLLVPTASFFIASQLQEQFNKILPEPTE...</td>
+        </tr>
+        <tr>
+          <th>P34756</th>
+          <td>2278</td>
+          <td>Reviewed</td>
+          <td>MSSEEPHASISFPDGSHVRSSSTGTSSVNTIDATLSRPNYIKKPSL...</td>
+        </tr>
+        <tr>
+          <th>Q00402</th>
+          <td>2748</td>
+          <td>Reviewed</td>
+          <td>MSHNNRHKKNNDKDSSAGQYANSIDNSLSQESVSTNGVTRMANLKA...</td>
+        </tr>
+        <tr>
+          <th>P07259</th>
+          <td>2214</td>
+          <td>Reviewed</td>
+          <td>MATIAPTAPITPPMESTGDRLVTLELKDGTVLQGYSFGAEKSVAGE...</td>
+        </tr>
+        <tr>
+          <th>P11075</th>
+          <td>2009</td>
+          <td>Reviewed</td>
+          <td>MSEQNSVVNAEKGDGEISSNVETASSVNPSVKPQNAIKEEAKETNG...</td>
+        </tr>
+        <tr>
+          <th>P40468</th>
+          <td>2376</td>
+          <td>Reviewed</td>
+          <td>MASRFTFPPQRDQGIGFTFPPTNKAEGSSNNNQISIDIDPSGQDVL...</td>
+        </tr>
+        <tr>
+          <th>Q06116</th>
+          <td>2489</td>
+          <td>Reviewed</td>
+          <td>MSMLPWSQIRDVSKLLLGFMLFIISIQKIASILMSWILMLRHSTIR...</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+.. code-block:: ipython3
 
     # Média dos comprimentos das proteínas
     # com mais de 2000 aminoácidos
     prots[prots['n'] > 2000]['n'].mean()
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. code-block:: text
 
-    NameError                                 Traceback (most recent call last)
+    2564.4054054054054
 
-    <ipython-input-30-93dbf92eb37d> in <module>()
-          1 # Média dos comprimentos das proteínas
-          2 # com mais de 2000 aminoácidos
-    ----> 3 prots[prots['n'] > 2000]['n'].mean()
-    
-
-    NameError: name 'prots' is not defined
 
 
 De novo, qual a proteína maior?
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     prots['n'].idxmax()
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. code-block:: text
 
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-31-7c6e56a5643c> in <module>()
-    ----> 1 prots['n'].idxmax()
-    
-
-    NameError: name 'prots' is not defined
+    'Q12019'
 
 
-.. code:: ipython3
+
+.. code-block:: ipython3
 
     prots.loc[prots['n'].idxmax()]
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. code-block:: text
 
-    NameError                                 Traceback (most recent call last)
+    n                                                   4910
+    rev                                             Reviewed
+    seq    MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...
+    Name: Q12019, dtype: object
 
-    <ipython-input-32-37a2d87ece92> in <module>()
-    ----> 1 prots.loc[prots['n'].idxmax()]
-    
-
-    NameError: name 'prots' is not defined
 
 
 Para aplicar funções de *strings* a toda uma coluna de uma só vez,
 usamos o atributo ``.str.`` sobre essa coluna (o resultado é uma Série):
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     prots['seq'].str.count('W')
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. code-block:: text
 
-    NameError                                 Traceback (most recent call last)
+    ac
+    P29703        11
+    P36001         5
+    P08524         4
+    P28003         5
+    Q99341         0
+    P53913         0
+    P38297         5
+    P39012        15
+    P22146         5
+    P38631        37
+    P43557         1
+    P53233         7
+    Q12676         4
+    P32614         2
+    P32791        16
+    P38310         7
+    P18852         1
+    P42837        14
+    Q08967        14
+    P23900        10
+    Q05015         2
+    P11710         7
+    Q08559         1
+    P36033        11
+    Q12473        15
+    Q12209        11
+    Q12029         4
+    P32805         3
+    P36170         9
+    P39712        20
+                  ..
+    A0A1S0T076     1
+    A0A1S0T0A7     0
+    A0A1S0T0B4     2
+    A0A1S0T0A4     0
+    A0A1S0T0C1     0
+    A0A1S0T0A9     2
+    A0A1S0T066     1
+    A0A1S0T088     1
+    A0A1S0T045     0
+    A0A1S0T073     4
+    A0A1S0T062     4
+    A0A1S0SZZ3     2
+    A0A1S0SZN9     0
+    A0A1S0T0D1     2
+    A0A1S0T0A0     2
+    A0A1S0T093     3
+    A0A1S0SZW7     1
+    A0A1S0T0B3     0
+    A0A1S0T034     2
+    A0A1S0T0B0     1
+    A0A1S0T059     1
+    A0A1S0T0A8     0
+    A0A1S0T086     6
+    A0A1S0T0B6     3
+    A0A1S0T065     0
+    A0A1S0T058     0
+    A0A1S0T090     2
+    A0A1S0T072     2
+    A0A1S0T069     6
+    A0A1S0T004     2
+    Name: seq, Length: 6816, dtype: int64
 
-    <ipython-input-33-feedb36337c9> in <module>()
-    ----> 1 prots['seq'].str.count('W')
-    
-
-    NameError: name 'prots' is not defined
 
 
 Com uma indexação por nome, podemos inserir uma coluna nova na
 ``DataFrame`` (no fim).
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     prots['W'] = prots['seq'].str.count('W')
     prots.head()
 
 
-::
 
 
-    ---------------------------------------------------------------------------
+.. raw:: html
 
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-34-32ebe5364b1f> in <module>()
-    ----> 1 prots['W'] = prots['seq'].str.count('W')
-          2 prots.head()
+    <div>
+    <style>
+        .dataframe thead tr:only-child th {
+            text-align: right;
+        }
     
+        .dataframe thead th {
+            text-align: left;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>n</th>
+          <th>rev</th>
+          <th>seq</th>
+          <th>W</th>
+        </tr>
+        <tr>
+          <th>ac</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>P29703</th>
+          <td>316</td>
+          <td>Reviewed</td>
+          <td>MEEYDYSDVKPLPIETDLQDELCRIMYTEDYKRLMGLARALISLNE...</td>
+          <td>11</td>
+        </tr>
+        <tr>
+          <th>P36001</th>
+          <td>430</td>
+          <td>Reviewed</td>
+          <td>MDDISGRQTLPRINRLLEHVGNPQDSLSILHIAGTNGKETVSKFLT...</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <th>P08524</th>
+          <td>352</td>
+          <td>Reviewed</td>
+          <td>MASEKEIRRERFLNVFPKLVEELNASLLAYGMPKEACDWYAHSLNY...</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <th>P28003</th>
+          <td>413</td>
+          <td>Reviewed</td>
+          <td>MGLYSPESEKSQLNMNYIGKDDSQSIFRRLNQNLKASNNNNDSNKN...</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <th>Q99341</th>
+          <td>161</td>
+          <td>Reviewed</td>
+          <td>MSLYQSIVFIARNVVNSITRILHDHPTNSSLITQTYFITPNHSGKN...</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
 
-    NameError: name 'prots' is not defined
 
 
 As ``DataFrame``\ s também têm funções descritivas, mas o facto de cada
 coluna ser uma Série podemos realizar muitas análises de uma forma
 simples.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     prots.info()
 
 
-::
+.. code-block:: text
 
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-35-747a6e6dff3c> in <module>()
-    ----> 1 prots.info()
+    <class 'pandas.core.frame.DataFrame'>
+    Index: 6816 entries, P29703 to A0A1S0T004
+    Data columns (total 4 columns):
+    n      6816 non-null int64
+    rev    6816 non-null object
+    seq    6816 non-null object
+    W      6816 non-null int64
+    dtypes: int64(2), object(2)
+    memory usage: 586.2+ KB
     
 
-    NameError: name 'prots' is not defined
-
-
-.. code:: ipython3
+.. code-block:: ipython3
 
     print(prots['rev'].value_counts())
 
 
-::
+.. code-block:: text
 
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-36-2023e2a91a58> in <module>()
-    ----> 1 print(prots['rev'].value_counts())
+    Reviewed      6721
+    Unreviewed      95
+    Name: rev, dtype: int64
     
 
-    NameError: name 'prots' is not defined
-
-
-.. code:: ipython3
+.. code-block:: ipython3
 
     # só no IPython/Jupyter notebook
     %matplotlib inline
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import matplotlib.pyplot as pl
     pl.ylabel('Proteins')
@@ -901,22 +1464,6 @@ simples.
     p = prots['n'].plot(kind='hist', bins=100)
 
 
-::
 
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-38-71f3320dfe60> in <module>()
-          2 pl.ylabel('Proteins')
-          3 pl.xlabel('Length (aa)')
-    ----> 4 p = prots['n'].plot(kind='hist', bins=100)
-    
-
-    NameError: name 'prots' is not defined
-
-
-
-.. image:: 14_pandas_files/14_pandas_68_1.png
+.. image:: 14_pandas_files/14_pandas_68_0.png
 

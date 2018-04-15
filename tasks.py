@@ -3,9 +3,11 @@ import subprocess
 import shutil
 import os
 import glob
+from pathlib import Path
 from invoke import task, run, collection
 
 _AULAS_DIR = 'aulas/'
+_SOURCE_DIR = 'source/'
 
 nbfiles = ['1_basicos.ipynb', '2_iteracoes.ipynb',
            '3_listas_dicts.ipynb', '4_strings.ipynb',
@@ -72,6 +74,38 @@ def generate_rsts(nbfiles):
 
     print('==== Done converting to *.rst ====')
         
+
+def fix_code_blocks(rstfiles):
+        
+    for rst in rstfiles:
+        name = rst
+        
+        print (f'=========== RST file {name} ================')
+
+        print('-- creating backup')
+        backupname = str(name) + '.bak'
+        shutil.copy(str(name), backupname)
+        
+        with open(name) as f:
+            alltext = f.read()
+
+        print('-- fixing output blocks')
+        alltext = alltext.replace('.. parsed-literal::', '.. code-block:: text')
+        print('-- fixing code blocks')
+        alltext = alltext.replace('.. code:: ipython3', '.. code-block:: ipython3')
+
+        with open(name, 'w') as f:
+            f.write(alltext)
+        print('done.')
+
+@task
+def fix_blocks(ctx):
+    """Change directives of code blocks for sphinx specific directives"""
+    print("Fixing code blocks in source")
+    source_dir = Path(_SOURCE_DIR)
+    files = source_dir.glob('*.rst')
+    fix_code_blocks(files)
+
 
 def generate_slides(nbfiles):
     for nbf in nbfiles:

@@ -20,7 +20,7 @@ Para calcular a raíz quadrada de um número a:
 
 :math:`x` é a raíz quadrada de :math:`a`.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = 2.0
     print('a =', a)
@@ -33,13 +33,13 @@ Para calcular a raíz quadrada de um número a:
     print('x =', x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     a = 2.0
     x = 1.414213562373095
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = 2.0
     
@@ -52,7 +52,7 @@ Para calcular a raíz quadrada de um número a:
     print("A raíz quadrada de {} é {}".format(a,x))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     1.0
     1.5
@@ -89,7 +89,7 @@ Para calcular a raíz quadrada de um número a:
 
 x é a raíz quadrada de a.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = 2.0
     
@@ -105,7 +105,7 @@ x é a raíz quadrada de a.
     print("A raíz quadrada de {} é {}".format(a,x))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     1.0
     1.5
@@ -115,7 +115,7 @@ x é a raíz quadrada de a.
     A raíz quadrada de 2.0 é 1.414213562373095
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def babilonico(a, show_iters=False):
         x = 1.0
@@ -132,7 +132,7 @@ x é a raíz quadrada de a.
     print("A raíz quadrada de {} é {}".format(2.0,r))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     1.0
     1.5
@@ -177,7 +177,7 @@ existe **uma raíz** no intervalo :math:`]a, b[`:
 :math:`x_m` é a raíz da função :math:`f(x)`, isto é
 :math:`f(x_m) \approx 0`.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def bissect(f, a, b):
         epsilon = 1e-6
@@ -202,13 +202,13 @@ existe **uma raíz** no intervalo :math:`]a, b[`:
     print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Raíz encontrada:
     1.2599201202392578
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def bissect(f, a, b):
         epsilon, epsilonf = 1e-6, 1e-10
@@ -234,14 +234,14 @@ existe **uma raíz** no intervalo :math:`]a, b[`:
     print("x = {}, f(x) = {:9.7f}".format(x,fx))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     x = 1.2599201202392578, f(x) = -0.0000044
     
 
 Monitorizando as bisseções:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def bissect(f, a, b):
         epsilon, epsilonf = 1e-6, 1e-10
@@ -277,7 +277,7 @@ Monitorizando as bisseções:
         print("{0:7.5f} {1:7.5f} {3:10.8f} {2:10.7f}".format(a,b,fm, abs(b-a)))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     x = 1.2599201202392578, f(x) = -0.0000044
     
@@ -328,7 +328,7 @@ derivada :math:`f'(x)`:
 **NOTA**: O algoritmo babilónico é um caso particular do método de
 Newton para :math:`f(x) = x^2 -a`
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def newton(f, df, x):
         epsilon = 1e-6
@@ -338,7 +338,7 @@ Newton para :math:`f(x) = x^2 -a`
             fx, dfx = f(x),df(x)
         return (x, fx)
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def f(x):
         return x**3 -2
@@ -351,14 +351,14 @@ Newton para :math:`f(x) = x^2 -a`
     print("x = {}, f(x) = {:9.7f}".format(x,fx))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     x = 1.2599210498953948, f(x) = 0.0000000
     
 
 Monitorizando as iterações:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def newton(f, df, x):
         epsilon = 1e-6
@@ -391,7 +391,7 @@ Monitorizando as iterações:
         print("{0:9.7f} {1:9.7f}".format(x, fx))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     x = 1.2599210498953948, f(x) = 0.0000000
     
@@ -446,7 +446,7 @@ Método de Newton:
 
 Método de Newton com a função :math:`sin(x)`
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     from math import sin, cos, pi
     
@@ -478,7 +478,7 @@ Método de Newton com a função :math:`sin(x)`
         print("x0 = {:<7.2f} x = {:4.1f} pi".format(x0, pi_x))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     x0 = 0.10    x =  0.0 pi
     x0 = 1.10    x =  0.0 pi
@@ -489,7 +489,7 @@ Método de Newton com a função :math:`sin(x)`
     x0 = 12.10   x =  4.0 pi
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def f(x):
         return sin(x)
@@ -522,7 +522,7 @@ Método de Newton com a função :math:`sin(x)`
         print("para x0 = {},    x = {:4.1f} pi".format(x0, pi_x))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ----------------
     x0 = 0.1
@@ -571,17 +571,17 @@ Método de Newton com a função :math:`sin(x)`
     para x0 = 12.1,    x =  4.0 pi
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     %matplotlib inline
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     from matplotlib import pyplot as pl
     import matplotlib as mpl
     from numpy import linspace, sin, cos
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     x = linspace(-6, 10, 1000)
     y = sin(x)
@@ -596,7 +596,7 @@ Método de Newton com a função :math:`sin(x)`
 .. image:: 13_algoritmos_files/13_algoritmos_29_0.png
 
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     mpl.rcParams['figure.figsize'] = (10,6)
     
@@ -629,7 +629,7 @@ Método de Newton com a função :math:`sin(x)`
         pl.plot(xpoints, ypoints, color=color, linewidth=2)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Para x0 = 0.5, raíz = -0.000
     Para x0 = 1.1, raíz =  0.000
@@ -640,7 +640,7 @@ Método de Newton com a função :math:`sin(x)`
 .. image:: 13_algoritmos_files/13_algoritmos_30_1.png
 
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def f(x):
         return sin(x)
@@ -663,7 +663,7 @@ Método de Newton com a função :math:`sin(x)`
         pl.xlim(-1,10)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Para x0 = 5.1, raíz = 182.212
     
@@ -672,7 +672,7 @@ Método de Newton com a função :math:`sin(x)`
 .. image:: 13_algoritmos_files/13_algoritmos_31_1.png
 
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def f(x):
         return sin(x)
@@ -695,7 +695,7 @@ Método de Newton com a função :math:`sin(x)`
         pl.xlim(180,185)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Para x0 = 5.1, raíz = 182.212
     
@@ -704,7 +704,7 @@ Método de Newton com a função :math:`sin(x)`
 .. image:: 13_algoritmos_files/13_algoritmos_32_1.png
 
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     def plot_newton(x0):
         def f(x):
@@ -728,7 +728,7 @@ Método de Newton com a função :math:`sin(x)`
         #pl.show()
         #print('Para x0 = {}, raíz = {:4.2f} pi'.format(x0, x_pi))
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     import ipywidgets as widgets
     i = widgets.interact(plot_newton, x0=widgets.FloatSlider(min=1.5, max=3.0, step=0.01, value=2.5))

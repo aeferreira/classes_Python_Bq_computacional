@@ -24,10 +24,10 @@ Recordemos: em comum com as outras coleções,
 
 Vejamos algumas funções que são **específicas das listas**:
 
-``.append()``, ``.insert()``.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+``.append()``, ``.insert()``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [1, 2, 3, 4]
     print(a)
@@ -41,7 +41,7 @@ Vejamos algumas funções que são **específicas das listas**:
     print('\ndepois de insert(1, 20):', a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [1, 2, 3, 4]
     
@@ -50,10 +50,10 @@ Vejamos algumas funções que são **específicas das listas**:
     depois de insert(1, 20): [1, 20, 2, 3, 4, 10]
     
 
-``.extend()``.
-~~~~~~~~~~~~~~
+``.extend()``
+~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [1, 2, 3, 4]
     print(a)
@@ -76,7 +76,7 @@ Vejamos algumas funções que são **específicas das listas**:
 ``.remove()``
 ~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
     print(a)
@@ -86,17 +86,17 @@ Vejamos algumas funções que são **específicas das listas**:
     print('\ndepois de remove(3):', a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
     
     depois de remove(3): [1, 2, 4, 1, 2, 3, 4, 1, 2, 3, 4]
     
 
-``.count()``.
-~~~~~~~~~~~~~
+``.count()``
+~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
     print(a)
@@ -105,7 +105,7 @@ Vejamos algumas funções que são **específicas das listas**:
     print(a.count(1))
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
     
@@ -127,7 +127,7 @@ novas listas.
 
 Podemos combinar ``.append()`` com ``for``:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = []
     for i in range(40):
@@ -136,7 +136,7 @@ Podemos combinar ``.append()`` com ``for``:
     print(a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576, 625, 676, 729, 784, 841, 900, 961, 1024, 1089, 1156, 1225, 1296, 1369, 1444, 1521]
     
@@ -147,7 +147,7 @@ pondo o resultado numa lista**
 
 Podemos combinar ``.append()`` com ``for`` e ``if``:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = []
     for i in range(40):
@@ -158,7 +158,7 @@ Podemos combinar ``.append()`` com ``for`` e ``if``:
     print(a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [400, 441, 484, 529, 576, 625, 676, 729, 784]
     
@@ -166,7 +166,7 @@ Podemos combinar ``.append()`` com ``for`` e ``if``:
 **Problema: somar os 10 primeiros números ímpares**
 :math:`\sum\limits_{i=0}^9 2i+1`
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     impares = []
     for i in range(10):
@@ -181,7 +181,7 @@ Podemos combinar ``.append()`` com ``for`` e ``if``:
     print('Pela soma de prog. aritm.',(1+19)/2*10)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
     soma dos 10 primeiros ímpares: 100
@@ -194,7 +194,7 @@ Indexação
 As listas têm uma **numeração implícita, (a contar do zero)**, e podemos
 **indexar** uma lista usando ``lista[posição]``
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     enzimas = ['HK', 'G6PDH', 'TPI', 'Ald', 'PFK', 'PK']
     #           0       1       2      3      4      5   len()
@@ -204,7 +204,7 @@ As listas têm uma **numeração implícita, (a contar do zero)**, e podemos
     print(enzimas[len(enzimas) -1])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     HK
     Ald
@@ -214,7 +214,7 @@ As listas têm uma **numeração implícita, (a contar do zero)**, e podemos
 As listas têm também uma **numeração implícita com números negativos**:
 o último elemento é -1, o penúltimo -2 e assim sucessivamente.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     enzimas = ['HK', 'G6PDH', 'TPI', 'Ald', 'PFK', 'PK']
     #                          -4     -3     -2     -1
@@ -224,7 +224,7 @@ o último elemento é -1, o penúltimo -2 e assim sucessivamente.
     print(enzimas[-1])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     TPI
     HK
@@ -233,14 +233,14 @@ o último elemento é -1, o penúltimo -2 e assim sucessivamente.
 
 A indexação permite usar elementos de uma lista pela sua posição
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
     
     print( 2*a[1] + a[2] + 2*a[-1] )
 
 
-.. parsed-literal::
+.. code-block:: text
 
     11
     
@@ -248,7 +248,7 @@ A indexação permite usar elementos de uma lista pela sua posição
 A indexação permite também **modificar** um elemento que está numa
 posição
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
     print(a)
@@ -257,7 +257,7 @@ posição
     print(a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
     [1, 1, 4100, 2, 2, 2, 3, 3, 3, 4, 4, 4]
@@ -265,7 +265,7 @@ posição
 
 Podemos também indexar a partir da iteração de numeros inteiros
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [1, 2, 3, 2, 1]
     
@@ -278,7 +278,7 @@ Podemos também indexar a partir da iteração de numeros inteiros
         print(a[i])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     1
     2
@@ -296,7 +296,7 @@ Podemos também indexar a partir da iteração de numeros inteiros
 **Problema: calcular as diferenças sucessivas entre os elementos de uma
 lista, pondo o resultado numa lista**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = [1, 1, 1, 2, 2, 2, 3, 3, 3, 5, 5, 7]
     
@@ -309,7 +309,7 @@ lista, pondo o resultado numa lista**
     print(difs)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [1, 1, 1, 2, 2, 2, 3, 3, 3, 5, 5, 7]
     [0, 0, 1, 0, 0, 1, 0, 0, 2, 0, 2]
@@ -318,7 +318,7 @@ lista, pondo o resultado numa lista**
 **Problema: mostrar que as diferenças sucessivas entre os quadrados
 perfeitos, são os números ímpares (usar os 20 primeiros)**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     #calcular os quadrados perfeitos
     quads = []
@@ -335,7 +335,7 @@ perfeitos, são os números ímpares (usar os 20 primeiros)**
     print('diferenças sucessivas', difs)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     quadrados perfeitos [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
     diferenças sucessivas [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37]
@@ -377,14 +377,14 @@ Usa-se um comando ``for`` para percorrer a lista original.
 
 Como obter uma lista com numeros ímpares:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     impares = [2*i+1 for i in range(10)]
     
     print(impares)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
     
@@ -394,7 +394,7 @@ para percorrer a lista original
 
 Um outro exemplo: obter os quadrados perfeitos entre 400 e 800
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     quads = [i**2 for i in range(30)]
     
@@ -403,7 +403,7 @@ Um outro exemplo: obter os quadrados perfeitos entre 400 e 800
     print(quads_filtrados)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [441, 484, 529, 576, 625, 676, 729, 784]
     
@@ -415,7 +415,7 @@ Num outro exemplo, pretendemos obter uma lista com as diferenças
 sucessivas entre quadrados perfeitos, para mostrar que são os números
 ímpares:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Diferenças entre quadrados perfeitos sucessivos
     # são os numeros ímpares
@@ -426,7 +426,7 @@ sucessivas entre quadrados perfeitos, para mostrar que são os números
     print('\nDiferenças:', difs)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Quadrados:  [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
     
@@ -435,7 +435,7 @@ sucessivas entre quadrados perfeitos, para mostrar que são os números
 
 **Problema: retirar todas as ocorrências de um elemento de uma lista**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     kill = 'Bad'
     a = ['Good','Nice','OK','Bad','Cool','Bad','OK']
@@ -445,7 +445,7 @@ sucessivas entre quadrados perfeitos, para mostrar que são os números
     print(a_clean)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ['Good', 'Nice', 'OK', 'Bad', 'Cool', 'Bad', 'OK']
     ['Good', 'Nice', 'OK', 'Cool', 'OK']
@@ -454,7 +454,7 @@ sucessivas entre quadrados perfeitos, para mostrar que são os números
 **Problema: retirar todas as ocorrências dos elemento de uma "lista
 negra"**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     black_list = ['Bad', 'So so']
     a = ['Good','So so','OK','Bad','Cool','Bad','OK']
@@ -464,7 +464,7 @@ negra"**
     print(a_clean)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ['Good', 'So so', 'OK', 'Bad', 'Cool', 'Bad', 'OK']
     ['Good', 'OK', 'Cool', 'OK']
@@ -473,14 +473,14 @@ negra"**
 **Problema: obter uma lista de numeros até 300 que sejam múltiplos de 3
 e de 7**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     mult_3_7 = [x for x in range(301) if x%7==0 and x%3==0]
     
     print(mult_3_7)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     [0, 21, 42, 63, 84, 105, 126, 147, 168, 189, 210, 231, 252, 273, 294]
     
@@ -498,7 +498,7 @@ Mais algumas funções de listas
 
 Todas estas funções **modificam** uma lista, tal como ``.append()``.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom']
     print('lista original')
@@ -513,7 +513,7 @@ Todas estas funções **modificam** uma lista, tal como ``.append()``.
     print(a)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     lista original
     ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom']
@@ -525,7 +525,7 @@ Todas estas funções **modificam** uma lista, tal como ``.append()``.
     ['dom', 'qua', 'qui', 'sab', 'seg', 'sex', 'ter']
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom']
     print('lista original')
@@ -540,7 +540,7 @@ Todas estas funções **modificam** uma lista, tal como ``.append()``.
     print('O valor retirado foi', x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     lista original
     ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom']
@@ -565,7 +565,7 @@ A maneira de ler, inserir e modificar valores num dicionário é através
 das suas chaves. O operador ``in`` testa a existência de uma chave num
 dicionário.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H':1, 'Li':3, 'Na':11, 'K':19}
     
@@ -579,7 +579,7 @@ dicionário.
     print('O: ', d['O'])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     K:  19
     Li: 3
@@ -587,7 +587,7 @@ dicionário.
     O:  18
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H':1, 'Li':3, 'Na':11, 'K':19}
     
@@ -597,14 +597,14 @@ dicionário.
         print('Não existe info sobre o azoto')
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Não existe info sobre o azoto
     
 
 A **iteração** percorre as **chaves** de um dicionário:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
     
@@ -613,7 +613,7 @@ A **iteração** percorre as **chaves** de um dicionário:
             print(k, '--->', d[k])
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Na ---> 11
     K ---> 19
@@ -623,7 +623,7 @@ A **iteração** percorre as **chaves** de um dicionário:
 ``.update()``
 ~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a': 1, 'c': 3, 'b': 2}
     print(d)
@@ -633,7 +633,7 @@ A **iteração** percorre as **chaves** de um dicionário:
     print(d)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     {'a': 1, 'c': 3, 'b': 2}
     {'a': 1, 'c': 3, 'b': 2, 'p': 10, 'q': 15}
@@ -642,7 +642,7 @@ A **iteração** percorre as **chaves** de um dicionário:
 ``.clear()``
 ~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'a': 1, 'c': 3, 'b': 2}
     print(d)
@@ -651,7 +651,7 @@ A **iteração** percorre as **chaves** de um dicionário:
     print(d)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     {'a': 1, 'c': 3, 'b': 2}
     {}
@@ -660,7 +660,7 @@ A **iteração** percorre as **chaves** de um dicionário:
 ``.values()``,\ ``.items()``, ``.keys()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
     
@@ -668,7 +668,7 @@ A **iteração** percorre as **chaves** de um dicionário:
         print(i)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     1
     3
@@ -677,7 +677,7 @@ A **iteração** percorre as **chaves** de um dicionário:
     18
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
     
@@ -685,7 +685,7 @@ A **iteração** percorre as **chaves** de um dicionário:
         print(i)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ('H', 1)
     ('Li', 3)
@@ -694,7 +694,7 @@ A **iteração** percorre as **chaves** de um dicionário:
     ('O', 18)
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
     
@@ -702,7 +702,7 @@ A **iteração** percorre as **chaves** de um dicionário:
         print(i)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     H
     Li
@@ -714,7 +714,7 @@ A **iteração** percorre as **chaves** de um dicionário:
 ``.items()`` é útil para simplificar um ciclo ``for``: podemos desdobrar
 o par de valores e dar dois nomes diferentes:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # compare-se com o exemplo acima...
     d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
@@ -724,14 +724,14 @@ o par de valores e dar dois nomes diferentes:
             print (e, '--->', n)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Na ---> 11
     K ---> 19
     O ---> 18
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Virar um dicionário "do avesso"
     d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
@@ -744,13 +744,13 @@ o par de valores e dar dois nomes diferentes:
     print(d2)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     {'H': 1, 'Li': 3, 'Na': 11, 'K': 19, 'O': 18}
     {1: 'H', 3: 'Li', 11: 'Na', 19: 'K', 18: 'O'}
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Virar um dicionário "do avesso"
     d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
@@ -763,7 +763,7 @@ o par de valores e dar dois nomes diferentes:
     print(d2)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     {'H': 1, 'Li': 3, 'Na': 11, 'K': 19, 'O': 18}
     {1: 'H', 3: 'Li', 11: 'Na', 19: 'K', 18: 'O'}
@@ -771,7 +771,7 @@ o par de valores e dar dois nomes diferentes:
 
 **Problema: Contar os diferentes valores de um dicionário**
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     a = {'Aragorn':'Humano', 'Frodo':'Hobbit',
          'Sam':'Hobbit', 'Boromir':'Humano',
@@ -790,7 +790,7 @@ o par de valores e dar dois nomes diferentes:
         print(e,c )
 
 
-.. parsed-literal::
+.. code-block:: text
 
     Humano 2
     Hobbit 4
@@ -802,14 +802,14 @@ o par de valores e dar dois nomes diferentes:
 Dicionários em compreensão
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     d = {i:i**2 for i in range(10)}
     for k, v in d.items():
         print(k, '---->', v)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     0 ----> 0
     1 ----> 1
@@ -823,7 +823,7 @@ Dicionários em compreensão
     9 ----> 81
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     # Virar um dicionário "do avesso"
     # usando um dicionário em compreensão
@@ -835,7 +835,7 @@ Dicionários em compreensão
     print(d2)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     {'H': 1, 'Li': 3, 'Na': 11, 'K': 19, 'O': 18}
     {1: 'H', 3: 'Li', 11: 'Na', 19: 'K', 18: 'O'}
@@ -848,7 +848,7 @@ A função ``dict()`` que tenta transformar o seu argumento num
 dicionário. Em particular, pode aceitar pares de valores,
 interpretando-os como associações de chaves a valores.
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     pares = [('Li', 3), ('K', 19), ('O',18)]
     
@@ -856,7 +856,7 @@ interpretando-os como associações de chaves a valores.
     print(d)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     {'Li': 3, 'K': 19, 'O': 18}
     
@@ -864,7 +864,7 @@ interpretando-os como associações de chaves a valores.
 Função ``zip()``
 ----------------
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     nomes = ['Enolase (S.cerevisiae)',
              'Enolase (S.pombe)',
@@ -875,14 +875,14 @@ Função ``zip()``
         print(x)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     ('P00924', 'Enolase (S.cerevisiae)')
     ('P40370', 'Enolase (S.pombe)')
     ('Q70CP7', 'Enolase (K.lactis)')
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     nomes = ['Enolase (S.cerevisiae)',
              'Enolase (S.pombe)',
@@ -893,14 +893,14 @@ Função ``zip()``
         print(i, ':', n)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     P00924 : Enolase (S.cerevisiae)
     P40370 : Enolase (S.pombe)
     Q70CP7 : Enolase (K.lactis)
     
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     nomes = ['Enolase (S.cerevisiae)',
              'Enolase (S.pombe)',
@@ -912,7 +912,7 @@ Função ``zip()``
     print(d)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     {'P00924': 'Enolase (S.cerevisiae)', 'P40370': 'Enolase (S.pombe)', 'Q70CP7': 'Enolase (K.lactis)'}
     
@@ -920,7 +920,7 @@ Função ``zip()``
 Combinando a função ``zip()`` com a função ``dict()``, a criação do
 dicionário fica ainda mais sucinta:
 
-.. code:: ipython3
+.. code-block:: ipython3
 
     nomes = ['Enolase (S.cerevisiae)',
              'Enolase (S.pombe)',
@@ -932,7 +932,7 @@ dicionário fica ainda mais sucinta:
     print(d)
 
 
-.. parsed-literal::
+.. code-block:: text
 
     {'Enolase (S.cerevisiae)': 'P00924', 'Enolase (S.pombe)': 'P40370', 'Enolase (K.lactis)': 'Q70CP7'}
     
