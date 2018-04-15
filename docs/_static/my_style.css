@@ -1,14 +1,17 @@
 /* overides of sphinx bootstrap theme */
 
-.highlight-python pre {
+.highlight-ipython3 .highlight pre {
     background-color: #ffffff;
 }
 
+.highlight-python .highlight pre {
+    background-color: #ffffff;
+}
 .python .highlight pre {
     background-color: #f5f5f5;
 }
 
-pre{
+.highlight pre{
 	color:#333333;
 }
 
@@ -26,4 +29,19 @@ table.dataframe > tfoot > tr > td {
     border: medium solid;
 	text-align: left;
 	padding: 5px;
+}
+
+/* overides for the rtd bootstrap theme */
+
+p {
+	font-size:18px;
+	line-height:1.5;
+}
+
+.rst-content div[class^="highlight"] pre {
+	font-size:16px;
+}
+
+.wy-nav-content {
+	max-width: none;
 }

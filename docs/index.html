@@ -1,304 +1,188 @@
 
+
 <!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introdução a programação em Python &mdash; Bq computacional (FCUL) Apr 2018 documentation</title>
+  
 
+  
+  
+  
+  
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+
+  
+  
     
-    <title>Introdução a programação em Python &mdash; Bq computacional (FCUL) 1617.3 documentation</title>
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/my_style.css" type="text/css" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conceitos básicos" href="basics.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/my_style.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1617.3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Bq computacional (FCUL) 1617.3 documentation" href="#" />
-    <link rel="next" title="Conceitos básicos" href="aulas/1_basicos.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-  </head>
-  <body role="document">
+          
+            <a href="#" class="icon icon-home"> Bq computacional (FCUL)
+          
 
-  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">
-          Bq. computacional</a>
-        <span class="navbar-text navbar-version pull-left"><b>1617.3</b></span>
-      </div>
-
-        <div class="collapse navbar-collapse nav-collapse">
-          <ul class="nav navbar-nav">
-            
-            
-              <li class="dropdown globaltoc-container">
-  <a role="button"
-     id="dLabelGlobalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="#">Capítulo <b class="caret"></b></a>
-  <ul class="dropdown-menu globaltoc"
-      role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="aulas/1_basicos.html">Conceitos básicos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/2_iteracoes.html">Coleções e iterações</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/3_listas_dicts.html">Listas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/3_listas_dicts.html#dicionarios">Dicionários</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/3_listas_dicts.html#funcao-zip">Função <code class="docutils literal"><span class="pre">zip()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/4_strings.html"><em>Strings</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/5_ficheiros.html">Ficheiros de texto</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/6_defs.html">Funções definidas pelo programador</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal"><span class="pre">.format()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/7_import.html">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/10_scientific_modules.html">Python &#8220;científico&#8221;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/11_scipy_regression.html">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/13_algoritmos.html">Algoritmos numéricos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/14_pandas.html">Python &#8220;científico&#8221;: biblioteca <em>pandas</em></a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="aulas/data_software.html">Instalação de software</a></li>
-</ul>
-</ul>
-</li>
-              
-            
-            
-              
-                
-  <li>
-    <a href="aulas/1_basicos.html" title="Next Chapter: Conceitos básicos"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Conceitos bás... &raquo;</span>
-    </a>
-  </li>
-              
-            
-            
-            
-            
-          </ul>
+          
+          </a>
 
           
             
-<form class="navbar-form navbar-right" action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
+            
+              <div class="version">
+                4.2018
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
           
         </div>
-    </div>
-  </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 content">
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Conceitos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cols_iters.html">Coleções e iterações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more_cols.html">Listas e dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_strings.html"><em>Strings</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_defs.html">Funções definidas pelo programador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal notranslate"><span class="pre">import</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code>).</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_scientific_modules.html">Python “científico”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal notranslate"><span class="pre">numpy</span></code> e <code class="docutils literal notranslate"><span class="pre">scipy</span></code>: regressão linear.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_algoritmos.html">Algoritmos numéricos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_pandas.html">Python “científico”: biblioteca <em>pandas</em></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_software.html">Instalação de software</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Bq computacional (FCUL)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Introdução a programação em Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
   <div class="section" id="introducao-a-programacao-em-python">
 <h1>Introdução a programação em Python<a class="headerlink" href="#introducao-a-programacao-em-python" title="Permalink to this headline">¶</a></h1>
 <p>Este site disponibiliza as aulas teóricas da disciplina de Bioquímica Computacional da licenciatura em Bioquímica, FCUL.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="aulas/1_basicos.html">Conceitos básicos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/1_basicos.html#objetos-e-funcao-print">Objetos e função <code class="docutils literal"><span class="pre">print()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/1_basicos.html#atribuicao-de-nomes-a-objetos">Atribuição de nomes a &#8220;objetos&#8221;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/1_basicos.html#alteracao-dos-objetos-associados-a-um-nome">Alteração dos objetos associados a um nome</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/1_basicos.html#comentarios">Comentários</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/1_basicos.html#funcoes-disponiveis-integradas-na-linguagem-ex-print-abs-e-int">Funções disponíveis &#8220;integradas&#8221; na linguagem (ex. <code class="docutils literal"><span class="pre">print()</span></code>, <code class="docutils literal"><span class="pre">abs()</span></code> e <code class="docutils literal"><span class="pre">int()</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/1_basicos.html#conversao-entre-varios-tipos-de-objetos-int-float-complex-e-str">Conversão entre vários tipos de objetos (<code class="docutils literal"><span class="pre">int()</span></code>, <code class="docutils literal"><span class="pre">float()</span></code>, <code class="docutils literal"><span class="pre">complex()</span></code> e <code class="docutils literal"><span class="pre">str()</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/1_basicos.html#modulos-funcoes-adicionais">Módulos: funções adicionais</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/1_basicos.html#exemplo-raizes-da-equacao-do-2o-grau">Exemplo: raízes da equação do 2º grau</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/1_basicos.html#alternativa-if-else">Alternativa <code class="docutils literal"><span class="pre">if...else</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/1_basicos.html#alternativas-if-elif-else">Alternativas <code class="docutils literal"><span class="pre">if...elif...else</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/1_basicos.html#funcao-input">Função <code class="docutils literal"><span class="pre">input()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/2_iteracoes.html">Coleções e iterações</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/2_iteracoes.html#colecoes">Coleções</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/2_iteracoes.html#listas">Listas</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/2_iteracoes.html#strings"><em>strings</em></a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/2_iteracoes.html#dicionarios">Dicionários</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/2_iteracoes.html#len-numero-de-elementos-de-uma-colecao"><code class="docutils literal"><span class="pre">len()</span></code>: número de elementos de uma coleção.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/2_iteracoes.html#comando-for-iteracao-de-colecoes">Comando <code class="docutils literal"><span class="pre">for</span></code>: iteração de coleções</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/2_iteracoes.html#exemplos-de-iteracao-e-acumulacao">Exemplos de iteração (e acumulação)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/2_iteracoes.html#range-gerador-de-numeros-inteiros"><code class="docutils literal"><span class="pre">range()</span></code>: gerador de números inteiros</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/2_iteracoes.html#in-teste-de-inclusao"><code class="docutils literal"><span class="pre">in</span></code>: teste de inclusão</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/2_iteracoes.html#funcao-enumerate-pares-posicao-elemento">Função <code class="docutils literal"><span class="pre">enumerate()</span></code>: pares (posição, elemento)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/2_iteracoes.html#comados-for-encaixados">Comados <code class="docutils literal"><span class="pre">for</span></code> encaixados.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/2_iteracoes.html#comando-break">Comando <code class="docutils literal"><span class="pre">break</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/2_iteracoes.html#comando-continue">Comando <code class="docutils literal"><span class="pre">continue</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/2_iteracoes.html#comando-while">Comando <code class="docutils literal"><span class="pre">while</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/3_listas_dicts.html">Listas</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/3_listas_dicts.html#algumas-funcoes-associadas-a-listas">Algumas funções associadas a listas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/3_listas_dicts.html#append-insert"><code class="docutils literal"><span class="pre">.append()</span></code>, <code class="docutils literal"><span class="pre">.insert()</span></code>.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/3_listas_dicts.html#extend"><code class="docutils literal"><span class="pre">.extend()</span></code>.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/3_listas_dicts.html#remove"><code class="docutils literal"><span class="pre">.remove()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/3_listas_dicts.html#count"><code class="docutils literal"><span class="pre">.count()</span></code>.</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/3_listas_dicts.html#append-como-geradora-de-listas-novas"><code class="docutils literal"><span class="pre">.append()</span></code> como geradora de listas novas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/3_listas_dicts.html#indexacao">Indexação</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/3_listas_dicts.html#listas-em-compreensao">Listas em compreensão</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/3_listas_dicts.html#mais-funcoes-de-listas">Mais funções de listas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/3_listas_dicts.html#pop-reverse-sort"><code class="docutils literal"><span class="pre">.pop()</span></code>, <code class="docutils literal"><span class="pre">.reverse()</span></code>, <code class="docutils literal"><span class="pre">.sort()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/3_listas_dicts.html#dicionarios">Dicionários</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/3_listas_dicts.html#indexacao-e-iteracao">Indexação e iteração</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/3_listas_dicts.html#update"><code class="docutils literal"><span class="pre">.update()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/3_listas_dicts.html#clear"><code class="docutils literal"><span class="pre">.clear()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/3_listas_dicts.html#values-items-keys"><code class="docutils literal"><span class="pre">.values()</span></code>,<code class="docutils literal"><span class="pre">.items()</span></code>, <code class="docutils literal"><span class="pre">.keys()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/3_listas_dicts.html#dicionarios-em-compreensao">Dicionários em compreensão</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/3_listas_dicts.html#dict"><code class="docutils literal"><span class="pre">.dict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/3_listas_dicts.html#funcao-zip">Função <code class="docutils literal"><span class="pre">zip()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/4_strings.html"><em>Strings</em></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/4_strings.html#definicao-literal-iteracao-e-indexacao">Definição literal, iteração e indexação</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/4_strings.html#concatenacao-de-strings-com-o-operador">&#8220;Concatenação&#8221; de strings com o operador <code class="docutils literal"><span class="pre">+</span></code>.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/4_strings.html#funcoes-len-count-operador-in">Funções <code class="docutils literal"><span class="pre">len()</span></code>, <code class="docutils literal"><span class="pre">.count()</span></code>, operador <code class="docutils literal"><span class="pre">in</span></code>.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/4_strings.html#iteracao-e-indexacao">Iteração e indexação.</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/4_strings.html#funcoes-associadas-a-strings">Funções associadas a <em>strings</em></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/4_strings.html#imutabilidade">Imutabilidade</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/4_strings.html#algumas-funcoes-uteis">Algumas funções úteis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/4_strings.html#funcoes-strip-startswith">Funções <code class="docutils literal"><span class="pre">.strip()</span></code>, <code class="docutils literal"><span class="pre">.startswith()</span></code>.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/4_strings.html#funcoes-upper-lower">Funções <code class="docutils literal"><span class="pre">.upper()</span></code>, <code class="docutils literal"><span class="pre">.lower()</span></code>.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/4_strings.html#funcao-replace">Função <code class="docutils literal"><span class="pre">.replace()</span></code>.</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/4_strings.html#funcoes-split-e-join">Funções <code class="docutils literal"><span class="pre">.split()</span></code> e <code class="docutils literal"><span class="pre">.join()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/4_strings.html#funcao-splitlines">Função <code class="docutils literal"><span class="pre">.splitlines()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/4_strings.html#slices-em-portugues-fatias">&#8220;Slices&#8221; (em português: &#8220;fatias&#8221;)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/5_ficheiros.html">Ficheiros de texto</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/5_ficheiros.html#leitura">Leitura</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/5_ficheiros.html#read-com-open-e-close-explicitos"><code class="docutils literal"><span class="pre">.read()</span></code>, com <code class="docutils literal"><span class="pre">open()</span></code> e <code class="docutils literal"><span class="pre">close()</span></code> explícitos</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/5_ficheiros.html#read-dentro-do-bloco-de-um-comando-with"><code class="docutils literal"><span class="pre">.read()</span></code>, dentro do bloco de um comando <code class="docutils literal"><span class="pre">with</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/5_ficheiros.html#readlines"><code class="docutils literal"><span class="pre">.readlines()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/5_ficheiros.html#iteracao-de-ficheiros-com-for">Iteração de ficheiros com <code class="docutils literal"><span class="pre">for</span></code>.</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/5_ficheiros.html#exemplo-extracao-de-informacao-de-um-ficheiro-fasta-multiplo">Exemplo: Extração de informação de um ficheiro FASTA múltiplo.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/5_ficheiros.html#escrita">Escrita</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/5_ficheiros.html#funcao-print-para-ficheiros">Função <code class="docutils literal"><span class="pre">print()</span></code> para ficheiros</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/5_ficheiros.html#funcao-write">Função <code class="docutils literal"><span class="pre">.write()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/5_ficheiros.html#exemplo-extracao-de-informacao-de-ficheiros-de-resultados-de-metabolomica">Exemplo: Extração de informação de ficheiros de resultados de metabolómica.</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/5_ficheiros.html#exploracao-do-formato">Exploração do formato</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/5_ficheiros.html#utilizacao-da-informacao">Utilização da informação</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/6_defs.html">Funções definidas pelo programador</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/6_defs.html#introducao-ao-problema">Introdução ao problema</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/6_defs.html#definicao-de-funcoes-com-def">Definição de funções com <code class="docutils literal"><span class="pre">def</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/6_defs.html#anatomia-de-uma-funcao">Anatomia de uma função:</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/6_defs.html#exemplo-funcao-factorial">Exemplo: função <code class="docutils literal"><span class="pre">factorial()</span></code>:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/6_defs.html#varios-tipos-de-funcoes">Vários tipos de funções</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/6_defs.html#ambito-dos-nomes-dentro-de-uma-funcao">Âmbito dos nomes dentro de uma função</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/6_defs.html#valores-por-omissao-em-argumentos-de-funcoes">Valores <em>por omissão</em> em argumentos de funções</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal"><span class="pre">.format()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/7_import.html">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/7_import.html#introducao">Introdução</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/7_import.html#exemplo-de-um-modulo-e-import">Exemplo de um módulo e <code class="docutils literal"><span class="pre">import</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/10_scientific_modules.html">Python &#8220;científico&#8221;</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/10_scientific_modules.html#numpy"><code class="docutils literal"><span class="pre">numpy</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#operacoes-vectoriais">Operações &#8220;vectoriais&#8221;</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#criacao-de-arrays-com-as-funcoes-array-arange-e-linspace">Criação de <em>arrays</em> com as funções <code class="docutils literal"><span class="pre">.array()</span></code>, <code class="docutils literal"><span class="pre">.arange()</span></code> e <code class="docutils literal"><span class="pre">.linspace()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#dimensoes-shape">Dimensões (<code class="docutils literal"><span class="pre">shape</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#criacao-de-arrays-com-array-ones-zeros-eye-diag">Criação de <em>arrays</em> com <code class="docutils literal"><span class="pre">.array()</span></code>, <code class="docutils literal"><span class="pre">.ones()</span></code>, <code class="docutils literal"><span class="pre">.zeros()</span></code>, <code class="docutils literal"><span class="pre">.eye()</span></code>, <code class="docutils literal"><span class="pre">.diag()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#indexacao-a-varias-dimensoes">Indexação a várias dimensões</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#indexacao-booleana">Indexação booleana</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#indexacao-com-listas-de-inteiros-ou-outros-arrays">Indexação com listas de inteiros ou outros <em>arrays</em></a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#funcoes-associadas-a-arrays">Funções associadas a <em>arrays</em></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/10_scientific_modules.html#exemplos-de-algumas-funcionalidade-do-numpy">Exemplos de algumas funcionalidade do <code class="docutils literal"><span class="pre">numpy</span></code>.</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#geracao-de-numeros-aleatorios-sub-modulo-numpy-random">Geração de números aleatórios. (sub-módulo <code class="docutils literal"><span class="pre">numpy.random</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#matrizes-e-algebra-linear">Matrizes e álgebra linear</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/10_scientific_modules.html#sympy"><code class="docutils literal"><span class="pre">sympy</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#simbolos-e-algebra-basica">Símbolos e álgebra básica</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#limites">Limites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/10_scientific_modules.html#derivadas-e-integrais">Derivadas e integrais</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/11_scipy_regression.html">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/12_scipy_pH.html#derivation-of-the-relevant-equations">Derivation of the relevant equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/12_scipy_pH.html#analysis">Analysis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/12_scipy_pH.html#computation">Computation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/12_scipy_pH.html#plots">Plots</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/13_algoritmos.html">Algoritmos numéricos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/13_algoritmos.html#introducao-algoritmo-babilonico">Introdução (algoritmo babilónico)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/13_algoritmos.html#metodo-das-bissecoes-sucessivas">Método das bisseções sucessivas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/13_algoritmos.html#metodo-de-newton">Método de newton</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="aulas/14_pandas.html">Python &#8220;científico&#8221;: biblioteca <em>pandas</em></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="aulas/14_pandas.html#series"><code class="docutils literal"><span class="pre">Series</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="aulas/14_pandas.html#funcoes-descritivas-dos-valores">Funções descritivas dos valores</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aulas/14_pandas.html#indexacao-e-operacoes-vetoriais">Indexação e operações vetoriais</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="aulas/14_pandas.html#dataframe"><code class="docutils literal"><span class="pre">DataFrame</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Conceitos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cols_iters.html">Coleções e iterações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more_cols.html">Listas e dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_strings.html"><em>Strings</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_defs.html">Funções definidas pelo programador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal notranslate"><span class="pre">import</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code>).</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_scientific_modules.html">Python “científico”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal notranslate"><span class="pre">numpy</span></code> e <code class="docutils literal notranslate"><span class="pre">scipy</span></code>: regressão linear.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_algoritmos.html">Algoritmos numéricos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_pandas.html">Python “científico”: biblioteca <em>pandas</em></a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -306,28 +190,72 @@
 </div>
 
 
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="basics.html" class="btn btn-neutral float-right" title="Conceitos básicos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
     </div>
-      
-  </div>
-</div>
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-        <br/>
-        
-<div id="sourcelink">
-  <a href="_sources/index.txt"
-     rel="nofollow">Source</a>
-</div>
-      
-    </p>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2017, António Ferreira.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+        &copy; Copyright 2016-2017, António Ferreira.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
 </footer>
-  </body>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Apr 2018',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
 </html>
