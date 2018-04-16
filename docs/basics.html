@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/my_style.css" type="text/css" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Coleções e iterações" href="cols_iters.html" />
+    <link rel="next" title="Coleções e iterações" href="collections_iterations.html" />
     <link rel="prev" title="Introdução a programação em Python" href="index.html" /> 
 
   
@@ -88,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#objetos-e-funcao-print">Objetos e função <code class="docutils literal notranslate"><span class="pre">print()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#atribuicao-de-nomes-a-objetos">Atribuição de nomes a “objetos”</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#alteracao-dos-objetos-associados-a-um-nome">Alteração dos objetos associados a um nome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interpolacao-de-valores-em-strings">Interpolação de valores em <em>strings</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#comentarios">Comentários</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#funcoes-disponiveis-integradas-na-linguagem-ex-print-abs-e-int">Funções disponíveis “integradas” na linguagem (ex. <code class="docutils literal notranslate"><span class="pre">print()</span></code>, <code class="docutils literal notranslate"><span class="pre">abs()</span></code> e <code class="docutils literal notranslate"><span class="pre">int()</span></code>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conversao-entre-varios-tipos-de-objetos-int-float-complex-e-str">Conversão entre vários tipos de objetos (<code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code>, <code class="docutils literal notranslate"><span class="pre">complex()</span></code> e <code class="docutils literal notranslate"><span class="pre">str()</span></code>)</a></li>
@@ -98,9 +99,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#funcao-input">Função <code class="docutils literal notranslate"><span class="pre">input()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cols_iters.html">Coleções e iterações</a></li>
-<li class="toctree-l1"><a class="reference internal" href="more_cols.html">Listas e dicionários</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_strings.html"><em>Strings</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections_iterations.html">Coleções e iterações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more_on_lists_dicts.html">Listas e dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html"><em>Strings</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_defs.html">Funções definidas pelo programador</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
@@ -244,7 +245,7 @@ objeto ou expressão</strong>. Mesmo em atribuições seguintes, no comando
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mf">3.2</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-<span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">**</span> <span class="mf">0.5</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
@@ -255,24 +256,25 @@ objeto ou expressão</strong>. Mesmo em atribuições seguintes, no comando
 7.2 2.6832815729997477
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hoje</span> <span class="o">=</span> <span class="s2">&quot;Olá, quinta feira &quot;</span>
-<span class="n">local</span> <span class="o">=</span> <span class="s2">&quot;sala 8.2.39&quot;</span>
-<span class="n">onde</span> <span class="o">=</span> <span class="n">hoje</span> <span class="o">+</span> <span class="n">local</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hoje</span> <span class="o">=</span> <span class="s2">&quot;Hoje é quinta feira&quot;</span>
+<span class="n">mês</span> <span class="o">=</span> <span class="s2">&quot;Março&quot;</span>
+<span class="n">tudo</span> <span class="o">=</span> <span class="n">hoje</span> <span class="o">+</span> <span class="s1">&#39; e estamos em &#39;</span> <span class="o">+</span> <span class="n">mês</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">hoje</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">local</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">onde</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mês</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tudo</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Olá, quinta feira
-sala 8.2.39
-Olá, quinta feira sala 8.2.39
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Hoje é quinta feira
+Março
+Hoje é quinta feira e estamos em Março
 </pre></div>
 </div>
 <p><strong>Que nomes podemos usar?</strong></p>
 <p>As regras são:</p>
 <ol class="arabic simple">
-<li>Um nome é uma combinação de letras minúsculas (a to z) ou maiúsculas
-(A to Z) não acentuadas ou dígitos (0 to 9) ou o <em>underscore</em>. Nomes
+<li>Um nome é uma combinação de letras minúsculas ou maiúsculas
+(podendo ser acentuadas) ou dígitos (0 to 9) ou o <em>underscore</em>. Nomes
 como <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">Km_1</span></code> ou <code class="docutils literal notranslate"><span class="pre">velocidade_da_reaccao</span></code> são exemplos
 válidos.</li>
 <li>Um nome não pode começar com um dígito. <code class="docutils literal notranslate"><span class="pre">1x</span></code> é inválido, mas <code class="docutils literal notranslate"><span class="pre">x1</span></code>
@@ -332,31 +334,81 @@ b = 5
 c = 8
 </pre></div>
 </div>
+<p>Para melhor compreender as mudanças que ocorrem nos valores atribuídos aos
+nomes de <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> e <code class="docutils literal notranslate"><span class="pre">c</span></code> no programa anterior, podemos modifica-lo,
+mostrando, com <code class="docutils literal notranslate"><span class="pre">print()</span></code>, os valores atualizados desses nomes, após cada
+atribuição. Repare-se nos resultados de cada <code class="docutils literal notranslate"><span class="pre">print()</span></code>:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;Olá&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;c =&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;c =&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;c =&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;c =&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a = 2 b = 3 c = Olá
+a = 2 b = 5 c = Olá
+a = 3 b = 5 c = Olá
+a = 3 b = 5 c = 8
+</pre></div>
+</div>
+</div>
+<div class="section" id="interpolacao-de-valores-em-strings">
+<h2>Interpolação de valores em <em>strings</em><a class="headerlink" href="#interpolacao-de-valores-em-strings" title="Permalink to this headline">¶</a></h2>
+<p>As <em>strings</em> podem ter valores “interpolados”, usando os nomes desses valores ou
+expressões. Para isso, usam-se <code class="docutils literal notranslate"><span class="pre">{}</span></code> para identificar em que sítio da <em>string</em>
+deve ficar cada valor e a <em>string</em> deve ter a letra <code class="docutils literal notranslate"><span class="pre">f</span></code> como prefixo. Um exemplo:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">4.8</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">3.2</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;a é igual a </span><span class="si">{a}</span><span class="s1">, mas b = </span><span class="si">{b}</span><span class="s1">, enquanto que c = </span><span class="si">{c}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a é igual a 4.8, mas b = 3.2 e, ainda, c = 8.0
+</pre></div>
+</div>
 </div>
 <div class="section" id="comentarios">
 <h2>Comentários<a class="headerlink" href="#comentarios" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Esta linha é um comentários (começa por #)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comentários começam por #</span>
 
-<span class="c1"># Podemos dar nomes a vários objetos de uma só vez:</span>
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;experiência&quot;</span>
-<span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="o">+</span><span class="mi">4</span>
+<span class="c1"># Podemos dar nomes a vários objetos</span>
+<span class="c1"># de uma só vez:</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span>  <span class="o">=</span>  <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;experiência&quot;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;c =&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s2">&quot;d =&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;a = </span><span class="si">{a}</span><span class="s2"> b = </span><span class="si">{b}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a = 3 b = experiência c = 2.5 d = 7
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a = 3 b = experiência
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span>  <span class="o">=</span>  <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;experiência&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;a = </span><span class="si">{a}</span><span class="s2"> b = </span><span class="si">{b}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># print() deixa uma linha de intervalo</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;a = </span><span class="si">{a}</span><span class="s2"> b = </span><span class="si">{b}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Podemos trocar dois nomes desta maneira</span>
 <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Depois de trocar a e b...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;a = </span><span class="si">{a}</span><span class="s2"> b = </span><span class="si">{b}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a = 3 b = 4
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a = 3 b = experiência
 
+a = 3 b = 4
+
+Depois de trocar a e b...
 a = 4 b = 3
 </pre></div>
 </div>
@@ -1043,7 +1095,7 @@ x1 = (-0.5+0.8660254037844386j) , x2 = (-0.5-0.8660254037844386j)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cols_iters.html" class="btn btn-neutral float-right" title="Coleções e iterações" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="collections_iterations.html" class="btn btn-neutral float-right" title="Coleções e iterações" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Introdução a programação em Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

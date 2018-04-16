@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/my_style.css" type="text/css" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Listas e dicionários" href="more_cols.html" />
+    <link rel="next" title="Listas e dicionários" href="more_on_lists_dicts.html" />
     <link rel="prev" title="Conceitos básicos" href="basics.html" /> 
 
   
@@ -92,7 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#dicionarios">Dicionários</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#len-numero-de-elementos-de-uma-colecao"><code class="docutils literal notranslate"><span class="pre">len()</span></code>: número de elementos de uma coleção.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#len-numero-de-elementos-de-uma-colecao"><code class="docutils literal notranslate"><span class="pre">len()</span></code> : número de elementos de uma coleção.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#iteracao-comando-for">Iteração: comando <code class="docutils literal notranslate"><span class="pre">for</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exemplos-de-iteracao">Exemplos de iteração</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#range-gerador-de-numeros-inteiros"><code class="docutils literal notranslate"><span class="pre">range()</span></code>: gerador de números inteiros</a></li>
@@ -104,8 +104,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#comando-while">Comando <code class="docutils literal notranslate"><span class="pre">while</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="more_cols.html">Listas e dicionários</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_strings.html"><em>Strings</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="more_on_lists_dicts.html">Listas e dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html"><em>Strings</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_defs.html">Funções definidas pelo programador</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
@@ -170,7 +170,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/cols_iters.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/collections_iterations.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -191,12 +191,15 @@
 consiste na criação e modificação dos valores de “objetos”.</p>
 <p>Estes objetos são, na verdade, representados na memória do computador. O
 acesso a estes objetos é feito à custa de um <em>nome</em>.</p>
-<p>A linguagem Python suporat uma variedade de tipos de objetos, dos quais
+<p>A linguagem Python suporta uma variedade de tipos de objetos, dos quais
 já vimos os números e as <em>strings</em>.</p>
 <p>Este capítulo diz respeito a objetos designados genericamente por
 “coleções”.</p>
-<div class="alert alert-info"><p>Coleções são objetos que contêm mais do que um valor.</p>
-</div><p>As principais coleções usadas em Python são:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Coleções são objetos que contêm mais do que um valor.</p>
+</div>
+<p>As principais coleções usadas em Python são:</p>
 <ul class="simple">
 <li>Sequências:<ul>
 <li><strong>listas</strong></li>
@@ -216,9 +219,12 @@ já vimos os números e as <em>strings</em>.</p>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">a</span></code> é uma <strong>lista</strong>.</p>
-<div class="alert alert-info"><p>Uma lista é simplesmente um conjunto de elementos reunidos num único
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Uma lista é simplesmente um conjunto de elementos reunidos num único
 “objeto”.</p>
-</div><p>São usados <code class="docutils literal notranslate"><span class="pre">[]</span></code> para indicar explicitamente os elementos da lista. Por
+</div>
+<p>São usados <code class="docutils literal notranslate"><span class="pre">[]</span></code> para indicar explicitamente os elementos da lista. Por
 outro lado, como se pode ver no exemplo, foi atribuído um único nome
 (<code class="docutils literal notranslate"><span class="pre">a</span></code>) para toda a lista.</p>
 <p>As listas podem ter elementos de vários tipos e estes elementos podem
@@ -243,16 +249,15 @@ elementos da lista.</p>
 <p>Uma propriedade fundamental das listas é que a <strong>ordem dos elementos tem
 significado</strong> e uma lista pode ser “<strong>indexável</strong>” com numeros inteiros.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">19</span><span class="p">,</span> <span class="mi">14</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">5.0</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Bom dia&#39;</span><span class="p">]</span>
+<span class="c1">#    0    1      2        3</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a =&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a = [19, 7.0, 125.0, &#39;Bom dia&#39;]
-19
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>19
 7.0
 125.0
 Bom dia
@@ -263,26 +268,33 @@ em que <span class="math notranslate">\(n\)</span> é o número de elementos da 
 </div>
 <div class="section" id="strings">
 <h3><em>strings</em><a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h3>
-<div class="alert alert-info"><p>As <em>strings</em> podem ser entendidas como <strong>coleções de caracteres</strong></p>
-</div><p>As <em>strings</em> também têm uma numeração implícita, a contar do zero, sendo
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As strings podem ser entendidas como coleções de caracteres</p>
+</div>
+<p>As <em>strings</em> também têm uma numeração implícita, a contar do zero, sendo
 também “indexáveis”.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Eu sou uma pequena string&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="c1">#    0123456789</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Eu sou uma pequena string
-E
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>E
 s
+m
 </pre></div>
 </div>
 </div>
 <div class="section" id="dicionarios">
 <h3>Dicionários<a class="headerlink" href="#dicionarios" title="Permalink to this headline">¶</a></h3>
-<div class="alert alert-info"><p>Dicionários são <em>associações</em> entre <strong>chaves</strong> e <strong>valores</strong>.</p>
-</div><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="mi">19</span><span class="p">}</span>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Dicionários são associações entre <strong>chaves</strong> e <strong>valores</strong>.</p>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="mi">19</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Neste exemplo,</p>
@@ -316,7 +328,7 @@ uma a um, com o comando <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 <div class="section" id="len-numero-de-elementos-de-uma-colecao">
-<h2><code class="docutils literal notranslate"><span class="pre">len()</span></code>: número de elementos de uma coleção.<a class="headerlink" href="#len-numero-de-elementos-de-uma-colecao" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">len()</span></code> : número de elementos de uma coleção.<a class="headerlink" href="#len-numero-de-elementos-de-uma-colecao" title="Permalink to this headline">¶</a></h2>
 <p>A função <code class="docutils literal notranslate"><span class="pre">len()</span></code> <strong>pode ser aplicada a qualquer coleção</strong>, devolvendo
 o <strong>número de elementos</strong> contidos nessa coleção.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;viria o 12&#39;</span><span class="p">,</span> <span class="s1">&#39;e depois o 14&#39;</span><span class="p">]</span>
@@ -357,11 +369,11 @@ e depois o 14
 </div>
 <p>A estrutura geral do comando <code class="docutils literal notranslate"><span class="pre">for</span></code> é:</p>
 <div class="figure">
-<img alt="" src="_images/blocks_for.png" />
+<img alt="estrutura do comando for" src="_images/blocks_for.png" />
 </div>
 <p>Como se pode ver, o bloco de linhas que é executado e repetido para
-todos os elementos de uma coleção também é definido pelo alinhamento
-dessas linhas.</p>
+todos os elementos de uma coleção também é definido pelo <strong>alinhamento</strong>
+mais “interior” dessas linhas.</p>
 <p>Esta é uma regra geral da linguagem Python: <strong>o alinhamento do começo
 das linhas define blocos</strong>.</p>
 <p>Vamos ver alguns exemplos da utilização de um comando <code class="docutils literal notranslate"><span class="pre">for</span></code>:</p>
@@ -504,9 +516,62 @@ valores obtidos da iteração dos elementos da lista <code class="docutils liter
 comando <code class="docutils literal notranslate"><span class="pre">for</span></code>), <code class="docutils literal notranslate"><span class="pre">s</span></code> tem o valor 0. Cada vez que “passamos” a um novo
 valor <code class="docutils literal notranslate"><span class="pre">i</span></code>, este é somado ao valor anterior de <code class="docutils literal notranslate"><span class="pre">s</span></code>. Assim,
 conseguimos acumular a soma de todos os <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p>
+<p>É interessante mostrar os valores que estão associados a <code class="docutils literal notranslate"><span class="pre">s</span></code> ao longo
+das iterações. Adaptando o programa anterior com algumas utilizações
+dicionais da função <code class="docutils literal notranslate"><span class="pre">print()</span></code> podemos ver esses valores a mudar para cada <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;i =&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  s antes da soma&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">i</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  s depois da soma&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;a soma é </span><span class="si">{s}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>i = 1
+  s antes da soma 0
+  s depois da soma 1
+i = 2
+  s antes da soma 1
+  s depois da soma 3
+i = 3
+  s antes da soma 3
+  s depois da soma 6
+i = 4
+  s antes da soma 6
+  s depois da soma 10
+i = 5
+  s antes da soma 10
+  s depois da soma 15
+i = 6
+  s antes da soma 15
+  s depois da soma 21
+i = 7
+  s antes da soma 21
+  s depois da soma 28
+i = 8
+  s antes da soma 28
+  s depois da soma 36
+i = 9
+  s antes da soma 36
+  s depois da soma 45
+i = 10
+  s antes da soma 45
+  s depois da soma 55
+a soma é 55
+</pre></div>
+</div>
+</div>
+<div class="section" id="range-gerador-de-numeros-inteiros">
+<h2><code class="docutils literal notranslate"><span class="pre">range()</span></code>: gerador de números inteiros<a class="headerlink" href="#range-gerador-de-numeros-inteiros" title="Permalink to this headline">¶</a></h2>
 <p><strong>Problema: somar todos os números de 1 a 1000</strong></p>
-<p>Desta vez não vamos criar a lista de numeros explicitamente (e
-manualmente)</p>
+<p>Desta vez não vamos criar uma lista de números até 1000 explicitamente (e
+manualmente).</p>
+<p>Em vez disso, usamos a função <code class="docutils literal notranslate"><span class="pre">range()</span></code> que gera números
+inteiros consecutivos:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1001</span><span class="p">):</span>
@@ -518,22 +583,25 @@ manualmente)</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a soma dos números de 1 a 1000 é 500500
 </pre></div>
 </div>
-</div>
-<div class="section" id="range-gerador-de-numeros-inteiros">
-<h2><code class="docutils literal notranslate"><span class="pre">range()</span></code>: gerador de números inteiros<a class="headerlink" href="#range-gerador-de-numeros-inteiros" title="Permalink to this headline">¶</a></h2>
 <p>A função <code class="docutils literal notranslate"><span class="pre">range()</span></code>, que pode ter até 3 argumentos,
 <code class="docutils literal notranslate"><span class="pre">range(início,</span> <span class="pre">fim,</span> <span class="pre">passo)</span></code>, é usada num comando <code class="docutils literal notranslate"><span class="pre">for</span></code> para
-percorrer uma sequência de <strong>números inteiros</strong>, desde um número inteiro
-inicial (o <code class="docutils literal notranslate"><span class="pre">início</span></code>) até um número inteiro final <strong>exclusivé</strong> (o
-<code class="docutils literal notranslate"><span class="pre">fim</span></code>), com um determinado espaçamento (o <code class="docutils literal notranslate"><span class="pre">passo</span></code>).</p>
+gerar uma sequência de <strong>números inteiros</strong>, desde um número inteiro
+inicial (o <em>início</em>) até um número inteiro final <strong>exclusivé</strong> (o
+<em>fim</em>), com um determinado espaçamento (o <em>passo</em>).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
 <p>O número inicial e o “passo” são opcionais.</p>
 <p>Se forem omitidos,</p>
-<ul class="simple">
+<ul class="last simple">
 <li>o início é 0</li>
 <li>o passo é 1</li>
 </ul>
-<div class="alert alert-warning"><p>Nunca esquecer que o valor do <code class="docutils literal notranslate"><span class="pre">fim</span></code> <strong>é excluído da lista</strong></p>
-</div><p>Exemplos:</p>
+</div>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">Nunca esquecer que o valor do <code class="docutils literal notranslate"><span class="pre">fim</span></code> <strong>é excluído da lista</strong></p>
+</div>
+<p>Exemplos:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- range(12) ----------&#39;</span><span class="p">)</span>
 <span class="c1"># acaba em 12 (exclusivé), começa em 0 e percorre de 1 em 1.</span>
 
@@ -1176,7 +1244,7 @@ Por isso, o comando <code class="docutils literal notranslate"><span class="pre"
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="more_cols.html" class="btn btn-neutral float-right" title="Listas e dicionários" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="more_on_lists_dicts.html" class="btn btn-neutral float-right" title="Listas e dicionários" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="basics.html" class="btn btn-neutral" title="Conceitos básicos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

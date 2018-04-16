@@ -11,21 +11,15 @@ consiste na criação e modificação dos valores de "objetos".
 Estes objetos são, na verdade, representados na memória do computador. O
 acesso a estes objetos é feito à custa de um *nome*.
 
-A linguagem Python suporat uma variedade de tipos de objetos, dos quais
+A linguagem Python suporta uma variedade de tipos de objetos, dos quais
 já vimos os números e as *strings*.
 
 Este capítulo diz respeito a objetos designados genericamente por
 "coleções".
 
-.. raw:: html
+.. note::
 
-   <div class="alert alert-info">
-
-Coleções são objetos que contêm mais do que um valor.
-
-.. raw:: html
-
-   </div>
+   Coleções são objetos que contêm mais do que um valor.
 
 As principais coleções usadas em Python são:
 
@@ -53,16 +47,10 @@ Listas
 
 ``a`` é uma **lista**.
 
-.. raw:: html
+.. note::
 
-   <div class="alert alert-info">
-
-Uma lista é simplesmente um conjunto de elementos reunidos num único
-"objeto".
-
-.. raw:: html
-
-   </div>
+   Uma lista é simplesmente um conjunto de elementos reunidos num único
+   "objeto".
 
 São usados ``[]`` para indicar explicitamente os elementos da lista. Por
 outro lado, como se pode ver no exemplo, foi atribuído um único nome
@@ -100,8 +88,8 @@ significado** e uma lista pode ser "**indexável**" com numeros inteiros.
 .. code-block:: ipython3
 
     a = [19, 14/2, 5.0**3, 'Bom dia']
-    
-    print('a =', a)
+    #    0    1      2        3
+
     print(a[0])
     print(a[1])
     print(a[2])
@@ -110,7 +98,6 @@ significado** e uma lista pode ser "**indexável**" com numeros inteiros.
 
 .. code-block:: text
 
-    a = [19, 7.0, 125.0, 'Bom dia']
     19
     7.0
     125.0
@@ -123,15 +110,9 @@ em que :math:`n` é o número de elementos da lista.
 *strings*
 ~~~~~~~~~
 
-.. raw:: html
+.. note::
 
-   <div class="alert alert-info">
-
-As *strings* podem ser entendidas como **coleções de caracteres**
-
-.. raw:: html
-
-   </div>
+    As strings podem ser entendidas como coleções de caracteres
 
 As *strings* também têm uma numeração implícita, a contar do zero, sendo
 também "indexáveis".
@@ -139,31 +120,27 @@ também "indexáveis".
 .. code-block:: ipython3
 
     s = 'Eu sou uma pequena string'
-    print(s)
+    #    0123456789
     
     print(s[0])
     print(s[3])
+    print(s[8])
 
 
 .. code-block:: text
 
-    Eu sou uma pequena string
     E
     s
+    m
     
 
 Dicionários
 ~~~~~~~~~~~
 
-.. raw:: html
+.. note::
 
-   <div class="alert alert-info">
+    Dicionários são associações entre **chaves** e **valores**.
 
-Dicionários são *associações* entre **chaves** e **valores**.
-
-.. raw:: html
-
-   </div>
 
 .. code-block:: ipython3
 
@@ -205,8 +182,8 @@ coleções:
    uma a um, com o comando ``for``
 -  testar se um valor faz parte de uma coleção, com o operador ``in``
 
-``len()``: número de elementos de uma coleção.
-----------------------------------------------
+``len()`` : número de elementos de uma coleção.
+-----------------------------------------------
 
 A função ``len()`` **pode ser aplicada a qualquer coleção**, devolvendo
 o **número de elementos** contidos nessa coleção.
@@ -260,11 +237,11 @@ Em Python é usado o comado ``for`` para esse efeito.
 A estrutura geral do comando ``for`` é:
 
 .. figure:: images/blocks_for.png
-   :alt: 
+   :alt: estrutura do comando for
 
 Como se pode ver, o bloco de linhas que é executado e repetido para
-todos os elementos de uma coleção também é definido pelo alinhamento
-dessas linhas.
+todos os elementos de uma coleção também é definido pelo **alinhamento**
+mais "interior" dessas linhas.
 
 Esta é uma regra geral da linguagem Python: **o alinhamento do começo
 das linhas define blocos**.
@@ -447,10 +424,68 @@ comando ``for``), ``s`` tem o valor 0. Cada vez que "passamos" a um novo
 valor ``i``, este é somado ao valor anterior de ``s``. Assim,
 conseguimos acumular a soma de todos os ``i``.
 
+É interessante mostrar os valores que estão associados a ``s`` ao longo
+das iterações. Adaptando o programa anterior com algumas utilizações 
+dicionais da função ``print()`` podemos ver esses valores a mudar para cada ``i``.
+
+.. code-block:: ipython3
+
+	nums = [1,2,3,4,5,6,7,8,9,10]
+
+	s = 0
+	for i in nums:
+		print('i =', i)
+		print('  s antes da soma', s)
+		s = s + i
+		print('  s depois da soma', s)
+
+	print(f'a soma é {s}')
+
+.. code-block:: text
+
+	i = 1
+	  s antes da soma 0
+	  s depois da soma 1
+	i = 2
+	  s antes da soma 1
+	  s depois da soma 3
+	i = 3
+	  s antes da soma 3
+	  s depois da soma 6
+	i = 4
+	  s antes da soma 6
+	  s depois da soma 10
+	i = 5
+	  s antes da soma 10
+	  s depois da soma 15
+	i = 6
+	  s antes da soma 15
+	  s depois da soma 21
+	i = 7
+	  s antes da soma 21
+	  s depois da soma 28
+	i = 8
+	  s antes da soma 28
+	  s depois da soma 36
+	i = 9
+	  s antes da soma 36
+	  s depois da soma 45
+	i = 10
+	  s antes da soma 45
+	  s depois da soma 55
+	a soma é 55
+
+
+``range()``: gerador de números inteiros
+----------------------------------------
+
 **Problema: somar todos os números de 1 a 1000**
 
-Desta vez não vamos criar a lista de numeros explicitamente (e
-manualmente)
+Desta vez não vamos criar uma lista de números até 1000 explicitamente (e
+manualmente).
+
+Em vez disso, usamos a função ``range()`` que gera números
+inteiros consecutivos:
 
 .. code-block:: ipython3
 
@@ -467,31 +502,25 @@ manualmente)
     a soma dos números de 1 a 1000 é 500500
     
 
-``range()``: gerador de números inteiros
-----------------------------------------
-
 A função ``range()``, que pode ter até 3 argumentos,
 ``range(início, fim, passo)``, é usada num comando ``for`` para
-percorrer uma sequência de **números inteiros**, desde um número inteiro
-inicial (o ``início``) até um número inteiro final **exclusivé** (o
-``fim``), com um determinado espaçamento (o ``passo``).
+gerar uma sequência de **números inteiros**, desde um número inteiro
+inicial (o *início*) até um número inteiro final **exclusivé** (o
+*fim*), com um determinado espaçamento (o *passo*).
 
-O número inicial e o "passo" são opcionais.
+.. note::
 
-Se forem omitidos,
+    O número inicial e o "passo" são opcionais.
 
--  o início é 0
--  o passo é 1
+    Se forem omitidos,
 
-.. raw:: html
+    -  o início é 0
+    -  o passo é 1
 
-   <div class="alert alert-warning">
+.. Caution::
 
-Nunca esquecer que o valor do ``fim`` **é excluído da lista**
+    Nunca esquecer que o valor do ``fim`` **é excluído da lista**
 
-.. raw:: html
-
-   </div>
 
 Exemplos:
 

@@ -89,7 +89,7 @@ objeto ou expressão**. Mesmo em atribuições seguintes, no comando
     a = 4
     b = 3.2
     c = a + b
-    d = (a + b)**0.5
+    d = c ** 0.5
     print(a)
     print(b)
     print(c, d)
@@ -104,27 +104,26 @@ objeto ou expressão**. Mesmo em atribuições seguintes, no comando
 
 .. code-block:: ipython3
 
-    hoje = "Olá, quinta feira "
-    local = "sala 8.2.39"
-    onde = hoje + local
-    print(hoje)
-    print(local)
-    print(onde)
+    hoje = "Hoje é quinta feira"
+    mês = "Março"
+    tudo = hoje + ' e estamos em ' + mês
 
+    print(hoje)
+    print(mês)
+    print(tudo)
 
 .. code-block:: text
 
-    Olá, quinta feira 
-    sala 8.2.39
-    Olá, quinta feira sala 8.2.39
-    
+    Hoje é quinta feira
+    Março
+    Hoje é quinta feira e estamos em Março
 
 **Que nomes podemos usar?**
 
 As regras são:
 
-1. Um nome é uma combinação de letras minúsculas (a to z) ou maiúsculas
-   (A to Z) não acentuadas ou dígitos (0 to 9) ou o *underscore*. Nomes
+1. Um nome é uma combinação de letras minúsculas ou maiúsculas
+   (podendo ser acentuadas) ou dígitos (0 to 9) ou o *underscore*. Nomes
    como ``x``, ``Km_1`` ou ``velocidade_da_reaccao`` são exemplos
    válidos.
 2. Um nome não pode começar com um dígito. ``1x`` é inválido, mas ``x1``
@@ -187,49 +186,102 @@ podem variar:
     print("b =", b)
     print("c =", c)
 
-
 .. code-block:: text
 
     a = 3
     b = 5
     c = 8
-    
+
+Para melhor compreender as mudanças que ocorrem nos valores atribuídos aos
+nomes de ``a``, ``b`` e ``c`` no programa anterior, podemos modifica-lo,
+mostrando, com ``print()``, os valores atualizados desses nomes, após cada
+atribuição. Repare-se nos resultados de cada ``print()``:
+
+.. code-block:: ipython3
+
+    a = 2
+    b = 3
+    c = 'Olá'
+    print("a =", a, "b =", b, "c =", c)
+
+    b = a + b
+    print("a =", a, "b =", b, "c =", c)
+    a = a + 1
+    print("a =", a, "b =", b, "c =", c)
+    c = a + b
+    print("a =", a, "b =", b, "c =", c)
+
+.. code-block:: text
+
+    a = 2 b = 3 c = Olá
+    a = 2 b = 5 c = Olá
+    a = 3 b = 5 c = Olá
+    a = 3 b = 5 c = 8
+
+Interpolação de valores em *strings*
+------------------------------------
+
+As *strings* podem ter valores "interpolados", usando os nomes desses valores ou
+expressões. Para isso, usam-se ``{}`` para identificar em que sítio da *string*
+deve ficar cada valor e a *string* deve ter a letra ``f`` como prefixo. Um exemplo:
+
+.. code-block:: ipython3
+
+    a = 4.8
+    b = 3.2
+    c = a + b
+
+    print(f'a é igual a {a}, mas b = {b}, enquanto que c = {c}')
+
+.. code-block:: text
+
+    a é igual a 4.8, mas b = 3.2 e, ainda, c = 8.0
+
 
 Comentários
 -----------
 
 .. code-block:: ipython3
 
-    # Esta linha é um comentários (começa por #)
-    
-    # Podemos dar nomes a vários objetos de uma só vez:
-    a, b = 3, "experiência"
-    c, d = 2.5, 3+4
-    
-    print("a =", a, "b =", b, "c =", c, "d =", d)
+    # Comentários começam por #
 
+    # Podemos dar nomes a vários objetos
+    # de uma só vez:
+    a, b  =  3, "experiência"
+
+    print(f"a = {a} b = {b}")
 
 .. code-block:: text
 
-    a = 3 b = experiência c = 2.5 d = 7
-    
+    a = 3 b = experiência
+
 
 .. code-block:: ipython3
 
+    a, b  =  3, "experiência"
+
+    print(f"a = {a} b = {b}")
+
+    # print() deixa uma linha de intervalo
+    print()
+
     a, b = 3, 4
-    print("a =", a, "b =", b, '\n')
-    
+    print(f"a = {a} b = {b}\n")
+
     # Podemos trocar dois nomes desta maneira
     a, b = b, a
-    print("a =", a, "b =", b)
-
+    print('Depois de trocar a e b...')
+    print(f"a = {a} b = {b}")
 
 .. code-block:: text
 
-    a = 3 b = 4 
-    
+    a = 3 b = experiência
+
+    a = 3 b = 4
+
+    Depois de trocar a e b...
     a = 4 b = 3
-    
+
 
 Nota: quando numa *string* aparece o caractere "especial" ``\n``, este
 provoca uma linha suplementar quando a *string* é apresentada com a
