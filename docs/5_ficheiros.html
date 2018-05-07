@@ -90,16 +90,16 @@
 <li class="toctree-l1"><a class="reference internal" href="strings.html"><em>Strings</em></a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Ficheiros de texto</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#leitura">Leitura</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#read-com-open-e-close-explicitos"><code class="docutils literal notranslate"><span class="pre">.read()</span></code>, com <code class="docutils literal notranslate"><span class="pre">open()</span></code> e <code class="docutils literal notranslate"><span class="pre">close()</span></code> explícitos</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#read-dentro-do-bloco-de-um-comando-with"><code class="docutils literal notranslate"><span class="pre">.read()</span></code>, dentro do bloco de um comando <code class="docutils literal notranslate"><span class="pre">with</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#readlines"><code class="docutils literal notranslate"><span class="pre">.readlines()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#iteracao-de-ficheiros-com-for">Iteração de ficheiros com <code class="docutils literal notranslate"><span class="pre">for</span></code>.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#read-com-open-e-close-explicitos"><code class="docutils literal"><span class="pre">.read()</span></code>, com <code class="docutils literal"><span class="pre">open()</span></code> e <code class="docutils literal"><span class="pre">close()</span></code> explícitos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#read-dentro-do-bloco-de-um-comando-with"><code class="docutils literal"><span class="pre">.read()</span></code>, dentro do bloco de um comando <code class="docutils literal"><span class="pre">with</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#readlines"><code class="docutils literal"><span class="pre">.readlines()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iteracao-de-ficheiros-com-for">Iteração de ficheiros com <code class="docutils literal"><span class="pre">for</span></code>.</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#exemplo-extracao-de-informacao-de-um-ficheiro-fasta-multiplo">Exemplo: Extração de informação de um ficheiro FASTA múltiplo.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#escrita">Escrita</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#funcao-print-para-ficheiros">Função <code class="docutils literal notranslate"><span class="pre">print()</span></code> para ficheiros</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#funcao-write">Função <code class="docutils literal notranslate"><span class="pre">.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#funcao-print-para-ficheiros">Função <code class="docutils literal"><span class="pre">print()</span></code> para ficheiros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#funcao-write">Função <code class="docutils literal"><span class="pre">.write()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#exemplo-extracao-de-informacao-de-ficheiros-de-resultados-de-metabolomica">Exemplo: Extração de informação de ficheiros de resultados de metabolómica.</a><ul>
@@ -113,11 +113,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="6_defs.html">Funções definidas pelo programador</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal notranslate"><span class="pre">import</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code>).</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_scientific_modules.html">Python “científico”</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal notranslate"><span class="pre">numpy</span></code> e <code class="docutils literal notranslate"><span class="pre">scipy</span></code>: regressão linear.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="13_algoritmos.html">Algoritmos numéricos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="14_pandas.html">Python “científico”: biblioteca <em>pandas</em></a></li>
@@ -175,8 +174,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/5_ficheiros.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -198,15 +195,15 @@
 <img alt="" src="_images/fichs.png" />
 </div>
 <p>A leitura de um ficheiro segundo este modelo é feito através da função
-<code class="docutils literal notranslate"><span class="pre">.read()</span></code>.</p>
+<code class="docutils literal"><span class="pre">.read()</span></code>.</p>
 <p>Mas o processo é um pouco mais complicado do que o uso simples de uma
 função.</p>
 <p>O acesso (programático) a um ficheiro existente num computador requer
 que num programa se indique que esse acesso vai começar, a <em>abertura</em> de
 um ficheiro e que o acesso vai terminar, o <em>fecho</em> de um ficheiro.</p>
 <div class="section" id="read-com-open-e-close-explicitos">
-<h3><code class="docutils literal notranslate"><span class="pre">.read()</span></code>, com <code class="docutils literal notranslate"><span class="pre">open()</span></code> e <code class="docutils literal notranslate"><span class="pre">close()</span></code> explícitos<a class="headerlink" href="#read-com-open-e-close-explicitos" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span>
+<h3><code class="docutils literal"><span class="pre">.read()</span></code>, com <code class="docutils literal"><span class="pre">open()</span></code> e <code class="docutils literal"><span class="pre">close()</span></code> explícitos<a class="headerlink" href="#read-com-open-e-close-explicitos" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span>
 <span class="n">seq</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">a</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
@@ -216,7 +213,7 @@ um ficheiro e que o acesso vai terminar, o <em>fecho</em> de um ficheiro.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
+<div class="highlight-text"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
 A sequência, em FASTA é
 &gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
 MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN
@@ -230,17 +227,17 @@ GDNAVFAGENFHHGDKL
 </div>
 </div>
 <div class="section" id="read-dentro-do-bloco-de-um-comando-with">
-<h3><code class="docutils literal notranslate"><span class="pre">.read()</span></code>, dentro do bloco de um comando <code class="docutils literal notranslate"><span class="pre">with</span></code><a class="headerlink" href="#read-dentro-do-bloco-de-um-comando-with" title="Permalink to this headline">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">.read()</span></code>, dentro do bloco de um comando <code class="docutils literal"><span class="pre">with</span></code><a class="headerlink" href="#read-dentro-do-bloco-de-um-comando-with" title="Permalink to this headline">¶</a></h3>
 <p>Numa versão mais “moderna” podemos abrir e <strong>automaticamente fechar</strong> o
-ficheiro é utilizar o comando <code class="docutils literal notranslate"><span class="pre">with</span></code>:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+ficheiro é utilizar o comando <code class="docutils literal"><span class="pre">with</span></code>:</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">seq</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A sequência, em FASTA é&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>A sequência, em FASTA é
+<div class="highlight-text"><div class="highlight"><pre><span></span>A sequência, em FASTA é
 &gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
 MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN
 DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS
@@ -251,68 +248,68 @@ GTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL
 GDNAVFAGENFHHGDKL
 </pre></div>
 </div>
-<p>O comando <code class="docutils literal notranslate"><span class="pre">with</span></code> faz o ficheiro permanecer <em>aberto</em> até ao fim do
+<p>O comando <code class="docutils literal"><span class="pre">with</span></code> faz o ficheiro permanecer <em>aberto</em> até ao fim do
 “bloco”, (também aqui) indicado pelo alinhamento mais à direita de um ou
-mais comandos a seguir à linha em que se encontra o <code class="docutils literal notranslate"><span class="pre">with</span></code>. Quando
-termina o bloco o ficheiro é fechado sem usar a função <code class="docutils literal notranslate"><span class="pre">close()</span></code>.</p>
-<p>Além de <code class="docutils literal notranslate"><span class="pre">read()</span></code>, em que todo o conteúdo de um ficheiro é lido para
+mais comandos a seguir à linha em que se encontra o <code class="docutils literal"><span class="pre">with</span></code>. Quando
+termina o bloco o ficheiro é fechado sem usar a função <code class="docutils literal"><span class="pre">close()</span></code>.</p>
+<p>Além de <code class="docutils literal"><span class="pre">read()</span></code>, em que todo o conteúdo de um ficheiro é lido para
 uma <em>string</em>, existem outras maneiras de ler um ficheiro.</p>
 </div>
 <div class="section" id="readlines">
-<h3><code class="docutils literal notranslate"><span class="pre">.readlines()</span></code><a class="headerlink" href="#readlines" title="Permalink to this headline">¶</a></h3>
-<p>A função <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> lê e separa <strong>as linhas</strong> de um ficheiro para
+<h3><code class="docutils literal"><span class="pre">.readlines()</span></code><a class="headerlink" href="#readlines" title="Permalink to this headline">¶</a></h3>
+<p>A função <code class="docutils literal"><span class="pre">readlines()</span></code> lê e separa <strong>as linhas</strong> de um ficheiro para
 uma lista:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">seq</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;&gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]\n&#39;, &#39;MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN\n&#39;, &#39;DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS\n&#39;, &#39;KTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVG\n&#39;, &#39;DEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLA\n&#39;, &#39;DLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQI\n&#39;, &#39;GTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL\n&#39;, &#39;GDNAVFAGENFHHGDKL\n&#39;, &#39;\n&#39;]
+<div class="highlight-text"><div class="highlight"><pre><span></span>[&#39;&gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]\n&#39;, &#39;MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN\n&#39;, &#39;DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS\n&#39;, &#39;KTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVG\n&#39;, &#39;DEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLA\n&#39;, &#39;DLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQI\n&#39;, &#39;GTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL\n&#39;, &#39;GDNAVFAGENFHHGDKL\n&#39;, &#39;\n&#39;]
 </pre></div>
 </div>
-<p>O que são os <code class="docutils literal notranslate"><span class="pre">\n</span></code> no fim das <em>strings</em>?</p>
-<p><strong>Numa string,</strong> <code class="docutils literal notranslate"><span class="pre">\n</span></code> <strong>indica a mudança de linha</strong>. (Conta como
+<p>O que são os <code class="docutils literal"><span class="pre">\n</span></code> no fim das <em>strings</em>?</p>
+<p><strong>Numa string,</strong> <code class="docutils literal"><span class="pre">\n</span></code> <strong>indica a mudança de linha</strong>. (Conta como
 apenas <strong>1</strong> caractere).</p>
 <p>Neste caso eles aparecem porque no ficheiro original há mudanças de
 linha.</p>
 <p>Muitas vezes, é necessário elimina-los. Para isso podemos usar a função
-<code class="docutils literal notranslate"><span class="pre">.strip()</span></code>:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<code class="docutils literal"><span class="pre">.strip()</span></code>:</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">seq</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
 <span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="n">linha</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;&gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]&#39;, &#39;MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN&#39;, &#39;DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS&#39;, &#39;KTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVG&#39;, &#39;DEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLA&#39;, &#39;DLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQI&#39;, &#39;GTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL&#39;, &#39;GDNAVFAGENFHHGDKL&#39;, &#39;&#39;]
+<div class="highlight-text"><div class="highlight"><pre><span></span>[&#39;&gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]&#39;, &#39;MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN&#39;, &#39;DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS&#39;, &#39;KTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVG&#39;, &#39;DEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLA&#39;, &#39;DLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQI&#39;, &#39;GTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL&#39;, &#39;GDNAVFAGENFHHGDKL&#39;, &#39;&#39;]
 </pre></div>
 </div>
 <p>Ou, de uma forma sucinta, usando uma lista em compreensão:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="n">linha</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;&gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]&#39;, &#39;MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN&#39;, &#39;DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS&#39;, &#39;KTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVG&#39;, &#39;DEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLA&#39;, &#39;DLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQI&#39;, &#39;GTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL&#39;, &#39;GDNAVFAGENFHHGDKL&#39;, &#39;&#39;]
+<div class="highlight-text"><div class="highlight"><pre><span></span>[&#39;&gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]&#39;, &#39;MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN&#39;, &#39;DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS&#39;, &#39;KTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVG&#39;, &#39;DEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLA&#39;, &#39;DLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQI&#39;, &#39;GTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL&#39;, &#39;GDNAVFAGENFHHGDKL&#39;, &#39;&#39;]
 </pre></div>
 </div>
-<p>Com ficheiros muito grandes, a leitura pelas funções <code class="docutils literal notranslate"><span class="pre">.read()</span></code> e
-<code class="docutils literal notranslate"><span class="pre">.readlines()</span></code> pode esgotar a memória de um computador e “congelar” um
+<p>Com ficheiros muito grandes, a leitura pelas funções <code class="docutils literal"><span class="pre">.read()</span></code> e
+<code class="docutils literal"><span class="pre">.readlines()</span></code> pode esgotar a memória de um computador e “congelar” um
 programa.</p>
 <p>Existe uma terceira maneira de ler um ficheiro (que não traz problemas
 com ficheiros grandes):</p>
 </div>
 <div class="section" id="iteracao-de-ficheiros-com-for">
-<h3>Iteração de ficheiros com <code class="docutils literal notranslate"><span class="pre">for</span></code>.<a class="headerlink" href="#iteracao-de-ficheiros-com-for" title="Permalink to this headline">¶</a></h3>
+<h3>Iteração de ficheiros com <code class="docutils literal"><span class="pre">for</span></code>.<a class="headerlink" href="#iteracao-de-ficheiros-com-for" title="Permalink to this headline">¶</a></h3>
 <p><strong>A iteração de um ficheiro “percorre” as linhas do ficheiro</strong></p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
         <span class="n">linha</span> <span class="o">=</span> <span class="n">linha</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Linha:&#39;</span><span class="p">,</span> <span class="n">linha</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Linha: &gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
+<div class="highlight-text"><div class="highlight"><pre><span></span>Linha: &gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
 Linha: MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN
 Linha: DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS
 Linha: KTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVG
@@ -323,16 +320,16 @@ Linha: GDNAVFAGENFHHGDKL
 Linha:
 </pre></div>
 </div>
-<p>Podemos até usar a função <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> com um ficheiro. São gerados
+<p>Podemos até usar a função <code class="docutils literal"><span class="pre">enumerate()</span></code> com um ficheiro. São gerados
 os pares de valores</p>
-<p><code class="docutils literal notranslate"><span class="pre">(num</span> <span class="pre">linha,</span> <span class="pre">linha)</span></code>.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<p><code class="docutils literal"><span class="pre">(num</span> <span class="pre">linha,</span> <span class="pre">linha)</span></code>.</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">linha</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
         <span class="n">linha</span> <span class="o">=</span> <span class="n">linha</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;linha&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linha</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>linha 0 : &gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
+<div class="highlight-text"><div class="highlight"><pre><span></span>linha 0 : &gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
 linha 1 : MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVN
 linha 2 : DVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKS
 linha 3 : KTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVG
@@ -345,7 +342,7 @@ linha 8 :
 </div>
 <p><strong>Problema: ler uma ficheiro FASTA e separar o cabeçalho da sequência em
 duas strings (juntando toda a sequência numa só string)</strong></p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">linhas</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
 
 <span class="n">header</span> <span class="o">=</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -360,14 +357,14 @@ duas strings (juntando toda a sequência numa só string)</strong></p>
 <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cabeçalho: &gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
+<div class="highlight-text"><div class="highlight"><pre><span></span>cabeçalho: &gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
 sequência, com 437 aminoácidos:
 MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEELGDNAVFAGENFHHGDKL
 </pre></div>
 </div>
 <p>Às vezes os ficheiros não têm cabeçalho! É melhor testar se a primeira
 linha começa por “&gt;” !</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">linhas</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
 
 <span class="k">if</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">):</span>
@@ -382,7 +379,7 @@ linha começa por “&gt;” !</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cabeçalho: &gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
+<div class="highlight-text"><div class="highlight"><pre><span></span>cabeçalho: &gt;gi|398366315|ref|NP_011770.3| Eno1p [Saccharomyces cerevisiae S288c]
 sequência, com 437 aminoácidos:
 MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEELGDNAVFAGENFHHGDKL
 </pre></div>
@@ -391,7 +388,7 @@ MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKA
 “ignora-las”.</p>
 <p>Vamos supor que o ficheiro <strong>gre3.txt</strong> tem o seguinte conteúdo:</p>
 <hr class="docutils" />
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">sp</span><span class="o">|</span><span class="n">P38715</span><span class="o">|</span><span class="n">GRE3_YEAST</span> <span class="n">NADPH</span><span class="o">-</span><span class="n">dependent</span> <span class="n">aldose</span> <span class="n">reductase</span> <span class="n">GRE3</span> <span class="n">OS</span><span class="o">=</span><span class="n">Saccharomyces</span> <span class="n">cerevisiae</span> <span class="p">(</span><span class="n">strain</span> <span class="n">ATCC</span> <span class="mi">204508</span> <span class="o">/</span> <span class="n">S288c</span><span class="p">)</span> <span class="n">GN</span><span class="o">=</span><span class="n">GRE3</span> <span class="n">PE</span><span class="o">=</span><span class="mi">1</span> <span class="n">SV</span><span class="o">=</span><span class="mi">1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">sp</span><span class="o">|</span><span class="n">P38715</span><span class="o">|</span><span class="n">GRE3_YEAST</span> <span class="n">NADPH</span><span class="o">-</span><span class="n">dependent</span> <span class="n">aldose</span> <span class="n">reductase</span> <span class="n">GRE3</span> <span class="n">OS</span><span class="o">=</span><span class="n">Saccharomyces</span> <span class="n">cerevisiae</span> <span class="p">(</span><span class="n">strain</span> <span class="n">ATCC</span> <span class="mi">204508</span> <span class="o">/</span> <span class="n">S288c</span><span class="p">)</span> <span class="n">GN</span><span class="o">=</span><span class="n">GRE3</span> <span class="n">PE</span><span class="o">=</span><span class="mi">1</span> <span class="n">SV</span><span class="o">=</span><span class="mi">1</span>
 
 <span class="n">MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR</span>
 <span class="n">KAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVP</span>
@@ -403,7 +400,7 @@ MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKA
 </div>
 <hr class="docutils" />
 <p>Como separar o cabeçalho da sequência?</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;gre3.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;gre3.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">linhas</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
 
 <span class="n">linhas</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">linhas</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
@@ -421,7 +418,7 @@ MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKA
 <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cabeçalho:
+<div class="highlight-text"><div class="highlight"><pre><span></span>cabeçalho:
 &gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
 sequência, com 327 aminoácidos:
 MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
@@ -434,7 +431,7 @@ MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLW
 <p><strong>Problema: extraír os cabeçalhos e as sequências de um ficheiro FASTA
 múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
 (W)</strong></p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">tudo</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">prots</span> <span class="o">=</span> <span class="n">tudo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
 
@@ -442,7 +439,7 @@ múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
     <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>0
+<div class="highlight-text"><div class="highlight"><pre><span></span>0
 1121
 1151
 374
@@ -453,7 +450,7 @@ múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
 556
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">tudo</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">prots</span> <span class="o">=</span> <span class="n">tudo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
 <span class="n">prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
@@ -463,7 +460,7 @@ múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
     <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">[:</span><span class="mi">30</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1121
+<div class="highlight-text"><div class="highlight"><pre><span></span>1121
 sp|P16862|PFKA2_YEAST ATP-depe
 1151
 sp|P16861|PFKA1_YEAST ATP-depe
@@ -481,7 +478,7 @@ sp|P32626|ENOPH_YEAST Enolase-
 sp|P40370|ENO11_SCHPO Enolase
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">tudo</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">prots</span> <span class="o">=</span> <span class="n">tudo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
 <span class="n">prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
@@ -497,7 +494,7 @@ sp|P40370|ENO11_SCHPO Enolase
     <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sp|P16862|PFKA2_YEAST ATP-dependent 6-phosphofructokinase subunit beta OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=PFK2 PE=1 SV=4
+<div class="highlight-text"><div class="highlight"><pre><span></span>sp|P16862|PFKA2_YEAST ATP-dependent 6-phosphofructokinase subunit beta OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=PFK2 PE=1 SV=4
 sp|P16861|PFKA1_YEAST ATP-dependent 6-phosphofructokinase subunit alpha OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=PFK1 PE=1 SV=1
 sp|P00950|PMG1_YEAST Phosphoglycerate mutase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GPM1 PE=1 SV=3
 sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=ENO1 PE=1 SV=3
@@ -507,7 +504,7 @@ sp|P32626|ENOPH_YEAST Enolase-phosphatase E1 OS=Saccharomyces cerevisiae (strain
 sp|P40370|ENO11_SCHPO Enolase 1-1 OS=Schizosaccharomyces pombe (strain 972 / ATCC 24843) GN=eno101 PE=1 SV=2
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">tudo</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">prots</span> <span class="o">=</span> <span class="n">tudo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
 <span class="n">prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
@@ -528,7 +525,7 @@ sp|P40370|ENO11_SCHPO Enolase 1-1 OS=Schizosaccharomyces pombe (strain 972 / ATC
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;tem&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="s1">&#39;aminoácidos,&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">),</span> <span class="s1">&#39;são triptofanos&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>P16862 tem 959 aminoácidos, 10 são triptofanos
+<div class="highlight-text"><div class="highlight"><pre><span></span>P16862 tem 959 aminoácidos, 10 são triptofanos
 P16861 tem 987 aminoácidos, 12 são triptofanos
 P00950 tem 247 aminoácidos, 5 são triptofanos
 P00924 tem 437 aminoácidos, 5 são triptofanos
@@ -542,12 +539,12 @@ P40370 tem 439 aminoácidos, 7 são triptofanos
 <div class="section" id="escrita">
 <h2>Escrita<a class="headerlink" href="#escrita" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="funcao-print-para-ficheiros">
-<h3>Função <code class="docutils literal notranslate"><span class="pre">print()</span></code> para ficheiros<a class="headerlink" href="#funcao-print-para-ficheiros" title="Permalink to this headline">¶</a></h3>
-<p>Basta abrir o ficheiro em <em>modo de escrita</em> usando o argumento <code class="docutils literal notranslate"><span class="pre">w</span></code> na
-função <code class="docutils literal notranslate"><span class="pre">open()</span></code>. Depois, modificar a função <code class="docutils literal notranslate"><span class="pre">print()</span></code>, com o
-argumento <code class="docutils literal notranslate"><span class="pre">file</span></code>, indicando que o resultado da escrita deve ser
+<h3>Função <code class="docutils literal"><span class="pre">print()</span></code> para ficheiros<a class="headerlink" href="#funcao-print-para-ficheiros" title="Permalink to this headline">¶</a></h3>
+<p>Basta abrir o ficheiro em <em>modo de escrita</em> usando o argumento <code class="docutils literal"><span class="pre">w</span></code> na
+função <code class="docutils literal"><span class="pre">open()</span></code>. Depois, modificar a função <code class="docutils literal"><span class="pre">print()</span></code>, com o
+argumento <code class="docutils literal"><span class="pre">file</span></code>, indicando que o resultado da escrita deve ser
 <em>enviado</em> para o ficheiro.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1, 2, 3, experiência, som, som&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">**</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
@@ -555,11 +552,11 @@ argumento <code class="docutils literal notranslate"><span class="pre">file</spa
 </div>
 <p>Aparentemente não aconteceu nada, mas um ficheiro novo foi criado</p>
 <p>Vamos ler o ficheiro:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1, 2, 3, experiência, som, som
+<div class="highlight-text"><div class="highlight"><pre><span></span>1, 2, 3, experiência, som, som
 0 0.0
 1 1.0
 2 1.4142135623730951
@@ -594,10 +591,10 @@ argumento <code class="docutils literal notranslate"><span class="pre">file</spa
 </div>
 </div>
 <div class="section" id="funcao-write">
-<h3>Função <code class="docutils literal notranslate"><span class="pre">.write()</span></code><a class="headerlink" href="#funcao-write" title="Permalink to this headline">¶</a></h3>
-<p>Também existe a função <code class="docutils literal notranslate"><span class="pre">.write()</span></code> que funciona como o contrário de
-<code class="docutils literal notranslate"><span class="pre">.read()</span></code>:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tudo</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<h3>Função <code class="docutils literal"><span class="pre">.write()</span></code><a class="headerlink" href="#funcao-write" title="Permalink to this headline">¶</a></h3>
+<p>Também existe a função <code class="docutils literal"><span class="pre">.write()</span></code> que funciona como o contrário de
+<code class="docutils literal"><span class="pre">.read()</span></code>:</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">tudo</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Um texto que ocupa</span>
 <span class="s2">1 linha</span>
 <span class="s2">2 linhas</span>
@@ -610,7 +607,7 @@ argumento <code class="docutils literal notranslate"><span class="pre">file</spa
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Um texto que ocupa
+<div class="highlight-text"><div class="highlight"><pre><span></span>Um texto que ocupa
 1 linha
 2 linhas
 3 linhas
@@ -618,9 +615,9 @@ argumento <code class="docutils literal notranslate"><span class="pre">file</spa
 </div>
 <p><strong>Problema: ler uma ficheiro com dados numéricos e converter o ponto
 decimal em vírgula decimal</strong></p>
-<p>No ficheiro <code class="docutils literal notranslate"><span class="pre">exp.txt</span></code>, recentemente criado, podemos, de uma form
-sucinta, passar os <code class="docutils literal notranslate"><span class="pre">.</span></code> a <code class="docutils literal notranslate"><span class="pre">,</span></code> ?</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<p>No ficheiro <code class="docutils literal"><span class="pre">exp.txt</span></code>, recentemente criado, podemos, de uma form
+sucinta, passar os <code class="docutils literal"><span class="pre">.</span></code> a <code class="docutils literal"><span class="pre">,</span></code> ?</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">tudo</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
@@ -630,7 +627,7 @@ sucinta, passar os <code class="docutils literal notranslate"><span class="pre">
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1, 2, 3, experiência, som, som
+<div class="highlight-text"><div class="highlight"><pre><span></span>1, 2, 3, experiência, som, som
 0 0,0
 1 1,0
 2 1,4142135623730951
@@ -686,9 +683,9 @@ Into Pathways, <em>Nucleic Acids Research</em>, <strong>36</strong>, Web Server 
 W481-W484.</p>
 <div class="section" id="exploracao-do-formato">
 <h3>Exploração do formato<a class="headerlink" href="#exploracao-do-formato" title="Permalink to this headline">¶</a></h3>
-<p>Vamos ler o ficheiro <code class="docutils literal notranslate"><span class="pre">masses.annotated.reformat.tsv</span></code>, separar todas as
+<p>Vamos ler o ficheiro <code class="docutils literal"><span class="pre">masses.annotated.reformat.tsv</span></code>, separar todas as
 linhas para uma lista e mostrar a primeira e a última:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">all_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
 
@@ -698,22 +695,22 @@ linhas para uma lista e mostrar a primeira e a última:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">all_lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FIRST line ----------------------------
+<div class="highlight-text"><div class="highlight"><pre><span></span>FIRST line ----------------------------
 154.97517   7.25775e+06     120.005768420091        4       154.975098039829#154.975098039829#154.975274805989      0.464333550973771#0.464333550973771#-0.676276005999922  C00988#HMDB00816#C02287 C2H5O6P#C2H5O6P#C3H4O5  2-Phosphoglycolate;Phosphoglycolic acid ([M-H]-)#Phosphoglycolic acid (see KEGG C00988); 2-phosphonooxyacetic acid [carboxylic acid] ([M-H]-)#Hydroxymalonate;Tartronic acid;Hydroxymalonic acid;2-Hydroxymalonate;2-Hydroxymalonic acid;2-Tartronic acid ([M+Cl35]-)                                                                                                   ko00630;ko01100#null#null       ;Glyoxylate and dicarboxylate metabolism;Metabolic pathways#null#null   null#null#null
 LAST line -----------------------------
 raw_mass    peak_height     corrected_mass  npossible       KEGG_mass       ppm     KEGG_cid        KEGG_formula    KEGG_name       uniqueID        C13     O18     N15     S34     Mg25    Mg26    Fe54    Fe57    Ca44    Cl37    K41     KEGG Pathways   KEGG Pathways descriptions      Compound in Organism(X)
 </pre></div>
 </div>
 <p>Nas linhas deste ficheiro, os vários campos com informação estão
-separados por <strong>tabs</strong> (o caractere <code class="docutils literal notranslate"><span class="pre">\t</span></code>).</p>
+separados por <strong>tabs</strong> (o caractere <code class="docutils literal"><span class="pre">\t</span></code>).</p>
 <p>A última linha tem como informação os nomes de cada um destes campos
-(<code class="docutils literal notranslate"><span class="pre">raw_mass</span> <span class="pre">peak_height</span></code> etc)</p>
-<p>Vamos dividir a linha 0 em várias partes, pelo separador <code class="docutils literal notranslate"><span class="pre">\t</span></code>. As
+(<code class="docutils literal"><span class="pre">raw_mass</span> <span class="pre">peak_height</span></code> etc)</p>
+<p>Vamos dividir a linha 0 em várias partes, pelo separador <code class="docutils literal"><span class="pre">\t</span></code>. As
 partes obtidas são os vários campos de informação reltiva a um pico de
 MS.</p>
 <p>Já agora, vamos obter os nomes de cada campo, fazendo o mesmo à última
 linha:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">all_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
 
@@ -722,7 +719,7 @@ linha:</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>raw_mass
+<div class="highlight-text"><div class="highlight"><pre><span></span>raw_mass
 peak_height
 corrected_mass
 npossible
@@ -748,7 +745,7 @@ KEGG Pathways descriptions
 Compound in Organism(X)
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">all_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
 
@@ -761,7 +758,7 @@ Compound in Organism(X)
     <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="n">h</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>raw_mass : 154.97517
+<div class="highlight-text"><div class="highlight"><pre><span></span>raw_mass : 154.97517
 peak_height : 7.25775e+06
 corrected_mass : 120.005768420091
 npossible : 4
@@ -797,9 +794,9 @@ Compound in Organism(X) : null#null#null
 <li>as descrições das vias (campo 22)</li>
 </ul>
 <p>Havendo vários compostos possíveis em cada pico, é usado como separador
-o caractere <code class="docutils literal notranslate"><span class="pre">#</span></code>.</p>
+o caractere <code class="docutils literal"><span class="pre">#</span></code>.</p>
 <p>Podemos já separar a informação por composto.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
 <span class="n">use_only</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;raw_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;peak_height&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG_cid&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG_name&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways descriptions&#39;</span><span class="p">]</span>
 <span class="n">needs_split</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;KEGG_cid&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG_name&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways descriptions&#39;</span><span class="p">]</span>
 
@@ -820,7 +817,7 @@ o caractere <code class="docutils literal notranslate"><span class="pre">#</span
     <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="n">h</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>raw_mass : 154.97517
+<div class="highlight-text"><div class="highlight"><pre><span></span>raw_mass : 154.97517
 peak_height : 7.25775e+06
 KEGG_cid : [&#39;C00988&#39;, &#39;HMDB00816&#39;, &#39;C02287&#39;]
 KEGG_name : [&#39;2-Phosphoglycolate;Phosphoglycolic acid ([M-H]-)&#39;, &#39;Phosphoglycolic acid (see KEGG C00988); 2-phosphonooxyacetic acid [carboxylic acid] ([M-H]-)&#39;, &#39;Hydroxymalonate;Tartronic acid;Hydroxymalonic acid;2-Hydroxymalonate;2-Hydroxymalonic acid;2-Tartronic acid ([M+Cl35]-)&#39;]
@@ -831,15 +828,15 @@ KEGG Pathways descriptions : [&#39;;Glyoxylate and dicarboxylate metabolism;Meta
 <p>Quanto à informação relativa às vias em que cada composto pode estar
 envolvido, podemos reparar que:</p>
 <ol class="arabic simple">
-<li>Um composto pde ter várias vias, separadas por <code class="docutils literal notranslate"><span class="pre">;</span></code>.</li>
+<li>Um composto pde ter várias vias, separadas por <code class="docutils literal"><span class="pre">;</span></code>.</li>
 <li>Um composto pode não ter nenhuma via. neste caso, aparece a anotação
 “null”.</li>
 </ol>
 <p>Finalmente, vamos transformar a informação relativa às vias (quer os IDs
 quer as descrições) em <strong>listas</strong>.</p>
-<p>Repare-se que ainda são <em>strings</em> e que usam como separador o <code class="docutils literal notranslate"><span class="pre">;</span></code> para
+<p>Repare-se que ainda são <em>strings</em> e que usam como separador o <code class="docutils literal"><span class="pre">;</span></code> para
 delimitar várias vias.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
 <span class="n">use_only</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;raw_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;peak_height&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG_cid&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG_name&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways descriptions&#39;</span><span class="p">]</span>
 <span class="n">needs_split</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;KEGG_cid&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG_name&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways descriptions&#39;</span><span class="p">]</span>
 <span class="n">needs_more_split</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;KEGG Pathways&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways descriptions&#39;</span><span class="p">]</span>
@@ -864,7 +861,7 @@ delimitar várias vias.</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="n">h</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>raw_mass : 154.97517
+<div class="highlight-text"><div class="highlight"><pre><span></span>raw_mass : 154.97517
 peak_height : 7.25775e+06
 KEGG_cid : [&#39;C00988&#39;, &#39;HMDB00816&#39;, &#39;C02287&#39;]
 KEGG_name : [&#39;2-Phosphoglycolate;Phosphoglycolic acid ([M-H]-)&#39;, &#39;Phosphoglycolic acid (see KEGG C00988); 2-phosphonooxyacetic acid [carboxylic acid] ([M-H]-)&#39;, &#39;Hydroxymalonate;Tartronic acid;Hydroxymalonic acid;2-Hydroxymalonate;2-Hydroxymalonic acid;2-Tartronic acid ([M+Cl35]-)&#39;]
@@ -874,7 +871,7 @@ KEGG Pathways descriptions : [[&#39;&#39;, &#39;Glyoxylate and dicarboxylate met
 </div>
 <p>Agora <strong>tudo junto, aplicando ao ficheiro inteiro</strong>. Para controlo,
 podemos contar os compostos obtidos.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;masses.annotated.reformat.tsv&#39;</span>
 <span class="n">use_only</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;raw_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;peak_height&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG_cid&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG_name&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways descriptions&#39;</span><span class="p">]</span>
 <span class="n">needs_split</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;KEGG_cid&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG_name&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways descriptions&#39;</span><span class="p">]</span>
 <span class="n">needs_more_split</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;KEGG Pathways&#39;</span><span class="p">,</span> <span class="s1">&#39;KEGG Pathways descriptions&#39;</span><span class="p">]</span>
@@ -907,7 +904,7 @@ podemos contar os compostos obtidos.</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">h</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>São 482 massas
+<div class="highlight-text"><div class="highlight"><pre><span></span>São 482 massas
 
 ---- Massa 0 -----
 raw_mass : 154.97517
@@ -920,16 +917,16 @@ KEGG Pathways descriptions : [[&#39;Glyoxylate and dicarboxylate metabolism&#39;
 </div>
 <div class="section" id="correspondencia-compostos-vias">
 <h4>Correspondência compostos - vias<a class="headerlink" href="#correspondencia-compostos-vias" title="Permalink to this headline">¶</a></h4>
-<p>Agora com esta <strong>lista de dicionários</strong> chamada <code class="docutils literal notranslate"><span class="pre">peaks</span></code> disponível
+<p>Agora com esta <strong>lista de dicionários</strong> chamada <code class="docutils literal"><span class="pre">peaks</span></code> disponível
 podemos centrar a informação em torrno dos compostos associados a vias.</p>
 <p>Para isso vamos criar dois dicionários:</p>
 <ul class="simple">
-<li>um chamado <code class="docutils literal notranslate"><span class="pre">pathways</span></code> que associa cada <strong>Id de um composto</strong> a uma
+<li>um chamado <code class="docutils literal"><span class="pre">pathways</span></code> que associa cada <strong>Id de um composto</strong> a uma
 <strong>lista de Ids de vias</strong> e</li>
-<li>outro chamado <code class="docutils literal notranslate"><span class="pre">descriptions</span></code>, que associa cada Id de via à sua
+<li>outro chamado <code class="docutils literal"><span class="pre">descriptions</span></code>, que associa cada Id de via à sua
 descrição.</li>
 </ul>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">paths</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">paths</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">descriptions</span> <span class="o">=</span> <span class="p">{}</span>
 
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">peaks</span><span class="p">:</span>
@@ -958,7 +955,7 @@ descrição.</li>
     <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;--&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39; AND &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p_desc</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>São 327 compostos com anotações de vias
+<div class="highlight-text"><div class="highlight"><pre><span></span>São 327 compostos com anotações de vias
 
 ---------Alguns compostos:
 
@@ -996,7 +993,7 @@ C16390 --&gt; Nicotinate and nicotinamide metabolism
 <p>Agora com estes dois dicionários podemos responder a várias questões:</p>
 <p>Exemplo: Como obter uma <strong>lista</strong> com nomes das vias, mas sem
 repetições?</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">pId</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">[</span><span class="n">c</span><span class="p">]:</span>
@@ -1009,7 +1006,7 @@ repetições?</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Glyoxylate and dicarboxylate metabolism
+<div class="highlight-text"><div class="highlight"><pre><span></span>Glyoxylate and dicarboxylate metabolism
 Metabolic pathways
 Drug metabolism - cytochrome P450
 Pantothenate and CoA biosynthesis
@@ -1034,7 +1031,7 @@ Tetracycline biosynthesis
 </div>
 <p>Exemplo: Como obter um <strong>dicionário</strong> com os <strong>Ids das vias como
 chaves</strong> e o <strong>número de vezes que aparecem como valores</strong>?</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
 
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">pId</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">[</span><span class="n">c</span><span class="p">]:</span>
@@ -1051,7 +1048,7 @@ chaves</strong> e o <strong>número de vezes que aparecem como valores</strong>?
     <span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="n">pId</span><span class="p">],</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">pId</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">descriptions</span><span class="p">[</span><span class="n">pId</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>São 150 vias
+<div class="highlight-text"><div class="highlight"><pre><span></span>São 150 vias
 
 ---------Algumas contagens:
 
@@ -1067,7 +1064,7 @@ chaves</strong> e o <strong>número de vezes que aparecem como valores</strong>?
 2    ko00940         Phenylpropanoid biosynthesis
 </pre></div>
 </div>
-<p>Uma vez que <code class="docutils literal notranslate"><span class="pre">counts</span></code> é um dicionário, não se aplica a noção de ordem e
+<p>Uma vez que <code class="docutils literal"><span class="pre">counts</span></code> é um dicionário, não se aplica a noção de ordem e
 é evidente que as vias não estão ordenadas segundo as contagens de
 compostos.</p>
 <p>Podemos obter as vias por ordem decrescente de compostos?</p>
@@ -1079,21 +1076,21 @@ de trabalhar com listas.</p>
 <li>Criar uma lista com os pares (contagens, Id da via)</li>
 <li>Ordenar a lista</li>
 </ul>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts_list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">counts</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">]</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">counts_list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">counts</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">]</span>
 
 <span class="c1">#Controlo: 5 primeiros elementos, lista desordenada:</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">counts_list</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>(8, &#39;ko00630&#39;)
+<div class="highlight-text"><div class="highlight"><pre><span></span>(8, &#39;ko00630&#39;)
 (113, &#39;ko01100&#39;)
 (5, &#39;ko00982&#39;)
 (4, &#39;ko00770&#39;)
 (4, &#39;ko00620&#39;)
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts_list</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">counts_list</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># reverse=True indica que a ordenação é por ordem decrescente</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;As 20 vias com mais compostos associados:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -1101,7 +1098,7 @@ de trabalhar com listas.</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">descriptions</span><span class="p">[</span><span class="n">pId</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>As 20 vias com mais compostos associados:
+<div class="highlight-text"><div class="highlight"><pre><span></span>As 20 vias com mais compostos associados:
 
 113 : Metabolic pathways
 24 : Biosynthesis of plant secondary metabolites
@@ -1126,17 +1123,17 @@ de trabalhar com listas.</p>
 </pre></div>
 </div>
 <p>Como exemplo final, escrever um ficheiro que sumariza esta informação.</p>
-<p>Problema: Escrever um ficheiro, chamado <code class="docutils literal notranslate"><span class="pre">pathways.txt</span></code> com vários
-campos, separados por <code class="docutils literal notranslate"><span class="pre">\t</span></code> e <strong>uma via por linha</strong>.</p>
+<p>Problema: Escrever um ficheiro, chamado <code class="docutils literal"><span class="pre">pathways.txt</span></code> com vários
+campos, separados por <code class="docutils literal"><span class="pre">\t</span></code> e <strong>uma via por linha</strong>.</p>
 <p>As vias devem estar por ordem decrescente de ocorrência</p>
 <p>Os campos são:</p>
 <ul class="simple">
 <li>O ID da via</li>
 <li>A descrição da via</li>
 <li>O número de ocorrências</li>
-<li>Os Ids dos compostos associados à via, separados por <code class="docutils literal notranslate"><span class="pre">;</span></code></li>
+<li>Os Ids dos compostos associados à via, separados por <code class="docutils literal"><span class="pre">;</span></code></li>
 </ul>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;pathways.txt&#39;</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;pathways.txt&#39;</span>
 
 <span class="c1"># associação entre ids de vias e lista de compostos</span>
 <span class="n">compounds</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1163,7 +1160,7 @@ campos, separados por <code class="docutils literal notranslate"><span class="pr
         <span class="nb">print</span><span class="p">(</span><span class="n">Id</span><span class="p">,</span> <span class="n">descriptions</span><span class="p">[</span><span class="n">Id</span><span class="p">],</span> <span class="n">c</span><span class="p">,</span> <span class="n">compounds</span><span class="p">[</span><span class="n">Id</span><span class="p">],</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># verificar se correu bem...</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="c1"># verificar se correu bem...</span>
 <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;pathways.txt&#39;</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
@@ -1171,7 +1168,7 @@ campos, separados por <code class="docutils literal notranslate"><span class="pr
     <span class="nb">print</span><span class="p">(</span><span class="n">linhas</span><span class="p">[</span><span class="mi">14</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ko00010     Glycolysis / Gluconeogenesis    14      [&#39;C00111&#39;, &#39;C00118&#39;, &#39;C00031&#39;, &#39;C00221&#39;, &#39;C00267&#39;, &#39;C00631&#39;, &#39;C00197&#39;, &#39;C00103&#39;, &#39;C00668&#39;, &#39;C01172&#39;, &#39;C05345&#39;, &#39;C00236&#39;, &#39;C01159&#39;, &#39;C16255&#39;]
+<div class="highlight-text"><div class="highlight"><pre><span></span>ko00010     Glycolysis / Gluconeogenesis    14      [&#39;C00111&#39;, &#39;C00118&#39;, &#39;C00031&#39;, &#39;C00221&#39;, &#39;C00267&#39;, &#39;C00631&#39;, &#39;C00197&#39;, &#39;C00103&#39;, &#39;C00668&#39;, &#39;C01172&#39;, &#39;C05345&#39;, &#39;C00236&#39;, &#39;C01159&#39;, &#39;C16255&#39;]
 </pre></div>
 </div>
 </div>

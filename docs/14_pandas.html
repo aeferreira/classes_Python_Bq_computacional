@@ -90,20 +90,19 @@
 <li class="toctree-l1"><a class="reference internal" href="strings.html"><em>Strings</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_defs.html">Funções definidas pelo programador</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal notranslate"><span class="pre">import</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code>).</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_scientific_modules.html">Python “científico”</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal notranslate"><span class="pre">numpy</span></code> e <code class="docutils literal notranslate"><span class="pre">scipy</span></code>: regressão linear.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="13_algoritmos.html">Algoritmos numéricos</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Python “científico”: biblioteca <em>pandas</em></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#series"><code class="docutils literal notranslate"><span class="pre">Series</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#series"><code class="docutils literal"><span class="pre">Series</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#funcoes-descritivas-dos-valores">Funções descritivas dos valores</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#indexacao-e-operacoes-vetoriais">Indexação e operações vetoriais</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#dataframe"><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataframe"><code class="docutils literal"><span class="pre">DataFrame</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -160,8 +159,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/14_pandas.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -178,31 +175,31 @@
 <div class="figure">
 <img alt="" src="_images/sci_python_pandas.png" />
 </div>
-<p><em>web site</em>: (<code class="docutils literal notranslate"><span class="pre">pandas.pydata.org</span></code>)</p>
+<p><em>web site</em>: (<code class="docutils literal"><span class="pre">pandas.pydata.org</span></code>)</p>
 <div class="figure">
 <img alt="" src="_images/pandas_web.png" />
 </div>
 <div class="section" id="series">
-<h2><code class="docutils literal notranslate"><span class="pre">Series</span></code><a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal"><span class="pre">Series</span></code><a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">Series</span></code> is a one-dimensional <strong>labeled</strong> array capable of holding
+<div><code class="docutils literal"><span class="pre">Series</span></code> is a one-dimensional <strong>labeled</strong> array capable of holding
 any data type (integers, strings, floating point numbers, Python
 objects, etc.). The axis labels are collectively referred to as the
 <strong>index</strong>.</div></blockquote>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 <p>Uma Série (<em>Series</em>) é um conjunto (ordenado) de valores, mas cada valor
 é associado a uma “etiqueta” (<em>label</em>).</p>
 <p>Ao conjunto das etiquetas dá-se o nome de “<strong>índice</strong>”.</p>
-<p>Quando construímos uma Série, usando a função <code class="docutils literal notranslate"><span class="pre">Series()</span></code>, podemos
+<p>Quando construímos uma Série, usando a função <code class="docutils literal"><span class="pre">Series()</span></code>, podemos
 indicar o índice.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
               <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a     1.4
+<div class="highlight-text"><div class="highlight"><pre><span></span>a     1.4
 b     2.2
 c     3.2
 d     6.5
@@ -212,11 +209,11 @@ dtype: float64
 </div>
 <p>Se não indicarmos um índice, o conjunto dos inteiros sucessivos será o
 índice.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">6.5</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">6.5</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>0     1.4
+<div class="highlight-text"><div class="highlight"><pre><span></span>0     1.4
 1     2.2
 2     3.2
 3     6.5
@@ -226,12 +223,12 @@ dtype: float64
 </div>
 <p>As Séries podem ser construídas a partir de um dicionário, em que as
 chaves são o índice.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a    0.0
+<div class="highlight-text"><div class="highlight"><pre><span></span>a    0.0
 b    1.0
 c    2.0
 dtype: float64
@@ -240,34 +237,34 @@ dtype: float64
 <p>Podemos, mesmo neste caso, indicar um índice. Caso o índice tenha
 elementos para além das chaves do dicionário, haverá <strong>valores em
 falta</strong>.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>b    1.0
+<div class="highlight-text"><div class="highlight"><pre><span></span>b    1.0
 c    2.0
 d    NaN
 a    0.0
 dtype: float64
 </pre></div>
 </div>
-<p>O uso do marcador <code class="docutils literal notranslate"><span class="pre">NaN</span></code> para indicar <strong>valores em falta</strong> e a
+<p>O uso do marcador <code class="docutils literal"><span class="pre">NaN</span></code> para indicar <strong>valores em falta</strong> e a
 existência de muitas funções de análise que levam em conta valores em
-falta são uma característica muito poderosa do módulo <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
+falta são uma característica muito poderosa do módulo <code class="docutils literal"><span class="pre">pandas</span></code>.</p>
 <div class="section" id="funcoes-descritivas-dos-valores">
 <h3>Funções descritivas dos valores<a class="headerlink" href="#funcoes-descritivas-dos-valores" title="Permalink to this headline">¶</a></h3>
 <p>As Séries têm algumas funções de estatística descritiva de grande
 utilidade.</p>
 <p>Note-se que, em geral, <strong>os valores em falta são ignorados nos
 cálculos</strong>.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Média =&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>b    1.0
+<div class="highlight-text"><div class="highlight"><pre><span></span>b    1.0
 c    2.0
 d    NaN
 a    0.0
@@ -276,14 +273,14 @@ dtype: float64
 Média = 1.0
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>b    1.0
+<div class="highlight-text"><div class="highlight"><pre><span></span>b    1.0
 c    2.0
 d    NaN
 a    0.0
@@ -300,26 +297,26 @@ max      2.0
 dtype: float64
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">cumsum</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>b    1.0
+<div class="highlight-text"><div class="highlight"><pre><span></span>b    1.0
 c    3.0
 d    NaN
 a    3.0
 dtype: float64
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[  1.   2.  nan   0.]
+<div class="highlight-text"><div class="highlight"><pre><span></span>[  1.   2.  nan   0.]
 [&#39;b&#39; &#39;c&#39; &#39;d&#39; &#39;a&#39;]
 </pre></div>
 </div>
@@ -327,16 +324,16 @@ dtype: float64
 <div class="section" id="indexacao-e-operacoes-vetoriais">
 <h3>Indexação e operações vetoriais<a class="headerlink" href="#indexacao-e-operacoes-vetoriais" title="Permalink to this headline">¶</a></h3>
 <p>As Séries podem ser usadas com indexação por números inteiros,
-comportando-se como uma lista ou um <em>array</em> do <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
-<p>A função <code class="docutils literal notranslate"><span class="pre">len()</span></code>também funciona com séries.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
+comportando-se como uma lista ou um <em>array</em> do <code class="docutils literal"><span class="pre">numpy</span></code>.</p>
+<p>A função <code class="docutils literal"><span class="pre">len()</span></code>também funciona com séries.</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>4
+<div class="highlight-text"><div class="highlight"><pre><span></span>4
 1.0
 0.0
 </pre></div>
@@ -344,9 +341,9 @@ comportando-se como uma lista ou um <em>array</em> do <code class="docutils lite
 <p>As Séries podem ser usadas <strong>como dicionários: as etiquetas comportam-se
 como chaves</strong> e são usadas para indexar uma Série. para obter um valor
 (e também para modificar um valor).</p>
-<p>Tal como nos dicionários, o operador <code class="docutils literal notranslate"><span class="pre">in</span></code> <strong>testa a existência de uma
+<p>Tal como nos dicionários, o operador <code class="docutils literal"><span class="pre">in</span></code> <strong>testa a existência de uma
 etiqueta</strong>.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------&#39;</span><span class="p">)</span>
@@ -356,7 +353,7 @@ etiqueta</strong>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>b    1.0
+<div class="highlight-text"><div class="highlight"><pre><span></span>b    1.0
 c    2.0
 d    NaN
 a    0.0
@@ -369,19 +366,19 @@ True
 </pre></div>
 </div>
 <p>Mas as Séries são muito mais poderosas: elas comportam-se como <em>arrays</em>
-do módulo <code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Podemos usar:</p>
+do módulo <code class="docutils literal"><span class="pre">numpy</span></code>. Podemos usar:</p>
 <ul class="simple">
 <li><em>slices</em></li>
 <li><strong>operações vetoriais</strong>.</li>
 </ul>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>b    1.0
+<div class="highlight-text"><div class="highlight"><pre><span></span>b    1.0
 c    3.0
 d    NaN
 e    1.8
@@ -393,14 +390,14 @@ d    NaN
 dtype: float64
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>b    1.0
+<div class="highlight-text"><div class="highlight"><pre><span></span>b    1.0
 c    3.0
 d    NaN
 e    1.8
@@ -414,14 +411,14 @@ a    0.25
 dtype: float64
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">}</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">s</span> <span class="o">&gt;</span> <span class="mf">1.1</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>b    1.0
+<div class="highlight-text"><div class="highlight"><pre><span></span>b    1.0
 c    3.0
 d    NaN
 e    1.8
@@ -436,14 +433,14 @@ dtype: float64
 vetoriais sobre Séries (por exemplo, na soma de duas séries), <strong>os
 valores são “alinhados” pelos respetivos *labels*</strong> antes da operação.
 Vejamos estas duas séries:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">})</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">})</span>
 <span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">})</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soma&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Soma
+<div class="highlight-text"><div class="highlight"><pre><span></span>Soma
 a    1.0
 b    2.0
 e    NaN
@@ -454,16 +451,16 @@ dtype: float64
 <p>A soma das duas Séries resulta numa Série em que todas as etiquetas
 estão presentes (<strong>união de conjuntos</strong>).</p>
 <p>As que só existirem numa das Séries ou as que, numa das Séries, têm o
-valor <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, terão o valor <code class="docutils literal notranslate"><span class="pre">NaN</span></code> no resultado final.</p>
-<p>A função <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> permite eliminar os <em>valores em falta</em>.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">})</span>
+valor <code class="docutils literal"><span class="pre">NaN</span></code>, terão o valor <code class="docutils literal"><span class="pre">NaN</span></code> no resultado final.</p>
+<p>A função <code class="docutils literal"><span class="pre">.dropna()</span></code> permite eliminar os <em>valores em falta</em>.</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">})</span>
 <span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">})</span>
 <span class="n">s3</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">s3</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a    1.0
+<div class="highlight-text"><div class="highlight"><pre><span></span>a    1.0
 b    2.0
 dtype: float64
 </pre></div>
@@ -471,20 +468,20 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="dataframe">
-<h2><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code><a class="headerlink" href="#dataframe" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal"><span class="pre">DataFrame</span></code><a class="headerlink" href="#dataframe" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a <strong>2-dimensional labeled data structure</strong> with
+<div><code class="docutils literal"><span class="pre">DataFrame</span></code> is a <strong>2-dimensional labeled data structure</strong> with
 columns of potentially different types. You can think of it like a
 spreadsheet or SQL table, or a <strong>dict of Series objects</strong>. It is
 generally the most commonly used pandas object.</div></blockquote>
 <p>Uma <em>DataFrame</em> é um quadro bidimensional, em que cada coluna se
 comporta como uma Série, mas em que existe um índice comum a todas as
 colunas.</p>
-<p>Para ilustar o uso de uma <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, vamos ler e processar a
+<p>Para ilustar o uso de uma <code class="docutils literal"><span class="pre">DataFrame</span></code>, vamos ler e processar a
 informação da UniProt sobre a levedura <em>S. cerevisiae</em>.</p>
-<p>A <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> terá as colunas “<strong>ac</strong>”, “<strong>rev</strong>”, “<strong>n</strong>” e
+<p>A <code class="docutils literal"><span class="pre">DataFrame</span></code> terá as colunas “<strong>ac</strong>”, “<strong>rev</strong>”, “<strong>n</strong>” e
 “<strong>sequence</strong>”</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_prots</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_prots</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">big</span><span class="p">:</span>
         <span class="n">tudo</span> <span class="o">=</span> <span class="n">big</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">tudo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
@@ -509,18 +506,18 @@ informação da UniProt sobre a levedura <em>S. cerevisiae</em>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A primeira proteína tem&#39;</span><span class="p">,</span> <span class="n">pinfo</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n&#39;</span><span class="p">],</span> <span class="s1">&#39;aminoácidos&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Numero total de proteínas: 6816
+<div class="highlight-text"><div class="highlight"><pre><span></span>Numero total de proteínas: 6816
 A primeira proteína tem 316 aminoácidos
 </pre></div>
 </div>
-<p>Podemos construir uma <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> a partir de uma lista de
+<p>Podemos construir uma <code class="docutils literal"><span class="pre">DataFrame</span></code> a partir de uma lista de
 dicionários. As <strong>chaves dos dicionários serão as colunas</strong>.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pinfo</span><span class="p">)</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">prots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pinfo</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prots</span><span class="p">))</span>
 <span class="n">prots</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>6816
+<div class="highlight-text"><div class="highlight"><pre><span></span>6816
 </pre></div>
 </div>
 <div>
@@ -571,9 +568,9 @@ dicionários. As <strong>chaves dos dicionários serão as colunas</strong>.</p>
     </tr>
   </tbody>
 </table>
-</div><p>Para inspeção rápida, as funções <code class="docutils literal notranslate"><span class="pre">.head()</span></code> e <code class="docutils literal notranslate"><span class="pre">.tail()</span></code> apresentam o
-início e o fim da <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pinfo</span><span class="p">)</span>
+</div><p>Para inspeção rápida, as funções <code class="docutils literal"><span class="pre">.head()</span></code> e <code class="docutils literal"><span class="pre">.tail()</span></code> apresentam o
+início e o fim da <code class="docutils literal"><span class="pre">DataFrame</span></code></p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">prots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pinfo</span><span class="p">)</span>
 <span class="c1">#prots.head()</span>
 <span class="n">prots</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
@@ -641,7 +638,7 @@ início e o fim da <code class="docutils literal notranslate"><span class="pre">
   </tbody>
 </table>
 </div><p>Podemos mudar o índice para uma das colunas.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prots</span> <span class="o">=</span> <span class="n">prots</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ac&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">prots</span> <span class="o">=</span> <span class="n">prots</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ac&#39;</span><span class="p">)</span>
 <span class="n">prots</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -710,10 +707,10 @@ início e o fim da <code class="docutils literal notranslate"><span class="pre">
 </div><p>A indexação com o nome de uma coluna devolve essa coluna (mas associada
 ao índice).</p>
 <p>Cada coluna comporta-se como uma Série.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ac
+<div class="highlight-text"><div class="highlight"><pre><span></span>ac
 P29703         316
 P36001         430
 P08524         352
@@ -778,22 +775,22 @@ A0A1S0T004     163
 Name: n, Length: 6816, dtype: int64
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">][</span><span class="s1">&#39;P31383&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">][</span><span class="s1">&#39;P31383&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>635
+<div class="highlight-text"><div class="highlight"><pre><span></span>635
 4910
 16
 445.49838615023475
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>count    6816.000000
+<div class="highlight-text"><div class="highlight"><pre><span></span>count    6816.000000
 mean      445.498386
 std       380.358091
 min        16.000000
@@ -804,7 +801,7 @@ max      4910.000000
 Name: n, dtype: float64
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">desc</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">desc</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 <span class="n">min_aa</span> <span class="o">=</span> <span class="n">desc</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">]</span>
 <span class="n">max_aa</span> <span class="o">=</span> <span class="n">desc</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">]</span>
 
@@ -812,12 +809,12 @@ Name: n, dtype: float64
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Maior proteína:&#39;</span><span class="p">,</span> <span class="n">max_aa</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Menor proteína: 16.0
+<div class="highlight-text"><div class="highlight"><pre><span></span>Menor proteína: 16.0
 Maior proteína: 4910.0
 </pre></div>
 </div>
 <p>Quais são as proteínas menores e maiores?</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_aa</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;min&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">min_aa</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;min&#39;</span><span class="p">]</span>
 
 <span class="n">prots</span><span class="p">[</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">min_aa</span><span class="p">]</span>
 </pre></div>
@@ -860,7 +857,7 @@ Maior proteína: 4910.0
     </tr>
   </tbody>
 </table>
-</div><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_aa</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;max&#39;</span><span class="p">]</span>
+</div><div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">max_aa</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;max&#39;</span><span class="p">]</span>
 
 <span class="n">prots</span><span class="p">[</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">max_aa</span><span class="p">]</span>
 </pre></div>
@@ -903,32 +900,32 @@ Maior proteína: 4910.0
     </tr>
   </tbody>
 </table>
-</div><p>Para obter uma linha usamos <code class="docutils literal notranslate"><span class="pre">.loc</span></code> e indexação por um <em>label</em>.</p>
+</div><p>Para obter uma linha usamos <code class="docutils literal"><span class="pre">.loc</span></code> e indexação por um <em>label</em>.</p>
 <p>A linha obtida é uma <em>Series</em>.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;P31383&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;P31383&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>n                                                    635
+<div class="highlight-text"><div class="highlight"><pre><span></span>n                                                    635
 rev                                             Reviewed
 seq    MSGARSTTAGAVPSAATTSTTSTTSNSKDSDSNESLYPLALLMDEL...
 Name: P31383, dtype: object
 </pre></div>
 </div>
 <p>Quantos triptofanos tem a proteína P31383?</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;P31383&#39;</span><span class="p">][</span><span class="s1">&#39;seq&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;P31383&#39;</span><span class="p">][</span><span class="s1">&#39;seq&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>7
+<div class="highlight-text"><div class="highlight"><pre><span></span>7
 </pre></div>
 </div>
 <p>A indexação com condições sobre as colunas é muito poderosa.</p>
 <p>Qauntas proteínas têm mais de 2000 aminoácidos?</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bigs</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">]</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">bigs</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bigs</span><span class="p">))</span>
 <span class="n">bigs</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>37
+<div class="highlight-text"><div class="highlight"><pre><span></span>37
 </pre></div>
 </div>
 <div>
@@ -1185,36 +1182,36 @@ Name: P31383, dtype: object
     </tr>
   </tbody>
 </table>
-</div><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Média dos comprimentos das proteínas</span>
+</div><div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="c1"># Média dos comprimentos das proteínas</span>
 <span class="c1"># com mais de 2000 aminoácidos</span>
 <span class="n">prots</span><span class="p">[</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">][</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2564.4054054054054
+<div class="highlight-text"><div class="highlight"><pre><span></span>2564.4054054054054
 </pre></div>
 </div>
 <p>De novo, qual a proteína maior?</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#39;Q12019&#39;
+<div class="highlight-text"><div class="highlight"><pre><span></span>&#39;Q12019&#39;
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>n                                                   4910
+<div class="highlight-text"><div class="highlight"><pre><span></span>n                                                   4910
 rev                                             Reviewed
 seq    MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...
 Name: Q12019, dtype: object
 </pre></div>
 </div>
 <p>Para aplicar funções de <em>strings</em> a toda uma coluna de uma só vez,
-usamos o atributo <code class="docutils literal notranslate"><span class="pre">.str.</span></code> sobre essa coluna (o resultado é uma Série):</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;seq&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">)</span>
+usamos o atributo <code class="docutils literal"><span class="pre">.str.</span></code> sobre essa coluna (o resultado é uma Série):</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;seq&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ac
+<div class="highlight-text"><div class="highlight"><pre><span></span>ac
 P29703        11
 P36001         5
 P08524         4
@@ -1280,8 +1277,8 @@ Name: seq, Length: 6816, dtype: int64
 </pre></div>
 </div>
 <p>Com uma indexação por nome, podemos inserir uma coluna nova na
-<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> (no fim).</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="s1">&#39;seq&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">)</span>
+<code class="docutils literal"><span class="pre">DataFrame</span></code> (no fim).</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="s1">&#39;seq&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">)</span>
 <span class="n">prots</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1354,13 +1351,13 @@ Name: seq, Length: 6816, dtype: int64
     </tr>
   </tbody>
 </table>
-</div><p>As <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s também têm funções descritivas, mas o facto de cada
+</div><p>As <code class="docutils literal"><span class="pre">DataFrame</span></code>s também têm funções descritivas, mas o facto de cada
 coluna ser uma Série podemos realizar muitas análises de uma forma
 simples.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">prots</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+<div class="highlight-text"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 Index: 6816 entries, P29703 to A0A1S0T004
 Data columns (total 4 columns):
 n      6816 non-null int64
@@ -1371,19 +1368,19 @@ dtypes: int64(2), object(2)
 memory usage: 586.2+ KB
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;rev&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prots</span><span class="p">[</span><span class="s1">&#39;rev&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Reviewed      6721
+<div class="highlight-text"><div class="highlight"><pre><span></span>Reviewed      6721
 Unreviewed      95
 Name: rev, dtype: int64
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># só no IPython/Jupyter notebook</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="c1"># só no IPython/Jupyter notebook</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">pl</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">pl</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Proteins&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Length (aa)&#39;</span><span class="p">)</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>

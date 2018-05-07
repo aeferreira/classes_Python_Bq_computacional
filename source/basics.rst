@@ -235,7 +235,7 @@ deve ficar cada valor e a *string* deve ter a letra ``f`` como prefixo. Um exemp
 
 .. code-block:: text
 
-    a é igual a 4.8, mas b = 3.2 e, ainda, c = 8.0
+    a é igual a 4.8, mas b = 3.2, enquanto que c = 8.0
 
 
 Comentários

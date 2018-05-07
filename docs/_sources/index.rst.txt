@@ -13,9 +13,9 @@ Este site disponibiliza as aulas teóricas da disciplina de Bioquímica Computac
    :maxdepth: 1
 
    basics
-   cols_iters
-   more_cols
-   4_strings
+   collections_iterations
+   more_on_lists_dicts
+   strings
    5_ficheiros
    6_defs
    7_import

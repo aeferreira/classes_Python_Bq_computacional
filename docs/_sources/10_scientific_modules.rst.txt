@@ -649,7 +649,7 @@ Obter valores aleatórios das seguintes distribuições:
     
 
 **Problema**: "Provar" que a média e a variância da distribuição de
-Poisson são ambas iguais a $:raw-latex:`\lambda `$.
+Poisson são ambas iguais a :math:`\lambda`.
 
 .. code-block:: ipython3
 

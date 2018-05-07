@@ -90,11 +90,10 @@
 <li class="toctree-l1"><a class="reference internal" href="strings.html"><em>Strings</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_defs.html">Funções definidas pelo programador</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal notranslate"><span class="pre">import</span></code></a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Informação obtida por acesso à Internet: (módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code>).</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_scientific_modules.html">Python “científico”</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal notranslate"><span class="pre">numpy</span></code> e <code class="docutils literal notranslate"><span class="pre">scipy</span></code>: regressão linear.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="13_algoritmos.html">Algoritmos numéricos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="14_pandas.html">Python “científico”: biblioteca <em>pandas</em></a></li>
@@ -146,14 +145,12 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Informação obtida por acesso à Internet: (módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code>).</li>
+      <li>Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/8_requests.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -166,13 +163,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="informacao-obtida-por-acesso-a-internet-modulo-requests">
-<h1>Informação obtida por acesso à Internet: (módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code>).<a class="headerlink" href="#informacao-obtida-por-acesso-a-internet-modulo-requests" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<h1>Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).<a class="headerlink" href="#informacao-obtida-por-acesso-a-internet-modulo-requests" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.uniprot.org/uniprot/P00924.fasta&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
+<div class="highlight-text"><div class="highlight"><pre><span></span>&gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
 MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGK
 GVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASR
 AAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTF
@@ -183,7 +180,7 @@ QDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL
 GDNAVFAGENFHHGDKL
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linhas</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">linhas</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">):</span>
     <span class="n">cab</span> <span class="o">=</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -197,17 +194,17 @@ GDNAVFAGENFHHGDKL
 <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cabeçalho:  &gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
+<div class="highlight-text"><div class="highlight"><pre><span></span>cabeçalho:  &gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
 sequência:
 MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEELGDNAVFAGENFHHGDKL
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.uniprot.org/uniprot/P00924.txt&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ID   ENO1_YEAST              Reviewed;         437 AA.
+<div class="highlight-text"><div class="highlight"><pre><span></span>ID   ENO1_YEAST              Reviewed;         437 AA.
 AC   P00924; D6VV34; P99013;
 DT   21-JUL-1986, integrated into UniProtKB/Swiss-Prot.
 DT   05-OCT-2010, sequence version 3.
@@ -677,8 +674,8 @@ SQ   SEQUENCE   437 AA;  46816 MW;  69F45214DBD375BE CRC64;
 olhando para um exemplo) está descrita na <a class="reference external" href="http://web.expasy.org/docs/userman.html#SQ_line">documentação da
 UniProt</a></p>
 <p>A linha tem o formato</p>
-<p><code class="docutils literal notranslate"><span class="pre">SQ</span>&#160;&#160; <span class="pre">SEQUENCE</span> <span class="pre">XXXX</span> <span class="pre">AA;</span> <span class="pre">XXXXX</span> <span class="pre">MW;</span> <span class="pre">XXXXXXXXXXXXXXXX</span> <span class="pre">CRC64;</span></code></p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<p><code class="docutils literal"><span class="pre">SQ</span>&#160;&#160; <span class="pre">SEQUENCE</span> <span class="pre">XXXX</span> <span class="pre">AA;</span> <span class="pre">XXXXX</span> <span class="pre">MW;</span> <span class="pre">XXXXXXXXXXXXXXXX</span> <span class="pre">CRC64;</span></code></p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">info</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.uniprot.org/uniprot/P00924.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 
 <span class="n">linhas</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -697,7 +694,7 @@ UniProt</a></p>
 <span class="nb">print</span><span class="p">(</span><span class="n">partes</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;Da&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>linha SQ:
+<div class="highlight-text"><div class="highlight"><pre><span></span>linha SQ:
 SQ   SEQUENCE   437 AA;  46816 MW;  69F45214DBD375BE CRC64;
 437 aminoácidos
 46816 Da
@@ -705,8 +702,8 @@ SQ   SEQUENCE   437 AA;  46816 MW;  69F45214DBD375BE CRC64;
 </div>
 <p>Na <a class="reference external" href="http://web.expasy.org/docs/userman.html#FT_keys">documentação da
 UniProt</a>, realtiva
-às linhas começadas por <code class="docutils literal notranslate"><span class="pre">FT</span></code> pode-se ler…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INIT_MET</span> <span class="o">-</span> <span class="n">Initiator</span> <span class="n">methionine</span><span class="o">.</span>
+às linhas começadas por <code class="docutils literal"><span class="pre">FT</span></code> pode-se ler…</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">INIT_MET</span> <span class="o">-</span> <span class="n">Initiator</span> <span class="n">methionine</span><span class="o">.</span>
 
 <span class="n">This</span> <span class="n">feature</span> <span class="n">key</span> <span class="ow">is</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">a</span> <span class="s1">&#39;1&#39;</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">the</span> <span class="s1">&#39;FROM&#39;</span> <span class="ow">and</span> <span class="s1">&#39;TO&#39;</span> <span class="n">fields</span> <span class="n">to</span> <span class="n">indicate</span> <span class="n">that</span> <span class="n">the</span> <span class="n">initiator</span> <span class="n">methionine</span> <span class="n">has</span> <span class="n">been</span> <span class="n">cleaved</span> <span class="n">off</span><span class="p">:</span>
 
@@ -718,9 +715,9 @@ UniProt</a>, realtiva
 </div>
 <p><strong>Problema:</strong></p>
 <p>Para as seguintes proteínas,</p>
-<p><code class="docutils literal notranslate"><span class="pre">Q96UH7,</span> <span class="pre">Q8J0N6,</span> <span class="pre">Q9URB4,</span> <span class="pre">Q9C2U0,</span> <span class="pre">P36580,</span> <span class="pre">P14540</span></code></p>
+<p><code class="docutils literal"><span class="pre">Q96UH7,</span> <span class="pre">Q8J0N6,</span> <span class="pre">Q9URB4,</span> <span class="pre">Q9C2U0,</span> <span class="pre">P36580,</span> <span class="pre">P14540</span></code></p>
 <p>gerar uma tabela com</p>
-<p><code class="docutils literal notranslate"><span class="pre">AC</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">AA</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">MW</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">init</span> <span class="pre">M</span> <span class="pre">cleaved</span></code></p>
+<p><code class="docutils literal"><span class="pre">AC</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">AA</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">MW</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">init</span> <span class="pre">M</span> <span class="pre">cleaved</span></code></p>
 </div>
 
 

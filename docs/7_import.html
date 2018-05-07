@@ -90,15 +90,14 @@
 <li class="toctree-l1"><a class="reference internal" href="strings.html"><em>Strings</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_defs.html">Funções definidas pelo programador</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_defs.html#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Módulos e <code class="docutils literal notranslate"><span class="pre">import</span></code></a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introducao">Introdução</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exemplo-de-um-modulo-e-import">Exemplo de um módulo e <code class="docutils literal notranslate"><span class="pre">import</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exemplo-de-um-modulo-e-import">Exemplo de um módulo e <code class="docutils literal"><span class="pre">import</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code>).</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_scientific_modules.html">Python “científico”</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal notranslate"><span class="pre">numpy</span></code> e <code class="docutils literal notranslate"><span class="pre">scipy</span></code>: regressão linear.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="13_algoritmos.html">Algoritmos numéricos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="14_pandas.html">Python “científico”: biblioteca <em>pandas</em></a></li>
@@ -150,14 +149,12 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Módulos e <code class="docutils literal notranslate"><span class="pre">import</span></code></li>
+      <li>Módulos e <code class="docutils literal"><span class="pre">import</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/7_import.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -170,14 +167,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="modulos-e-import">
-<h1>Módulos e <code class="docutils literal notranslate"><span class="pre">import</span></code><a class="headerlink" href="#modulos-e-import" title="Permalink to this headline">¶</a></h1>
+<h1>Módulos e <code class="docutils literal"><span class="pre">import</span></code><a class="headerlink" href="#modulos-e-import" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introducao">
 <h2>Introdução<a class="headerlink" href="#introducao" title="Permalink to this headline">¶</a></h2>
 <p>Como vimos, muitas funções estão imediatamente disponíveis quando
 começamos a escrever um programa.</p>
-<p>Estas funções podem ser “livres” (por exemplo a função <code class="docutils literal notranslate"><span class="pre">len()</span></code>) ou
-associadas a objetos (por exemplo, <code class="docutils literal notranslate"><span class="pre">s.split()</span></code> que está associada à
-<em>string</em> <code class="docutils literal notranslate"><span class="pre">s</span></code>).</p>
+<p>Estas funções podem ser “livres” (por exemplo a função <code class="docutils literal"><span class="pre">len()</span></code>) ou
+associadas a objetos (por exemplo, <code class="docutils literal"><span class="pre">s.split()</span></code> que está associada à
+<em>string</em> <code class="docutils literal"><span class="pre">s</span></code>).</p>
 <p>A linguagem Python permite a organização dos programas em <strong>módulos</strong>.</p>
 <p>Módulos são <strong>ficheiros .py</strong> (ou ficheiros pré-compilados) que contêm
 coleções de funções úteis e relacionadas entre si, podendo também conter
@@ -188,9 +185,9 @@ linguagem python: com a distribuição oficial do Python e em algumas
 distribuições de “Python científico” são tipicamente disponibilizados
 <strong>centenas de módulos</strong>, em que cada módulo reúne a funcionalidade
 adicional relacionada com um propósito particular.</p>
-<p>Por exemplo, o módulo <code class="docutils literal notranslate"><span class="pre">math</span></code> reúne funções associadas a cálculos
-matemáticos (e as constantes <span class="math notranslate">\(\pi\)</span> e <em>e</em>).</p>
-<p>O módulo <code class="docutils literal notranslate"><span class="pre">time</span></code> reúne funções e constantes relacionadas com a
+<p>Por exemplo, o módulo <code class="docutils literal"><span class="pre">math</span></code> reúne funções associadas a cálculos
+matemáticos (e as constantes <span class="math">\(\pi\)</span> e <em>e</em>).</p>
+<p>O módulo <code class="docutils literal"><span class="pre">time</span></code> reúne funções e constantes relacionadas com a
 utilização da data e hora.</p>
 <p>A documentação sobre a coleção de módulos que são são disponibilizados
 em qualquer distribuição da linguagem Python (a chamada <em>Biblioteca
@@ -202,8 +199,8 @@ Trata-se de um imenso depósito de módulos com contribuições de milhares
 de autores e em permanente crescimento.</p>
 </div>
 <div class="section" id="exemplo-de-um-modulo-e-import">
-<h2>Exemplo de um módulo e <code class="docutils literal notranslate"><span class="pre">import</span></code><a class="headerlink" href="#exemplo-de-um-modulo-e-import" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">readFASTA</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<h2>Exemplo de um módulo e <code class="docutils literal"><span class="pre">import</span></code><a class="headerlink" href="#exemplo-de-um-modulo-e-import" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">readFASTA</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This function reads a FASTA format file and</span>
 <span class="sd">    returns a pair of strings</span>
 <span class="sd">    with the header and the sequence</span>
@@ -222,7 +219,7 @@ de autores e em permanente crescimento.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Header:
+<div class="highlight-text"><div class="highlight"><pre><span></span>Header:
 &gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
 
 Sequence:
@@ -238,44 +235,44 @@ um exemplo).</p>
 <img alt="" src="_images/biosequences1.png" />
 </div>
 <p>Este ficheiro constitui um módulo que pode ser usado num programa.</p>
-<p>Para isso, é necessário usar o comando <code class="docutils literal notranslate"><span class="pre">import</span></code>:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">biosequences</span>
+<p>Para isso, é necessário usar o comando <code class="docutils literal"><span class="pre">import</span></code>:</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">biosequences</span>
 
 <span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">biosequences</span><span class="o">.</span><span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Header:
+<div class="highlight-text"><div class="highlight"><pre><span></span>Header:
 &gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
 
 Sequence:
 MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
 </pre></div>
 </div>
-<p>Há mais duas maneiras de utilizar o comando <code class="docutils literal notranslate"><span class="pre">import</span></code>:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="k">import</span> <span class="n">readFASTA</span>
+<p>Há mais duas maneiras de utilizar o comando <code class="docutils literal"><span class="pre">import</span></code>:</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="k">import</span> <span class="n">readFASTA</span>
 
 <span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Header:
+<div class="highlight-text"><div class="highlight"><pre><span></span>Header:
 &gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
 
 Sequence:
 MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
 </pre></div>
 </div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="k">import</span> <span class="o">*</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="k">import</span> <span class="o">*</span>
 
 <span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Header:
+<div class="highlight-text"><div class="highlight"><pre><span></span>Header:
 &gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
 
 Sequence:
@@ -290,7 +287,7 @@ utilizados no programa.</p>
 <p>A pensar em algumas operações que poderiam ser realizadas com sequências
 biológicas, o ficheiro <strong>biosequences.py</strong> poderia ser <strong>ampliado</strong> com
 as seguintes atribuições:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.....</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">.....</span>
 
 <span class="n">basesDNA</span> <span class="o">=</span> <span class="s1">&#39;ATGC&#39;</span>
 <span class="n">basesRNA</span> <span class="o">=</span> <span class="s1">&#39;AUGC&#39;</span>
@@ -317,10 +314,10 @@ as seguintes atribuições:</p>
 </pre></div>
 </div>
 <p><strong>Problema</strong>: qual a sequência da proteína codificada por
-<code class="docutils literal notranslate"><span class="pre">AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA</span></code></p>
-<p>Sabemos que o módulo <code class="docutils literal notranslate"><span class="pre">biosequences</span></code> tem um dicionário chamado
-<code class="docutils literal notranslate"><span class="pre">gencode</span></code>.</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="k">import</span> <span class="n">gencode</span>
+<code class="docutils literal"><span class="pre">AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA</span></code></p>
+<p>Sabemos que o módulo <code class="docutils literal"><span class="pre">biosequences</span></code> tem um dicionário chamado
+<code class="docutils literal"><span class="pre">gencode</span></code>.</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="k">import</span> <span class="n">gencode</span>
 
 <span class="k">def</span> <span class="nf">translation</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
     <span class="n">cods</span> <span class="o">=</span> <span class="p">[</span><span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="mi">3</span><span class="p">)]</span>
@@ -338,29 +335,29 @@ as seguintes atribuições:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">translation</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA
+<div class="highlight-text"><div class="highlight"><pre><span></span>AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA
 SWILNDA
 </pre></div>
 </div>
-<p>Claro que a função <code class="docutils literal notranslate"><span class="pre">translation()</span></code> seria uma boa adição ao nosso
-módulo <code class="docutils literal notranslate"><span class="pre">biosequences</span></code>…</p>
+<p>Claro que a função <code class="docutils literal"><span class="pre">translation()</span></code> seria uma boa adição ao nosso
+módulo <code class="docutils literal"><span class="pre">biosequences</span></code>…</p>
 <p>O projeto <a class="reference external" href="http://biopython.org/wiki/Documentation">BioPython</a> foi
 precisamente criado como uma coleção de funções e objetos que suportam a
 representação e transformação de sequências biológicas.</p>
 <p>Hoje é muito mais do que isso, mas a parte central deste pacote de
 módulos continua a ser a funcionalidade relacionada com sequências
 biológicas.</p>
-<p>Se usarmos a primeira forma do comando <code class="docutils literal notranslate"><span class="pre">import</span></code>, é possível mudar o
+<p>Se usarmos a primeira forma do comando <code class="docutils literal"><span class="pre">import</span></code>, é possível mudar o
 nome do módulo (para uma forma mais abreviada), um <em>alias</em>, da seginte
 forma:</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">biosequences</span> <span class="k">as</span> <span class="nn">bs</span>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">biosequences</span> <span class="k">as</span> <span class="nn">bs</span>
 
 <span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Header:
+<div class="highlight-text"><div class="highlight"><pre><span></span>Header:
 &gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
 
 Sequence:
