@@ -16,10 +16,9 @@ Este site disponibiliza as aulas teóricas da disciplina de Bioquímica Computac
    collections_iterations
    more_on_lists_dicts
    strings
-   5_ficheiros
+   files
    6_defs
    7_import
-   8_requests
    10_scientific_modules
    11_scipy_regression
    12_scipy_pH
