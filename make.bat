@@ -76,6 +76,14 @@ if "%1" == "dirhtml" (
 	goto end
 )
 
+if "%1" == "rinoh" (
+	%SPHINXBUILD% -b rinoh %ALLSPHINXOPTS% %BUILDDIR%/pdfrinoh
+	if errorlevel 1 exit /b 1
+	echo.
+	echo.Build finished. The pdf is in %BUILDDIR%/pdfrinoh.
+	goto end
+)
+
 if "%1" == "singlehtml" (
 	%SPHINXBUILD% -b singlehtml %ALLSPHINXOPTS% %BUILDDIR%/singlehtml
 	if errorlevel 1 exit /b 1

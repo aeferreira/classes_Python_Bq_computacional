@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Funções definidas pelo programador &mdash; Bq computacional (FCUL) Apr 2018 documentation</title>
+  <title>Funções e módulos &mdash; Bq computacional (FCUL) May 2018 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/my_style.css" type="text/css" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Módulos e import" href="7_import.html" />
-    <link rel="prev" title="Ficheiros de texto" href="5_ficheiros.html" /> 
+    <link rel="next" title="Python “científico”" href="10_scientific_modules.html" />
+    <link rel="prev" title="Ficheiros de texto" href="files.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                4.2018
+                5.2018
               </div>
             
           
@@ -88,10 +88,10 @@
 <li class="toctree-l1"><a class="reference internal" href="collections_iterations.html">Coleções e iterações</a></li>
 <li class="toctree-l1"><a class="reference internal" href="more_on_lists_dicts.html">Listas e dicionários</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strings.html"><em>Strings</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_ficheiros.html">Ficheiros de texto</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Funções definidas pelo programador</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Ficheiros de texto</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Funções e módulos</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introducao-ao-problema">Introdução ao problema</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#definicao-de-funcoes-com-def">Definição de funções com <code class="docutils literal"><span class="pre">def</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#def"><code class="docutils literal"><span class="pre">def</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#anatomia-de-uma-funcao">Anatomia de uma função:</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#exemplo-funcao-factorial">Exemplo: função <code class="docutils literal"><span class="pre">factorial()</span></code>:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#varios-tipos-de-funcoes">Vários tipos de funções</a></li>
@@ -99,10 +99,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ambito-dos-nomes-dentro-de-uma-funcao">Âmbito dos nomes dentro de uma função</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#valores-por-omissao-em-argumentos-de-funcoes">Valores <em>por omissão</em> em argumentos de funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modulos-e-import">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exemplo-de-um-modulo-e-import">Exemplo de um módulo e <code class="docutils literal"><span class="pre">import</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="7_import.html">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_requests.html">Informação obtida por acesso à Internet: (módulo <code class="docutils literal"><span class="pre">requests</span></code>).</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_scientific_modules.html">Python “científico”</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11_scipy_regression.html">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_scipy_pH.html">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
@@ -156,7 +156,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Funções definidas pelo programador</li>
+      <li>Funções e módulos</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -173,8 +173,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="funcoes-definidas-pelo-programador">
-<h1>Funções definidas pelo programador<a class="headerlink" href="#funcoes-definidas-pelo-programador" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="funcoes-e-modulos">
+<h1>Funções e módulos<a class="headerlink" href="#funcoes-e-modulos" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introducao-ao-problema">
 <h2>Introdução ao problema<a class="headerlink" href="#introducao-ao-problema" title="Permalink to this headline">¶</a></h2>
 <p>Num problema das TPs, tivemos de separar uma sequência em codões e
@@ -234,8 +234,8 @@ importação de módulos:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="definicao-de-funcoes-com-def">
-<h2>Definição de funções com <code class="docutils literal"><span class="pre">def</span></code><a class="headerlink" href="#definicao-de-funcoes-com-def" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="def">
+<h2><code class="docutils literal"><span class="pre">def</span></code><a class="headerlink" href="#def" title="Permalink to this headline">¶</a></h2>
 <p><strong>Podemos escrever outras funções para “aumentar” a linguagem.</strong></p>
 <p>Tal como na matemática, as funções transformam objetos noutros objetos:</p>
 <div class="figure">
@@ -727,6 +727,203 @@ O factorial de 20 é 2432902008176640000
 </pre></div>
 </div>
 </div>
+<div class="section" id="modulos-e-import">
+<h2>Módulos e <code class="docutils literal"><span class="pre">import</span></code><a class="headerlink" href="#modulos-e-import" title="Permalink to this headline">¶</a></h2>
+<p>Como vimos, muitas funções estão imediatamente disponíveis quando
+começamos a escrever um programa.</p>
+<p>Estas funções podem ser “livres” (por exemplo a função <code class="docutils literal"><span class="pre">len()</span></code>) ou
+associadas a objetos (por exemplo, <code class="docutils literal"><span class="pre">s.split()</span></code> que está associada à
+<em>string</em> <code class="docutils literal"><span class="pre">s</span></code>).</p>
+<p>A linguagem Python permite a organização dos programas em <strong>módulos</strong>.</p>
+<p>Módulos são <strong>ficheiros .py</strong> (ou ficheiros pré-compilados) que contêm
+coleções de funções úteis e relacionadas entre si, podendo também conter
+alguns outros objetos que não são funções, mas que contêm informação de
+suporte.</p>
+<p>Os módulos são também essenciais no aumento da funcionalidade da própria
+linguagem python: com a distribuição oficial do Python e em algumas
+distribuições de “Python científico” são tipicamente disponibilizados
+<strong>centenas de módulos</strong>, em que cada módulo reúne a funcionalidade
+adicional relacionada com um propósito particular.</p>
+<p>Por exemplo, o módulo <code class="docutils literal"><span class="pre">math</span></code> reúne funções associadas a cálculos
+matemáticos (e as constantes <span class="math">\(\pi\)</span> e <em>e</em>).</p>
+<p>O módulo <code class="docutils literal"><span class="pre">time</span></code> reúne funções e constantes relacionadas com a
+utilização da data e hora.</p>
+<p>A documentação sobre a coleção de módulos que são são disponibilizados
+em qualquer distribuição da linguagem Python (a chamada <em>Biblioteca
+padrão</em> (em inglês <em>Standard Library</em>) pode ser encontrada na
+<a class="reference external" href="https://docs.python.org/3/library/">documentação oficial</a></p>
+<p>Por outro lado, quem escreve módulos novos pode submetê-los ao Python
+Package Index, conhecido como <a class="reference external" href="https://pypi.python.org/pypi">PyPi</a>.
+Trata-se de um imenso depósito de módulos com contribuições de milhares
+de autores e em permanente crescimento.</p>
+</div>
+<div class="section" id="exemplo-de-um-modulo-e-import">
+<h2>Exemplo de um módulo e <code class="docutils literal"><span class="pre">import</span></code><a class="headerlink" href="#exemplo-de-um-modulo-e-import" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">readFASTA</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function reads a FASTA format file and</span>
+<span class="sd">    returns a pair of strings</span>
+<span class="sd">    with the header and the sequence</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Header:
+&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+
+Sequence:
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+</div>
+<p>Vamos supor que esta seria a primeira de <strong>uma coleção de funções
+relacionadas com o processamento de ficheiros de texto contendo
+sequências usados em bioinformática</strong> (uma sequência em FASTA é apenas
+um exemplo).</p>
+<p>Podemos criar um ficheiro <strong>biosequences.py</strong> contendo essa função:</p>
+<div class="figure">
+<img alt="" src="_images/biosequences1.png" />
+</div>
+<p>Este ficheiro constitui um módulo que pode ser usado num programa.</p>
+<p>Para isso, é necessário usar o comando <code class="docutils literal"><span class="pre">import</span></code>:</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">biosequences</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">biosequences</span><span class="o">.</span><span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Header:
+&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+
+Sequence:
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+</div>
+<p>Há mais duas maneiras de utilizar o comando <code class="docutils literal"><span class="pre">import</span></code>:</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="k">import</span> <span class="n">readFASTA</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Header:
+&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+
+Sequence:
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Header:
+&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+
+Sequence:
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+</div>
+<p>Esta última maneira é desaconselhada: um módulo pode conter centenas de
+funções e, por isso, podem ser importados centenas de novos <em>nomes</em> para
+um programa, que podem <strong>entrar em conflito</strong> com outros nomes iguais
+utilizados no programa.</p>
+<p>Um módulo pode conter outros objetos para além de funções.</p>
+<p>A pensar em algumas operações que poderiam ser realizadas com sequências
+biológicas, o ficheiro <strong>biosequences.py</strong> poderia ser <strong>ampliado</strong> com
+as seguintes atribuições:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">.....</span>
+
+<span class="n">basesDNA</span> <span class="o">=</span> <span class="s1">&#39;ATGC&#39;</span>
+<span class="n">basesRNA</span> <span class="o">=</span> <span class="s1">&#39;AUGC&#39;</span>
+
+<span class="n">aa_residues</span>   <span class="o">=</span> <span class="s2">&quot;ACDEFGHIKLMNPQRSTVWY&quot;</span>
+
+<span class="n">complement</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">}</span>
+<span class="n">complementRNA</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">}</span>
+
+<span class="n">gencode</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s1">&#39;TTT&#39;</span><span class="p">:</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;TTC&#39;</span><span class="p">:</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;TTA&#39;</span><span class="p">:</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;TTG&#39;</span><span class="p">:</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;TCT&#39;</span><span class="p">:</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;TCC&#39;</span><span class="p">:</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TCA&#39;</span><span class="p">:</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TCG&#39;</span><span class="p">:</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TAT&#39;</span><span class="p">:</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;TAC&#39;</span><span class="p">:</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;TGT&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;TGC&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;TGG&#39;</span><span class="p">:</span> <span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;CTT&#39;</span><span class="p">:</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CTC&#39;</span><span class="p">:</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;CTA&#39;</span><span class="p">:</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CTG&#39;</span><span class="p">:</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CCT&#39;</span><span class="p">:</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CCC&#39;</span><span class="p">:</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CCA&#39;</span><span class="p">:</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;CCG&#39;</span><span class="p">:</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CAT&#39;</span><span class="p">:</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;CAC&#39;</span><span class="p">:</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;CAA&#39;</span><span class="p">:</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;CAG&#39;</span><span class="p">:</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;CGT&#39;</span><span class="p">:</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGC&#39;</span><span class="p">:</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGA&#39;</span><span class="p">:</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGG&#39;</span><span class="p">:</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;ATT&#39;</span><span class="p">:</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;ATC&#39;</span><span class="p">:</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;ATA&#39;</span><span class="p">:</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;ATG&#39;</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;ACT&#39;</span><span class="p">:</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;ACC&#39;</span><span class="p">:</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;ACA&#39;</span><span class="p">:</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;ACG&#39;</span><span class="p">:</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;AAT&#39;</span><span class="p">:</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;AAC&#39;</span><span class="p">:</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;AAA&#39;</span><span class="p">:</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;AAG&#39;</span><span class="p">:</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;AGT&#39;</span><span class="p">:</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;AGC&#39;</span><span class="p">:</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;AGA&#39;</span><span class="p">:</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;AGG&#39;</span><span class="p">:</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;GTT&#39;</span><span class="p">:</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTC&#39;</span><span class="p">:</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTA&#39;</span><span class="p">:</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTG&#39;</span><span class="p">:</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GCT&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;GCC&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GCA&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GCG&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GAT&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;GAC&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;GAA&#39;</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;GAG&#39;</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;GGT&#39;</span><span class="p">:</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;GGC&#39;</span><span class="p">:</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;GGA&#39;</span><span class="p">:</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;GGG&#39;</span><span class="p">:</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;TAA&#39;</span><span class="p">:</span> <span class="s1">&#39;STOP&#39;</span><span class="p">,</span> <span class="s1">&#39;TAG&#39;</span><span class="p">:</span> <span class="s1">&#39;STOP&#39;</span><span class="p">,</span> <span class="s1">&#39;TGA&#39;</span><span class="p">:</span> <span class="s1">&#39;STOP&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Problema</strong>: qual a sequência da proteína codificada por
+<code class="docutils literal"><span class="pre">AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA</span></code></p>
+<p>Sabemos que o módulo <code class="docutils literal"><span class="pre">biosequences</span></code> tem um dicionário chamado
+<code class="docutils literal"><span class="pre">gencode</span></code>.</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="k">import</span> <span class="n">gencode</span>
+
+<span class="k">def</span> <span class="nf">translation</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+    <span class="n">cods</span> <span class="o">=</span> <span class="p">[</span><span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="mi">3</span><span class="p">)]</span>
+    <span class="n">prot</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cods</span><span class="p">:</span>
+        <span class="n">aa</span> <span class="o">=</span> <span class="n">gencode</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">aa</span> <span class="o">==</span> <span class="s1">&#39;STOP&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">prot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aa</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prot</span><span class="p">)</span>
+
+<span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">translation</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA
+SWILNDA
+</pre></div>
+</div>
+<p>Claro que a função <code class="docutils literal"><span class="pre">translation()</span></code> seria uma boa adição ao nosso
+módulo <code class="docutils literal"><span class="pre">biosequences</span></code>…</p>
+<p>O projeto <a class="reference external" href="http://biopython.org/wiki/Documentation">BioPython</a> foi
+precisamente criado como uma coleção de funções e objetos que suportam a
+representação e transformação de sequências biológicas.</p>
+<p>Hoje é muito mais do que isso, mas a parte central deste pacote de
+módulos continua a ser a funcionalidade relacionada com sequências
+biológicas.</p>
+<p>Se usarmos a primeira forma do comando <code class="docutils literal"><span class="pre">import</span></code>, é possível mudar o
+nome do módulo (para uma forma mais abreviada), um <em>alias</em>, da seginte
+forma:</p>
+<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">biosequences</span> <span class="k">as</span> <span class="nn">bs</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Header:
+&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+
+Sequence:
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -737,10 +934,10 @@ O factorial de 20 é 2432902008176640000
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="7_import.html" class="btn btn-neutral float-right" title="Módulos e import" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="10_scientific_modules.html" class="btn btn-neutral float-right" title="Python “científico”" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="5_ficheiros.html" class="btn btn-neutral" title="Ficheiros de texto" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="files.html" class="btn btn-neutral" title="Ficheiros de texto" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -749,7 +946,7 @@ O factorial de 20 é 2432902008176640000
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2017, António Ferreira.
+        &copy; Copyright 2016-2018, António Ferreira.
 
     </p>
   </div>
@@ -771,7 +968,7 @@ O factorial de 20 é 2432902008176640000
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'Apr 2018',
+            VERSION:'May 2018',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
