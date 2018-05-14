@@ -11,18 +11,20 @@ Este site disponibiliza as aulas teóricas da disciplina de Bioquímica Computac
 
 .. toctree::
    :maxdepth: 1
+   :caption: Conceitos fundamentais 
 
    basics
    collections_iterations
    more_on_lists_dicts
    strings
    files
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Funções e módulos
+   
    funcs_modules
-   10_scientific_modules
-   11_scipy_regression
-   12_scipy_pH
-   13_algoritmos
-   14_pandas
+   scientific_modules
 
 .. toctree::
    :hidden:
