@@ -905,7 +905,7 @@ Regra em vigor até 1582 (calendário Juliano, de Júlio César)
     
     a = 2015
     
-    if a % 4 == 0 and not (a % 100 == 0 and not a % 400 == 0):
+    if a % 4 == 0:
         print(a , "é bissexto")
     else: 
         print(a, "não é bissexto")

@@ -173,7 +173,6 @@ qualquer ponto do programa, da forma seguinte:
    :alt: 
 
 Exemplo: função ``factorial()``:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: ipython3
 
@@ -691,7 +690,6 @@ Valores *por omissão* em argumentos de funções
     O factorial de 20 é 2432902008176640000
 
 
-
 Módulos e ``import``
 --------------------
 
@@ -731,8 +729,8 @@ Package Index, conhecido como `PyPi <https://pypi.python.org/pypi>`__.
 Trata-se de um imenso depósito de módulos com contribuições de milhares
 de autores e em permanente crescimento.
 
-Exemplo de um módulo e ``import``
----------------------------------
+Exemplo da construção de um módulo
+----------------------------------
 
 .. code-block:: ipython3
 

@@ -97,22 +97,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#introducao-ao-problema">Introdução ao problema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#def"><code class="docutils literal"><span class="pre">def</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#anatomia-de-uma-funcao">Anatomia de uma função:</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#exemplo-funcao-factorial">Exemplo: função <code class="docutils literal"><span class="pre">factorial()</span></code>:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#varios-tipos-de-funcoes">Vários tipos de funções</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ambito-dos-nomes-dentro-de-uma-funcao">Âmbito dos nomes dentro de uma função</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#valores-por-omissao-em-argumentos-de-funcoes">Valores <em>por omissão</em> em argumentos de funções</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modulos-e-import">Módulos e <code class="docutils literal"><span class="pre">import</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exemplo-de-um-modulo-e-import">Exemplo de um módulo e <code class="docutils literal"><span class="pre">import</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exemplo-da-construcao-de-um-modulo">Exemplo da construção de um módulo</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="scientific_modules.html">Os principais módulos “científicos”</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#numpy"><code class="docutils literal"><span class="pre">numpy</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#sympy"><code class="docutils literal"><span class="pre">sympy</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#exemplo-do-uso-de-numpy-e-scipy-regressao-linear">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#example-simulation-of-the-acid-base-changes-in-an-amino-acid-solution">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#pandas"><code class="docutils literal"><span class="pre">Pandas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#algoritmos-numericos">Algoritmos numéricos</a></li>
 </ul>
 <ul>
@@ -314,8 +308,7 @@ qualquer ponto do programa, da forma seguinte:</p>
 <div class="figure">
 <img alt="" src="_images/fargs_ret.png" />
 </div>
-<div class="section" id="exemplo-funcao-factorial">
-<h3>Exemplo: função <code class="docutils literal"><span class="pre">factorial()</span></code>:<a class="headerlink" href="#exemplo-funcao-factorial" title="Permalink to this headline">¶</a></h3>
+<p>Exemplo: função <code class="docutils literal"><span class="pre">factorial()</span></code>:</p>
 <div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
@@ -327,7 +320,6 @@ qualquer ponto do programa, da forma seguinte:</p>
 </div>
 <div class="highlight-text"><div class="highlight"><pre><span></span>788657867364790503552363213932185062295135977687173263294742533244359449963403342920304284011984623904177212138919638830257642790242637105061926624952829931113462857270763317237396988943922445621451664240254033291864131227428294853277524242407573903240321257405579568660226031904170324062351700858796178922222789623703897374720000000000000000000000000000000000000000000000000
 </pre></div>
-</div>
 </div>
 <div class="section" id="varios-tipos-de-funcoes">
 <h3>Vários tipos de funções<a class="headerlink" href="#varios-tipos-de-funcoes" title="Permalink to this headline">¶</a></h3>
@@ -763,8 +755,8 @@ Package Index, conhecido como <a class="reference external" href="https://pypi.p
 Trata-se de um imenso depósito de módulos com contribuições de milhares
 de autores e em permanente crescimento.</p>
 </div>
-<div class="section" id="exemplo-de-um-modulo-e-import">
-<h2>Exemplo de um módulo e <code class="docutils literal"><span class="pre">import</span></code><a class="headerlink" href="#exemplo-de-um-modulo-e-import" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exemplo-da-construcao-de-um-modulo">
+<h2>Exemplo da construção de um módulo<a class="headerlink" href="#exemplo-da-construcao-de-um-modulo" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">readFASTA</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This function reads a FASTA format file and</span>
 <span class="sd">    returns a pair of strings</span>

@@ -23,7 +23,7 @@ Estas bibliotecas são:
    :alt: 
 
 ``numpy``
-=========
+---------
 
 Operações "vectoriais"
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -751,7 +751,7 @@ Matrizes e álgebra linear
     
 
 ``sympy``
-=========
+---------
 
 Símbolos e álgebra básica
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -845,7 +845,7 @@ Derivadas e integrais
     
 
 Exemplo do uso de ``numpy`` e ``scipy``: regressão linear.
-==========================================================
+----------------------------------------------------------
 
 .. code-block:: ipython3
 
@@ -864,7 +864,6 @@ Exemplo do uso de ``numpy`` e ``scipy``: regressão linear.
 .. code-block:: ipython3
 
     p = pl.plot(x,y, 'o')
-
 
 
 .. image:: 11_scipy_regression_files/11_scipy_regression_4_0.png
@@ -951,7 +950,7 @@ Falta calcular o SE da ordenada na origem.
 
 
 Example: Simulation of the acid-base changes in an amino-acid solution
-======================================================================
+----------------------------------------------------------------------
 
 Here we make a simple simulation of the changes in pH and charge
 distribution of an amino acid in solution.
@@ -1104,7 +1103,7 @@ titrating the solution.
 
 
 ``Pandas``
-==========
+----------
 
 .. figure:: images/sci_python_pandas.png
    :alt: 
@@ -1213,7 +1212,7 @@ existência de muitas funções de análise que levam em conta valores em
 falta são uma característica muito poderosa do módulo ``pandas``.
 
 Funções descritivas dos valores
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As Séries têm algumas funções de estatística descritiva de grande
 utilidade.
@@ -1300,7 +1299,7 @@ cálculos**.
     
 
 Indexação e operações vetoriais
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As Séries podem ser usadas com indexação por números inteiros,
 comportando-se como uma lista ou um *array* do ``numpy``.
@@ -2577,7 +2576,7 @@ Algoritmos numéricos
 ====================
 
 Introdução (algoritmo babilónico)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------
 
     Um **algoritmo** é um procedimento, indicado passo a passo,
     destinado a resolver um problema num intervalo de tempo finito.
@@ -2717,7 +2716,7 @@ x é a raíz quadrada de a.
     
 
 Método das bisseções sucessivas
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
 
 **Método das bisseções sucessivas** (para calcular a raíz de uma função)
 
@@ -2880,7 +2879,7 @@ Monitorizando as bisseções:
     
 
 Método de newton
-~~~~~~~~~~~~~~~~
+----------------
 
 **Método de Newton** (para calcular a raíz de uma função)
 
