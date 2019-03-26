@@ -17,7 +17,7 @@ já vimos os números e as *strings*.
 Este capítulo diz respeito a objetos designados genericamente por
 "coleções".
 
-.. note::
+.. admonition:: O que é uma coleção?
 
    Coleções são objetos que contêm mais do que um valor.
 

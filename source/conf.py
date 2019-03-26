@@ -32,7 +32,7 @@ import os
 extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
-    'rinoh.frontend.sphinx',
+    #'rinoh.frontend.sphinx',
 ]
 
 # configuration of rinohtype pdf generator 
@@ -60,14 +60,14 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Bq computacional (FCUL)'
-copyright = u'2016-2018, António Ferreira'
+copyright = u'2016-2019, António Ferreira'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = '5.2018'
+version = '3.2019'
 # The full version, including alpha/beta/rc tags.
 release = 'May 2018'
 

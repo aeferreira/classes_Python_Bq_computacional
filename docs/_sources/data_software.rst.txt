@@ -5,15 +5,9 @@ Instalação de software
 Distribuições científicas da linguagem Python
 ---------------------------------------------
 
-A linguagem Python tem uma *distribuição* oficial que pode ser obtida a
+A linguagem Python tem uma *distribuição* oficial que poderia ser obtida a
 partir do portal da linguagem
 `www.python.org <http://www.python.org>`__.
-
-Esta distribuição contem mais de uma centena de módulos que aumentam a
-funcionalidade da linguagem base. Esta funcionalidade fica acessível
-pela disponibilização de novas funções via comandos ``import``. Os
-módulos não necessitam de ser instalados, eles estão incluídos na distribuição e
-constituem a chamada *biblioteca padrão* da linguagem Python.
 
 Para as aulas da UC de Bioquímica Computacional, em que se procura
 mostrar as vertentes de cálculo científico vetorial, capacidades
@@ -38,11 +32,10 @@ Anaconda (fortemente aconselhada):
 
 Basta correr o instalador, que pode ser baixado a partir de:
 
-https://www.anaconda.com/download/
+https://www.anaconda.com/distribution/
 
-Deve-se escolher a última versão do Python (3.6) e o instalador
-apropriado ao sistema operativo do computador (win 32 bit, win 64 bit,
-OS ou Linux).
+Deve-se escolher a última versão do Python (3.7) e o instalador
+apropriado ao sistema operativo do computador (Windows, MacOS ou Linux).
 
 A distribuição é "grande" (mais de 1 GB), aconselha-se a instalação
 "para o utilizador".
@@ -53,15 +46,14 @@ Miniconda (para os que têm problemas de falta de espaço em disco):
 Obter e correr o instalador do Miniconda, que pode ser baixado a partir
 de :
 
-https://conda.io/miniconda.html
+https://conda.io/en/latest/miniconda.html
 
-Deve-se escolher a última versão do Python (3.6) e o instalador
-apropriado ao sistema operativo do computador (win 32 bit, win 64 bit,
-OS ou Linux).
+Deve-se escolher a última versão do Python (3.7) e o instalador
+apropriado ao sistema operativo do computador (Windows, MacOS ou Linux).
 
 No final da instalação deve ser executado, numa *linha de comando do
 sistema operativo*:
 
 ::
 
-    conda install six numpy sympy scipy matplotlib jupyter pandas
+    conda install numpy sympy scipy matplotlib jupyter pandas

@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/my_style.css" type="text/css" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Strings" href="strings.html" />
     <link rel="prev" title="Coleções e iterações" href="collections_iterations.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +60,7 @@
             
             
               <div class="version">
-                5.2018
+                3.2019
               </div>
             
           
@@ -89,29 +90,29 @@
 <li class="toctree-l1"><a class="reference internal" href="collections_iterations.html">Coleções e iterações</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Listas e dicionários</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#listas">Listas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#append-insert"><code class="docutils literal"><span class="pre">.append()</span></code>, <code class="docutils literal"><span class="pre">.insert()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#extend"><code class="docutils literal"><span class="pre">.extend()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#remove"><code class="docutils literal"><span class="pre">.remove()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#count"><code class="docutils literal"><span class="pre">.count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#append-insert"><code class="docutils literal notranslate"><span class="pre">.append()</span></code>, <code class="docutils literal notranslate"><span class="pre">.insert()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extend"><code class="docutils literal notranslate"><span class="pre">.extend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remove"><code class="docutils literal notranslate"><span class="pre">.remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#count"><code class="docutils literal notranslate"><span class="pre">.count()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#append-como-geradora-de-listas-novas"><code class="docutils literal"><span class="pre">.append()</span></code> como geradora de listas novas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#append-como-geradora-de-listas-novas"><code class="docutils literal notranslate"><span class="pre">.append()</span></code> como geradora de listas novas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#indexacao">Indexação</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#listas-em-compreensao">Listas em compreensão</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mais-algumas-funcoes-de-listas">Mais algumas funções de listas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#pop-reverse-sort"><code class="docutils literal"><span class="pre">.pop()</span></code>, <code class="docutils literal"><span class="pre">.reverse()</span></code>, <code class="docutils literal"><span class="pre">.sort()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pop-reverse-sort"><code class="docutils literal notranslate"><span class="pre">.pop()</span></code>, <code class="docutils literal notranslate"><span class="pre">.reverse()</span></code>, <code class="docutils literal notranslate"><span class="pre">.sort()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#dicionarios">Dicionários</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#indexacao-e-iteracao">Indexação e iteração</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#update"><code class="docutils literal"><span class="pre">.update()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#clear"><code class="docutils literal"><span class="pre">.clear()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#values-items-keys"><code class="docutils literal"><span class="pre">.values()</span></code>,<code class="docutils literal"><span class="pre">.items()</span></code>, <code class="docutils literal"><span class="pre">.keys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update"><code class="docutils literal notranslate"><span class="pre">.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clear"><code class="docutils literal notranslate"><span class="pre">.clear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#values-items-keys"><code class="docutils literal notranslate"><span class="pre">.values()</span></code>,<code class="docutils literal notranslate"><span class="pre">.items()</span></code>, <code class="docutils literal notranslate"><span class="pre">.keys()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dicionarios-em-compreensao">Dicionários em compreensão</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dict"><code class="docutils literal"><span class="pre">dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dict"><code class="docutils literal notranslate"><span class="pre">dict()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#funcao-zip">Função <code class="docutils literal"><span class="pre">zip()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcao-zip">Função <code class="docutils literal notranslate"><span class="pre">zip()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="strings.html"><em>Strings</em></a></li>
@@ -121,11 +122,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="funcs_modules.html">Funções e módulos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scientific_modules.html">Os principais módulos “científicos”</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#numpy"><code class="docutils literal"><span class="pre">numpy</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#sympy"><code class="docutils literal"><span class="pre">sympy</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#exemplo-do-uso-de-numpy-e-scipy-regressao-linear">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#example-simulation-of-the-acid-base-changes-in-an-amino-acid-solution">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#pandas"><code class="docutils literal"><span class="pre">Pandas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#algoritmos-numericos">Algoritmos numéricos</a></li>
 </ul>
 <ul>
@@ -198,22 +194,22 @@
 fundamentais de coleções na linguagem Python: as listas, as <em>strings</em> e os
 dicionários.</p>
 <p>Uma das mais poderosas técnicas associadas às coleções é a sua iteração, usando
-o comando <code class="docutils literal"><span class="pre">for</span></code>.</p>
+o comando <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
 <p>Neste capítulo mostra-se algumas <strong>funções</strong> que são específicas de cada coleção,
 começando pelas <strong>listas</strong> e <strong>dicionários</strong>.</p>
 <div class="section" id="listas">
 <h2>Listas<a class="headerlink" href="#listas" title="Permalink to this headline">¶</a></h2>
 <p>Recordemos: em comum com as outras coleções,</p>
 <ul class="simple">
-<li>as listas podem ser iteradas num comando <code class="docutils literal"><span class="pre">for</span></code>.</li>
-<li>a função <code class="docutils literal"><span class="pre">len()</span></code> pode ser usada para determinar o numero de
+<li>as listas podem ser iteradas num comando <code class="docutils literal notranslate"><span class="pre">for</span></code>.</li>
+<li>a função <code class="docutils literal notranslate"><span class="pre">len()</span></code> pode ser usada para determinar o numero de
 elementos de uma lista.</li>
-<li>podemos testar se um elemento pertence a uma lista usando <code class="docutils literal"><span class="pre">in</span></code>.</li>
+<li>podemos testar se um elemento pertence a uma lista usando <code class="docutils literal notranslate"><span class="pre">in</span></code>.</li>
 </ul>
 <p>Vejamos algumas funções que são <strong>específicas das listas</strong>:</p>
 <div class="section" id="append-insert">
-<h3><code class="docutils literal"><span class="pre">.append()</span></code>, <code class="docutils literal"><span class="pre">.insert()</span></code><a class="headerlink" href="#append-insert" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<h3><code class="docutils literal notranslate"><span class="pre">.append()</span></code>, <code class="docutils literal notranslate"><span class="pre">.insert()</span></code><a class="headerlink" href="#append-insert" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -225,7 +221,7 @@ elementos de uma lista.</li>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">depois de insert(1, 20):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
 
 depois de append(10): [1, 2, 3, 4, 10]
 
@@ -234,8 +230,8 @@ depois de insert(1, 20): [1, 20, 2, 3, 4, 10]
 </div>
 </div>
 <div class="section" id="extend">
-<h3><code class="docutils literal"><span class="pre">.extend()</span></code><a class="headerlink" href="#extend" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<h3><code class="docutils literal notranslate"><span class="pre">.extend()</span></code><a class="headerlink" href="#extend" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="n">novos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
@@ -245,7 +241,7 @@ depois de insert(1, 20): [1, 20, 2, 3, 4, 10]
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
 
 depois de extend([11, 12, 13, 14]):
 [1, 2, 3, 4, 11, 12, 13, 14]
@@ -253,8 +249,8 @@ depois de extend([11, 12, 13, 14]):
 </div>
 </div>
 <div class="section" id="remove">
-<h3><code class="docutils literal"><span class="pre">.remove()</span></code><a class="headerlink" href="#remove" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<h3><code class="docutils literal notranslate"><span class="pre">.remove()</span></code><a class="headerlink" href="#remove" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -262,22 +258,22 @@ depois de extend([11, 12, 13, 14]):
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">depois de remove(3):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
 
 depois de remove(3): [1, 2, 4, 1, 2, 3, 4, 1, 2, 3, 4]
 </pre></div>
 </div>
 </div>
 <div class="section" id="count">
-<h3><code class="docutils literal"><span class="pre">.count()</span></code><a class="headerlink" href="#count" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<h3><code class="docutils literal notranslate"><span class="pre">.count()</span></code><a class="headerlink" href="#count" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">resultado de count(1:)&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
 
 resultado de count(1:)
 3
@@ -286,29 +282,29 @@ resultado de count(1:)
 </div>
 </div>
 <div class="section" id="append-como-geradora-de-listas-novas">
-<h2><code class="docutils literal"><span class="pre">.append()</span></code> como geradora de listas novas<a class="headerlink" href="#append-como-geradora-de-listas-novas" title="Permalink to this headline">¶</a></h2>
-<p>Recordar que as listas podem ser iteradas com o comando <code class="docutils literal"><span class="pre">for</span></code>.</p>
-<p>A combinação da iteração de listas com a função <code class="docutils literal"><span class="pre">.append()</span></code> começando
+<h2><code class="docutils literal notranslate"><span class="pre">.append()</span></code> como geradora de listas novas<a class="headerlink" href="#append-como-geradora-de-listas-novas" title="Permalink to this headline">¶</a></h2>
+<p>Recordar que as listas podem ser iteradas com o comando <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
+<p>A combinação da iteração de listas com a função <code class="docutils literal notranslate"><span class="pre">.append()</span></code> começando
 numa <strong>lista vazia</strong> é uma das combinações mais poderosas para gerar
 novas listas.</p>
 <p><strong>Problema: gerar os 40 primeiros quadrados perfeitos</strong>
-<span class="math">\(\{i^2: i=0, 1, 2,...,39\}\)</span> <strong>pondo o resultado numa lista</strong></p>
-<p>Podemos combinar <code class="docutils literal"><span class="pre">.append()</span></code> com <code class="docutils literal"><span class="pre">for</span></code>:</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="math notranslate nohighlight">\(\{i^2: i=0, 1, 2,...,39\}\)</span> <strong>pondo o resultado numa lista</strong></p>
+<p>Podemos combinar <code class="docutils literal notranslate"><span class="pre">.append()</span></code> com <code class="docutils literal notranslate"><span class="pre">for</span></code>:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">):</span>
     <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576, 625, 676, 729, 784, 841, 900, 961, 1024, 1089, 1156, 1225, 1296, 1369, 1444, 1521]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576, 625, 676, 729, 784, 841, 900, 961, 1024, 1089, 1156, 1225, 1296, 1369, 1444, 1521]
 </pre></div>
 </div>
 <p><strong>Problema: gerar os 40 primeiros quadrados perfeitos</strong>
-<span class="math">\(\{i^2: i=0, 1, 2,...,39\}\)</span><strong>, que estejam entre 400 e 800,
+<span class="math notranslate nohighlight">\(\{i^2: i=0, 1, 2,...,39\}\)</span><strong>, que estejam entre 400 e 800,
 pondo o resultado numa lista</strong></p>
-<p>Podemos combinar <code class="docutils literal"><span class="pre">.append()</span></code> com <code class="docutils literal"><span class="pre">for</span></code> e <code class="docutils literal"><span class="pre">if</span></code>:</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<p>Podemos combinar <code class="docutils literal notranslate"><span class="pre">.append()</span></code> com <code class="docutils literal notranslate"><span class="pre">for</span></code> e <code class="docutils literal notranslate"><span class="pre">if</span></code>:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">):</span>
     <span class="n">q</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
     <span class="k">if</span> <span class="n">q</span> <span class="o">&gt;=</span> <span class="mi">400</span> <span class="ow">and</span> <span class="n">q</span> <span class="o">&lt;=</span> <span class="mi">800</span><span class="p">:</span>
@@ -317,12 +313,12 @@ pondo o resultado numa lista</strong></p>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[400, 441, 484, 529, 576, 625, 676, 729, 784]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[400, 441, 484, 529, 576, 625, 676, 729, 784]
 </pre></div>
 </div>
 <p><strong>Problema: somar os 10 primeiros números ímpares</strong>
-<span class="math">\(\sum\limits_{i=0}^9 2i+1\)</span></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">impares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="math notranslate nohighlight">\(\sum\limits_{i=0}^9 2i+1\)</span></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">impares</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">impares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">impares</span><span class="p">)</span>
@@ -335,7 +331,7 @@ pondo o resultado numa lista</strong></p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pela soma de prog. aritm.&#39;</span><span class="p">,(</span><span class="mi">1</span><span class="o">+</span><span class="mi">19</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 soma dos 10 primeiros ímpares: 100
 Pela soma de prog. aritm. 100.0
 </pre></div>
@@ -344,8 +340,8 @@ Pela soma de prog. aritm. 100.0
 <div class="section" id="indexacao">
 <h2>Indexação<a class="headerlink" href="#indexacao" title="Permalink to this headline">¶</a></h2>
 <p>As listas têm uma <strong>numeração implícita, (a contar do zero)</strong>, e podemos
-<strong>indexar</strong> uma lista usando <code class="docutils literal"><span class="pre">lista[posição]</span></code></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">enzimas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;HK&#39;</span><span class="p">,</span> <span class="s1">&#39;G6PDH&#39;</span><span class="p">,</span> <span class="s1">&#39;TPI&#39;</span><span class="p">,</span> <span class="s1">&#39;Ald&#39;</span><span class="p">,</span> <span class="s1">&#39;PFK&#39;</span><span class="p">,</span> <span class="s1">&#39;PK&#39;</span><span class="p">]</span>
+<strong>indexar</strong> uma lista usando <code class="docutils literal notranslate"><span class="pre">lista[posição]</span></code></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enzimas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;HK&#39;</span><span class="p">,</span> <span class="s1">&#39;G6PDH&#39;</span><span class="p">,</span> <span class="s1">&#39;TPI&#39;</span><span class="p">,</span> <span class="s1">&#39;Ald&#39;</span><span class="p">,</span> <span class="s1">&#39;PFK&#39;</span><span class="p">,</span> <span class="s1">&#39;PK&#39;</span><span class="p">]</span>
 <span class="c1">#           0       1       2      3      4      5   len()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">enzimas</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -353,14 +349,14 @@ Pela soma de prog. aritm. 100.0
 <span class="nb">print</span><span class="p">(</span><span class="n">enzimas</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">enzimas</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>HK
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>HK
 Ald
 PK
 </pre></div>
 </div>
 <p>As listas têm também uma <strong>numeração implícita com números negativos</strong>:
 o último elemento é -1, o penúltimo -2 e assim sucessivamente.</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">enzimas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;HK&#39;</span><span class="p">,</span> <span class="s1">&#39;G6PDH&#39;</span><span class="p">,</span> <span class="s1">&#39;TPI&#39;</span><span class="p">,</span> <span class="s1">&#39;Ald&#39;</span><span class="p">,</span> <span class="s1">&#39;PFK&#39;</span><span class="p">,</span> <span class="s1">&#39;PK&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enzimas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;HK&#39;</span><span class="p">,</span> <span class="s1">&#39;G6PDH&#39;</span><span class="p">,</span> <span class="s1">&#39;TPI&#39;</span><span class="p">,</span> <span class="s1">&#39;Ald&#39;</span><span class="p">,</span> <span class="s1">&#39;PFK&#39;</span><span class="p">,</span> <span class="s1">&#39;PK&#39;</span><span class="p">]</span>
 <span class="c1">#                          -4     -3     -2     -1</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">enzimas</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
@@ -368,35 +364,35 @@ o último elemento é -1, o penúltimo -2 e assim sucessivamente.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">enzimas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>TPI
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>TPI
 HK
 PK
 </pre></div>
 </div>
 <p>A indexação permite usar elementos de uma lista pela sua posição</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>11
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>11
 </pre></div>
 </div>
 <p>A indexação permite também <strong>modificar</strong> um elemento que está numa
 posição</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="mi">10</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
 [1, 1, 4100, 2, 2, 2, 3, 3, 3, 4, 4, 4]
 </pre></div>
 </div>
 <p>Podemos também indexar a partir da iteração de numeros inteiros</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
@@ -407,7 +403,7 @@ posição</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>1
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1
 2
 3
 2
@@ -422,7 +418,7 @@ posição</p>
 </div>
 <p><strong>Problema: calcular as diferenças sucessivas entre os elementos de uma
 lista, pondo o resultado numa lista</strong></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 
 <span class="n">difs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
@@ -433,13 +429,13 @@ lista, pondo o resultado numa lista</strong></p>
 <span class="nb">print</span><span class="p">(</span><span class="n">difs</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[1, 1, 1, 2, 2, 2, 3, 3, 3, 5, 5, 7]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[1, 1, 1, 2, 2, 2, 3, 3, 3, 5, 5, 7]
 [0, 0, 1, 0, 0, 1, 0, 0, 2, 0, 2]
 </pre></div>
 </div>
 <p><strong>Problema: mostrar que as diferenças sucessivas entre os quadrados
 perfeitos, são os números ímpares (usar os 20 primeiros)</strong></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="c1">#calcular os quadrados perfeitos</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#calcular os quadrados perfeitos</span>
 <span class="n">quads</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
     <span class="n">quads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
@@ -454,7 +450,7 @@ perfeitos, são os números ímpares (usar os 20 primeiros)</strong></p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;diferenças sucessivas&#39;</span><span class="p">,</span> <span class="n">difs</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>quadrados perfeitos [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>quadrados perfeitos [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
 diferenças sucessivas [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37]
 </pre></div>
 </div>
@@ -471,7 +467,7 @@ decorrido: o movimento de queda livre é uniformemente acelerado.</p>
 <div class="section" id="listas-em-compreensao">
 <h2>Listas em compreensão<a class="headerlink" href="#listas-em-compreensao" title="Permalink to this headline">¶</a></h2>
 <p>O padrão</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">nova_lista</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nova_lista</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uma_lista</span><span class="p">:</span>
     <span class="s2">&quot;&lt;geração de um novo elemento p a partir de i&gt;&quot;</span>
     <span class="n">nova_lista</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
@@ -482,36 +478,36 @@ lista:</p>
 <p><strong>listas em compreensão</strong></p>
 <p>Numa lista em compreensão constrói-se uma lista a partir de outra,
 indicando a operação a efectuar a cada elemento da lista original.
-Usa-se um comando <code class="docutils literal"><span class="pre">for</span></code> para percorrer a lista original.</p>
+Usa-se um comando <code class="docutils literal notranslate"><span class="pre">for</span></code> para percorrer a lista original.</p>
 <p>É uma forma muito compacta de construir listas.</p>
 <p>Como obter uma lista com numeros ímpares:</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">impares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">impares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">impares</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 </pre></div>
 </div>
-<p>Em resumo, entre<code class="docutils literal"><span class="pre">[]</span></code> indica-se um “termo geral” e um comando <code class="docutils literal"><span class="pre">for</span></code>
+<p>Em resumo, entre<code class="docutils literal notranslate"><span class="pre">[]</span></code> indica-se um “termo geral” e um comando <code class="docutils literal notranslate"><span class="pre">for</span></code>
 para percorrer a lista original</p>
 <p>Um outro exemplo: obter os quadrados perfeitos entre 400 e 800</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">quads</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quads</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">)]</span>
 
 <span class="n">quads_filtrados</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quads</span> <span class="k">if</span> <span class="n">q</span> <span class="o">&gt;</span> <span class="mi">400</span> <span class="ow">and</span> <span class="n">q</span> <span class="o">&lt;</span> <span class="mi">800</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">quads_filtrados</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[441, 484, 529, 576, 625, 676, 729, 784]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[441, 484, 529, 576, 625, 676, 729, 784]
 </pre></div>
 </div>
-<p>Este exemplo mostra que podemos impor condições (com o comando <code class="docutils literal"><span class="pre">if</span></code>)
+<p>Este exemplo mostra que podemos impor condições (com o comando <code class="docutils literal notranslate"><span class="pre">if</span></code>)
 aos valores da lista original.</p>
 <p>Num outro exemplo, pretendemos obter uma lista com as diferenças
 sucessivas entre quadrados perfeitos, para mostrar que são os números
 ímpares:</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="c1"># Diferenças entre quadrados perfeitos sucessivos</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Diferenças entre quadrados perfeitos sucessivos</span>
 <span class="c1"># são os numeros ímpares</span>
 <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
 <span class="n">difs</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">))]</span>
@@ -520,13 +516,13 @@ sucessivas entre quadrados perfeitos, para mostrar que são os números
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Diferenças:&#39;</span><span class="p">,</span> <span class="n">difs</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Quadrados:  [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Quadrados:  [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
 
 Diferenças: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37]
 </pre></div>
 </div>
 <p><strong>Problema: retirar todas as ocorrências de um elemento de uma lista</strong></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">kill</span> <span class="o">=</span> <span class="s1">&#39;Bad&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kill</span> <span class="o">=</span> <span class="s1">&#39;Bad&#39;</span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Good&#39;</span><span class="p">,</span><span class="s1">&#39;Nice&#39;</span><span class="p">,</span><span class="s1">&#39;OK&#39;</span><span class="p">,</span><span class="s1">&#39;Bad&#39;</span><span class="p">,</span><span class="s1">&#39;Cool&#39;</span><span class="p">,</span><span class="s1">&#39;Bad&#39;</span><span class="p">,</span><span class="s1">&#39;OK&#39;</span><span class="p">]</span>
 <span class="n">a_clean</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">kill</span><span class="p">]</span>
 
@@ -534,13 +530,13 @@ Diferenças: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35,
 <span class="nb">print</span><span class="p">(</span><span class="n">a_clean</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[&#39;Good&#39;, &#39;Nice&#39;, &#39;OK&#39;, &#39;Bad&#39;, &#39;Cool&#39;, &#39;Bad&#39;, &#39;OK&#39;]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;Good&#39;, &#39;Nice&#39;, &#39;OK&#39;, &#39;Bad&#39;, &#39;Cool&#39;, &#39;Bad&#39;, &#39;OK&#39;]
 [&#39;Good&#39;, &#39;Nice&#39;, &#39;OK&#39;, &#39;Cool&#39;, &#39;OK&#39;]
 </pre></div>
 </div>
 <p><strong>Problema: retirar todas as ocorrências dos elemento de uma “lista
 negra”</strong></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">black_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Bad&#39;</span><span class="p">,</span> <span class="s1">&#39;So so&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">black_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Bad&#39;</span><span class="p">,</span> <span class="s1">&#39;So so&#39;</span><span class="p">]</span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Good&#39;</span><span class="p">,</span><span class="s1">&#39;So so&#39;</span><span class="p">,</span><span class="s1">&#39;OK&#39;</span><span class="p">,</span><span class="s1">&#39;Bad&#39;</span><span class="p">,</span><span class="s1">&#39;Cool&#39;</span><span class="p">,</span><span class="s1">&#39;Bad&#39;</span><span class="p">,</span><span class="s1">&#39;OK&#39;</span><span class="p">]</span>
 <span class="n">a_clean</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">black_list</span><span class="p">]</span>
 
@@ -548,18 +544,18 @@ negra”</strong></p>
 <span class="nb">print</span><span class="p">(</span><span class="n">a_clean</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[&#39;Good&#39;, &#39;So so&#39;, &#39;OK&#39;, &#39;Bad&#39;, &#39;Cool&#39;, &#39;Bad&#39;, &#39;OK&#39;]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;Good&#39;, &#39;So so&#39;, &#39;OK&#39;, &#39;Bad&#39;, &#39;Cool&#39;, &#39;Bad&#39;, &#39;OK&#39;]
 [&#39;Good&#39;, &#39;OK&#39;, &#39;Cool&#39;, &#39;OK&#39;]
 </pre></div>
 </div>
 <p><strong>Problema: obter uma lista de numeros até 300 que sejam múltiplos de 3
 e de 7</strong></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">mult_3_7</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">301</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">%</span><span class="k">7</span>==0 and x%3==0]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mult_3_7</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">301</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">%</span><span class="k">7</span>==0 and x%3==0]
 
 <span class="nb">print</span><span class="p">(</span><span class="n">mult_3_7</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[0, 21, 42, 63, 84, 105, 126, 147, 168, 189, 210, 231, 252, 273, 294]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[0, 21, 42, 63, 84, 105, 126, 147, 168, 189, 210, 231, 252, 273, 294]
 </pre></div>
 </div>
 <p>Leitura interessante:</p>
@@ -569,9 +565,9 @@ way</a></p>
 <div class="section" id="mais-algumas-funcoes-de-listas">
 <h2>Mais algumas funções de listas<a class="headerlink" href="#mais-algumas-funcoes-de-listas" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pop-reverse-sort">
-<h3><code class="docutils literal"><span class="pre">.pop()</span></code>, <code class="docutils literal"><span class="pre">.reverse()</span></code>, <code class="docutils literal"><span class="pre">.sort()</span></code><a class="headerlink" href="#pop-reverse-sort" title="Permalink to this headline">¶</a></h3>
-<p>Todas estas funções <strong>modificam</strong> uma lista, tal como <code class="docutils literal"><span class="pre">.append()</span></code>.</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;seg&#39;</span><span class="p">,</span> <span class="s1">&#39;ter&#39;</span><span class="p">,</span> <span class="s1">&#39;qua&#39;</span><span class="p">,</span> <span class="s1">&#39;qui&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;sab&#39;</span><span class="p">,</span> <span class="s1">&#39;dom&#39;</span><span class="p">]</span>
+<h3><code class="docutils literal notranslate"><span class="pre">.pop()</span></code>, <code class="docutils literal notranslate"><span class="pre">.reverse()</span></code>, <code class="docutils literal notranslate"><span class="pre">.sort()</span></code><a class="headerlink" href="#pop-reverse-sort" title="Permalink to this headline">¶</a></h3>
+<p>Todas estas funções <strong>modificam</strong> uma lista, tal como <code class="docutils literal notranslate"><span class="pre">.append()</span></code>.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;seg&#39;</span><span class="p">,</span> <span class="s1">&#39;ter&#39;</span><span class="p">,</span> <span class="s1">&#39;qua&#39;</span><span class="p">,</span> <span class="s1">&#39;qui&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;sab&#39;</span><span class="p">,</span> <span class="s1">&#39;dom&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;lista original&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
@@ -584,7 +580,7 @@ way</a></p>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>lista original
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>lista original
 [&#39;seg&#39;, &#39;ter&#39;, &#39;qua&#39;, &#39;qui&#39;, &#39;sex&#39;, &#39;sab&#39;, &#39;dom&#39;]
 
 Depois de a.reverse()
@@ -594,7 +590,7 @@ Depois de a.sort()
 [&#39;dom&#39;, &#39;qua&#39;, &#39;qui&#39;, &#39;sab&#39;, &#39;seg&#39;, &#39;sex&#39;, &#39;ter&#39;]
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;seg&#39;</span><span class="p">,</span> <span class="s1">&#39;ter&#39;</span><span class="p">,</span> <span class="s1">&#39;qua&#39;</span><span class="p">,</span> <span class="s1">&#39;qui&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;sab&#39;</span><span class="p">,</span> <span class="s1">&#39;dom&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;seg&#39;</span><span class="p">,</span> <span class="s1">&#39;ter&#39;</span><span class="p">,</span> <span class="s1">&#39;qua&#39;</span><span class="p">,</span> <span class="s1">&#39;qui&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;sab&#39;</span><span class="p">,</span> <span class="s1">&#39;dom&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;lista original&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
@@ -607,7 +603,7 @@ Depois de a.sort()
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O valor retirado foi&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>lista original
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>lista original
 [&#39;seg&#39;, &#39;ter&#39;, &#39;qua&#39;, &#39;qui&#39;, &#39;sex&#39;, &#39;sab&#39;, &#39;dom&#39;]
 Depois de a.pop()
 [&#39;seg&#39;, &#39;ter&#39;, &#39;qua&#39;, &#39;qui&#39;, &#39;sex&#39;, &#39;sab&#39;]
@@ -626,9 +622,9 @@ O valor retirado foi qua
 <div class="section" id="indexacao-e-iteracao">
 <h3>Indexação e iteração<a class="headerlink" href="#indexacao-e-iteracao" title="Permalink to this headline">¶</a></h3>
 <p>A maneira de ler, inserir e modificar valores num dicionário é através
-das suas chaves. O operador <code class="docutils literal"><span class="pre">in</span></code> testa a existência de uma chave num
+das suas chaves. O operador <code class="docutils literal notranslate"><span class="pre">in</span></code> testa a existência de uma chave num
 dicionário.</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;K: &#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Li:&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;Li&#39;</span><span class="p">])</span>
@@ -640,13 +636,13 @@ dicionário.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O: &#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>K:  19
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>K:  19
 Li: 3
 O:  16
 O:  18
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
 
 <span class="k">if</span> <span class="s1">&#39;N&#39;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Existe info sobre o azoto&#39;</span><span class="p">)</span>
@@ -654,26 +650,26 @@ O:  18
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Não existe info sobre o azoto&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Não existe info sobre o azoto
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Não existe info sobre o azoto
 </pre></div>
 </div>
 <p>A <strong>iteração</strong> percorre as <strong>chaves</strong> de um dicionário:</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
 
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;---&gt;&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Na ---&gt; 11
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Na ---&gt; 11
 K ---&gt; 19
 O ---&gt; 18
 </pre></div>
 </div>
 </div>
 <div class="section" id="update">
-<h3><code class="docutils literal"><span class="pre">.update()</span></code><a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<h3><code class="docutils literal notranslate"><span class="pre">.update()</span></code><a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
 <span class="n">e</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
@@ -681,69 +677,69 @@ O ---&gt; 18
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>{&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2}
 {&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2, &#39;p&#39;: 10, &#39;q&#39;: 15}
 </pre></div>
 </div>
 </div>
 <div class="section" id="clear">
-<h3><code class="docutils literal"><span class="pre">.clear()</span></code><a class="headerlink" href="#clear" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<h3><code class="docutils literal notranslate"><span class="pre">.clear()</span></code><a class="headerlink" href="#clear" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
 <span class="n">d</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>{&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2}
 {}
 </pre></div>
 </div>
 </div>
 <div class="section" id="values-items-keys">
-<h3><code class="docutils literal"><span class="pre">.values()</span></code>,<code class="docutils literal"><span class="pre">.items()</span></code>, <code class="docutils literal"><span class="pre">.keys()</span></code><a class="headerlink" href="#values-items-keys" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+<h3><code class="docutils literal notranslate"><span class="pre">.values()</span></code>,<code class="docutils literal notranslate"><span class="pre">.items()</span></code>, <code class="docutils literal notranslate"><span class="pre">.keys()</span></code><a class="headerlink" href="#values-items-keys" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>1
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1
 3
 11
 19
 18
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>(&#39;H&#39;, 1)
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>(&#39;H&#39;, 1)
 (&#39;Li&#39;, 3)
 (&#39;Na&#39;, 11)
 (&#39;K&#39;, 19)
 (&#39;O&#39;, 18)
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>H
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>H
 Li
 Na
 K
 O
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">.items()</span></code> é útil para simplificar um ciclo <code class="docutils literal"><span class="pre">for</span></code>: podemos desdobrar
+<p><code class="docutils literal notranslate"><span class="pre">.items()</span></code> é útil para simplificar um ciclo <code class="docutils literal notranslate"><span class="pre">for</span></code>: podemos desdobrar
 o par de valores e dar dois nomes diferentes:</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="c1"># compare-se com o exemplo acima...</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare-se com o exemplo acima...</span>
 <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
 
 <span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -751,12 +747,12 @@ o par de valores e dar dois nomes diferentes:</p>
         <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;---&gt;&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Na ---&gt; 11
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Na ---&gt; 11
 K ---&gt; 19
 O ---&gt; 18
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="c1"># Virar um dicionário &quot;do avesso&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Virar um dicionário &quot;do avesso&quot;</span>
 <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
 
 <span class="n">d2</span> <span class="o">=</span> <span class="p">{}</span>
@@ -767,11 +763,11 @@ O ---&gt; 18
 <span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19, &#39;O&#39;: 18}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19, &#39;O&#39;: 18}
 {1: &#39;H&#39;, 3: &#39;Li&#39;, 11: &#39;Na&#39;, 19: &#39;K&#39;, 18: &#39;O&#39;}
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="c1"># Virar um dicionário &quot;do avesso&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Virar um dicionário &quot;do avesso&quot;</span>
 <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
 
 <span class="n">d2</span> <span class="o">=</span> <span class="p">{}</span>
@@ -782,12 +778,12 @@ O ---&gt; 18
 <span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19, &#39;O&#39;: 18}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19, &#39;O&#39;: 18}
 {1: &#39;H&#39;, 3: &#39;Li&#39;, 11: &#39;Na&#39;, 19: &#39;K&#39;, 18: &#39;O&#39;}
 </pre></div>
 </div>
 <p><strong>Problema: Contar os diferentes valores de um dicionário</strong></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aragorn&#39;</span><span class="p">:</span><span class="s1">&#39;Humano&#39;</span><span class="p">,</span> <span class="s1">&#39;Frodo&#39;</span><span class="p">:</span><span class="s1">&#39;Hobbit&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aragorn&#39;</span><span class="p">:</span><span class="s1">&#39;Humano&#39;</span><span class="p">,</span> <span class="s1">&#39;Frodo&#39;</span><span class="p">:</span><span class="s1">&#39;Hobbit&#39;</span><span class="p">,</span>
      <span class="s1">&#39;Sam&#39;</span><span class="p">:</span><span class="s1">&#39;Hobbit&#39;</span><span class="p">,</span> <span class="s1">&#39;Boromir&#39;</span><span class="p">:</span><span class="s1">&#39;Humano&#39;</span><span class="p">,</span>
      <span class="s1">&#39;Merry&#39;</span><span class="p">:</span><span class="s1">&#39;Hobbit&#39;</span><span class="p">,</span> <span class="s1">&#39;Took&#39;</span><span class="p">:</span><span class="s1">&#39;Hobbit&#39;</span><span class="p">,</span>
      <span class="s1">&#39;Gandalf&#39;</span><span class="p">:</span><span class="s1">&#39;Feiticeiro&#39;</span><span class="p">,</span>
@@ -804,7 +800,7 @@ O ---&gt; 18
     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">c</span> <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Humano 2
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Humano 2
 Hobbit 4
 Feiticeiro 1
 Anão 1
@@ -814,12 +810,12 @@ Elfo 1
 </div>
 <div class="section" id="dicionarios-em-compreensao">
 <h3>Dicionários em compreensão<a class="headerlink" href="#dicionarios-em-compreensao" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)}</span>
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;----&gt;&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>0 ----&gt; 0
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>0 ----&gt; 0
 1 ----&gt; 1
 2 ----&gt; 4
 3 ----&gt; 9
@@ -831,7 +827,7 @@ Elfo 1
 9 ----&gt; 81
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="c1"># Virar um dicionário &quot;do avesso&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Virar um dicionário &quot;do avesso&quot;</span>
 <span class="c1"># usando um dicionário em compreensão</span>
 <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
 
@@ -841,30 +837,30 @@ Elfo 1
 <span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19, &#39;O&#39;: 18}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19, &#39;O&#39;: 18}
 {1: &#39;H&#39;, 3: &#39;Li&#39;, 11: &#39;Na&#39;, 19: &#39;K&#39;, 18: &#39;O&#39;}
 </pre></div>
 </div>
 </div>
 <div class="section" id="dict">
-<h3><code class="docutils literal"><span class="pre">dict()</span></code><a class="headerlink" href="#dict" title="Permalink to this headline">¶</a></h3>
-<p>A função <code class="docutils literal"><span class="pre">dict()</span></code> que tenta transformar o seu argumento num
+<h3><code class="docutils literal notranslate"><span class="pre">dict()</span></code><a class="headerlink" href="#dict" title="Permalink to this headline">¶</a></h3>
+<p>A função <code class="docutils literal notranslate"><span class="pre">dict()</span></code> que tenta transformar o seu argumento num
 dicionário. Em particular, pode aceitar pares de valores,
 interpretando-os como associações de chaves a valores.</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">pares</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Li&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="mi">19</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">,</span><span class="mi">18</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pares</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Li&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="mi">19</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">,</span><span class="mi">18</span><span class="p">)]</span>
 
 <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">pares</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>{&#39;Li&#39;: 3, &#39;K&#39;: 19, &#39;O&#39;: 18}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;Li&#39;: 3, &#39;K&#39;: 19, &#39;O&#39;: 18}
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="funcao-zip">
-<h2>Função <code class="docutils literal"><span class="pre">zip()</span></code><a class="headerlink" href="#funcao-zip" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
+<h2>Função <code class="docutils literal notranslate"><span class="pre">zip()</span></code><a class="headerlink" href="#funcao-zip" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
          <span class="s1">&#39;Enolase (S.pombe)&#39;</span><span class="p">,</span>
          <span class="s1">&#39;Enolase (K.lactis)&#39;</span><span class="p">]</span>
 <span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;P00924&#39;</span><span class="p">,</span> <span class="s1">&#39;P40370&#39;</span><span class="p">,</span> <span class="s1">&#39;Q70CP7&#39;</span><span class="p">]</span>
@@ -873,12 +869,12 @@ interpretando-os como associações de chaves a valores.</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>(&#39;P00924&#39;, &#39;Enolase (S.cerevisiae)&#39;)
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>(&#39;P00924&#39;, &#39;Enolase (S.cerevisiae)&#39;)
 (&#39;P40370&#39;, &#39;Enolase (S.pombe)&#39;)
 (&#39;Q70CP7&#39;, &#39;Enolase (K.lactis)&#39;)
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
          <span class="s1">&#39;Enolase (S.pombe)&#39;</span><span class="p">,</span>
          <span class="s1">&#39;Enolase (K.lactis)&#39;</span><span class="p">]</span>
 <span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;P00924&#39;</span><span class="p">,</span> <span class="s1">&#39;P40370&#39;</span><span class="p">,</span> <span class="s1">&#39;Q70CP7&#39;</span><span class="p">]</span>
@@ -887,12 +883,12 @@ interpretando-os como associações de chaves a valores.</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>P00924 : Enolase (S.cerevisiae)
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>P00924 : Enolase (S.cerevisiae)
 P40370 : Enolase (S.pombe)
 Q70CP7 : Enolase (K.lactis)
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
          <span class="s1">&#39;Enolase (S.pombe)&#39;</span><span class="p">,</span>
          <span class="s1">&#39;Enolase (K.lactis)&#39;</span><span class="p">]</span>
 <span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;P00924&#39;</span><span class="p">,</span> <span class="s1">&#39;P40370&#39;</span><span class="p">,</span> <span class="s1">&#39;Q70CP7&#39;</span><span class="p">]</span>
@@ -902,12 +898,12 @@ Q70CP7 : Enolase (K.lactis)
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>{&#39;P00924&#39;: &#39;Enolase (S.cerevisiae)&#39;, &#39;P40370&#39;: &#39;Enolase (S.pombe)&#39;, &#39;Q70CP7&#39;: &#39;Enolase (K.lactis)&#39;}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;P00924&#39;: &#39;Enolase (S.cerevisiae)&#39;, &#39;P40370&#39;: &#39;Enolase (S.pombe)&#39;, &#39;Q70CP7&#39;: &#39;Enolase (K.lactis)&#39;}
 </pre></div>
 </div>
-<p>Combinando a função <code class="docutils literal"><span class="pre">zip()</span></code> com a função <code class="docutils literal"><span class="pre">dict()</span></code>, a criação do
+<p>Combinando a função <code class="docutils literal notranslate"><span class="pre">zip()</span></code> com a função <code class="docutils literal notranslate"><span class="pre">dict()</span></code>, a criação do
 dicionário fica ainda mais sucinta:</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
          <span class="s1">&#39;Enolase (S.pombe)&#39;</span><span class="p">,</span>
          <span class="s1">&#39;Enolase (K.lactis)&#39;</span><span class="p">]</span>
 <span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;P00924&#39;</span><span class="p">,</span> <span class="s1">&#39;P40370&#39;</span><span class="p">,</span> <span class="s1">&#39;Q70CP7&#39;</span><span class="p">]</span>
@@ -917,7 +913,7 @@ dicionário fica ainda mais sucinta:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>{&#39;Enolase (S.cerevisiae)&#39;: &#39;P00924&#39;, &#39;Enolase (S.pombe)&#39;: &#39;P40370&#39;, &#39;Enolase (K.lactis)&#39;: &#39;Q70CP7&#39;}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;Enolase (S.cerevisiae)&#39;: &#39;P00924&#39;, &#39;Enolase (S.pombe)&#39;: &#39;P40370&#39;, &#39;Enolase (K.lactis)&#39;: &#39;Q70CP7&#39;}
 </pre></div>
 </div>
 </div>
@@ -934,7 +930,7 @@ dicionário fica ainda mais sucinta:</p>
         <a href="strings.html" class="btn btn-neutral float-right" title="Strings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="collections_iterations.html" class="btn btn-neutral" title="Coleções e iterações" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="collections_iterations.html" class="btn btn-neutral float-left" title="Coleções e iterações" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -943,7 +939,7 @@ dicionário fica ainda mais sucinta:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2018, António Ferreira.
+        &copy; Copyright 2016-2019, António Ferreira
 
     </p>
   </div>
@@ -960,38 +956,16 @@ dicionário fica ainda mais sucinta:</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'May 2018',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

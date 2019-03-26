@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/my_style.css" type="text/css" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Ficheiros de texto" href="files.html" />
     <link rel="prev" title="Listas e dicionários" href="more_on_lists_dicts.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +60,7 @@
             
             
               <div class="version">
-                5.2018
+                3.2019
               </div>
             
           
@@ -90,23 +91,23 @@
 <li class="toctree-l1"><a class="reference internal" href="more_on_lists_dicts.html">Listas e dicionários</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#"><em>Strings</em></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#definicao-literal-iteracao-e-indexacao">Definição literal, iteração e indexação</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#concatenacao-de-strings-com-o-operador">“Concatenação” de strings com o operador <code class="docutils literal"><span class="pre">+</span></code>.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#funcoes-len-count-operador-in">Funções <code class="docutils literal"><span class="pre">len()</span></code>, <code class="docutils literal"><span class="pre">.count()</span></code>, operador <code class="docutils literal"><span class="pre">in</span></code>.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#concatenacao-de-strings-com-o-operador">“Concatenação” de strings com o operador <code class="docutils literal notranslate"><span class="pre">+</span></code>.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#funcoes-len-count-operador-in">Funções <code class="docutils literal notranslate"><span class="pre">len()</span></code>, <code class="docutils literal notranslate"><span class="pre">.count()</span></code>, operador <code class="docutils literal notranslate"><span class="pre">in</span></code>.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#iteracao-e-indexacao">Iteração e indexação.</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#funcoes-associadas-a-strings">Funções associadas a <em>strings</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#imutabilidade">Imutabilidade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#algumas-funcoes-uteis">Algumas funções úteis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#funcoes-strip-startswith">Funções <code class="docutils literal"><span class="pre">.strip()</span></code>, <code class="docutils literal"><span class="pre">.startswith()</span></code>.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#funcoes-upper-lower">Funções <code class="docutils literal"><span class="pre">.upper()</span></code>, <code class="docutils literal"><span class="pre">.lower()</span></code>.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#funcao-replace">Função <code class="docutils literal"><span class="pre">.replace()</span></code>.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#funcoes-strip-startswith">Funções <code class="docutils literal notranslate"><span class="pre">.strip()</span></code>, <code class="docutils literal notranslate"><span class="pre">.startswith()</span></code>.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#funcoes-upper-lower">Funções <code class="docutils literal notranslate"><span class="pre">.upper()</span></code>, <code class="docutils literal notranslate"><span class="pre">.lower()</span></code>.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#funcao-replace">Função <code class="docutils literal notranslate"><span class="pre">.replace()</span></code>.</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#funcoes-split-e-join">Funções <code class="docutils literal"><span class="pre">.split()</span></code> e <code class="docutils literal"><span class="pre">.join()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#funcao-splitlines">Função <code class="docutils literal"><span class="pre">.splitlines()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcoes-split-e-join">Funções <code class="docutils literal notranslate"><span class="pre">.split()</span></code> e <code class="docutils literal notranslate"><span class="pre">.join()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcao-splitlines">Função <code class="docutils literal notranslate"><span class="pre">.splitlines()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#slices-em-portugues-fatias">“Slices” (em português: “fatias”)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal"><span class="pre">.format()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formatacao-de-strings-com-format">Formatação de <em>strings</em> com <code class="docutils literal notranslate"><span class="pre">.format()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Ficheiros de texto</a></li>
@@ -115,11 +116,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="funcs_modules.html">Funções e módulos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scientific_modules.html">Os principais módulos “científicos”</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#numpy"><code class="docutils literal"><span class="pre">numpy</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#sympy"><code class="docutils literal"><span class="pre">sympy</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#exemplo-do-uso-de-numpy-e-scipy-regressao-linear">Exemplo do uso de <code class="docutils literal"><span class="pre">numpy</span></code> e <code class="docutils literal"><span class="pre">scipy</span></code>: regressão linear.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#example-simulation-of-the-acid-base-changes-in-an-amino-acid-solution">Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#pandas"><code class="docutils literal"><span class="pre">Pandas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="scientific_modules.html#algoritmos-numericos">Algoritmos numéricos</a></li>
 </ul>
 <ul>
@@ -200,10 +196,10 @@ resultados.</p>
 <p>Uma maneira de criarmos <em>strings</em> num programa é defini-las
 literalmente, como um <strong>texto entre aspas</strong>.</p>
 <p>Na definição literal de <em>strings</em> <strong>podemos usar 3 tipos diferentes de
-aspas</strong>: <code class="docutils literal"><span class="pre">&quot;</span></code>, <code class="docutils literal"><span class="pre">'</span></code> ou <code class="docutils literal"><span class="pre">&quot;&quot;&quot;</span></code>.</p>
+aspas</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">'</span></code> ou <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>.</p>
 <p>As <em>aspas triplas</em> permitem definir literalmente uma <em>string</em> com várias
 linhas.</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;O Neo tomou o comprimido vermelho&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;O Neo tomou o comprimido vermelho&quot;</span>
 
 <span class="n">b</span> <span class="o">=</span><span class="s1">&#39;What is the matrix?&#39;</span>
 
@@ -216,10 +212,10 @@ linhas.</p>
 </pre></div>
 </div>
 <div class="section" id="concatenacao-de-strings-com-o-operador">
-<h3>“Concatenação” de strings com o operador <code class="docutils literal"><span class="pre">+</span></code>.<a class="headerlink" href="#concatenacao-de-strings-com-o-operador" title="Permalink to this headline">¶</a></h3>
-<p>O operador <code class="docutils literal"><span class="pre">+</span></code> serve para “juntar” várias <em>strings</em>, uma operação
+<h3>“Concatenação” de strings com o operador <code class="docutils literal notranslate"><span class="pre">+</span></code>.<a class="headerlink" href="#concatenacao-de-strings-com-o-operador" title="Permalink to this headline">¶</a></h3>
+<p>O operador <code class="docutils literal notranslate"><span class="pre">+</span></code> serve para “juntar” várias <em>strings</em>, uma operação
 designada por <em>concatenação</em>.</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;There&#39;s no spoon&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;There&#39;s no spoon&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c = &#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 
 <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;, really, &#39;</span> <span class="o">+</span> <span class="s1">&#39;none&#39;</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span>
@@ -227,22 +223,22 @@ designada por <em>concatenação</em>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c = &#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>c =  There&#39;s no spoon
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>c =  There&#39;s no spoon
 c =  There&#39;s no spoon, really, none.
 </pre></div>
 </div>
 <p>As strings têm muitas funções em comum com as listas:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">len()</span></code>, <code class="docutils literal"><span class="pre">count()</span></code>, <code class="docutils literal"><span class="pre">in</span></code>, <code class="docutils literal"><span class="pre">not</span> <span class="pre">in</span></code></li>
-<li>Indexação: <code class="docutils literal"><span class="pre">a[i]</span></code></li>
-<li>Iteração: <code class="docutils literal"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">a:</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">len()</span></code>, <code class="docutils literal notranslate"><span class="pre">count()</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code></li>
+<li>Indexação: <code class="docutils literal notranslate"><span class="pre">a[i]</span></code></li>
+<li>Iteração: <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">a:</span></code></li>
 </ul>
 <p>Isto acontece porque as <em>strings</em> se comportam como uma <strong>sequência de
 caracteres</strong>, tal como uma lista é uma sequência de quaisquer objetos.</p>
 </div>
 <div class="section" id="funcoes-len-count-operador-in">
-<h3>Funções <code class="docutils literal"><span class="pre">len()</span></code>, <code class="docutils literal"><span class="pre">.count()</span></code>, operador <code class="docutils literal"><span class="pre">in</span></code>.<a class="headerlink" href="#funcoes-len-count-operador-in" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;There&#39;s no spoon&quot;</span>
+<h3>Funções <code class="docutils literal notranslate"><span class="pre">len()</span></code>, <code class="docutils literal notranslate"><span class="pre">.count()</span></code>, operador <code class="docutils literal notranslate"><span class="pre">in</span></code>.<a class="headerlink" href="#funcoes-len-count-operador-in" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;There&#39;s no spoon&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c = &#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;len(c) =&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
 
@@ -253,7 +249,7 @@ caracteres</strong>, tal como uma lista é uma sequência de quaisquer objetos.<
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ere&#39;</span> <span class="ow">in</span> <span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>c =  There&#39;s no spoon
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>c =  There&#39;s no spoon
 len(c) = 16
 c.count(&quot;s&quot;) =  2
 False
@@ -264,13 +260,13 @@ True
 </div>
 <div class="section" id="iteracao-e-indexacao">
 <h3>Iteração e indexação.<a class="headerlink" href="#iteracao-e-indexacao" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">frase</span> <span class="o">=</span> <span class="s2">&quot;There&#39;s no spoon&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frase</span> <span class="o">=</span> <span class="s2">&quot;There&#39;s no spoon&quot;</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">frase</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>0 T
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>0 T
 1 h
 2 e
 3 r
@@ -288,13 +284,13 @@ True
 15 n
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">frase</span> <span class="o">=</span> <span class="s2">&quot;There&#39;s no spoon&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frase</span> <span class="o">=</span> <span class="s2">&quot;There&#39;s no spoon&quot;</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">frase</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">frase</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>-1 n
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>-1 n
 -2 o
 -3 o
 -4 p
@@ -329,17 +325,17 @@ True
 <p>As <em>strings</em> são <strong>imutáveis</strong>.</p>
 <p>Isto significa que (ao contrário das listas e dicionários) <strong>não existem
 funções para modificar uma</strong> <em>string</em>.</p>
-<p><strong>Não existe</strong>, por exemplo, <code class="docutils literal"><span class="pre">s.append('a')</span></code>.</p>
+<p><strong>Não existe</strong>, por exemplo, <code class="docutils literal notranslate"><span class="pre">s.append('a')</span></code>.</p>
 <p><strong>Todas as operações com</strong> <em>strings</em> <strong>resultam numa</strong> <em>string</em>
 <strong>nova</strong>, à qual é, geralmente, atribuído um nome (mesmo que seja o
 mesmo nome da <em>string</em> original)</p>
-<p>Podemos, por isso, usar <code class="docutils literal"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">s</span> <span class="pre">+</span> <span class="pre">'a'</span></code></p>
+<p>Podemos, por isso, usar <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">s</span> <span class="pre">+</span> <span class="pre">'a'</span></code></p>
 </div>
 <div class="section" id="algumas-funcoes-uteis">
 <h2>Algumas funções úteis<a class="headerlink" href="#algumas-funcoes-uteis" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="funcoes-strip-startswith">
-<h3>Funções <code class="docutils literal"><span class="pre">.strip()</span></code>, <code class="docutils literal"><span class="pre">.startswith()</span></code>.<a class="headerlink" href="#funcoes-strip-startswith" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;    There&#39;s no spoon      &quot;</span>
+<h3>Funções <code class="docutils literal notranslate"><span class="pre">.strip()</span></code>, <code class="docutils literal notranslate"><span class="pre">.startswith()</span></code>.<a class="headerlink" href="#funcoes-strip-startswith" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;    There&#39;s no spoon      &quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c:&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 
@@ -348,25 +344,25 @@ mesmo nome da <em>string</em> original)</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>c:
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>c:
     There&#39;s no spoon
 c.strip():
 There&#39;s no spoon
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;    There&#39;s no spoon      &quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;    There&#39;s no spoon      &quot;</span>
 
 <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Th&#39;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Começa por Th&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Começa por Th
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Começa por Th
 </pre></div>
 </div>
 </div>
 <div class="section" id="funcoes-upper-lower">
-<h3>Funções <code class="docutils literal"><span class="pre">.upper()</span></code>, <code class="docutils literal"><span class="pre">.lower()</span></code>.<a class="headerlink" href="#funcoes-upper-lower" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;    There&#39;s no spoon      &quot;</span>
+<h3>Funções <code class="docutils literal notranslate"><span class="pre">.upper()</span></code>, <code class="docutils literal notranslate"><span class="pre">.lower()</span></code>.<a class="headerlink" href="#funcoes-upper-lower" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;    There&#39;s no spoon      &quot;</span>
 
 <span class="n">c_upper</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c.upper():&#39;</span><span class="p">,</span><span class="n">c_upper</span><span class="p">)</span>
@@ -375,29 +371,29 @@ There&#39;s no spoon
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c.lower():&#39;</span><span class="p">,</span><span class="n">c_lower</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>c.upper():     THERE&#39;S NO SPOON
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>c.upper():     THERE&#39;S NO SPOON
 c.lower():     there&#39;s no spoon
 </pre></div>
 </div>
 </div>
 <div class="section" id="funcao-replace">
-<h3>Função <code class="docutils literal"><span class="pre">.replace()</span></code>.<a class="headerlink" href="#funcao-replace" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">palavra</span> <span class="o">=</span> <span class="s1">&#39;pois&#39;</span>
+<h3>Função <code class="docutils literal notranslate"><span class="pre">.replace()</span></code>.<a class="headerlink" href="#funcao-replace" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">palavra</span> <span class="o">=</span> <span class="s1">&#39;pois&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">palavra</span><span class="p">)</span>
 
 <span class="n">palavra</span> <span class="o">=</span> <span class="n">palavra</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">palavra</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>pois
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pois
 dois
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="funcoes-split-e-join">
-<h2>Funções <code class="docutils literal"><span class="pre">.split()</span></code> e <code class="docutils literal"><span class="pre">.join()</span></code><a class="headerlink" href="#funcoes-split-e-join" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;There&#39;s no spoon&quot;</span>
+<h2>Funções <code class="docutils literal notranslate"><span class="pre">.split()</span></code> e <code class="docutils literal notranslate"><span class="pre">.join()</span></code><a class="headerlink" href="#funcoes-split-e-join" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;There&#39;s no spoon&quot;</span>
 
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span>
@@ -408,21 +404,21 @@ dois
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[&quot;There&#39;s&quot;, &#39;no&#39;, &#39;spoon&#39;]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&quot;There&#39;s&quot;, &#39;no&#39;, &#39;spoon&#39;]
 [&#39;Th&#39;, &#39;r&#39;, &quot;&#39;s no spoon&quot;]
 [&#39;There&#39;, &#39;s no spoon&#39;]
 </pre></div>
 </div>
-<p>A função <code class="docutils literal"><span class="pre">.split()</span></code> <strong>gera uma lista de partes</strong>, encontrando um
+<p>A função <code class="docutils literal notranslate"><span class="pre">.split()</span></code> <strong>gera uma lista de partes</strong>, encontrando um
 separador numa <em>string</em>.</p>
 <p>O separador a encontrar é o argumento da função.</p>
 <p>Se não se usar um argumento, considera-se que as partes são separadas
 por espaços, tabs ou mudanças de linha (no inglês genericamente
 designados por <em>white space</em>)</p>
-<p>A função <code class="docutils literal"><span class="pre">.join()</span></code> é uma espécie de inversa de <code class="docutils literal"><span class="pre">.split()</span></code>:
+<p>A função <code class="docutils literal notranslate"><span class="pre">.join()</span></code> é uma espécie de inversa de <code class="docutils literal notranslate"><span class="pre">.split()</span></code>:
 transforma <strong>uma lista</strong> de <em>strings</em> <strong>numa única</strong> <em>string</em>,
 interpondo um separador:</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">aas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Arg&#39;</span><span class="p">,</span> <span class="s1">&#39;Tyr&#39;</span><span class="p">,</span> <span class="s1">&#39;Gly&#39;</span><span class="p">,</span> <span class="s1">&#39;Asp&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Arg&#39;</span><span class="p">,</span> <span class="s1">&#39;Tyr&#39;</span><span class="p">,</span> <span class="s1">&#39;Gly&#39;</span><span class="p">,</span> <span class="s1">&#39;Asp&#39;</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aas</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aas</span><span class="p">))</span>
@@ -431,16 +427,16 @@ interpondo um separador:</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-CONH-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aas</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Arg Tyr Gly Asp
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Arg Tyr Gly Asp
 Arg-Tyr-Gly-Asp
 ArgTyrGlyAsp
 Arg+Tyr+Gly+Asp
 Arg-CONH-Tyr-CONH-Gly-CONH-Asp
 </pre></div>
 </div>
-<p><strong>Problema: transformar</strong> <code class="docutils literal"><span class="pre">AUGUUCAAGGAGUAAUGCCCCCGACUA</span></code> <strong>em</strong>
-<code class="docutils literal"><span class="pre">AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA</span></code></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;AUGUUCAAGGAGUAAUGCCCCCGACUA&quot;</span>
+<p><strong>Problema: transformar</strong> <code class="docutils literal notranslate"><span class="pre">AUGUUCAAGGAGUAAUGCCCCCGACUA</span></code> <strong>em</strong>
+<code class="docutils literal notranslate"><span class="pre">AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA</span></code></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;AUGUUCAAGGAGUAAUGCCCCCGACUA&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
 <span class="n">codoes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -455,7 +451,7 @@ Arg-CONH-Tyr-CONH-Gly-CONH-Asp
 <span class="nb">print</span><span class="p">(</span><span class="n">final</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>AUGUUCAAGGAGUAAUGCCCCCGACUA
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AUGUUCAAGGAGUAAUGCCCCCGACUA
 [&#39;AUG&#39;, &#39;UUC&#39;, &#39;AAG&#39;, &#39;GAG&#39;, &#39;UAA&#39;, &#39;UGC&#39;, &#39;CCC&#39;, &#39;CGA&#39;, &#39;CUA&#39;]
 AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 </pre></div>
@@ -464,8 +460,8 @@ AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 consecutivos!</p>
 </div>
 <div class="section" id="funcao-splitlines">
-<h2>Função <code class="docutils literal"><span class="pre">.splitlines()</span></code><a class="headerlink" href="#funcao-splitlines" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot; Um pequeno texto que até</span>
+<h2>Função <code class="docutils literal notranslate"><span class="pre">.splitlines()</span></code><a class="headerlink" href="#funcao-splitlines" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot; Um pequeno texto que até</span>
 <span class="s2">ocupa várias linhas</span>
 
 <span class="s2">algumas das linhas estão em branco&quot;&quot;&quot;</span>
@@ -473,16 +469,16 @@ consecutivos!</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[&#39; Um pequeno texto que até&#39;, &#39;ocupa várias linhas&#39;, &#39;&#39;, &#39;algumas das linhas estão em branco&#39;]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39; Um pequeno texto que até&#39;, &#39;ocupa várias linhas&#39;, &#39;&#39;, &#39;algumas das linhas estão em branco&#39;]
 </pre></div>
 </div>
-<p>A função <code class="docutils literal"><span class="pre">.splitlines()</span></code> é praticamente equivalente a
-<code class="docutils literal"><span class="pre">.split('\n')</span></code>.</p>
+<p>A função <code class="docutils literal notranslate"><span class="pre">.splitlines()</span></code> é praticamente equivalente a
+<code class="docutils literal notranslate"><span class="pre">.split('\n')</span></code>.</p>
 <p>É muito interessante o facto de podermos usar funções de <em>strings</em> em
 conjunção com listas em compreensão:</p>
 <p><strong>Problema: num texto com várias linhas, obter numa lista as linhas que
 começam por uma vogal e têm menos de 20 caracteres</strong></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2"> Um pequeno texto que até</span>
 <span class="s2">ocupa várias</span>
 <span class="s2">linhas</span>
@@ -498,7 +494,7 @@ começam por uma vogal e têm menos de 20 caracteres</strong></p>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[&#39;&#39;, &#39;Um pequeno texto que até&#39;, &#39;ocupa várias&#39;, &#39;linhas&#39;, &#39;&#39;, &#39;mas haverá&#39;, &#39;Algumas em branco&#39;]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;&#39;, &#39;Um pequeno texto que até&#39;, &#39;ocupa várias&#39;, &#39;linhas&#39;, &#39;&#39;, &#39;mas haverá&#39;, &#39;Algumas em branco&#39;]
 [&#39;ocupa várias&#39;, &#39;linhas&#39;, &#39;mas haverá&#39;, &#39;Algumas em branco&#39;]
 [&#39;ocupa várias&#39;, &#39;Algumas em branco&#39;]
 </pre></div>
@@ -508,13 +504,13 @@ começam por uma vogal e têm menos de 20 caracteres</strong></p>
 <h2>“Slices” (em português: “fatias”)<a class="headerlink" href="#slices-em-portugues-fatias" title="Permalink to this headline">¶</a></h2>
 <p>Já vimos que podemos indexar listas e <em>strings</em>, usando [] e a posição
 do elemento.</p>
-<p>Os <code class="docutils literal"><span class="pre">[]</span></code> podem ser usados para um outro tipo de indexação de listas ou
+<p>Os <code class="docutils literal notranslate"><span class="pre">[]</span></code> podem ser usados para um outro tipo de indexação de listas ou
 <em>strings</em>: os <strong>slices</strong>.</p>
 <p>Os <em>slices</em> extraem uma parte de uma lista ou <em>string</em> que podem ter
 mais de um elemento.</p>
-<p>A forma geral é <code class="docutils literal"><span class="pre">[início</span> <span class="pre">:</span> <span class="pre">fim(exclusivé)</span> <span class="pre">:</span> <span class="pre">passo]</span></code>. O <code class="docutils literal"><span class="pre">passo</span></code> é
+<p>A forma geral é <code class="docutils literal notranslate"><span class="pre">[início</span> <span class="pre">:</span> <span class="pre">fim(exclusivé)</span> <span class="pre">:</span> <span class="pre">passo]</span></code>. O <code class="docutils literal notranslate"><span class="pre">passo</span></code> é
 opcional.</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;O Neo tomou o comprimido vermelho&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;O Neo tomou o comprimido vermelho&quot;</span>
 <span class="c1">#    012345678901234567890123456789012</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
@@ -522,12 +518,12 @@ opcional.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Neo
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Neo
 O Neo
 tomou o comprimido vermelh
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;O Neo tomou o comprimido vermelho&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;O Neo tomou o comprimido vermelho&quot;</span>
 <span class="c1">#    012345678901234567890123456789012</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span> <span class="p">:</span><span class="mi">5</span><span class="p">])</span>
@@ -536,15 +532,15 @@ tomou o comprimido vermelh
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>O Neo
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>O Neo
 tomou o comprimido vermelho
 O Neo tomou o comprimido vermelho
 ONotmu
 </pre></div>
 </div>
-<p><strong>Problema: transformar</strong> <code class="docutils literal"><span class="pre">AUGUUCAAGGAGUAAUGCCCCCGACUA</span></code> <strong>em</strong>
-<code class="docutils literal"><span class="pre">AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA</span></code></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;AUGUUCAAGGAGUAAUGCCCCCGACUA&quot;</span>
+<p><strong>Problema: transformar</strong> <code class="docutils literal notranslate"><span class="pre">AUGUUCAAGGAGUAAUGCCCCCGACUA</span></code> <strong>em</strong>
+<code class="docutils literal notranslate"><span class="pre">AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA</span></code></p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;AUGUUCAAGGAGUAAUGCCCCCGACUA&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
 <span class="n">codoes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -559,25 +555,25 @@ ONotmu
 <span class="nb">print</span><span class="p">(</span><span class="n">final</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>AUGUUCAAGGAGUAAUGCCCCCGACUA
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AUGUUCAAGGAGUAAUGCCCCCGACUA
 AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 </pre></div>
 </div>
-<p>Usando uma lista em compreensão como argumento da função <code class="docutils literal"><span class="pre">.join()</span></code> o
+<p>Usando uma lista em compreensão como argumento da função <code class="docutils literal notranslate"><span class="pre">.join()</span></code> o
 programa pode ficar mais compacto:</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;AUGTTCAAGGAGUAAUGCCCCCGACUA&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;AUGTTCAAGGAGUAAUGCCCCCGACUA&quot;</span>
 <span class="n">sf</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">),</span><span class="mi">3</span><span class="p">)])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>AUGTTCAAGGAGUAAUGCCCCCGACUA
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AUGTTCAAGGAGUAAUGCCCCCGACUA
 AUG-TTC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 </pre></div>
 </div>
 <p><strong>Os</strong> <em>slices</em> <strong>também funcionam com listas</strong></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">aas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Arg&#39;</span><span class="p">,</span> <span class="s1">&#39;Tyr&#39;</span><span class="p">,</span> <span class="s1">&#39;Gly&#39;</span><span class="p">,</span> <span class="s1">&#39;Asp&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Arg&#39;</span><span class="p">,</span> <span class="s1">&#39;Tyr&#39;</span><span class="p">,</span> <span class="s1">&#39;Gly&#39;</span><span class="p">,</span> <span class="s1">&#39;Asp&#39;</span><span class="p">]</span>
 
 <span class="n">s1</span> <span class="o">=</span> <span class="n">aas</span><span class="p">[</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">s2</span> <span class="o">=</span> <span class="n">aas</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span> <span class="p">]</span>
@@ -588,7 +584,7 @@ AUG-TTC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 <span class="nb">print</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[&#39;Arg&#39;, &#39;Tyr&#39;]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;Arg&#39;, &#39;Tyr&#39;]
 [&#39;Gly&#39;, &#39;Asp&#39;]
 [&#39;Arg&#39;, &#39;Gly&#39;]
 </pre></div>
@@ -596,13 +592,13 @@ AUG-TTC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 <p><strong>Os</strong> <em>slices</em> <strong>produzem sempre novos objetos</strong></p>
 <p><strong>No caso de uma lista</strong>, podemos <strong>atribuír valores a um</strong> <em>slice</em> <strong>da
 lista</strong>, mudando alguns elementos de uma só vez:</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
 <span class="n">nums</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
 [1, 2, 2, 8, 9, 3, 4, 4, 4, 4]
 </pre></div>
 </div>
@@ -611,7 +607,7 @@ aminoácidos para códigos de 3 letras, usando um dicionário para a
 conversão.</strong></p>
 <p>Numa secção anterior, este problema foi resolvido anteriormente da
 seguinte forma:</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">trans</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="s1">&#39;Ala&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="s1">&#39;Cys&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="s1">&#39;Glu&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="s1">&#39;Asp&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span> <span class="s1">&#39;Gly&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="s1">&#39;Phe&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="s1">&#39;Ile&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="s1">&#39;His&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="s1">&#39;Lys&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="s1">&#39;Met&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="s1">&#39;Leu&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="s1">&#39;Asn&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="s1">&#39;Gln&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="s1">&#39;Pro&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="s1">&#39;Ser&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="s1">&#39;Arg&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="s1">&#39;Thr&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="s1">&#39;Trp&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="s1">&#39;Val&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="s1">&#39;Tyr&#39;</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trans</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="s1">&#39;Ala&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="s1">&#39;Cys&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="s1">&#39;Glu&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="s1">&#39;Asp&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span> <span class="s1">&#39;Gly&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="s1">&#39;Phe&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="s1">&#39;Ile&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="s1">&#39;His&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="s1">&#39;Lys&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="s1">&#39;Met&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="s1">&#39;Leu&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="s1">&#39;Asn&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="s1">&#39;Gln&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="s1">&#39;Pro&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="s1">&#39;Ser&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="s1">&#39;Arg&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="s1">&#39;Thr&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="s1">&#39;Trp&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="s1">&#39;Val&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="s1">&#39;Tyr&#39;</span><span class="p">}</span>
 
 <span class="c1"># Problema: transformar s1 numa string</span>
 <span class="c1"># com os códigos de 3 letras dos aa</span>
@@ -624,14 +620,14 @@ seguinte forma:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="s1">&#39;é o mesmo que &#39;</span><span class="p">,</span> <span class="n">s3</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>ADKLITCWFHHWE é o mesmo que  Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu-
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ADKLITCWFHHWE é o mesmo que  Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu-
 </pre></div>
 </div>
 <p>Podemos compactar o programa e melhorar o aspeto do resultado.</p>
 <p>Por um lado, podemos usar uma lista em compreensão para gerar os códigos
 de 3 letras (em vez de uma <em>string</em>), por outro podemos usar a função
-<code class="docutils literal"><span class="pre">.join()</span></code> para apresenta-los separados por <code class="docutils literal"><span class="pre">-</span></code>.</p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">trans</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="s1">&#39;Ala&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="s1">&#39;Cys&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="s1">&#39;Glu&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="s1">&#39;Asp&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span> <span class="s1">&#39;Gly&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="s1">&#39;Phe&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="s1">&#39;Ile&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="s1">&#39;His&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="s1">&#39;Lys&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="s1">&#39;Met&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="s1">&#39;Leu&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="s1">&#39;Asn&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="s1">&#39;Gln&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="s1">&#39;Pro&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="s1">&#39;Ser&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="s1">&#39;Arg&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="s1">&#39;Thr&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="s1">&#39;Trp&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="s1">&#39;Val&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="s1">&#39;Tyr&#39;</span><span class="p">}</span>
+<code class="docutils literal notranslate"><span class="pre">.join()</span></code> para apresenta-los separados por <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trans</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="s1">&#39;Ala&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="s1">&#39;Cys&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="s1">&#39;Glu&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="s1">&#39;Asp&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span> <span class="s1">&#39;Gly&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="s1">&#39;Phe&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="s1">&#39;Ile&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="s1">&#39;His&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="s1">&#39;Lys&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="s1">&#39;Met&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="s1">&#39;Leu&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="s1">&#39;Asn&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="s1">&#39;Gln&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="s1">&#39;Pro&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="s1">&#39;Ser&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="s1">&#39;Arg&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="s1">&#39;Thr&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="s1">&#39;Trp&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="s1">&#39;Val&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="s1">&#39;Tyr&#39;</span><span class="p">}</span>
 
 <span class="n">s1</span> <span class="o">=</span> <span class="s1">&#39;ADKLITCWFHHWE&#39;</span>
 
@@ -640,12 +636,12 @@ de 3 letras (em vez de uma <em>string</em>), por outro podemos usar a função
 <span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="s1">&#39;é o mesmo que&#39;</span><span class="p">,</span> <span class="n">s3</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>ADKLITCWFHHWE é o mesmo que Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ADKLITCWFHHWE é o mesmo que Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu
 </pre></div>
 </div>
 <p><strong>Problema: calcular o complemento reverso de uma sequência, mas
 separando os codões por “-“.</strong></p>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">bcompl</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bcompl</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">}</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;ATGGTTACCTAGTATTTAGGATTA&quot;</span>
 <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">bcompl</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">a</span><span class="p">[</span> <span class="p">:</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
@@ -657,7 +653,7 @@ separando os codões por “-“.</strong></p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">),</span><span class="mi">3</span><span class="p">)]))</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Seq:
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Seq:
 ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
 
 Complemento reverso:
@@ -666,54 +662,54 @@ TAA-TCC-TAA-ATA-CTA-GGT-AAC-CAT
 </div>
 </div>
 <div class="section" id="formatacao-de-strings-com-format">
-<h2>Formatação de <em>strings</em> com <code class="docutils literal"><span class="pre">.format()</span></code><a class="headerlink" href="#formatacao-de-strings-com-format" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">11</span>
+<h2>Formatação de <em>strings</em> com <code class="docutils literal notranslate"><span class="pre">.format()</span></code><a class="headerlink" href="#formatacao-de-strings-com-format" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">11</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">z</span> <span class="o">=</span> <span class="mi">3</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = </span><span class="si">{}</span><span class="s1">, y = </span><span class="si">{}</span><span class="s1">, z = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>x = 11, y = 20, z = 3
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>x = 11, y = 20, z = 3
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
 
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O elemento com n = </span><span class="si">{1}</span><span class="s1"> é o </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>O elemento com n = 1 é o H
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>O elemento com n = 1 é o H
 O elemento com n = 3 é o Li
 O elemento com n = 11 é o Na
 O elemento com n = 19 é o K
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
 
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O elemento com  n = </span><span class="si">{1:2}</span><span class="s1"> é o </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>O elemento com  n =  1 é o H
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>O elemento com  n =  1 é o H
 O elemento com  n =  3 é o Li
 O elemento com  n = 11 é o Na
 O elemento com  n = 19 é o K
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
 
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O elemento com  n = </span><span class="si">{1:&lt;2}</span><span class="s1"> é o </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>O elemento com  n = 1  é o H
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>O elemento com  n = 1  é o H
 O elemento com  n = 3  é o Li
 O elemento com  n = 11 é o Na
 O elemento com  n = 19 é o K
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="n">log2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">soma</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># acumula a soma parcial da série</span>
@@ -724,7 +720,7 @@ O elemento com  n = 19 é o K
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span> <span class="p">,</span> <span class="n">soma</span> <span class="p">,</span> <span class="n">dif</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span>1 1.0 0.3068528194400547
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 1.0 0.3068528194400547
 2 0.5 0.1931471805599453
 3 0.8333333333333333 0.14018615277338797
 4 0.5833333333333333 0.10981384722661203
@@ -746,7 +742,7 @@ O elemento com  n = 19 é o K
 20 0.6687714031754279 0.02437577738451735
 </pre></div>
 </div>
-<div class="highlight-ipython3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="n">log2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">soma</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># acumula a soma parcial da série</span>
@@ -758,7 +754,7 @@ O elemento com  n = 19 é o K
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:4d}</span><span class="s1"> </span><span class="si">{:9.6f}</span><span class="s1"> </span><span class="si">{:9.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">soma</span><span class="p">,</span><span class="n">dif</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span> n     S        dif
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span> n     S        dif
  1  1.000000  0.306853
  2  0.500000  0.193147
  3  0.833333  0.140186
@@ -797,7 +793,7 @@ Mini-Language</a></p>
         <a href="files.html" class="btn btn-neutral float-right" title="Ficheiros de texto" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="more_on_lists_dicts.html" class="btn btn-neutral" title="Listas e dicionários" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="more_on_lists_dicts.html" class="btn btn-neutral float-left" title="Listas e dicionários" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -806,7 +802,7 @@ Mini-Language</a></p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016-2018, António Ferreira.
+        &copy; Copyright 2016-2019, António Ferreira
 
     </p>
   </div>
@@ -823,38 +819,16 @@ Mini-Language</a></p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'May 2018',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
