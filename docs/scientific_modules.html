@@ -672,11 +672,9 @@ multidimensional</p>
 <h2>Geração de números aleatórios. (sub-módulo <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>)<a class="headerlink" href="#geracao-de-numeros-aleatorios-sub-modulo-numpy-random" title="Permalink to this headline">¶</a></h2>
 <p>Obter valores aleatórios das seguintes distribuições:</p>
 <p><strong>Poisson</strong> (usada para número de ocorrências durante um intervalo)</p>
-<p><span class="math notranslate nohighlight">\(p(x, \lambda) = \frac{e^{-x} \lambda^x}{x!}\)</span> com
-<span class="math notranslate nohighlight">\(x = 0, 1, 2, ...\)</span></p>
+<p><span class="math notranslate nohighlight">\(p(x, \lambda) = \frac{e^{-x} \lambda^x}{x!}\)</span> com <span class="math notranslate nohighlight">\(x = 0, 1, 2, ...\)</span></p>
 <p><strong>Normal (0,1)</strong></p>
-<p><span class="math notranslate nohighlight">\(f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2}\)</span> com
-<span class="math notranslate nohighlight">\(x \in [-\infty, \infty]\)</span></p>
+<p><span class="math notranslate nohighlight">\(f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2}\)</span> com <span class="math notranslate nohighlight">\(x \in [-\infty, \infty]\)</span></p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;20 valores aleatórios da dist. de Poisson&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; com lambda = 3&#39;</span><span class="p">)</span>
 
@@ -2886,10 +2884,6 @@ Para x0 = 2.2, raíz =  3.142
     <span class="n">pl</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="c1">#pl.show()</span>
     <span class="c1">#print(&#39;Para x0 = {}, raíz = {:4.2f} pi&#39;.format(x0, x_pi))</span>
-</pre></div>
-</div>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
-<span class="n">i</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">plot_newton</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">2.5</span><span class="p">))</span>
 </pre></div>
 </div>
 <img alt="_images/13_algoritmos_34_0.png" src="_images/13_algoritmos_34_0.png" />

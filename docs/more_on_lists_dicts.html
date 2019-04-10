@@ -92,7 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#listas">Listas</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#append-insert"><code class="docutils literal notranslate"><span class="pre">.append()</span></code>, <code class="docutils literal notranslate"><span class="pre">.insert()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extend"><code class="docutils literal notranslate"><span class="pre">.extend()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#remove"><code class="docutils literal notranslate"><span class="pre">.remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remove-clear"><code class="docutils literal notranslate"><span class="pre">.remove()</span></code>, <code class="docutils literal notranslate"><span class="pre">.clear()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#count"><code class="docutils literal notranslate"><span class="pre">.count()</span></code></a></li>
 </ul>
 </li>
@@ -206,10 +206,12 @@ começando pelas <strong>listas</strong> e <strong>dicionários</strong>.</p>
 elementos de uma lista.</li>
 <li>podemos testar se um elemento pertence a uma lista usando <code class="docutils literal notranslate"><span class="pre">in</span></code>.</li>
 </ul>
-<p>Vejamos algumas funções que são <strong>específicas das listas</strong>:</p>
+<p>Vejamos algumas funções que são <strong>específicas das listas</strong>.</p>
+<p>A documentação destas funções pode ser consultada na
+<a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">documentação ficial da linguagem.</a></p>
 <div class="section" id="append-insert">
 <h3><code class="docutils literal notranslate"><span class="pre">.append()</span></code>, <code class="docutils literal notranslate"><span class="pre">.insert()</span></code><a class="headerlink" href="#append-insert" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -231,7 +233,7 @@ depois de insert(1, 20): [1, 20, 2, 3, 4, 10]
 </div>
 <div class="section" id="extend">
 <h3><code class="docutils literal notranslate"><span class="pre">.extend()</span></code><a class="headerlink" href="#extend" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="n">novos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
@@ -248,8 +250,8 @@ depois de extend([11, 12, 13, 14]):
 </pre></div>
 </div>
 </div>
-<div class="section" id="remove">
-<h3><code class="docutils literal notranslate"><span class="pre">.remove()</span></code><a class="headerlink" href="#remove" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="remove-clear">
+<h3><code class="docutils literal notranslate"><span class="pre">.remove()</span></code>, <code class="docutils literal notranslate"><span class="pre">.clear()</span></code><a class="headerlink" href="#remove-clear" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
@@ -492,18 +494,16 @@ Usa-se um comando <code class="docutils literal notranslate"><span class="pre">f
 <p>Em resumo, entre<code class="docutils literal notranslate"><span class="pre">[]</span></code> indica-se um “termo geral” e um comando <code class="docutils literal notranslate"><span class="pre">for</span></code>
 para percorrer a lista original</p>
 <p>Um outro exemplo: obter os quadrados perfeitos entre 400 e 800</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quads</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quads</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">400</span> <span class="ow">and</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">800</span><span class="p">]</span>
 
-<span class="n">quads_filtrados</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quads</span> <span class="k">if</span> <span class="n">q</span> <span class="o">&gt;</span> <span class="mi">400</span> <span class="ow">and</span> <span class="n">q</span> <span class="o">&lt;</span> <span class="mi">800</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">quads_filtrados</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quads</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[441, 484, 529, 576, 625, 676, 729, 784]
 </pre></div>
 </div>
-<p>Este exemplo mostra que podemos impor condições (com o comando <code class="docutils literal notranslate"><span class="pre">if</span></code>)
-aos valores da lista original.</p>
+<p>Este exemplo mostra que podemos impor condições (com <code class="docutils literal notranslate"><span class="pre">if</span></code>)
+aos valores da lista numa lista em compreensão.</p>
 <p>Num outro exemplo, pretendemos obter uma lista com as diferenças
 sucessivas entre quadrados perfeitos, para mostrar que são os números
 ímpares:</p>

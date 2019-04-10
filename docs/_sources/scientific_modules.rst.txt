@@ -611,13 +611,11 @@ Obter valores aleatórios das seguintes distribuições:
 
 **Poisson** (usada para número de ocorrências durante um intervalo)
 
-:math:`p(x, \lambda) = \frac{e^{-x} \lambda^x}{x!}` com
-:math:`x = 0, 1, 2, ...`
+:math:`p(x, \lambda) = \frac{e^{-x} \lambda^x}{x!}` com :math:`x = 0, 1, 2, ...`
 
 **Normal (0,1)**
 
-:math:`f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2}` com
-:math:`x \in [-\infty, \infty]`
+:math:`f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2}` com :math:`x \in [-\infty, \infty]`
 
 .. code-block:: ipython3
 
@@ -3300,12 +3298,6 @@ Método de Newton com a função :math:`sin(x)`
         pl.grid()
         #pl.show()
         #print('Para x0 = {}, raíz = {:4.2f} pi'.format(x0, x_pi))
-
-.. code-block:: ipython3
-
-    import ipywidgets as widgets
-    i = widgets.interact(plot_newton, x0=widgets.FloatSlider(min=1.5, max=3.0, step=0.01, value=2.5))
-
 
 
 .. image:: 13_algoritmos_files/13_algoritmos_34_0.png

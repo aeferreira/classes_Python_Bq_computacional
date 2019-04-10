@@ -22,12 +22,15 @@ Recordemos: em comum com as outras coleções,
    elementos de uma lista.
 -  podemos testar se um elemento pertence a uma lista usando ``in``.
 
-Vejamos algumas funções que são **específicas das listas**:
+Vejamos algumas funções que são **específicas das listas**.
+
+A documentação destas funções pode ser consultada na
+`documentação ficial da linguagem. <https://docs.python.org/3/tutorial/datastructures.html#more-on-lists>`__
 
 ``.append()``, ``.insert()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: ipython3
+.. code-block:: python3
 
     a = [1, 2, 3, 4]
     print(a)
@@ -53,7 +56,7 @@ Vejamos algumas funções que são **específicas das listas**:
 ``.extend()``
 ~~~~~~~~~~~~~
 
-.. code-block:: ipython3
+.. code-block:: python3
 
     a = [1, 2, 3, 4]
     print(a)
@@ -73,8 +76,8 @@ Vejamos algumas funções que são **específicas das listas**:
     [1, 2, 3, 4, 11, 12, 13, 14]
     
 
-``.remove()``
-~~~~~~~~~~~~~
+``.remove()``, ``.clear()``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: ipython3
 
@@ -395,12 +398,10 @@ para percorrer a lista original
 Um outro exemplo: obter os quadrados perfeitos entre 400 e 800
 
 .. code-block:: ipython3
-
-    quads = [i**2 for i in range(30)]
+   
+    quads = [i**2 for i in range(30) if i**2 > 400 and i**2 < 800]
     
-    quads_filtrados = [q for q in quads if q > 400 and q < 800]
-    
-    print(quads_filtrados)
+    print(quads)
 
 
 .. code-block:: text
@@ -408,8 +409,8 @@ Um outro exemplo: obter os quadrados perfeitos entre 400 e 800
     [441, 484, 529, 576, 625, 676, 729, 784]
     
 
-Este exemplo mostra que podemos impor condições (com o comando ``if``)
-aos valores da lista original.
+Este exemplo mostra que podemos impor condições (com ``if``)
+aos valores da lista numa lista em compreensão.
 
 Num outro exemplo, pretendemos obter uma lista com as diferenças
 sucessivas entre quadrados perfeitos, para mostrar que são os números
