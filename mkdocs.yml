@@ -1,0 +1,36 @@
+site_name: Bq computacional (FCUL)
+nav:
+- Início: 'index.md'
+- Conceitos básicos: 'basics.md'
+- Coleções e iterações: 'collections_iterations.md'
+- Listas e dicionários: 'more_on_lists_dicts.md'
+- Strings: 'strings.md'
+- Ficheiros de texto: 'files.md'
+- Funções e módulos: 'funcs_modules.md'
+- Módulos de computação científica: scientific_modules.md
+- Instalação do Python: data_software.md
+use_directory_urls: false
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+theme:
+  name: 'material'
+  palette:
+    primary: 'blue'
+    accent: 'Deep orange'
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tilde
