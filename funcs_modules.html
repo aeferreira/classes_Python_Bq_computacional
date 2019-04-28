@@ -1,0 +1,1305 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.2">
+    
+    
+      
+        <title>Funções e módulos - Bq computacional (FCUL)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/application.3020aac5.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#funcoes-e-modulos" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="Bq computacional (FCUL)" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Bq computacional (FCUL)
+            </span>
+            <span class="md-header-nav__topic">
+              Funções e módulos
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="Bq computacional (FCUL)" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Bq computacional (FCUL)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Início" class="md-nav__link">
+      Início
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="basics.html" title="Conceitos básicos" class="md-nav__link">
+      Conceitos básicos
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="collections_iterations.html" title="Coleções e iterações" class="md-nav__link">
+      Coleções e iterações
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="more_on_lists_dicts.html" title="Listas e dicionários" class="md-nav__link">
+      Listas e dicionários
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="strings.html" title="Strings" class="md-nav__link">
+      Strings
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="files.html" title="Ficheiros de texto" class="md-nav__link">
+      Ficheiros de texto
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Funções e módulos
+      </label>
+    
+    <a href="funcs_modules.html" title="Funções e módulos" class="md-nav__link md-nav__link--active">
+      Funções e módulos
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" title="Introdução" class="md-nav__link">
+    Introdução
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes" title="Funções" class="md-nav__link">
+    Funções
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definicao-de-funcoes-def" title="Definição de funções (def)" class="md-nav__link">
+    Definição de funções (def)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomia-de-uma-funcao" title="Anatomia de uma função" class="md-nav__link">
+    Anatomia de uma função
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#varios-tipos-de-funcoes" title="Vários tipos de funções" class="md-nav__link">
+    Vários tipos de funções
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ambito-dos-nomes" title="Âmbito dos nomes" class="md-nav__link">
+    Âmbito dos nomes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argumentos-de-tipo-_palavra-chave" title="Argumentos de tipo _palavra-chave" class="md-nav__link">
+    Argumentos de tipo _palavra-chave
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulos-e-import" title="Módulos e import" class="md-nav__link">
+    Módulos e import
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplo-da-construcao-de-um-modulo" title="Exemplo da construção de um módulo" class="md-nav__link">
+    Exemplo da construção de um módulo
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="scientific_modules.html" title="Módulos de computação científica" class="md-nav__link">
+      Módulos de computação científica
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="data_software.html" title="Instalação do Python" class="md-nav__link">
+      Instalação do Python
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" title="Introdução" class="md-nav__link">
+    Introdução
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes" title="Funções" class="md-nav__link">
+    Funções
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definicao-de-funcoes-def" title="Definição de funções (def)" class="md-nav__link">
+    Definição de funções (def)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomia-de-uma-funcao" title="Anatomia de uma função" class="md-nav__link">
+    Anatomia de uma função
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#varios-tipos-de-funcoes" title="Vários tipos de funções" class="md-nav__link">
+    Vários tipos de funções
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ambito-dos-nomes" title="Âmbito dos nomes" class="md-nav__link">
+    Âmbito dos nomes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argumentos-de-tipo-_palavra-chave" title="Argumentos de tipo _palavra-chave" class="md-nav__link">
+    Argumentos de tipo _palavra-chave
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulos-e-import" title="Módulos e import" class="md-nav__link">
+    Módulos e import
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplo-da-construcao-de-um-modulo" title="Exemplo da construção de um módulo" class="md-nav__link">
+    Exemplo da construção de um módulo
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="funcoes-e-modulos">Funções e módulos<a class="headerlink" href="#funcoes-e-modulos" title="Permanent link">&para;</a></h1>
+<h2 id="introducao">Introdução<a class="headerlink" href="#introducao" title="Permanent link">&para;</a></h2>
+<p>No programa seguinte, dada uma sequência de DNA pretende-se mostrar a <strong>sequência</strong>,
+a <strong>sequência complementar</strong> e o <strong>complemento reverso</strong> na forma de codões separados
+por um hífen.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="s2">&quot;AGCTGGATCCTGAACGCATAGACTAGCATGGGACTAAAGGTCCATTACTGA&quot;</span>
+<span class="n">trans</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">}</span>
+
+<span class="n">comp</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">trans</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">])</span>
+<span class="n">comp_rev</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">comp</span><span class="p">))</span>
+
+<span class="n">seq_cods</span> <span class="o">=</span> <span class="p">[</span><span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">chain_seq</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">seq_cods</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;5&#39;-&quot;</span> <span class="o">+</span> <span class="n">chain_seq</span> <span class="o">+</span><span class="s2">&quot;-3&#39;&quot;</span><span class="p">)</span>
+
+<span class="n">comp_cods</span> <span class="o">=</span> <span class="p">[</span><span class="n">comp</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">comp</span><span class="p">),</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">chain_comp</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">comp_cods</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;3&#39;-&quot;</span> <span class="o">+</span> <span class="n">chain_comp</span> <span class="o">+</span> <span class="s2">&quot;-5&#39;&quot;</span><span class="p">)</span>
+
+<span class="n">comp_rev_cods</span> <span class="o">=</span> <span class="p">[</span><span class="n">comp_rev</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">comp_rev</span><span class="p">),</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">chain_comp_rev</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">comp_rev_cods</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Complemento reverso&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;5&#39;-&quot;</span> <span class="o">+</span> <span class="n">chain_comp_rev</span> <span class="o">+</span> <span class="s2">&quot;-3&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<div class="codehilite"><pre><span></span>5&#39;-AGC-TGG-ATC-CTG-AAC-GCA-TAG-ACT-AGC-ATG-GGA-CTA-AAG-GTC-CAT-TAC-TGA-3&#39;
+3&#39;-TCG-ACC-TAG-GAC-TTG-CGT-ATC-TGA-TCG-TAC-CCT-GAT-TTC-CAG-GTA-ATG-ACT-5&#39;
+Complemento reverso
+5&#39;-TCA-GTA-ATG-GAC-CTT-TAG-TCC-CAT-GCT-AGT-CTA-TGC-GTT-CAG-GAT-CCA-GCT-3&#39;
+</pre></div>
+
+<p>A parte do programa nas linhas 7 e 8</p>
+<div class="codehilite"><pre><span></span>seq_cods = [seq[i:i+3] for i in range(0, len(seq), 3)]
+chain_seq = &#39;-&#39;.join(seq_cods)
+</pre></div>
+
+
+<p>repete-se de uma forma análoga para a sequência complementar e para o
+complemento reverso nas linhas 11 e 12 e também nas linhas 15 e 16. O que 
+muda é a sequência sobre a qual estão a ser aplicadas (<code>seq</code> nas linhas 7 e 8, 
+<code>comp</code> nas linhas 11 e 12 e <code>comp_rev</code> nas linhas 15 e 16).</p>
+<p>O objetivo de cada grupo destas duas linhas é muito claro: separar uma sequência (<em>string</em>) numa listas
+de codões e depois construír uma <em>string</em> com os codões separados por um hífen.</p>
+<p>Como podemos não repetir o "texto" destas três partes do programa, que são
+muito semelhantes?</p>
+<h2 id="funcoes">Funções<a class="headerlink" href="#funcoes" title="Permanent link">&para;</a></h2>
+<p>As funções (também conhecidas como <em>subprogramas</em>, <em>subrotinas</em>, isto é,
+mini-programas dentro de programas) são a solução para estes casos.</p>
+<p>Já vimos várias funções, sempre disponíveis ou disponíveis após
+importação de módulos:</p>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Uma pequena string&#39;</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">4.2</span><span class="p">)</span>
+
+<span class="n">nA</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">33</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+
+<h2 id="definicao-de-funcoes-def">Definição de funções (<code>def</code>)<a class="headerlink" href="#definicao-de-funcoes-def" title="Permanent link">&para;</a></h2>
+<p><strong>Podemos escrever outras funções para "aumentar" a linguagem.</strong></p>
+<p>Tal como na matemática, as funções transformam objetos noutros objetos:</p>
+<p><img alt="" src="images/genf.png" /></p>
+<p>Mas, tal como na matemática, as funções são escritas para atuar sobre
+objetos genéricos (<code>x</code>):</p>
+<p><img alt="" src="images/genfx.png" /></p>
+<p><strong>Problema</strong>: escrever uma função que, dada uma sequência, devolva a
+sequência com os codões separados por <code>-</code>.</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">seqcods</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">cods</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)]</span>
+    <span class="n">comhifen</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cods</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">comhifen</span>
+</pre></div>
+
+<h2 id="anatomia-de-uma-funcao">Anatomia de uma função<a class="headerlink" href="#anatomia-de-uma-funcao" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="images/anatf.png" /></p>
+<p>A definição de uma função (<code>def</code>) não executa nada imediatamente.</p>
+<p>É necessário <strong>chamar</strong> (ou "<em>invocar</em>") a função para esta ser usada:</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">seqcods</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">cods</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)]</span>
+    <span class="n">comhifen</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cods</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">comhifen</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;ATGGTTACCTAGTATTTAGGATTA&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># A função é chamada aqui:</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">seqcods</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>ATGGTTACCTAGTATTTAGGATTA
+ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>O comando <code>return</code> pode "devolver" uma expressão complicada
+(não só o nome de um objeto)</p>
+</div>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">seqcods</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)])</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;ATGGTTACCTAGTATTTAGGATTA&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># A função é chamada aqui:</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">seqcods</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>ATGGTTACCTAGTATTTAGGATTA
+ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
+</pre></div>
+
+<p><strong>Em resumo:</strong></p>
+<p>A linha</p>
+<p><code>def seqcods(x):</code></p>
+<p>"regista" uma nova função, chamada <code>seqcods</code>, que pode ser usada em
+qualquer ponto do programa, da forma seguinte:</p>
+<p><code>s = seqcods(a)</code></p>
+<p><strong>Entrada e saída de valores quando uma função é chamada</strong>:</p>
+<p><img alt="" src="images/fargs_ret.png" /></p>
+<p>Exemplo: função <code>factorial()</code>:</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">*</span> <span class="n">k</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>788657867364790503552363213932185062295135977687173263294742533244359449963403342920304284011984623904177212138919638830257642790242637105061926624952829931113462857270763317237396988943922445621451664240254033291864131227428294853277524242407573903240321257405579568660226031904170324062351700858796178922222789623703897374720000000000000000000000000000000000000000000000000
+</pre></div>
+
+<h2 id="varios-tipos-de-funcoes">Vários tipos de funções<a class="headerlink" href="#varios-tipos-de-funcoes" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Uma pequena string&#39;</span>
+
+<span class="c1">#1 argumento, 1 resultado</span>
+<span class="k">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="c1">#1 arg, 1 res, associada a um objeto (string a)</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="c1">#0 arg, 1 res, associada a um objeto (string a)</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">a</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>18
+2
+UMA PEQUENA STRING
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="c1">#1 arg, 0 res, associada a um objeto (lista b)</span>
+<span class="c1"># modifica o objeto (a lista b)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span> <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span> <span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>None
+[12, 24, 36]
+</pre></div>
+
+<p>Além da função <code>.append()</code>, recordar que <strong>as listas</strong> têm outras duas
+funções deste tipo, que modificam a lista sem produzir nenhum resultado
+(o resultado é a constante <code>None</code>): <code>.reverse()</code> e <code>.sort()</code>.</p>
+<div class="codehilite"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>[12, 24, 36]
+[36, 24, 12]
+[12, 24, 36]
+</pre></div>
+
+<p>As funções podem ter mais de um argumento.</p>
+<p>O resultado pode não ser apenas um número ou uma <em>string</em>: as funções
+podem devolver uma lista inteira, um dicionário ou outros objetos mais
+complexos.</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>6.0
+time.struct_time(tm_year=2018, tm_mon=4, tm_mday=8, tm_hour=18, tm_min=39, tm_sec=43, tm_wday=6, tm_yday=98, tm_isdst=1)
+</pre></div>
+
+<p><strong>Problema</strong>: eliminar valores de uma lista que pertençam a uma "lista
+negra"</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">elimin_black</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">,</span> <span class="n">black_list</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uma_lista</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">black_list</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;um&#39;</span><span class="p">,</span> <span class="s1">&#39;dois&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;quatro&#39;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">black</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;um&#39;</span><span class="p">,</span> <span class="s1">&#39;dois&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">A eliminar:&#39;</span><span class="p">,</span> <span class="n">black</span><span class="p">)</span>
+
+<span class="n">clean</span> <span class="o">=</span> <span class="n">elimin_black</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">black</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>[1, 2, 4, &#39;um&#39;, &#39;dois&#39;, 3, 42, &#39;quatro&#39;]
+
+A eliminar: [1, 2, &#39;um&#39;, &#39;dois&#39;]
+[4, 3, 42, &#39;quatro&#39;]
+</pre></div>
+
+<p><strong>Problema</strong>: dado um <strong>nome</strong> de um ficheiro de texto, escrever uma
+função para <strong>ler o conteúdo do ficheiro para uma lista de linhas sem o
+<code>\n</code> no final, excluíndo as linhas vazias</strong>.</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ler_fich</span><span class="p">(</span><span class="n">nome</span><span class="p">):</span>
+    <span class="n">linhas</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nome</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+            <span class="n">linha</span> <span class="o">=</span> <span class="n">linha</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">linhas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">linhas</span>
+
+<span class="n">todos</span> <span class="o">=</span> <span class="n">ler_fich</span><span class="p">(</span><span class="s1">&#39;gre3.txt&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">todos</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR
+KAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVP
+FEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDL
+LRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTL
+FENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQEL
+KDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+
+<p><strong>Problema</strong>: eliminar valores repetidos numa lista</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">elimin_reps</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uma_lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="n">uma_lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">)</span>
+
+<span class="n">clean</span> <span class="o">=</span> <span class="n">elimin_reps</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>[1, 2, 4, 7, 7, 5, 8, 8, 9, 10]
+[1, 2, 4, 7, 5, 8, 9, 10]
+</pre></div>
+
+<p>Note-se que na função é criada uma lista nova:</p>
+<div class="codehilite"><pre><span></span>res = []
+
+...
+      res.append(i)
+</pre></div>
+
+
+<p>e é esta lista que é o <strong>resultado</strong> da função.</p>
+<p><strong>Problema</strong>: eliminar valores repetidos numa lista, mas sem ser
+devolvida uma lista nova como resultado. Isto é, a função recebe uma
+lista e modifica-a, não havendo <code>return</code>.</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">elimin_reps2</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uma_lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  
+    <span class="n">uma_lista</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="n">uma_lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Antes&#39;</span><span class="p">,</span> <span class="n">uma_lista</span><span class="p">)</span>
+
+<span class="n">elimin_reps2</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">)</span>
+<span class="c1"># não havendo return NÃO se dá um nome</span>
+<span class="c1"># ao resultado</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Depois&#39;</span><span class="p">,</span> <span class="n">uma_lista</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Antes [1, 2, 4, 7, 7, 5, 8, 8, 9, 10]
+Depois [1, 2, 4, 7, 5, 8, 9, 10]
+</pre></div>
+
+<p>O que significa <code>uma_lista[:] = res</code> ?</p>
+<p>Usa-se um <em>slice</em> para toda a lista (<code>uma_lista[:]</code> significa todos os
+elementos do princípio o fim)e atribuí-se a esse <em>slice</em> uma lista nova.
+Assim, toda a lista é modificada.</p>
+<p><strong>Nota</strong>: não é possível usar esta técnica com <em>strings</em>. As <em>strings</em>
+são imutáveis.</p>
+<p>Se as funções tiverem resultados é possível usá-las em cadeia:</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">elimin_reps</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uma_lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  
+    <span class="k">return</span> <span class="n">res</span>
+<span class="k">def</span> <span class="nf">elimin_black</span><span class="p">(</span><span class="n">uma_lista</span><span class="p">,</span> <span class="n">black_list</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uma_lista</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">black_list</span><span class="p">]</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;um&#39;</span><span class="p">,</span> <span class="s1">&#39;dois&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;quatro&#39;</span><span class="p">]</span>
+<span class="n">black</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;um&#39;</span><span class="p">,</span> <span class="s1">&#39;dois&#39;</span><span class="p">]</span>
+
+<span class="n">clean</span> <span class="o">=</span> <span class="n">elimin_reps</span><span class="p">(</span><span class="n">elimin_black</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">black</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>[4, 3, 37, 42, &#39;quatro&#39;]
+</pre></div>
+
+<h2 id="ambito-dos-nomes">Âmbito dos nomes<a class="headerlink" href="#ambito-dos-nomes" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">recta</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Para x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;com m =&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;com b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span>
+    <span class="n">r0</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">r1</span> <span class="o">+</span> <span class="n">r0</span><span class="p">)</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c0</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">recta</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Resultado:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Para x = 2.0
+com m = 3.0
+com b = 2.0
+Resultado: 8.0
+</pre></div>
+
+<p>Este programa corre sem problemas.</p>
+<p>Note-se que podemos usar a função <code>print()</code> dentro de uma função.</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">recta</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">r1</span><span class="p">,</span> <span class="n">r0</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">r1</span> <span class="o">+</span> <span class="n">r0</span>
+
+<span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">recta</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Para x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;m =&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m*x =&#39;</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Resultado:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Para x = 2.0 m = 2.0 b = 3.0
+</pre></div>
+
+<p>:</p>
+<div class="codehilite"><pre><span></span>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-17-f26c93717bbe&gt; in &lt;module&gt;()
+      7 
+      8 print(&#39;Para x =&#39;, x, &#39;m =&#39;, m, &#39;b =&#39;, b)
+----&gt; 9 print(&#39;m*x =&#39;, r1, &#39;b =&#39;, r0)
+     10 print(&#39;Resultado:&#39;, res)
+
+
+NameError: name &#39;r1&#39; is not defined
+</pre></div>
+
+
+<p>O que se passou aqui?</p>
+<p>Os nomes usados dentro da função <code>r1</code> e <code>r0</code> são locais: pertencem ao
+<strong>âmbito</strong> da função.</p>
+<p>Qualquer parte do programa "exterior" à função não consegue "ver" esses
+nomes. Daí o erro durante a execução.</p>
+<p>O mesmo acontece aos próprios nomes locais dos <strong>argumentos</strong> da função:</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">recta2</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">r1</span><span class="p">,</span> <span class="n">r0</span> <span class="o">=</span> <span class="n">m2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">b2</span>
+    <span class="k">return</span> <span class="n">r1</span> <span class="o">+</span> <span class="n">r0</span>
+
+<span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">recta2</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Para x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;m2 =&#39;</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="s1">&#39;b2 =&#39;</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Resultado:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+<p>:</p>
+<div class="codehilite"><pre><span></span>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-18-92c7134da27b&gt; in &lt;module&gt;()
+      6 res = recta2(m, b, x)
+      7 
+----&gt; 8 print(&#39;Para x =&#39;, x, &#39;m2 =&#39;, m2, &#39;b2 =&#39;, b2)
+      9 print(&#39;Resultado:&#39;, res)
+
+
+NameError: name &#39;m2&#39; is not defined
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">recta</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Dentro da função --------&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;m =&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">recta</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;m =&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Resultado:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Dentro da função --------
+m = 5 b = 5 x = 16
+-------------------------
+m = 2 b = 2 x = 4
+
+Resultado: 85
+</pre></div>
+
+<p>Este programa corre sem problemas!</p>
+<p>Mas cada um dos nomes <code>m</code>, <code>b</code>, <code>x</code> é usado em dois contextos e tem
+valores diferentes:</p>
+<ul>
+<li>O contexto local, quando estão "dentro" da função.</li>
+<li>O contexto global, quando estão "fora da função".</li>
+</ul>
+<p>Fora da função, os valores globais são:</p>
+<div class="codehilite"><pre><span></span>m = 2
+b = 2
+x = 4
+</pre></div>
+
+
+<p>Estes valores não são modificados fora da função e são apresentados pela
+função <code>print()</code> no final.</p>
+<p>Dentro da função estes nomes são, em primeiro lugar, usados como os
+argumentos da função.</p>
+<p>Pela <strong>maneira como a função é chamada</strong>, estes valores são:</p>
+<div class="codehilite"><pre><span></span>m = 5
+b = 5
+x = 16
+</pre></div>
+
+
+<p>O nome <code>x</code> é modificado dentro da função (<code>x = m * x + b</code>) ficando com o
+valor final 85 e é este valor que é o resultado da função (<code>return x</code>).</p>
+<p>Quando a função termina e estamos de novo "de fora" da função, o valor
+de <code>x</code> volta a ser 4, uma vez que voltamos a um contexto "global".</p>
+<h2 id="argumentos-de-tipo-_palavra-chave">Argumentos de tipo _palavra-chave<a class="headerlink" href="#argumentos-de-tipo-_palavra-chave" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">mix</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;a =&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;--&gt; return =&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">c</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">mix</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>a = 1 b = 0 --&gt; return = 1
+a = 1 b = 3 --&gt; return = 4
+a = 2 b = 3 --&gt; return = 5
+a = 2 b = 3 --&gt; return = 5
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+
+<span class="n">f20</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;O factorial de 20 é&#39;</span><span class="p">,</span> <span class="n">f20</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>O factorial de 20 é 2432902008176640000
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+
+<span class="n">f20</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;O factorial de 20 é&#39;</span><span class="p">,</span> <span class="n">f20</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>2 2
+3 6
+4 24
+5 120
+6 720
+7 5040
+8 40320
+9 362880
+10 3628800
+11 39916800
+12 479001600
+13 6227020800
+14 87178291200
+15 1307674368000
+16 20922789888000
+17 355687428096000
+18 6402373705728000
+19 121645100408832000
+20 2432902008176640000
+O factorial de 20 é 2432902008176640000
+</pre></div>
+
+<h2 id="modulos-e-import">Módulos e <code>import</code><a class="headerlink" href="#modulos-e-import" title="Permanent link">&para;</a></h2>
+<p>Como vimos, muitas funções estão imediatamente disponíveis quando
+começamos a escrever um programa.</p>
+<p>Estas funções podem ser "livres" (por exemplo a função <code>len()</code>) ou
+associadas a objetos (por exemplo, <code>s.split()</code> que está associada à
+<em>string</em> <code>s</code>).</p>
+<p>A linguagem Python permite a organização dos programas em <strong>módulos</strong>.</p>
+<p>Módulos são <strong>ficheiros .py</strong> (ou ficheiros pré-compilados) que contêm
+coleções de funções úteis e relacionadas entre si, podendo também conter
+alguns outros objetos que não são funções, mas que contêm informação de
+suporte.</p>
+<p>Os módulos são também essenciais no aumento da funcionalidade da própria
+linguagem python: com a distribuição oficial do Python e em algumas
+distribuições de "Python científico" são tipicamente disponibilizados
+<strong>centenas de módulos</strong>, em que cada módulo reúne a funcionalidade
+adicional relacionada com um propósito particular.</p>
+<p>Por exemplo, o módulo <code>math</code> reúne funções associadas a cálculos
+matemáticos (e as constantes <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> e <em>e</em>).</p>
+<p>O módulo <code>time</code> reúne funções e constantes relacionadas com a utilização
+da data e hora.</p>
+<p>A documentação sobre a coleção de módulos que são são disponibilizados
+em qualquer distribuição da linguagem Python (a chamada <em>Biblioteca
+padrão</em> (em inglês <em>Standard Library</em>) pode ser encontrada na
+<a href="https://docs.python.org/3/library/">documentação oficial</a></p>
+<p>Por outro lado, quem escreve módulos novos pode submetê-los ao Python
+Package Index, conhecido como <a href="https://pypi.python.org/pypi">PyPi</a>.
+Trata-se de um imenso depósito de módulos com contribuições de milhares
+de autores e em permanente crescimento.</p>
+<h2 id="exemplo-da-construcao-de-um-modulo">Exemplo da construção de um módulo<a class="headerlink" href="#exemplo-da-construcao-de-um-modulo" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">readFASTA</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function reads a FASTA format file and</span>
+<span class="sd">    returns a pair of strings</span>
+<span class="sd">    with the header and the sequence</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="s1">{h}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="s1">{s}&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Header:
+&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+
+Sequence:
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+
+<p>Vamos supor que esta seria a primeira de <strong>uma coleção de funções
+relacionadas com o processamento de ficheiros de texto contendo
+sequências usados em bioinformática</strong> (uma sequência em FASTA é apenas
+um exemplo).</p>
+<p>Podemos criar um ficheiro <strong>biosequences.py</strong> contendo essa função:</p>
+<p><img alt="" src="images/biosequences1.png" /></p>
+<p>Este ficheiro constitui um módulo que pode ser usado num programa.</p>
+<p>Para isso, é necessário usar o comando <code>import</code>:</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">biosequences</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">biosequences</span><span class="o">.</span><span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="s1">{h}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="s1">{s}&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Header:
+&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+
+Sequence:
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+
+<p>Há mais duas maneiras de utilizar o comando <code>import</code>:</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="kn">import</span> <span class="n">readFASTA</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="s1">{h}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="s1">{s}&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Header:
+&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+
+Sequence:
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="s1">{h}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="s1">{s}&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Header:
+&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+
+Sequence:
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+
+<p>Esta última maneira é desaconselhada: um módulo pode conter centenas de
+funções e, por isso, podem ser importados centenas de novos <em>nomes</em> para
+um programa, que podem <strong>entrar em conflito</strong> com outros nomes iguais
+utilizados no programa.</p>
+<p>Um módulo pode conter outros objetos para além de funções.</p>
+<p>A pensar em algumas operações que poderiam ser realizadas com sequências
+biológicas, o ficheiro <strong>biosequences.py</strong> poderia ser <strong>ampliado</strong> com
+as seguintes atribuições:</p>
+<div class="codehilite"><pre><span></span>.....
+
+basesDNA = &#39;ATGC&#39;
+basesRNA = &#39;AUGC&#39;
+
+aa_residues   = &quot;ACDEFGHIKLMNPQRSTVWY&quot;
+
+complement = { &#39;A&#39;:&#39;T&#39;, &#39;T&#39;:&#39;A&#39;, &#39;G&#39;:&#39;C&#39;, &#39;C&#39;:&#39;G&#39;}
+complementRNA = { &#39;A&#39;:&#39;U&#39;, &#39;U&#39;:&#39;A&#39;, &#39;G&#39;:&#39;C&#39;, &#39;C&#39;:&#39;G&#39;}
+
+gencode = {
+     &#39;TTT&#39;: &#39;F&#39;, &#39;TTC&#39;: &#39;F&#39;, &#39;TTA&#39;: &#39;L&#39;, &#39;TTG&#39;: &#39;L&#39;, &#39;TCT&#39;: &#39;S&#39;,
+     &#39;TCC&#39;: &#39;S&#39;, &#39;TCA&#39;: &#39;S&#39;, &#39;TCG&#39;: &#39;S&#39;, &#39;TAT&#39;: &#39;Y&#39;, &#39;TAC&#39;: &#39;Y&#39;,
+     &#39;TGT&#39;: &#39;C&#39;, &#39;TGC&#39;: &#39;C&#39;, &#39;TGG&#39;: &#39;W&#39;, &#39;CTT&#39;: &#39;L&#39;, &#39;CTC&#39;: &#39;L&#39;,
+     &#39;CTA&#39;: &#39;L&#39;, &#39;CTG&#39;: &#39;L&#39;, &#39;CCT&#39;: &#39;P&#39;, &#39;CCC&#39;: &#39;P&#39;, &#39;CCA&#39;: &#39;P&#39;,
+     &#39;CCG&#39;: &#39;P&#39;, &#39;CAT&#39;: &#39;H&#39;, &#39;CAC&#39;: &#39;H&#39;, &#39;CAA&#39;: &#39;Q&#39;, &#39;CAG&#39;: &#39;Q&#39;,
+     &#39;CGT&#39;: &#39;R&#39;, &#39;CGC&#39;: &#39;R&#39;, &#39;CGA&#39;: &#39;R&#39;, &#39;CGG&#39;: &#39;R&#39;, &#39;ATT&#39;: &#39;I&#39;,
+     &#39;ATC&#39;: &#39;I&#39;, &#39;ATA&#39;: &#39;I&#39;, &#39;ATG&#39;: &#39;M&#39;, &#39;ACT&#39;: &#39;T&#39;, &#39;ACC&#39;: &#39;T&#39;,
+     &#39;ACA&#39;: &#39;T&#39;, &#39;ACG&#39;: &#39;T&#39;, &#39;AAT&#39;: &#39;N&#39;, &#39;AAC&#39;: &#39;N&#39;, &#39;AAA&#39;: &#39;K&#39;,
+     &#39;AAG&#39;: &#39;K&#39;, &#39;AGT&#39;: &#39;S&#39;, &#39;AGC&#39;: &#39;S&#39;, &#39;AGA&#39;: &#39;R&#39;, &#39;AGG&#39;: &#39;R&#39;,
+     &#39;GTT&#39;: &#39;V&#39;, &#39;GTC&#39;: &#39;V&#39;, &#39;GTA&#39;: &#39;V&#39;, &#39;GTG&#39;: &#39;V&#39;, &#39;GCT&#39;: &#39;A&#39;,
+     &#39;GCC&#39;: &#39;A&#39;, &#39;GCA&#39;: &#39;A&#39;, &#39;GCG&#39;: &#39;A&#39;, &#39;GAT&#39;: &#39;D&#39;, &#39;GAC&#39;: &#39;D&#39;,
+     &#39;GAA&#39;: &#39;E&#39;, &#39;GAG&#39;: &#39;E&#39;, &#39;GGT&#39;: &#39;G&#39;, &#39;GGC&#39;: &#39;G&#39;, &#39;GGA&#39;: &#39;G&#39;,
+     &#39;GGG&#39;: &#39;G&#39;, &#39;TAA&#39;: &#39;STOP&#39;, &#39;TAG&#39;: &#39;STOP&#39;, &#39;TGA&#39;: &#39;STOP&#39;}
+</pre></div>
+
+
+<p><strong>Problema</strong>: qual a sequência da proteína codificada por
+<code>AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA</code></p>
+<p>Sabemos que o módulo <code>biosequences</code> tem um dicionário chamado <code>gencode</code>.</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">biosequences</span> <span class="kn">import</span> <span class="n">gencode</span>
+
+<span class="k">def</span> <span class="nf">translation</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+    <span class="n">cods</span> <span class="o">=</span> <span class="p">[</span><span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="mi">3</span><span class="p">)]</span>
+    <span class="n">prot</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cods</span><span class="p">:</span>
+        <span class="n">aa</span> <span class="o">=</span> <span class="n">gencode</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">aa</span> <span class="o">==</span> <span class="s1">&#39;STOP&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">prot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aa</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prot</span><span class="p">)</span>
+
+<span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA&#39;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">translation</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA
+SWILNDA
+</pre></div>
+
+<p>Claro que a função <code>translation()</code> seria uma boa adição ao nosso módulo
+<code>biosequences</code>...</p>
+<p>O projeto <a href="http://biopython.org/wiki/Documentation">BioPython</a> foi
+precisamente criado como uma coleção de funções e objetos que suportam a
+representação e transformação de sequências biológicas.</p>
+<p>Hoje é muito mais do que isso, mas a parte central deste pacote de
+módulos continua a ser a funcionalidade relacionada com sequências
+biológicas.</p>
+<p>Se usarmos a primeira forma do comando <code>import</code>, é possível mudar o nome
+do módulo (para uma forma mais abreviada), um <em>alias</em>, da seginte forma:</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">biosequences</span> <span class="kn">as</span> <span class="nn">bs</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">readFASTA</span><span class="p">(</span><span class="s2">&quot;gre3.txt&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Header:</span><span class="se">\n</span><span class="s1">{h}</span><span class="se">\n\n</span><span class="s1">Sequence:</span><span class="se">\n</span><span class="s1">{s}&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Header:
+&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+
+Sequence:
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="files.html" title="Ficheiros de texto" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Ficheiros de texto
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="scientific_modules.html" title="Módulos de computação científica" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Módulos de computação científica
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/application.267712eb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
