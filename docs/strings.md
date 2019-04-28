@@ -1,6 +1,93 @@
-#  _Strings_
+#  _Strings_ e textos
 
-## Definição literal, iteração e indexação
+## Textos estruturados
+
+Existem muitos formatos de texto estruturado usados na representação de
+informação de caráter biológico.
+
+Os portais de bioinformática, por exemplo a [UniProt](https://www.uniprot.org/)
+oferecem, muitas vezes, a possibilidade de transferir a informação contida em
+bases de dados na forma de textos. Esses textos são estruturados, seguindo formatos
+e regras específicos.
+
+Exemplos:
+
+- Sequências de ácidos nucleicos e proteínas em formato FASTA
+- Alinhamentos múltiplos em formatos CLUSTAL, PIR, HSSP
+- Resultados de busca na UniProt em FASTA, "Tab delimited", "Text", GFF
+- ...
+
+## Obtenção de textos estruturados para processamento
+
+### Download manual e leitura
+
+![](images/down_read.png)
+
+
+```python
+with open('c_hominis.fasta') as datafile:
+    data = datafile.read()
+
+print(data)
+```
+
+    >sp|A7HZZ5|ACP_CAMHC Acyl carrier protein OS=Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A) OX=360107 GN=acpP PE=3 SV=1
+    MEVFEEVRDVVVEQLSVAPDAVKIDSKIIEDLGADSLDVVELVMALEEKFGIEIPDSEAE
+    KLISIKDVVTYIENLNKNK
+    >sp|A7I0W5|CH60_CAMHC 60 kDa chaperonin OS=Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A) OX=360107 GN=groL PE=3 SV=1
+    MAKDIIFSDDARNRLYDGVKKLNDTVKVTMGPRGRNVLIQKSFGAPAITKDGVSVAKEVE
+    LKDTIENMGAALVKEVANKTNDQAGDGTTTATVLAHAIFKEGLRNITAGANPIEVKRGMD
+    KICADVVAELKKISKPVKDKKEIAQVATISANSDESIGKLIADAMEKVGKDGVITVEEAK
+    SINDELNVVEGMQFDRGYLSPYFITDAEKMQVELNSPLVLLFDKKITNLKDLLPVLEQVQ
+    KTGKPLLIIAEDIEGEALATLVVNKLRGVLNISAVKAPGFGDRRKAMLEDIAILTGGTVI
+    SEELGRTLESASIADLGKAERILIDKDNTTIVNGAGKKDDIKARVDQIKAQIAVTSSDYD
+    REKLQERLAKLSGGVAVIKVGAATETEMKEKKDRVDDALSATKAAVEEGIVIGGGAALIK
+    AGNAVKENLKGDEKIGADIVKRALFAPLRQIAENAGFDAGVIANAVSINKEKAYGFDAAC
+    GEFVNMFEAGIIDPVKVERVALQNAVSVASLLLTTEATVSEIKEDKPAMPQMPDMGGGMG
+    GMM
+    
+    ...
+    muitas outras sequências ...
+    ...
+    
+    >sp|A7I1M8|LGT_CAMHC Phosphatidylglycerol--prolipoprotein diacylglyceryl transferase OS=Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A) OX=360107 GN=lgt PE=3 SV=1
+    MTFWNEIYAHFDPVAFSIFGLKVHWYGLMYVLALLVALYMAKFFVKKDRLKFSNQVLENY
+    FIWVEIGVILGARFGYILIYSNAQIFYLTHPWEIFNPFYNGKFVGISGMSYHGAVIGFII
+    ATILFCRKKRQNLWSLLDLCALSIPLGYFFGRIGNFLNQELFGRITDVSWGILVNGELRH
+    PSQLYEACLEGITIFLILYFYRKYKKFDGELICVYVILYAIFRFLTEFLREADVQIGYFS
+    FGLSLGQILSVFMLILGFSAYIKLLKNSQTEQKFNQNKS
+    
+    
+
+### Download programático
+
+![](images/request_read.png)
+
+
+```python
+import requests
+
+url = 'https://www.uniprot.org/uniprot/?query=proteome:UP000002407%20reviewed:yes&format=list'
+
+data = requests.get(url).text
+
+print(data)
+```
+
+    A7HZZ5
+    A7I0W5
+    
+    ...
+    muitos outros identificadores ...
+    ...
+    
+    A7I0N8
+    A7I1M8
+    
+    
+## _Strings_
+
+### Definição literal, iteração e indexação
 
 
 As *strings* são um dos tipos de objetos mais usados na linguagem
@@ -10,15 +97,19 @@ seja simplesmente para que os resultados de um programa sejam
 apresentados com pequenos textos destinados a descrever esses
 resultados.
 
-Como vimos anteriormente, uma *string* é uma coleção de caracteres.
+Como vimos anteriormente, uma _string_ é uma coleção de caracteres.
 
-Uma maneira de criarmos *strings* num programa é defini-las
+Uma maneira de criarmos _strings_ num programa é defini-las
 literalmente, como um **texto entre aspas**.
 
-Na definição literal de *strings* **podemos usar 3 tipos diferentes de
-aspas**: `"`, `'` ou `"""`.
+Na **definição literal** de *strings* podemos delimita-las usando
+**3 tipos diferentes de aspas**: 
 
-As *aspas triplas* permitem definir literalmente uma *string* com várias
+- `"`
+- `'`
+- `"""`
+
+As *aspas triplas* (`"""`) permitem delimitar uma *string* contendo várias
 linhas.
 
 ``` python
@@ -34,18 +125,18 @@ ocupa várias linhas
 algumas das linhas estão em branco"""
 ```
 
-### operador `+`.
+### operador `+`. Função `len()`
 
 O operador `+` serve para "juntar" várias *strings*, uma operação
 designada por *concatenação*.
 
 ``` python
 c = "There's no spoon"
-print('c = ', c)
 
-c = c + ', really, ' + 'none' + '.'
+s = c + ', really, ' + 'none' + '.'
 
-print('c = ', c)
+print(f'c = {c}')
+print(f's = {s}')
 ```
 
 ```
@@ -53,7 +144,20 @@ c =  There's no spoon
 c =  There's no spoon, really, none.
 ```
 
-As strings têm muitas funções em comum com as listas:
+A função `len()` é uma função universal que calcula o número de elementos de qualquer coleção.
+No caso das _strings_, o resultado é o **número de caracteres**.
+
+```python
+c = "There's no spoon"
+
+n = len(c)
+
+print(f'\n"{c}" tem {n} caracteres')
+```
+    
+    "There's no spoon" tem 16 caracteres
+
+Aliás, as _strings_ têm muitas funções em comum com as listas:
 
 -   `len()`, `count()`, `in`, `not in`
 -   Indexação: `a[i]`
@@ -62,82 +166,49 @@ As strings têm muitas funções em comum com as listas:
 Isto acontece porque as *strings* se comportam como uma **sequência de
 caracteres**, tal como uma lista é uma sequência de quaisquer objetos.
 
-### `len()`, `.count()`, operador `in`.
-
-``` python
-c = "There's no spoon"
-print('c = ', c)
-print('len(c) =', len(c))
-
-print('c.count("s") = ', c.count('s'))
-
-print('z' in c)
-print('r' in c)
-print('ere' in c)
-```
-
-```
-c =  There's no spoon
-len(c) = 16
-c.count("s") =  2
-False
-True
-True
-```
-
 ### Iteração e indexação.
 
-``` python
+Na iteração de uma _string_ com `for` percorre-se os caracteres da _string_, um a um.
+
+```python
 frase = "There's no spoon"
 
-for i, c in enumerate(frase):
-    print(i, c)
+for c in frase:
+    print(c, c, c)
 ```
 
-```
-0 T
-1 h
-2 e
-3 r
-4 e
-5 '
-6 s
-7  
-8 n
-9 o
-10  
-11 s
-12 p
-13 o
-14 o
-15 n
-```
+    T T T
+    h h h
+    e e e
+    r r r
+    e e e
+    ' ' '
+    s s s
+         
+    n n n
+    o o o
+         
+    s s s
+    p p p
+    o o o
+    o o o
+    n n n
+    
 
-``` python
+Na indexação, cada caractere tem uma posição (a começar do zero).
+
+```python
 frase = "There's no spoon"
 
-for i in range(-1, -len(frase)-1, -1):
-    print(i, frase[i])
+print(frase[0])
+print(frase[5])
+print(frase[-1])
 ```
 
-```
--1 n
--2 o
--3 o
--4 p
--5 s
--6  
--7 o
--8 n
--9  
--10 s
--11 '
--12 e
--13 r
--14 e
--15 h
--16 T
-```
+    T
+    '
+    n
+    
 
 ## Funções associadas a *strings*
 
@@ -150,54 +221,72 @@ Consultar a documentação oficial em
 
 **São cerca de 40!**
 
-## Imutabilidade
+Vamos ver (apenas) as seguintes:
 
-As *strings* são **imutáveis**.
+- `in`, `.startswith()`, `.endswith()`
+- `.strip()`
+- `.count()`, `.replace()`
+- `.upper()`, `.lower()`
+- `.split()`, `.splitlines()`, `.join()`
 
-Isto significa que (ao contrário das listas e dicionários) **não existem
-funções para modificar uma** *string*.
 
-**Não existe**, por exemplo, `s.append('a')`.
+###  `in`, `.startswith()` , `.endswith()`.
 
-**Todas as operações com** *strings* **resultam numa** *string*
-**nova**, à qual é, geralmente, atribuído um nome (mesmo que seja o
-mesmo nome da *string* original)
 
-Podemos, por isso, usar `s = s + 'a'`
+```python
+frase = "There's no spoon"
 
-### `.strip()`, `.startswith()`.
+if 're' in frase:
+    print('"re" existe na frase')
+else:
+    print('"re" não existe na frase')    
+```
 
-``` python
-c = "    There's no spoon      "
-print('c:')
-print(c)
+    "re" existe na frase
+    
+
+
+```python
+seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
+
+if seq.startswith('AUG'):
+    print('O primeiro codão é de iniciação')
+
+if seq.endswith('UAG') or seq.endswith('UAA') or seq.endswith('UGA'):
+    print('O último codão é um codão stop')
+```
+
+    O primeiro codão é de iniciação
+    
+
+### `.strip()`.
+
+
+```python
+c = """    
+           There's no spoon      
+
+"""
 
 s = c.strip()
-print('c.strip():')
+
+print(c)
+print('------------------------------------')
 print(s)
 ```
 
-```
-c:
-    There's no spoon      
-c.strip():
-There's no spoon
-```
-
-``` python
-c = "    There's no spoon      "
-
-if s.strip().startswith('Th'):
-    print('Começa por Th')
-```
-
-```
-Começa por Th
-```
+        
+               There's no spoon      
+    
+    
+    ------------------------------------
+    There's no spoon
+    
 
 ### `.upper()`, `.lower()`.
 
-``` python
+
+```python
 c = "    There's no spoon      "
 
 c_upper = c.upper()
@@ -207,54 +296,99 @@ c_lower = c.lower()
 print('c.lower():',c_lower)
 ```
 
-```
-c.upper():     THERE'S NO SPOON      
-c.lower():     there's no spoon      
-```
+    c.upper():     THERE'S NO SPOON      
+    c.lower():     there's no spoon      
+    
 
 ### `.replace()`.
 
-``` python
-palavra = 'pois'
-print(palavra)
 
-palavra = palavra.replace('p', 'd')
-print(palavra)
+```python
+seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
+
+seq2 = seq.replace('U', 'T')
+
+print(seq)
+print(seq2)
 ```
 
-```
-pois
-dois
-```
+    AUGUUCAAGGAGUAAUGCCCCCGACUA
+    ATGTTCAAGGAGTAATGCCCCCGACTA
+    
 
-### `.split()` e `.join()`
 
-``` python
-a = "There's no spoon"
+```python
+frase = "There's no spoon"
 
-b = a.split()
-c = a.split('e')
-d = a.split("'")
+frase2 = frase.replace(' ', '')
 
-print(b)
-print(c)
-print(d)
+print(frase)
+print(frase2)
 ```
 
-```
-["There's", 'no', 'spoon']
-['Th', 'r', "'s no spoon"]
-['There', 's no spoon']
-```
+    There's no spoon
+    There'snospoon
+    
 
-A função `.split()` **gera uma lista de partes**, encontrando um
-separador numa *string*.
+### `.split()`, `splitlines()` e `.join()`
+
+A partir de uma _string_, a função `.split()` **gera uma lista de partes**,
+encontrando um separador que divida a _string_ em várias partes.
 
 O separador a encontrar é o argumento da função.
 
 Se não se usar um argumento, considera-se que as partes são separadas
 por espaços, tabs ou mudanças de linha (no inglês genericamente
 designados por *white space*)
+
+Alguns exemplos:
+
+```python
+frase = "There's no spoon"
+
+x = frase.split()
+
+print(x)
+```
+
+    ["There's", 'no', 'spoon']
+    
+
+
+```python
+frase = "There's no spoon"
+
+x = frase.split('s')
+
+print(x)
+```
+
+    ["There'", ' no ', 'poon']
+    
+
+
+```python
+frase = "There's no spoon"
+
+x = frase.split('o')
+
+print(x)
+```
+
+    ["There's n", ' sp', '', 'n']
+    
+
+
+```python
+frase = "There's no spoon"
+
+x = frase.split('n')
+
+print(x)
+```
+
+    ["There's ", 'o spoo', '']
+
 
 A função `.join()` é uma espécie de inversa de `.split()`: transforma
 **uma lista** de *strings* **numa única** *string*, interpondo um
@@ -285,8 +419,10 @@ Arg-CONH-Tyr-CONH-Gly-CONH-Asp
 s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 print(s)
 
+starts = range(0, len(s), 3)
+
 codoes = []
-for i in range(0, len(s), 3):
+for i in starts:
     # i é o início de cada codão (c)
     c = s[i] + s[i+1] + s[i+2]
     codoes.append(c)
@@ -303,25 +439,43 @@ AUGUUCAAGGAGUAAUGCCCCCGACUA
 AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 ```
 
+Ou, usando uma **lista em compreensão**:
+
+```python
+s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
+
+cods = [s[i] + s[i+1] + s[i+2] for i in range(0, len(s), 3)]
+
+print(s)
+print(cods)
+
+print( "-".join(cods) )
+```
+
+```
+AUGUUCAAGGAGUAAUGCCCCCGACUA
+['AUG', 'UUC', 'AAG', 'GAG', 'UAA', 'UGC', 'CCC', 'CGA', 'CUA']
+AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
+```
+
 Tem de haver uma maneira mais sucinta de de juntar vários caracteres
 consecutivos!
 
-### `.splitlines()`
+A função `.splitlines()` é equivalente a `.split('\n')`:
 
-``` python
-d = """ Um pequeno texto que até
-ocupa várias linhas
+```python
+seq = """>sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain
+MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKD
+MIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTI
+AKIDEQVRQK"""
 
-algumas das linhas estão em branco"""
+lines = seq.splitlines()
 
-print(d.splitlines())
+print(lines)
 ```
 
-```
-[' Um pequeno texto que até', 'ocupa várias linhas', '', 'algumas das linhas estão em branco']
-```
-
-A função `.splitlines()` é praticamente equivalente a `.split('\n')`.
+    ['>sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain', 'MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKD', 'MIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTI', 'AKIDEQVRQK']
+  
 
 É muito interessante o facto de podermos usar funções de *strings* em
 conjunção com listas em compreensão:
@@ -398,23 +552,41 @@ O Neo tomou o comprimido vermelho
 ONotmu
 ```
 
-**Problema: transformar** `AUGUUCAAGGAGUAAUGCCCCCGACUA` **em**
+```python
+seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
+
+c = seq[  :3]
+d = seq[-3: ]
+
+print('O primeiro codão é', c)
+print('O último codão é', d)
+```
+
+    O primeiro codão é AUG
+    O último codão é CUA
+    
+
+**Problema: transformar** `AUGUUCAAGGAGUAAUGCCCCCGACUA`
+
+**em**
+
 `AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA`
 
 ``` python
 s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
+starts = range(0, len(s), 3)
+
+# na versão anterior:
+# cods = [s[i] + s[i+1] + s[i+2] for i in starts]
+
+# usando um slice
+cods = [s[i:i+3] for i in starts]
+
 print(s)
+print(cods)
 
-codoes = []
-for i in range(0, len(s), 3):
-    # i é o início de cada codão
-    # aqui usamos um slice
-    # em vez da soma de 3 posições consecutivas.
-    c = s[i:i+3]
-    codoes.append(c)
+print( "-".join(cods) )
 
-final = "-".join(codoes)
-print(final)
 ```
 
 ```
@@ -464,51 +636,30 @@ print(s3)
 No caso de uma **lista**, podemos **atribuír valores a um** *slice* **da
 lista**, mudando alguns elementos de uma só vez:
 
-``` python
+```python
 nums = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
+#       0  1  2  3  4  5  6  7  8  9
+
 print(nums)
-nums[3:5] = [8, 9]
+
+nums[3:8] = range(10, 15)
+
 print(nums)
 ```
 
-```
-[1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
-[1, 2, 2, 8, 9, 3, 4, 4, 4, 4]
-```
+    [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
+    [1, 2, 2, 10, 11, 12, 13, 14, 4, 4]
+   
 
 **Problema: Converter uma sequência com códigos de uma letra de
 aminoácidos para códigos de 3 letras, usando um dicionário para a
 conversão.**
 
-Numa secção anterior, este problema foi resolvido anteriormente da
-seguinte forma:
-
 ``` python
-trans = {'A': 'Ala', 'C': 'Cys', 'E': 'Glu', 'D': 'Asp', 'G': 'Gly', 'F': 'Phe', 'I': 'Ile', 'H': 'His', 'K': 'Lys', 'M': 'Met', 'L': 'Leu', 'N': 'Asn', 'Q': 'Gln', 'P': 'Pro', 'S': 'Ser', 'R': 'Arg', 'T': 'Thr', 'W': 'Trp', 'V': 'Val', 'Y': 'Tyr'}
-
-# Problema: transformar s1 numa string
-# com os códigos de 3 letras dos aa
-s1 = 'ADKLITCWFHHWE'
-
-s3 = ''
-for aa in s1:
-    s3 = s3 + trans[aa] + '-'
-
-print(s1, 'é o mesmo que ', s3)
-```
-
-```
-ADKLITCWFHHWE é o mesmo que  Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu-
-```
-
-Podemos compactar o programa e melhorar o aspeto do resultado.
-
-Por um lado, podemos usar uma lista em compreensão para gerar os códigos
-de 3 letras (em vez de uma *string*), por outro podemos usar a função
-`.join()` para apresenta-los separados por `-`.
-
-``` python
-trans = {'A': 'Ala', 'C': 'Cys', 'E': 'Glu', 'D': 'Asp', 'G': 'Gly', 'F': 'Phe', 'I': 'Ile', 'H': 'His', 'K': 'Lys', 'M': 'Met', 'L': 'Leu', 'N': 'Asn', 'Q': 'Gln', 'P': 'Pro', 'S': 'Ser', 'R': 'Arg', 'T': 'Thr', 'W': 'Trp', 'V': 'Val', 'Y': 'Tyr'}
+trans = {'A': 'Ala', 'C': 'Cys', 'E': 'Glu', 'D': 'Asp', 'G': 'Gly',
+         'F': 'Phe', 'I': 'Ile', 'H': 'His', 'K': 'Lys', 'M': 'Met',
+         'L': 'Leu', 'N': 'Asn', 'Q': 'Gln', 'P': 'Pro', 'S': 'Ser',
+         'R': 'Arg', 'T': 'Thr', 'W': 'Trp', 'V': 'Val', 'Y': 'Tyr'}
 
 s1 = 'ADKLITCWFHHWE'
 
@@ -521,20 +672,33 @@ print(s1, 'é o mesmo que', s3)
 ADKLITCWFHHWE é o mesmo que Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu
 ```
 
-**Problema: calcular o complemento reverso de uma sequência, mas
-separando os codões por "-".**
+**Problema: calcular o complemento reverso de uma sequência**. Apresentar a
+sequência de partida e o complemento reverso no formato em que os codões são
+separados por um hífen.
+
+Para resolver este problema podemos usar a função `reversed()`. Esta função
+aplica-se a qualquer coleção e "gera" os elementos da coleção pela ordem inversa.
+
+Aplicando depois a função `''.join()`, com o **separador "vazio"**, ao resultado
+da função `reversed()`podemos inverter uma _string_.
 
 ``` python
-bcompl = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}
+trans = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}
 
-a = "ATGGTTACCTAGTATTTAGGATTA"
-c = ''.join([bcompl[b] for b in a[ : :-1]])
+seq = "ATGGTTACCTAGTATTTAGGATTA"
 
+# inverter a sequência
+seq_rev = ''.join(reversed(seq))
+
+# traduzir para a sequência complementar
+comp = ''.join([trans[b] for b in seq_rev])
+
+# Apresentar com os codões separados por hífen
 print("Seq:")
-print('-'.join([a[i:i+3] for i in range(0,len(a),3)]))
+print('-'.join([seq[i:i+3] for i in range(0,len(seq),3)]))
 
 print("\nComplemento reverso:")
-print('-'.join([c[i:i+3] for i in range(0,len(c),3)]))
+print('-'.join([comp[i:i+3] for i in range(0,len(comp),3)]))
 ```
 
 ```
@@ -545,8 +709,23 @@ Complemento reverso:
 TAA-TCC-TAA-ATA-CTA-GGT-AAC-CAT
 ```
 
-Formatação de *strings* com `.format()`
----------------------------------------
+## "Imutabilidade" das _strings_
+
+As *strings* são **imutáveis**.
+
+Isto significa que (ao contrário das listas e dicionários) **não existem
+funções para modificar uma** *string*.
+
+**Não existe**, por exemplo, `s.append('a')`.
+
+**Todas as operações com** *strings* **resultam numa** *string*
+**nova**, à qual é, geralmente, atribuído um nome (mesmo que seja o
+mesmo nome da *string* original)
+
+Podemos, por isso, usar `s = s + 'a'`
+
+
+## Formatação de *strings* com `.format()`
 
 ``` python
 x = 11
@@ -661,12 +840,18 @@ n     S        dif
 7  0.759524  0.066377
 8  0.634524  0.058623
 9  0.745635  0.052488
+10 0.645635  0.047512
+11 0.736544  0.043397
+12 0.653211  0.039937
+13 0.730134  0.036987 
+14 0.658705  0.034442
+15 0.725372  0.032225
+16 0.662872  0.030275
+17 0.721695  0.028548
+18 0.666140  0.027007
+19 0.718771  0.025624
+20 0.668771  0.024376
 ```
-
-> 10 0.645635 0.047512 11 0.736544 0.043397 12 0.653211 0.039937 13
-> 0.730134 0.036987 14 0.658705 0.034442 15 0.725372 0.032225 16
-> 0.662872 0.030275 17 0.721695 0.028548 18 0.666140 0.027007 19
-> 0.718771 0.025624 20 0.668771 0.024376
 
 Consultar a documentação da [Format Specification
 Mini-Language](https://docs.python.org/3/library/string.html#formatspec)
