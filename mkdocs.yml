@@ -1,4 +1,4 @@
-site_name: Bq computacional (FCUL)
+﻿site_name: Bq computacional (FCUL)
 nav:
 - Início: 'index.md'
 - Conceitos básicos: 'basics.md'
@@ -8,7 +8,7 @@ nav:
 - Ficheiros de texto: 'files.md'
 - Funções e módulos: 'funcs_modules.md'
 - Módulos de computação científica: scientific_modules.md
-- Instalação do Python: data_software.md
+- Instalação (software e dados): data_software.md
 use_directory_urls: false
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
