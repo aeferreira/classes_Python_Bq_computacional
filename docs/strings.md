@@ -300,6 +300,22 @@ print('c.lower():',c_lower)
     c.lower():     there's no spoon      
     
 
+### `.count()`.
+
+```python
+seq = "ATGTTCAAGGAGTAATGCCCCCGACTA"
+
+nG = seq.count('G')
+nA = seq.count('A')
+nC = seq.count('C')
+nT = seq.count('T')
+
+print(f'A razão (G+C) / (A+T) é {(nG + nC)/(nA + nC)}')
+```
+
+    A razão (G+C) / (A+T) é 0.8666666666666667
+
+
 ### `.replace()`.
 
 
@@ -707,6 +723,34 @@ ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
 
 Complemento reverso:
 TAA-TCC-TAA-ATA-CTA-GGT-AAC-CAT
+```
+
+**Problema: separar uma sequência em FASTA em 2 strings: o "header" e a sequência**
+
+
+```python
+seqFASTA = """>sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain
+MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKD
+MIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTI
+AKIDEQVRQK"""
+
+lines = seqFASTA.splitlines()
+
+header = lines[0]
+
+seq = ''.join(lines[1:])
+
+print('header -----------------------------------')
+print(header)
+print('seq --------------------------------------')
+print(seq)
+```
+
+```
+header -----------------------------------
+>sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain
+seq --------------------------------------
+MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKDMIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTIAKIDEQVRQK
 ```
 
 ## "Imutabilidade" das _strings_
