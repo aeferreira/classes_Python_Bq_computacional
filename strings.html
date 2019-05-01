@@ -348,6 +348,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#count" title=".count()." class="md-nav__link">
+    .count().
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#replace" title=".replace()." class="md-nav__link">
     .replace().
   </a>
@@ -369,6 +376,13 @@
         <li class="md-nav__item">
   <a href="#slices" title="Slices" class="md-nav__link">
     Slices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplo-ficheiros-fasta" title="Exemplo: ficheiros FASTA" class="md-nav__link">
+    Exemplo: ficheiros FASTA
   </a>
   
 </li>
@@ -440,8 +454,8 @@
 
 
   <li class="md-nav__item">
-    <a href="data_software.html" title="Instalação do Python" class="md-nav__link">
-      Instalação do Python
+    <a href="data_software.html" title="Instalação (software e dados)" class="md-nav__link">
+      Instalação (software e dados)
     </a>
   </li>
 
@@ -564,6 +578,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#count" title=".count()." class="md-nav__link">
+    .count().
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#replace" title=".replace()." class="md-nav__link">
     .replace().
   </a>
@@ -585,6 +606,13 @@
         <li class="md-nav__item">
   <a href="#slices" title="Slices" class="md-nav__link">
     Slices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplo-ficheiros-fasta" title="Exemplo: ficheiros FASTA" class="md-nav__link">
+    Exemplo: ficheiros FASTA
   </a>
   
 </li>
@@ -877,6 +905,21 @@ There&#39;s no spoon
 
 <div class="codehilite"><pre><span></span>c.upper():     THERE&#39;S NO SPOON      
 c.lower():     there&#39;s no spoon
+</pre></div>
+
+
+<h3 id="count"><code>.count()</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="s2">&quot;ATGTTCAAGGAGTAATGCCCCCGACTA&quot;</span>
+
+<span class="n">nG</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;G&#39;</span><span class="p">)</span>
+<span class="n">nA</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">nC</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="n">nT</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;A razão (G+C) / (A+T) é {(nG + nC)/(nA + nC)}&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>A razão (G+C) / (A+T) é 0.8666666666666667
 </pre></div>
 
 
@@ -1233,6 +1276,280 @@ ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
 Complemento reverso:
 TAA-TCC-TAA-ATA-CTA-GGT-AAC-CAT
 </pre></div>
+
+<p><strong>Problema: separar uma sequência em FASTA em 2 strings: o "header" e a sequência</strong></p>
+<div class="codehilite"><pre><span></span><span class="n">seqFASTA</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&gt;sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain</span>
+<span class="s2">MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKD</span>
+<span class="s2">MIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTI</span>
+<span class="s2">AKIDEQVRQK&quot;&quot;&quot;</span>
+
+<span class="n">lines</span> <span class="o">=</span> <span class="n">seqFASTA</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="n">header</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;header -----------------------------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;seq --------------------------------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>header -----------------------------------
+&gt;sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain
+seq --------------------------------------
+MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKDMIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTIAKIDEQVRQK
+</pre></div>
+
+<h2 id="exemplo-ficheiros-fasta">Exemplo: ficheiros FASTA<a class="headerlink" href="#exemplo-ficheiros-fasta" title="Permanent link">&para;</a></h2>
+<p>Um dos tipos de texto estruturado mais populares quando estamos interessados
+em sequências de macromoléculas biológicas são os ficheiros de tipo FASTA.</p>
+<p>Os próximos exemplos ilustram a extração de informação a partir deste tipo de ficheiros.</p>
+<p>Para estes exemplos funcionarem, na mesma pasta que os programas deve estar um
+ficheiro com todas as sequências de proteínas da levedura <em>S. cerevisiae</em> (o "proteoma previsto"
+para este organismo).</p>
+<p>A partir da UniProt e procurando por <em>S. cerevisiae</em> em proteomas de referência,
+deve ser feito o <em>download</em> do proteoma de <em>S. cerevisiae</em> <strong>estruturado em FASTA</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">Importante:</p>
+<p>Para os exemplos seguintes, o ficheiro obtido da UniProt deve chamar-se <code>uniprot_scerevisiae_reviewed.fasta</code></p>
+</div>
+<p>Um exemplo de uma pequena fração deste ficheiro é o seguinte:</p>
+<div class="codehilite"><pre><span></span>&gt;sp|Q08641|AB140_YEAST tRNA(Thr) (cytosine(32)-N(3))-methyltransferase OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ABP140 PE=1 SV=3
+MGVADLIKKFESISKEEGDATVDTNSSSKPLKSNDETKELHQQESTAVPQEVDVNEEFEN
+EPETINSSRTAEKPLETNLPKPETNEEDEEEGSMSENKIYSKGENADINVNDFQEYKEME
+NTGAEVLASSVEESDAIQEGVAEETEGIATPKQKENEKNDESEEESANNASEPAEEYSQS
+EEDADIEQSNGKETENAENASQQANDGSTSTTTSKNKKKKNKKKNKKKRNGNVNTNANVD
+DSTKTGENDDTTGDTTSSTTSAIQEVNDLEVVDDSCLGIDQQHNREHLKALTQDVKEETL
+ENIAHEGRGDNTGDQNAVEKSDFEKSDTEGSRIGRDLPFEFGKRNLTEESDVWDHNAWDN
+VEWGEEQVQQAEEKIKEQFKHPVPEFDKKLYNENPARYWDIFYKNNKENFFKDRKWLQIE
+FPILYASTRKDAEPVTIFEIGCGAGNTFFPILKDNENENLRIIAADFAPRAVELVKNSEQ
+FNPKYGHATVWDLANPDGNLPDGVEPHSVDIAVMIFVFSALAPNQWDQAMDNLHKILKPG
+GKIIFRDYGAYDLTQVRFKKNRILEENFYVRGDGTRVYFFSEEKLREIFTKKYFLENKIG
+TDRRLLVNRKRQLKMYRCWVQAVFDVPQ
+&gt;sp|P28240|ACEA_YEAST Isocitrate lyase OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ICL1 PE=1 SV=1
+MPIPVGNTKNDFAALQAKLDADAAEIEKWWSDSRWSKTKRNYSARDIAVRRGTFPPIEYP
+SSVMARKLFKVLEKHHNEGTVSKTFGALDPVQISQMAKYLDTIYISGWQCSSTASTSNEP
+GPDLADYPMDTVPNKVEHLFKAQLFHDRKQLEARSKAKSQEELDEMGAPIDYLTPIVADA
+DAGHGGLTAVFKLTKMFIERGAAGIHMEDQTSTNKKCGHMAGRCVIPVQEHVNRLVTIRM
+CADIMHSDLIVVARTDSEAATLISSTIDTRDHYFIVGATNPNIEPFAEVLNDAIMSGASG
+QELADIEQKWCRDAGLKLFHEAVIDEIERSALSNKQELIKKFTSKVGPLTETSHREAKKL
+AKEILGHEIFFDWELPRVREGLYRYRGGTQCSIMRARAFAPYADLVWMESNYPDFQQAKE
+FAEGVKEKFPDQWLAYNLSPSFNWPKAMSVDEQHTFIQRLGDLGYIWQFITLAGLHTNAL
+AVHNFSRDFAKDGMKAYAQNVQQREMDDGVDVLKHQKWSGAEYIDGLLKLAQGGVSATAA
+MGTGVTEDQFKENGVKK
+&gt;sp|Q07622|ACK1_YEAST Activator of C kinase protein 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ACK1 PE=1 SV=1
+MVNQGQPQPNLYDKHINMFPPARARESSHKLGNANSDRHGLPAQNIVPAPYPVDDSIVEL
+TPAIPFTSPSSSSSLSLPLSALNFTDGNADGGQLGTPVTINSNNGMDIFNSKPTGEIGYA
+NNGTNSTGSRYELPFNFSSTKESLGSPAVQDASISSGNRISESVRDNSAPPPYEESESRI
+LQEKVYRTEEKAPIRPLNNNPVPPQKINQPPTGSAKTDDNGSSGGEDKLSSYSPEALAFY
+QVYKKTITDSSKFTPEIQMQWCETLLTYAFNEDFISQYNINAEKLKRSLKPEEMLKNQKV
+ILEHSFKVLTKLITLKWPPAMYLMGTLYSHQPYLPIKNKNIVIKNDEKALEYYCKAAKLN
+NSDACYRAGVCFEYQRGTSSLDP
+....
+....
+</pre></div>
+
+<p>Como se pode ver, cada sequência, que pode ocupar várias linhas, é precedida de um <em>header</em>
+(em português "cabeçalho") que ocupa uma única linha começada por <code>&gt;</code>. Esta linha
+contem algumas anotações sobre a proteína, em particular o <strong>Número UniProt de Acesso</strong> que
+está contido entre dois <code>|</code> em cada <em>header</em>.</p>
+<div class="codehilite"><pre><span></span>&gt;sp|A7HZZ5|ACP_CAMHC Acyl carrier protein OS=Campylobacter hominis
+</pre></div>
+
+
+<p><strong>Problema: Contar as sequências contidas num ficheiro FASTA</strong></p>
+<p>A estratégia é simples: as linhas começadas por <code>&gt;</code> são os <em>headers</em> e o
+número de sequências é igual ao número de <em>headers</em>.</p>
+<div class="codehilite"><pre><span></span><span class="c1"># ler o ficheiro para uma grande string</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;uniprot_scerevisiae_reviewed.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datafile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">datafile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># dividir em linhas</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="c1"># filtrar as linhas começadas por &gt;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">):</span>
+        <span class="n">headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;O proteoma tem {len(headers)} proteínas&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>O proteoma tem 6049 proteínas
+</pre></div>
+
+
+<p>Usando uma lista em compreensão:</p>
+<div class="codehilite"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;uniprot_scerevisiae_reviewed.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datafile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">datafile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;O proteoma tem {len(headers)} proteínas&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>O proteoma tem 6049 proteínas
+</pre></div>
+
+
+<p><strong>Problema:</strong></p>
+<p><strong>Construír uma lista de headers e uma lista de sequências contidos num ficheiro FASTA.</strong></p>
+<p>Este problema já não é tão simples, mas a estratégia geral é:</p>
+<ol>
+<li>Ler todo o ficheiro</li>
+<li>Separar por <code>&gt;</code>, obtendo-se blocos de header + seq para cada proteína</li>
+<li>Processar cada bloco, separando o <em>hearder</em> da <em>seq</em> como num exemplo já visto</li>
+<li>Acrescentar a informação no fim de duas listas, uma para os <em>headers</em> outra para as <em>seqs</em></li>
+</ol>
+<p>Repare-se no formato do ficheiro, com os headers destacados:</p>
+<div class="codehilite"><pre><span></span><span class="hll">&gt;sp|A7HZZ5|ACP_CAMHC Acyl carrier protein OS=Campylobacter hominis
+</span>MEVFEEVRDVVVEQLSVAPDAVKIDSKIIEDLGADSLDVVELVMALEEKFGIEIPDSEAE
+KLISIKDVVTYIENLNKNK
+<span class="hll">&gt;sp|A7I0W5|CH60_CAMHC 60 kDa chaperonin OS=Campylobacter hominis
+</span>MAKDIIFSDDARNRLYDGVKKLNDTVKVTMGPRGRNVLIQKSFGAPAITKDGVSVAKEVE
+LKDTIENMGAALVKEVANKTNDQAGDGTTTATVLAHAIFKEGLRNITAGANPIEVKRGMD
+KICADVVAELKKISKPVKDKKEIAQVATIS
+
+....
+....
+</pre></div>
+
+<p>O programa que implementa esta estratégia poderá ser</p>
+<div class="codehilite"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;uniprot_scerevisiae_reviewed.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datafile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">datafile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">blocks</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">seqs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="n">headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">seqs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;O proteoma tem {len(headers)} proteínas&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">A última proteína no ficheiro: ---------------&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">headers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">seqs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>O proteoma tem 6049 proteínas
+
+A última proteína no ficheiro: ---------------
+sp|P36084|MUD2_YEAST Splicing factor MUD2 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=MUD2 PE=1 SV=3
+MADEKRLEDLRSKIMESIGKSEKDVVPIENKRFNTDNAVIDTHFKRQKSDGELPKAPKSRNVSHSNNRGPSSIITMSTNRTTYEQTRAGPHRQSYRDASGRSYNRENRYSSHNTGPQWNNNPYNRQRDERRGRNERFDRRGRNGNGNYDRFNYQRKNEGSKFNGDRDKRQLQTNKYDMNYNSQNVMYPGSSFDSPAYYNMASSKANSRLVISGLSQSSDPSIVARLKDLLENFISGLQKTESNAEDFKISNFYIGEGRPDHIIVEFSSQICSTMVLACRSFFNAKLGTFDLKWRRPNDYVQQLDHLVDFCRGTVIALENLENIGEGEDYRMKELFSSLNVTNGTAKPLFYKCSSNTNNTGKESEFTKCILLSFEVVTQDILDKLKPYKWFKPNDGKISQVTSWITFQSLPNLVTQSVRVESRVLLLLNCLDPLDLKDETFITEIKETLKYSIAGADTIKICQPGVDYRLNFENLASGAGNIYIKFKTLEAAKHAMEELPGTQFNDRTVLCTYIDEDDFDMMEATQLS
+</pre></div>
+
+
+<p>Para teste, é mostrada a última proteína contida no ficheiro.</p>
+<p>Uma linha não parece necessária. Porquê o teste</p>
+<div class="codehilite"><pre><span></span>    <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+</pre></div>
+
+<p>que parece desnecessário?</p>
+<p>Devido ao ficheiro começar por <code>&gt;</code>, o efeito da função <code>.split('&gt;')</code> é criar uma lista de blocos,
+mas o primeiro bloco é uma <em>string</em> vazia! Devemos ignorar estes blocos vazios!</p>
+<p><strong>Problema:</strong></p>
+<p><strong>Construír um dicionário qua faça corresponder o <em>Número de acesso UniProt</em> a cada sequência</strong></p>
+<p>Aumentando o programa anterior, podemos processar os <em>headers</em> par extraír cada <em>Número UniProt de Acesso</em>.</p>
+<p>Recorde-se que o <em>Número UniProt de Acesso</em> está entre <code>|</code> em cada <em>header</em></p>
+<div class="codehilite"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;uniprot_scerevisiae_reviewed.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datafile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">datafile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">blocks</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">seqs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="n">headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">seqs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+
+<span class="n">dictseqs</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">header</span><span class="p">,</span> <span class="n">seq</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">seqs</span><span class="p">):</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">dictseqs</span><span class="p">[</span><span class="n">ac</span><span class="p">]</span> <span class="o">=</span> <span class="n">seq</span>
+
+<span class="k">for</span> <span class="n">ac</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;P28240&#39;</span><span class="p">,</span><span class="s1">&#39;P38832&#39;</span><span class="p">,</span><span class="s1">&#39;P36084&#39;</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{ac}: {dictseqs[ac]}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>P28240: MPIPVGNTKNDFAALQAKLDADAAEIEKWWSDSRWSKTKRNYSARDIAVRRGTFPPIEYPSSVMARKLFKVLEKHHNEGTVSKTFGALDPVQISQMAKYLDTIYISGWQCSSTASTSNEPGPDLADYPMDTVPNKVEHLFKAQLFHDRKQLEARSKAKSQEELDEMGAPIDYLTPIVADADAGHGGLTAVFKLTKMFIERGAAGIHMEDQTSTNKKCGHMAGRCVIPVQEHVNRLVTIRMCADIMHSDLIVVARTDSEAATLISSTIDTRDHYFIVGATNPNIEPFAEVLNDAIMSGASGQELADIEQKWCRDAGLKLFHEAVIDEIERSALSNKQELIKKFTSKVGPLTETSHREAKKLAKEILGHEIFFDWELPRVREGLYRYRGGTQCSIMRARAFAPYADLVWMESNYPDFQQAKEFAEGVKEKFPDQWLAYNLSPSFNWPKAMSVDEQHTFIQRLGDLGYIWQFITLAGLHTNALAVHNFSRDFAKDGMKAYAQNVQQREMDDGVDVLKHQKWSGAEYIDGLLKLAQGGVSATAAMGTGVTEDQFKENGVKK
+
+P38832: MKCTLVSTLFAITNILVAHAQVSNSSDTLDVQFANSTNSYIEGKFNSTDEAFNSSASWSLAAQQKKISNAAVYDVGGWNGSLYRSNRSAVADHQPGKKQDAAISQISDGQIQATASGPETTAATTPSSTANVSVYEGAGMKVESKNMGYIVGVAALLFL
+
+P36084: MADEKRLEDLRSKIMESIGKSEKDVVPIENKRFNTDNAVIDTHFKRQKSDGELPKAPKSRNVSHSNNRGPSSIITMSTNRTTYEQTRAGPHRQSYRDASGRSYNRENRYSSHNTGPQWNNNPYNRQRDERRGRNERFDRRGRNGNGNYDRFNYQRKNEGSKFNGDRDKRQLQTNKYDMNYNSQNVMYPGSSFDSPAYYNMASSKANSRLVISGLSQSSDPSIVARLKDLLENFISGLQKTESNAEDFKISNFYIGEGRPDHIIVEFSSQICSTMVLACRSFFNAKLGTFDLKWRRPNDYVQQLDHLVDFCRGTVIALENLENIGEGEDYRMKELFSSLNVTNGTAKPLFYKCSSNTNNTGKESEFTKCILLSFEVVTQDILDKLKPYKWFKPNDGKISQVTSWITFQSLPNLVTQSVRVESRVLLLLNCLDPLDLKDETFITEIKETLKYSIAGADTIKICQPGVDYRLNFENLASGAGNIYIKFKTLEAAKHAMEELPGTQFNDRTVLCTYIDEDDFDMMEATQLS
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;uniprot_scerevisiae_reviewed.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datafile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">datafile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">blocks</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">seqs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="n">headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">seqs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+
+<span class="c1"># com um dicionário em compreensão:</span>
+
+<span class="n">dictseqs</span> <span class="o">=</span> <span class="p">{</span><span class="n">header</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="n">seq</span> <span class="k">for</span> <span class="n">header</span><span class="p">,</span><span class="n">seq</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">seqs</span><span class="p">)}</span>
+
+<span class="k">for</span> <span class="n">ac</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;P28240&#39;</span><span class="p">,</span><span class="s1">&#39;P38832&#39;</span><span class="p">,</span><span class="s1">&#39;P36084&#39;</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{ac}: {dictseqs[ac]}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>P28240: MPIPVGNTKNDFAALQAKLDADAAEIEKWWSDSRWSKTKRNYSARDIAVRRGTFPPIEYPSSVMARKLFKVLEKHHNEGTVSKTFGALDPVQISQMAKYLDTIYISGWQCSSTASTSNEPGPDLADYPMDTVPNKVEHLFKAQLFHDRKQLEARSKAKSQEELDEMGAPIDYLTPIVADADAGHGGLTAVFKLTKMFIERGAAGIHMEDQTSTNKKCGHMAGRCVIPVQEHVNRLVTIRMCADIMHSDLIVVARTDSEAATLISSTIDTRDHYFIVGATNPNIEPFAEVLNDAIMSGASGQELADIEQKWCRDAGLKLFHEAVIDEIERSALSNKQELIKKFTSKVGPLTETSHREAKKLAKEILGHEIFFDWELPRVREGLYRYRGGTQCSIMRARAFAPYADLVWMESNYPDFQQAKEFAEGVKEKFPDQWLAYNLSPSFNWPKAMSVDEQHTFIQRLGDLGYIWQFITLAGLHTNALAVHNFSRDFAKDGMKAYAQNVQQREMDDGVDVLKHQKWSGAEYIDGLLKLAQGGVSATAAMGTGVTEDQFKENGVKK
+
+P38832: MKCTLVSTLFAITNILVAHAQVSNSSDTLDVQFANSTNSYIEGKFNSTDEAFNSSASWSLAAQQKKISNAAVYDVGGWNGSLYRSNRSAVADHQPGKKQDAAISQISDGQIQATASGPETTAATTPSSTANVSVYEGAGMKVESKNMGYIVGVAALLFL
+
+P36084: MADEKRLEDLRSKIMESIGKSEKDVVPIENKRFNTDNAVIDTHFKRQKSDGELPKAPKSRNVSHSNNRGPSSIITMSTNRTTYEQTRAGPHRQSYRDASGRSYNRENRYSSHNTGPQWNNNPYNRQRDERRGRNERFDRRGRNGNGNYDRFNYQRKNEGSKFNGDRDKRQLQTNKYDMNYNSQNVMYPGSSFDSPAYYNMASSKANSRLVISGLSQSSDPSIVARLKDLLENFISGLQKTESNAEDFKISNFYIGEGRPDHIIVEFSSQICSTMVLACRSFFNAKLGTFDLKWRRPNDYVQQLDHLVDFCRGTVIALENLENIGEGEDYRMKELFSSLNVTNGTAKPLFYKCSSNTNNTGKESEFTKCILLSFEVVTQDILDKLKPYKWFKPNDGKISQVTSWITFQSLPNLVTQSVRVESRVLLLLNCLDPLDLKDETFITEIKETLKYSIAGADTIKICQPGVDYRLNFENLASGAGNIYIKFKTLEAAKHAMEELPGTQFNDRTVLCTYIDEDDFDMMEATQLS
+</pre></div>
+
+
+<p>Podíamos não ter criado as listas intermédias contendo todos os <em>headers</em> e as
+sequências. Bastaria processar diretamente cada bloco.</p>
+<p>Assim, uma versão muito mais compacta seria:</p>
+<div class="codehilite"><pre><span></span><span class="n">dictseqs</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;uniprot_scerevisiae_reviewed.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datafile</span><span class="p">:</span>
+    <span class="n">blocks</span> <span class="o">=</span> <span class="n">datafile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+    <span class="n">dictseqs</span><span class="p">[</span><span class="n">ac</span><span class="p">]</span> <span class="o">=</span> <span class="n">seq</span>
+
+<span class="k">for</span> <span class="n">ac</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;P28240&#39;</span><span class="p">,</span><span class="s1">&#39;P38832&#39;</span><span class="p">,</span><span class="s1">&#39;P36084&#39;</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{ac}: {dictseqs[ac]}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>P28240: MPIPVGNTKNDFAALQAKLDADAAEIEKWWSDSRWSKTKRNYSARDIAVRRGTFPPIEYPSSVMARKLFKVLEKHHNEGTVSKTFGALDPVQISQMAKYLDTIYISGWQCSSTASTSNEPGPDLADYPMDTVPNKVEHLFKAQLFHDRKQLEARSKAKSQEELDEMGAPIDYLTPIVADADAGHGGLTAVFKLTKMFIERGAAGIHMEDQTSTNKKCGHMAGRCVIPVQEHVNRLVTIRMCADIMHSDLIVVARTDSEAATLISSTIDTRDHYFIVGATNPNIEPFAEVLNDAIMSGASGQELADIEQKWCRDAGLKLFHEAVIDEIERSALSNKQELIKKFTSKVGPLTETSHREAKKLAKEILGHEIFFDWELPRVREGLYRYRGGTQCSIMRARAFAPYADLVWMESNYPDFQQAKEFAEGVKEKFPDQWLAYNLSPSFNWPKAMSVDEQHTFIQRLGDLGYIWQFITLAGLHTNALAVHNFSRDFAKDGMKAYAQNVQQREMDDGVDVLKHQKWSGAEYIDGLLKLAQGGVSATAAMGTGVTEDQFKENGVKK
+
+P38832: MKCTLVSTLFAITNILVAHAQVSNSSDTLDVQFANSTNSYIEGKFNSTDEAFNSSASWSLAAQQKKISNAAVYDVGGWNGSLYRSNRSAVADHQPGKKQDAAISQISDGQIQATASGPETTAATTPSSTANVSVYEGAGMKVESKNMGYIVGVAALLFL
+
+P36084: MADEKRLEDLRSKIMESIGKSEKDVVPIENKRFNTDNAVIDTHFKRQKSDGELPKAPKSRNVSHSNNRGPSSIITMSTNRTTYEQTRAGPHRQSYRDASGRSYNRENRYSSHNTGPQWNNNPYNRQRDERRGRNERFDRRGRNGNGNYDRFNYQRKNEGSKFNGDRDKRQLQTNKYDMNYNSQNVMYPGSSFDSPAYYNMASSKANSRLVISGLSQSSDPSIVARLKDLLENFISGLQKTESNAEDFKISNFYIGEGRPDHIIVEFSSQICSTMVLACRSFFNAKLGTFDLKWRRPNDYVQQLDHLVDFCRGTVIALENLENIGEGEDYRMKELFSSLNVTNGTAKPLFYKCSSNTNNTGKESEFTKCILLSFEVVTQDILDKLKPYKWFKPNDGKISQVTSWITFQSLPNLVTQSVRVESRVLLLLNCLDPLDLKDETFITEIKETLKYSIAGADTIKICQPGVDYRLNFENLASGAGNIYIKFKTLEAAKHAMEELPGTQFNDRTVLCTYIDEDDFDMMEATQLS
+</pre></div>
+
 
 <h2 id="imutabilidade-das-strings">"Imutabilidade" das <em>strings</em><a class="headerlink" href="#imutabilidade-das-strings" title="Permanent link">&para;</a></h2>
 <p>As <em>strings</em> são <strong>imutáveis</strong>.</p>
