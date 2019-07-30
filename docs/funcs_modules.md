@@ -58,7 +58,7 @@ mini-programas dentro de programas) são a solução para estes casos.
 Já vimos várias funções, sempre disponíveis ou disponíveis após
 importação de módulos:
 
-``` python
+``` python3
 a = 'Uma pequena string'
 n = len(a)
 
@@ -89,7 +89,7 @@ objetos genéricos (`x`):
 **Problema**: escrever uma função que, dada uma sequência, devolva a
 sequência com os codões separados por `-`.
 
-``` python
+``` python3
 def seqcods(x):
     cods = [x[i:i+3] for i in range(0,len(x),3)]
     comhifen = '-'.join(cods)
@@ -104,7 +104,7 @@ A definição de uma função (`def`) não executa nada imediatamente.
 
 É necessário **chamar** (ou "*invocar*") a função para esta ser usada:
 
-``` python
+``` python3
 def seqcods(x):
     cods = [x[i:i+3] for i in range(0,len(x),3)]
     comhifen = '-'.join(cods)
@@ -128,7 +128,7 @@ ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
     O comando `return` pode "devolver" uma expressão complicada
     (não só o nome de um objeto)
 
-``` python
+``` python3
 def seqcods(x):
     return '-'.join( [x[i:i+3] for i in range(0,len(x),3)])
 
@@ -163,7 +163,7 @@ qualquer ponto do programa, da forma seguinte:
 
 Exemplo: função `factorial()`:
 
-``` python
+``` python3
 def factorial(n):
     res = 1
     for k in range(2,n+1):
@@ -179,7 +179,7 @@ print(factorial(200))
 
 ## Vários tipos de funções
 
-``` python
+``` python3
 a = 'Uma pequena string'
 
 #1 argumento, 1 resultado
@@ -198,7 +198,7 @@ print( a.upper() )
 UMA PEQUENA STRING
 ```
 
-``` python
+``` python3
 #1 arg, 0 res, associada a um objeto (lista b)
 # modifica o objeto (a lista b)
 b = [12, 24]
@@ -216,7 +216,7 @@ Além da função `.append()`, recordar que **as listas** têm outras duas
 funções deste tipo, que modificam a lista sem produzir nenhum resultado
 (o resultado é a constante `None`): `.reverse()` e `.sort()`.
 
-``` python
+``` python3
 b = [12, 24, 36]
 print(b)
 
@@ -239,7 +239,7 @@ O resultado pode não ser apenas um número ou uma *string*: as funções
 podem devolver uma lista inteira, um dicionário ou outros objetos mais
 complexos.
 
-``` python
+``` python3
 import math
 print( math.log(64, 2) )
 
@@ -256,7 +256,7 @@ time.struct_time(tm_year=2018, tm_mon=4, tm_mday=8, tm_hour=18, tm_min=39, tm_se
 **Problema**: eliminar valores de uma lista que pertençam a uma "lista
 negra"
 
-``` python
+``` python3
 def elimin_black(uma_lista, black_list):
     res = [i for i in uma_lista if i not in black_list]
     return res
@@ -282,7 +282,7 @@ A eliminar: [1, 2, 'um', 'dois']
 função para **ler o conteúdo do ficheiro para uma lista de linhas sem o
 `\n` no final, excluíndo as linhas vazias**.
 
-``` python
+``` python3
 def ler_fich(nome):
     linhas = []
     with open(nome) as a:
@@ -310,7 +310,7 @@ KDISALNANIRFNDPWTWLDGKFPTFA
 
 **Problema**: eliminar valores repetidos numa lista
 
-``` python
+``` python3
 def elimin_reps(uma_lista):
     res = []
     for i in uma_lista:
@@ -343,7 +343,7 @@ e é esta lista que é o **resultado** da função.
 devolvida uma lista nova como resultado. Isto é, a função recebe uma
 lista e modifica-a, não havendo `return`.
 
-``` python
+``` python3
 def elimin_reps2(uma_lista):
     res = []
     for i in uma_lista:
@@ -377,7 +377,7 @@ são imutáveis.
 
 Se as funções tiverem resultados é possível usá-las em cadeia:
 
-``` python
+``` python3
 def elimin_reps(uma_lista):
     res = []
     for i in uma_lista:
@@ -401,7 +401,7 @@ print(clean)
 ## Âmbito dos nomes
 
 
-``` python
+``` python3
 def recta(m, b, x):
     print('Para x =', x)
     print('com m =', m)
@@ -428,7 +428,7 @@ Este programa corre sem problemas.
 
 Note-se que podemos usar a função `print()` dentro de uma função.
 
-``` python
+``` python3
 def recta(m, b, x):
     r1, r0 = m*x, b
     return r1 + r0
@@ -470,7 +470,7 @@ nomes. Daí o erro durante a execução.
 
 O mesmo acontece aos próprios nomes locais dos **argumentos** da função:
 
-``` python
+``` python3
 def recta2(m2, b2, x):
     r1, r0 = m2*x, b2
     return r1 + r0
@@ -497,7 +497,7 @@ print('Resultado:', res)
 
     NameError: name 'm2' is not defined
 
-``` python
+``` python3
 def recta(m, b, x):
     print('Dentro da função --------')
     print('m =', m, 'b =', b, 'x =', x)
@@ -558,7 +558,7 @@ de `x` volta a ser 4, uma vez que voltamos a um contexto "global".
 
 ## Argumentos de tipo _palavra-chave
 
-``` python
+``` python3
 def mix(a=1, b=0):
     c = a + b
     print('a =', a, 'b =', b, '--> return =', c)
@@ -580,7 +580,7 @@ a = 2 b = 3 --> return = 5
 a = 2 b = 3 --> return = 5
 ```
 
-``` python
+``` python3
 def factorial(n, trace=False):
     p = 1
     for i in range(2,n+1):
@@ -597,7 +597,7 @@ print('O factorial de 20 é', f20)
 O factorial de 20 é 2432902008176640000
 ```
 
-``` python
+``` python3
 def factorial(n, trace=False):
     p = 1
     for i in range(2,n+1):
@@ -675,7 +675,7 @@ de autores e em permanente crescimento.
 Exemplo da construção de um módulo
 ----------------------------------
 
-``` python
+``` python3
 def readFASTA(filename):
     """This function reads a FASTA format file and
     returns a pair of strings
@@ -716,7 +716,7 @@ Este ficheiro constitui um módulo que pode ser usado num programa.
 
 Para isso, é necessário usar o comando `import`:
 
-``` python
+``` python3
 import biosequences
 
 h, s = biosequences.readFASTA("gre3.txt")
@@ -734,7 +734,7 @@ MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLW
 
 Há mais duas maneiras de utilizar o comando `import`:
 
-``` python
+``` python3
 from biosequences import readFASTA
 
 h, s = readFASTA("gre3.txt")
@@ -750,7 +750,7 @@ Sequence:
 MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
 ```
 
-``` python
+``` python3
 from biosequences import *
 
 h, s = readFASTA("gre3.txt")
@@ -807,7 +807,7 @@ as seguintes atribuições:
 
 Sabemos que o módulo `biosequences` tem um dicionário chamado `gencode`.
 
-``` python
+``` python3
 from biosequences import gencode
 
 def translation(seq):
@@ -845,7 +845,7 @@ biológicas.
 Se usarmos a primeira forma do comando `import`, é possível mudar o nome
 do módulo (para uma forma mais abreviada), um *alias*, da seginte forma:
 
-``` python
+``` python3
 import biosequences as bs
 
 h, s = bs.readFASTA("gre3.txt")

@@ -28,7 +28,7 @@ As principais coleções usadas em Python são:
 
 ### Listas
 
-``` python
+``` python3
 a = [2, 4, 3.1415, 'eu aqui', "fim da lista"]
 
 print(a)
@@ -49,7 +49,7 @@ outro lado, como se pode ver no exemplo, foi atribuído um único nome
 As listas podem ter elementos de vários tipos e estes elementos podem
 até ser o resultado de expressões:
 
-``` python
+``` python3
 a = [19, 14/2, 5.0**3, 'Bom dia']
 b = 1
 c = [b, b+1, (b+2)**3]
@@ -73,7 +73,7 @@ elementos da lista.
 Uma propriedade fundamental das listas é que a **ordem dos elementos tem
 significado** e uma lista pode ser "**indexável**" com numeros inteiros.
 
-``` python
+``` python3
 a = [19, 14/2, 5.0**3, 'Bom dia']
 #    0    1      2        3
 
@@ -101,7 +101,7 @@ $n$ é o número de elementos da lista.
 As _strings_ também têm uma numeração implícita, a contar do zero, sendo
 também "indexáveis".
 
-``` python
+``` python3
 s = 'Eu sou uma pequena string'
 #    0123456789
 
@@ -122,7 +122,7 @@ m
 !!! info "Definição"
     Dicionários são **associações** entre _chaves_ e _valores_.
 
-``` python
+``` python3
 d = {'H': 1, 'Li': 3, 'Na': 11, 'K': 19}
 ```
 
@@ -136,7 +136,7 @@ Ao contrário das listas e das *strings*, a **ordem dos elementos num
 dicionário não tem significado** mas um dicionário pode ser
 "**indexável**" com as *chaves*:
 
-``` python
+``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 print('d =', d)
@@ -166,7 +166,7 @@ coleções:
 A função `len()` **pode ser aplicada a qualquer coleção**, devolvendo o
 **número de elementos** contidos nessa coleção.
 
-``` python
+``` python3
 a = [2,4,6,8,10, 'viria o 12', 'e depois o 14']
 s = 'Eu sou uma pequena string'
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
@@ -191,7 +191,7 @@ um.
 
 Em Python é usado o comado `for` para esse efeito.
 
-``` python
+``` python3
 a = [2,4,6,8,10, 'viria o 12', 'e depois o 14']
 
 for x in a:
@@ -223,7 +223,7 @@ Vamos ver alguns exemplos da utilização de um comando `for`:
 
 **Problema: mostrar uma tabela de raízes quadradas de 1 a 10**
 
-``` python
+``` python3
 print('tabela de raízes quadradas')
 
 a = [1,2,3,4,5,6,7,8,9,10]
@@ -246,7 +246,7 @@ tabela de raízes quadradas
 10 3.1622776601683795
 ```
 
-``` python
+``` python3
 # Programa dos anos bissextos sem input
 
 anos = [2015, 2014, 2013, 2012, 2000, 1900, 1800]
@@ -271,7 +271,7 @@ for a in anos:
 A iteração de uma *string* "percorre" os seus **caracteres**. Os espaços
 e a pontuação também são considerados caracteres.
 
-``` python
+``` python3
 s = 'Eu sou uma string'
 
 for x in s:
@@ -301,7 +301,7 @@ g
 Finalmente, a iteração de dicionários "percorre" as suas **chaves**
 (apenas as chaves).
 
-``` python
+``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 for x in d:
@@ -317,7 +317,7 @@ K
 
 Mas é fácil usar as chaves para obter uma tabela de chaves-valores:
 
-``` python
+``` python3
 grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 print('elementos do grupo 1')
@@ -339,7 +339,7 @@ A ordem da iteração das chaves num dicionário é "incerta".
 Podemos forçar uma ordem, iterando sobre uma **lista** com as chaves, na
 ordem desejada:
 
-``` python
+``` python3
 grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 print('elementos do grupo 1')
@@ -361,7 +361,7 @@ Exemplos de iteração
 
 **Problema: somar todos os numeros de 1 a 10**
 
-``` python
+``` python3
 nums = [1,2,3,4,5,6,7,8,9,10]
 
 s = 0
@@ -388,7 +388,7 @@ das iterações. Adaptando o programa anterior com algumas utilizações
 dicionais da função `print()` podemos ver esses valores a mudar para
 cada `i`.
 
-``` python
+``` python3
 nums = [1,2,3,4,5,6,7,8,9,10]
 
 s = 0
@@ -446,7 +446,7 @@ Desta vez não vamos criar uma lista de números até 1000 explicitamente
 Em vez disso, usamos a função `range()` que gera números inteiros
 consecutivos:
 
-``` python
+``` python3
 s = 0
 
 for i in range(1, 1001):
@@ -484,7 +484,7 @@ Nunca esquecer que o valor do `fim` **é excluído da lista**
 
 Exemplos:
 
-``` python
+``` python3
 print('-- range(12) ----------')
 # acaba em 12 (exclusivé), começa em 0 e percorre de 1 em 1.
 
@@ -508,7 +508,7 @@ for i in range(12):
 11
 ```
 
-``` python
+``` python3
 print('-- range(5, 12) ----------')
 # começa em 5, acaba em 12 (exclusivé) e percorre de 1 em 1.
 
@@ -527,7 +527,7 @@ for i in range(5, 12):
 11
 ```
 
-``` python
+``` python3
 print('-- range(5, 12, 2) ----------')
 # começa em 5, acaba em 12 (exclusivé) e percorre de 2 em 2.
 
@@ -545,7 +545,7 @@ for i in range(5, 12, 2):
 
 **Problema: calcular o factorial de 1000**
 
-``` python
+``` python3
 fact = 1
 for i in range(1, 1001):
     fact = fact * i
@@ -570,7 +570,7 @@ DNA**
 Se num programa tivermos uma *string* contendo uma sequência de um ácido
 nucleico, então podemos percorrer todas as "bases" da sequência:
 
-``` python
+``` python3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
 
 for b in seq:
@@ -589,7 +589,7 @@ Agora podemos resolver o problema do cálculo da sequência complementar.
 Parte da estratégia consiste em ir adicionando cada base complementar a
 uma *string* de acumulação do resultado, que, inicialmente, está vazia:
 
-``` python
+``` python3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
 
 seqcomp = ''
@@ -626,7 +626,7 @@ O programa pode ser modificado elminando os `if...elif...elif...else`.
 A ideia é usar um dicionário que associe cada base à sua base
 complementar:
 
-``` python
+``` python3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
 
 seqcomp = ''
@@ -649,7 +649,7 @@ Sem muito esforço, podemos formatar um pouco a apresentação das duas
 cadeias, na vertical e pondo em evidência a correspondência entre as
 bases:
 
-``` python
+``` python3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
 
 complementares = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
@@ -699,7 +699,7 @@ Agora um problema mais elaborado:
 **converter uma sequência com códigos de uma letra de aminoácidos para
 códigos de 3 letras, usando um dicionário para a conversão.**
 
-``` python
+``` python3
 trans = {'A': 'Ala', 'C': 'Cys', 'E': 'Glu', 'D': 'Asp', 'G': 'Gly', 'F': 'Phe', 'I': 'Ile', 'H': 'His', 'K': 'Lys', 'M': 'Met', 'L': 'Leu', 'N': 'Asn', 'Q': 'Gln', 'P': 'Pro', 'S': 'Ser', 'R': 'Arg', 'T': 'Thr', 'W': 'Trp', 'V': 'Val', 'Y': 'Tyr'}
 
 # Problema: transformar seq1 numa string com os códigos de 3 letras dos aa
@@ -722,7 +722,7 @@ ADKLITCWFHHWE é o mesmo que  Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Gl
 Por sua vez, podemos usar o "operador" `in` como teste de inclusão de um
 elemento numa coleção.
 
-``` python
+``` python3
 nums = [1,2,3,4,5,6,7,8,9,10]
 if 4 in nums:
     print(4, 'existe')
@@ -734,7 +734,7 @@ else:
 4 existe
 ```
 
-``` python
+``` python3
 nums = [1,2,3,4,5,6,7,8,9,10]
 
 for n in [1, 4, 7, 20, 40]:
@@ -752,7 +752,7 @@ for n in [1, 4, 7, 20, 40]:
 40 não existe
 ```
 
-``` python
+``` python3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
 
 if 'U' in seq:
@@ -771,7 +771,7 @@ Não existe U
 Existe TGT
 ```
 
-``` python
+``` python3
 grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 print('Mg' in grupo1)
@@ -789,7 +789,7 @@ lisinas (K)**
 Percorrer os aminoácidos da sequência é simples, usamos um comando
 `for`. Para testar se estamos na presença de um K, usamos um `if`:
 
-``` python
+``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
 for aa in seq:
@@ -812,7 +812,7 @@ Mais uma vez, percorremos os aminoácidos da sequência com `for`. Para
 testar se estamos na presença de um K ou um L, usamos um teste de
 inclusão na *string* `"KL"`
 
-``` python
+``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
 for aa in seq:
@@ -830,7 +830,7 @@ K
 
 Ou, para visualizar bem a posição das lisinas e leucinas:
 
-``` python
+``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
 for aa in seq:
@@ -853,7 +853,7 @@ códigos K ou L**
 Podemos usar um "contador" das **posições** dos aminoácidos,
 "acumulando" a soma de 1 por letra:
 
-``` python
+``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
 i = 0
@@ -881,7 +881,7 @@ Função `enumerate()`
 Vejamos o que resulta da aplicação da função `enumerate()` a uma
 sequência:
 
-``` python
+``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
 for x in enumerate(seq):
@@ -929,7 +929,7 @@ O mais interessante é que, no ciclo `for` com a função
 `enumerate()`podemos usar um **par de nomes** para nos referirmos
 simultaneamente à posição e ao elemento. Isto é chamado *desdobramento*.
 
-``` python
+``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
 for (i, a) in enumerate(seq):
@@ -981,7 +981,7 @@ Usando a função `enumerate()`, o problema de tabelar as posições das
 lisinas e argininas pode ser escrito de uma forma mais compacta, sem
 usar explicitamente um "contador da posição":
 
-``` python
+``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
 for i, aa in enumerate(seq):
@@ -1010,7 +1010,7 @@ comandos `for`:
 
 **Problema: gerar os 64 codões do código genético**
 
-``` python
+``` python3
 bases = 'AUGC'
 
 for b1 in bases:
@@ -1101,7 +1101,7 @@ condição.
 DNA e a sequência complementar, mas parar assim que for encontrado um
 par C - G.**
 
-``` python
+``` python3
 seq = 'ATGGTTAAACTTGTTGACTGCAAATGCGTACGT'
 
 complementares = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
@@ -1140,7 +1140,7 @@ Vejamos com um exemplo:
 **Problema: obter um esquema das correspondências entre uma sequência de
 DNA e a sequência complementar. Saltar todos as ligações A - T.**
 
-``` python
+``` python3
 seq = 'ATGGTTAAACTTGTTGACTGCAAATGCGTACGT'
 
 complementares = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
@@ -1181,7 +1181,7 @@ com os elementos de uma coleção.
 O comando `while` é escrito como um bloco de linhas que é executado
 enquanto uma condição for verdadeira:
 
-``` python
+``` python3
 #contagem decrescente
 count = 10
 while count > 0:

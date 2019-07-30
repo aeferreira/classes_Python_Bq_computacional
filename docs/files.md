@@ -21,7 +21,7 @@ um ficheiro e que o acesso vai terminar, o *fecho* de um ficheiro.
 
 ### `.read()`, com `open()` e `close()` explícitos
 
-``` python
+``` python3
 a = open('eno1.fasta')
 seq = a.read()
 a.close()
@@ -50,7 +50,7 @@ GDNAVFAGENFHHGDKL
 Numa versão mais "moderna" podemos abrir e **automaticamente fechar** o
 ficheiro é utilizar o comando `with`:
 
-``` python
+``` python3
 with open('eno1.fasta') as a:
     seq = a.read()
 
@@ -83,7 +83,7 @@ Além de `read()`, em que todo o conteúdo de um ficheiro é lido para uma
 A função `readlines()` lê e separa **as linhas** de um ficheiro para uma
 lista:
 
-``` python
+``` python3
 with open('eno1.fasta') as a:
     seq = a.readlines()
 
@@ -105,7 +105,7 @@ linha.
 Muitas vezes, é necessário elimina-los. Para isso podemos usar a função
 `.strip()`:
 
-``` python
+``` python3
 with open('eno1.fasta') as a:
     seq = a.readlines()
 
@@ -119,7 +119,7 @@ print(seq)
 
 Ou, de uma forma sucinta, usando uma lista em compreensão:
 
-``` python
+``` python3
 with open('eno1.fasta') as a:
     seq = [linha.strip() for linha in a.readlines()]
 print(seq)
@@ -140,7 +140,7 @@ com ficheiros grandes):
 
 **A iteração de um ficheiro "percorre" as linhas do ficheiro**
 
-``` python
+``` python3
 with open('eno1.fasta') as a:
     for linha in a:
         linha = linha.strip()
@@ -164,7 +164,7 @@ pares de valores
 
 `(num linha, linha)`.
 
-``` python
+``` python3
 with open('eno1.fasta') as a:
     for i, linha in enumerate(a):
         linha = linha.strip()
@@ -186,7 +186,7 @@ linha 8 :
 **Problema: ler uma ficheiro FASTA e separar o cabeçalho da sequência em
 duas strings (juntando toda a sequência numa só string)**
 
-``` python
+``` python3
 with open('eno1.fasta') as a:
     linhas = [k.strip() for k in a.readlines()]
 
@@ -211,7 +211,7 @@ MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKA
 Às vezes os ficheiros não têm cabeçalho! É melhor testar se a primeira
 linha começa por "&gt;" !
 
-``` python
+``` python3
 with open('eno1.fasta') as a:
     linhas = [k.strip() for k in a]
 
@@ -255,7 +255,7 @@ Vamos supor que o ficheiro **gre3.txt** tem o seguinte conteúdo:
 
 Como separar o cabeçalho da sequência?
 
-``` python
+``` python3
 with open('gre3.txt') as a:
     linhas = [k.strip() for k in a]
 
@@ -288,7 +288,7 @@ Exemplo: Extração de informação de um ficheiro FASTA múltiplo.
 múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
 (W)**
 
-``` python
+``` python3
 with open('proteins.fasta') as a:
     tudo = a.read()
 prots = tudo.split('>')
@@ -309,7 +309,7 @@ for p in prots:
 556
 ```
 
-``` python
+``` python3
 with open('proteins.fasta') as a:
     tudo = a.read()
 prots = tudo.split('>')
@@ -339,7 +339,7 @@ sp|P32626|ENOPH_YEAST Enolase-
 sp|P40370|ENO11_SCHPO Enolase 
 ```
 
-``` python
+``` python3
 with open('proteins.fasta') as a:
     tudo = a.read()
 prots = tudo.split('>')
@@ -367,7 +367,7 @@ sp|P32626|ENOPH_YEAST Enolase-phosphatase E1 OS=Saccharomyces cerevisiae (strain
 sp|P40370|ENO11_SCHPO Enolase 1-1 OS=Schizosaccharomyces pombe (strain 972 / ATCC 24843) GN=eno101 PE=1 SV=2
 ```
 
-``` python
+``` python3
 with open('proteins.fasta') as a:
     tudo = a.read()
 prots = tudo.split('>')
@@ -410,7 +410,7 @@ função `open()`. Depois, modificar a função `print()`, com o argumento
 `file`, indicando que o resultado da escrita deve ser *enviado* para o
 ficheiro.
 
-``` python
+``` python3
 with open('exp.txt', 'w') as a:
     print('1, 2, 3, experiência, som, som', file=a)
     for i in range(30):
@@ -421,7 +421,7 @@ Aparentemente não aconteceu nada, mas um ficheiro novo foi criado
 
 Vamos ler o ficheiro:
 
-``` python
+``` python3
 with open('exp.txt') as a:
     print(a.read())
 ```
@@ -465,7 +465,7 @@ with open('exp.txt') as a:
 Também existe a função `.write()` que funciona como o contrário de
 `.read()`:
 
-``` python
+``` python3
 tudo = """
 Um texto que ocupa
 1 linha
@@ -492,7 +492,7 @@ decimal em vírgula decimal**
 No ficheiro `exp.txt`, recentemente criado, podemos, de uma form
 sucinta, passar os `.` a `,` ?
 
-``` python
+``` python3
 with open('exp.txt') as a:
     tudo = a.read().replace('.', ',')
 
@@ -566,7 +566,7 @@ W481-W484.
 Vamos ler o ficheiro `masses.annotated.reformat.tsv`, separar todas as
 linhas para uma lista e mostrar a primeira e a última:
 
-``` python
+``` python3
 name = 'masses.annotated.reformat.tsv'
 with open(name) as a:
     all_lines = [line.strip() for line in a]
@@ -596,7 +596,7 @@ obtidas são os vários campos de informação reltiva a um pico de MS.
 Já agora, vamos obter os nomes de cada campo, fazendo o mesmo à última
 linha:
 
-``` python
+``` python3
 name = 'masses.annotated.reformat.tsv'
 with open(name) as a:
     all_lines = [line.strip() for line in a]
@@ -633,7 +633,7 @@ KEGG Pathways descriptions
 Compound in Organism(X)
 ```
 
-``` python
+``` python3
 name = 'masses.annotated.reformat.tsv'
 with open(name) as a:
     all_lines = [line.strip() for line in a]
@@ -688,7 +688,7 @@ o caractere `#`.
 
 Podemos já separar a informação por composto.
 
-``` python
+``` python3
 name = 'masses.annotated.reformat.tsv'
 use_only = ['raw_mass', 'peak_height', 'KEGG_cid', 'KEGG_name', 'KEGG Pathways', 'KEGG Pathways descriptions']
 needs_split = ['KEGG_cid', 'KEGG_name', 'KEGG Pathways', 'KEGG Pathways descriptions']
@@ -732,7 +732,7 @@ quer as descrições) em **listas**.
 Repare-se que ainda são *strings* e que usam como separador o `;` para
 delimitar várias vias.
 
-``` python
+``` python3
 name = 'masses.annotated.reformat.tsv'
 use_only = ['raw_mass', 'peak_height', 'KEGG_cid', 'KEGG_name', 'KEGG Pathways', 'KEGG Pathways descriptions']
 needs_split = ['KEGG_cid', 'KEGG_name', 'KEGG Pathways', 'KEGG Pathways descriptions']
@@ -770,7 +770,7 @@ KEGG Pathways descriptions : [['', 'Glyoxylate and dicarboxylate metabolism', 'M
 Agora **tudo junto, aplicando ao ficheiro inteiro**. Para controlo,
 podemos contar os compostos obtidos.
 
-``` python
+``` python3
 name = 'masses.annotated.reformat.tsv'
 use_only = ['raw_mass', 'peak_height', 'KEGG_cid', 'KEGG_name', 'KEGG Pathways', 'KEGG Pathways descriptions']
 needs_split = ['KEGG_cid', 'KEGG_name', 'KEGG Pathways', 'KEGG Pathways descriptions']
@@ -828,7 +828,7 @@ Para isso vamos criar dois dicionários:
 -   outro chamado `descriptions`, que associa cada Id de via à sua
     descrição.
 
-``` python
+``` python3
 paths = {}
 descriptions = {}
 
@@ -897,7 +897,7 @@ Agora com estes dois dicionários podemos responder a várias questões:
 Exemplo: Como obter uma **lista** com nomes das vias, mas sem
 repetições?
 
-``` python
+``` python3
 names = []
 
 for c in paths:
@@ -938,7 +938,7 @@ Tetracycline biosynthesis
 Exemplo: Como obter um **dicionário** com os **Ids das vias como
 chaves** e o **número de vezes que aparecem como valores**?
 
-``` python
+``` python3
 counts = {}
 
 for c in paths:
@@ -989,7 +989,7 @@ Estratégia:
 -   Criar uma lista com os pares (contagens, Id da via)
 -   Ordenar a lista
 
-``` python
+``` python3
 counts_list = [(counts[k], k) for k in counts]
 
 #Controlo: 5 primeiros elementos, lista desordenada:
@@ -1005,7 +1005,7 @@ for i in counts_list[:5]:
 (4, 'ko00620')
 ```
 
-``` python
+``` python3
 counts_list.sort(reverse=True)
 # reverse=True indica que a ordenação é por ordem decrescente
 
@@ -1053,7 +1053,7 @@ Os campos são:
 -   O número de ocorrências
 -   Os Ids dos compostos associados à via, separados por `;`
 
-``` python
+``` python3
 file_name = 'pathways.txt'
 
 # associação entre ids de vias e lista de compostos
@@ -1081,7 +1081,7 @@ with open(file_name, 'w') as f:
         print(Id, descriptions[Id], c, compounds[Id], file=f, sep='\t')
 ```
 
-``` python
+``` python3
 # verificar se correu bem...
 file_name = 'pathways.txt'
 
@@ -1097,7 +1097,7 @@ ko00010 Glycolysis / Gluconeogenesis    14  ['C00111', 'C00118', 'C00031', 'C002
 Informação obtida por acesso à Internet: (módulo `requests`)
 ------------------------------------------------------------
 
-``` python
+``` python3
 import requests
 r = requests.get('http://www.uniprot.org/uniprot/P00924.fasta')
 print(r.text)
@@ -1115,7 +1115,7 @@ QDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL
 GDNAVFAGENFHHGDKL
 ```
 
-``` python
+``` python3
 linhas = r.text.split('\n')
 
 if linhas[0].startswith('>'):
@@ -1136,7 +1136,7 @@ sequência:
 MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEELGDNAVFAGENFHHGDKL
 ```
 
-``` python
+``` python3
 import requests
 r = requests.get('http://www.uniprot.org/uniprot/P00924.txt')
 print(r.text)
@@ -1617,7 +1617,7 @@ A linha tem o formato
 
 `SQ   SEQUENCE XXXX AA; XXXXX MW; XXXXXXXXXXXXXXXX CRC64;`
 
-``` python
+``` python3
 import requests
 info = requests.get('http://www.uniprot.org/uniprot/P00924.txt').text
 

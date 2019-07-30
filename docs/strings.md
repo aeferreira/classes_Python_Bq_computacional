@@ -112,7 +112,7 @@ Na **definição literal** de *strings* podemos delimita-las usando
 As *aspas triplas* (`"""`) permitem delimitar uma *string* contendo várias
 linhas.
 
-``` python
+``` python3
 a = "O Neo tomou o comprimido vermelho"
 
 b ='What is the matrix?'
@@ -130,7 +130,7 @@ algumas das linhas estão em branco"""
 O operador `+` serve para "juntar" várias *strings*, uma operação
 designada por *concatenação*.
 
-``` python
+``` python3
 c = "There's no spoon"
 
 s = c + ', really, ' + 'none' + '.'
@@ -410,7 +410,7 @@ A função `.join()` é uma espécie de inversa de `.split()`: transforma
 **uma lista** de *strings* **numa única** *string*, interpondo um
 separador:
 
-``` python
+``` python3
 aas = ['Arg', 'Tyr', 'Gly', 'Asp']
 
 print(" ".join(aas))
@@ -431,7 +431,7 @@ Arg-CONH-Tyr-CONH-Gly-CONH-Asp
 **Problema: transformar** `AUGUUCAAGGAGUAAUGCCCCCGACUA` **em**
 `AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA`
 
-``` python
+``` python3
 s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 print(s)
 
@@ -499,7 +499,7 @@ conjunção com listas em compreensão:
 **Problema: num texto com várias linhas, obter numa lista as linhas que
 começam por uma vogal e têm menos de 20 caracteres**
 
-``` python
+``` python3
 txt = """ 
  Um pequeno texto que até
 ocupa várias
@@ -536,7 +536,7 @@ mais de um elemento.
 A forma geral é `[início : fim(exclusivé) : passo]`. O `passo` é
 opcional.
 
-``` python
+``` python3
 a = "O Neo tomou o comprimido vermelho"
 #    012345678901234567890123456789012
 
@@ -551,7 +551,7 @@ O Neo
 tomou o comprimido vermelh
 ```
 
-``` python
+``` python3
 a = "O Neo tomou o comprimido vermelho"
 #    012345678901234567890123456789012
 
@@ -588,7 +588,7 @@ print('O último codão é', d)
 
 `AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA`
 
-``` python
+``` python3
 s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 starts = range(0, len(s), 3)
 
@@ -613,7 +613,7 @@ AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 Usando uma lista em compreensão como argumento da função `.join()` o
 programa pode ficar mais compacto:
 
-``` python
+``` python3
 s = "AUGTTCAAGGAGUAAUGCCCCCGACUA"
 sf = "-".join([s[i:i+3] for i in range(0,len(s),3)])
 
@@ -628,7 +628,7 @@ AUG-TTC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 
 **Os** *slices* **também funcionam com listas**
 
-``` python
+``` python3
 aas = ['Arg', 'Tyr', 'Gly', 'Asp']
 
 s1 = aas[ :2]
@@ -671,7 +671,7 @@ print(nums)
 aminoácidos para códigos de 3 letras, usando um dicionário para a
 conversão.**
 
-``` python
+``` python3
 trans = {'A': 'Ala', 'C': 'Cys', 'E': 'Glu', 'D': 'Asp', 'G': 'Gly',
          'F': 'Phe', 'I': 'Ile', 'H': 'His', 'K': 'Lys', 'M': 'Met',
          'L': 'Leu', 'N': 'Asn', 'Q': 'Gln', 'P': 'Pro', 'S': 'Ser',
@@ -698,7 +698,7 @@ aplica-se a qualquer coleção e "gera" os elementos da coleção pela ordem inv
 Aplicando depois a função `''.join()`, com o **separador "vazio"**, ao resultado
 da função `reversed()`podemos inverter uma _string_.
 
-``` python
+``` python3
 trans = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}
 
 seq = "ATGGTTACCTAGTATTTAGGATTA"
@@ -918,7 +918,7 @@ Para teste, é mostrada a última proteína contida no ficheiro.
 
 Uma linha não parece necessária. Porquê o teste
 
-``` python
+``` python3
     if b != '':
 
 ```
@@ -1055,7 +1055,7 @@ Podemos, por isso, usar `s = s + 'a'`
 
 ## Formatação de *strings* com `.format()`
 
-``` python
+``` python3
 x = 11
 y = 20
 z = 3
@@ -1067,7 +1067,7 @@ print('x = {}, y = {}, z = {}'.format(x, y, z))
 x = 11, y = 20, z = 3
 ```
 
-``` python
+``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 for k, v in d.items():
@@ -1081,7 +1081,7 @@ O elemento com n = 11 é o Na
 O elemento com n = 19 é o K
 ```
 
-``` python
+``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 for k, v in d.items():
@@ -1095,7 +1095,7 @@ O elemento com  n = 11 é o Na
 O elemento com  n = 19 é o K
 ```
 
-``` python
+``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 for k, v in d.items():
@@ -1109,7 +1109,7 @@ O elemento com  n = 11 é o Na
 O elemento com  n = 19 é o K
 ```
 
-``` python
+``` python3
 import math
 log2 = math.log(2)
 
@@ -1144,7 +1144,7 @@ for i in range(1, 21):
 20 0.6687714031754279 0.02437577738451735
 ```
 
-``` python
+``` python3
 import math
 log2 = math.log(2)
 

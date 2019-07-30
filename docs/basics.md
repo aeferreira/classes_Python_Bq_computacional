@@ -1,8 +1,8 @@
-Conceitos básicos
-=================
+# Conceitos básicos
 
-Objetos e função `print()`
---------------------------
+## Objetos, nomes e função `print()`
+
+### Objetos fundamentais
 
 Essencialmente, um programa em Python consiste num conjunto de comandos
 a ser executados.
@@ -16,14 +16,14 @@ Dois tipos básicos de objetos que podemos criar e manipular num programa
 são:
 
 -   números
--   *strings*
+-   _strings_
 
 Num programa, podemos **apresentar** o valor que um objeto tem com a
 função `print()`.
 
 Um exemplo com números:
 
-``` python
+``` python3
 print(4)
 print(3.2)
 print(9.0)
@@ -46,7 +46,7 @@ Nas expressões podemos usar:
 
 Um exemplo com *strings*:
 
-``` python
+``` python3
 print('quinta feira')
 print('hoje', 'é', "quinta feira,", 16)
 ```
@@ -64,8 +64,7 @@ A função `print()` pode ser usada com vários objetos a apresentar,
 **separados por vírgulas**. É inserido um espaço entre os vários
 objetos. Note-se que, com as *strings*, as aspas são eliminadas.
 
-Atribuição de nomes a "objetos"
--------------------------------
+### Atribuição de nomes a "objetos"
 
 **Este é um dos mais fundamentais comandos em programação!**
 
@@ -77,7 +76,7 @@ Depois de uma atribuição, **o nome pode ser usado em vez do valor do
 objeto ou expressão**. Mesmo em atribuições seguintes, no comando
 `print()`, etc.
 
-``` python
+``` python3
 a = 4
 b = 3.2
 c = a + b
@@ -93,7 +92,7 @@ print(c, d)
 7.2 2.6832815729997477
 ```
 
-``` python
+``` python3
 hoje = "Hoje é quinta feira"
 mês = "Março"
 tudo = hoje + ' e estamos em ' + mês
@@ -133,7 +132,7 @@ Não são permitidos espaços ou símbolos como `!, @, #, %` nos nomes.
 
 Existem também os **complexos** (em que `j` é a unidade imaginária):
 
-``` python
+``` python3
 c = 4+2j
 
 print('c =', c)
@@ -153,13 +152,12 @@ c = (4+2j)
 c * d = (-8+16j)
 ```
 
-Alteração dos objetos associados a um nome
-------------------------------------------
+### Alteração dos objetos associados a um nome
 
 Durante a execução de um programa, os objetos associados a um mesmo nome
 podem variar:
 
-``` python
+``` python3
 a = 2
 b = 3
 c = 'Olá'
@@ -184,7 +182,7 @@ aos nomes de `a`, `b` e `c` no programa anterior, podemos modifica-lo,
 mostrando, com `print()`, os valores atualizados desses nomes, após cada
 atribuição. Repare-se nos resultados de cada `print()`:
 
-``` python
+``` python3
 a = 2
 b = 3
 c = 'Olá'
@@ -205,15 +203,14 @@ a = 3 b = 5 c = Olá
 a = 3 b = 5 c = 8
 ```
 
-Interpolação de valores em *strings*
-------------------------------------
+### Interpolação de valores em *strings* (_"Strings f"_)
 
 As *strings* podem ter valores "interpolados", usando os nomes desses
 valores ou expressões. Para isso, usam-se `{}` para identificar em que
 sítio da *string* deve ficar cada valor e a *string* deve ter a letra
 `f` como prefixo. Um exemplo:
 
-``` python
+``` python3
 a = 4.8
 b = 3.2
 c = a + b
@@ -225,10 +222,9 @@ print(f'a é igual a {a}, mas b = {b}, enquanto que c = {c}')
 a é igual a 4.8, mas b = 3.2, enquanto que c = 8.0
 ```
 
-Comentários
------------
+## Comentários
 
-``` python
+``` python3
 # Comentários começam por #
 
 # Podemos dar nomes a vários objetos
@@ -242,7 +238,7 @@ print(f"a = {a} b = {b}")
 a = 3 b = experiência
 ```
 
-``` python
+``` python3
 a, b  =  3, "experiência"
 
 print(f"a = {a} b = {b}")
@@ -272,13 +268,16 @@ Nota: quando numa *string* aparece o caractere "especial" `\n`, este
 provoca uma linha suplementar quando a *string* é apresentada com a
 função `print()`.
 
-Funções disponíveis "integradas" na linguagem (ex. `print()`, `abs()` e `int()`)
---------------------------------------------------------------------------------
+## Funções e módulos
+
+### Funções "integradas" na linguagem
+
+#### `abs`, `int`
 
 Além da função `print()`, as funções `int()` e `abs()` fazem parte
 integrante da linguagem Python.
 
-``` python
+``` python3
 numero = -3.8
 x = int(numero)
 y = abs(numero)
@@ -301,8 +300,9 @@ linguagem Pyhton:
 [Python Built-in
 functions](https://docs.python.org/3/library/functions.html)
 
-Conversão entre vários tipos de objetos (`int()`, `float()`, `complex()` e `str()`)
------------------------------------------------------------------------------------
+### Conversão entre tipos de objetos
+
+#### `int`, `float`, `complex` e `str`
 
 As funções `int()`, `float()`, `complex()` e `str()` fazem conversões
 para os vários **tipos** de objetos:
@@ -312,7 +312,7 @@ para os vários **tipos** de objetos:
 -   **complexos** (em que `j` é a unidade imaginária)
 -   *strings*
 
-``` python
+``` python3
 x = 3.8
 
 print(x,'\n')
@@ -329,7 +329,7 @@ print(str(x))
 3.8
 ```
 
-``` python
+``` python3
 s = '3.4e4'
 f = float(s)
 c = complex(s)
@@ -348,7 +348,7 @@ print(c)
 
 As conversões nem sempre são possíveis...
 
-``` python
+``` python3
 s = 'Vamos ver...'
 print(s, '\n')
 
@@ -372,8 +372,7 @@ ValueError                                Traceback (most recent call last)
 ValueError: could not convert string to float: 'Vamos ver...'
 ```
 
-Módulos: funções adicionais
----------------------------
+## Módulos: funções adicionais
 
 Além das funções integradas, existem muitos **módulos** contendo funções
 adicionais.
@@ -384,7 +383,7 @@ disponíveis.
 Um exemplo é o módulo **math** que contem muitas funções (e algumas
 constantes) matemáticas:
 
-``` python
+``` python3
 import math
 
 x = 2.0
@@ -409,7 +408,7 @@ exp(2.0) = 7.38905609893065
 sin(2.0) = 0.9092974268256817
 ```
 
-``` python
+``` python3
 y = math.sin(math.radians(90))
 print('sin(90°) =', y)
 
@@ -428,7 +427,7 @@ e = 2.718281828459045
 sin(π / 2) = 1.0
 ```
 
-``` python
+``` python3
 y = math.factorial(100)
 print('100! =', y)
 ```
@@ -444,7 +443,7 @@ Um exemplo é a função `weekday()`, que, ao ser dado um ano, mês e dia,
 calcula um número que representa o dia da semana. (0 - seg, 1 - ter, 2 -
 qua, 3 - qui, 4 - sex, 5 - sab, 6 - dom)
 
-``` python
+``` python3
 import calendar
 
 print(calendar.weekday(2017, 3, 30))
@@ -458,7 +457,7 @@ print(calendar.weekday(2017, 3, 30))
 Outro exemplo é a função `calendar()`, que constrói uma *string* com um
 calendário de um determinado ano:
 
-``` python
+``` python3
 import calendar
 print(calendar.calendar(2019))
 ```
@@ -501,10 +500,7 @@ Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su
                                                     30 31
 ```
 
-Exemplo: raízes da equação do 2º grau
--------------------------------------
-
-Exemplo:
+## Exemplo: Raízes da equação do 2º grau
 
 Calcular as soluções da equação do 2º grau
 
@@ -517,7 +513,7 @@ Dados $a, b$ e $c$, calcular
 $x_1 = \frac{-b + \sqrt{b^2 -4 a c}}{2 a}$ e
 $x_2 = \frac{-b - \sqrt{b^2 -4 a c}}{2 a}$
 
-``` python
+``` python3
 print('Este programa calcula x tal que a x2 + b x + c = 0')
 # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
 
@@ -587,8 +583,9 @@ Podemos reescrever o programa de modo a realizar o cálculo das soluções
 e apresentar uma mensagem de um modo diferente, consoante o valor de
 $\Delta$ ?
 
-Alternativa `if...else`
------------------------
+## Execução alternativa
+
+### Alternativa `if...else`
 
 A linguagem Python permite a execução **alternativa** de blocos de
 comandos.
@@ -597,7 +594,7 @@ Continuando com o exemplo anterior, vamos primeiro distinguir o caso das
 soluções reais ($\Delta \geqslant 0$) do caso das soluções complexas
 ($\Delta < 0$).
 
-``` python
+``` python3
 # Este programa calcula x tal que a x2 + b x + c = 0
 # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
 
@@ -699,8 +696,7 @@ de uma raíz dupla**.
 Precisamos, para isso, que o programa possa se adaptar a cada uma das
 **três alternativas**.
 
-Alternativas `if...elif...else`
--------------------------------
+### Alternativas `if...elif...else`
 
 Usando o comando `elif` podemos testar **mais do que uma condição** e
 executar em alternativa e, consequentemente, **mais do que dois blocos**
@@ -709,7 +705,7 @@ de comandos.
 Seguindo o exemplo da resolução de uma equação do segundo grau, podemos
 separar os três casos associados ao valor de $\Delta$ da seguinte forma:
 
-``` python
+``` python3
 # Este programa calcula x tal que a x2 + b x + c = 0
 # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
 
@@ -782,7 +778,7 @@ um bloco `if` ou `elif` ou `else`.
 
 Por exemplo, o o programa também poderia ser escrito da seguinte forma:
 
-``` python
+``` python3
 # Este programa calcula x tal que a x2 + b x + c = 0
 # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
 
@@ -834,7 +830,7 @@ Vejamos agora um outro exemplo da utilização de blocos alternativos.
 
 Regra em vigor até 1582 (calendário Juliano, de Júlio César)
 
-``` python
+``` python3
 # Este programa determina de um ano é bissexto
 # Testar com 2015 N, 2012 S, 1900 N, 2000 S
 
@@ -880,7 +876,7 @@ sejam bissextos.
 
 Podemos adaptar o programa anterior para incluir as duas últimas regras:
 
-``` python
+``` python3
 a = 2015
 
 if a % 4 == 0 and not (a % 100 == 0 and not a % 400 == 0):
@@ -916,7 +912,7 @@ prejudica muito a legibilidade do programa.
 Um programa equivalente, combinando vários blocos de `if...else...` e a
 negação lógica `not` que será (possivelmente) mais fácil de perceber é:
 
-``` python
+``` python3
 a = 2015
 
 if not a % 4 == 0:
@@ -942,8 +938,8 @@ Correndo o programa com diferentes valores de a:
     1900 não é bissexto
     2000 é bissexto
 
-Função `input()`
-----------------
+## Função `input()`
+
 
 Até agora, nos exemplos foram apresentados, são incluídos no programa os
 valores a partir dos quais se fazem os cálculos (tradicionalmente
@@ -967,7 +963,7 @@ mensagem de indicação do que está a ser pedido.
 
 Vejamos com um exemplo:
 
-``` python
+``` python3
 a = input('Valor de a? ')
 b = input('Valor de b? ')
 c = input('Valor de c? ')

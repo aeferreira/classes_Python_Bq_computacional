@@ -1,0 +1,12 @@
+.python_box > .codehilite{
+	border-color:#2196f3;
+	border-style:solid;
+	border-width: thin;
+	background-color:white;
+}
+
+.codehilite{
+	border-color:#867575;
+	border-style:solid;
+	border-width: thin;
+}

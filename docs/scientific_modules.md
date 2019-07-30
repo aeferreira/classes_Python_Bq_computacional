@@ -25,11 +25,11 @@ Estas bibliotecas são:
 
 ### Operações "vectoriais"
 
-``` python
+``` python3
 import numpy as np
 ```
 
-``` python
+``` python3
 numbers = [0.0, 0.2, 0.5, 1.0, 1.1]
 x = np.array(numbers)
 
@@ -59,7 +59,7 @@ Estes objetos suportam operações aritméticas "vetoriais": na expressão
 Por outro lado, as operações aritméticas entre dois *arrays* são
 realizadas elemento a elemento:
 
-``` python
+``` python3
 a = np.array([0.0, 0.2, -0.5, 1.0, 1.1])
 b = np.array([0.0, 0.1, -1.0, 1.0, 1.0])
 print('a = ', a)
@@ -81,7 +81,7 @@ y = a + b =
 
 ### Criação de *arrays* com as funções `.array()`, `.arange()` e `.linspace()`
 
-``` python
+``` python3
 x = np.array([1, 1.2, 3, 3.5])
 print(x)
 ```
@@ -90,7 +90,7 @@ print(x)
 [ 1.   1.2  3.   3.5]
 ```
 
-``` python
+``` python3
 x = np.arange(1.5, 2.0, 0.1)
 print(x)
 ```
@@ -99,7 +99,7 @@ print(x)
 [ 1.5  1.6  1.7  1.8  1.9]
 ```
 
-``` python
+``` python3
 x = np.linspace(1, 2, 5)
 print(x)
 ```
@@ -108,7 +108,7 @@ print(x)
 [ 1.    1.25  1.5   1.75  2.  ]
 ```
 
-``` python
+``` python3
 x = np.linspace(1, 2, 6)
 print('x')
 print(x)
@@ -127,14 +127,14 @@ y = 4 * x**2 -3
 [  1.     2.76   4.84   7.24   9.96  13.  ]
 ```
 
-``` python
+``` python3
 # só necessário em Jupyter notebooks
 %matplotlib inline
 
 from matplotlib import pyplot as pl
 ```
 
-``` python
+``` python3
 x = np.linspace(-2, 2, 100)
 y = 4 * x**3 -3
 
@@ -146,7 +146,7 @@ g = pl.plot(x, y)
 
 **Problema: somar os primeiros 1000 quadrados perfeitos**
 
-``` python
+``` python3
 print(sum(np.arange(1000)**2))
 ```
 
@@ -156,7 +156,7 @@ print(sum(np.arange(1000)**2))
 
 ### Dimensões (`shape`)
 
-``` python
+``` python3
 x = np.arange(1, 13)
 print(x)
 
@@ -179,7 +179,7 @@ x =
 
 ### Criação de *arrays* com `.array()`, `.ones()`, `.zeros()`, `.eye()`, `.diag()`
 
-``` python
+``` python3
 x = np.array( [[1, 1.2, 3], [1.3,5.1,1.3]] )
 print(x)
 print('\nshape =', x.shape)
@@ -192,7 +192,7 @@ print('\nshape =', x.shape)
 shape = (2, 3)
 ```
 
-``` python
+``` python3
 x = np.ones((3,2))
 print(x)
 ```
@@ -203,7 +203,7 @@ print(x)
  [ 1.  1.]]
 ```
 
-``` python
+``` python3
 x = np.zeros((3,2))
 print(x)
 ```
@@ -214,7 +214,7 @@ print(x)
  [ 0.  0.]]
 ```
 
-``` python
+``` python3
 x = np.eye(3)
 print(x)
 ```
@@ -225,7 +225,7 @@ print(x)
  [ 0.  0.  1.]]
 ```
 
-``` python
+``` python3
 x = np.diag([1.2, 3.2, 4.1, 6.3])
 print(x)
 ```
@@ -239,7 +239,7 @@ print(x)
 
 ### Indexação a várias dimensões
 
-``` python
+``` python3
 x = np.linspace(1,20,20).reshape((5,4))
 print(x)
 ```
@@ -252,7 +252,7 @@ print(x)
  [ 17.  18.  19.  20.]]
 ```
 
-``` python
+``` python3
 a = x[3,1]
 
 print(x)
@@ -269,7 +269,7 @@ print('\nx[3,1] =', a)
 x[3,1] = 14.0
 ```
 
-``` python
+``` python3
 a = x[3, :]
 
 print(x)
@@ -286,7 +286,7 @@ print('\nx[3, :] =', a)
 x[3, :] = [ 13.  14.  15.  16.]
 ```
 
-``` python
+``` python3
 a = x[1:4, 1:4]
 
 print(x)
@@ -310,7 +310,7 @@ x[1:4, 1:4] =
 Mas os slices de `arrays` unidimensionais também existem, tal como nas
 listas:
 
-``` python
+``` python3
 x =np.arange(0, 1.1, 0.1)[2:]
 print(x)
 ```
@@ -322,7 +322,7 @@ print(x)
 **Problema: mostrar que as diferenças entre os quadrados perfeitos
 sucessivos são os numeros ímpares**
 
-``` python
+``` python3
 quads = np.arange(12)**2
 print(quads)
 
@@ -337,7 +337,7 @@ print(difs)
 
 ### Indexação booleana
 
-``` python
+``` python3
 x = np.linspace(1, 10, 6)
 print('x =', x)
 
@@ -363,7 +363,7 @@ x[x < 7]
 **Problema: somar as raízes quadradas dos números inteiros até 100, mas
 só as que sejam números inteiros**
 
-``` python
+``` python3
 roots = np.arange(0,101)**0.5
 
 # usando a função np.trunc()
@@ -378,7 +378,7 @@ print(s)
 
 ### Indexação com listas de inteiros ou outros *arrays*
 
-``` python
+``` python3
 x = np.linspace(5, 15, 6)
 print('x =', x)
 
@@ -417,7 +417,7 @@ podemos especifica um "eixo" para aplicar o cálculo.
 
 Vejamos a aplicação da função `.sum()` a um *array* unidimensional:
 
-``` python
+``` python3
 a = np.linspace(1,20,20).sum()
 print(a)
 ```
@@ -429,7 +429,7 @@ print(a)
 E agora 3 maneiras de aplicar a função `.sum()` a um array
 multidimensional
 
-``` python
+``` python3
 # Como se fosse unidimensional
 # aplicando a todos os elementos
 x = np.linspace(1,20,20).reshape((5,4))
@@ -449,7 +449,7 @@ print('\n', s)
  210.0
 ```
 
-``` python
+``` python3
 # Ao longo do eixo 0
 x = np.linspace(1,20,20).reshape((5,4))
 print(x)
@@ -468,7 +468,7 @@ print('\n', s)
  [ 45.  50.  55.  60.]
 ```
 
-``` python
+``` python3
 # Ao longo do eixo 1
 x = np.linspace(1,20,20).reshape((5,4))
 print(x)
@@ -490,7 +490,7 @@ print('\n', s)
 **Problema: mostrar que a série alternada dos inversos converge para log
 2**
 
-``` python
+``` python3
 i = np.arange(1,80)
 termos = (-1)**(i+1) * 1/i 
 s = termos.cumsum()
@@ -501,7 +501,7 @@ print(s[:4])
 [ 1.          0.5         0.83333333  0.58333333]
 ```
 
-``` python
+``` python3
 i = np.arange(1,80)
 termos = (-1)**(i+1) * 1/i 
 s = termos.cumsum()
@@ -513,7 +513,7 @@ g = pl.plot(i,s, '-o')
 
 ![image](images/10_scientific_modules_51_0.png)
 
-``` python
+``` python3
 # Agora com 300 termos
 i = np.arange(1, 300)
 termos = (-1)**(i+1) * 1/i 
@@ -542,7 +542,7 @@ $p(x, \lambda) = \frac{e^{-x} \lambda^x}{x!}$ com $x = 0, 1, 2, ...$
 $f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2}$ com
 $x \in [-\infty, \infty]$
 
-``` python
+``` python3
 print('20 valores aleatórios da dist. de Poisson')
 print(' com lambda = 3')
 
@@ -556,7 +556,7 @@ print(x)
 [6 2 0 4 1 9 1 4 2 5 0 3 4 7 7 2 3 5 1 4]
 ```
 
-``` python
+``` python3
 print('5 valores aleatórios da distribuição N(0,1)')
 x = np.random.randn(5)
 print(x)
@@ -570,7 +570,7 @@ print(x)
 **Problema**: "Provar" que a média e a variância da distribuição de
 Poisson são ambas iguais a $\lambda$.
 
-``` python
+``` python3
 sample = np.random.poisson(3, 100000)
 
 print('Média = ', sample.mean())
@@ -586,7 +586,7 @@ Variância = 3.0185382576
 **Problema**: Mostar numericamente o *Teorema do Limite Central* para
 uma distribuição de Poisson.
 
-``` python
+``` python3
 # Distribuição de médias de amostras de 2
 sample = np.random.poisson(3, (100000,2) )
 
@@ -600,7 +600,7 @@ g = pl.plot(unique, counts, 'o')
 
 ![image](images/10_scientific_modules_61_0.png)
 
-``` python
+``` python3
 # Distribuição de médias de amostras de 20
 sample = np.random.poisson(3, (100000,20) )
 means = sample.mean(axis=1)
@@ -615,7 +615,7 @@ g = pl.plot(unique, counts, 'o')
 Matrizes e álgebra linear
 -------------------------
 
-``` python
+``` python3
 A = np.matrix([[1, 2, 3], [2, 1, 6], [1, 7, 4]])
 print('A\n', A)
 B = np.matrix([1,2,3]).T
@@ -641,7 +641,7 @@ C = A * B
  [27]]
 ```
 
-``` python
+``` python3
 A = np.matrix([[1.0, 2, 3], [2, 1, 6], [1, 7, 4]])
 B = np.matrix([1,2,3]).T
 
@@ -662,7 +662,7 @@ Solução de A*X = B
 
 ### Símbolos e álgebra básica
 
-``` python
+``` python3
 from sympy import Symbol
 
 x = Symbol('x')
@@ -675,7 +675,7 @@ print(x + y + x -y)
 2*x
 ```
 
-``` python
+``` python3
 a = (x+y)**2
 print(a)
 print(a.expand())
@@ -692,7 +692,7 @@ y**2 + 2*y + 1
 
 ### Limites
 
-``` python
+``` python3
 from sympy import Symbol, limit, diff, integrate, sin, oo
 
 x = Symbol('x')
@@ -711,7 +711,7 @@ oo
 
 ### Derivadas e integrais
 
-``` python
+``` python3
 print(diff(sin(x), x))
 print(diff(sin(2*x), x))
 print('----------------')
@@ -730,7 +730,7 @@ cos(x)
 2**x*log(2)**3
 ```
 
-``` python
+``` python3
 print(integrate(sin(x), x))
 ```
 
@@ -741,7 +741,7 @@ print(integrate(sin(x), x))
 Exemplo do uso de `numpy` e `scipy`: regressão linear.
 ------------------------------------------------------
 
-``` python
+``` python3
 import numpy as np
 %matplotlib inline
 from matplotlib import pyplot as pl
@@ -749,12 +749,12 @@ from matplotlib import pyplot as pl
 
 ![](images/dataregress.png)
 
-``` python
+``` python3
 x = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
 y = np.array([1.0, 2.1, 2.8, 4.1, 5.2])
 ```
 
-``` python
+``` python3
 p = pl.plot(x,y, 'o')
 ```
 
@@ -764,11 +764,11 @@ p = pl.plot(x,y, 'o')
 
 ![](images/scipydocs_regress.png)
 
-``` python
+``` python3
 from scipy.stats import linregress
 ```
 
-``` python
+``` python3
 m, b, R, p, SEm = linregress(x, y)
 ```
 
@@ -780,7 +780,7 @@ m, b, R, p, SEm = linregress(x, y)
 
 Falta calcular o SE da ordenada na origem.
 
-``` python
+``` python3
 def lin_regression(x, y):
     """Simple linear regression (y = m * x + b + error)."""
     m, b, R, p, SEm = linregress(x, y)
@@ -794,11 +794,11 @@ def lin_regression(x, y):
     return m, b, SEm, SEb, R, p
 ```
 
-``` python
+``` python3
 m, b, Sm, Sb, R, p = lin_regression(x, y)
 ```
 
-``` python
+``` python3
 print('m = {:>.4g} +- {:6.4f}'.format(m, Sm))
 print('b = {:>.4g} +- {:6.4f}\n'.format(b, Sb))
 
@@ -814,7 +814,7 @@ R2 = 0.99302
 p of test F : 0.000248
 ```
 
-``` python
+``` python3
 pl.plot(x,y, 'o')
 pl.xlim(0,None)
 pl.ylim(0, None)
@@ -910,14 +910,14 @@ Computation
 
 Make the necessary imports
 
-``` python
+``` python3
 from numpy import linspace
 ```
 
 Use derived equations to compute species distribution and the amount of
 base necessary to change the solution into a given pH value.
 
-``` python
+``` python3
 pK1 = 2.3
 pK2 = 9.6
 Gt  = 0.1 # M
@@ -938,13 +938,13 @@ Plots
 Obtain a plot of the distribution of the three different species of the
 amino acid as a function of pH.
 
-``` python
+``` python3
 %matplotlib inline 
 # This is to be used in IPython/Jupyter notebooks
 # This makes plots appear "inline" as part of cell's outputs.
 ```
 
-``` python
+``` python3
 import matplotlib.pyplot as pl
 
 pl.plot(pH, Gplus)
@@ -963,7 +963,7 @@ Plot also the amount of base necessary to change the pH of the solution,
 but **exchange the x and y axis**, so that it looks like we are
 titrating the solution.
 
-``` python
+``` python3
 pl.plot(nOH, pH)
 
 pl.ylabel('$pH$')
@@ -988,7 +988,7 @@ pl.grid()
 > data type (integers, strings, floating point numbers, Python objects,
 > etc.). The axis labels are collectively referred to as the **index**.
 
-``` python
+``` python3
 import pandas as pd
 ```
 
@@ -1000,7 +1000,7 @@ Ao conjunto das etiquetas dá-se o nome de "**índice**".
 Quando construímos uma Série, usando a função `Series()`, podemos
 indicar o índice.
 
-``` python
+``` python3
 s = pd.Series([1.4, 2.2, 3.2, 6.5, 12],
               index=['a', 'b', 'c', 'd', 'e'])
 print(s)
@@ -1018,7 +1018,7 @@ dtype: float64
 Se não indicarmos um índice, o conjunto dos inteiros sucessivos será o
 índice.
 
-``` python
+``` python3
 s = pd.Series([1.4,2.2,3.2,6.5,12])
 print(s)
 ```
@@ -1035,7 +1035,7 @@ dtype: float64
 As Séries podem ser construídas a partir de um dicionário, em que as
 chaves são o índice.
 
-``` python
+``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d)
 print(s)
@@ -1052,7 +1052,7 @@ Podemos, mesmo neste caso, indicar um índice. Caso o índice tenha
 elementos para além das chaves do dicionário, haverá **valores em
 falta**.
 
-``` python
+``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 print(s)
@@ -1078,7 +1078,7 @@ utilidade.
 Note-se que, em geral, **os valores em falta são ignorados nos
 cálculos**.
 
-``` python
+``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 print(s)
@@ -1095,7 +1095,7 @@ dtype: float64
 Média = 1.0
 ```
 
-``` python
+``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 print(s)
@@ -1121,7 +1121,7 @@ max      2.0
 dtype: float64
 ```
 
-``` python
+``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 print(s.cumsum())
@@ -1135,7 +1135,7 @@ a    3.0
 dtype: float64
 ```
 
-``` python
+``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 
@@ -1155,7 +1155,7 @@ comportando-se como uma lista ou um *array* do `numpy`.
 
 A função `len()`também funciona com séries.
 
-``` python
+``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 print(len(s))
@@ -1176,7 +1176,7 @@ como chaves** e são usadas para indexar uma Série. para obter um valor
 Tal como nos dicionários, o operador `in` **testa a existência de uma
 etiqueta**.
 
-``` python
+``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 print(s)
@@ -1206,7 +1206,7 @@ do módulo `numpy`. Podemos usar:
 -   *slices*
 -   **operações vetoriais**.
 
-``` python
+``` python3
 d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
 s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
 print(s)
@@ -1227,7 +1227,7 @@ d    NaN
 dtype: float64
 ```
 
-``` python
+``` python3
 d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
 s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
 print(s)
@@ -1250,7 +1250,7 @@ a    0.25
 dtype: float64
 ```
 
-``` python
+``` python3
 d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
 s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
 print(s)
@@ -1275,7 +1275,7 @@ vetoriais sobre Séries (por exemplo, na soma de duas séries), **os
 valores são "alinhados" pelos respetivos *labels*** antes da operação.
 Vejamos estas duas séries:
 
-``` python
+``` python3
 s1 = pd.Series({'a' : 0.5, 'b' : 1.0, 'e': 1.8})
 s2 = pd.Series({'a' : 0.5, 'b' : 1.0, 'f': 1.8})
 
@@ -1300,7 +1300,7 @@ valor `NaN`, terão o valor `NaN` no resultado final.
 
 A função `.dropna()` permite eliminar os *valores em falta*.
 
-``` python
+``` python3
 s1 = pd.Series({'a' : 0.5, 'b' : 1.0, 'e': 1.8})
 s2 = pd.Series({'a' : 0.5, 'b' : 1.0, 'f': 1.8})
 s3 = s1 + s2
@@ -1331,7 +1331,7 @@ informação da UniProt sobre a levedura *S. cerevisiae*.
 A `DataFrame` terá as colunas "**ac**", "**rev**", "**n**" e
 "**sequence**"
 
-``` python
+``` python3
 def get_prots(filename):
     with open(filename) as big:
         tudo = big.read()
@@ -1365,7 +1365,7 @@ A primeira proteína tem 316 aminoácidos
 Podemos construir uma `DataFrame` a partir de uma lista de dicionários.
 As **chaves dos dicionários serão as colunas**.
 
-``` python
+``` python3
 prots = pd.DataFrame(pinfo)
 print(len(prots))
 prots[:3]
@@ -1427,7 +1427,7 @@ prots[:3]
 Para inspeção rápida, as funções `.head()` e `.tail()` apresentam o
 início e o fim da `DataFrame`
 
-``` python
+``` python3
 prots = pd.DataFrame(pinfo)
 #prots.head()
 prots.tail()
@@ -1498,7 +1498,7 @@ prots.tail()
 </div>
 Podemos mudar o índice para uma das colunas.
 
-``` python
+``` python3
 prots = prots.set_index('ac')
 prots.head()
 ```
@@ -1571,7 +1571,7 @@ ao índice).
 
 Cada coluna comporta-se como uma Série.
 
-``` python
+``` python3
 prots['n']
 ```
 
@@ -1641,7 +1641,7 @@ A0A1S0T004     163
 Name: n, Length: 6816, dtype: int64
 ```
 
-``` python
+``` python3
 print(prots['n']['P31383'])
 print(prots['n'].max())
 print(prots['n'].min())
@@ -1655,7 +1655,7 @@ print(prots['n'].mean())
 445.49838615023475
 ```
 
-``` python
+``` python3
 print(prots['n'].describe())
 ```
 
@@ -1671,7 +1671,7 @@ max      4910.000000
 Name: n, dtype: float64
 ```
 
-``` python
+``` python3
 desc = prots['n'].describe()
 min_aa = desc['min']
 max_aa = desc['max']
@@ -1687,7 +1687,7 @@ Maior proteína: 4910.0
 
 Quais são as proteínas menores e maiores?
 
-``` python
+``` python3
 min_aa = prots['n'].describe()['min']
 
 prots[prots['n'] == min_aa]
@@ -1732,7 +1732,7 @@ prots[prots['n'] == min_aa]
   </tbody>
 </table>
 </div>
-``` python
+``` python3
 max_aa = prots['n'].describe()['max']
 
 prots[prots['n'] == max_aa]
@@ -1781,7 +1781,7 @@ Para obter uma linha usamos `.loc` e indexação por um *label*.
 
 A linha obtida é uma *Series*.
 
-``` python
+``` python3
 prots.loc['P31383']
 ```
 
@@ -1794,7 +1794,7 @@ Name: P31383, dtype: object
 
 Quantos triptofanos tem a proteína P31383?
 
-``` python
+``` python3
 prots.loc['P31383']['seq'].count('W')
 ```
 
@@ -1806,7 +1806,7 @@ A indexação com condições sobre as colunas é muito poderosa.
 
 Qauntas proteínas têm mais de 2000 aminoácidos?
 
-``` python
+``` python3
 bigs = prots[prots['n'] > 2000]
 print(len(bigs))
 bigs
@@ -2071,7 +2071,7 @@ bigs
   </tbody>
 </table>
 </div>
-``` python
+``` python3
 # Média dos comprimentos das proteínas
 # com mais de 2000 aminoácidos
 prots[prots['n'] > 2000]['n'].mean()
@@ -2083,7 +2083,7 @@ prots[prots['n'] > 2000]['n'].mean()
 
 De novo, qual a proteína maior?
 
-``` python
+``` python3
 prots['n'].idxmax()
 ```
 
@@ -2091,7 +2091,7 @@ prots['n'].idxmax()
 'Q12019'
 ```
 
-``` python
+``` python3
 prots.loc[prots['n'].idxmax()]
 ```
 
@@ -2105,7 +2105,7 @@ Name: Q12019, dtype: object
 Para aplicar funções de *strings* a toda uma coluna de uma só vez,
 usamos o atributo `.str.` sobre essa coluna (o resultado é uma Série):
 
-``` python
+``` python3
 prots['seq'].str.count('W')
 ```
 
@@ -2178,7 +2178,7 @@ Name: seq, Length: 6816, dtype: int64
 Com uma indexação por nome, podemos inserir uma coluna nova na
 `DataFrame` (no fim).
 
-``` python
+``` python3
 prots['W'] = prots['seq'].str.count('W')
 prots.head()
 ```
@@ -2257,7 +2257,7 @@ As `DataFrame`s também têm funções descritivas, mas o facto de cada
 coluna ser uma Série podemos realizar muitas análises de uma forma
 simples.
 
-``` python
+``` python3
 prots.info()
 ```
 
@@ -2273,7 +2273,7 @@ dtypes: int64(2), object(2)
 memory usage: 586.2+ KB
 ```
 
-``` python
+``` python3
 print(prots['rev'].value_counts())
 ```
 
@@ -2283,12 +2283,12 @@ Unreviewed      95
 Name: rev, dtype: int64
 ```
 
-``` python
+``` python3
 # só no IPython/Jupyter notebook
 %matplotlib inline
 ```
 
-``` python
+``` python3
 import matplotlib.pyplot as pl
 pl.ylabel('Proteins')
 pl.xlabel('Length (aa)')
@@ -2314,7 +2314,7 @@ Para calcular a raíz quadrada de um número a:
 
 $x$ é a raíz quadrada de $a$.
 
-``` python
+``` python3
 a = 2.0
 print('a =', a)
 
@@ -2331,7 +2331,7 @@ a = 2.0
 x = 1.414213562373095
 ```
 
-``` python
+``` python3
 a = 2.0
 
 x = 1.0
@@ -2377,7 +2377,7 @@ Para calcular a raíz quadrada de um número a:
 
 x é a raíz quadrada de a.
 
-``` python
+``` python3
 a = 2.0
 
 x = 1.0
@@ -2401,7 +2401,7 @@ print("A raíz quadrada de {} é {}".format(a,x))
 A raíz quadrada de 2.0 é 1.414213562373095
 ```
 
-``` python
+``` python3
 def babilonico(a, show_iters=False):
     x = 1.0
     for i in range(100):
@@ -2452,7 +2452,7 @@ Para calcular a raíz de uma função $f(x)$, contínua sabendo que existe
 
 $x_m$ é a raíz da função $f(x)$, isto é $f(x_m) \approx 0$.
 
-``` python
+``` python3
 def bissect(f, a, b):
     epsilon = 1e-6
 
@@ -2481,7 +2481,7 @@ Raíz encontrada:
 1.2599201202392578
 ```
 
-``` python
+``` python3
 def bissect(f, a, b):
     epsilon, epsilonf = 1e-6, 1e-10
     fa, fb = f(a), f(b)
@@ -2512,7 +2512,7 @@ x = 1.2599201202392578, f(x) = -0.0000044
 
 Monitorizando as bisseções:
 
-``` python
+``` python3
 def bissect(f, a, b):
     epsilon, epsilonf = 1e-6, 1e-10
     fa, fb = f(a), f(b)
@@ -2590,7 +2590,7 @@ $x_{final}$ é a raíz da função $f(x)$, isto é $f(x_{final}) \approx 0$.
 **NOTA**: O algoritmo babilónico é um caso particular do método de
 Newton para $f(x) = x^2 -a$
 
-``` python
+``` python3
 def newton(f, df, x):
     epsilon = 1e-6
     fx, dfx = f(x), df(x)
@@ -2600,7 +2600,7 @@ def newton(f, df, x):
     return (x, fx)
 ```
 
-``` python
+``` python3
 def f(x):
     return x**3 -2
 
@@ -2618,7 +2618,7 @@ x = 1.2599210498953948, f(x) = 0.0000000
 
 Monitorizando as iterações:
 
-``` python
+``` python3
 def newton(f, df, x):
     epsilon = 1e-6
 
@@ -2700,7 +2700,7 @@ Método de Newton:
 
 Método de Newton com a função $sin(x)$
 
-``` python
+``` python3
 from math import sin, cos, pi
 
 def f(x):
@@ -2741,7 +2741,7 @@ x0 = 6.10    x =  2.0 pi
 x0 = 12.10   x =  4.0 pi
 ```
 
-``` python
+``` python3
 def f(x):
     return sin(x)
 
@@ -2821,17 +2821,17 @@ x = 12.56635, f(x)=-0.00002
 para x0 = 12.1,    x =  4.0 pi
 ```
 
-``` python
+``` python3
 %matplotlib inline
 ```
 
-``` python
+``` python3
 from matplotlib import pyplot as pl
 import matplotlib as mpl
 from numpy import linspace, sin, cos
 ```
 
-``` python
+``` python3
 x = linspace(-6, 10, 1000)
 y = sin(x)
 pl.axhline(color='black', linewidth=3)
@@ -2843,7 +2843,7 @@ for z in range(-1, 4):
 
 ![image](images/13_algoritmos_29_0.png)
 
-``` python
+``` python3
 mpl.rcParams['figure.figsize'] = (10,6)
 
 def f(x):
@@ -2883,7 +2883,7 @@ Para x0 = 2.2, raíz =  3.142
 
 ![image](images/13_algoritmos_30_1.png)
 
-``` python
+``` python3
 def f(x):
     return sin(x)
 
@@ -2911,7 +2911,7 @@ Para x0 = 5.1, raíz = 182.212
 
 ![image](images/13_algoritmos_31_1.png)
 
-``` python
+``` python3
 def f(x):
     return sin(x)
 
@@ -2939,7 +2939,7 @@ Para x0 = 5.1, raíz = 182.212
 
 ![image](images/13_algoritmos_32_1.png)
 
-``` python
+``` python3
 def plot_newton(x0):
     def f(x):
         return sin(x)
