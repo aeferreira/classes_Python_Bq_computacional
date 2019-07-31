@@ -23,12 +23,14 @@ função `print()`.
 
 Um exemplo com números:
 
+<div class="python_box">
 ``` python3
 print(4)
 print(3.2)
 print(9.0)
 print(((3 + 9) / 3.0)**0.5)
 ```
+</div>
 
 ```
 4
@@ -46,10 +48,12 @@ Nas expressões podemos usar:
 
 Um exemplo com *strings*:
 
+<div class="python_box">
 ``` python3
 print('quinta feira')
 print('hoje', 'é', "quinta feira,", 16)
 ```
+</div>
 
 ``` text
 quinta feira
@@ -76,6 +80,7 @@ Depois de uma atribuição, **o nome pode ser usado em vez do valor do
 objeto ou expressão**. Mesmo em atribuições seguintes, no comando
 `print()`, etc.
 
+<div class="python_box">
 ``` python3
 a = 4
 b = 3.2
@@ -85,6 +90,7 @@ print(a)
 print(b)
 print(c, d)
 ```
+</div>
 
 ```
 4
@@ -92,6 +98,7 @@ print(c, d)
 7.2 2.6832815729997477
 ```
 
+<div class="python_box">
 ``` python3
 hoje = "Hoje é quinta feira"
 mês = "Março"
@@ -101,6 +108,7 @@ print(hoje)
 print(mês)
 print(tudo)
 ```
+</div>
 
 ```
 Hoje é quinta feira
@@ -132,6 +140,7 @@ Não são permitidos espaços ou símbolos como `!, @, #, %` nos nomes.
 
 Existem também os **complexos** (em que `j` é a unidade imaginária):
 
+<div class="python_box">
 ``` python3
 c = 4+2j
 
@@ -144,6 +153,7 @@ d = 4j
 
 print('c * d =', c * d)
 ```
+</div>
 
 ```
 c = (4+2j)
@@ -157,6 +167,7 @@ c * d = (-8+16j)
 Durante a execução de um programa, os objetos associados a um mesmo nome
 podem variar:
 
+<div class="python_box">
 ``` python3
 a = 2
 b = 3
@@ -170,6 +181,7 @@ print("a =", a)
 print("b =", b)
 print("c =", c)
 ```
+</div>
 
 ```
 a = 3
@@ -182,6 +194,7 @@ aos nomes de `a`, `b` e `c` no programa anterior, podemos modifica-lo,
 mostrando, com `print()`, os valores atualizados desses nomes, após cada
 atribuição. Repare-se nos resultados de cada `print()`:
 
+<div class="python_box">
 ``` python3
 a = 2
 b = 3
@@ -195,6 +208,7 @@ print("a =", a, "b =", b, "c =", c)
 c = a + b
 print("a =", a, "b =", b, "c =", c)
 ```
+</div>
 
 ```
 a = 2 b = 3 c = Olá
@@ -210,6 +224,7 @@ valores ou expressões. Para isso, usam-se `{}` para identificar em que
 sítio da *string* deve ficar cada valor e a *string* deve ter a letra
 `f` como prefixo. Um exemplo:
 
+<div class="python_box">
 ``` python3
 a = 4.8
 b = 3.2
@@ -217,6 +232,7 @@ c = a + b
 
 print(f'a é igual a {a}, mas b = {b}, enquanto que c = {c}')
 ```
+</div>
 
 ```
 a é igual a 4.8, mas b = 3.2, enquanto que c = 8.0
@@ -224,6 +240,7 @@ a é igual a 4.8, mas b = 3.2, enquanto que c = 8.0
 
 ## Comentários
 
+<div class="python_box">
 ``` python3
 # Comentários começam por #
 
@@ -233,11 +250,13 @@ a, b  =  3, "experiência"
 
 print(f"a = {a} b = {b}")
 ```
+</div>
 
 ```
 a = 3 b = experiência
 ```
 
+<div class="python_box">
 ``` python3
 a, b  =  3, "experiência"
 
@@ -254,6 +273,7 @@ a, b = b, a
 print('Depois de trocar a e b...')
 print(f"a = {a} b = {b}")
 ```
+</div>
 
 ```
 a = 3 b = experiência
@@ -277,6 +297,7 @@ função `print()`.
 Além da função `print()`, as funções `int()` e `abs()` fazem parte
 integrante da linguagem Python.
 
+<div class="python_box">
 ``` python3
 numero = -3.8
 x = int(numero)
@@ -286,6 +307,7 @@ print(numero, '\n')
 print(x)
 print(y)
 ```
+</div>
 
 ```
 -3.8 
@@ -312,6 +334,7 @@ para os vários **tipos** de objetos:
 -   **complexos** (em que `j` é a unidade imaginária)
 -   *strings*
 
+<div class="python_box">
 ``` python3
 x = 3.8
 
@@ -320,6 +343,7 @@ print(int(x))
 print(complex(x))
 print(str(x))
 ```
+</div>
 
 ```
 3.8 
@@ -329,6 +353,7 @@ print(str(x))
 3.8
 ```
 
+<div class="python_box">
 ``` python3
 s = '3.4e4'
 f = float(s)
@@ -338,6 +363,7 @@ print(s, '\n')
 print(f)
 print(c)
 ```
+</div>
 
 ```
 3.4e4 
@@ -348,12 +374,14 @@ print(c)
 
 As conversões nem sempre são possíveis...
 
+<div class="python_box">
 ``` python3
 s = 'Vamos ver...'
 print(s, '\n')
 
 print(float(s))
 ```
+</div>
 
 ```
 Vamos ver... 
@@ -383,6 +411,7 @@ disponíveis.
 Um exemplo é o módulo **math** que contem muitas funções (e algumas
 constantes) matemáticas:
 
+<div class="python_box">
 ``` python3
 import math
 
@@ -400,6 +429,7 @@ print('exp(2.0) =', y)
 y = math.sin(x)
 print('sin(2.0) =', y)
 ```
+</div>
 
 ```
 ln(2.0) = 0.6931471805599453
@@ -408,6 +438,7 @@ exp(2.0) = 7.38905609893065
 sin(2.0) = 0.9092974268256817
 ```
 
+<div class="python_box">
 ``` python3
 y = math.sin(math.radians(90))
 print('sin(90°) =', y)
@@ -419,6 +450,7 @@ print('e =', math.e)
 y = math.sin(math.pi / 2.0)
 print('sin(π / 2) =', y)
 ```
+</div>
 
 ```
 sin(90°) = 1.0
@@ -427,10 +459,12 @@ e = 2.718281828459045
 sin(π / 2) = 1.0
 ```
 
+<div class="python_box">
 ``` python3
 y = math.factorial(100)
 print('100! =', y)
 ```
+</div>
 
 ```
 100! = 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
@@ -443,12 +477,14 @@ Um exemplo é a função `weekday()`, que, ao ser dado um ano, mês e dia,
 calcula um número que representa o dia da semana. (0 - seg, 1 - ter, 2 -
 qua, 3 - qui, 4 - sex, 5 - sab, 6 - dom)
 
+<div class="python_box">
 ``` python3
 import calendar
 
 print(calendar.weekday(2017, 3, 30))
 #nota: 0:seg 1:ter 2:qua 3:qui 4:sex 5:sab 6:dom
 ```
+</div>
 
 ```
 3
@@ -457,10 +493,12 @@ print(calendar.weekday(2017, 3, 30))
 Outro exemplo é a função `calendar()`, que constrói uma *string* com um
 calendário de um determinado ano:
 
+<div class="python_box">
 ``` python3
 import calendar
 print(calendar.calendar(2019))
 ```
+</div>
 
 ```
                                   2019
@@ -513,6 +551,7 @@ Dados $a, b$ e $c$, calcular
 $x_1 = \frac{-b + \sqrt{b^2 -4 a c}}{2 a}$ e
 $x_2 = \frac{-b - \sqrt{b^2 -4 a c}}{2 a}$
 
+<div class="python_box">
 ``` python3
 print('Este programa calcula x tal que a x2 + b x + c = 0')
 # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
@@ -529,6 +568,7 @@ x2 = (- b - rdelta) / (2.0*a)
 print("x1 =", x1)
 print("x2 =", x2)
 ```
+</div>
 
 Da matemática, sabemos que uma equação do segundo grau pode ter 2
 soluções reais, uma solução real "dupla", ou duas soluções complexas,
@@ -594,6 +634,7 @@ Continuando com o exemplo anterior, vamos primeiro distinguir o caso das
 soluções reais ($\Delta \geqslant 0$) do caso das soluções complexas
 ($\Delta < 0$).
 
+<div class="python_box">
 ``` python3
 # Este programa calcula x tal que a x2 + b x + c = 0
 # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
@@ -617,6 +658,7 @@ x2 = (- b - r_delta) / (2.0 * a)
 
 print("x1 =", x1, ", x2 =", x2)
 ```
+</div>
 
 Testando agora o programa para as três situações possíveis:
 
@@ -705,6 +747,7 @@ de comandos.
 Seguindo o exemplo da resolução de uma equação do segundo grau, podemos
 separar os três casos associados ao valor de $\Delta$ da seguinte forma:
 
+<div class="python_box">
 ``` python3
 # Este programa calcula x tal que a x2 + b x + c = 0
 # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
@@ -732,6 +775,7 @@ else:
     x = -b / (2.0 * a)
     print("x =", x)
 ```
+</div>
 
 ```
 a = 1 b = 4 c = 1 
@@ -778,6 +822,7 @@ um bloco `if` ou `elif` ou `else`.
 
 Por exemplo, o o programa também poderia ser escrito da seguinte forma:
 
+<div class="python_box">
 ``` python3
 # Este programa calcula x tal que a x2 + b x + c = 0
 # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
@@ -804,6 +849,7 @@ else:
     x2 = (- b - r_delta) / (2.0 * a)    
     print("x1 =", x1, ", x2 =", x2)
 ```
+</div>
 
 Algumas notas:
 
@@ -830,6 +876,7 @@ Vejamos agora um outro exemplo da utilização de blocos alternativos.
 
 Regra em vigor até 1582 (calendário Juliano, de Júlio César)
 
+<div class="python_box">
 ``` python3
 # Este programa determina de um ano é bissexto
 # Testar com 2015 N, 2012 S, 1900 N, 2000 S
@@ -841,6 +888,7 @@ if a % 4 == 0:
 else: 
     print(a, "não é bissexto")
 ```
+</div>
 
 ```
 2015 não é bissexto
@@ -876,6 +924,7 @@ sejam bissextos.
 
 Podemos adaptar o programa anterior para incluir as duas últimas regras:
 
+<div class="python_box">
 ``` python3
 a = 2015
 
@@ -884,6 +933,7 @@ if a % 4 == 0 and not (a % 100 == 0 and not a % 400 == 0):
 else: 
     print(a, "não é bissexto")
 ```
+</div>
 
 ```
 2015 não é bissexto
@@ -912,6 +962,7 @@ prejudica muito a legibilidade do programa.
 Um programa equivalente, combinando vários blocos de `if...else...` e a
 negação lógica `not` que será (possivelmente) mais fácil de perceber é:
 
+<div class="python_box">
 ``` python3
 a = 2015
 
@@ -926,6 +977,7 @@ else:
         else:
             print(a , "não é bissexto")
 ```
+</div>
 
 ```
 2015 não é bissexto
@@ -963,6 +1015,7 @@ mensagem de indicação do que está a ser pedido.
 
 Vejamos com um exemplo:
 
+<div class="python_box">
 ``` python3
 a = input('Valor de a? ')
 b = input('Valor de b? ')
@@ -991,6 +1044,7 @@ else:
     x2 = (- b - r_delta) / (2.0 * a)    
     print("x1 =", x1, ", x2 =", x2)
 ```
+</div>
 
 ```
 Valor de a? 1

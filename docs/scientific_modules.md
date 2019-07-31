@@ -25,10 +25,13 @@ Estas bibliotecas são:
 
 ### Operações "vectoriais"
 
+<div class="python_box">
 ``` python3
 import numpy as np
 ```
+</div>
 
+<div class="python_box">
 ``` python3
 numbers = [0.0, 0.2, 0.5, 1.0, 1.1]
 x = np.array(numbers)
@@ -41,6 +44,7 @@ y = 4 * x
 print('\ny = 4 * x =')
 print(y)
 ```
+</div>
 
 ```
 x = 
@@ -59,6 +63,7 @@ Estes objetos suportam operações aritméticas "vetoriais": na expressão
 Por outro lado, as operações aritméticas entre dois *arrays* são
 realizadas elemento a elemento:
 
+<div class="python_box">
 ``` python3
 a = np.array([0.0, 0.2, -0.5, 1.0, 1.1])
 b = np.array([0.0, 0.1, -1.0, 1.0, 1.0])
@@ -70,6 +75,7 @@ y = a + b
 print('\ny = a + b =')
 print(y)
 ```
+</div>
 
 ```
 a =  [ 0.   0.2 -0.5  1.   1.1]
@@ -81,33 +87,40 @@ y = a + b =
 
 ### Criação de *arrays* com as funções `.array()`, `.arange()` e `.linspace()`
 
+<div class="python_box">
 ``` python3
 x = np.array([1, 1.2, 3, 3.5])
 print(x)
 ```
+</div>
 
 ```
 [ 1.   1.2  3.   3.5]
 ```
 
+<div class="python_box">
 ``` python3
 x = np.arange(1.5, 2.0, 0.1)
 print(x)
 ```
+</div>
 
 ```
 [ 1.5  1.6  1.7  1.8  1.9]
 ```
 
+<div class="python_box">
 ``` python3
 x = np.linspace(1, 2, 5)
 print(x)
 ```
+</div>
 
 ```
 [ 1.    1.25  1.5   1.75  2.  ]
 ```
 
+<div class="python_box">
 ``` python3
 x = np.linspace(1, 2, 6)
 print('x')
@@ -118,6 +131,7 @@ y = 4 * x**2 -3
 print('\ny = 4 * x**2 -3')
 print(y)
 ```
+</div>
 
 ```
 x
@@ -127,13 +141,16 @@ y = 4 * x**2 -3
 [  1.     2.76   4.84   7.24   9.96  13.  ]
 ```
 
+<div class="python_box">
 ``` python3
 # só necessário em Jupyter notebooks
 %matplotlib inline
 
 from matplotlib import pyplot as pl
 ```
+</div>
 
+<div class="python_box">
 ``` python3
 x = np.linspace(-2, 2, 100)
 y = 4 * x**3 -3
@@ -141,14 +158,17 @@ y = 4 * x**3 -3
 pl.grid()
 g = pl.plot(x, y)
 ```
+</div>
 
 ![image](images/10_scientific_modules_14_0.png)
 
 **Problema: somar os primeiros 1000 quadrados perfeitos**
 
+<div class="python_box">
 ``` python3
 print(sum(np.arange(1000)**2))
 ```
+</div>
 
 ```
 332833500
@@ -156,6 +176,7 @@ print(sum(np.arange(1000)**2))
 
 ### Dimensões (`shape`)
 
+<div class="python_box">
 ``` python3
 x = np.arange(1, 13)
 print(x)
@@ -165,6 +186,7 @@ x.shape = (4,3)
 
 print('\nApós mudar "shape" para (4,3)\nx =\n{}'.format(x))
 ```
+</div>
 
 ```
 [ 1  2  3  4  5  6  7  8  9 10 11 12]
@@ -179,11 +201,13 @@ x =
 
 ### Criação de *arrays* com `.array()`, `.ones()`, `.zeros()`, `.eye()`, `.diag()`
 
+<div class="python_box">
 ``` python3
 x = np.array( [[1, 1.2, 3], [1.3,5.1,1.3]] )
 print(x)
 print('\nshape =', x.shape)
 ```
+</div>
 
 ```
 [[ 1.   1.2  3. ]
@@ -192,10 +216,12 @@ print('\nshape =', x.shape)
 shape = (2, 3)
 ```
 
+<div class="python_box">
 ``` python3
 x = np.ones((3,2))
 print(x)
 ```
+</div>
 
 ```
 [[ 1.  1.]
@@ -203,10 +229,12 @@ print(x)
  [ 1.  1.]]
 ```
 
+<div class="python_box">
 ``` python3
 x = np.zeros((3,2))
 print(x)
 ```
+</div>
 
 ```
 [[ 0.  0.]
@@ -214,10 +242,12 @@ print(x)
  [ 0.  0.]]
 ```
 
+<div class="python_box">
 ``` python3
 x = np.eye(3)
 print(x)
 ```
+</div>
 
 ```
 [[ 1.  0.  0.]
@@ -225,10 +255,12 @@ print(x)
  [ 0.  0.  1.]]
 ```
 
+<div class="python_box">
 ``` python3
 x = np.diag([1.2, 3.2, 4.1, 6.3])
 print(x)
 ```
+</div>
 
 ```
 [[ 1.2  0.   0.   0. ]
@@ -239,10 +271,12 @@ print(x)
 
 ### Indexação a várias dimensões
 
+<div class="python_box">
 ``` python3
 x = np.linspace(1,20,20).reshape((5,4))
 print(x)
 ```
+</div>
 
 ```
 [[  1.   2.   3.   4.]
@@ -252,12 +286,14 @@ print(x)
  [ 17.  18.  19.  20.]]
 ```
 
+<div class="python_box">
 ``` python3
 a = x[3,1]
 
 print(x)
 print('\nx[3,1] =', a)
 ```
+</div>
 
 ```
 [[  1.   2.   3.   4.]
@@ -269,12 +305,14 @@ print('\nx[3,1] =', a)
 x[3,1] = 14.0
 ```
 
+<div class="python_box">
 ``` python3
 a = x[3, :]
 
 print(x)
 print('\nx[3, :] =', a)
 ```
+</div>
 
 ```
 [[  1.   2.   3.   4.]
@@ -286,6 +324,7 @@ print('\nx[3, :] =', a)
 x[3, :] = [ 13.  14.  15.  16.]
 ```
 
+<div class="python_box">
 ``` python3
 a = x[1:4, 1:4]
 
@@ -293,6 +332,7 @@ print(x)
 print('\nx[1:4, 1:4] =')
 print(a)
 ```
+</div>
 
 ```
 [[  1.   2.   3.   4.]
@@ -310,10 +350,12 @@ x[1:4, 1:4] =
 Mas os slices de `arrays` unidimensionais também existem, tal como nas
 listas:
 
+<div class="python_box">
 ``` python3
 x =np.arange(0, 1.1, 0.1)[2:]
 print(x)
 ```
+</div>
 
 ```
 [ 0.2  0.3  0.4  0.5  0.6  0.7  0.8  0.9  1. ]
@@ -322,6 +364,7 @@ print(x)
 **Problema: mostrar que as diferenças entre os quadrados perfeitos
 sucessivos são os numeros ímpares**
 
+<div class="python_box">
 ``` python3
 quads = np.arange(12)**2
 print(quads)
@@ -329,6 +372,7 @@ print(quads)
 difs = quads[1:] - quads[0:-1]
 print(difs)
 ```
+</div>
 
 ```
 [  0   1   4   9  16  25  36  49  64  81 100 121]
@@ -337,6 +381,7 @@ print(difs)
 
 ### Indexação booleana
 
+<div class="python_box">
 ``` python3
 x = np.linspace(1, 10, 6)
 print('x =', x)
@@ -349,6 +394,7 @@ y = x[x < 7]
 print('\nx[x < 7]')
 print(y)
 ```
+</div>
 
 ```
 x = [  1.    2.8   4.6   6.4   8.2  10. ]
@@ -363,6 +409,7 @@ x[x < 7]
 **Problema: somar as raízes quadradas dos números inteiros até 100, mas
 só as que sejam números inteiros**
 
+<div class="python_box">
 ``` python3
 roots = np.arange(0,101)**0.5
 
@@ -371,6 +418,7 @@ s = sum(roots[np.trunc(roots) == roots])
 
 print(s)
 ```
+</div>
 
 ```
 55.0
@@ -378,6 +426,7 @@ print(s)
 
 ### Indexação com listas de inteiros ou outros *arrays*
 
+<div class="python_box">
 ``` python3
 x = np.linspace(5, 15, 6)
 print('x =', x)
@@ -388,6 +437,7 @@ print('\ni =', i)
 y = x[i]
 print('\nx[i] =', y)
 ```
+</div>
 
 ```
 x = [  5.   7.   9.  11.  13.  15.]
@@ -417,10 +467,12 @@ podemos especifica um "eixo" para aplicar o cálculo.
 
 Vejamos a aplicação da função `.sum()` a um *array* unidimensional:
 
+<div class="python_box">
 ``` python3
 a = np.linspace(1,20,20).sum()
 print(a)
 ```
+</div>
 
 ```
 210.0
@@ -429,6 +481,7 @@ print(a)
 E agora 3 maneiras de aplicar a função `.sum()` a um array
 multidimensional
 
+<div class="python_box">
 ``` python3
 # Como se fosse unidimensional
 # aplicando a todos os elementos
@@ -438,6 +491,7 @@ print(x)
 s = x.sum()
 print('\n', s)
 ```
+</div>
 
 ```
 [[  1.   2.   3.   4.]
@@ -449,6 +503,7 @@ print('\n', s)
  210.0
 ```
 
+<div class="python_box">
 ``` python3
 # Ao longo do eixo 0
 x = np.linspace(1,20,20).reshape((5,4))
@@ -457,6 +512,7 @@ print(x)
 s = x.sum(axis=0)
 print('\n', s)
 ```
+</div>
 
 ```
 [[  1.   2.   3.   4.]
@@ -468,6 +524,7 @@ print('\n', s)
  [ 45.  50.  55.  60.]
 ```
 
+<div class="python_box">
 ``` python3
 # Ao longo do eixo 1
 x = np.linspace(1,20,20).reshape((5,4))
@@ -476,6 +533,7 @@ print(x)
 s = x.sum(axis=1)
 print('\n', s)
 ```
+</div>
 
 ```
 [[  1.   2.   3.   4.]
@@ -490,17 +548,20 @@ print('\n', s)
 **Problema: mostrar que a série alternada dos inversos converge para log
 2**
 
+<div class="python_box">
 ``` python3
 i = np.arange(1,80)
 termos = (-1)**(i+1) * 1/i 
 s = termos.cumsum()
 print(s[:4])
 ```
+</div>
 
 ```
 [ 1.          0.5         0.83333333  0.58333333]
 ```
 
+<div class="python_box">
 ``` python3
 i = np.arange(1,80)
 termos = (-1)**(i+1) * 1/i 
@@ -510,9 +571,11 @@ pl.ylim(0.6, 0.8)
 pl.axhline(np.log(2), color='red')
 g = pl.plot(i,s, '-o')
 ```
+</div>
 
 ![image](images/10_scientific_modules_51_0.png)
 
+<div class="python_box">
 ``` python3
 # Agora com 300 termos
 i = np.arange(1, 300)
@@ -523,6 +586,7 @@ pl.ylim(0.6, 0.8)
 pl.axhline(np.log(2), color='red')
 g = pl.plot(i,s, alpha=0.7)
 ```
+</div>
 
 ![image](images/10_scientific_modules_52_0.png)
 
@@ -542,6 +606,7 @@ $p(x, \lambda) = \frac{e^{-x} \lambda^x}{x!}$ com $x = 0, 1, 2, ...$
 $f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2}$ com
 $x \in [-\infty, \infty]$
 
+<div class="python_box">
 ``` python3
 print('20 valores aleatórios da dist. de Poisson')
 print(' com lambda = 3')
@@ -549,6 +614,7 @@ print(' com lambda = 3')
 x = np.random.poisson(3, 20)
 print(x)
 ```
+</div>
 
 ```
 20 valores aleatórios da dist. de Poisson
@@ -556,11 +622,13 @@ print(x)
 [6 2 0 4 1 9 1 4 2 5 0 3 4 7 7 2 3 5 1 4]
 ```
 
+<div class="python_box">
 ``` python3
 print('5 valores aleatórios da distribuição N(0,1)')
 x = np.random.randn(5)
 print(x)
 ```
+</div>
 
 ```
 5 valores aleatórios da distribuição N(0,1)
@@ -570,6 +638,7 @@ print(x)
 **Problema**: "Provar" que a média e a variância da distribuição de
 Poisson são ambas iguais a $\lambda$.
 
+<div class="python_box">
 ``` python3
 sample = np.random.poisson(3, 100000)
 
@@ -577,6 +646,7 @@ print('Média = ', sample.mean())
 
 print('Variância =', sample.var())
 ```
+</div>
 
 ```
 Média =  2.99868
@@ -586,6 +656,7 @@ Variância = 3.0185382576
 **Problema**: Mostar numericamente o *Teorema do Limite Central* para
 uma distribuição de Poisson.
 
+<div class="python_box">
 ``` python3
 # Distribuição de médias de amostras de 2
 sample = np.random.poisson(3, (100000,2) )
@@ -597,9 +668,11 @@ unique, counts = np.unique(means, return_counts=True)
 pl.vlines(unique, [0], counts, color='darkblue')
 g = pl.plot(unique, counts, 'o')
 ```
+</div>
 
 ![image](images/10_scientific_modules_61_0.png)
 
+<div class="python_box">
 ``` python3
 # Distribuição de médias de amostras de 20
 sample = np.random.poisson(3, (100000,20) )
@@ -609,12 +682,14 @@ unique, counts = np.unique(means, return_counts=True)
 pl.vlines(unique, [0], counts, color='skyblue')
 g = pl.plot(unique, counts, 'o')
 ```
+</div>
 
 ![image](images/10_scientific_modules_62_0.png)
 
 Matrizes e álgebra linear
 -------------------------
 
+<div class="python_box">
 ``` python3
 A = np.matrix([[1, 2, 3], [2, 1, 6], [1, 7, 4]])
 print('A\n', A)
@@ -624,6 +699,7 @@ print('B\n', B)
 C = A * B
 print('\nC = A * B\n', C)
 ```
+</div>
 
 ```
 A
@@ -641,6 +717,7 @@ C = A * B
  [27]]
 ```
 
+<div class="python_box">
 ``` python3
 A = np.matrix([[1.0, 2, 3], [2, 1, 6], [1, 7, 4]])
 B = np.matrix([1,2,3]).T
@@ -649,6 +726,7 @@ X = np.linalg.solve(A, B)
 print('Solução de A*X = B')
 print(X)
 ```
+</div>
 
 ```
 Solução de A*X = B
@@ -662,6 +740,7 @@ Solução de A*X = B
 
 ### Símbolos e álgebra básica
 
+<div class="python_box">
 ``` python3
 from sympy import Symbol
 
@@ -670,11 +749,13 @@ y = Symbol('y')
 
 print(x + y + x -y)
 ```
+</div>
 
 ```
 2*x
 ```
 
+<div class="python_box">
 ``` python3
 a = (x+y)**2
 print(a)
@@ -682,6 +763,7 @@ print(a.expand())
 print(a.subs(x, 1).expand())
 print(a.subs(x, 1).expand().subs(y, 1))
 ```
+</div>
 
 ```
 (x + y)**2
@@ -692,6 +774,7 @@ y**2 + 2*y + 1
 
 ### Limites
 
+<div class="python_box">
 ``` python3
 from sympy import Symbol, limit, diff, integrate, sin, oo
 
@@ -702,6 +785,7 @@ print(limit(sin(x)/x, x, 0))
 print(limit(x, x, oo))
 print(limit(1/x, x, oo))
 ```
+</div>
 
 ```
 1
@@ -711,6 +795,7 @@ oo
 
 ### Derivadas e integrais
 
+<div class="python_box">
 ``` python3
 print(diff(sin(x), x))
 print(diff(sin(2*x), x))
@@ -720,6 +805,7 @@ print(expr)
 print(diff(expr, x))
 print(diff(expr, x, 3))
 ```
+</div>
 
 ```
 cos(x)
@@ -730,9 +816,11 @@ cos(x)
 2**x*log(2)**3
 ```
 
+<div class="python_box">
 ``` python3
 print(integrate(sin(x), x))
 ```
+</div>
 
 ```
 -cos(x)
@@ -741,22 +829,28 @@ print(integrate(sin(x), x))
 Exemplo do uso de `numpy` e `scipy`: regressão linear.
 ------------------------------------------------------
 
+<div class="python_box">
 ``` python3
 import numpy as np
 %matplotlib inline
 from matplotlib import pyplot as pl
 ```
+</div>
 
 ![](images/dataregress.png)
 
+<div class="python_box">
 ``` python3
 x = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
 y = np.array([1.0, 2.1, 2.8, 4.1, 5.2])
 ```
+</div>
 
+<div class="python_box">
 ``` python3
 p = pl.plot(x,y, 'o')
 ```
+</div>
 
 ![image](images/regression_dots.png)
 
@@ -764,13 +858,17 @@ p = pl.plot(x,y, 'o')
 
 ![](images/scipydocs_regress.png)
 
+<div class="python_box">
 ``` python3
 from scipy.stats import linregress
 ```
+</div>
 
+<div class="python_box">
 ``` python3
 m, b, R, p, SEm = linregress(x, y)
 ```
+</div>
 
 -   `m`: declive
 -   `b`: ordenada na origem
@@ -780,6 +878,7 @@ m, b, R, p, SEm = linregress(x, y)
 
 Falta calcular o SE da ordenada na origem.
 
+<div class="python_box">
 ``` python3
 def lin_regression(x, y):
     """Simple linear regression (y = m * x + b + error)."""
@@ -793,11 +892,15 @@ def lin_regression(x, y):
 
     return m, b, SEm, SEb, R, p
 ```
+</div>
 
+<div class="python_box">
 ``` python3
 m, b, Sm, Sb, R, p = lin_regression(x, y)
 ```
+</div>
 
+<div class="python_box">
 ``` python3
 print('m = {:>.4g} +- {:6.4f}'.format(m, Sm))
 print('b = {:>.4g} +- {:6.4f}\n'.format(b, Sb))
@@ -805,6 +908,7 @@ print('b = {:>.4g} +- {:6.4f}\n'.format(b, Sb))
 print('R2 = {:7.5f}'.format(R**2))
 print('p of test F : {:<8.6f}'.format(p))
 ```
+</div>
 
 ```
 m = 1.04 +- 0.0503
@@ -814,6 +918,7 @@ R2 = 0.99302
 p of test F : 0.000248
 ```
 
+<div class="python_box">
 ``` python3
 pl.plot(x,y, 'o')
 pl.xlim(0,None)
@@ -830,6 +935,7 @@ ptxt = 'm = {:>.4g} +- {:6.4f}\nb = {:>.4g} +- {:6.4f}\nR2 = {:7.5f}'
 
 t = pl.text(0.5, 4, ptxt.format(m, Sm, b, Sb, R**2), fontsize=14)
 ```
+</div>
 
 ![image](images/regression.png)
 
@@ -910,13 +1016,16 @@ Computation
 
 Make the necessary imports
 
+<div class="python_box">
 ``` python3
 from numpy import linspace
 ```
+</div>
 
 Use derived equations to compute species distribution and the amount of
 base necessary to change the solution into a given pH value.
 
+<div class="python_box">
 ``` python3
 pK1 = 2.3
 pK2 = 9.6
@@ -931,6 +1040,7 @@ Gzero = f1 * Gplus
 Gminus = f2 * Gzero
 nOH = Gzero + 2 * Gminus
 ```
+</div>
 
 Plots
 -----
@@ -938,12 +1048,15 @@ Plots
 Obtain a plot of the distribution of the three different species of the
 amino acid as a function of pH.
 
+<div class="python_box">
 ``` python3
 %matplotlib inline 
 # This is to be used in IPython/Jupyter notebooks
 # This makes plots appear "inline" as part of cell's outputs.
 ```
+</div>
 
+<div class="python_box">
 ``` python3
 import matplotlib.pyplot as pl
 
@@ -956,6 +1069,7 @@ pl.xlabel('$pH$')
 pl.legend(('$G^+$','$G^0$', '$G^-$'))
 t = pl.title('Species distribution')
 ```
+</div>
 
 ![image](images/ph_forms.png)
 
@@ -963,6 +1077,7 @@ Plot also the amount of base necessary to change the pH of the solution,
 but **exchange the x and y axis**, so that it looks like we are
 titrating the solution.
 
+<div class="python_box">
 ``` python3
 pl.plot(nOH, pH)
 
@@ -970,6 +1085,7 @@ pl.ylabel('$pH$')
 pl.xlabel('$nOH^{-}$')
 pl.grid()
 ```
+</div>
 
 ![image](images/ph_titr.png)
 
@@ -988,9 +1104,11 @@ pl.grid()
 > data type (integers, strings, floating point numbers, Python objects,
 > etc.). The axis labels are collectively referred to as the **index**.
 
+<div class="python_box">
 ``` python3
 import pandas as pd
 ```
+</div>
 
 Uma Série (*Series*) é um conjunto (ordenado) de valores, mas cada valor
 é associado a uma "etiqueta" (*label*).
@@ -1000,11 +1118,13 @@ Ao conjunto das etiquetas dá-se o nome de "**índice**".
 Quando construímos uma Série, usando a função `Series()`, podemos
 indicar o índice.
 
+<div class="python_box">
 ``` python3
 s = pd.Series([1.4, 2.2, 3.2, 6.5, 12],
               index=['a', 'b', 'c', 'd', 'e'])
 print(s)
 ```
+</div>
 
 ```
 a     1.4
@@ -1018,10 +1138,12 @@ dtype: float64
 Se não indicarmos um índice, o conjunto dos inteiros sucessivos será o
 índice.
 
+<div class="python_box">
 ``` python3
 s = pd.Series([1.4,2.2,3.2,6.5,12])
 print(s)
 ```
+</div>
 
 ```
 0     1.4
@@ -1035,11 +1157,13 @@ dtype: float64
 As Séries podem ser construídas a partir de um dicionário, em que as
 chaves são o índice.
 
+<div class="python_box">
 ``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d)
 print(s)
 ```
+</div>
 
 ```
 a    0.0
@@ -1052,11 +1176,13 @@ Podemos, mesmo neste caso, indicar um índice. Caso o índice tenha
 elementos para além das chaves do dicionário, haverá **valores em
 falta**.
 
+<div class="python_box">
 ``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 print(s)
 ```
+</div>
 
 ```
 b    1.0
@@ -1078,12 +1204,14 @@ utilidade.
 Note-se que, em geral, **os valores em falta são ignorados nos
 cálculos**.
 
+<div class="python_box">
 ``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 print(s)
 print('\nMédia =', s.mean())
 ```
+</div>
 
 ```
 b    1.0
@@ -1095,6 +1223,7 @@ dtype: float64
 Média = 1.0
 ```
 
+<div class="python_box">
 ``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
@@ -1102,6 +1231,7 @@ print(s)
 print('-----')
 print(s.describe())
 ```
+</div>
 
 ```
 b    1.0
@@ -1121,11 +1251,13 @@ max      2.0
 dtype: float64
 ```
 
+<div class="python_box">
 ``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 print(s.cumsum())
 ```
+</div>
 
 ```
 b    1.0
@@ -1135,6 +1267,7 @@ a    3.0
 dtype: float64
 ```
 
+<div class="python_box">
 ``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
@@ -1142,6 +1275,7 @@ s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 print(s.values)
 print(s.index.values)
 ```
+</div>
 
 ```
 [  1.   2.  nan   0.]
@@ -1155,6 +1289,7 @@ comportando-se como uma lista ou um *array* do `numpy`.
 
 A função `len()`também funciona com séries.
 
+<div class="python_box">
 ``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
@@ -1162,6 +1297,7 @@ print(len(s))
 print(s[0])
 print(s[-1])
 ```
+</div>
 
 ```
 4
@@ -1176,6 +1312,7 @@ como chaves** e são usadas para indexar uma Série. para obter um valor
 Tal como nos dicionários, o operador `in` **testa a existência de uma
 etiqueta**.
 
+<div class="python_box">
 ``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
@@ -1186,6 +1323,7 @@ print(s.c) # notação abreviada
 print('z' in s)
 print('d' in s)
 ```
+</div>
 
 ```
 b    1.0
@@ -1206,6 +1344,7 @@ do módulo `numpy`. Podemos usar:
 -   *slices*
 -   **operações vetoriais**.
 
+<div class="python_box">
 ``` python3
 d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
 s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
@@ -1213,6 +1352,7 @@ print(s)
 
 print(s[:3])
 ```
+</div>
 
 ```
 b    1.0
@@ -1227,6 +1367,7 @@ d    NaN
 dtype: float64
 ```
 
+<div class="python_box">
 ``` python3
 d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
 s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
@@ -1234,6 +1375,7 @@ print(s)
 
 print(s**2)
 ```
+</div>
 
 ```
 b    1.0
@@ -1250,6 +1392,7 @@ a    0.25
 dtype: float64
 ```
 
+<div class="python_box">
 ``` python3
 d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
 s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
@@ -1257,6 +1400,7 @@ print(s)
 
 print(s[s > 1.1])
 ```
+</div>
 
 ```
 b    1.0
@@ -1275,6 +1419,7 @@ vetoriais sobre Séries (por exemplo, na soma de duas séries), **os
 valores são "alinhados" pelos respetivos *labels*** antes da operação.
 Vejamos estas duas séries:
 
+<div class="python_box">
 ``` python3
 s1 = pd.Series({'a' : 0.5, 'b' : 1.0, 'e': 1.8})
 s2 = pd.Series({'a' : 0.5, 'b' : 1.0, 'f': 1.8})
@@ -1282,6 +1427,7 @@ s2 = pd.Series({'a' : 0.5, 'b' : 1.0, 'f': 1.8})
 print('Soma')
 print(s1 + s2)
 ```
+</div>
 
 ```
 Soma
@@ -1300,6 +1446,7 @@ valor `NaN`, terão o valor `NaN` no resultado final.
 
 A função `.dropna()` permite eliminar os *valores em falta*.
 
+<div class="python_box">
 ``` python3
 s1 = pd.Series({'a' : 0.5, 'b' : 1.0, 'e': 1.8})
 s2 = pd.Series({'a' : 0.5, 'b' : 1.0, 'f': 1.8})
@@ -1307,6 +1454,7 @@ s3 = s1 + s2
 
 print(s3.dropna())
 ```
+</div>
 
 ```
 a    1.0
@@ -1331,6 +1479,7 @@ informação da UniProt sobre a levedura *S. cerevisiae*.
 A `DataFrame` terá as colunas "**ac**", "**rev**", "**n**" e
 "**sequence**"
 
+<div class="python_box">
 ``` python3
 def get_prots(filename):
     with open(filename) as big:
@@ -1356,6 +1505,7 @@ pinfo = [process_prot(p) for p in prots]
 print('Numero total de proteínas: {}'.format(len(pinfo)))
 print('A primeira proteína tem', pinfo[0]['n'], 'aminoácidos')
 ```
+</div>
 
 ```
 Numero total de proteínas: 6816
@@ -1365,11 +1515,13 @@ A primeira proteína tem 316 aminoácidos
 Podemos construir uma `DataFrame` a partir de uma lista de dicionários.
 As **chaves dos dicionários serão as colunas**.
 
+<div class="python_box">
 ``` python3
 prots = pd.DataFrame(pinfo)
 print(len(prots))
 prots[:3]
 ```
+</div>
 
 ```
 6816
@@ -1427,11 +1579,13 @@ prots[:3]
 Para inspeção rápida, as funções `.head()` e `.tail()` apresentam o
 início e o fim da `DataFrame`
 
+<div class="python_box">
 ``` python3
 prots = pd.DataFrame(pinfo)
 #prots.head()
 prots.tail()
 ```
+</div>
 
 <div>
 <style>
@@ -1498,10 +1652,12 @@ prots.tail()
 </div>
 Podemos mudar o índice para uma das colunas.
 
+<div class="python_box">
 ``` python3
 prots = prots.set_index('ac')
 prots.head()
 ```
+</div>
 
 <div>
 <style>
@@ -1571,9 +1727,11 @@ ao índice).
 
 Cada coluna comporta-se como uma Série.
 
+<div class="python_box">
 ``` python3
 prots['n']
 ```
+</div>
 
 ```
 ac
@@ -1641,12 +1799,14 @@ A0A1S0T004     163
 Name: n, Length: 6816, dtype: int64
 ```
 
+<div class="python_box">
 ``` python3
 print(prots['n']['P31383'])
 print(prots['n'].max())
 print(prots['n'].min())
 print(prots['n'].mean())
 ```
+</div>
 
 ```
 635
@@ -1655,9 +1815,11 @@ print(prots['n'].mean())
 445.49838615023475
 ```
 
+<div class="python_box">
 ``` python3
 print(prots['n'].describe())
 ```
+</div>
 
 ```
 count    6816.000000
@@ -1671,6 +1833,7 @@ max      4910.000000
 Name: n, dtype: float64
 ```
 
+<div class="python_box">
 ``` python3
 desc = prots['n'].describe()
 min_aa = desc['min']
@@ -1679,6 +1842,7 @@ max_aa = desc['max']
 print('Menor proteína:', min_aa)
 print('Maior proteína:', max_aa)
 ```
+</div>
 
 ```
 Menor proteína: 16.0
@@ -1687,11 +1851,13 @@ Maior proteína: 4910.0
 
 Quais são as proteínas menores e maiores?
 
+<div class="python_box">
 ``` python3
 min_aa = prots['n'].describe()['min']
 
 prots[prots['n'] == min_aa]
 ```
+</div>
 
 <div>
 <style>
@@ -1732,11 +1898,13 @@ prots[prots['n'] == min_aa]
   </tbody>
 </table>
 </div>
+<div class="python_box">
 ``` python3
 max_aa = prots['n'].describe()['max']
 
 prots[prots['n'] == max_aa]
 ```
+</div>
 
 <div>
 <style>
@@ -1781,9 +1949,11 @@ Para obter uma linha usamos `.loc` e indexação por um *label*.
 
 A linha obtida é uma *Series*.
 
+<div class="python_box">
 ``` python3
 prots.loc['P31383']
 ```
+</div>
 
 ```
 n                                                    635
@@ -1794,9 +1964,11 @@ Name: P31383, dtype: object
 
 Quantos triptofanos tem a proteína P31383?
 
+<div class="python_box">
 ``` python3
 prots.loc['P31383']['seq'].count('W')
 ```
+</div>
 
 ```
 7
@@ -1806,11 +1978,13 @@ A indexação com condições sobre as colunas é muito poderosa.
 
 Qauntas proteínas têm mais de 2000 aminoácidos?
 
+<div class="python_box">
 ``` python3
 bigs = prots[prots['n'] > 2000]
 print(len(bigs))
 bigs
 ```
+</div>
 
 ```
 37
@@ -2071,11 +2245,13 @@ bigs
   </tbody>
 </table>
 </div>
+<div class="python_box">
 ``` python3
 # Média dos comprimentos das proteínas
 # com mais de 2000 aminoácidos
 prots[prots['n'] > 2000]['n'].mean()
 ```
+</div>
 
 ```
 2564.4054054054054
@@ -2083,17 +2259,21 @@ prots[prots['n'] > 2000]['n'].mean()
 
 De novo, qual a proteína maior?
 
+<div class="python_box">
 ``` python3
 prots['n'].idxmax()
 ```
+</div>
 
 ```
 'Q12019'
 ```
 
+<div class="python_box">
 ``` python3
 prots.loc[prots['n'].idxmax()]
 ```
+</div>
 
 ```
 n                                                   4910
@@ -2105,9 +2285,11 @@ Name: Q12019, dtype: object
 Para aplicar funções de *strings* a toda uma coluna de uma só vez,
 usamos o atributo `.str.` sobre essa coluna (o resultado é uma Série):
 
+<div class="python_box">
 ``` python3
 prots['seq'].str.count('W')
 ```
+</div>
 
 ```
 ac
@@ -2178,10 +2360,12 @@ Name: seq, Length: 6816, dtype: int64
 Com uma indexação por nome, podemos inserir uma coluna nova na
 `DataFrame` (no fim).
 
+<div class="python_box">
 ``` python3
 prots['W'] = prots['seq'].str.count('W')
 prots.head()
 ```
+</div>
 
 <div>
 <style>
@@ -2257,9 +2441,11 @@ As `DataFrame`s também têm funções descritivas, mas o facto de cada
 coluna ser uma Série podemos realizar muitas análises de uma forma
 simples.
 
+<div class="python_box">
 ``` python3
 prots.info()
 ```
+</div>
 
 ```
 <class 'pandas.core.frame.DataFrame'>
@@ -2273,9 +2459,11 @@ dtypes: int64(2), object(2)
 memory usage: 586.2+ KB
 ```
 
+<div class="python_box">
 ``` python3
 print(prots['rev'].value_counts())
 ```
+</div>
 
 ```
 Reviewed      6721
@@ -2283,17 +2471,21 @@ Unreviewed      95
 Name: rev, dtype: int64
 ```
 
+<div class="python_box">
 ``` python3
 # só no IPython/Jupyter notebook
 %matplotlib inline
 ```
+</div>
 
+<div class="python_box">
 ``` python3
 import matplotlib.pyplot as pl
 pl.ylabel('Proteins')
 pl.xlabel('Length (aa)')
 p = prots['n'].plot(kind='hist', bins=100)
 ```
+</div>
 
 ![Protein-length histogram](images/pandas_hist.png)
 
@@ -2314,6 +2506,7 @@ Para calcular a raíz quadrada de um número a:
 
 $x$ é a raíz quadrada de $a$.
 
+<div class="python_box">
 ``` python3
 a = 2.0
 print('a =', a)
@@ -2325,12 +2518,14 @@ for i in range(20):
 
 print('x =', x)
 ```
+</div>
 
 ```
 a = 2.0
 x = 1.414213562373095
 ```
 
+<div class="python_box">
 ``` python3
 a = 2.0
 
@@ -2342,6 +2537,7 @@ for i in range(20):
 
 print("A raíz quadrada de {} é {}".format(a,x))
 ```
+</div>
 
 ```
 1.0
@@ -2377,6 +2573,7 @@ Para calcular a raíz quadrada de um número a:
 
 x é a raíz quadrada de a.
 
+<div class="python_box">
 ``` python3
 a = 2.0
 
@@ -2391,6 +2588,7 @@ for i in range(100):
 
 print("A raíz quadrada de {} é {}".format(a,x))
 ```
+</div>
 
 ```
 1.0
@@ -2401,6 +2599,7 @@ print("A raíz quadrada de {} é {}".format(a,x))
 A raíz quadrada de 2.0 é 1.414213562373095
 ```
 
+<div class="python_box">
 ``` python3
 def babilonico(a, show_iters=False):
     x = 1.0
@@ -2416,6 +2615,7 @@ def babilonico(a, show_iters=False):
 r = babilonico(2.0, show_iters=True)
 print("A raíz quadrada de {} é {}".format(2.0,r))
 ```
+</div>
 
 ```
 1.0
@@ -2452,6 +2652,7 @@ Para calcular a raíz de uma função $f(x)$, contínua sabendo que existe
 
 $x_m$ é a raíz da função $f(x)$, isto é $f(x_m) \approx 0$.
 
+<div class="python_box">
 ``` python3
 def bissect(f, a, b):
     epsilon = 1e-6
@@ -2475,12 +2676,14 @@ x = bissect(f, 1, 2)
 print("Raíz encontrada:")
 print(x)
 ```
+</div>
 
 ```
 Raíz encontrada:
 1.2599201202392578
 ```
 
+<div class="python_box">
 ``` python3
 def bissect(f, a, b):
     epsilon, epsilonf = 1e-6, 1e-10
@@ -2505,6 +2708,7 @@ x, fx = bissect(f, 1, 2)
 
 print("x = {}, f(x) = {:9.7f}".format(x,fx))
 ```
+</div>
 
 ```
 x = 1.2599201202392578, f(x) = -0.0000044
@@ -2512,6 +2716,7 @@ x = 1.2599201202392578, f(x) = -0.0000044
 
 Monitorizando as bisseções:
 
+<div class="python_box">
 ``` python3
 def bissect(f, a, b):
     epsilon, epsilonf = 1e-6, 1e-10
@@ -2546,6 +2751,7 @@ a       b       |b-a|       f(xm)''')
 for a, b, fm in h:
     print("{0:7.5f} {1:7.5f} {3:10.8f} {2:10.7f}".format(a,b,fm, abs(b-a)))
 ```
+</div>
 
 ```
 x = 1.2599201202392578, f(x) = -0.0000044
@@ -2590,6 +2796,7 @@ $x_{final}$ é a raíz da função $f(x)$, isto é $f(x_{final}) \approx 0$.
 **NOTA**: O algoritmo babilónico é um caso particular do método de
 Newton para $f(x) = x^2 -a$
 
+<div class="python_box">
 ``` python3
 def newton(f, df, x):
     epsilon = 1e-6
@@ -2599,7 +2806,9 @@ def newton(f, df, x):
         fx, dfx = f(x),df(x)
     return (x, fx)
 ```
+</div>
 
+<div class="python_box">
 ``` python3
 def f(x):
     return x**3 -2
@@ -2611,6 +2820,7 @@ x, fx = newton(f, df, 1.5)
 
 print("x = {}, f(x) = {:9.7f}".format(x,fx))
 ```
+</div>
 
 ```
 x = 1.2599210498953948, f(x) = 0.0000000
@@ -2618,6 +2828,7 @@ x = 1.2599210498953948, f(x) = 0.0000000
 
 Monitorizando as iterações:
 
+<div class="python_box">
 ``` python3
 def newton(f, df, x):
     epsilon = 1e-6
@@ -2649,6 +2860,7 @@ x         f(x)''')
 for x, fx in h:
     print("{0:9.7f} {1:9.7f}".format(x, fx))
 ```
+</div>
 
 ```
 x = 1.2599210498953948, f(x) = 0.0000000
@@ -2700,6 +2912,7 @@ Método de Newton:
 
 Método de Newton com a função $sin(x)$
 
+<div class="python_box">
 ``` python3
 from math import sin, cos, pi
 
@@ -2730,6 +2943,7 @@ for x0 in 0.1, 1.1, 3.1, 4.1, 5.1, 6.1, 12.1:
 
     print("x0 = {:<7.2f} x = {:4.1f} pi".format(x0, pi_x))
 ```
+</div>
 
 ```
 x0 = 0.10    x =  0.0 pi
@@ -2741,6 +2955,7 @@ x0 = 6.10    x =  2.0 pi
 x0 = 12.10   x =  4.0 pi
 ```
 
+<div class="python_box">
 ``` python3
 def f(x):
     return sin(x)
@@ -2772,6 +2987,7 @@ for x0 in 0.1, 1.1, 3.1, 4.1, 5.1, 6.1, 12.1:
 
     print("para x0 = {},    x = {:4.1f} pi".format(x0, pi_x))
 ```
+</div>
 
 ```
 ----------------
@@ -2821,16 +3037,21 @@ x = 12.56635, f(x)=-0.00002
 para x0 = 12.1,    x =  4.0 pi
 ```
 
+<div class="python_box">
 ``` python3
 %matplotlib inline
 ```
+</div>
 
+<div class="python_box">
 ``` python3
 from matplotlib import pyplot as pl
 import matplotlib as mpl
 from numpy import linspace, sin, cos
 ```
+</div>
 
+<div class="python_box">
 ``` python3
 x = linspace(-6, 10, 1000)
 y = sin(x)
@@ -2840,9 +3061,11 @@ pl.plot(x,y, color='teal', linewidth=3)
 for z in range(-1, 4):
     pl.axvline(x = z * pi, color='black', linestyle=':', ymin=0.25, ymax=0.75)
 ```
+</div>
 
 ![image](images/13_algoritmos_29_0.png)
 
+<div class="python_box">
 ``` python3
 mpl.rcParams['figure.figsize'] = (10,6)
 
@@ -2874,6 +3097,7 @@ for x0, color in [(0.5,'green'), (1.1, 'darkred'), (2.2, 'teal')]:
     xpoints, ypoints = newton_points(h)
     pl.plot(xpoints, ypoints, color=color, linewidth=2)
 ```
+</div>
 
 ```
 Para x0 = 0.5, raíz = -0.000
@@ -2883,6 +3107,7 @@ Para x0 = 2.2, raíz =  3.142
 
 ![image](images/13_algoritmos_30_1.png)
 
+<div class="python_box">
 ``` python3
 def f(x):
     return sin(x)
@@ -2904,6 +3129,7 @@ for x0, color in [(5.1,'green')]:
     pl.plot(xpoints, ypoints, color=color, linewidth=2)
     pl.xlim(-1,10)
 ```
+</div>
 
 ```
 Para x0 = 5.1, raíz = 182.212
@@ -2911,6 +3137,7 @@ Para x0 = 5.1, raíz = 182.212
 
 ![image](images/13_algoritmos_31_1.png)
 
+<div class="python_box">
 ``` python3
 def f(x):
     return sin(x)
@@ -2932,6 +3159,7 @@ for x0, color in [(5.1,'green')]:
     pl.plot(xpoints, ypoints, color=color, linewidth=2)
     pl.xlim(180,185)
 ```
+</div>
 
 ```
 Para x0 = 5.1, raíz = 182.212
@@ -2939,6 +3167,7 @@ Para x0 = 5.1, raíz = 182.212
 
 ![image](images/13_algoritmos_32_1.png)
 
+<div class="python_box">
 ``` python3
 def plot_newton(x0):
     def f(x):
@@ -2962,5 +3191,6 @@ def plot_newton(x0):
     #pl.show()
     #print('Para x0 = {}, raíz = {:4.2f} pi'.format(x0, x_pi))
 ```
+</div>
 
 ![image](images/13_algoritmos_34_0.png)

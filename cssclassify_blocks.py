@@ -8,30 +8,33 @@ backup = Path() / 'backup'
 backup.mkdir(exist_ok=True)
 for p in mks:
     dest = backup / p.name
-    #print(f'- copying {p} to {dest}')
+    print(f'- copying {p} to {dest}')
     content = p.read_text()
-#     with dest.open('w') as f:
-#        f.write(content)
+    with dest.open('w') as f:
+        f.write(content)
 
-p3block = re.compile(r'(``` python3)([^`]*)(```)', flags=re.DOTALL)
+p3block = re.compile(r'(<div class="python_box">\s*)?(``` python3)([^`]*)(```)(\s*</div>)?', flags=re.DOTALL)
+
+def rep_string(matchobj):
+    parts = ['<div class="python_box">\n']
+    parts.extend([matchobj.group(i) for i in range(2,5)])
+    parts.append('\n</div>')
+    return ''.join(parts)
+
 
 print('---------- Processing files ------------')
 for p in mks:
-    if p.name != 'files.md':
-        continue
     print(f'- processing {p}')
     content = p.read_text()
 
     npy = content.count('``` python\n') + content.count('```python\n')
-    print(f'{npy} ocorrences of ``` python')
     content = content.replace('``` python\n', '``` python3\n')
     content = content.replace('```python\n', '``` python3\n')
+    print(f'{npy} ocorrences of ``` python replaced by python3')
     
-    print(f'Ocorrences of ``` python3 in {p}:')
-    for m in re.finditer(p3block, content):
-        print(m.group(1))
-        print('----------------------')
-
+    print(f'Adding <div class="python_box">:')
+    content, n = re.subn(p3block, rep_string, content)
+    print(f'{n} substitutions were made')
     
-    #with p.open('w') as f:
-        #f.write(content)
+    with p.open('w') as f:
+        f.write(content)

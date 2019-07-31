@@ -24,12 +24,14 @@ Exemplos:
 ![](images/down_read.png)
 
 
+<div class="python_box">
 ``` python3
 with open('c_hominis.fasta') as datafile:
     data = datafile.read()
 
 print(data)
 ```
+</div>
 
     >sp|A7HZZ5|ACP_CAMHC Acyl carrier protein OS=Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A) OX=360107 GN=acpP PE=3 SV=1
     MEVFEEVRDVVVEQLSVAPDAVKIDSKIIEDLGADSLDVVELVMALEEKFGIEIPDSEAE
@@ -64,6 +66,7 @@ print(data)
 ![](images/request_read.png)
 
 
+<div class="python_box">
 ``` python3
 import requests
 
@@ -73,6 +76,7 @@ data = requests.get(url).text
 
 print(data)
 ```
+</div>
 
     A7HZZ5
     A7I0W5
@@ -112,6 +116,7 @@ Na **definição literal** de *strings* podemos delimita-las usando
 As *aspas triplas* (`"""`) permitem delimitar uma *string* contendo várias
 linhas.
 
+<div class="python_box">
 ``` python3
 a = "O Neo tomou o comprimido vermelho"
 
@@ -124,12 +129,14 @@ ocupa várias linhas
 
 algumas das linhas estão em branco"""
 ```
+</div>
 
 ### operador `+`. Função `len()`
 
 O operador `+` serve para "juntar" várias *strings*, uma operação
 designada por *concatenação*.
 
+<div class="python_box">
 ``` python3
 c = "There's no spoon"
 
@@ -138,6 +145,7 @@ s = c + ', really, ' + 'none' + '.'
 print(f'c = {c}')
 print(f's = {s}')
 ```
+</div>
 
 ```
 c =  There's no spoon
@@ -147,6 +155,7 @@ c =  There's no spoon, really, none.
 A função `len()` é uma função universal que calcula o número de elementos de qualquer coleção.
 No caso das _strings_, o resultado é o **número de caracteres**.
 
+<div class="python_box">
 ``` python3
 c = "There's no spoon"
 
@@ -154,6 +163,7 @@ n = len(c)
 
 print(f'\n"{c}" tem {n} caracteres')
 ```
+</div>
     
     "There's no spoon" tem 16 caracteres
 
@@ -170,12 +180,14 @@ caracteres**, tal como uma lista é uma sequência de quaisquer objetos.
 
 Na iteração de uma _string_ com `for` percorre-se os caracteres da _string_, um a um.
 
+<div class="python_box">
 ``` python3
 frase = "There's no spoon"
 
 for c in frase:
     print(c, c, c)
 ```
+</div>
 
     T T T
     h h h
@@ -197,6 +209,7 @@ for c in frase:
 
 Na indexação, cada caractere tem uma posição (a começar do zero).
 
+<div class="python_box">
 ``` python3
 frase = "There's no spoon"
 
@@ -204,6 +217,7 @@ print(frase[0])
 print(frase[5])
 print(frase[-1])
 ```
+</div>
 
     T
     '
@@ -233,6 +247,7 @@ Vamos ver (apenas) as seguintes:
 ###  `in`, `.startswith()` , `.endswith()`.
 
 
+<div class="python_box">
 ``` python3
 frase = "There's no spoon"
 
@@ -241,11 +256,13 @@ if 're' in frase:
 else:
     print('"re" não existe na frase')    
 ```
+</div>
 
     "re" existe na frase
     
 
 
+<div class="python_box">
 ``` python3
 seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 
@@ -255,6 +272,7 @@ if seq.startswith('AUG'):
 if seq.endswith('UAG') or seq.endswith('UAA') or seq.endswith('UGA'):
     print('O último codão é um codão stop')
 ```
+</div>
 
     O primeiro codão é de iniciação
     
@@ -262,6 +280,7 @@ if seq.endswith('UAG') or seq.endswith('UAA') or seq.endswith('UGA'):
 ### `.strip()`.
 
 
+<div class="python_box">
 ``` python3
 c = """    
            There's no spoon      
@@ -274,6 +293,7 @@ print(c)
 print('------------------------------------')
 print(s)
 ```
+</div>
 
         
                There's no spoon      
@@ -286,6 +306,7 @@ print(s)
 ### `.upper()`, `.lower()`.
 
 
+<div class="python_box">
 ``` python3
 c = "    There's no spoon      "
 
@@ -295,6 +316,7 @@ print('c.upper():',c_upper)
 c_lower = c.lower()
 print('c.lower():',c_lower)
 ```
+</div>
 
     c.upper():     THERE'S NO SPOON      
     c.lower():     there's no spoon      
@@ -302,6 +324,7 @@ print('c.lower():',c_lower)
 
 ### `.count()`.
 
+<div class="python_box">
 ``` python3
 seq = "ATGTTCAAGGAGTAATGCCCCCGACTA"
 
@@ -312,6 +335,7 @@ nT = seq.count('T')
 
 print(f'A razão (G+C) / (A+T) é {(nG + nC)/(nA + nC)}')
 ```
+</div>
 
     A razão (G+C) / (A+T) é 0.8666666666666667
 
@@ -319,6 +343,7 @@ print(f'A razão (G+C) / (A+T) é {(nG + nC)/(nA + nC)}')
 ### `.replace()`.
 
 
+<div class="python_box">
 ``` python3
 seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 
@@ -327,12 +352,14 @@ seq2 = seq.replace('U', 'T')
 print(seq)
 print(seq2)
 ```
+</div>
 
     AUGUUCAAGGAGUAAUGCCCCCGACUA
     ATGTTCAAGGAGTAATGCCCCCGACTA
     
 
 
+<div class="python_box">
 ``` python3
 frase = "There's no spoon"
 
@@ -341,6 +368,7 @@ frase2 = frase.replace(' ', '')
 print(frase)
 print(frase2)
 ```
+</div>
 
     There's no spoon
     There'snospoon
@@ -359,6 +387,7 @@ designados por *white space*)
 
 Alguns exemplos:
 
+<div class="python_box">
 ``` python3
 frase = "There's no spoon"
 
@@ -366,11 +395,13 @@ x = frase.split()
 
 print(x)
 ```
+</div>
 
     ["There's", 'no', 'spoon']
     
 
 
+<div class="python_box">
 ``` python3
 frase = "There's no spoon"
 
@@ -378,11 +409,13 @@ x = frase.split('s')
 
 print(x)
 ```
+</div>
 
     ["There'", ' no ', 'poon']
     
 
 
+<div class="python_box">
 ``` python3
 frase = "There's no spoon"
 
@@ -390,11 +423,13 @@ x = frase.split('o')
 
 print(x)
 ```
+</div>
 
     ["There's n", ' sp', '', 'n']
     
 
 
+<div class="python_box">
 ``` python3
 frase = "There's no spoon"
 
@@ -402,6 +437,7 @@ x = frase.split('n')
 
 print(x)
 ```
+</div>
 
     ["There's ", 'o spoo', '']
 
@@ -410,6 +446,7 @@ A função `.join()` é uma espécie de inversa de `.split()`: transforma
 **uma lista** de *strings* **numa única** *string*, interpondo um
 separador:
 
+<div class="python_box">
 ``` python3
 aas = ['Arg', 'Tyr', 'Gly', 'Asp']
 
@@ -419,6 +456,7 @@ print("".join(aas))
 print("+".join(aas))
 print("-CONH-".join(aas))
 ```
+</div>
 
 ```
 Arg Tyr Gly Asp
@@ -431,6 +469,7 @@ Arg-CONH-Tyr-CONH-Gly-CONH-Asp
 **Problema: transformar** `AUGUUCAAGGAGUAAUGCCCCCGACUA` **em**
 `AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA`
 
+<div class="python_box">
 ``` python3
 s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 print(s)
@@ -448,6 +487,7 @@ print(codoes)
 final = "-".join(codoes)
 print(final)
 ```
+</div>
 
 ```
 AUGUUCAAGGAGUAAUGCCCCCGACUA
@@ -457,6 +497,7 @@ AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 
 Ou, usando uma **lista em compreensão**:
 
+<div class="python_box">
 ``` python3
 s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 
@@ -467,6 +508,7 @@ print(cods)
 
 print( "-".join(cods) )
 ```
+</div>
 
 ```
 AUGUUCAAGGAGUAAUGCCCCCGACUA
@@ -479,6 +521,7 @@ consecutivos!
 
 A função `.splitlines()` é equivalente a `.split('\n')`:
 
+<div class="python_box">
 ``` python3
 seq = """>sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain
 MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKD
@@ -489,6 +532,7 @@ lines = seq.splitlines()
 
 print(lines)
 ```
+</div>
 
     ['>sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain', 'MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKD', 'MIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTI', 'AKIDEQVRQK']
   
@@ -499,6 +543,7 @@ conjunção com listas em compreensão:
 **Problema: num texto com várias linhas, obter numa lista as linhas que
 começam por uma vogal e têm menos de 20 caracteres**
 
+<div class="python_box">
 ``` python3
 txt = """ 
  Um pequeno texto que até
@@ -515,6 +560,7 @@ print(a)
 a = [s for s in a if s[0].lower() in 'aeiou']
 print(a)
 ```
+</div>
 
 ```
 ['', 'Um pequeno texto que até', 'ocupa várias', 'linhas', '', 'mas haverá', 'Algumas em branco']
@@ -536,6 +582,7 @@ mais de um elemento.
 A forma geral é `[início : fim(exclusivé) : passo]`. O `passo` é
 opcional.
 
+<div class="python_box">
 ``` python3
 a = "O Neo tomou o comprimido vermelho"
 #    012345678901234567890123456789012
@@ -544,6 +591,7 @@ print(a[2:5])
 print(a[0:5])
 print(a[6:-1])
 ```
+</div>
 
 ```
 Neo
@@ -551,6 +599,7 @@ O Neo
 tomou o comprimido vermelh
 ```
 
+<div class="python_box">
 ``` python3
 a = "O Neo tomou o comprimido vermelho"
 #    012345678901234567890123456789012
@@ -560,6 +609,7 @@ print(a[6: ])
 print(a[ : ])
 print(a[0:12:2])
 ```
+</div>
 
 ```
 O Neo
@@ -568,6 +618,7 @@ O Neo tomou o comprimido vermelho
 ONotmu
 ```
 
+<div class="python_box">
 ``` python3
 seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 
@@ -577,6 +628,7 @@ d = seq[-3: ]
 print('O primeiro codão é', c)
 print('O último codão é', d)
 ```
+</div>
 
     O primeiro codão é AUG
     O último codão é CUA
@@ -588,6 +640,7 @@ print('O último codão é', d)
 
 `AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA`
 
+<div class="python_box">
 ``` python3
 s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 starts = range(0, len(s), 3)
@@ -604,6 +657,7 @@ print(cods)
 print( "-".join(cods) )
 
 ```
+</div>
 
 ```
 AUGUUCAAGGAGUAAUGCCCCCGACUA
@@ -613,6 +667,7 @@ AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 Usando uma lista em compreensão como argumento da função `.join()` o
 programa pode ficar mais compacto:
 
+<div class="python_box">
 ``` python3
 s = "AUGTTCAAGGAGUAAUGCCCCCGACUA"
 sf = "-".join([s[i:i+3] for i in range(0,len(s),3)])
@@ -620,6 +675,7 @@ sf = "-".join([s[i:i+3] for i in range(0,len(s),3)])
 print(s)
 print(sf)
 ```
+</div>
 
 ```
 AUGTTCAAGGAGUAAUGCCCCCGACUA
@@ -628,6 +684,7 @@ AUG-TTC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 
 **Os** *slices* **também funcionam com listas**
 
+<div class="python_box">
 ``` python3
 aas = ['Arg', 'Tyr', 'Gly', 'Asp']
 
@@ -639,6 +696,7 @@ print(s1)
 print(s2)
 print(s3)
 ```
+</div>
 
 ```
 ['Arg', 'Tyr']
@@ -652,6 +710,7 @@ print(s3)
 No caso de uma **lista**, podemos **atribuír valores a um** *slice* **da
 lista**, mudando alguns elementos de uma só vez:
 
+<div class="python_box">
 ``` python3
 nums = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
 #       0  1  2  3  4  5  6  7  8  9
@@ -662,6 +721,7 @@ nums[3:8] = range(10, 15)
 
 print(nums)
 ```
+</div>
 
     [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
     [1, 2, 2, 10, 11, 12, 13, 14, 4, 4]
@@ -671,6 +731,7 @@ print(nums)
 aminoácidos para códigos de 3 letras, usando um dicionário para a
 conversão.**
 
+<div class="python_box">
 ``` python3
 trans = {'A': 'Ala', 'C': 'Cys', 'E': 'Glu', 'D': 'Asp', 'G': 'Gly',
          'F': 'Phe', 'I': 'Ile', 'H': 'His', 'K': 'Lys', 'M': 'Met',
@@ -683,6 +744,7 @@ s3 = '-'.join([trans[aa] for aa in s1])
 
 print(s1, 'é o mesmo que', s3)
 ```
+</div>
 
 ```
 ADKLITCWFHHWE é o mesmo que Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu
@@ -698,6 +760,7 @@ aplica-se a qualquer coleção e "gera" os elementos da coleção pela ordem inv
 Aplicando depois a função `''.join()`, com o **separador "vazio"**, ao resultado
 da função `reversed()`podemos inverter uma _string_.
 
+<div class="python_box">
 ``` python3
 trans = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}
 
@@ -716,6 +779,7 @@ print('-'.join([seq[i:i+3] for i in range(0,len(seq),3)]))
 print("\nComplemento reverso:")
 print('-'.join([comp[i:i+3] for i in range(0,len(comp),3)]))
 ```
+</div>
 
 ```
 Seq:
@@ -728,6 +792,7 @@ TAA-TCC-TAA-ATA-CTA-GGT-AAC-CAT
 **Problema: separar uma sequência em FASTA em 2 strings: o "header" e a sequência**
 
 
+<div class="python_box">
 ``` python3
 seqFASTA = """>sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain
 MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKD
@@ -745,6 +810,7 @@ print(header)
 print('seq --------------------------------------')
 print(seq)
 ```
+</div>
 
 ```
 header -----------------------------------
@@ -822,6 +888,7 @@ A estratégia é simples: as linhas começadas por `>` são os _headers_ e o
 número de sequências é igual ao número de _headers_.
 
 
+<div class="python_box">
 ``` python3
 # ler o ficheiro para uma grande string
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
@@ -838,12 +905,14 @@ for line in lines:
 
 print(f'O proteoma tem {len(headers)} proteínas')
 ```
+</div>
 
     O proteoma tem 6049 proteínas
     
 
 Usando uma lista em compreensão:
 
+<div class="python_box">
 ``` python3
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
     data = datafile.read()
@@ -852,6 +921,7 @@ headers = [i for i in data.splitlines() if i.startswith('>')]
 
 print(f'O proteoma tem {len(headers)} proteínas')
 ```
+</div>
 
     O proteoma tem 6049 proteínas
     
@@ -885,6 +955,7 @@ KICADVVAELKKISKPVKDKKEIAQVATIS
 O programa que implementa esta estratégia poderá ser
 
 
+<div class="python_box">
 ``` python3
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
     data = datafile.read()
@@ -906,6 +977,7 @@ print('\nA última proteína no ficheiro: ---------------')
 print(headers[-1])
 print(seqs[-1])
 ```
+</div>
 
     O proteoma tem 6049 proteínas
     
@@ -918,10 +990,12 @@ Para teste, é mostrada a última proteína contida no ficheiro.
 
 Uma linha não parece necessária. Porquê o teste
 
+<div class="python_box">
 ``` python3
     if b != '':
 
 ```
+</div>
 
 que parece desnecessário?
 
@@ -937,6 +1011,7 @@ Aumentando o programa anterior, podemos processar os _headers_ par extraír cada
 Recorde-se que o _Número UniProt de Acesso_ está entre `|` em cada _header_
 
 
+<div class="python_box">
 ``` python3
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
     data = datafile.read()
@@ -963,6 +1038,7 @@ for header, seq in zip(headers, seqs):
 for ac in ['P28240','P38832','P36084']:
     print(f'{ac}: {dictseqs[ac]}\n')
 ```
+</div>
 
     P28240: MPIPVGNTKNDFAALQAKLDADAAEIEKWWSDSRWSKTKRNYSARDIAVRRGTFPPIEYPSSVMARKLFKVLEKHHNEGTVSKTFGALDPVQISQMAKYLDTIYISGWQCSSTASTSNEPGPDLADYPMDTVPNKVEHLFKAQLFHDRKQLEARSKAKSQEELDEMGAPIDYLTPIVADADAGHGGLTAVFKLTKMFIERGAAGIHMEDQTSTNKKCGHMAGRCVIPVQEHVNRLVTIRMCADIMHSDLIVVARTDSEAATLISSTIDTRDHYFIVGATNPNIEPFAEVLNDAIMSGASGQELADIEQKWCRDAGLKLFHEAVIDEIERSALSNKQELIKKFTSKVGPLTETSHREAKKLAKEILGHEIFFDWELPRVREGLYRYRGGTQCSIMRARAFAPYADLVWMESNYPDFQQAKEFAEGVKEKFPDQWLAYNLSPSFNWPKAMSVDEQHTFIQRLGDLGYIWQFITLAGLHTNALAVHNFSRDFAKDGMKAYAQNVQQREMDDGVDVLKHQKWSGAEYIDGLLKLAQGGVSATAAMGTGVTEDQFKENGVKK
     
@@ -973,6 +1049,7 @@ for ac in ['P28240','P38832','P36084']:
     
 
 
+<div class="python_box">
 ``` python3
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
     data = datafile.read()
@@ -995,6 +1072,7 @@ dictseqs = {header.split('|')[1] : seq for header,seq in zip(headers, seqs)}
 for ac in ['P28240','P38832','P36084']:
     print(f'{ac}: {dictseqs[ac]}\n')
 ```
+</div>
 
     P28240: MPIPVGNTKNDFAALQAKLDADAAEIEKWWSDSRWSKTKRNYSARDIAVRRGTFPPIEYPSSVMARKLFKVLEKHHNEGTVSKTFGALDPVQISQMAKYLDTIYISGWQCSSTASTSNEPGPDLADYPMDTVPNKVEHLFKAQLFHDRKQLEARSKAKSQEELDEMGAPIDYLTPIVADADAGHGGLTAVFKLTKMFIERGAAGIHMEDQTSTNKKCGHMAGRCVIPVQEHVNRLVTIRMCADIMHSDLIVVARTDSEAATLISSTIDTRDHYFIVGATNPNIEPFAEVLNDAIMSGASGQELADIEQKWCRDAGLKLFHEAVIDEIERSALSNKQELIKKFTSKVGPLTETSHREAKKLAKEILGHEIFFDWELPRVREGLYRYRGGTQCSIMRARAFAPYADLVWMESNYPDFQQAKEFAEGVKEKFPDQWLAYNLSPSFNWPKAMSVDEQHTFIQRLGDLGYIWQFITLAGLHTNALAVHNFSRDFAKDGMKAYAQNVQQREMDDGVDVLKHQKWSGAEYIDGLLKLAQGGVSATAAMGTGVTEDQFKENGVKK
     
@@ -1010,6 +1088,7 @@ sequências. Bastaria processar diretamente cada bloco.
 Assim, uma versão muito mais compacta seria:
 
 
+<div class="python_box">
 ``` python3
 dictseqs = {}
 
@@ -1028,6 +1107,7 @@ for b in blocks:
 for ac in ['P28240','P38832','P36084']:
     print(f'{ac}: {dictseqs[ac]}\n')
 ```
+</div>
 
     P28240: MPIPVGNTKNDFAALQAKLDADAAEIEKWWSDSRWSKTKRNYSARDIAVRRGTFPPIEYPSSVMARKLFKVLEKHHNEGTVSKTFGALDPVQISQMAKYLDTIYISGWQCSSTASTSNEPGPDLADYPMDTVPNKVEHLFKAQLFHDRKQLEARSKAKSQEELDEMGAPIDYLTPIVADADAGHGGLTAVFKLTKMFIERGAAGIHMEDQTSTNKKCGHMAGRCVIPVQEHVNRLVTIRMCADIMHSDLIVVARTDSEAATLISSTIDTRDHYFIVGATNPNIEPFAEVLNDAIMSGASGQELADIEQKWCRDAGLKLFHEAVIDEIERSALSNKQELIKKFTSKVGPLTETSHREAKKLAKEILGHEIFFDWELPRVREGLYRYRGGTQCSIMRARAFAPYADLVWMESNYPDFQQAKEFAEGVKEKFPDQWLAYNLSPSFNWPKAMSVDEQHTFIQRLGDLGYIWQFITLAGLHTNALAVHNFSRDFAKDGMKAYAQNVQQREMDDGVDVLKHQKWSGAEYIDGLLKLAQGGVSATAAMGTGVTEDQFKENGVKK
     
@@ -1055,6 +1135,7 @@ Podemos, por isso, usar `s = s + 'a'`
 
 ## Formatação de *strings* com `.format()`
 
+<div class="python_box">
 ``` python3
 x = 11
 y = 20
@@ -1062,17 +1143,20 @@ z = 3
 
 print('x = {}, y = {}, z = {}'.format(x, y, z))
 ```
+</div>
 
 ```
 x = 11, y = 20, z = 3
 ```
 
+<div class="python_box">
 ``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 for k, v in d.items():
     print('O elemento com n = {1} é o {0}'.format(k, v))
 ```
+</div>
 
 ```
 O elemento com n = 1 é o H
@@ -1081,12 +1165,14 @@ O elemento com n = 11 é o Na
 O elemento com n = 19 é o K
 ```
 
+<div class="python_box">
 ``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 for k, v in d.items():
     print('O elemento com  n = {1:2} é o {0}'.format(k, v))
 ```
+</div>
 
 ```
 O elemento com  n =  1 é o H
@@ -1095,12 +1181,14 @@ O elemento com  n = 11 é o Na
 O elemento com  n = 19 é o K
 ```
 
+<div class="python_box">
 ``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 for k, v in d.items():
     print('O elemento com  n = {1:<2} é o {0}'.format(k, v))
 ```
+</div>
 
 ```
 O elemento com  n = 1  é o H
@@ -1109,6 +1197,7 @@ O elemento com  n = 11 é o Na
 O elemento com  n = 19 é o K
 ```
 
+<div class="python_box">
 ``` python3
 import math
 log2 = math.log(2)
@@ -1120,6 +1209,7 @@ for i in range(1, 21):
     dif = abs(soma - log2)
     print(i , soma , dif)
 ```
+</div>
 
 ```
 1 1.0 0.3068528194400547
@@ -1144,6 +1234,7 @@ for i in range(1, 21):
 20 0.6687714031754279 0.02437577738451735
 ```
 
+<div class="python_box">
 ``` python3
 import math
 log2 = math.log(2)
@@ -1156,6 +1247,7 @@ for i in range(1, 21):
     dif = abs(soma - log2)
     print('{:4d} {:9.6f} {:9.6f}'.format(i,soma,dif))
 ```
+</div>
 
 ```
 n     S        dif   

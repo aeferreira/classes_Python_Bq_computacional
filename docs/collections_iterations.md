@@ -28,11 +28,13 @@ As principais coleções usadas em Python são:
 
 ### Listas
 
+<div class="python_box">
 ``` python3
 a = [2, 4, 3.1415, 'eu aqui', "fim da lista"]
 
 print(a)
 ```
+</div>
 
 ```
 [2, 4, 3.1415, 'eu aqui', 'fim da lista']
@@ -49,6 +51,7 @@ outro lado, como se pode ver no exemplo, foi atribuído um único nome
 As listas podem ter elementos de vários tipos e estes elementos podem
 até ser o resultado de expressões:
 
+<div class="python_box">
 ``` python3
 a = [19, 14/2, 5.0**3, 'Bom dia']
 b = 1
@@ -57,6 +60,7 @@ c = [b, b+1, (b+2)**3]
 print('a =', a)
 print('c =', c)
 ```
+</div>
 
 ```
 a = [19, 7.0, 125.0, 'Bom dia']
@@ -73,6 +77,7 @@ elementos da lista.
 Uma propriedade fundamental das listas é que a **ordem dos elementos tem
 significado** e uma lista pode ser "**indexável**" com numeros inteiros.
 
+<div class="python_box">
 ``` python3
 a = [19, 14/2, 5.0**3, 'Bom dia']
 #    0    1      2        3
@@ -82,6 +87,7 @@ print(a[1])
 print(a[2])
 print(a[3])
 ```
+</div>
 
 ```
 19
@@ -101,6 +107,7 @@ $n$ é o número de elementos da lista.
 As _strings_ também têm uma numeração implícita, a contar do zero, sendo
 também "indexáveis".
 
+<div class="python_box">
 ``` python3
 s = 'Eu sou uma pequena string'
 #    0123456789
@@ -109,6 +116,7 @@ print(s[0])
 print(s[3])
 print(s[8])
 ```
+</div>
 
 ```
 E
@@ -122,9 +130,11 @@ m
 !!! info "Definição"
     Dicionários são **associações** entre _chaves_ e _valores_.
 
+<div class="python_box">
 ``` python3
 d = {'H': 1, 'Li': 3, 'Na': 11, 'K': 19}
 ```
+</div>
 
 Neste exemplo,
 
@@ -136,6 +146,7 @@ Ao contrário das listas e das *strings*, a **ordem dos elementos num
 dicionário não tem significado** mas um dicionário pode ser
 "**indexável**" com as *chaves*:
 
+<div class="python_box">
 ``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
@@ -144,6 +155,7 @@ print('d =', d)
 print(d['K'])
 print(d['Li'])
 ```
+</div>
 
 ```
 d = {'H': 1, 'Li': 3, 'Na': 11, 'K': 19}
@@ -166,6 +178,7 @@ coleções:
 A função `len()` **pode ser aplicada a qualquer coleção**, devolvendo o
 **número de elementos** contidos nessa coleção.
 
+<div class="python_box">
 ``` python3
 a = [2,4,6,8,10, 'viria o 12', 'e depois o 14']
 s = 'Eu sou uma pequena string'
@@ -175,6 +188,7 @@ print(len(a))
 print(len(s))
 print(len(d))
 ```
+</div>
 
 ```
 7
@@ -191,12 +205,14 @@ um.
 
 Em Python é usado o comado `for` para esse efeito.
 
+<div class="python_box">
 ``` python3
 a = [2,4,6,8,10, 'viria o 12', 'e depois o 14']
 
 for x in a:
     print(x)
 ```
+</div>
 
 ```
 2
@@ -223,6 +239,7 @@ Vamos ver alguns exemplos da utilização de um comando `for`:
 
 **Problema: mostrar uma tabela de raízes quadradas de 1 a 10**
 
+<div class="python_box">
 ``` python3
 print('tabela de raízes quadradas')
 
@@ -231,6 +248,7 @@ a = [1,2,3,4,5,6,7,8,9,10]
 for x in a:
     print(x, x**0.5)
 ```
+</div>
 
 ```
 tabela de raízes quadradas
@@ -246,6 +264,7 @@ tabela de raízes quadradas
 10 3.1622776601683795
 ```
 
+<div class="python_box">
 ``` python3
 # Programa dos anos bissextos sem input
 
@@ -257,6 +276,7 @@ for a in anos:
     else: 
         print(a, "nao é bissexto")
 ```
+</div>
 
 ```
 2015 nao é bissexto
@@ -271,12 +291,14 @@ for a in anos:
 A iteração de uma *string* "percorre" os seus **caracteres**. Os espaços
 e a pontuação também são considerados caracteres.
 
+<div class="python_box">
 ``` python3
 s = 'Eu sou uma string'
 
 for x in s:
     print(x)
 ```
+</div>
 
 ```
 E
@@ -301,12 +323,14 @@ g
 Finalmente, a iteração de dicionários "percorre" as suas **chaves**
 (apenas as chaves).
 
+<div class="python_box">
 ``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 for x in d:
     print(x)
 ```
+</div>
 
 ```
 H
@@ -317,6 +341,7 @@ K
 
 Mas é fácil usar as chaves para obter uma tabela de chaves-valores:
 
+<div class="python_box">
 ``` python3
 grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
@@ -325,6 +350,7 @@ print('elementos do grupo 1')
 for e in grupo1:
     print(e, grupo1[e])
 ```
+</div>
 
 ```
 elementos do grupo 1
@@ -339,6 +365,7 @@ A ordem da iteração das chaves num dicionário é "incerta".
 Podemos forçar uma ordem, iterando sobre uma **lista** com as chaves, na
 ordem desejada:
 
+<div class="python_box">
 ``` python3
 grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
@@ -347,6 +374,7 @@ print('elementos do grupo 1')
 for e in ['H', 'Li', 'Na', 'K']:
     print(e, grupo1[e])
 ```
+</div>
 
 ```
 elementos do grupo 1
@@ -361,6 +389,7 @@ Exemplos de iteração
 
 **Problema: somar todos os numeros de 1 a 10**
 
+<div class="python_box">
 ``` python3
 nums = [1,2,3,4,5,6,7,8,9,10]
 
@@ -370,6 +399,7 @@ for i in nums:
 
 print('a soma de', nums, 'é', s)
 ```
+</div>
 
 ```
 a soma de [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] é 55
@@ -388,6 +418,7 @@ das iterações. Adaptando o programa anterior com algumas utilizações
 dicionais da função `print()` podemos ver esses valores a mudar para
 cada `i`.
 
+<div class="python_box">
 ``` python3
 nums = [1,2,3,4,5,6,7,8,9,10]
 
@@ -400,6 +431,7 @@ for i in nums:
 
 print(f'a soma é {s}')
 ```
+</div>
 
 ```
 i = 1
@@ -446,6 +478,7 @@ Desta vez não vamos criar uma lista de números até 1000 explicitamente
 Em vez disso, usamos a função `range()` que gera números inteiros
 consecutivos:
 
+<div class="python_box">
 ``` python3
 s = 0
 
@@ -454,6 +487,7 @@ for i in range(1, 1001):
 
 print('a soma dos números de 1 a 1000 é', s)
 ```
+</div>
 
 ```
 a soma dos números de 1 a 1000 é 500500
@@ -484,6 +518,7 @@ Nunca esquecer que o valor do `fim` **é excluído da lista**
 
 Exemplos:
 
+<div class="python_box">
 ``` python3
 print('-- range(12) ----------')
 # acaba em 12 (exclusivé), começa em 0 e percorre de 1 em 1.
@@ -491,6 +526,7 @@ print('-- range(12) ----------')
 for i in range(12):
     print(i)
 ```
+</div>
 
 ```
 -- range(12) ----------
@@ -508,6 +544,7 @@ for i in range(12):
 11
 ```
 
+<div class="python_box">
 ``` python3
 print('-- range(5, 12) ----------')
 # começa em 5, acaba em 12 (exclusivé) e percorre de 1 em 1.
@@ -515,6 +552,7 @@ print('-- range(5, 12) ----------')
 for i in range(5, 12):
     print(i)
 ```
+</div>
 
 ```
 -- range(5, 12) ----------
@@ -527,6 +565,7 @@ for i in range(5, 12):
 11
 ```
 
+<div class="python_box">
 ``` python3
 print('-- range(5, 12, 2) ----------')
 # começa em 5, acaba em 12 (exclusivé) e percorre de 2 em 2.
@@ -534,6 +573,7 @@ print('-- range(5, 12, 2) ----------')
 for i in range(5, 12, 2):
     print(i)
 ```
+</div>
 
 ```
 -- range(5, 12, 2) ----------
@@ -545,6 +585,7 @@ for i in range(5, 12, 2):
 
 **Problema: calcular o factorial de 1000**
 
+<div class="python_box">
 ``` python3
 fact = 1
 for i in range(1, 1001):
@@ -552,6 +593,7 @@ for i in range(1, 1001):
 
 print('o factorial de 100 é', fact)
 ```
+</div>
 
 ```
 o factorial de 100 é 402387260077093773543702433923003985719374864210714632543799910429938512398629020592044208486969404800479988610197196058631666872994808558901323829669944590997424504087073759918823627727188732519779505950995276120874975462497043601418278094646496291056393887437886487337119181045825783647849977012476632889835955735432513185323958463075557409114262417474349347553428646576611667797396668820291207379143853719588249808126867838374559731746136085379534524221586593201928090878297308431392844403281231558611036976801357304216168747609675871348312025478589320767169132448426236131412508780208000261683151027341827977704784635868170164365024153691398281264810213092761244896359928705114964975419909342221566832572080821333186116811553615836546984046708975602900950537616475847728421889679646244945160765353408198901385442487984959953319101723355556602139450399736280750137837615307127761926849034352625200015888535147331611702103968175921510907788019393178114194545257223865541461062892187960223838971476088506276862967146674697562911234082439208160153780889893964518263243671616762179168909779911903754031274622289988005195444414282012187361745992642956581746628302955570299024324153181617210465832036786906117260158783520751516284225540265170483304226143974286933061690897968482590125458327168226458066526769958652682272807075781391858178889652208164348344825993266043367660176999612831860788386150279465955131156552036093988180612138558600301435694527224206344631797460594682573103790084024432438465657245014402821885252470935190620929023136493273497565513958720559654228749774011413346962715422845862377387538230483865688976461927383814900140767310446640259899490222221765904339901886018566526485061799702356193897017860040811889729918311021171229845901641921068884387121855646124960798722908519296819372388642614839657382291123125024186649353143970137428531926649875337218940694281434118520158014123344828015051399694290153483077644569099073152433278288269864602789864321139083506217095002597389863554277196742822248757586765752344220207573630569498825087968928162753848863396909959826280956121450994871701244516461260379029309120889086942028510640182154399457156805941872748998094254742173582401063677404595741785160829230135358081840096996372524230560855903700624271243416909004153690105933983835777939410970027753472000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -570,12 +612,14 @@ DNA**
 Se num programa tivermos uma *string* contendo uma sequência de um ácido
 nucleico, então podemos percorrer todas as "bases" da sequência:
 
+<div class="python_box">
 ``` python3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
 
 for b in seq:
     print(b, end=' ')
 ```
+</div>
 
 ```
 A T G G T C A A A C T T G T T G A C T G C A A A T G C G T A C G T 
@@ -589,6 +633,7 @@ Agora podemos resolver o problema do cálculo da sequência complementar.
 Parte da estratégia consiste em ir adicionando cada base complementar a
 uma *string* de acumulação do resultado, que, inicialmente, está vazia:
 
+<div class="python_box">
 ``` python3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
 
@@ -608,6 +653,7 @@ for b in seq:
 print('sequência:   ', seq)
 print('complementar:', seqcomp)
 ```
+</div>
 
 ```
 sequência:    ATGGTCAAACTTGTTGACTGCAAATGCGTACGT
@@ -626,6 +672,7 @@ O programa pode ser modificado elminando os `if...elif...elif...else`.
 A ideia é usar um dicionário que associe cada base à sua base
 complementar:
 
+<div class="python_box">
 ``` python3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
 
@@ -639,6 +686,7 @@ for b in seq:
 print('sequência:   ', seq)
 print('complementar:', seqcomp)
 ```
+</div>
 
 ```
 sequência:    ATGGTCAAACTTGTTGACTGCAAATGCGTACGT
@@ -649,6 +697,7 @@ Sem muito esforço, podemos formatar um pouco a apresentação das duas
 cadeias, na vertical e pondo em evidência a correspondência entre as
 bases:
 
+<div class="python_box">
 ``` python3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
 
@@ -657,6 +706,7 @@ complementares = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
 for b in seq:
     print(b, '-', complementares[b])
 ```
+</div>
 
 ```
 A - T
@@ -699,6 +749,7 @@ Agora um problema mais elaborado:
 **converter uma sequência com códigos de uma letra de aminoácidos para
 códigos de 3 letras, usando um dicionário para a conversão.**
 
+<div class="python_box">
 ``` python3
 trans = {'A': 'Ala', 'C': 'Cys', 'E': 'Glu', 'D': 'Asp', 'G': 'Gly', 'F': 'Phe', 'I': 'Ile', 'H': 'His', 'K': 'Lys', 'M': 'Met', 'L': 'Leu', 'N': 'Asn', 'Q': 'Gln', 'P': 'Pro', 'S': 'Ser', 'R': 'Arg', 'T': 'Thr', 'W': 'Trp', 'V': 'Val', 'Y': 'Tyr'}
 
@@ -711,6 +762,7 @@ for aa in seq1:
 
 print(seq1, 'é o mesmo que ', seq3)
 ```
+</div>
 
 ```
 ADKLITCWFHHWE é o mesmo que  Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu-
@@ -722,6 +774,7 @@ ADKLITCWFHHWE é o mesmo que  Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Gl
 Por sua vez, podemos usar o "operador" `in` como teste de inclusão de um
 elemento numa coleção.
 
+<div class="python_box">
 ``` python3
 nums = [1,2,3,4,5,6,7,8,9,10]
 if 4 in nums:
@@ -729,11 +782,13 @@ if 4 in nums:
 else:
     print(4, 'não existe')
 ```
+</div>
 
 ```
 4 existe
 ```
 
+<div class="python_box">
 ``` python3
 nums = [1,2,3,4,5,6,7,8,9,10]
 
@@ -743,6 +798,7 @@ for n in [1, 4, 7, 20, 40]:
     else:
         print(n, 'não existe')
 ```
+</div>
 
 ```
 1 existe
@@ -752,6 +808,7 @@ for n in [1, 4, 7, 20, 40]:
 40 não existe
 ```
 
+<div class="python_box">
 ``` python3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
 
@@ -765,17 +822,20 @@ if 'TGT' in seq:
 else:
     print('Não existe', 'TGT')
 ```
+</div>
 
 ```
 Não existe U
 Existe TGT
 ```
 
+<div class="python_box">
 ``` python3
 grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 print('Mg' in grupo1)
 ```
+</div>
 
 ```
 False
@@ -789,6 +849,7 @@ lisinas (K)**
 Percorrer os aminoácidos da sequência é simples, usamos um comando
 `for`. Para testar se estamos na presença de um K, usamos um `if`:
 
+<div class="python_box">
 ``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
@@ -796,6 +857,7 @@ for aa in seq:
     if aa == 'K':
         print(aa)
 ```
+</div>
 
 ```
 K
@@ -812,6 +874,7 @@ Mais uma vez, percorremos os aminoácidos da sequência com `for`. Para
 testar se estamos na presença de um K ou um L, usamos um teste de
 inclusão na *string* `"KL"`
 
+<div class="python_box">
 ``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
@@ -819,6 +882,7 @@ for aa in seq:
     if aa in 'KL':
         print(aa)
 ```
+</div>
 
 ```
 K
@@ -830,6 +894,7 @@ K
 
 Ou, para visualizar bem a posição das lisinas e leucinas:
 
+<div class="python_box">
 ``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
@@ -839,6 +904,7 @@ for aa in seq:
     else:
         print('-', end='')
 ```
+</div>
 
 ```
 --K-L-L----------------K----K--
@@ -853,6 +919,7 @@ códigos K ou L**
 Podemos usar um "contador" das **posições** dos aminoácidos,
 "acumulando" a soma de 1 por letra:
 
+<div class="python_box">
 ``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
@@ -862,6 +929,7 @@ for aa in seq:
         print(i, ':', aa)
     i = i + 1
 ```
+</div>
 
 ```
 2 : K
@@ -881,12 +949,14 @@ Função `enumerate()`
 Vejamos o que resulta da aplicação da função `enumerate()` a uma
 sequência:
 
+<div class="python_box">
 ``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
 for x in enumerate(seq):
     print(x)
 ```
+</div>
 
 ```
 (0, 'A')
@@ -929,12 +999,14 @@ O mais interessante é que, no ciclo `for` com a função
 `enumerate()`podemos usar um **par de nomes** para nos referirmos
 simultaneamente à posição e ao elemento. Isto é chamado *desdobramento*.
 
+<div class="python_box">
 ``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
 for (i, a) in enumerate(seq):
     print(i, ':', a)
 ```
+</div>
 
 ```
 0 : A
@@ -981,6 +1053,7 @@ Usando a função `enumerate()`, o problema de tabelar as posições das
 lisinas e argininas pode ser escrito de uma forma mais compacta, sem
 usar explicitamente um "contador da posição":
 
+<div class="python_box">
 ``` python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
@@ -988,6 +1061,7 @@ for i, aa in enumerate(seq):
     if aa in 'KL':
         print(i, ':', aa)
 ```
+</div>
 
 ```
 2 : K
@@ -1010,6 +1084,7 @@ comandos `for`:
 
 **Problema: gerar os 64 codões do código genético**
 
+<div class="python_box">
 ``` python3
 bases = 'AUGC'
 
@@ -1019,6 +1094,7 @@ for b1 in bases:
             c = b1 + b2 + b3
             print(c)
 ```
+</div>
 
 ```
 AAA
@@ -1101,6 +1177,7 @@ condição.
 DNA e a sequência complementar, mas parar assim que for encontrado um
 par C - G.**
 
+<div class="python_box">
 ``` python3
 seq = 'ATGGTTAAACTTGTTGACTGCAAATGCGTACGT'
 
@@ -1111,6 +1188,7 @@ for b in seq:
     if b == 'C':
         break
 ```
+</div>
 
 ```
 A - T
@@ -1140,6 +1218,7 @@ Vejamos com um exemplo:
 **Problema: obter um esquema das correspondências entre uma sequência de
 DNA e a sequência complementar. Saltar todos as ligações A - T.**
 
+<div class="python_box">
 ``` python3
 seq = 'ATGGTTAAACTTGTTGACTGCAAATGCGTACGT'
 
@@ -1150,6 +1229,7 @@ for b in seq:
         continue
     print(b, '-', complementares[b])
 ```
+</div>
 
 ```
 G - C
@@ -1181,6 +1261,7 @@ com os elementos de uma coleção.
 O comando `while` é escrito como um bloco de linhas que é executado
 enquanto uma condição for verdadeira:
 
+<div class="python_box">
 ``` python3
 #contagem decrescente
 count = 10
@@ -1189,6 +1270,7 @@ while count > 0:
     count = count - 1
 print('kabum!')
 ```
+</div>
 
 ```
 10

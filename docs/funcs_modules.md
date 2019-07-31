@@ -58,6 +58,7 @@ mini-programas dentro de programas) são a solução para estes casos.
 Já vimos várias funções, sempre disponíveis ou disponíveis após
 importação de módulos:
 
+<div class="python_box">
 ``` python3
 a = 'Uma pequena string'
 n = len(a)
@@ -72,6 +73,7 @@ a.append(33)
 import math
 l = math.log(2.0)
 ```
+</div>
 
 ## Definição de funções (`def`)
 
@@ -89,12 +91,14 @@ objetos genéricos (`x`):
 **Problema**: escrever uma função que, dada uma sequência, devolva a
 sequência com os codões separados por `-`.
 
+<div class="python_box">
 ``` python3
 def seqcods(x):
     cods = [x[i:i+3] for i in range(0,len(x),3)]
     comhifen = '-'.join(cods)
     return comhifen
 ```
+</div>
 
 ## Anatomia de uma função
 
@@ -104,6 +108,7 @@ A definição de uma função (`def`) não executa nada imediatamente.
 
 É necessário **chamar** (ou "*invocar*") a função para esta ser usada:
 
+<div class="python_box">
 ``` python3
 def seqcods(x):
     cods = [x[i:i+3] for i in range(0,len(x),3)]
@@ -118,6 +123,7 @@ s = seqcods(a)
 
 print(s)
 ```
+</div>
 
 ```
 ATGGTTACCTAGTATTTAGGATTA
@@ -128,6 +134,7 @@ ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
     O comando `return` pode "devolver" uma expressão complicada
     (não só o nome de um objeto)
 
+<div class="python_box">
 ``` python3
 def seqcods(x):
     return '-'.join( [x[i:i+3] for i in range(0,len(x),3)])
@@ -140,6 +147,7 @@ s = seqcods(a)
 
 print(s)
 ```
+</div>
 
 ```
 ATGGTTACCTAGTATTTAGGATTA
@@ -163,6 +171,7 @@ qualquer ponto do programa, da forma seguinte:
 
 Exemplo: função `factorial()`:
 
+<div class="python_box">
 ``` python3
 def factorial(n):
     res = 1
@@ -172,6 +181,7 @@ def factorial(n):
 
 print(factorial(200))
 ```
+</div>
 
 ```
 788657867364790503552363213932185062295135977687173263294742533244359449963403342920304284011984623904177212138919638830257642790242637105061926624952829931113462857270763317237396988943922445621451664240254033291864131227428294853277524242407573903240321257405579568660226031904170324062351700858796178922222789623703897374720000000000000000000000000000000000000000000000000
@@ -179,6 +189,7 @@ print(factorial(200))
 
 ## Vários tipos de funções
 
+<div class="python_box">
 ``` python3
 a = 'Uma pequena string'
 
@@ -191,6 +202,7 @@ print( a.count('a') )
 #0 arg, 1 res, associada a um objeto (string a)
 print( a.upper() )
 ```
+</div>
 
 ```
 18
@@ -198,6 +210,7 @@ print( a.upper() )
 UMA PEQUENA STRING
 ```
 
+<div class="python_box">
 ``` python3
 #1 arg, 0 res, associada a um objeto (lista b)
 # modifica o objeto (a lista b)
@@ -206,6 +219,7 @@ b = [12, 24]
 print( b.append(36) )
 print(b)
 ```
+</div>
 
 ```
 None
@@ -216,6 +230,7 @@ Além da função `.append()`, recordar que **as listas** têm outras duas
 funções deste tipo, que modificam a lista sem produzir nenhum resultado
 (o resultado é a constante `None`): `.reverse()` e `.sort()`.
 
+<div class="python_box">
 ``` python3
 b = [12, 24, 36]
 print(b)
@@ -226,6 +241,7 @@ print(b)
 b.sort()
 print(b)
 ```
+</div>
 
 ```
 [12, 24, 36]
@@ -239,6 +255,7 @@ O resultado pode não ser apenas um número ou uma *string*: as funções
 podem devolver uma lista inteira, um dicionário ou outros objetos mais
 complexos.
 
+<div class="python_box">
 ``` python3
 import math
 print( math.log(64, 2) )
@@ -247,6 +264,7 @@ import time
 x = time.localtime(time.time())
 print(x)
 ```
+</div>
 
 ```
 6.0
@@ -256,6 +274,7 @@ time.struct_time(tm_year=2018, tm_mon=4, tm_mday=8, tm_hour=18, tm_min=39, tm_se
 **Problema**: eliminar valores de uma lista que pertençam a uma "lista
 negra"
 
+<div class="python_box">
 ``` python3
 def elimin_black(uma_lista, black_list):
     res = [i for i in uma_lista if i not in black_list]
@@ -270,6 +289,7 @@ print ('\nA eliminar:', black)
 clean = elimin_black(a, black)
 print(clean)
 ```
+</div>
 
 ```
 [1, 2, 4, 'um', 'dois', 3, 42, 'quatro']
@@ -282,6 +302,7 @@ A eliminar: [1, 2, 'um', 'dois']
 função para **ler o conteúdo do ficheiro para uma lista de linhas sem o
 `\n` no final, excluíndo as linhas vazias**.
 
+<div class="python_box">
 ``` python3
 def ler_fich(nome):
     linhas = []
@@ -297,6 +318,7 @@ todos = ler_fich('gre3.txt')
 for i in todos:
     print(i)
 ```
+</div>
 
 ```
 >sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
@@ -310,6 +332,7 @@ KDISALNANIRFNDPWTWLDGKFPTFA
 
 **Problema**: eliminar valores repetidos numa lista
 
+<div class="python_box">
 ``` python3
 def elimin_reps(uma_lista):
     res = []
@@ -324,6 +347,7 @@ print(uma_lista)
 clean = elimin_reps(uma_lista)
 print(clean)
 ```
+</div>
 
 ```
 [1, 2, 4, 7, 7, 5, 8, 8, 9, 10]
@@ -343,6 +367,7 @@ e é esta lista que é o **resultado** da função.
 devolvida uma lista nova como resultado. Isto é, a função recebe uma
 lista e modifica-a, não havendo `return`.
 
+<div class="python_box">
 ``` python3
 def elimin_reps2(uma_lista):
     res = []
@@ -360,6 +385,7 @@ elimin_reps2(uma_lista)
 
 print('Depois', uma_lista)
 ```
+</div>
 
 ```
 Antes [1, 2, 4, 7, 7, 5, 8, 8, 9, 10]
@@ -377,6 +403,7 @@ são imutáveis.
 
 Se as funções tiverem resultados é possível usá-las em cadeia:
 
+<div class="python_box">
 ``` python3
 def elimin_reps(uma_lista):
     res = []
@@ -393,6 +420,7 @@ black = [1, 2, 'um', 'dois']
 clean = elimin_reps(elimin_black(a, black))
 print(clean)
 ```
+</div>
 
 ```
 [4, 3, 37, 42, 'quatro']
@@ -401,6 +429,7 @@ print(clean)
 ## Âmbito dos nomes
 
 
+<div class="python_box">
 ``` python3
 def recta(m, b, x):
     print('Para x =', x)
@@ -416,6 +445,7 @@ res = recta(c1, c0, x)
 
 print('Resultado:', res)
 ```
+</div>
 
 ```
 Para x = 2.0
@@ -428,6 +458,7 @@ Este programa corre sem problemas.
 
 Note-se que podemos usar a função `print()` dentro de uma função.
 
+<div class="python_box">
 ``` python3
 def recta(m, b, x):
     r1, r0 = m*x, b
@@ -440,6 +471,7 @@ print('Para x =', x, 'm =', m, 'b =', b)
 print('m*x =', r1, 'b =', r0)
 print('Resultado:', res)
 ```
+</div>
 
 ```
 Para x = 2.0 m = 2.0 b = 3.0
@@ -470,6 +502,7 @@ nomes. Daí o erro durante a execução.
 
 O mesmo acontece aos próprios nomes locais dos **argumentos** da função:
 
+<div class="python_box">
 ``` python3
 def recta2(m2, b2, x):
     r1, r0 = m2*x, b2
@@ -481,6 +514,7 @@ res = recta2(m, b, x)
 print('Para x =', x, 'm2 =', m2, 'b2 =', b2)
 print('Resultado:', res)
 ```
+</div>
 
 :
 
@@ -497,6 +531,7 @@ print('Resultado:', res)
 
     NameError: name 'm2' is not defined
 
+<div class="python_box">
 ``` python3
 def recta(m, b, x):
     print('Dentro da função --------')
@@ -514,6 +549,7 @@ res = recta(m + 3, b + 3, x * x)
 print('m =', m, 'b =', b, 'x =', x)
 print('\nResultado:', res)
 ```
+</div>
 
 ```
 Dentro da função --------
@@ -558,6 +594,7 @@ de `x` volta a ser 4, uma vez que voltamos a um contexto "global".
 
 ## Argumentos de tipo _palavra-chave
 
+<div class="python_box">
 ``` python3
 def mix(a=1, b=0):
     c = a + b
@@ -572,6 +609,7 @@ x = mix(a=2, b=3)
 
 x = mix(2,3)
 ```
+</div>
 
 ```
 a = 1 b = 0 --> return = 1
@@ -580,6 +618,7 @@ a = 2 b = 3 --> return = 5
 a = 2 b = 3 --> return = 5
 ```
 
+<div class="python_box">
 ``` python3
 def factorial(n, trace=False):
     p = 1
@@ -592,11 +631,13 @@ def factorial(n, trace=False):
 f20 = factorial(20)
 print('O factorial de 20 é', f20)
 ```
+</div>
 
 ```
 O factorial de 20 é 2432902008176640000
 ```
 
+<div class="python_box">
 ``` python3
 def factorial(n, trace=False):
     p = 1
@@ -609,6 +650,7 @@ def factorial(n, trace=False):
 f20 = factorial(20, trace=True)
 print('O factorial de 20 é', f20)
 ```
+</div>
 
 ```
 2 2
@@ -675,6 +717,7 @@ de autores e em permanente crescimento.
 Exemplo da construção de um módulo
 ----------------------------------
 
+<div class="python_box">
 ``` python3
 def readFASTA(filename):
     """This function reads a FASTA format file and
@@ -694,6 +737,7 @@ h, s = readFASTA("gre3.txt")
 
 print(f'Header:\n{h}\n\nSequence:\n{s}')
 ```
+</div>
 
 ```
 Header:
@@ -716,6 +760,7 @@ Este ficheiro constitui um módulo que pode ser usado num programa.
 
 Para isso, é necessário usar o comando `import`:
 
+<div class="python_box">
 ``` python3
 import biosequences
 
@@ -723,6 +768,7 @@ h, s = biosequences.readFASTA("gre3.txt")
 
 print(f'Header:\n{h}\n\nSequence:\n{s}')
 ```
+</div>
 
 ```
 Header:
@@ -734,6 +780,7 @@ MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLW
 
 Há mais duas maneiras de utilizar o comando `import`:
 
+<div class="python_box">
 ``` python3
 from biosequences import readFASTA
 
@@ -741,6 +788,7 @@ h, s = readFASTA("gre3.txt")
 
 print(f'Header:\n{h}\n\nSequence:\n{s}')
 ```
+</div>
 
 ```
 Header:
@@ -750,6 +798,7 @@ Sequence:
 MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
 ```
 
+<div class="python_box">
 ``` python3
 from biosequences import *
 
@@ -757,6 +806,7 @@ h, s = readFASTA("gre3.txt")
 
 print(f'Header:\n{h}\n\nSequence:\n{s}')
 ```
+</div>
 
 ```
 Header:
@@ -807,6 +857,7 @@ as seguintes atribuições:
 
 Sabemos que o módulo `biosequences` tem um dicionário chamado `gencode`.
 
+<div class="python_box">
 ``` python3
 from biosequences import gencode
 
@@ -825,6 +876,7 @@ seq = 'AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA'
 print(seq)
 print(translation(seq))
 ```
+</div>
 
 ```
 AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA
@@ -845,6 +897,7 @@ biológicas.
 Se usarmos a primeira forma do comando `import`, é possível mudar o nome
 do módulo (para uma forma mais abreviada), um *alias*, da seginte forma:
 
+<div class="python_box">
 ``` python3
 import biosequences as bs
 
@@ -852,6 +905,7 @@ h, s = bs.readFASTA("gre3.txt")
 
 print(f'Header:\n{h}\n\nSequence:\n{s}')
 ```
+</div>
 
 ```
 Header:

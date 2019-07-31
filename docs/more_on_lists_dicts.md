@@ -26,6 +26,7 @@ linguagem.](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists
 
 ### `.append()`, `.insert()`
 
+<div class="python_box">
 ``` python3
 a = [1, 2, 3, 4]
 print(a)
@@ -38,6 +39,7 @@ a.insert(1, 20)
 
 print('\ndepois de insert(1, 20):', a)
 ```
+</div>
 
 ```
 [1, 2, 3, 4]
@@ -49,6 +51,7 @@ depois de insert(1, 20): [1, 20, 2, 3, 4, 10]
 
 ### `.extend()`
 
+<div class="python_box">
 ``` python3
 a = [1, 2, 3, 4]
 print(a)
@@ -59,6 +62,7 @@ a.extend(novos)
 print('\ndepois de extend([11, 12, 13, 14]):')
 print(a)
 ```
+</div>
 
 ```
 [1, 2, 3, 4]
@@ -69,6 +73,7 @@ depois de extend([11, 12, 13, 14]):
 
 ### `.remove()`, `.clear()`
 
+<div class="python_box">
 ``` python3
 a = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
 print(a)
@@ -77,6 +82,7 @@ a.remove(3)
 
 print('\ndepois de remove(3):', a)
 ```
+</div>
 
 ```
 [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
@@ -86,6 +92,7 @@ depois de remove(3): [1, 2, 4, 1, 2, 3, 4, 1, 2, 3, 4]
 
 ### `.count()`
 
+<div class="python_box">
 ``` python3
 a = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
 print(a)
@@ -93,6 +100,7 @@ print(a)
 print('\nresultado de count(1)')
 print(a.count(1))
 ```
+</div>
 
 ```
 [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
@@ -115,6 +123,7 @@ novas listas.
 
 Podemos combinar `.append()` com `for`:
 
+<div class="python_box">
 ``` python3
 a = []
 for i in range(40):
@@ -122,6 +131,7 @@ for i in range(40):
 
 print(a)
 ```
+</div>
 
 ```
 [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576, 625, 676, 729, 784, 841, 900, 961, 1024, 1089, 1156, 1225, 1296, 1369, 1444, 1521]
@@ -156,6 +166,7 @@ print(a)
     Somar os 10 primeiros números ímpares
     $\sum\limits_{i=0}^9 2i+1$
 
+<div class="python_box">
 ``` python3
 impares = []
 for i in range(10):
@@ -169,6 +180,7 @@ for i in impares:
 print('soma dos 10 primeiros ímpares:', soma)
 print('Pela soma de prog. aritm.',(1+19)/2*10)
 ```
+</div>
 
 ```
 [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
@@ -181,6 +193,7 @@ Pela soma de prog. aritm. 100.0
 As listas têm uma **numeração implícita, (a contar do zero)**, e podemos
 **indexar** uma lista usando `lista[posição]`
 
+<div class="python_box">
 ``` python3
 enzimas = ['HK', 'G6PDH', 'TPI', 'Ald', 'PFK', 'PK']
 #           0       1       2      3      4      5   len()
@@ -189,6 +202,7 @@ print(enzimas[0])
 print(enzimas[3])
 print(enzimas[len(enzimas) -1])
 ```
+</div>
 
 ```
 HK
@@ -199,6 +213,7 @@ PK
 As listas têm também uma **numeração implícita com números negativos**:
 o último elemento é -1, o penúltimo -2 e assim sucessivamente.
 
+<div class="python_box">
 ``` python3
 enzimas = ['HK', 'G6PDH', 'TPI', 'Ald', 'PFK', 'PK']
 #                          -4     -3     -2     -1
@@ -207,6 +222,7 @@ print(enzimas[-4])
 print(enzimas[-6])
 print(enzimas[-1])
 ```
+</div>
 
 ```
 TPI
@@ -216,11 +232,13 @@ PK
 
 A indexação permite usar elementos de uma lista pela sua posição
 
+<div class="python_box">
 ``` python3
 a = [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
 
 print( 2*a[1] + a[2] + 2*a[-1] )
 ```
+</div>
 
 ```
 11
@@ -229,6 +247,7 @@ print( 2*a[1] + a[2] + 2*a[-1] )
 A indexação permite também **modificar** um elemento que está numa
 posição
 
+<div class="python_box">
 ``` python3
 a = [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
 print(a)
@@ -236,6 +255,7 @@ print(a)
 a[2] = 4 * 2**10 + a[-1]
 print(a)
 ```
+</div>
 
 ```
 [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
@@ -244,6 +264,7 @@ print(a)
 
 Podemos também indexar a partir da iteração de numeros inteiros
 
+<div class="python_box">
 ``` python3
 a = [1, 2, 3, 2, 1]
 
@@ -255,6 +276,7 @@ print('-------- dá o mesmo resultado que -----------')
 for i in range(len(a)):
     print(a[i])
 ```
+</div>
 
 ```
 1
@@ -274,6 +296,7 @@ for i in range(len(a)):
     Calcular as diferenças sucessivas entre os elementos de uma
     lista, pondo o resultado numa lista
 
+<div class="python_box">
 ``` python3
 a = [1, 1, 1, 2, 2, 2, 3, 3, 3, 5, 5, 7]
 
@@ -285,6 +308,7 @@ for i in range(1, len(a)):
 print(a)
 print(difs)
 ```
+</div>
 
 ```
 [1, 1, 1, 2, 2, 2, 3, 3, 3, 5, 5, 7]
@@ -295,6 +319,7 @@ print(difs)
     Mostrar que as diferenças sucessivas entre os quadrados
     perfeitos, são os números ímpares (usar os 20 primeiros)
 
+<div class="python_box">
 ``` python3
 #calcular os quadrados perfeitos
 quads = []
@@ -310,6 +335,7 @@ for i in range(1, len(quads)):
 print('quadrados perfeitos', quads)
 print('diferenças sucessivas', difs)
 ```
+</div>
 
 ```
 quadrados perfeitos [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
@@ -330,12 +356,14 @@ decorrido: o movimento de queda livre é uniformemente acelerado.
 
 O padrão
 
+<div class="python_box">
 ``` python3
 nova_lista = []
 for i in uma_lista:
     "<geração de um novo elemento p a partir de i>"
     nova_lista.append(p)
 ```
+</div>
 
 é tão frequente, que existe uma forma mais sucinta de gerar a nova
 lista, as chamadas **listas em compreensão**.
@@ -348,11 +376,13 @@ Usa-se um comando `for` para percorrer a lista original.
 
 Como obter uma lista com numeros ímpares:
 
+<div class="python_box">
 ``` python3
 ímpares = [2*i+1 for i in range(10)]
 
 print(ímpares)
 ```
+</div>
 
 ```
 [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
@@ -363,11 +393,13 @@ percorrer a lista original
 
 Um outro exemplo: obter os quadrados perfeitos entre 400 e 800
 
+<div class="python_box">
 ``` python3
 quads = [i**2 for i in range(30) if i**2 > 400 and i**2 < 800]
 
 print(quads)
 ```
+</div>
 
 ```
 [441, 484, 529, 576, 625, 676, 729, 784]
@@ -380,6 +412,7 @@ Num outro exemplo, pretendemos obter uma lista com as diferenças
 sucessivas entre quadrados perfeitos, para mostrar que são os números
 ímpares:
 
+<div class="python_box">
 ``` python3
 # Diferenças entre quadrados perfeitos sucessivos
 # são os numeros ímpares
@@ -389,6 +422,7 @@ difs = [q[i] - q[i-1] for i in range(1, len(q))]
 print('Quadrados: ', q)
 print('\nDiferenças:', difs)
 ```
+</div>
 
 ```
 Quadrados:  [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
@@ -399,6 +433,7 @@ Diferenças: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35,
 !!! example "Exemplo:"
     Retirar todas as ocorrências de um elemento de uma lista
 
+<div class="python_box">
 ``` python3
 kill = 'Bad'
 a = ['Good','Nice','OK','Bad','Cool','Bad','OK']
@@ -407,6 +442,7 @@ a_clean = [x for x in a if x != kill]
 print(a)
 print(a_clean)
 ```
+</div>
 
 ```
 ['Good', 'Nice', 'OK', 'Bad', 'Cool', 'Bad', 'OK']
@@ -416,6 +452,7 @@ print(a_clean)
 !!! example "Exemplo:"
     Problema: retirar todas as ocorrências dos elemento de uma "lista negra"
 
+<div class="python_box">
 ``` python3
 black_list = ['Bad', 'So so']
 a = ['Good','So so','OK','Bad','Cool','Bad','OK']
@@ -424,6 +461,7 @@ a_clean = [x for x in a if x not in black_list]
 print(a)
 print(a_clean)
 ```
+</div>
 
 ```
 ['Good', 'So so', 'OK', 'Bad', 'Cool', 'Bad', 'OK']
@@ -433,11 +471,13 @@ print(a_clean)
 !!! example "Exemplo:"
     Obter uma lista de numeros até 300 que sejam múltiplos de 3 e de 7
 
+<div class="python_box">
 ``` python3
 mult_3_7 = [x for x in range(301) if x%7==0 and x%3==0]
 
 print(mult_3_7)
 ```
+</div>
 
 ```
 [0, 21, 42, 63, 84, 105, 126, 147, 168, 189, 210, 231, 252, 273, 294]
@@ -454,6 +494,7 @@ way](https://gist.github.com/bearfrieze/a746c6f12d8bada03589)
 
 Todas estas funções **modificam** uma lista, tal como `.append()`.
 
+<div class="python_box">
 ``` python3
 a = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom']
 print('lista original')
@@ -467,6 +508,7 @@ a.sort()
 print('\nDepois de a.sort()')
 print(a)
 ```
+</div>
 
 ```
 lista original
@@ -479,6 +521,7 @@ Depois de a.sort()
 ['dom', 'qua', 'qui', 'sab', 'seg', 'sex', 'ter']
 ```
 
+<div class="python_box">
 ``` python3
 a = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom']
 print('lista original')
@@ -492,6 +535,7 @@ print('\nDepois de a.pop(2)   ')
 print(a)
 print('O valor retirado foi', x)
 ```
+</div>
 
 ```
 lista original
@@ -515,6 +559,7 @@ A maneira de ler, inserir e modificar valores num dicionário é através
 das suas chaves. O operador `in` testa a existência de uma chave num
 dicionário.
 
+<div class="python_box">
 ``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
@@ -527,6 +572,7 @@ print('O: ', d['O'])
 d['O'] = 18
 print('O: ', d['O'])
 ```
+</div>
 
 ```
 K:  19
@@ -535,6 +581,7 @@ O:  16
 O:  18
 ```
 
+<div class="python_box">
 ``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
@@ -543,6 +590,7 @@ if 'N' in d:
 else:
     print('Não existe info sobre o azoto')
 ```
+</div>
 
 ```
 Não existe info sobre o azoto
@@ -550,6 +598,7 @@ Não existe info sobre o azoto
 
 A **iteração** percorre as **chaves** de um dicionário:
 
+<div class="python_box">
 ``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
 
@@ -557,6 +606,7 @@ for k in d:
     if d[k] > 10:
         print(k, '--->', d[k])
 ```
+</div>
 
 ```
 Na ---> 11
@@ -566,6 +616,7 @@ O ---> 18
 
 ### `.update()`
 
+<div class="python_box">
 ``` python3
 d = {'a': 1, 'c': 3, 'b': 2}
 print(d)
@@ -574,6 +625,7 @@ e = {'p': 10, 'q': 15}
 d.update(e)
 print(d)
 ```
+</div>
 
 ```
 {'a': 1, 'c': 3, 'b': 2}
@@ -582,6 +634,7 @@ print(d)
 
 ### `.clear()`
 
+<div class="python_box">
 ``` python3
 d = {'a': 1, 'c': 3, 'b': 2}
 print(d)
@@ -589,6 +642,7 @@ print(d)
 d.clear()
 print(d)
 ```
+</div>
 
 ```
 {'a': 1, 'c': 3, 'b': 2}
@@ -597,12 +651,14 @@ print(d)
 
 ### `.values()`,`.items()`, `.keys()`
 
+<div class="python_box">
 ``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
 
 for i in d.values():
     print(i)
 ```
+</div>
 
 ```
 1
@@ -612,12 +668,14 @@ for i in d.values():
 18
 ```
 
+<div class="python_box">
 ``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
 
 for i in d.items():
     print(i)
 ```
+</div>
 
 ```
 ('H', 1)
@@ -627,12 +685,14 @@ for i in d.items():
 ('O', 18)
 ```
 
+<div class="python_box">
 ``` python3
 d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
 
 for i in d.keys():
     print(i)
 ```
+</div>
 
 ```
 H
@@ -645,6 +705,7 @@ O
 `.items()` é útil para simplificar um ciclo `for`: podemos desdobrar o
 par de valores e dar dois nomes diferentes:
 
+<div class="python_box">
 ``` python3
 # compare-se com o exemplo acima...
 d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
@@ -653,6 +714,7 @@ for e, n in d.items():
     if n > 10:
         print (e, '--->', n)
 ```
+</div>
 
 ```
 Na ---> 11
@@ -660,6 +722,7 @@ K ---> 19
 O ---> 18
 ```
 
+<div class="python_box">
 ``` python3
 # Virar um dicionário "do avesso"
 d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
@@ -671,12 +734,14 @@ for k in d:
 print(d)
 print(d2)
 ```
+</div>
 
 ```
 {'H': 1, 'Li': 3, 'Na': 11, 'K': 19, 'O': 18}
 {1: 'H', 3: 'Li', 11: 'Na', 19: 'K', 18: 'O'}
 ```
 
+<div class="python_box">
 ``` python3
 # Virar um dicionário "do avesso"
 d = {'H':1, 'Li':3, 'Na':11, 'K':19, 'O':18}
@@ -688,6 +753,7 @@ for elem, na in d.items():
 print(d)
 print(d2)
 ```
+</div>
 
 ```
 {'H': 1, 'Li': 3, 'Na': 11, 'K': 19, 'O': 18}
@@ -697,6 +763,7 @@ print(d2)
 !!! example "Exemplo:"
     Contar os diferentes **valores** de um dicionário
 
+<div class="python_box">
 ``` python3
 a = {'Aragorn':'Humano', 'Frodo':'Hobbit',
      'Sam':'Hobbit', 'Boromir':'Humano',
@@ -714,6 +781,7 @@ for especie in a.values():
 for e, c in contagens.items():
     print(e,c )
 ```
+</div>
 
 ```
 Humano 2
@@ -725,11 +793,13 @@ Elfo 1
 
 ### Dicionários em compreensão
 
+<div class="python_box">
 ``` python3
 d = {i:i**2 for i in range(10)}
 for k, v in d.items():
     print(k, '---->', v)
 ```
+</div>
 
 ```
 0 ----> 0
@@ -744,6 +814,7 @@ for k, v in d.items():
 9 ----> 81
 ```
 
+<div class="python_box">
 ``` python3
 # Virar um dicionário "do avesso"
 # usando um dicionário em compreensão
@@ -754,6 +825,7 @@ d2 = {na: elem for elem, na in d.items()}
 print(d)
 print(d2)
 ```
+</div>
 
 ```
 {'H': 1, 'Li': 3, 'Na': 11, 'K': 19, 'O': 18}
@@ -766,12 +838,14 @@ A função `dict()` que tenta transformar o seu argumento num dicionário.
 Em particular, pode aceitar pares de valores, interpretando-os como
 associações de chaves a valores.
 
+<div class="python_box">
 ``` python3
 pares = [('Li', 3), ('K', 19), ('O',18)]
 
 d = dict(pares)
 print(d)
 ```
+</div>
 
 ```
 {'Li': 3, 'K': 19, 'O': 18}
@@ -780,6 +854,7 @@ print(d)
 Função `zip()`
 --------------
 
+<div class="python_box">
 ``` python3
 nomes = ['Enolase (S.cerevisiae)',
          'Enolase (S.pombe)',
@@ -789,6 +864,7 @@ ids = ['P00924', 'P40370', 'Q70CP7']
 for x in zip(ids, nomes):
     print(x)
 ```
+</div>
 
 ```
 ('P00924', 'Enolase (S.cerevisiae)')
@@ -796,6 +872,7 @@ for x in zip(ids, nomes):
 ('Q70CP7', 'Enolase (K.lactis)')
 ```
 
+<div class="python_box">
 ``` python3
 nomes = ['Enolase (S.cerevisiae)',
          'Enolase (S.pombe)',
@@ -805,6 +882,7 @@ ids = ['P00924', 'P40370', 'Q70CP7']
 for n, i in zip(nomes, ids):
     print(i, ':', n)
 ```
+</div>
 
 ```
 P00924 : Enolase (S.cerevisiae)
@@ -812,6 +890,7 @@ P40370 : Enolase (S.pombe)
 Q70CP7 : Enolase (K.lactis)
 ```
 
+<div class="python_box">
 ``` python3
 nomes = ['Enolase (S.cerevisiae)',
          'Enolase (S.pombe)',
@@ -822,6 +901,7 @@ d = {n: i for i, n in zip(nomes, ids)}
 
 print(d)
 ```
+</div>
 
 ```
 {'P00924': 'Enolase (S.cerevisiae)', 'P40370': 'Enolase (S.pombe)', 'Q70CP7': 'Enolase (K.lactis)'}
@@ -830,6 +910,7 @@ print(d)
 Combinando a função `zip()` com a função `dict()`, a criação do
 dicionário fica ainda mais sucinta:
 
+<div class="python_box">
 ``` python3
 nomes = ['Enolase (S.cerevisiae)',
          'Enolase (S.pombe)',
@@ -840,6 +921,7 @@ d = dict(zip(nomes, ids))
 
 print(d)
 ```
+</div>
 
 ```
 {'Enolase (S.cerevisiae)': 'P00924', 'Enolase (S.pombe)': 'P40370', 'Enolase (K.lactis)': 'Q70CP7'}
