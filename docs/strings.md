@@ -24,7 +24,7 @@ Exemplos:
 ![](images/down_read.png)
 
 
-```python
+``` python3
 with open('c_hominis.fasta') as datafile:
     data = datafile.read()
 
@@ -64,7 +64,7 @@ print(data)
 ![](images/request_read.png)
 
 
-```python
+``` python3
 import requests
 
 url = 'https://www.uniprot.org/uniprot/?query=proteome:UP000002407%20reviewed:yes&format=list'
@@ -147,7 +147,7 @@ c =  There's no spoon, really, none.
 A função `len()` é uma função universal que calcula o número de elementos de qualquer coleção.
 No caso das _strings_, o resultado é o **número de caracteres**.
 
-```python
+``` python3
 c = "There's no spoon"
 
 n = len(c)
@@ -170,7 +170,7 @@ caracteres**, tal como uma lista é uma sequência de quaisquer objetos.
 
 Na iteração de uma _string_ com `for` percorre-se os caracteres da _string_, um a um.
 
-```python
+``` python3
 frase = "There's no spoon"
 
 for c in frase:
@@ -197,7 +197,7 @@ for c in frase:
 
 Na indexação, cada caractere tem uma posição (a começar do zero).
 
-```python
+``` python3
 frase = "There's no spoon"
 
 print(frase[0])
@@ -233,7 +233,7 @@ Vamos ver (apenas) as seguintes:
 ###  `in`, `.startswith()` , `.endswith()`.
 
 
-```python
+``` python3
 frase = "There's no spoon"
 
 if 're' in frase:
@@ -246,7 +246,7 @@ else:
     
 
 
-```python
+``` python3
 seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 
 if seq.startswith('AUG'):
@@ -262,7 +262,7 @@ if seq.endswith('UAG') or seq.endswith('UAA') or seq.endswith('UGA'):
 ### `.strip()`.
 
 
-```python
+``` python3
 c = """    
            There's no spoon      
 
@@ -286,7 +286,7 @@ print(s)
 ### `.upper()`, `.lower()`.
 
 
-```python
+``` python3
 c = "    There's no spoon      "
 
 c_upper = c.upper()
@@ -302,7 +302,7 @@ print('c.lower():',c_lower)
 
 ### `.count()`.
 
-```python
+``` python3
 seq = "ATGTTCAAGGAGTAATGCCCCCGACTA"
 
 nG = seq.count('G')
@@ -319,7 +319,7 @@ print(f'A razão (G+C) / (A+T) é {(nG + nC)/(nA + nC)}')
 ### `.replace()`.
 
 
-```python
+``` python3
 seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 
 seq2 = seq.replace('U', 'T')
@@ -333,7 +333,7 @@ print(seq2)
     
 
 
-```python
+``` python3
 frase = "There's no spoon"
 
 frase2 = frase.replace(' ', '')
@@ -359,7 +359,7 @@ designados por *white space*)
 
 Alguns exemplos:
 
-```python
+``` python3
 frase = "There's no spoon"
 
 x = frase.split()
@@ -371,7 +371,7 @@ print(x)
     
 
 
-```python
+``` python3
 frase = "There's no spoon"
 
 x = frase.split('s')
@@ -383,7 +383,7 @@ print(x)
     
 
 
-```python
+``` python3
 frase = "There's no spoon"
 
 x = frase.split('o')
@@ -395,7 +395,7 @@ print(x)
     
 
 
-```python
+``` python3
 frase = "There's no spoon"
 
 x = frase.split('n')
@@ -457,7 +457,7 @@ AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 
 Ou, usando uma **lista em compreensão**:
 
-```python
+``` python3
 s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 
 cods = [s[i] + s[i+1] + s[i+2] for i in range(0, len(s), 3)]
@@ -479,7 +479,7 @@ consecutivos!
 
 A função `.splitlines()` é equivalente a `.split('\n')`:
 
-```python
+``` python3
 seq = """>sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain
 MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKD
 MIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTI
@@ -568,7 +568,7 @@ O Neo tomou o comprimido vermelho
 ONotmu
 ```
 
-```python
+``` python3
 seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 
 c = seq[  :3]
@@ -652,7 +652,7 @@ print(s3)
 No caso de uma **lista**, podemos **atribuír valores a um** *slice* **da
 lista**, mudando alguns elementos de uma só vez:
 
-```python
+``` python3
 nums = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
 #       0  1  2  3  4  5  6  7  8  9
 
@@ -728,7 +728,7 @@ TAA-TCC-TAA-ATA-CTA-GGT-AAC-CAT
 **Problema: separar uma sequência em FASTA em 2 strings: o "header" e a sequência**
 
 
-```python
+``` python3
 seqFASTA = """>sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain
 MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKD
 MIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTI
@@ -822,7 +822,7 @@ A estratégia é simples: as linhas começadas por `>` são os _headers_ e o
 número de sequências é igual ao número de _headers_.
 
 
-```python
+``` python3
 # ler o ficheiro para uma grande string
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
     data = datafile.read()
@@ -844,7 +844,7 @@ print(f'O proteoma tem {len(headers)} proteínas')
 
 Usando uma lista em compreensão:
 
-```python
+``` python3
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
     data = datafile.read()
 
@@ -885,7 +885,7 @@ KICADVVAELKKISKPVKDKKEIAQVATIS
 O programa que implementa esta estratégia poderá ser
 
 
-```python
+``` python3
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
     data = datafile.read()
 
@@ -937,7 +937,7 @@ Aumentando o programa anterior, podemos processar os _headers_ par extraír cada
 Recorde-se que o _Número UniProt de Acesso_ está entre `|` em cada _header_
 
 
-```python
+``` python3
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
     data = datafile.read()
 
@@ -973,7 +973,7 @@ for ac in ['P28240','P38832','P36084']:
     
 
 
-```python
+``` python3
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
     data = datafile.read()
 
@@ -1010,7 +1010,7 @@ sequências. Bastaria processar diretamente cada bloco.
 Assim, uma versão muito mais compacta seria:
 
 
-```python
+``` python3
 dictseqs = {}
 
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
