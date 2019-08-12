@@ -1,6 +1,12 @@
-# classes_Python_Bq_computacional
+﻿# classes_Python_Bq_computacional
 
 These are lectures about Python programming taught at the University of Lisbon, Portugal, in the course _Computational Biochemistry_ of the Biochemistry Undergraduate Program.
+
+Thia course is broadly divided into three main parts:
+
+- introductory concepts on Python programming
+- Structured text processing and information extraction. Examples are mainly "structured texts" from Bioinformatics.
+- Pyhton modules for scientific computation.
 
 ![class](https://github.com/aeferreira/classes_Python_Bq_computacional/blob/master/docs/images/class.jpg)
 
