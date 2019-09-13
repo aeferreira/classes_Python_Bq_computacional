@@ -1,9 +1,8 @@
-Os principais módulos "científicos"
-===================================
+# Os principais módulos "científicos"
 
 Embora não incluídas na distribuição oficial, disponibilizada em
 <http://www.python.org>, as seguintes bibliotecas foram criadas para
-adaptar (e aumentar a linguagem Python com a funcionalidade necessária
+adaptar (e aumentar) a linguagem Python com a funcionalidade necessária
 em muitas aplicações de natureza científica.
 
 Estas bibliotecas são:
@@ -20,10 +19,11 @@ Estas bibliotecas são:
 
 ![](images/sci_python.png)
 
-`numpy`
--------
+## `numpy`
 
-### Operações "vectoriais"
+Esta é uma biblioteca fundamental na computação científica em Python e várias das outras bibliotecas dependem dela. Apesar de introduzir muitas funcionalidades interessantes à linguagem, a principal característica da biblioteca é proporcionar _operações vetoriais_ a partir de um tipo de objetos denominado _array_
+
+### Operações "vectoriais" com `arrays`
 
 <div class="python_box">
 ``` python3
