@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.2">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.4.2">
     
     
       
@@ -94,7 +94,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="index.html" title="Bq computacional (FCUL)" class="md-header-nav__button md-logo">
+        <a href="." title="Bq computacional (FCUL)" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -164,7 +164,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="index.html" title="Bq computacional (FCUL)" class="md-nav__button md-logo">
+    <a href="." title="Bq computacional (FCUL)" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -380,8 +380,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#operacoes-vectoriais" class="md-nav__link">
-    Operações "vectoriais"
+  <a href="#operacoes-vectoriais-com-arrays" class="md-nav__link">
+    Operações "vectoriais" com arrays
   </a>
   
 </li>
@@ -676,8 +676,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#operacoes-vectoriais" class="md-nav__link">
-    Operações "vectoriais"
+  <a href="#operacoes-vectoriais-com-arrays" class="md-nav__link">
+    Operações "vectoriais" com arrays
   </a>
   
 </li>
@@ -947,7 +947,7 @@
                 <h1 id="os-principais-modulos-cientificos">Os principais módulos "científicos"<a class="headerlink" href="#os-principais-modulos-cientificos" title="Permanent link">&para;</a></h1>
 <p>Embora não incluídas na distribuição oficial, disponibilizada em
 <a href="http://www.python.org">http://www.python.org</a>, as seguintes bibliotecas foram criadas para
-adaptar (e aumentar a linguagem Python com a funcionalidade necessária
+adaptar (e aumentar) a linguagem Python com a funcionalidade necessária
 em muitas aplicações de natureza científica.</p>
 <p>Estas bibliotecas são:</p>
 <ul>
@@ -963,7 +963,8 @@ em muitas aplicações de natureza científica.</p>
 </ul>
 <p><img alt="" src="images/sci_python.png" /></p>
 <h2 id="numpy"><code>numpy</code><a class="headerlink" href="#numpy" title="Permanent link">&para;</a></h2>
-<h3 id="operacoes-vectoriais">Operações "vectoriais"<a class="headerlink" href="#operacoes-vectoriais" title="Permanent link">&para;</a></h3>
+<p>Esta é uma biblioteca fundamental na computação científica em Python e várias das outras bibliotecas dependem dela. Apesar de introduzir muitas funcionalidades interessantes à linguagem, a principal característica da biblioteca é proporcionar <em>operações vetoriais</em> a partir de um tipo de objetos denominado <em>array</em></p>
+<h3 id="operacoes-vectoriais-com-arrays">Operações "vectoriais" com <code>arrays</code><a class="headerlink" href="#operacoes-vectoriais-com-arrays" title="Permanent link">&para;</a></h3>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
@@ -1067,7 +1068,7 @@ y = 4 * x**2 -3
 <div class="codehilite"><pre><span></span><span class="c1"># só necessário em Jupyter notebooks</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">pl</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">pl</span>
 </pre></div>
 </div>
 
@@ -1570,7 +1571,7 @@ C = A * B
 <h2 id="sympy"><code>sympy</code><a class="headerlink" href="#sympy" title="Permanent link">&para;</a></h2>
 <h3 id="simbolos-e-algebra-basica">Símbolos e álgebra básica<a class="headerlink" href="#simbolos-e-algebra-basica" title="Permanent link">&para;</a></h3>
 <div class="python_box">
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="k">import</span> <span class="n">Symbol</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Symbol</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
@@ -1599,7 +1600,7 @@ y**2 + 2*y + 1
 
 <h3 id="limites">Limites<a class="headerlink" href="#limites" title="Permanent link">&para;</a></h3>
 <div class="python_box">
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="k">import</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">diff</span><span class="p">,</span> <span class="n">integrate</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">oo</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">diff</span><span class="p">,</span> <span class="n">integrate</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">oo</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
@@ -1647,7 +1648,7 @@ oo
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">pl</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">pl</span>
 </pre></div>
 </div>
 
@@ -1667,7 +1668,7 @@ oo
 <p><img alt="" src="images/scipydocs_all.png" /></p>
 <p><img alt="" src="images/scipydocs_regress.png" /></p>
 <div class="python_box">
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">linregress</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
 </pre></div>
 </div>
 
@@ -1781,7 +1782,7 @@ low pH solution</p>
 <h2 id="computation">Computation<a class="headerlink" href="#computation" title="Permanent link">&para;</a></h2>
 <p>Make the necessary imports</p>
 <div class="python_box">
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">linspace</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linspace</span>
 </pre></div>
 </div>
 
@@ -3488,7 +3489,7 @@ x         f(x)
 <p>Compare-se a rapidez da convergência dos 2 métodos, para
 <span><span class="MathJax_Preview">\epsilon = 10^{-6}</span><script type="math/tex">\epsilon = 10^{-6}</script></span></p>
 <p>Método das bisseções sucessivas:</p>
-<div class="codehilite"><pre><span></span>Bisseções:
+<div class="codehilite"><pre><span></span><code>Bisseções:
 a       b       |b-a|       f(xm)
 1.00000 2.00000 1.00000000  1.3750000
 1.00000 1.50000 0.50000000 -0.0468750
@@ -3510,22 +3511,22 @@ a       b       |b-a|       f(xm)
 1.25992 1.25993 0.00000763  0.0000047
 1.25992 1.25992 0.00000381 -0.0000044
 1.25992 1.25992 0.00000191  0.0000001
-</pre></div>
+</code></pre></div>
 
 
 <p>Método de Newton:</p>
-<div class="codehilite"><pre><span></span>Iterações:
+<div class="codehilite"><pre><span></span><code>Iterações:
 x         f(x)
 1.5000000 1.3750000
 1.2962963 0.1782757
 1.2609322 0.0048193
 1.2599219 0.0000039
-</pre></div>
+</code></pre></div>
 
 
 <p>Método de Newton com a função <span><span class="MathJax_Preview">sin(x)</span><script type="math/tex">sin(x)</script></span></p>
 <div class="python_box">
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -3651,9 +3652,9 @@ para x0 = 12.1,    x =  4.0 pi
 </div>
 
 <div class="python_box">
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">pl</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">pl</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span>
 </pre></div>
 </div>
 
@@ -3860,7 +3861,7 @@ Para x0 = 2.2, raíz =  3.142
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
