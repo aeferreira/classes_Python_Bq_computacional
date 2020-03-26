@@ -1,84 +1,303 @@
 # Conceitos básicos
 
-## Objetos, nomes e função `print()`
+## Programas como textos
 
-### Objetos fundamentais
+Um programa é simplesmente um texto escrito numa linguagem de programação, por exemplo na linguagem Python.
 
-Essencialmente, um programa em Python consiste num conjunto de comandos
-a ser executados.
+Na linguagem Python, esse texto é interpretável por um computador como um conjunto de "comandos" de "ordens" para serem executados.
 
-Muitas vezes esses comandos consistem na manipulação de **objetos**.
+![](images/prog.gif)
 
-Estes objetos estão representados na memória do computador, a cada
-momento, e têm um determinado valor.
+Quando "corremos" ou "executamos" um programa essas ordens são executadas (a grande velocidade, diga-se) e o programa produz um resultado.
 
-Dois tipos básicos de objetos que podemos criar e manipular num programa
-são:
+![](images/prog_has_run.gif)
 
--   números
--   _strings_
+Os comandos são executados um a um à medida que aparecem no texto ("de cima para baixo"), embora esta ordem possa ser alterada por indicações especiais capazes de **repetir comandos** ou executar **comandos em alternativa**, como veremos mais tarde.
 
-Num programa, podemos **apresentar** o valor que um objeto tem com a
-função `print()`.
+## Objetos e nomes
 
-Um exemplo com números:
+### Objetos fundamentais: números e *strings*
+
+Para as primeiras impressões sobre a linguagem Python começaremos não por escrever
+e executar pequenos programas mas por usar um modo interativo chamado a *Python Shell*.
+
+Neste modo interativo, escrevem-se comandos que são executados imediatamente originando um resultado.
+
+Tendo uma distribuição da linguagem Python instalada, podemos iniciar uma *Python shell* numa
+janela de terminal ("linha de comando", "shell").
+
+No sistema Windows, por exemplo, usando a Anaconda Prompt da distribuição Anaconda escrevemos
+
+    python
+
+para iniciar uma *Python shell*.
+
+![](images/open_shell.gif)
+
+Como alternativa, podemos iniciar uma aplicação que contem uma *Python shell* chamada *Idle*,
+escrevendo
+
+    idle
+
+![](images/open_idle.gif)
+
+Reconhece-se a *Python shell* por apresentar
 
 <div class="python_box">
-``` python3
-print(4)
-print(3.2)
-print(9.0)
-print(((3 + 9) / 3.0)**0.5)
+``` pycon
+>>>
 ```
 </div>
 
-```
-4
-3.2
-9.0
-2.0
-```
+a indicar que podemos escrever um comando do Python.
+Ao terminar o comando com `Enter` obtemos imediatamente uma resposta.
 
-Nas expressões podemos usar:
+Vamos experimentar alguns comandos.
 
--   os cinco operadores `+ - * / **` (`**` é a potenciação)
--   vários níveis de `()`
--   o operador `%`: o resto da divisão (por exemplo, `5 % 3` tem como
-    resultado `2`)
+Muitas vezes, os comandos da linguagem Python consistem na manipulação daquilo que se designa genericamente por **objetos** (virtuais, claro).
 
-Um exemplo com *strings*:
+Estes *objetos* são valores que estão representados na memória do computador, num determinado momento durante a execução do programa.
+
+#### Números
+
+Números são uns dos objetos mais fundamentais da linguagem Python. Podemos usar a *Python Shell* como uma calculadora. Experimente estes comandos:
 
 <div class="python_box">
-``` python3
-print('quinta feira')
-print('hoje', 'é', "quinta feira,", 16)
+``` pycon
+>>> 45 + 32
+77
+>>> 3.27 * 0.18
+0.5886
+>>> (1 + 5**0.5) / 2
+1.618033988749895
+>>>
 ```
 </div>
 
-``` text
-quinta feira
-hoje é quinta feira, 16
-```
+Numa expressão envolvendo números, podemos usar (vários níveis de) parêntesis curvos `()` e as cinco operações:
 
-Pequenos textos entre `""` ou `''` são *strings*. São sequências de
-caracteres (os espaços e pontuação, desde que estejam entre as aspas
+- + adição
+- - subtração
+- * multiplicação
+- / divisão
+- ** potenciação
+
+As regras de prioridade são: `**` tem maior prioridade do que `*` `/` que têm maior prioridade do que `+ -`. Em caso de “empate” e sem parêntesis, os cálculos são feitos da esquerda para a direita.
+
+Também útil é o operador `%`: o "resto da divisão por". Por exemplo, `5 % 3` tem como
+resultado `2`.
+
+Naturalmente, podemos trabalhar com números com casas decimais, designados genericamente como *números em vírgula flutuante*. 
+
+Na gíria é muitas vezes usada a designação *floats*.
+
+<div class="python_box">
+``` pycon
+>>> 4.2 * 0.01
+0.042
+>>> 4.2 * 1e-2
+0.042
+>>> 4.2e3 - 2e2
+4000.0
+```
+</div>
+
+Note a utilização da representação “de engenharia”, por exemplo `4.2e3`, equivalente a 4.2 x 10<sup>3</sup>.
+
+!!! warning "Atenção"
+    Nos números em Python usa-se sempre um ponto decimal `.` (e não uma vírgula)
+
+#### *Strings*
+
+Um outro tipo de objetos fundamentais num programa são as *strings*.
+
+Estas são pequenos textos entre `""` ou `''`. São sequências de
+caracteres (os espaços e pontuação, desde que estejam entre as aspas,
 contam como caracteres.
 
-A função `print()` pode ser usada com vários objetos a apresentar,
-**separados por vírgulas**. É inserido um espaço entre os vários
-objetos. Note-se que, com as *strings*, as aspas são eliminadas.
+<div class="python_box">
+``` pycon
+>>> "Hoje fiquei em casa"
+'Hoje fiquei em casa'
+>>> 'Mas fiz uns programas'
+'Mas fiz uns programas'
+>>> "Com muita determinação"
+'Com muita determinação'
+>>>
+```
+</div>
+
+É indiferente usar `"` ou `'`. Se precisarmos de usar um tipo de aspas "no interior" de uma *string*
+podemos usar o outro tipo para delimitar a *string*:
+
+<div class="python_box">
+``` pycon
+>>> "Hoje não fui p'rá FCUL"
+"Hoje não fui p'rá FCUL"
+>>>
+```
+</div>
+
+Podemos "somar" *strings* e multiplicar *strings* por um número inteiro:
+
+<div class="python_box">
+``` pycon
+>>> 'Hoje vai' + " chover"
+'Hoje vai chover'
+>>> "Blá" * 4
+'BláBláBláBlá'
+>>>
+```
+</div>
+
+
+Mas não podemos fazer certo tipo de operações entre números e strings:
+
+<div class="python_box">
+``` pycon
+>>> 2 + "muito"
+Traceback (most recent call last):
+  File "<pyshell#21>", line 1, in <module>
+    2 + "muito"
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+>>>
+```
+</div>
+
+Nem mesmo quando um número é, realmente, uma *string*:
+
+<div class="python_box">
+``` pycon
+>>> 4 / "2"
+Traceback (most recent call last):
+  File "<pyshell#22>", line 1, in <module>
+    4 / "2"
+TypeError: unsupported operand type(s) for /: 'int' and 'str'
+>>>
+```
+</div>
+
+#### Números complexos
+
+Finalmente, o Python permite usar números complexos.
+
+Usando a letra `j` no fim de um número indicamos a parte imaginária de um número complexo:
+
+<div class="python_box">
+``` pycon
+>>> 1j * 1j
+(-1+0j)
+>>> 2 + 3j + 4 + 7j
+(6+10j)
+>>> (3 + 2j) * (5 + 1j)
+(13+13j)
+>>>
+```
+</div>
 
 ### Atribuição de nomes a "objetos"
 
-**Este é um dos mais fundamentais comandos em programação!**
+!!! Note "Nota"
+    Este é um dos mais fundamentais comandos em programação!
 
 A forma geral é
 
     <nome> = <expressão>
 
+Vejamos um exemplo:
+
+<div class="python_box">
+``` pycon
+>>> a = 4
+>>> b = 3.2
+>>> c = a + b
+>>> d = c ** 0.5
+>>> a
+4
+>>> b
+3.2
+>>> c
+7.2
+>>> d
+2.6832815729997477
+>>>
+```
+</div>
+
+Numa *Python shell* ou num programa, a atribuição de um nome ao resultado
+de uma expressão não produz imediatamente um resultado mas permite dar um nome a um valor
+para utilizar mais à frente.
+
 Depois de uma atribuição, **o nome pode ser usado em vez do valor do
-objeto ou expressão**. Mesmo em atribuições seguintes, no comando
-`print()`, etc.
+objeto (ou resultado de uma expressão)**. Mesmo em atribuições seguintes.
+
+No exemplo anterior, os valores com os nomes `a`e `b` (respetivamente 4 e 3.2) foram
+usados no ca´lculo de uma expressão `a + b` ao qual foi dado o nome `c`.
+
+Um exemplo com *strings*:
+
+<div class="python_box">
+``` python3
+>>> hoje = "Hoje é quinta feira"
+>>> mês = "Março"
+>>> tudo = hoje + ' e estamos em ' + mês
+>>> tudo
+'Hoje é quinta feira e estamos em Março'
+>>>
+```
+</div>
+
+**Que nomes podemos usar?**
+
+As regras são:
+
+1.  Um nome é uma combinação de letras minúsculas ou maiúsculas (podendo
+    ser acentuadas) ou dígitos (0 to 9) ou o *underscore*. Nomes como
+    `x`, `Km_1` ou `velocidade_da_reaccao` são exemplos válidos.
+    
+    ![](images/piso_2.jpg)
+
+2.  Um nome não pode começar com um dígito. `1x` é inválido, mas `x1` é
+    aceitável.
+3.  Palavras usadas como comandos da linguagem (*keywords*) não são
+    permitidas (por exemplo, `for`). Na documentação do Python pode-se
+    encontrar uma [lista](https://docs.python.org/3/reference/lexical_analysis.html#keywords)
+    com estas palavras "reservadas".
+4.  Não são permitidos espaços ou símbolos como `!, @, #, %` nos nomes.
+
+### Programas e `print()`
+
+Um programa em Python é, como foi dito, uma sequência de comandos
+que são executados um a um, a grande velocidade, quando o programa é
+executado.
+
+Os exemplos seguintes são baseados em programas e não numa *Python shell*.
+
+Aconselha-se a familiarização com uma aplicação de edição e execução de programas,
+por exemplo o *Visual Studio Code*.
+
+Ao contrário de uma *Python shell*, durante a execução de um programa os comandos
+**não produzem resultados imediatamente**. Por exemplo, executando este programa:
+
+<div class="python_box">
+``` python3
+a = 4
+b = 3.2
+c = a + b
+d = c ** 0.5
+```
+</div>
+
+O resultado é o seguinte:
+
+```
+ 
+```
+
+Num programa, podemos **apresentar** o valor que um objeto tem com a
+função `print()`.
+
+Um exemplo:
 
 <div class="python_box">
 ``` python3
@@ -98,6 +317,14 @@ print(c, d)
 7.2 2.6832815729997477
 ```
 
+Embora este programa faça vários cálculos e atribuições de nome, o resultado visível da execução do programa
+resulta das funções `print()`.
+
+Numa única `print()` podemos apresentar vários objetos, valores associados a nomes e expressões
+**separados por vírgulas**. É inserido um espaço entre as várias partes.
+
+Usando `print()` com *strings*, as aspas são eliminadas.
+
 <div class="python_box">
 ``` python3
 hoje = "Hoje é quinta feira"
@@ -114,52 +341,6 @@ print(tudo)
 Hoje é quinta feira
 Março
 Hoje é quinta feira e estamos em Março
-```
-
-**Que nomes podemos usar?**
-
-As regras são:
-
-1.  Um nome é uma combinação de letras minúsculas ou maiúsculas (podendo
-    ser acentuadas) ou dígitos (0 to 9) ou o *underscore*. Nomes como
-    `x`, `Km_1` ou `velocidade_da_reaccao` são exemplos válidos.
-2.  Um nome não pode começar com um dígito. `1x` é inválido, mas `x1` é
-    aceitável.
-3.  Palavras usadas como comandos da linguagem (*keywords*) não são
-    permitidas (por exemplo, `print`).
-
-![](images/piso_2.jpg)
-
-Não são permitidos espaços ou símbolos como `!, @, #, %` nos nomes.
-
-**tipos de objetos vistos até agora**
-
--   **inteiros**
--   *floats*
--   *strings*
-
-Existem também os **complexos** (em que `j` é a unidade imaginária):
-
-<div class="python_box">
-``` python3
-c = 4+2j
-
-print('c =', c)
-
-print(c.real)
-print(c.imag)
-
-d = 4j
-
-print('c * d =', c * d)
-```
-</div>
-
-```
-c = (4+2j)
-4.0
-2.0
-c * d = (-8+16j)
 ```
 
 ### Alteração dos objetos associados a um nome
@@ -192,7 +373,8 @@ c = 8
 Para melhor compreender as mudanças que ocorrem nos valores atribuídos
 aos nomes de `a`, `b` e `c` no programa anterior, podemos modifica-lo,
 mostrando, com `print()`, os valores atualizados desses nomes, após cada
-atribuição. Repare-se nos resultados de cada `print()`:
+atribuição. Associe cada `print()` a cada linha do resultado do programa
+e compreenda as diferentes alterações dos valores associados a cada nome:
 
 <div class="python_box">
 ``` python3
@@ -217,6 +399,8 @@ a = 3 b = 5 c = Olá
 a = 3 b = 5 c = 8
 ```
 
+É claro que estas variações de nomes e valores ocorrem muito depressa.
+
 ### Interpolação de valores em *strings* (_"Strings f"_)
 
 As *strings* podem ter valores "interpolados", usando os nomes desses
@@ -238,7 +422,9 @@ print(f'a é igual a {a}, mas b = {b}, enquanto que c = {c}')
 a é igual a 4.8, mas b = 3.2, enquanto que c = 8.0
 ```
 
-## Comentários
+## Atribuições "múltiplas"
+
+Podemos atribuir vários nomes a vários valores de uma só vez:
 
 <div class="python_box">
 ``` python3
@@ -255,6 +441,14 @@ print(f"a = {a} b = {b}")
 ```
 a = 3 b = experiência
 ```
+
+Mais tarde veremos uma generalização desta técnica muito útil.
+
+Já agora, linhas começadas por `#` são *comentários*.
+
+Comentários são linhas completamente ignoradas durante a execução de um programa.
+Servem como notas importantes deixadas para que o autor do programa ou outras pessoas
+possam mais tarde, ao ler o programa, melhor comprender o que um programa está a fazer.
 
 <div class="python_box">
 ``` python3
@@ -294,7 +488,8 @@ função `print()`.
 
 #### `abs`, `int`
 
-Além da função `print()`, as funções `int()` e `abs()` fazem parte
+Além da função `print()`, as funções `int()`, que calcula a parte inteira de 
+um número e `abs()`, que calcula o valor absoluto (módulo) de um número, fazem parte
 integrante da linguagem Python.
 
 <div class="python_box">
@@ -319,8 +514,7 @@ print(y)
 Podemos encontrar a lista destas funções na documentação oficial da
 linguagem Pyhton:
 
-[Python Built-in
-functions](https://docs.python.org/3/library/functions.html)
+[Python Built-in functions](https://docs.python.org/3/library/functions.html)
 
 ### Conversão entre tipos de objetos
 
@@ -598,7 +792,7 @@ Com a = 1, b = 1, c = 1:
 
 O programa funciona e parece dar resultados corretos para as três
 situações pretendidas (embora se note um pequeno erro no caso das duas
-soluções complexas que deveria ser, exatamente, dois complexos
+soluções complexas que deveriam ser, exatamente, dois complexos
 conjugados).
 
 No entanto, seria mais adequado se o programa pudesse apresentar uma
@@ -612,7 +806,7 @@ Para isto, o programa deve ter um **comportamento diferente**, consoante
 o tipo de resultado.
 
 Da matemática, sabemos que o que define o tipo de resultado é o valor do
-"discriminante", $\Delta = b^2 - 4 a c$..
+"discriminante", $\Delta = b^2 - 4 a c$.
 
 -   quando $\Delta > 0$ temos duas soluções reais.
 -   quando $\Delta = 0$ temos uma solução real (solução dupla).
@@ -705,7 +899,7 @@ que define define os dois blocos:
 
 ![](images/blocks_if_else.png)
 
-Note-se que, no porgrama anterior, as linhas
+Note-se que, no programa anterior, as linhas
 
     x1 = (- b + r_delta) / (2.0 * a)
     x2 = (- b - r_delta) / (2.0 * a)
@@ -1054,7 +1248,7 @@ Soluções complexas:
 x1 = (-0.5+0.8660254037844386j) , x2 = (-0.5-0.8660254037844386j)
 ```
 
-Executando este programa várias vezes, testeando com os diferentes
+Executando este programa várias vezes, testando com os diferentes
 casos, agora os valores dos coeficientes são "pedidos" pelo programa:
 
 ```
