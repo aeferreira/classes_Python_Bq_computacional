@@ -8,7 +8,7 @@
 ## Exercício 1 (Números, *strings*, números complexos)
 
 1. Abra uma Python Shell ou uma Python Shell no Idle.
-1. Corra todos os comandos da secção 1.1 do livro.
+1. Corra todos os comandos das secções [Objetos fundamentais números e strings](basics.md#objetos-fundamentais-numeros-e-strings) e [Atribuição de nomes a objetos](basics.md#atribuicao-de-nomes-a-objetos).
 2. Familiarize-se com
     - Números
     - Números em vírgula flutuante (com casas decimais)
@@ -37,6 +37,7 @@ Os programas vão ser criados como ficheiros de texto editados com o VSCode.
 - ![](images/folder_vscode.gif)
 - Verifique que a extensão Python está instalada:
 - ![](images/python_ext_vscode.gif)
+- Caso não esteja, escreva "Python" em "Search Extensions in ...". A primeira que aparece é a extensão Python da Microsoft. Use o botão "Install" para instalar a extensão. Só precisa de o fazer uma vez!
 - Inicie um ficheiro novo, com *File – New File*.
 - Escreva um programa que calcule e mostre, com `print()`, a "proporção de ouro", isto é, o número
 
@@ -49,9 +50,11 @@ Os programas vão ser criados como ficheiros de texto editados com o VSCode.
     Deve-lhe dar um nome acabado em `.py`, por exemplo `phi.py`.
 
 !!! note "Nota"
-    Se o VSCode indicar que falta selecionar um “Python interpreter”, deve escolher o interpretador instalado do Anaconda, clicando no canto inferior esquedo onde diz “No Interpreter”. Depois de escolher, deve ver o seguinte no canto inferior esquerdo do VSCode:
+    Se o VSCode indicar que falta selecionar um “Python interpreter”, deve escolher o interpretador instalado do Anaconda, clicando no canto inferior esquerdo onde diz “No Interpreter”. Depois de escolher, deve ver o seguinte no canto inferior esquerdo do VSCode:
 
     ![](images/chosen_interpreter.gif)
+
+    Ver o ponto "Select Python interpreter" [Nesta página](https://marketplace.visualstudio.com/items?itemName=ms-python.python&ssr=false#overview)
 
 - Familiarize-se com a edição de um programa no *VSCode*. Use alguns *shortcuts* do teclado: `Home` e `End`. `Ctrl-C (copy)`, `Ctrl-V (paste)`. Selecione com o rato e com o teclado. 
 - Execute (corra) o programa. Para isso utilize o botão no canto superior direito

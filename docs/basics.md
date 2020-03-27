@@ -84,7 +84,7 @@ Numa expressão envolvendo números, podemos usar (vários níveis de) parêntes
 
 As regras de prioridade são: `**` tem maior prioridade do que `*` `/` que têm maior prioridade do que `+ -`. Em caso de “empate” e sem parêntesis, os cálculos são feitos da esquerda para a direita.
 
-Também útil é o operador `%`: o "resto da divisão por". Por exemplo, `5 % 3` tem como
+Também útil é o operador `%`, o "resto da divisão por". Por exemplo, `5 % 3` tem como
 resultado `2`.
 
 Naturalmente, podemos trabalhar com números com casas decimais, designados genericamente como *números em vírgula flutuante*. 
@@ -232,7 +232,7 @@ Depois de uma atribuição, **o nome pode ser usado em vez do valor do
 objeto (ou resultado de uma expressão)**. Mesmo em atribuições seguintes.
 
 No exemplo anterior, os valores com os nomes `a`e `b` (respetivamente 4 e 3.2) foram
-usados no ca´lculo de uma expressão `a + b` ao qual foi dado o nome `c`.
+usados no cálculo de uma expressão `a + b` ao qual foi dado o nome `c`.
 
 Um exemplo com *strings*:
 
@@ -320,8 +320,7 @@ print(c, d)
 Embora este programa faça vários cálculos e atribuições de nome, o resultado visível da execução do programa
 resulta das funções `print()`.
 
-Numa única `print()` podemos apresentar vários objetos, valores associados a nomes e expressões
-**separados por vírgulas**. É inserido um espaço entre as várias partes.
+Como se viu com a última linha (`print(c,d)`) numa só função `print()` podemos apresentar vários objetos, ou valores associados a nomes ou expressões **separado-os por vírgulas**. No resultado de um programa é inserido um espaço entre as várias partes.
 
 Usando `print()` com *strings*, as aspas são eliminadas.
 
@@ -401,6 +400,28 @@ a = 3 b = 5 c = 8
 
 É claro que estas variações de nomes e valores ocorrem muito depressa.
 
+!!! Note "A assimetria de uma atribuição de nome"
+    Note-se que um comando de atribuição de nome é compeltamente assimétrico.
+    Do lado esquerdo do `=` fica apenas um nome. Do lado direito fica uma expressão
+    a calcular, seja ela qual for.
+
+    Repare que, em programação, é perfeitamente possível escrever a "falsidade matemática"
+
+    ```
+    a = a + 1
+    ```
+    Não se trata de dizer que o lado esquerdo é igual ao lado direito. Trata-se de calcular
+    o lado direito e dar o nome que está do lado esquerdo. Estamos a dar uma ordem *usa o valor
+    de `a`, acrescenta 1 e dá o nome `a` ao resultado*.
+
+    Mas, no Python, dá um erro escrever uma coisa como
+
+    ```
+    2 * a + 4 = a
+    ```
+
+    Resumo: à direita uma expressão,à esquerda o nome a dar ao resultado
+
 ### Interpolação de valores em *strings* (_"Strings f"_)
 
 As *strings* podem ter valores "interpolados", usando os nomes desses
@@ -424,7 +445,10 @@ a é igual a 4.8, mas b = 3.2, enquanto que c = 8.0
 
 ## Atribuições "múltiplas"
 
-Podemos atribuir vários nomes a vários valores de uma só vez:
+Podemos atribuir vários nomes a vários valores de uma só vez.
+
+Para isso, usamos vários nomes do lado esquerdo do `=` **separados por `,`** e 
+várias expressões do lado direito **separadas por `,`**:
 
 <div class="python_box">
 ``` python3
@@ -663,6 +687,8 @@ print('100! =', y)
 ```
 100! = 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
 ```
+
+[Leitura interessate sobre o módulo `math`](https://realpython.com/python-math-module/)
 
 Um outro exemplo é o módulo **calendar** que contem muitas funções
 relacionadas com datas e calendário.
