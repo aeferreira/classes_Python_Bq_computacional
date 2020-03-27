@@ -890,7 +890,7 @@ Ao terminar o comando com <code>Enter</code> obtemos imediatamente uma resposta.
 <li>** potenciação</li>
 </ul>
 <p>As regras de prioridade são: <code>**</code> tem maior prioridade do que <code>*</code> <code>/</code> que têm maior prioridade do que <code>+ -</code>. Em caso de “empate” e sem parêntesis, os cálculos são feitos da esquerda para a direita.</p>
-<p>Também útil é o operador <code>%</code>: o "resto da divisão por". Por exemplo, <code>5 % 3</code> tem como
+<p>Também útil é o operador <code>%</code>, o "resto da divisão por". Por exemplo, <code>5 % 3</code> tem como
 resultado <code>2</code>.</p>
 <p>Naturalmente, podemos trabalhar com números com casas decimais, designados genericamente como <em>números em vírgula flutuante</em>. </p>
 <p>Na gíria é muitas vezes usada a designação <em>floats</em>.</p>
@@ -1014,7 +1014,7 @@ para utilizar mais à frente.</p>
 <p>Depois de uma atribuição, <strong>o nome pode ser usado em vez do valor do
 objeto (ou resultado de uma expressão)</strong>. Mesmo em atribuições seguintes.</p>
 <p>No exemplo anterior, os valores com os nomes <code>a</code>e <code>b</code> (respetivamente 4 e 3.2) foram
-usados no ca´lculo de uma expressão <code>a + b</code> ao qual foi dado o nome <code>c</code>.</p>
+usados no cálculo de uma expressão <code>a + b</code> ao qual foi dado o nome <code>c</code>.</p>
 <p>Um exemplo com <em>strings</em>:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">hoje</span> <span class="o">=</span> <span class="s2">&quot;Hoje é quinta feira&quot;</span>
@@ -1087,8 +1087,7 @@ função <code>print()</code>.</p>
 
 <p>Embora este programa faça vários cálculos e atribuições de nome, o resultado visível da execução do programa
 resulta das funções <code>print()</code>.</p>
-<p>Numa única <code>print()</code> podemos apresentar vários objetos, valores associados a nomes e expressões
-<strong>separados por vírgulas</strong>. É inserido um espaço entre as várias partes.</p>
+<p>Como se viu com a última linha (<code>print(c,d)</code>) numa só função <code>print()</code> podemos apresentar vários objetos, ou valores associados a nomes ou expressões <strong>separado-os por vírgulas</strong>. No resultado de um programa é inserido um espaço entre as várias partes.</p>
 <p>Usando <code>print()</code> com <em>strings</em>, as aspas são eliminadas.</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">hoje</span> <span class="o">=</span> <span class="s2">&quot;Hoje é quinta feira&quot;</span>
@@ -1156,6 +1155,23 @@ a = 3 b = 5 c = 8
 </pre></div>
 
 <p>É claro que estas variações de nomes e valores ocorrem muito depressa.</p>
+<div class="admonition note">
+<p class="admonition-title">A assimetria de uma atribuição de nome</p>
+<p>Note-se que um comando de atribuição de nome é compeltamente assimétrico.
+Do lado esquerdo do <code>=</code> fica apenas um nome. Do lado direito fica uma expressão
+a calcular, seja ela qual for.</p>
+<p>Repare que, em programação, é perfeitamente possível escrever a "falsidade matemática"</p>
+<p><div class="codehilite"><pre><span></span>a = a + 1
+</pre></div>
+Não se trata de dizer que o lado esquerdo é igual ao lado direito. Trata-se de calcular
+o lado direito e dar o nome que está do lado esquerdo. Estamos a dar uma ordem <em>usa o valor
+de <code>a</code>, acrescenta 1 e dá o nome <code>a</code> ao resultado</em>.</p>
+<p>Mas, no Python, dá um erro escrever uma coisa como</p>
+<div class="codehilite"><pre><span></span>2 * a + 4 = a
+</pre></div>
+
+<p>Resumo: à direita uma expressão,à esquerda o nome a dar ao resultado</p>
+</div>
 <h3 id="interpolacao-de-valores-em-strings-strings-f">Interpolação de valores em <em>strings</em> (<em>"Strings f"</em>)<a class="headerlink" href="#interpolacao-de-valores-em-strings-strings-f" title="Permanent link">&para;</a></h3>
 <p>As <em>strings</em> podem ter valores "interpolados", usando os nomes desses
 valores ou expressões. Para isso, usam-se <code>{}</code> para identificar em que
@@ -1174,7 +1190,9 @@ sítio da <em>string</em> deve ficar cada valor e a <em>string</em> deve ter a l
 </pre></div>
 
 <h2 id="atribuicoes-multiplas">Atribuições "múltiplas"<a class="headerlink" href="#atribuicoes-multiplas" title="Permanent link">&para;</a></h2>
-<p>Podemos atribuir vários nomes a vários valores de uma só vez:</p>
+<p>Podemos atribuir vários nomes a vários valores de uma só vez.</p>
+<p>Para isso, usamos vários nomes do lado esquerdo do <code>=</code> <strong>separados por <code>,</code></strong> e 
+várias expressões do lado direito <strong>separadas por <code>,</code></strong>:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="c1"># Comentários começam por #</span>
 
@@ -1378,6 +1396,7 @@ sin(π / 2) = 1.0
 <div class="codehilite"><pre><span></span>100! = 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
 </pre></div>
 
+<p><a href="https://realpython.com/python-math-module/">Leitura interessate sobre o módulo <code>math</code></a></p>
 <p>Um outro exemplo é o módulo <strong>calendar</strong> que contem muitas funções
 relacionadas com datas e calendário.</p>
 <p>Um exemplo é a função <code>weekday()</code>, que, ao ser dado um ano, mês e dia,
