@@ -76,15 +76,19 @@ Números são uns dos objetos mais fundamentais da linguagem Python. Podemos usa
 
 Numa expressão envolvendo números, podemos usar (vários níveis de) parêntesis curvos `()` e as cinco operações:
 
-- + adição
-- - subtração
-- * multiplicação
-- / divisão
-- ** potenciação
+`+` adição
+
+`-` subtração
+
+`*` multiplicação
+
+`/` divisão
+
+`**` potenciação
 
 As regras de prioridade são: `**` tem maior prioridade do que `*` `/` que têm maior prioridade do que `+ -`. Em caso de “empate” e sem parêntesis, os cálculos são feitos da esquerda para a direita.
 
-Também útil é o operador `%`, o "resto da divisão por". Por exemplo, `5 % 3` tem como
+Também útil é o operador `%`, que significa "o resto da divisão por". Por exemplo, `5 % 3` tem como
 resultado `2`.
 
 Naturalmente, podemos trabalhar com números com casas decimais, designados genericamente como *números em vírgula flutuante*. 
@@ -111,9 +115,10 @@ Note a utilização da representação “de engenharia”, por exemplo `4.2e3`,
 
 Um outro tipo de objetos fundamentais num programa são as *strings*.
 
-Estas são pequenos textos entre `""` ou `''`. São sequências de
-caracteres (os espaços e pontuação, desde que estejam entre as aspas,
-contam como caracteres.
+Estas são pequenos textos entre `""` ou `''`.
+
+São sequências de caracteres (além das letras, os espaços e pontuação, desde que estejam entre as aspas,
+contam como caracteres).
 
 <div class="python_box">
 ``` pycon
