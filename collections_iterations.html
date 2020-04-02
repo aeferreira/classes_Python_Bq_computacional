@@ -386,8 +386,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#soma-com-acumulacao" class="md-nav__link">
-    Soma com "acumulação"
+  <a href="#acumulacoes" class="md-nav__link">
+    "Acumulações"
   </a>
   
 </li>
@@ -395,6 +395,13 @@
         <li class="md-nav__item">
   <a href="#range-gerador-de-numeros-inteiros" class="md-nav__link">
     range(): gerador de números inteiros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#somas-e-fatoriais-a-maneira-simples" class="md-nav__link">
+    Somas e fatoriais: a maneira simples
   </a>
   
 </li>
@@ -689,8 +696,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#soma-com-acumulacao" class="md-nav__link">
-    Soma com "acumulação"
+  <a href="#acumulacoes" class="md-nav__link">
+    "Acumulações"
   </a>
   
 </li>
@@ -698,6 +705,13 @@
         <li class="md-nav__item">
   <a href="#range-gerador-de-numeros-inteiros" class="md-nav__link">
     range(): gerador de números inteiros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#somas-e-fatoriais-a-maneira-simples" class="md-nav__link">
+    Somas e fatoriais: a maneira simples
   </a>
   
 </li>
@@ -1388,7 +1402,7 @@ Na 11
 K 19
 </pre></div>
 
-<h2 id="soma-com-acumulacao">Soma com "acumulação"<a class="headerlink" href="#soma-com-acumulacao" title="Permanent link">&para;</a></h2>
+<h2 id="acumulacoes">"Acumulações"<a class="headerlink" href="#acumulacoes" title="Permanent link">&para;</a></h2>
 <div class="admonition question">
 <p class="admonition-title">Problema</p>
 <p>Somar todos os numeros de 1 a 10</p>
@@ -1534,8 +1548,21 @@ o seu argumento numa lista, se possível.</p>
 </pre></div>
 
 <div class="python_box">
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- range(5, 12) ----------&#39;</span><span class="p">)</span>
+<span class="c1"># começa em 5, acaba em 12 (exclusivé).</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>-- range(5, 12) ----------
+[5, 6, 7, 8, 9, 10, 11]
+</pre></div>
+
+<div class="python_box">
 <div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- range(5, 12, 2) ----------&#39;</span><span class="p">)</span>
-<span class="c1"># começa em 5, acaba em 12 (exclusivé) e percorre de 2 em 2.</span>
+<span class="c1"># começa em 5, acaba em 12 (exclusivé) e salta de 2 em 2.</span>
 
 <span class="n">nums</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
@@ -1651,7 +1678,7 @@ cada uma das bases <code>b</code> da sequência. Ao indexarmos o dicionário, us
 <p>Isto começa a complicar um pouco. Repare que, neste exemplo, misturamos:</p>
 <ul>
 <li>a iteração de <em>strings</em>, letra a letra</li>
-<li>a indexação (com <code>[]</code>) de um dicionário, que funciona como tabela para transformação base -&gt; base complementar.</li>
+<li>a indexação (com <code>[]</code>) de um dicionário, que funciona como tabela para a transformação base &rarr; base complementar.</li>
 <li>a soma de <em>strings</em> e o truque de acumulação de resultados parciais.</li>
 </ul>
 <p>Sem muito esforço, podemos formatar um pouco a apresentação das duas
@@ -1729,16 +1756,45 @@ códigos de 3 letras, usando um dicionário para a conversão.</p>
 <div class="codehilite"><pre><span></span>ADKLITCWFHHWE é o mesmo que  Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu-
 </pre></div>
 
-<p>Vamos agora ao problema da pesquisa de certos aminoácidos numa sequência,
-poderá ser útil indicar a posição em que eles são encontrados:</p>
+<h2 id="somas-e-fatoriais-a-maneira-simples">Somas e fatoriais: a maneira simples<a class="headerlink" href="#somas-e-fatoriais-a-maneira-simples" title="Permanent link">&para;</a></h2>
+<p>Os exemplos de acumulações numéricas, somas e fatorial foram resolvidos com acumuladores de
+forma a mostrar o conceito subjacente a todas as acumulações.</p>
+<p>No entanto, o Python tem funções para calcular somas e fatoriais. Naturalmente, é muito mais simples utilizar estas funções.</p>
+<p>Para somas existe a função <code>sum()</code>:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1001</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a soma dos números de 1 a 1000 é&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>a soma dos números de 1 a 1000 é 500500
+</pre></div>
+
+<p>Para fatoriais existe a função <code>factorial()</code>, mas pertence ao módulo <code>math</code>:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;100! =&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>100! = 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+</pre></div>
+
+<h2 id="funcao-enumerate">Função <code>enumerate()</code><a class="headerlink" href="#funcao-enumerate" title="Permanent link">&para;</a></h2>
+<p>Voltando agora ao problema da pesquisa de certos aminoácidos numa sequência,
+poderá ser útil indicar não só a presença de um aminoácido mas também
+a posição em que eles são encontrados:</p>
 <div class="admonition question">
 <p class="admonition-title">Problema</p>
 <p>Dada a sequência de uma proteína, indicar a presença de 
 lisinas (K) e leucinas (L), construíndo uma tabela com posições e
 códigos K ou L</p>
 </div>
-<p>Podemos usar um "contador" das <strong>posições</strong> dos aminoácidos,
-"acumulando" a soma de 1 por letra:</p>
+<p>Podemos usar um <strong>contador</strong> das posições dos aminoácidos,
+"acumulando" a soma de 1 por aminoácido:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE&#39;</span>
 
@@ -1757,10 +1813,12 @@ códigos K ou L</p>
 28 : K
 </pre></div>
 
+<p>O "acumulador" é o <code>i</code>: cada vez que se processa um aminoácido novo, a
+atribuição <code>i = i + 1</code> aumenta uma unidade ao valor de <code>i</code> , fazendo com que <code>i</code> vá
+"contando" os aminoácidos.</p>
 <p>É tão frequente a necessidade de percorrer os elementos de uma coleção
 e, simultaneamente, aceder às posições desses elementos, que a linguagem
 Python tem uma função para combinar os dois "aos pares", a função <code>enumerate()</code>.</p>
-<h2 id="funcao-enumerate">Função <code>enumerate()</code><a class="headerlink" href="#funcao-enumerate" title="Permanent link">&para;</a></h2>
 <p>Vejamos o que resulta da aplicação da função <code>enumerate()</code> a uma <em>string</em>:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE&#39;</span>
@@ -1805,7 +1863,7 @@ Python tem uma função para combinar os dois "aos pares", a função <code>enum
 
 <p>ou seja, conseguimos percorrer a <em>string</em>, mas obtemos pares do tipo
 <em>(posição, elemento)</em>.</p>
-<p>O mais interessante é que, no ciclo <code>for</code> com a função
+<p>O mais interessante é que, no comando <code>for</code> com a função
 <code>enumerate()</code>podemos usar um <strong>par de nomes</strong> para nos referirmos
 simultaneamente à posição e ao elemento. Isto é chamado <em>desdobramento</em>.</p>
 <div class="python_box">
@@ -1879,8 +1937,7 @@ usar explicitamente um "contador da posição":</p>
 A função <code>enumerate()</code>não se aplica só a <em>strings</em>. Ela funciona com qualquer tipo de coleção.</p>
 <p>Com listas, obtemos as posições de cada elemento da lista, como seria de esperar,
 mas com dicionários e conjuntos a função <code>enumerate()</code> também funciona, embora as posições que
-se vão obtendo não correspondam necessariamente a nenhuma ordem lógica dos elementos, que não existe neste
-tipo de coleções.</p>
+se vão obtendo não correspondam necessariamente a nenhuma ordem lógica dos elementos, que não existe neste tipo de coleções.</p>
 <h2 id="comados-for-encaixados">Comados <code>for</code> encaixados.<a class="headerlink" href="#comados-for-encaixados" title="Permanent link">&para;</a></h2>
 <p>Podemos "encaixar" comandos <code>for</code> dentro de outros comandos <code>for</code>. O
 efeito é que, para cada iteração de um ciclo <code>for</code> mais "exterior"
