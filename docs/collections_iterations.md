@@ -778,7 +778,7 @@ Na 11
 K 19
 ```
 
-## Soma com "acumulação"
+## "Acumulações"
 
 
 !!! question "Problema"
@@ -951,8 +951,23 @@ print(nums)
 
 <div class="python_box">
 ``` python3
+print('-- range(5, 12) ----------')
+# começa em 5, acaba em 12 (exclusivé).
+
+nums = list(range(5, 12))
+print(nums)
+```
+</div>
+
+```
+-- range(5, 12) ----------
+[5, 6, 7, 8, 9, 10, 11]
+```
+
+<div class="python_box">
+``` python3
 print('-- range(5, 12, 2) ----------')
-# começa em 5, acaba em 12 (exclusivé) e percorre de 2 em 2.
+# começa em 5, acaba em 12 (exclusivé) e salta de 2 em 2.
 
 nums = list(range(5, 12, 2))
 print(nums)
@@ -1089,7 +1104,7 @@ cada uma das bases `b` da sequência. Ao indexarmos o dicionário, usando essa b
 Isto começa a complicar um pouco. Repare que, neste exemplo, misturamos:
 
 - a iteração de *strings*, letra a letra
-- a indexação (com `[]`) de um dicionário, que funciona como tabela para transformação base -> base complementar.
+- a indexação (com `[]`) de um dicionário, que funciona como tabela para a transformação base &rarr; base complementar.
 - a soma de *strings* e o truque de acumulação de resultados parciais.
 
 Sem muito esforço, podemos formatar um pouco a apresentação das duas
@@ -1172,16 +1187,55 @@ print(seq1, 'é o mesmo que ', seq3)
 ADKLITCWFHHWE é o mesmo que  Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu-
 ```
 
-Vamos agora ao problema da pesquisa de certos aminoácidos numa sequência,
-poderá ser útil indicar a posição em que eles são encontrados:
+## Somas e fatoriais: a maneira simples
+
+Os exemplos de acumulações numéricas, somas e fatorial foram resolvidos com acumuladores de
+forma a mostrar o conceito subjacente a todas as acumulações.
+
+No entanto, o Python tem funções para calcular somas e fatoriais. Naturalmente, é muito mais simples utilizar estas funções.
+
+Para somas existe a função `sum()`:
+
+<div class="python_box">
+``` python3
+s = sum(range(1, 1001))
+
+print('a soma dos números de 1 a 1000 é', s)
+```
+</div>
+
+```
+a soma dos números de 1 a 1000 é 500500
+```
+
+Para fatoriais existe a função `factorial()`, mas pertence ao módulo `math`:
+
+<div class="python_box">
+``` python3
+import math
+f = math.factorial(100)
+
+print('100! =', f)
+```
+</div>
+
+```
+100! = 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+```
+
+## Função `enumerate()`
+
+Voltando agora ao problema da pesquisa de certos aminoácidos numa sequência,
+poderá ser útil indicar não só a presença de um aminoácido mas também
+a posição em que eles são encontrados:
 
 !!! question "Problema"
     Dada a sequência de uma proteína, indicar a presença de 
     lisinas (K) e leucinas (L), construíndo uma tabela com posições e
     códigos K ou L
 
-Podemos usar um "contador" das **posições** dos aminoácidos,
-"acumulando" a soma de 1 por letra:
+Podemos usar um **contador** das posições dos aminoácidos,
+"acumulando" a soma de 1 por aminoácido:
 
 <div class="python_box">
 ``` python3
@@ -1203,12 +1257,13 @@ for aa in seq:
 28 : K
 ```
 
+O "acumulador" é o `i`: cada vez que se processa um aminoácido novo, a
+atribuição `i = i + 1` aumenta uma unidade ao valor de `i` , fazendo com que `i` vá
+"contando" os aminoácidos.
+
 É tão frequente a necessidade de percorrer os elementos de uma coleção
 e, simultaneamente, aceder às posições desses elementos, que a linguagem
 Python tem uma função para combinar os dois "aos pares", a função `enumerate()`.
-
-## Função `enumerate()`
-
 
 Vejamos o que resulta da aplicação da função `enumerate()` a uma *string*:
 
@@ -1258,7 +1313,7 @@ for x in enumerate(seq):
 ou seja, conseguimos percorrer a *string*, mas obtemos pares do tipo
 *(posição, elemento)*.
 
-O mais interessante é que, no ciclo `for` com a função
+O mais interessante é que, no comando `for` com a função
 `enumerate()`podemos usar um **par de nomes** para nos referirmos
 simultaneamente à posição e ao elemento. Isto é chamado *desdobramento*.
 
@@ -1339,8 +1394,7 @@ A função `enumerate()`não se aplica só a *strings*. Ela funciona com qualque
 
 Com listas, obtemos as posições de cada elemento da lista, como seria de esperar,
 mas com dicionários e conjuntos a função `enumerate()` também funciona, embora as posições que
-se vão obtendo não correspondam necessariamente a nenhuma ordem lógica dos elementos, que não existe neste
-tipo de coleções.
+se vão obtendo não correspondam necessariamente a nenhuma ordem lógica dos elementos, que não existe neste tipo de coleções.
 
 ## Comados `for` encaixados.
 
