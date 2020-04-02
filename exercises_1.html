@@ -646,6 +646,13 @@ possível com <em>File – Save As…</em>!</p>
 <p>Escreva um outro programa (faça <em>File – New File</em> para criar um novo programa) que calcula os graus Farenheit correspondentes a 36.5 graus Celsius. Não se esqueça de salvar o programa com um nome acabado em <code>.py</code>. A fórmula de conversão é:</p>
 <p>&deg;F = 32 + (9/5) * &deg;C</p>
 <p>Use a função <code>print()</code> com <em>strings</em> para apresentar mensagens explicativas sobre o resultado (tipo <em>36.5 graus Celsius são ....</em>)</p>
+<details class="success"><summary>Solução</summary><div class="codehilite"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="mf">36.5</span>
+<span class="n">F</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span> <span class="o">+</span> <span class="mi">32</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{C}</span><span class="s2"> °C correspondem a </span><span class="si">{F}</span><span class="s2"> °F&quot;</span><span class="p">)</span>
+</pre></div>
+
+</details>
 <h2 id="exercicio-5-import-e-funcao-input">Exercício 5 (<code>import</code> e função <code>input()</code>)<a class="headerlink" href="#exercicio-5-import-e-funcao-input" title="Permanent link">&para;</a></h2>
 <p>Escreva o seguinte programa novo (sugestão: copy-paste).</p>
 <p>Note que há muita coisa neste programa um pouco avançada,
@@ -764,6 +771,34 @@ mas o objetivo é ilustrar a função <code>input()</code>:</p>
 </ul>
 </li>
 </ul>
+<details class="success"><summary>Solução</summary><div class="codehilite"><pre><span></span><span class="c1"># Este programa calcula x tal que a x2 + b x + c = 0</span>
+<span class="c1"># testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a =&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span><span class="s1">&#39;c =&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># cálculo do discriminante</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span>
+
+<span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soluções complexas:&#39;</span><span class="p">)</span>
+    <span class="n">r_delta</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">-</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1 =&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;, x2 =&quot;</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">delta</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soluções reais:&#39;</span><span class="p">)</span>
+    <span class="n">r_delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">b</span> <span class="o">-</span> <span class="n">r_delta</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1 =&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;, x2 =&quot;</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Solução real (dupla):&#39;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+</details>
 <h2 id="exercicio-9-conversao-entre-f-e">Exercício 9 (Conversão entre F e ω)<a class="headerlink" href="#exercicio-9-conversao-entre-f-e" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Escreva um programa que converta a velocidade angular de rotação (ω em 10<sup>3</sup> rpm) em força centrípeta (F, em <em>g</em>), dado o raio de um rotor de centrifugação (r, em mm). </li>
@@ -778,6 +813,25 @@ mas o objetivo é ilustrar a função <code>input()</code>:</p>
 <p>Escreva outro programa que faça a conversão contrária (de <em>g</em> para rpm).</p>
 </li>
 </ul>
+<details class="success"><summary>Solução</summary><div class="codehilite"><pre><span></span><span class="c1"># Conversões F centrífuga &lt;-&gt; w (velocidade angular)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Escolha:&#39;</span><span class="p">)</span>
+<span class="n">resposta</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Converter 1: w para F ou  2: F para w ?&quot;</span><span class="p">)</span>
+<span class="n">resposta</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">resposta</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">resposta</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;w (em 1000 rpm) = &#39;</span><span class="p">))</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;r (em mm) = &#39;</span><span class="p">))</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="mf">1.12</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Com r = </span><span class="si">{r}</span><span class="s1">mm e w = </span><span class="si">{w}</span><span class="s1">x1000 rpm, F = </span><span class="si">{F}</span><span class="s1"> g&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;F (em g) = &#39;</span><span class="p">))</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;raio (em mm) = &#39;</span><span class="p">))</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.12</span> <span class="o">*</span> <span class="n">r</span><span class="p">))</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Com r = </span><span class="si">{r}</span><span class="s1">mm e F = </span><span class="si">{F}</span><span class="s1"> g, w = </span><span class="si">{w}</span><span class="s1"> x1000 rpm&#39;</span><span class="p">)</span>
+</pre></div>
+
+</details>
                 
                   
                 
