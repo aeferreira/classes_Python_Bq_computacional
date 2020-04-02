@@ -70,6 +70,16 @@ Escreva um outro programa (faça *File – New File* para criar um novo programa
 
 Use a função `print()` com *strings* para apresentar mensagens explicativas sobre o resultado (tipo *36.5 graus Celsius são ....*)
 
+??? success "Solução"
+
+    ``` python3
+    C = 36.5
+    F = (9/5) * C + 32
+
+    print(f"{C} °C correspondem a {F} °F")
+    ```
+
+
 ## Exercício 5 (`import` e função `input()`)
 
 Escreva o seguinte programa novo (sugestão: copy-paste).
@@ -193,6 +203,36 @@ $a \cdot x^2 + b \cdot x + c = 0$
     - a = 1, b = 2, c = 1 dá uma solução dupla: -1
     - a = 1, b = 1, c = 1 dá duas soluções complexas. 
 
+??? success "Solução"
+
+    ```Python3
+    # Este programa calcula x tal que a x2 + b x + c = 0
+    # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
+
+    a, b, c = 1, 4, 1
+    print('a =', a, 'b =', b,'c =',c, '\n')
+
+    # cálculo do discriminante
+    delta = b**2 - 4.0 * a * c
+
+    if delta < 0.0:
+        print('Soluções complexas:')
+        r_delta = (-delta)**0.5 * 1j
+        x1 = (- b + r_delta) / (2.0 * a)
+        x2 = (- b - r_delta) / (2.0 * a)    
+        print("x1 =", x1, ", x2 =", x2)
+    elif delta > 0:
+        print('Soluções reais:')
+        r_delta = (delta)**0.5
+        x1 = (- b + r_delta) / (2.0 * a)
+        x2 = (- b - r_delta) / (2.0 * a)    
+        print("x1 =", x1, ", x2 =", x2)
+    else:
+        print('Solução real (dupla):')
+        x = -b / (2.0 * a)
+        print("x =", x)
+    ```
+
 ## Exercício 9 (Conversão entre F e ω)
 
 - Escreva um programa que converta a velocidade angular de rotação (ω em 10<sup>3</sup> rpm) em força centrípeta (F, em *g*), dado o raio de um rotor de centrifugação (r, em mm). 
@@ -204,3 +244,24 @@ $F = 1.12 \cdot r \cdot \omega^2$
 - Teste o programa com r = 108 mm, ω = 10 x 10<sup>3</sup> rpm F = 12 096 *g*
 
 - Escreva outro programa que faça a conversão contrária (de *g* para rpm).
+
+??? success "Solução"
+
+    ``` python3
+    # Conversões F centrífuga <-> w (velocidade angular)
+
+    print('Escolha:')
+    resposta = input("Converter 1: w para F ou  2: F para w ?")
+    resposta = int(resposta)
+
+    if resposta == 1:
+        w = float(input('w (em 1000 rpm) = '))
+        r = float(input('r (em mm) = '))
+        F = 1.12 * r * w**2
+        print(f'Com r = {r}mm e w = {w}x1000 rpm, F = {F} g')
+    else:
+        F = float(input('F (em g) = '))
+        r = float(input('raio (em mm) = '))
+        w = (F / (1.12 * r))**0.5
+        print(f'Com r = {r}mm e F = {F} g, w = {w} x1000 rpm')
+    ```
