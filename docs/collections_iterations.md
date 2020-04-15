@@ -15,7 +15,7 @@ já vimos os números e as *strings*.
 
 <div class="python_box">
 ``` python3
-n_aminoácidos = 20 # númro inteiro
+n_aminoácidos = 20 # número inteiro
 bases = 'AUCG' # string
 
 print(f'Existem {n_aminoácidos} e as bases do mRNA são {bases}')
