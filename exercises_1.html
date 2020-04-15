@@ -649,7 +649,7 @@ possível com <em>File – Save As…</em>!</p>
 <details class="success"><summary>Solução</summary><div class="codehilite"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="mf">36.5</span>
 <span class="n">F</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span> <span class="o">+</span> <span class="mi">32</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{C}</span><span class="s2"> °C correspondem a </span><span class="si">{F}</span><span class="s2"> °F&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">C</span><span class="si">}</span><span class="s2"> °C correspondem a </span><span class="si">{</span><span class="n">F</span><span class="si">}</span><span class="s2"> °F&quot;</span><span class="p">)</span>
 </pre></div>
 
 </details>
@@ -678,7 +678,7 @@ mas o objetivo é ilustrar a função <code>input()</code>:</p>
 
 <span class="n">dif</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">birth</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{name}</span><span class="s1">, o seu tempo de vida é&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">, o seu tempo de vida é&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dif</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ou seja,&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">dif</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()),</span> <span class="s1">&#39;segundos&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nasceu em&#39;</span><span class="p">,</span> <span class="n">birth</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %B %Y, %A&quot;</span><span class="p">))</span>
@@ -702,7 +702,7 @@ mas o objetivo é ilustrar a função <code>input()</code>:</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">proteína</span> <span class="o">=</span> <span class="s1">&#39;P00924&#39;</span>
-<span class="n">link</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;http://www.uniprot.org/uniprot/</span><span class="si">{proteína}</span><span class="s1">.fasta&#39;</span>
+<span class="n">link</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;http://www.uniprot.org/uniprot/</span><span class="si">{</span><span class="n">proteína</span><span class="si">}</span><span class="s1">.fasta&#39;</span>
 
 <span class="n">página</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 
@@ -728,7 +728,7 @@ mas o objetivo é ilustrar a função <code>input()</code>:</p>
 <span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="n">m</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;raíz = </span><span class="si">{r}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;raíz = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -753,7 +753,7 @@ mas o objetivo é ilustrar a função <code>input()</code>:</p>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reta horizontal: não há raízes&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="n">m</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;raíz = </span><span class="si">{r}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;raíz = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -823,12 +823,12 @@ mas o objetivo é ilustrar a função <code>input()</code>:</p>
     <span class="n">w</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;w (em 1000 rpm) = &#39;</span><span class="p">))</span>
     <span class="n">r</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;r (em mm) = &#39;</span><span class="p">))</span>
     <span class="n">F</span> <span class="o">=</span> <span class="mf">1.12</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Com r = </span><span class="si">{r}</span><span class="s1">mm e w = </span><span class="si">{w}</span><span class="s1">x1000 rpm, F = </span><span class="si">{F}</span><span class="s1"> g&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Com r = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">mm e w = </span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s1">x1000 rpm, F = </span><span class="si">{</span><span class="n">F</span><span class="si">}</span><span class="s1"> g&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">F</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;F (em g) = &#39;</span><span class="p">))</span>
     <span class="n">r</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;raio (em mm) = &#39;</span><span class="p">))</span>
     <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.12</span> <span class="o">*</span> <span class="n">r</span><span class="p">))</span><span class="o">**</span><span class="mf">0.5</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Com r = </span><span class="si">{r}</span><span class="s1">mm e F = </span><span class="si">{F}</span><span class="s1"> g, w = </span><span class="si">{w}</span><span class="s1"> x1000 rpm&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Com r = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">mm e F = </span><span class="si">{</span><span class="n">F</span><span class="si">}</span><span class="s1"> g, w = </span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s1"> x1000 rpm&#39;</span><span class="p">)</span>
 </pre></div>
 
 </details>

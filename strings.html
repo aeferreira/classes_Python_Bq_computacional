@@ -859,8 +859,8 @@ designada por <em>concatenação</em>.</p>
 
 <span class="n">s</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;, really, &#39;</span> <span class="o">+</span> <span class="s1">&#39;none&#39;</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;c = </span><span class="si">{c}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;s = </span><span class="si">{s}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;c = </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;s = </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -875,7 +875,7 @@ No caso das <em>strings</em>, o resultado é o <strong>número de caracteres</st
 
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&quot;</span><span class="si">{c}</span><span class="s1">&quot; tem </span><span class="si">{n}</span><span class="s1"> caracteres&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&quot; tem </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> caracteres&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -1029,7 +1029,7 @@ c.lower():     there&#39;s no spoon
 <span class="n">nC</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
 <span class="n">nT</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;A razão (G+C) / (A+T) é {(nG + nC)/(nA + nC)}&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;A razão (G+C) / (A+T) é </span><span class="si">{</span><span class="p">(</span><span class="n">nG</span> <span class="o">+</span> <span class="n">nC</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">nA</span> <span class="o">+</span> <span class="n">nC</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -1531,7 +1531,7 @@ número de sequências é igual ao número de <em>headers</em>.</p>
     <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">):</span>
         <span class="n">headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O proteoma tem {len(headers)} proteínas&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O proteoma tem </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span><span class="si">}</span><span class="s1"> proteínas&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -1546,7 +1546,7 @@ número de sequências é igual ao número de <em>headers</em>.</p>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O proteoma tem {len(headers)} proteínas&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O proteoma tem </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span><span class="si">}</span><span class="s1"> proteínas&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -1592,7 +1592,7 @@ KICADVVAELKKISKPVKDKKEIAQVATIS
         <span class="n">headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">seqs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O proteoma tem {len(headers)} proteínas&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O proteoma tem </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span><span class="si">}</span><span class="s1"> proteínas&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">A última proteína no ficheiro: ---------------&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">headers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
@@ -1646,7 +1646,7 @@ mas o primeiro bloco é uma <em>string</em> vazia! Devemos ignorar estes blocos 
     <span class="n">dictseqs</span><span class="p">[</span><span class="n">ac</span><span class="p">]</span> <span class="o">=</span> <span class="n">seq</span>
 
 <span class="k">for</span> <span class="n">ac</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;P28240&#39;</span><span class="p">,</span><span class="s1">&#39;P38832&#39;</span><span class="p">,</span><span class="s1">&#39;P36084&#39;</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{ac}</span><span class="s1">: </span><span class="si">{dictseqs[ac]}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ac</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">dictseqs</span><span class="p">[</span><span class="n">ac</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -1678,7 +1678,7 @@ P36084: MADEKRLEDLRSKIMESIGKSEKDVVPIENKRFNTDNAVIDTHFKRQKSDGELPKAPKSRNVSHSNNRGPSS
 <span class="n">dictseqs</span> <span class="o">=</span> <span class="p">{</span><span class="n">header</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="n">seq</span> <span class="k">for</span> <span class="n">header</span><span class="p">,</span><span class="n">seq</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">seqs</span><span class="p">)}</span>
 
 <span class="k">for</span> <span class="n">ac</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;P28240&#39;</span><span class="p">,</span><span class="s1">&#39;P38832&#39;</span><span class="p">,</span><span class="s1">&#39;P36084&#39;</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{ac}</span><span class="s1">: </span><span class="si">{dictseqs[ac]}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ac</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">dictseqs</span><span class="p">[</span><span class="n">ac</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -1709,7 +1709,7 @@ sequências. Bastaria processar diretamente cada bloco.</p>
     <span class="n">dictseqs</span><span class="p">[</span><span class="n">ac</span><span class="p">]</span> <span class="o">=</span> <span class="n">seq</span>
 
 <span class="k">for</span> <span class="n">ac</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;P28240&#39;</span><span class="p">,</span><span class="s1">&#39;P38832&#39;</span><span class="p">,</span><span class="s1">&#39;P36084&#39;</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{ac}</span><span class="s1">: </span><span class="si">{dictseqs[ac]}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ac</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">dictseqs</span><span class="p">[</span><span class="n">ac</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 

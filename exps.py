@@ -1,5 +1,9 @@
-# exps
-import math
-f = math.factorial(100)
+print('tabela de raízes quadradas')
 
-print('100! =', f)
+nums = [1,2,3,4,5,6,7,8,9,10]
+
+for n in nums:
+    root = n**0.5
+    print(n, root)
+
+print('Fim do programa!')
