@@ -136,13 +136,23 @@ print(seqs)
 
 Como se pode ver pelo resultado da função `print()`, todo o ficheiro foi lido e transferido para a *string*  `seqs`.
 
-Embora muito se podesse explicar sobre o que se está a passar neste programa, muito sumariamente:
+Embora haja muitos pormenores subjacentes a este programa, pode-se dar uma explicação muito sumária do que se está a passar:
 
-O comando `with` assinala que durante um tempo muito breve (o tempo de execução das linhas que estão "alinhadas mais interiormente" a seguir ao with), o programa fará acesso a um recurso computacional, neste caso um ficheiro de texto. A função `open()` que tem como argumento o nome do ficheiro de texto, "abre" o ficheiro para leitura pelo programa. É dado um nome ao ficheiro aberto dentro do programa (o nome que está a seguir ao `as`), `datafile`.
+O comando `with` assinala que o programa faz o acesso a um recurso computacional de uma forma temporária, neste caso concreto, o "recurso" é umm ficheiro de texto.
 
-Depois disto, `datafile` é um objeto criado para ser um canal de comunicação com o ficheiro de texto. este "canal" tem a funcionalidade necessária para transferir (ler) a informação do ficheiro. Neste  programa é a função `.read()` do objeto `datafile`. Esta função, lê **todo** o conteúdo de um ficheiro para e tem como resultado uma *string*. A esta *string* geralmente damos um nome, para posteriormente utilizar (neste caso foi dado o nome `seqs`).
+O acesso ocorre durante a execução das linhas que estão "alinhadas mais interiormente" a seguir ao `with`. Depois disso, o programa já não necessita de ter acesso ao ficheiro.
 
-A função que realmente lê o conteúdo do ficheiro e o transforma numa *string* é a função `.read()`. Existem outras funções, como veremos.
+A função `open()` que tem como argumento o nome do ficheiro de texto, "abre" o ficheiro para leitura pelo programa.
+
+É dado um nome ao ficheiro aberto dentro do programa (o nome que está a seguir ao `as`): `datafile`.
+
+Como resultado da função `open()`, `datafile` é um objeto criado para ser um canal de comunicação com o ficheiro de texto. Este "canal" tem a funcionalidade necessária para transferir (ler) a informação do ficheiro.
+
+Neste  programa usa-se a função `datafile.read()`. Esta função, lê **todo** o conteúdo de um ficheiro  e tem como resultado uma *string*.
+
+A esta *string* geralmente damos um nome, para posteriormente utilizar (neste caso foi dado o nome `seqs`).
+
+A função que realmente lê o conteúdo do ficheiro e o transforma numa *string* é a função `.read()`. Existem outras funções de leitura, como veremos mais tarde.
 
 Agora que existe uma maneira de ler um ficheiro de texto existente num computador para "dentro" de umm programa, vejamos o que podemos fazer com a *string* resultante.
 
@@ -169,9 +179,7 @@ literalmente, como um **texto entre aspas**.
 Na **definição literal** de *strings* podemos delimita-las usando
 **3 tipos diferentes de aspas**: 
 
-- `"`
-- `'`
-- `"""`
+`"` ou `'` ou `"""`
 
 Se usarmos *três aspas* seguidas(`"""`), isso é uma indicação de que a *string* pode conter várias
 linhas.
@@ -204,15 +212,15 @@ designada por *concatenação*. A multiplicação `*` por um **número inteiro**
 ``` python3
 c = "There's no spoon"
 
-print(f'c = {c}')
+print('c =', c)
 
 s = c + ', really, ' + 'none' + '.'
 
-print(f's = {s}')
+print('s =', s)
 
 a = 'Blá' * 3
 
-print(f'\na = {a}')
+print('\na =', a)
 ```
 </div>
 
@@ -524,7 +532,6 @@ print(x)
     ["There's", 'no', 'spoon']
     
 
-
 <div class="python_box">
 ``` python3
 frase = "There's no spoon"
@@ -638,7 +645,7 @@ O truque foi usar indexação para obter as letras da sequência. Indexação re
     range(0, len(seq), 3) # isto dá 0...3...6... até ao comprimento da sequência
 
 Passando por esats posições, com `for`, indexamos a sequência nas posições i, i+1 e i+2, juntamos
-essas 3 letras (com `+`) e colocamos no fim de uma lista, cahmada `codoes`, que vai "acumular" os codões.
+essas 3 letras (com `+`) e colocamos no fim de uma lista, chamada `codoes`, que vai "acumular" os codões.
 
 No final, com a lista de codões construída, juntamos tudo com `.join()`.
 
@@ -688,7 +695,6 @@ print(lines)
     ['>sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain', 'MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKD', 'MIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTI', 'AKIDEQVRQK']
   
 Repare-se que obtivemos uma lista.
-
 
 ## _Slices_ 
 
@@ -811,7 +817,7 @@ starts = range(0, len(s), 3)
 # na versão anterior tínhamos:
 # cods = [s[i] + s[i+1] + s[i+2] for i in starts]
 
-# usando uma slice
+# usando slice
 cods = [s[i:i+3] for i in starts]
 
 print(s)
@@ -969,7 +975,7 @@ TAA-TCC-TAA-ATA-CTA-GGT-AAC-CAT
 Finalmente, mais uma aplicação de `.split()`/`.splitlines()`, *slices* e `.join()`:
 
 !!! example "Problema"
-    Separar uma sequência em FASTA que está numa *string em 2 strings: o "header" e a sequência.
+    Separar uma sequência em FASTA que está numa string em 2 strings: o "header" e a sequência.
 
 <div class="python_box">
 ``` python3
@@ -1262,15 +1268,26 @@ for ac in ['P28240','P38832','P36084']:
 
 ## "Imutabilidade" das _strings_
 
-As *strings* são **imutáveis**.
+As *strings* são **imutáveis**. Esta propriedade torna-as diferentes das listas, dicionários e conjuntos.
 
-Isto significa que (ao contrário das listas e dicionários) **não existem
-funções para modificar** uma *string*.
+Isto significa que **não existem funções para modificar** uma *string*. 
 
-**Não existe**, por exemplo, `s.append('a')`.
+**Não existe**, por exemplo, `s.append('a')`, para acrescentar um letra no final de uma *string*.
 
-**Todas as operações com** *strings* **resultam numa** *string*
-**nova**, à qual é, geralmente, atribuído um nome (mesmo que seja o
-mesmo nome da *string* original)
+**Todas as operações com** *strings* resultam numa *string*
+**nova**, à qual é, geralmente, atribuído um nome (mesmo que seja o mesmo nome da *string* original)
 
-Podemos, por isso, usar `s = s + 'a'`
+Podemos, por isso, usar `s = s + 'a'` para acrescentar uma letra no final:  `s + 'a'` cria uma *string* nova.
+
+Um outro exemplo: podemos substituír letra por outra numa *string* desta forma:
+
+    seq2 = seq.replace('U', 'T')
+
+em que `seq2` é uma *string* nova.
+
+Mas não vale a pena escrever num programa
+
+    seq.replace('U', 'T')
+
+esperando que a *string* seja modificada. Uma linha destas num programa cria uma *string* nova mas se não for dado nenhum nome, essa *string* nova "perde-se". A *string* `seq` **não é modificada**!
+

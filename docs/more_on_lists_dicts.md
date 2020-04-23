@@ -1151,7 +1151,7 @@ A solução deste problema inclui
 - a iteração dos valores de um dicionário com `.values()`
 - um teste de inclusão num dicionário com  `in`
 - a atribuição de valores novos ou a modificação de um já existente com **indexação**
-- a iteração das cahves e valores de um dicionário com desdobramento de nomes com `.items()`
+- a iteração das chaves e valores de um dicionário com desdobramento de nomes com `.items()`
 
 Um exemplo a estudar...
 
