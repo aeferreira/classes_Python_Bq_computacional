@@ -1162,6 +1162,32 @@ Informação obtida por acesso à Internet: (módulo `requests`)
 <div class="python_box">
 ``` python3
 import requests
+
+url = 'https://www.uniprot.org/uniprot/?query=proteome:UP000002407%20reviewed:yes&format=list'
+
+data = requests.get(url).text
+
+print(data)
+```
+</div>
+
+    A7HZZ5
+    A7I0W5
+    
+    ...
+    muitos outros identificadores ...
+    ...
+    
+    A7I0N8
+    A7I1M8
+    
+    
+
+
+
+<div class="python_box">
+``` python3
+import requests
 r = requests.get('http://www.uniprot.org/uniprot/P00924.fasta')
 print(r.text)
 ```

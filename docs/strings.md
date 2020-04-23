@@ -1,35 +1,108 @@
 #  _Strings_ e textos
 
-## Textos estruturados
+## Strings e textos estruturados
 
-Existem muitos formatos de texto estruturado usados na representação de
-informação de caráter biológico.
+As *strings* e objetos coletivos que incluam *strings* são fundamentais nas aplicações da programação à análise de informação de natureza biológica e molecular. Isto porque essa informação é muitas vezes representável numa forma textual e, num programa, as *strings* são a maneira natural de represntar textos.
 
 Os portais de bioinformática, por exemplo a [UniProt](https://www.uniprot.org/)
 oferecem, muitas vezes, a possibilidade de transferir a informação contida em
 bases de dados na forma de textos. Esses textos são estruturados, seguindo formatos
 e regras específicos.
 
-Exemplos:
+Um exemplo é a representação de sequências de macromoléculas biológicas (ácidos nucleicos e proteínas)
+num formato designado por FASTA. Um pequena parte da informação sobre sequências do organismo *Campylobacter hominis*, obtido da UniProt, tem este aspeto:
 
-- Sequências de ácidos nucleicos e proteínas em formato FASTA
-- Alinhamentos múltiplos em formatos CLUSTAL, PIR, HSSP
-- Resultados de busca na UniProt em FASTA, "Tab delimited", "Text", GFF
-- ...
+    >sp|A7HZZ5|ACP_CAMHC Acyl carrier protein OS=Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A) OX=360107 GN=acpP PE=3 SV=1
+    MEVFEEVRDVVVEQLSVAPDAVKIDSKIIEDLGADSLDVVELVMALEEKFGIEIPDSEAE
+    KLISIKDVVTYIENLNKNK
+    >sp|A7I0W5|CH60_CAMHC 60 kDa chaperonin OS=Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A) OX=360107 GN=groL PE=3 SV=1
+    MAKDIIFSDDARNRLYDGVKKLNDTVKVTMGPRGRNVLIQKSFGAPAITKDGVSVAKEVE
+    LKDTIENMGAALVKEVANKTNDQAGDGTTTATVLAHAIFKEGLRNITAGANPIEVKRGMD
+    KICADVVAELKKISKPVKDKKEIAQVATISANSDESIGKLIADAMEKVGKDGVITVEEAK
+    SINDELNVVEGMQFDRGYLSPYFITDAEKMQVELNSPLVLLFDKKITNLKDLLPVLEQVQ
+    KTGKPLLIIAEDIEGEALATLVVNKLRGVLNISAVKAPGFGDRRKAMLEDIAILTGGTVI
+    SEELGRTLESASIADLGKAERILIDKDNTTIVNGAGKKDDIKARVDQIKAQIAVTSSDYD
+    REKLQERLAKLSGGVAVIKVGAATETEMKEKKDRVDDALSATKAAVEEGIVIGGGAALIK
+    AGNAVKENLKGDEKIGADIVKRALFAPLRQIAENAGFDAGVIANAVSINKEKAYGFDAAC
+    GEFVNMFEAGIIDPVKVERVALQNAVSVASLLLTTEATVSEIKEDKPAMPQMPDMGGGMG
+    GMM
 
-## Obtenção de textos estruturados para processamento
+    ...
+    muitas outras sequências ...
+    ...
 
-### Download manual e leitura
+    >sp|A7I1M8|LGT_CAMHC Phosphatidylglycerol--prolipoprotein diacylglyceryl transferase OS=Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A) OX=360107 GN=lgt PE=3 SV=1
+    MTFWNEIYAHFDPVAFSIFGLKVHWYGLMYVLALLVALYMAKFFVKKDRLKFSNQVLENY
+    FIWVEIGVILGARFGYILIYSNAQIFYLTHPWEIFNPFYNGKFVGISGMSYHGAVIGFII
+    ATILFCRKKRQNLWSLLDLCALSIPLGYFFGRIGNFLNQELFGRITDVSWGILVNGELRH
+    PSQLYEACLEGITIFLILYFYRKYKKFDGELICVYVILYAIFRFLTEFLREADVQIGYFS
+    FGLSLGQILSVFMLILGFSAYIKLLKNSQTEQKFNQNKS
+
+Neste "formato" um ficheiro pode ter milhares de sequências. Cada uma delas tem uma linha de cabeçalho
+começada por `>` e várias linhas seguintes contendo a sequência. O cabeçalho tem alguma informação sobre a macromolécula em questão (essa informação e a maneira como está estruturada depende do portal
+de bioinformática que foi usado para obter a informação)
+
+Um outro exemplo, também da UniPort, é o formato "Tab delimited" de representar tabelas contendo o resultado de buscas sobre proteínas existentes na "UniProt Knowledgebase":
+
+    Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+    A7HZZ5	ACP_CAMHC	reviewed	Acyl carrier protein (ACP)	acpP CHAB381_0230	Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A)	79
+    A7I0W5	CH60_CAMHC	reviewed	60 kDa chaperonin (GroEL protein) (Protein Cpn60)	groL groEL CHAB381_0568	Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A)	543
+    A7I3C8	ARLY_CAMHC	reviewed	Argininosuccinate lyase (ASAL) (EC 4.3.2.1) (Arginosuccinase)	argH CHAB381_1484	Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A)	460
+    A7I178	ATPE_CAMHC	reviewed	ATP synthase epsilon chain (ATP synthase F1 sector epsilon subunit) (F-ATPase epsilon subunit)	atpC CHAB381_0688	Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A)	130
+    A7I261	APT_CAMHC	reviewed	Adenine phosphoribosyltransferase (APRT) (EC 2.4.2.7)	apt CHAB381_1044	Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A)	182
+    A7I232	CMOA_CAMHC	reviewed	Carboxy-S-adenosyl-L-methionine synthase (Cx-SAM synthase) (EC 2.1.3.-)	cmoA CHAB381_1013	Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A)	234
+
+Neste "formato", cada linha diz respeito a uma proteína e, em cada uma delas, existe uma divisão da
+informação em colunas utilizando o caractere "tab" (que não se vê no exemplo acima). A primeira linha é um cabeçalho com os nomes das várias colunas (também separados por "tabs").
+
+Outros exemplos de informação de caráter textual usados em bioinformática:
+
+- Representação de alinhamentos múltiplos em formatos CLUSTAL, PIR, HSSP
+- Representação de estruturas 3D de macromoléculas no formato *pdb* do Protein Data Bank
+- Muitos exemplos de informação estruturada em [*XML*](https://pt.wikipedia.org/wiki/XML) (*Extensible Markup Language*)
+
+Um dos cenários de aplicação da programação é justamente a extração e organização de informação relevante contida "ficheiros" de caráter textual.
+
+Para este objetivo é fundamental saber reconhecer o formato.
+
+Neste capítulo será abordado muito brevemente o processamento do formato FASAT como exemplo de aplicação das funções de *strings*. Mas note-se que existem módulos da linguagem Python que disponibilizam muitas funções de leitura de muitos formatos usados em Bioinformática. Neste contexto, dois projetos que podem ser dados como exemplo são o [Biopython](https://biopython.org/) e o
+[scikit-bio](http://scikit-bio.org/).
+
+## Transferência da informaçao e seu uso num programa
+
+As bases de dados de Bioinofrmática disponibilizam modos de acesso à informação de uma
+forma "programática", em que um programa pode solicitar informação "filtrada" ao sistema computacional
+de infraestrutura da base de dados. Neste capítulo, no entanto, começamos por uma maneira mais primitiva e simples de aceder à informação: obter o texto extruturado da base de dados, e depois processa-lo por um programa.
+
+Desde que a informação tenha um tamanho não muito grande, algo que depende da sua natureza, especificidade e formato, existem dois modos muito simples de usar a informação por um programa.
+
+Num primiro modo pode ser feito o acesso "manual" ao portal e, depois de realizar uma busca de interesse, ode srr obtido um ficheiro de texto contendo toda a infoemaçao não processada. Depois, um programa pode "ler" esse ficheiro e representar o seu conteúdo numa *string*.
 
 ![](images/down_read.png)
+
+Uma outra possibilidade é fazer através do programa, um acesso à base de dados e **o resultado** desse acesso ser representado numa *string*.
+
+![](images/request_read.png)
+
+Um dos populares módulos da linguagem Python para acesso programático a recursos existentes na Internet é o módulo [requests](https://requests.readthedocs.io/en/master/)
+
+
+## Leitura do conteúdo de um ficheiro
+
+No caso em que obtemos a informação que queremos processar na forma de um ficheiro de texto estruturado
+temos de, num programa, ler o seu conteúdo e "carrega-lo" numa *string* para que possamos, por programação, processar, transformar e extraír informação desse texto.
+
+Vamos supor que, por busca na UniProt, obtive um ficheiro chamado `c_hominis.fasta` contendo as sequências das proteínas do organismo em formato FASTA. Para simplificar, vamos supor que este ficheiro foi **colocado na mesma pasta** onde se escrevem programas destinados a usar essa informação.
+
+Um pequeno programa que lê esse ficheiro para uma *string* chamada `seqs` é o seguinte:
 
 
 <div class="python_box">
 ``` python3
 with open('c_hominis.fasta') as datafile:
-    data = datafile.read()
+    seqs = datafile.read()
 
-print(data)
+print(seqs)
 ```
 </div>
 
@@ -61,34 +134,20 @@ print(data)
     
     
 
-### Download programático
+Como se pode ver pelo resultado da função `print()`, todo o ficheiro foi lido e transferido para a *string*  `seqs`.
 
-![](images/request_read.png)
+Embora muito se podesse explicar sobre o que se está a passar neste programa, muito sumariamente:
 
+O comando `with` assinala que durante um tempo muito breve (o tempo de execução das linhas que estão "alinhadas mais interiormente" a seguir ao with), o programa fará acesso a um recurso computacional, neste caso um ficheiro de texto. A função `open()` que tem como argumento o nome do ficheiro de texto, "abre" o ficheiro para leitura pelo programa. É dado um nome ao ficheiro aberto dentro do programa (o nome que está a seguir ao `as`), `datafile`.
 
-<div class="python_box">
-``` python3
-import requests
+Depois disto, `datafile` é um objeto criado para ser um canal de comunicação com o ficheiro de texto. este "canal" tem a funcionalidade necessária para transferir (ler) a informação do ficheiro. Neste  programa é a função `.read()` do objeto `datafile`. Esta função, lê **todo** o conteúdo de um ficheiro para e tem como resultado uma *string*. A esta *string* geralmente damos um nome, para posteriormente utilizar (neste caso foi dado o nome `seqs`).
 
-url = 'https://www.uniprot.org/uniprot/?query=proteome:UP000002407%20reviewed:yes&format=list'
+A função que realmente lê o conteúdo do ficheiro e o transforma numa *string* é a função `.read()`. Existem outras funções, como veremos.
 
-data = requests.get(url).text
+Agora que existe uma maneira de ler um ficheiro de texto existente num computador para "dentro" de umm programa, vejamos o que podemos fazer com a *string* resultante.
 
-print(data)
-```
-</div>
+Está na altura de nos focarmos na funcionalidade da linguagem Python em relação a *strings*.
 
-    A7HZZ5
-    A7I0W5
-    
-    ...
-    muitos outros identificadores ...
-    ...
-    
-    A7I0N8
-    A7I1M8
-    
-    
 ## _Strings_
 
 ### Definição literal, iteração e indexação
@@ -101,7 +160,8 @@ seja simplesmente para que os resultados de um programa sejam
 apresentados com pequenos textos destinados a descrever esses
 resultados.
 
-Como vimos anteriormente, uma _string_ é uma coleção de caracteres.
+!!! info "Conceito básico"
+    Como vimos anteriormente, uma _string_ é uma coleção de caracteres.
 
 Uma maneira de criarmos _strings_ num programa é defini-las
 literalmente, como um **texto entre aspas**.
@@ -113,7 +173,7 @@ Na **definição literal** de *strings* podemos delimita-las usando
 - `'`
 - `"""`
 
-As *aspas triplas* (`"""`) permitem delimitar uma *string* contendo várias
+Se usarmos *três aspas* seguidas(`"""`), isso é uma indicação de que a *string* pode conter várias
 linhas.
 
 <div class="python_box">
@@ -131,37 +191,48 @@ algumas das linhas estão em branco"""
 ```
 </div>
 
-### operador `+`. Função `len()`
+Repare-se no exemplo `c`: usando `"` para delimitar a *string*, podemos usar `'`no seu interior.
 
-O operador `+` serve para "juntar" várias *strings*, uma operação
-designada por *concatenação*.
+Repare-se no exemplo `d`: é uma *string* que ocupa várias linhas.
+
+### operadores `+` e `*`.
+
+A soma `+` serve para "juntar" várias *strings*, uma operação
+designada por *concatenação*. A multiplicação `*` por um **número inteiro** repete uma *string*.
 
 <div class="python_box">
 ``` python3
 c = "There's no spoon"
 
+print(f'c = {c}')
+
 s = c + ', really, ' + 'none' + '.'
 
-print(f'c = {c}')
 print(f's = {s}')
+
+a = 'Blá' * 3
+
+print(f'\na = {a}')
 ```
 </div>
 
 ```
-c =  There's no spoon
-c =  There's no spoon, really, none.
+c = There's no spoon
+s = There's no spoon, really, none.
+
+a = BláBláBlá
 ```
 
+### Função `len()`
+
 A função `len()` é uma função universal que calcula o número de elementos de qualquer coleção.
-No caso das _strings_, o resultado é o **número de caracteres**.
+No caso das *strings*, o resultado é o **número de caracteres** (os espaçoes e a pontuação contam).
 
 <div class="python_box">
 ``` python3
 c = "There's no spoon"
 
-n = len(c)
-
-print(f'\n"{c}" tem {n} caracteres')
+print(f'"{c}" tem {len(c)} caracteres')
 ```
 </div>
     
@@ -178,7 +249,9 @@ caracteres**, tal como uma lista é uma sequência de quaisquer objetos.
 
 ### Iteração e indexação.
 
-Na iteração de uma _string_ com `for` percorre-se os caracteres da _string_, um a um.
+Na iteração de uma _string_ com `for` passamos pelos caracteres da _string_, um a um.
+
+Um pequeno exemplo, em que aquilo que é repetido com o `for`é um `print()`de cada caractere três vezes:
 
 <div class="python_box">
 ``` python3
@@ -207,11 +280,40 @@ for c in frase:
     n n n
     
 
-Na indexação, cada caractere tem uma posição (a começar do zero).
+!!! note "Nota"
+    Um caractere também é uma *string*
+
+
+<div class="python_box">
+``` python3
+print('-' * 20)
+print(' ' * 20) # são 20 espaços em branco
+print('+' * 20)
+print('\n' * 5) # são 5 mudanças de linha
+print('=' * 20)
+```
+</div>
+
+```
+--------------------
+
+++++++++++++++++++++
+
+
+
+
+
+
+====================
+```
+
+
+Na indexação de strings, cada caractere tem uma posição (a começar do zero). Não esquecer que números negativos significam posições a partir do fim (-1 é o último caractere, -2 o penúltimo, etc).
 
 <div class="python_box">
 ``` python3
 frase = "There's no spoon"
+#        0123456789......
 
 print(frase[0])
 print(frase[5])
@@ -226,16 +328,16 @@ print(frase[-1])
 
 ## Funções associadas a *strings*
 
-Existem muitas funções associadas a *strings*
+Além desta forte semelhança entre as *strings* e a listas, existem muitas funções associadas a *strings* que são específicas destas.
 
-Consultar a documentação oficial em
+Uma lista delas pode ser consultada na documentação oficial da linguagem Python em
 [docs.python.org](https://docs.python.org/3/library/stdtypes.html#string-methods)
 
 ![](images/docspython_strmethods.png)
 
-**São cerca de 40!**
+Nesta lista estão cerca de cerca de **40** funções. Neste capítulo não vamos vê-las todas.
 
-Vamos ver (apenas) as seguintes:
+Numa seleção inteiramente pessoal, ditada principalmente pela experiência da utilização destas funções, vamos ver (apenas) as seguintes:
 
 - `in`, `.startswith()`, `.endswith()`
 - `.strip()`
@@ -243,24 +345,27 @@ Vamos ver (apenas) as seguintes:
 - `.upper()`, `.lower()`
 - `.split()`, `.splitlines()`, `.join()`
 
+Muito, mas mesmo muito se consegue fazer com estas funções.
 
 ###  `in`, `.startswith()` , `.endswith()`.
 
+`in` não é uma função, é um operador que testa se uma "substring" existe numa *string* maior. O resultado é `True` ou `False`, e, por isso, este operador costuma ser usado em `if...elif...else`:
 
 <div class="python_box">
 ``` python3
-frase = "There's no spoon"
+seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 
-if 're' in frase:
-    print('"re" existe na frase')
+if 'AGU' in seq:
+    print('"AGU" existe na sequência')
 else:
-    print('"re" não existe na frase')    
+    print('"AGU" não existe na sequência')    
 ```
 </div>
 
-    "re" existe na frase
+    "AUG" existe na sequência
     
 
+As funções `.startswith()` e `.endswith()` testam se uma `string`começa ou acaba com uma dada *substring*, respetivamente.
 
 <div class="python_box">
 ``` python3
@@ -277,34 +382,40 @@ if seq.endswith('UAG') or seq.endswith('UAA') or seq.endswith('UGA'):
     O primeiro codão é de iniciação
     
 
+(Não, o último não é um codão STOP)
+
 ### `.strip()`.
 
+Uma função aparentemente não muito útil: a *string* é transformada noutra *string* em que **espaços**,
+**tabs** e **mudanças de linha** são eliminados do princípio e do fim da *string*:
 
 <div class="python_box">
 ``` python3
-c = """    
-           There's no spoon      
+c = """
+
+    Esta é uma linha no meio de várias linhas em branco
+
 
 """
 
 s = c.strip()
 
-print(c)
-print('------------------------------------')
+# Neste print() s já não tem linhas em branco
+# nem os espaços no princípio da linha
 print(s)
 ```
 </div>
 
-        
-               There's no spoon      
-    
-    
-    ------------------------------------
-    There's no spoon
-    
+```
+Esta é uma linha no meio de várias linhas em branco
+```
+
+Em inglês é usada a expressão *white space* para designar estes caracteres "em branco", os **espaços**,
+**tabs** e **mudanças de linha**.
 
 ### `.upper()`, `.lower()`.
 
+Funções óbvias: transformam em maiúsculas e minúsculas, respetivamente
 
 <div class="python_box">
 ``` python3
@@ -318,11 +429,15 @@ print('c.lower():',c_lower)
 ```
 </div>
 
-    c.upper():     THERE'S NO SPOON      
-    c.lower():     there's no spoon      
-    
+```
+c.upper():     THERE'S NO SPOON      
+c.lower():     there's no spoon      
+```
 
 ### `.count()`.
+
+Muito útil, a função `.count()`, dá como resultado o número de ocorrências de uma *substring*
+numa *string* maior (o reusltado é um número inteiro e pode ser 0):
 
 <div class="python_box">
 ``` python3
@@ -342,6 +457,8 @@ print(f'A razão (G+C) / (A+T) é {(nG + nC)/(nA + nC)}')
 
 ### `.replace()`.
 
+Como o próprio nome indica, esta função cria uma *string* nova em que todas as ocorrências de uma *substring* são substituídas por outra.
+Um exemplo em que, na sequência `seq` susbstituímos todos os `U` por `T`:
 
 <div class="python_box">
 ``` python3
@@ -354,10 +471,12 @@ print(seq2)
 ```
 </div>
 
-    AUGUUCAAGGAGUAAUGCCCCCGACUA
-    ATGTTCAAGGAGTAATGCCCCCGACTA
-    
+```
+AUGUUCAAGGAGUAAUGCCCCCGACUA
+ATGTTCAAGGAGTAATGCCCCCGACTA
+```
 
+Com esta função podemos, por exemplo, eliminar todos os espaços de uma *string*. Basta substituí-los pela *string vazia*:
 
 <div class="python_box">
 ``` python3
@@ -376,6 +495,8 @@ print(frase2)
 
 ### `.split()`, `splitlines()` e `.join()`
 
+Estas funções são complicadas mas muito úteis e poderosas. Aconselha-se o estudo cuidado desta secção.
+
 A partir de uma _string_, a função `.split()` **gera uma lista de partes**,
 encontrando um separador que divida a _string_ em várias partes.
 
@@ -383,7 +504,10 @@ O separador a encontrar é o argumento da função.
 
 Se não se usar um argumento, considera-se que as partes são separadas
 por espaços, tabs ou mudanças de linha (no inglês genericamente
-designados por *white space*)
+designados por *white space*).
+
+!!! important "Nota"
+    A função `.split()` transforma uma *string* numa lista
 
 Alguns exemplos:
 
@@ -465,23 +589,35 @@ ArgTyrGlyAsp
 Arg+Tyr+Gly+Asp
 Arg-CONH-Tyr-CONH-Gly-CONH-Asp
 ```
+!!! important "Nota"
+    A função `.join()` transforma uma lista numa *string*
 
-**Problema: transformar** `AUGUUCAAGGAGUAAUGCCCCCGACUA` **em**
-`AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA`
+Um problema um pouco complicado, em que vemos '.join()' em ação.
+
+!!! example "Problema"
+    Transformar, por exemplo, `AUGUUCAAGGAGUAAUGCCCCCGACUA` em
+    `AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA`.
+
+    Ou seja, dada uma *string* com uma sequência de nucleótidos, construír
+    uma outra *string* em que os codões aparecem separados por `-`.
+
+A ideia é separar os codões da sequência, usando indexação para extraír 3 letras consecutivas,
+juntar os codões numa lista e usar `join()` para os juntar intercalados com `-` numa *string* final.
 
 <div class="python_box">
 ``` python3
-s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
+seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 print(s)
 
-starts = range(0, len(s), 3)
+starts = range(0, len(seq), 3)
 
 codoes = []
 for i in starts:
     # i é o início de cada codão (c)
-    c = s[i] + s[i+1] + s[i+2]
+    c = seq[i] + seq[i+1] + seq[i+2]
     codoes.append(c)
 
+# Só para mostrar que codoes é, de facto, uma lista
 print(codoes)
 
 final = "-".join(codoes)
@@ -495,7 +631,19 @@ AUGUUCAAGGAGUAAUGCCCCCGACUA
 AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 ```
 
-Ou, usando uma **lista em compreensão**:
+Convém explicar como se conseguiu separar os codões da sequência.
+
+O truque foi usar indexação para obter as letras da sequência. Indexação requer o uso de posições. Cada codão são 3 letras consecutivas. Então a ideia foi primeiro encontrar as posições em que começa cada codão. Essa posições são calculadas por
+
+    range(0, len(seq), 3) # isto dá 0...3...6... até ao comprimento da sequência
+
+Passando por esats posições, com `for`, indexamos a sequência nas posições i, i+1 e i+2, juntamos
+essas 3 letras (com `+`) e colocamos no fim de uma lista, cahmada `codoes`, que vai "acumular" os codões.
+
+No final, com a lista de codões construída, juntamos tudo com `.join()`.
+
+Claro que podemos usar uma *lista em compreensão* para abreviar um pouco a construção da lista
+de codões:
 
 <div class="python_box">
 ``` python3
@@ -504,7 +652,6 @@ s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 cods = [s[i] + s[i+1] + s[i+2] for i in range(0, len(s), 3)]
 
 print(s)
-print(cods)
 
 print( "-".join(cods) )
 ```
@@ -512,14 +659,18 @@ print( "-".join(cods) )
 
 ```
 AUGUUCAAGGAGUAAUGCCCCCGACUA
-['AUG', 'UUC', 'AAG', 'GAG', 'UAA', 'UGC', 'CCC', 'CGA', 'CUA']
 AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 ```
 
 Tem de haver uma maneira mais sucinta de de juntar vários caracteres
-consecutivos!
+consecutivos.
 
-A função `.splitlines()` é equivalente a `.split('\n')`:
+Um pouco mais à frente!
+
+Finalmente, a função `.splitlines()` é equivalente a `.split('\n')`, isto é, separa uma *string*
+nas respetivas linhas.
+
+Dada uma sequência no formato FASTA, podemos facilamente separar as linhas numa **lista de linhas**:
 
 <div class="python_box">
 ``` python3
@@ -536,37 +687,8 @@ print(lines)
 
     ['>sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain', 'MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKD', 'MIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTI', 'AKIDEQVRQK']
   
+Repare-se que obtivemos uma lista.
 
-É muito interessante o facto de podermos usar funções de *strings* em
-conjunção com listas em compreensão:
-
-**Problema: num texto com várias linhas, obter numa lista as linhas que
-começam por uma vogal e têm menos de 20 caracteres**
-
-<div class="python_box">
-``` python3
-txt = """ 
- Um pequeno texto que até
-ocupa várias
-linhas
-
-mas haverá
-Algumas em branco"""
-
-a = [s.strip() for s in txt.splitlines()]
-print(a)
-a = [s for s in a if 0 < len(s) < 20]
-print(a)
-a = [s for s in a if s[0].lower() in 'aeiou']
-print(a)
-```
-</div>
-
-```
-['', 'Um pequeno texto que até', 'ocupa várias', 'linhas', '', 'mas haverá', 'Algumas em branco']
-['ocupa várias', 'linhas', 'mas haverá', 'Algumas em branco']
-['ocupa várias', 'Algumas em branco']
-```
 
 ## _Slices_ 
 
@@ -574,13 +696,21 @@ Já vimos que podemos indexar listas e *strings*, usando `[]` e a posição
 do elemento.
 
 Os `[]` podem ser usados para um outro tipo de indexação de listas ou
-_strings_: os **slices** (em português: "fatias").
+_strings_: os **slices** (em português: "fatias"). os *slices* saõ uma generalização
+de indexação, em que, em vez de obtermos um único elemento obtemos vários elelmentos pelas suas posições.
 
-Os *slices* extraem uma parte de uma lista ou *string* que podem ter
-mais de um elemento.
+A forma mais vulgar de utilização de *slices* é a extração de elementos consecutivos.
 
-A forma geral é `[início : fim(exclusivé) : passo]`. O `passo` é
-opcional.
+Escrevemos desta forma:
+
+    `string[início : fim]
+
+e obtemos todos os caracteres deste a posição `início` até à posição `fim`, **exclusivé**.
+
+!!! note "Nota"
+    A *slice* de uma *string* dá uma *substring* nova
+
+    A *slice* de uma lista dá uma "sublista" nova
 
 <div class="python_box">
 ``` python3
@@ -598,6 +728,12 @@ Neo
 O Neo
 tomou o comprimido vermelh
 ```
+Repare como a última posição é "exclusivé".
+
+!!! importante "Importante"
+    Podemos omitir o número **antes** dos `:`. isto significa que a *slice* começa **do princípio**
+
+    Podemos omitir o número **depois** dos `:`. isto significa que a *slice* vai até **ao fim** , inclusivé o último elemento.
 
 <div class="python_box">
 ``` python3
@@ -607,7 +743,6 @@ a = "O Neo tomou o comprimido vermelho"
 print(a[ :5])
 print(a[6: ])
 print(a[ : ])
-print(a[0:12:2])
 ```
 </div>
 
@@ -615,8 +750,10 @@ print(a[0:12:2])
 O Neo
 tomou o comprimido vermelho
 O Neo tomou o comprimido vermelho
-ONotmu
 ```
+Repare-se como um dos exemplos resulta na cópia integral da *string*
+
+Mais um exemplo, como obter o primeiro e o último codão:
 
 <div class="python_box">
 ``` python3
@@ -634,25 +771,50 @@ print('O último codão é', d)
     O último codão é CUA
     
 
-**Problema: transformar** `AUGUUCAAGGAGUAAUGCCCCCGACUA`
+Na realidade, a forma geral de uma *slice* é 
 
-**em**
+    `string[início : fim(exclusivé) : passo]`.
 
-`AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA`
+Isto é, opcionalmente pode ser indicado um `passo` que faz com que a *slice* "salte" de `passo` em `passo letras.
+
+No programa seguinte, obtêm-se os caracteres da *string* desde a posição 0 até à posição 12, exclusivé,
+saltando de 2 em 2:
+
+<div class="python_box">
+``` python3
+a = "O Neo tomou o comprimido vermelho"
+#    012345678901234567890123456789012
+
+print(a[0:12:2])
+```
+</div>
+
+```
+ONotmu
+```
+
+Podemos reformular um pouco o problema da lista de codões usando *slices* para obter as 3
+letras consecutivas de cada codão:
+
+!!! example "Problema"
+    Transformar, por exemplo, `AUGUUCAAGGAGUAAUGCCCCCGACUA` em
+    `AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA`.
+
+    Ou seja, dada uma *string* com uma sequência de nucleótidos, construír
+    uma outra *string* em que os codões aparecem separados por `-`.
 
 <div class="python_box">
 ``` python3
 s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 starts = range(0, len(s), 3)
 
-# na versão anterior:
+# na versão anterior tínhamos:
 # cods = [s[i] + s[i+1] + s[i+2] for i in starts]
 
-# usando um slice
+# usando uma slice
 cods = [s[i:i+3] for i in starts]
 
 print(s)
-print(cods)
 
 print( "-".join(cods) )
 
@@ -664,8 +826,8 @@ AUGUUCAAGGAGUAAUGCCCCCGACUA
 AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 ```
 
-Usando uma lista em compreensão como argumento da função `.join()` o
-programa pode ficar mais compacto:
+Pondo a lista em compreensão como argumento da função `.join()` o
+programa pode ficar ainda mais compacto:
 
 <div class="python_box">
 ``` python3
@@ -682,7 +844,9 @@ AUGTTCAAGGAGUAAUGCCCCCGACUA
 AUG-TTC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 ```
 
-**Os** *slices* **também funcionam com listas**
+Isto já é exagerar: não devemos compactar tanto um programa de modo a ficar quase ilegível e incompreensível. No Python, como em outras linguagens, é possível recorrer a estas formas muito sucintas de programação. O custo é a legibilidade lógica da linguagem.
+
+Só para recordar, *slices* também funcionam com listas:
 
 <div class="python_box">
 ``` python3
@@ -704,11 +868,8 @@ print(s3)
 ['Arg', 'Gly']
 ```
 
-!!! info "Importante"
-    Os *slices* produzem sempre **novos** objetos
-
-No caso de uma **lista**, podemos **atribuír valores a um** *slice* **da
-lista**, mudando alguns elementos de uma só vez:
+No caso de uma **lista** (não de uma *string*), podemos atribuír valores a uma *slice* da
+lista, mudando alguns elementos de uma só vez. Para isso usamos um comando de atribuição:
 
 <div class="python_box">
 ``` python3
@@ -726,10 +887,15 @@ print(nums)
     [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
     [1, 2, 2, 10, 11, 12, 13, 14, 4, 4]
    
+Como se pode ver, a lista nas posições de 3 a 8 (exclusivé) foi mudada para os
+inteiros gerados por `range(10, 15)`.
 
-**Problema: Converter uma sequência com códigos de uma letra de
-aminoácidos para códigos de 3 letras, usando um dicionário para a
-conversão.**
+Revisitando um problema, mas melhorando o aspeto do resultado com `.join()`:
+
+!!! example "Problema"
+    Converter uma sequência com códigos de uma letra de
+    aminoácidos para códigos de 3 letras, usando um
+    dicionário para a conversão.
 
 <div class="python_box">
 ``` python3
@@ -750,15 +916,26 @@ print(s1, 'é o mesmo que', s3)
 ADKLITCWFHHWE é o mesmo que Ala-Asp-Lys-Leu-Ile-Thr-Cys-Trp-Phe-His-His-Trp-Glu
 ```
 
-**Problema: calcular o complemento reverso de uma sequência**. Apresentar a
-sequência de partida e o complemento reverso no formato em que os codões são
-separados por um hífen.
+Agora um problema mais elaborado:
+
+!!! example "Problema"
+    Calcular o **complemento reverso** de uma sequência.
+
+    O **complemento reverso** de uma sequência de nucleótidos é a
+    sequência complementar apresentada no sentido da leitura da transcrição
+    que é o reverso do sentido da sequência dada.
+
+    Resumidamente, temos de apresentar a sequência complementar do fim para o princípio.
+
+    Apresentar a sequência de partida e o complemento reverso no formato
+    em que os codões são separados por um hífen.
 
 Para resolver este problema podemos usar a função `reversed()`. Esta função
 aplica-se a qualquer coleção e "gera" os elementos da coleção pela ordem inversa.
 
-Aplicando depois a função `''.join()`, com o **separador "vazio"**, ao resultado
-da função `reversed()`podemos inverter uma _string_.
+Aplicando depois, ao resultado da função `reversed()`, a função `''.join()`, com o **separador "vazio"** podemos inverter uma *string*. Usando `''.join(lista)`, isto é, um separador vazio, é uma maneira simples de juntar uma lista de *strings* numa só *string*.
+
+O seguinte programa usa este pequeno truque duas vezes:
 
 <div class="python_box">
 ``` python3
@@ -789,8 +966,10 @@ Complemento reverso:
 TAA-TCC-TAA-ATA-CTA-GGT-AAC-CAT
 ```
 
-**Problema: separar uma sequência em FASTA em 2 strings: o "header" e a sequência**
+Finalmente, mais uma aplicação de `.split()`/`.splitlines()`, *slices* e `.join()`:
 
+!!! example "Problema"
+    Separar uma sequência em FASTA que está numa *string em 2 strings: o "header" e a sequência.
 
 <div class="python_box">
 ``` python3
@@ -803,7 +982,7 @@ lines = seqFASTA.splitlines()
 
 header = lines[0]
 
-seq = ''.join(lines[1:])
+seq = ''.join(lines[1:]) # junta todas as linhas menos a primeira
 
 print('header -----------------------------------')
 print(header)
@@ -819,7 +998,7 @@ seq --------------------------------------
 MDKLFLEIVTPEGEIFANDVKSVQVPGCEGEFGILPRHATLVTTLNAGVIEVINLDGTKDMIAIDDGGCIKVAEDKTTILANGAVYIGGSNESEIAISLQKAKELVKSMSSNTIVYATTIAKIDEQVRQK
 ```
 
-## Exemplo: ficheiros FASTA
+## Exemplo mais elaborado: ficheiros FASTA
 
 Um dos tipos de texto estruturado mais populares quando estamos interessados
 em sequências de macromoléculas biológicas são os ficheiros de tipo FASTA.
@@ -877,25 +1056,27 @@ NSDACYRAGVCFEYQRGTSSLDP
 Como se pode ver, cada sequência, que pode ocupar várias linhas, é precedida de um _header_
 (em português "cabeçalho") que ocupa uma única linha começada por `>`. Esta linha
 contem algumas anotações sobre a proteína, em particular o **Número UniProt de Acesso** que
-está contido entre dois `|` em cada _header_.
+está contido entre dois `|` em cada *header*.
 
     >sp|A7HZZ5|ACP_CAMHC Acyl carrier protein OS=Campylobacter hominis
     
 
-**Problema: Contar as sequências contidas num ficheiro FASTA**
+!!! example "Problema"
+    **Contar** as sequências contidas num ficheiro FASTA
 
 A estratégia é simples: as linhas começadas por `>` são os _headers_ e o
 número de sequências é igual ao número de _headers_.
-
 
 <div class="python_box">
 ``` python3
 # ler o ficheiro para uma grande string
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
-    data = datafile.read()
+    tudo = datafile.read()
 
-# dividir em linhas
-lines = data.splitlines()
+# "tudo" tem, agora, todas as sequências!
+
+# dividir em linhas criando uma lista de linhas
+lines = tudo.splitlines()
 
 # filtrar as linhas começadas por >
 headers = []
@@ -915,9 +1096,9 @@ Usando uma lista em compreensão:
 <div class="python_box">
 ``` python3
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
-    data = datafile.read()
+    tudo = datafile.read()
 
-headers = [i for i in data.splitlines() if i.startswith('>')]
+headers = [line for line in tudo.splitlines() if line.startswith('>')]
 
 print(f'O proteoma tem {len(headers)} proteínas')
 ```
@@ -926,9 +1107,8 @@ print(f'O proteoma tem {len(headers)} proteínas')
     O proteoma tem 6049 proteínas
     
 
-**Problema:**
-
-**Construír uma lista de headers e uma lista de sequências contidos num ficheiro FASTA.**
+!!! example "Problema"
+    Construír uma lista de headers e uma lista de sequências contidos num ficheiro FASTA.
 
 Este problema já não é tão simples, mas a estratégia geral é:
 
@@ -958,9 +1138,9 @@ O programa que implementa esta estratégia poderá ser
 <div class="python_box">
 ``` python3
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
-    data = datafile.read()
+    tudo = datafile.read()
 
-blocks = data.split('>')
+blocks = tudo.split('>')
 
 headers = []
 seqs = []
@@ -988,7 +1168,7 @@ print(seqs[-1])
 
 Para teste, é mostrada a última proteína contida no ficheiro.
 
-Uma linha não parece necessária. Porquê o teste
+Há uma linha no prgrama que não parece necessária. Porquê temos de fazer o teste
 
 <div class="python_box">
 ``` python3
@@ -1002,73 +1182,39 @@ que parece desnecessário?
 Devido ao ficheiro começar por `>`, o efeito da função `.split('>')` é criar uma lista de blocos,
 mas o primeiro bloco é uma _string_ vazia! Devemos ignorar estes blocos vazios!
 
-**Problema:**
+!!! example "Problema"
+    Construír um dicionário qua faça corresponder o _Número de acesso UniProt_ a cada sequência
 
-**Construír um dicionário qua faça corresponder o _Número de acesso UniProt_ a cada sequência**
-
-Aumentando o programa anterior, podemos processar os _headers_ par extraír cada _Número UniProt de Acesso_.
+Melhorando o programa anterior, podemos processar os _headers_ par extraír cada _Número UniProt de Acesso_.
 
 Recorde-se que o _Número UniProt de Acesso_ está entre `|` em cada _header_
 
+Dseta vez, toda a informação processada fica num dicionário
 
 <div class="python_box">
 ``` python3
 with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
-    data = datafile.read()
+    tudo = datafile.read()
 
-blocks = data.split('>')
-
-headers = []
-seqs = []
-
-for b in blocks:
-    if b != '':
-        lines = b.splitlines()
-        headers.append(lines[0])
-        seqs.append(''.join(lines[1:]))
+blocks = tudo.split('>')
 
 dictseqs = {}
 
-for header, seq in zip(headers, seqs):
-    parts = header.split('|')
-    ac = parts[1]
-    
-    dictseqs[ac] = seq
-
-for ac in ['P28240','P38832','P36084']:
-    print(f'{ac}: {dictseqs[ac]}\n')
-```
-</div>
-
-    P28240: MPIPVGNTKNDFAALQAKLDADAAEIEKWWSDSRWSKTKRNYSARDIAVRRGTFPPIEYPSSVMARKLFKVLEKHHNEGTVSKTFGALDPVQISQMAKYLDTIYISGWQCSSTASTSNEPGPDLADYPMDTVPNKVEHLFKAQLFHDRKQLEARSKAKSQEELDEMGAPIDYLTPIVADADAGHGGLTAVFKLTKMFIERGAAGIHMEDQTSTNKKCGHMAGRCVIPVQEHVNRLVTIRMCADIMHSDLIVVARTDSEAATLISSTIDTRDHYFIVGATNPNIEPFAEVLNDAIMSGASGQELADIEQKWCRDAGLKLFHEAVIDEIERSALSNKQELIKKFTSKVGPLTETSHREAKKLAKEILGHEIFFDWELPRVREGLYRYRGGTQCSIMRARAFAPYADLVWMESNYPDFQQAKEFAEGVKEKFPDQWLAYNLSPSFNWPKAMSVDEQHTFIQRLGDLGYIWQFITLAGLHTNALAVHNFSRDFAKDGMKAYAQNVQQREMDDGVDVLKHQKWSGAEYIDGLLKLAQGGVSATAAMGTGVTEDQFKENGVKK
-    
-    P38832: MKCTLVSTLFAITNILVAHAQVSNSSDTLDVQFANSTNSYIEGKFNSTDEAFNSSASWSLAAQQKKISNAAVYDVGGWNGSLYRSNRSAVADHQPGKKQDAAISQISDGQIQATASGPETTAATTPSSTANVSVYEGAGMKVESKNMGYIVGVAALLFL
-    
-    P36084: MADEKRLEDLRSKIMESIGKSEKDVVPIENKRFNTDNAVIDTHFKRQKSDGELPKAPKSRNVSHSNNRGPSSIITMSTNRTTYEQTRAGPHRQSYRDASGRSYNRENRYSSHNTGPQWNNNPYNRQRDERRGRNERFDRRGRNGNGNYDRFNYQRKNEGSKFNGDRDKRQLQTNKYDMNYNSQNVMYPGSSFDSPAYYNMASSKANSRLVISGLSQSSDPSIVARLKDLLENFISGLQKTESNAEDFKISNFYIGEGRPDHIIVEFSSQICSTMVLACRSFFNAKLGTFDLKWRRPNDYVQQLDHLVDFCRGTVIALENLENIGEGEDYRMKELFSSLNVTNGTAKPLFYKCSSNTNNTGKESEFTKCILLSFEVVTQDILDKLKPYKWFKPNDGKISQVTSWITFQSLPNLVTQSVRVESRVLLLLNCLDPLDLKDETFITEIKETLKYSIAGADTIKICQPGVDYRLNFENLASGAGNIYIKFKTLEAAKHAMEELPGTQFNDRTVLCTYIDEDDFDMMEATQLS
-    
-    
-
-
-<div class="python_box">
-``` python3
-with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
-    data = datafile.read()
-
-blocks = data.split('>')
-
-headers = []
-seqs = []
-
 for b in blocks:
     if b != '':
         lines = b.splitlines()
-        headers.append(lines[0])
-        seqs.append(''.join(lines[1:]))
+        header = lines[0]
+        seq = ''.join(lines[1:])
+        # retirar o Uniprot Id do header
+        parts = header.split('|')
+        # separando por | um header, o ac está na posição 1
+        ac = parts[1]
 
-# com um dicionário em compreensão:
+        # finalmente, por o resultado no dicionário
+        dictseqs[ac] = seq
 
-dictseqs = {header.split('|')[1] : seq for header,seq in zip(headers, seqs)}
 
+# Ver algumas proteínas...
 for ac in ['P28240','P38832','P36084']:
     print(f'{ac}: {dictseqs[ac]}\n')
 ```
@@ -1082,11 +1228,8 @@ for ac in ['P28240','P38832','P36084']:
     
     
 
-Podíamos não ter criado as listas intermédias contendo todos os _headers_ e as
-sequências. Bastaria processar diretamente cada bloco.
-
-Assim, uma versão muito mais compacta seria:
-
+Podemos criar uma versão mais compacta deste programa juntando
+vários passos de aplicação de funções de lista num único passo:
 
 <div class="python_box">
 ``` python3
@@ -1122,7 +1265,7 @@ for ac in ['P28240','P38832','P36084']:
 As *strings* são **imutáveis**.
 
 Isto significa que (ao contrário das listas e dicionários) **não existem
-funções para modificar uma** *string*.
+funções para modificar** uma *string*.
 
 **Não existe**, por exemplo, `s.append('a')`.
 
@@ -1131,147 +1274,3 @@ funções para modificar uma** *string*.
 mesmo nome da *string* original)
 
 Podemos, por isso, usar `s = s + 'a'`
-
-
-## Formatação de *strings* com `.format()`
-
-<div class="python_box">
-``` python3
-x = 11
-y = 20
-z = 3
-
-print('x = {}, y = {}, z = {}'.format(x, y, z))
-```
-</div>
-
-```
-x = 11, y = 20, z = 3
-```
-
-<div class="python_box">
-``` python3
-d = {'H':1, 'Li':3, 'Na':11, 'K':19}
-
-for k, v in d.items():
-    print('O elemento com n = {1} é o {0}'.format(k, v))
-```
-</div>
-
-```
-O elemento com n = 1 é o H
-O elemento com n = 3 é o Li
-O elemento com n = 11 é o Na
-O elemento com n = 19 é o K
-```
-
-<div class="python_box">
-``` python3
-d = {'H':1, 'Li':3, 'Na':11, 'K':19}
-
-for k, v in d.items():
-    print('O elemento com  n = {1:2} é o {0}'.format(k, v))
-```
-</div>
-
-```
-O elemento com  n =  1 é o H
-O elemento com  n =  3 é o Li
-O elemento com  n = 11 é o Na
-O elemento com  n = 19 é o K
-```
-
-<div class="python_box">
-``` python3
-d = {'H':1, 'Li':3, 'Na':11, 'K':19}
-
-for k, v in d.items():
-    print('O elemento com  n = {1:<2} é o {0}'.format(k, v))
-```
-</div>
-
-```
-O elemento com  n = 1  é o H
-O elemento com  n = 3  é o Li
-O elemento com  n = 11 é o Na
-O elemento com  n = 19 é o K
-```
-
-<div class="python_box">
-``` python3
-import math
-log2 = math.log(2)
-
-soma = 0.0 # acumula a soma parcial da série
-
-for i in range(1, 21):
-    soma = soma + (-1)**(i+1) / i
-    dif = abs(soma - log2)
-    print(i , soma , dif)
-```
-</div>
-
-```
-1 1.0 0.3068528194400547
-2 0.5 0.1931471805599453
-3 0.8333333333333333 0.14018615277338797
-4 0.5833333333333333 0.10981384722661203
-5 0.7833333333333332 0.09018615277338793
-6 0.6166666666666666 0.0764805138932787
-7 0.7595238095238095 0.0663766289638642
-8 0.6345238095238095 0.058623371036135796
-9 0.7456349206349207 0.052487740074975364
-10 0.6456349206349207 0.047512259925024614
-11 0.7365440115440116 0.043396830984066326
-12 0.6532106782106782 0.039936502349267045
-13 0.7301337551337552 0.03698657457380994
-14 0.6587051837051838 0.03444199685476146
-15 0.7253718503718505 0.03222466981190519
-16 0.6628718503718505 0.030275330188094807
-17 0.7216953797836152 0.028548199223669912
-18 0.6661398242280596 0.027007356331885668
-19 0.718771403175428 0.025624222615482695
-20 0.6687714031754279 0.02437577738451735
-```
-
-<div class="python_box">
-``` python3
-import math
-log2 = math.log(2)
-
-soma = 0.0 # acumula a soma parcial da série
-
-print('{:>4} {:^9} {:^9}'.format('n' , 'S' , 'dif'))
-for i in range(1, 21):
-    soma = soma + (-1)**(i+1) / i
-    dif = abs(soma - log2)
-    print('{:4d} {:9.6f} {:9.6f}'.format(i,soma,dif))
-```
-</div>
-
-```
-n     S        dif   
-1  1.000000  0.306853
-2  0.500000  0.193147
-3  0.833333  0.140186
-4  0.583333  0.109814
-5  0.783333  0.090186
-6  0.616667  0.076481
-7  0.759524  0.066377
-8  0.634524  0.058623
-9  0.745635  0.052488
-10 0.645635  0.047512
-11 0.736544  0.043397
-12 0.653211  0.039937
-13 0.730134  0.036987 
-14 0.658705  0.034442
-15 0.725372  0.032225
-16 0.662872  0.030275
-17 0.721695  0.028548
-18 0.666140  0.027007
-19 0.718771  0.025624
-20 0.668771  0.024376
-```
-
-Consultar a documentação da [Format Specification
-Mini-Language](https://docs.python.org/3/library/string.html#formatspec)
