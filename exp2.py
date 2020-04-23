@@ -1,24 +1,24 @@
+with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
+    tudo = datafile.read()
 
-fellowship = {'Aragorn':'Humano',
-              'Frodo':'Hobbit',
-              'Sam':'Hobbit',
-              'Boromir':'Humano',
-              'Merry':'Hobbit',
-              'Took':'Hobbit',
-              'Gandalf':'Feiticeiro',
-              'Gimli':'Anão',
-              'Legolas':'Elfo'}
+blocks = tudo.split('>')
 
-# resultado das contagens num dicionário
-# que associa espécie: nº personagens dessa espécie
+dictseqs = {}
 
-contagens = {}
+for b in blocks:
+    if b != '':
+        lines = b.splitlines()
+        header = lines[0]
+        seq = ''.join(lines[1:])
+        # retirar o Uniprot Id do header
+        parts = header.split('|')
+        # separando por | um header, o ac está na posição 1
+        ac = parts[1]
 
-for espécie in fellowship.values():
-    if espécie in contagens:
-        contagens[espécie] = contagens[espécie] + 1
-    else:
-        contagens[espécie] = 1
+        # finalmente, por o resultado no dicionário
+        dictseqs[ac] = seq
 
-for e, c in contagens.items():
-    print(e, c)
+
+# Ver algumas proteínas...
+for ac in ['P28240','P38832','P36084']:
+    print(f'{ac}: {dictseqs[ac]}\n')

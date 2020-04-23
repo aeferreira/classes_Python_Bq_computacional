@@ -1704,6 +1704,29 @@ campos, separados por <code>\t</code> e <strong>uma via por linha</strong>.</p>
 <h2 id="informacao-obtida-por-acesso-a-internet-modulo-requests">Informação obtida por acesso à Internet: (módulo <code>requests</code>)<a class="headerlink" href="#informacao-obtida-por-acesso-a-internet-modulo-requests" title="Permanent link">&para;</a></h2>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.uniprot.org/uniprot/?query=proteome:UP000002407</span><span class="si">%20r</span><span class="s1">eviewed:yes&amp;format=list&#39;</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span><code>A7HZZ5
+A7I0W5
+
+...
+muitos outros identificadores ...
+...
+
+A7I0N8
+A7I1M8
+</code></pre></div>
+
+
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.uniprot.org/uniprot/P00924.fasta&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
