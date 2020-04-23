@@ -827,10 +827,15 @@ FGLSLGQILSVFMLILGFSAYIKLLKNSQTEQKFNQNKS
 
 
 <p>Como se pode ver pelo resultado da função <code>print()</code>, todo o ficheiro foi lido e transferido para a <em>string</em>  <code>seqs</code>.</p>
-<p>Embora muito se podesse explicar sobre o que se está a passar neste programa, muito sumariamente:</p>
-<p>O comando <code>with</code> assinala que durante um tempo muito breve (o tempo de execução das linhas que estão "alinhadas mais interiormente" a seguir ao with), o programa fará acesso a um recurso computacional, neste caso um ficheiro de texto. A função <code>open()</code> que tem como argumento o nome do ficheiro de texto, "abre" o ficheiro para leitura pelo programa. É dado um nome ao ficheiro aberto dentro do programa (o nome que está a seguir ao <code>as</code>), <code>datafile</code>.</p>
-<p>Depois disto, <code>datafile</code> é um objeto criado para ser um canal de comunicação com o ficheiro de texto. este "canal" tem a funcionalidade necessária para transferir (ler) a informação do ficheiro. Neste  programa é a função <code>.read()</code> do objeto <code>datafile</code>. Esta função, lê <strong>todo</strong> o conteúdo de um ficheiro para e tem como resultado uma <em>string</em>. A esta <em>string</em> geralmente damos um nome, para posteriormente utilizar (neste caso foi dado o nome <code>seqs</code>).</p>
-<p>A função que realmente lê o conteúdo do ficheiro e o transforma numa <em>string</em> é a função <code>.read()</code>. Existem outras funções, como veremos.</p>
+<p>Embora haja muitos pormenores subjacentes a este programa, pode-se dar uma explicação muito sumária do que se está a passar:</p>
+<p>O comando <code>with</code> assinala que o programa faz o acesso a um recurso computacional de uma forma temporária, neste caso concreto, o "recurso" é umm ficheiro de texto.</p>
+<p>O acesso ocorre durante a execução das linhas que estão "alinhadas mais interiormente" a seguir ao <code>with</code>. Depois disso, o programa já não necessita de ter acesso ao ficheiro.</p>
+<p>A função <code>open()</code> que tem como argumento o nome do ficheiro de texto, "abre" o ficheiro para leitura pelo programa.</p>
+<p>É dado um nome ao ficheiro aberto dentro do programa (o nome que está a seguir ao <code>as</code>): <code>datafile</code>.</p>
+<p>Como resultado da função <code>open()</code>, <code>datafile</code> é um objeto criado para ser um canal de comunicação com o ficheiro de texto. Este "canal" tem a funcionalidade necessária para transferir (ler) a informação do ficheiro.</p>
+<p>Neste  programa usa-se a função <code>datafile.read()</code>. Esta função, lê <strong>todo</strong> o conteúdo de um ficheiro  e tem como resultado uma <em>string</em>.</p>
+<p>A esta <em>string</em> geralmente damos um nome, para posteriormente utilizar (neste caso foi dado o nome <code>seqs</code>).</p>
+<p>A função que realmente lê o conteúdo do ficheiro e o transforma numa <em>string</em> é a função <code>.read()</code>. Existem outras funções de leitura, como veremos mais tarde.</p>
 <p>Agora que existe uma maneira de ler um ficheiro de texto existente num computador para "dentro" de umm programa, vejamos o que podemos fazer com a <em>string</em> resultante.</p>
 <p>Está na altura de nos focarmos na funcionalidade da linguagem Python em relação a <em>strings</em>.</p>
 <h2 id="strings"><em>Strings</em><a class="headerlink" href="#strings" title="Permanent link">&para;</a></h2>
@@ -849,11 +854,7 @@ resultados.</p>
 literalmente, como um <strong>texto entre aspas</strong>.</p>
 <p>Na <strong>definição literal</strong> de <em>strings</em> podemos delimita-las usando
 <strong>3 tipos diferentes de aspas</strong>: </p>
-<ul>
-<li><code>"</code></li>
-<li><code>'</code></li>
-<li><code>"""</code></li>
-</ul>
+<p><code>"</code> ou <code>'</code> ou <code>"""</code></p>
 <p>Se usarmos <em>três aspas</em> seguidas(<code>"""</code>), isso é uma indicação de que a <em>string</em> pode conter várias
 linhas.</p>
 <div class="python_box">
@@ -878,15 +879,15 @@ designada por <em>concatenação</em>. A multiplicação <code>*</code> por um <
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;There&#39;s no spoon&quot;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;c = </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c =&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;, really, &#39;</span> <span class="o">+</span> <span class="s1">&#39;none&#39;</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;s = </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;s =&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Blá&#39;</span> <span class="o">*</span> <span class="mi">3</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">a =&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -1256,7 +1257,7 @@ AUG-UUC-AAG-GAG-UAA-UGC-CCC-CGA-CUA
 
 
 <p>Passando por esats posições, com <code>for</code>, indexamos a sequência nas posições i, i+1 e i+2, juntamos
-essas 3 letras (com <code>+</code>) e colocamos no fim de uma lista, cahmada <code>codoes</code>, que vai "acumular" os codões.</p>
+essas 3 letras (com <code>+</code>) e colocamos no fim de uma lista, chamada <code>codoes</code>, que vai "acumular" os codões.</p>
 <p>No final, com a lista de codões construída, juntamos tudo com <code>.join()</code>.</p>
 <p>Claro que podemos usar uma <em>lista em compreensão</em> para abreviar um pouco a construção da lista
 de codões:</p>
@@ -1403,7 +1404,7 @@ uma outra <em>string</em> em que os codões aparecem separados por <code>-</code
 <span class="c1"># na versão anterior tínhamos:</span>
 <span class="c1"># cods = [s[i] + s[i+1] + s[i+2] for i in starts]</span>
 
-<span class="c1"># usando uma slice</span>
+<span class="c1"># usando slice</span>
 <span class="n">cods</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">starts</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
@@ -1541,7 +1542,7 @@ TAA-TCC-TAA-ATA-CTA-GGT-AAC-CAT
 <p>Finalmente, mais uma aplicação de <code>.split()</code>/<code>.splitlines()</code>, <em>slices</em> e <code>.join()</code>:</p>
 <div class="admonition example">
 <p class="admonition-title">Problema</p>
-<p>Separar uma sequência em FASTA que está numa *string em 2 strings: o "header" e a sequência.</p>
+<p>Separar uma sequência em FASTA que está numa string em 2 strings: o "header" e a sequência.</p>
 </div>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">seqFASTA</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&gt;sp|A7I178|ATPE_CAMHC ATP synthase epsilon chain</span>
@@ -1810,14 +1811,24 @@ P36084: MADEKRLEDLRSKIMESIGKSEKDVVPIENKRFNTDNAVIDTHFKRQKSDGELPKAPKSRNVSHSNNRGPSS
 
 
 <h2 id="imutabilidade-das-strings">"Imutabilidade" das <em>strings</em><a class="headerlink" href="#imutabilidade-das-strings" title="Permanent link">&para;</a></h2>
-<p>As <em>strings</em> são <strong>imutáveis</strong>.</p>
-<p>Isto significa que (ao contrário das listas e dicionários) <strong>não existem
-funções para modificar</strong> uma <em>string</em>.</p>
-<p><strong>Não existe</strong>, por exemplo, <code>s.append('a')</code>.</p>
-<p><strong>Todas as operações com</strong> <em>strings</em> <strong>resultam numa</strong> <em>string</em>
-<strong>nova</strong>, à qual é, geralmente, atribuído um nome (mesmo que seja o
-mesmo nome da <em>string</em> original)</p>
-<p>Podemos, por isso, usar <code>s = s + 'a'</code></p>
+<p>As <em>strings</em> são <strong>imutáveis</strong>. Esta propriedade torna-as diferentes das listas, dicionários e conjuntos.</p>
+<p>Isto significa que <strong>não existem funções para modificar</strong> uma <em>string</em>. </p>
+<p><strong>Não existe</strong>, por exemplo, <code>s.append('a')</code>, para acrescentar um letra no final de uma <em>string</em>.</p>
+<p><strong>Todas as operações com</strong> <em>strings</em> resultam numa <em>string</em>
+<strong>nova</strong>, à qual é, geralmente, atribuído um nome (mesmo que seja o mesmo nome da <em>string</em> original)</p>
+<p>Podemos, por isso, usar <code>s = s + 'a'</code> para acrescentar uma letra no final:  <code>s + 'a'</code> cria uma <em>string</em> nova.</p>
+<p>Um outro exemplo: podemos substituír letra por outra numa <em>string</em> desta forma:</p>
+<div class="codehilite"><pre><span></span><code>seq2 = seq.replace(&#39;U&#39;, &#39;T&#39;)
+</code></pre></div>
+
+
+<p>em que <code>seq2</code> é uma <em>string</em> nova.</p>
+<p>Mas não vale a pena escrever num programa</p>
+<div class="codehilite"><pre><span></span><code>seq.replace(&#39;U&#39;, &#39;T&#39;)
+</code></pre></div>
+
+
+<p>esperando que a <em>string</em> seja modificada. Uma linha destas num programa cria uma <em>string</em> nova mas se não for dado nenhum nome, essa <em>string</em> nova "perde-se". A <em>string</em> <code>seq</code> <strong>não é modificada</strong>!</p>
                 
                   
                 
