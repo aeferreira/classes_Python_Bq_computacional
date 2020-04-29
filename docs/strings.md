@@ -709,7 +709,7 @@ A forma mais vulgar de utilização de *slices* é a extração de elementos con
 
 Escrevemos desta forma:
 
-    `string[início : fim]
+    string[início : fim]
 
 e obtemos todos os caracteres deste a posição `início` até à posição `fim`, **exclusivé**.
 
@@ -779,7 +779,7 @@ print('O último codão é', d)
 
 Na realidade, a forma geral de uma *slice* é 
 
-    `string[início : fim(exclusivé) : passo]`.
+    string[início : fim(exclusivé) : passo]
 
 Isto é, opcionalmente pode ser indicado um `passo` que faz com que a *slice* "salte" de `passo` em `passo letras.
 
