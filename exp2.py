@@ -1,24 +1,21 @@
-with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
-    tudo = datafile.read()
+def readFASTA(filename):
+    """This function reads a FASTA format file and
+    returns a pair of strings with the header and the sequence
+    """
+    with open(filename) as a:
+        lines = a.read().splitlines()
+    
+    # remove empty lines
+    lines = [line for line in lines if len(line) > 0]
 
-blocks = tudo.split('>')
+    # split header and sequence
+    # the header might be absent
+    if lines[0].startswith('>'):
+        return lines[0], ''.join(lines[1:])
+    else:
+        return '', ''.join(lines)
 
-dictseqs = {}
+h, s = readFASTA("gre3.txt")
 
-for b in blocks:
-    if b != '':
-        lines = b.splitlines()
-        header = lines[0]
-        seq = ''.join(lines[1:])
-        # retirar o Uniprot Id do header
-        parts = header.split('|')
-        # separando por | um header, o ac está na posição 1
-        ac = parts[1]
-
-        # finalmente, por o resultado no dicionário
-        dictseqs[ac] = seq
-
-
-# Ver algumas proteínas...
-for ac in ['P28240','P38832','P36084']:
-    print(f'{ac}: {dictseqs[ac]}\n')
+print(f'Header:\n{h}')
+print(f'Sequence:\n{s}')
