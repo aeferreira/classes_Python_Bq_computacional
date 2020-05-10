@@ -10,8 +10,9 @@ nav:
   - Strings: 'strings.md'
   - Funções e módulos: 'funcs_modules.md'
   - Exercícios de treino: 'problems.md'
-- 2 - Textos estruturados:
   - Ficheiros de texto: 'files.md'
+- 2 - Textos estruturados:
+  - Exemplo 1 (UniProt txt): 'uniprot_txt.md'
 - 3 - Módulos científicos:
   - Módulos de computação científica: scientific_modules.md
 use_directory_urls: false

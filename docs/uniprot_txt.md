@@ -1,0 +1,859 @@
+# Exemplo: ficheiros UniProt txt
+
+## Introdução
+
+Este e o próximo capítulo são dedicados a aplicar as ferramentas mostradas
+na primeira parte a pequenos projetos já com alguma elaboração.
+
+Os dois exemplos consistem em extraír informação relevante de ficheiros disponibilizados por portais e ferramentas de Bioinformática.
+
+O primeiro exemplo consiste em extraír a informação sobre *modificações pós-traducionais* (em inglês: Post Translational Modifications, ou **PTM**) de um
+ficheiro contendo a informação da UniProt sobre todas as proteínas de um determinado organismo, um dos *proteomas de referência* existentes neste portal.
+
+O que são PTMs? São modificações que ocorrem nas proteínas após a sua síntese. Uma das mais conhecidas é a fosforição de grupos laterais contendo -OH, que são muitas vezes são relacionadas com a regulação da função de uma proteína. Mas existem muitas outras modificações possíveis.
+
+O objetivo é extraír a informação sobre PTMs e fazer uma contagem  (e visualizar num gráfico) de modo a ter uma ideia da sua abundância relativa nas notações da UniProt.
+
+O proteoma usado vai ser o do organismo *Saccharomyces cerevisiae* (a levedura de padeiro, um dos organismos modelo em biociências moleculares)
+
+Este exemplo irá ilustrar muitas dos conceitos introduzidos nos capítulos anteriores, especialmente sobre a transformação de *strings*
+
+Mas antes é necessário obter e preparar a informação *total* sobre as proteínas da levedura da UniProt.
+
+## Obtenção do ficheiro UniProt txt
+
+A UniProt disponibiliza vários tipos de ficheiros após a realização de uma busca.
+
+Um dos mais completos são os ficheiros do tipo *UniProt txt* que contêm praticamente toda a informação que podemos visualizar quando consultamos as páginas web dedicadas a uma determinada proteína, mas num formato de texto e podendo juntar a informação de várias proteínas no mesmo ficheiro.
+
+A UniProt tem [documentação](http://web.expasy.org/docs/userman.html) com indicações detalhadas sobre o formato dos seus ficheiros, em particular o *UniProt txt*:
+
+Instruções para obter o ficheiro de trabalho:
+
+- Na UniProt procurar pelo [ "proteoma de referência" da levedura S. cerevisiae, www.uniprot.org/proteomes/UP000002311](www.uniprot.org/proteomes/UP000002311)
+- Passar para resultados UniProtKB em "Map to Review"
+- Download -> Text , compressed (o ficheiro é grande, o download pode demorar um pouco)
+- Se o download tiver sido em modo "compressed", extraír o ficheiro do zip.
+- Alterar o nome do ficheiro para `uniprot_scerevisiae.txt`
+- criar uma pasta de trabalho, onde irá ser desenvolvido o programa e mover o ficheiro `uniprot_scerevisiae.txt` para essa pasta.
+
+## Programa completo
+
+Comecemos por mostrar o programa completo e o respetivo output:
+
+<div class="python_box">
+``` python3
+# Counts of the several types of PTMs in proteins of S. cerevisiae
+
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+data_filename = 'uniprot_scerevisiae.txt'
+
+def read_Uniprot_text(filename):
+    """Reads a UniProt text file and splits into a list of protein records."""
+    
+    with open(filename) as uniprot_file:
+        whole_file = uniprot_file.read()
+
+    records = whole_file.split('//\n')
+    
+    # remove empty records
+    records = [p for p in records if len(p) != 0]
+    # since we know that it is the last one only...
+    # records.pop(-1)
+    return records
+
+prots = read_Uniprot_text(data_filename)
+
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
+
+def extract_info(record):
+    """Reads a UniProt text record and returns a dict with extrated information.
+    
+    The returned dict has the following fields:
+    
+    'ac': the UniProt Access Id,
+    'n': the sequence length, 
+    'PTMs': a dictionary that associates the location of PTMs (int, as keys)
+               with the name of the PTM.
+    """
+    
+    IDline, ACline, *otherlines = record.splitlines()
+    
+    # Extract UniProt AC and number of amino acids
+    # Example (first two lines):
+    # ID   AB140_YEAST             Reviewed;         628 AA.
+    # AC   Q08641; D6W2U2; Q08644;
+    
+    ac = ACline.split(';',1)[0].split()[1]
+    n = int(IDline.split()[3])
+    
+    # Extract FT lines and process PTM information
+    #
+    # Example of phosphorylation lines
+    # FT   MOD_RES         342
+    # FT                   /note="Phosphoserine"
+    # FT                   /evidence="ECO:0000244|PubMed:18407956,
+    # FT                   ECO:0000244|PubMed:19779198"
+    
+    PTMs = {}
+    
+    for i, line in enumerate(otherlines):
+
+        if line.startswith('FT   MOD_RES'):
+            FTcode, MOD_RES, loc, *rest = line.split()
+            
+            nextline = otherlines[i+1]
+            PTMtype = nextline.split('/note=')[1]
+            PTMtype = PTMtype.strip('"')
+            PTMtype = PTMtype.split(';')[0]
+            
+            PTMs[loc] = PTMtype
+        
+    # Return dictionary of extracted information
+    return {'ac': ac, 'n': n, 'PTMs': PTMs}
+
+all_prots = [extract_info(p) for p in prots]
+
+PTM_counts = {}
+for p in all_prots:
+    PTMs = p['PTMs']
+    
+    # just skip if no PTMs
+    if len(PTMs) == 0:
+        continue
+        
+    for ptmtype in PTMs.values():
+        if ptmtype in PTM_counts:
+            PTM_counts[ptmtype] = PTM_counts[ptmtype] + 1
+        else:
+            PTM_counts[ptmtype] = 1
+
+# sort function returning the second element of a pair of values
+def second(pair):
+    return pair[1]
+
+# sort items, using second element (the counts) as key, decreasing order
+
+sorted_items = sorted(PTM_counts.items(), key=second, reverse=True)
+
+# the result of sorted is not actually a list,
+# but we can transform it into a list
+
+ordered_PTM_counts = list(sorted_items)
+
+# let's look at the results
+for PTMtype, count in ordered_PTM_counts:
+    print(PTMtype, count)
+
+# make a barplot, only for PTMs with count > 10
+sns.set(style="darkgrid")
+f, ax = plt.subplots(figsize=(6,9))
+
+x = [t for t,c in ordered_PTM_counts if c > 10]
+y = [c for t,c in ordered_PTM_counts if c > 10]
+
+bp = sns.barplot(y, x, orient='h', log=True, palette='tab10')
+plt.show()
+
+```
+</div>
+
+```
+The number of protein records in "uniprot_scerevisiae.txt" is 6049
+
+Phosphoserine 5170
+Phosphothreonine 1027
+N-acetylserine 325
+N-acetylmethionine 106
+Phosphotyrosine 55
+N6-(pyridoxal phosphate)lysine 46
+N-acetylalanine 37
+N6-acetyllysine 32
+Asymmetric dimethylarginine 26
+Cysteine methyl ester 23
+N6-methyllysine 22
+N6,N6,N6-trimethyllysine 17
+Omega-N-methylarginine 15
+N-acetylthreonine 12
+N6-succinyllysine 11
+N6,N6-dimethyllysine 6
+N6-butyryllysine 5
+N6-biotinyllysine 5
+N6-carboxylysine 4
+Phosphohistidine 4
+N5-methylglutamine 4
+N,N-dimethylproline 4
+N6-lipoyllysine 4
+O-(pantetheine 4'-phosphoryl)serine 3
+4-aspartylphosphate 3
+Lysine derivative 3
+Pyruvic acid (Ser) 3
+S-glutathionyl cysteine 3
+Hypusine 2
+Tele-8alpha-FAD histidine 2
+N6-malonyllysine 2
+N5-methylarginine 2
+N6-propionyllysine 2
+Leucine methyl ester 2
+3,4-dihydroxyproline 2
+N-acetylvaline 2
+N-formylmethionine 1
+Pros-8alpha-FAD histidine 1
+2,3-didehydroalanine (Cys) 1
+N6-glutaryllysine 1
+Diphthamide 1
+Pros-methylhistidine 1
+Cysteine sulfinic acid (-SO2H) 1
+S-(dipyrrolylmethanemethyl)cysteine 1
+N,N,N-trimethylglycine 1
+Lysine methyl ester 1
+Dimethylated arginine 1
+Thiazolidine linkage to a ring-opened DNA abasic 1
+1-thioglycine 1
+S-methylcysteine 1
+```
+
+![](images/ptm_counts.png)
+
+De uma forma sumária, o programa realiza as seguintes *tarefas*:
+
+- leitura do ficheiro `uniprot_scerevisiae.txt` para uma *string* e separação da informação por proteína, criando a
+lista `prots`
+- Extração da informação, criando uma lista de dicionários, `all_prots`, em que cada dicionário tem o número de acesso, comprimento da proteína e tabela de PTMs
+- Contagem dos diferentes tipos de PTM, ordenando as contagens por ordem decrescente
+- Apresentação dos resultados, incluíndo um gráfico de barras
+
+As duas primeiras tarefas são implementadas em funções.
+
+Para o gráfico, são usados dois módulos de criação de gráficos da linguagem Python: `matplotlib`e `seaborn`. Eles são importados no início do programa. É prática comum que os `import`s sejam feitos no início do programa.
+
+Vejamos agora as várias partes:
+
+## Leitura do ficheiro e separação da informação por proteína
+
+Para o programa funcionar, o ficheiro `uniprot_scerevisiae.txt` deve estar na mesma pasta que o programa.
+
+Podemos começar por ler todo o seu conteúdo para uma *string*:
+
+<div class="python_box">
+``` python3
+data_filename = 'uniprot_scerevisiae.txt'
+
+with open(filename) as uniprot_file:
+    whole_file = uniprot_file.read()
+```
+</div>
+
+O passo seguinte será, na *string* `whole_file`, que contem toda a informação sobre todas as proteínas de levedura, separarmos a informação por proteína, pondo o resultado numa lista de *strings*, blocos de texto em que cada bloco diz respeito a uma proteína diferente.
+
+Para isso precisamos de saber o que "divide", o que separa no texto as proteínas umas das outras. Isto na perspetiva de usarmos a função `.split()` para separarmos a informação a partir de um separador, criando uma lista.
+
+Qual é o separador?
+
+Podemos abrir o ficheiro num editor de texto e reparamos
+nos pormenores da sua estrutura.
+
+Depressa nos apercebemos que existe uma marca para separar a informação de diferentes proteínas:
+
+```
+...
+...
+FT   CARBOHYD    103    103       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+SQ   SEQUENCE   411 AA;  48455 MW;  91676D56AC053F3C CRC64;
+     MTSATDKSID RLVVNAKTRR RNSSVGKIDL GDTVPGFAAM PESAASKNEA KKRMKALTGD
+     SKKDSDLLWK VWFSYREMNY RHSWLTPFFI LVCVYSAYFL SGNRTESNPL HMFVAISYQV
+     DGTDSYAKGI KDLSFVFFYM IFFTFLREFL MDVVIRPFTV YLNVTSEHRQ KRMLEQMYAI
+     FYCGVSGPFG LYIMYHSDLW LFKTKPMYRT YPVITNPFLF KIFYLGQAAF WAQQACVLVL
+     QLEKPRKDYK ELVFHHIVTL LLIWSSYVFH FTKMGLAIYI TMDVSDFFLS LSKTLNYLNS
+     VFTPFVFGLF VFFWIYLRHV VNIRILWSVL TEFRHEGNYV LNFATQQYKC WISLPIVFVL
+     IAALQLVNLY WLFLILRILY RLIWQGIQKD ERSDSDSDES AENEESKEKC E
+//
+ID   MUD2_YEAST              Reviewed;         527 AA.
+AC   P36084; D6VXL2;
+DT   01-JUN-1994, integrated into UniProtKB/Swiss-Prot.
+DT   16-AUG-2004, sequence version 3.
+DT   13-FEB-2019, entry version 153.
+DE   RecName: Full=Splicing factor MUD2;
+...
+...
+```
+
+!!! info "Informação"
+    No formato *Uniprot txt* o separador que aparece entre a informação sobre proteínas distintas é `//` numa
+    linha.
+
+    Não deve existir mais nada nessa linha, o que significa que o separador é, na realidade, `//` seguido de mudança de linha, isto é, `//\n` 
+
+Portanto, podemos dividir todo o ficheiro em blocos,
+indicando `//\n` na função `.split()`:
+
+<div class="python_box">
+``` python3
+data_filename = 'uniprot_scerevisiae.txt'
+
+with open(filename) as uniprot_file:
+    whole_file = uniprot_file.read()
+
+records = whole_file.split('//\n')
+```
+</div>
+
+Podemos ver se resultou.
+
+Como `records`, o nome dado ao resultado de `split('//\n')` é uma lista, podemos ver o elemento 0, por exemplo:
+
+<div class="python_box">
+``` python3
+data_filename = 'uniprot_scerevisiae.txt'
+
+with open(filename) as uniprot_file:
+    whole_file = uniprot_file.read()
+
+records = whole_file.split('//\n')
+
+print(records[0])
+```
+</div>
+
+```
+D   AB140_YEAST             Reviewed;         628 AA.
+AC   Q08641; D6W2U2; Q08644;
+DT   26-SEP-2001, integrated into UniProtKB/Swiss-Prot.
+DT   23-JAN-2007, sequence version 3.
+DT   13-FEB-2019, entry version 162.
+DE   RecName: Full=tRNA(Thr) (cytosine(32)-N(3))-methyltransferase;
+DE            EC=2.1.1.268 {ECO:0000269|PubMed:21518804, ECO:0000269|PubMed:21518805};
+DE   AltName: Full=Actin-binding protein of 140 kDa;
+DE   AltName: Full=tRNA methyltransferase of 140 kDa;
+GN   Name=ABP140; Synonyms=TRM140; OrderedLocusNames=YOR239W;
+GN   ORFNames=YOR240W;
+OS   Saccharomyces cerevisiae (strain ATCC 204508 / S288c) (Baker's yeast).
+OC   Eukaryota; Fungi; Dikarya; Ascomycota; Saccharomycotina;
+OC   Saccharomycetes; Saccharomycetales; Saccharomycetaceae; Saccharomyces.
+OX   NCBI_TaxID=559292;
+...
+...
+```
+
+Parece ter resultado.
+
+Ainda para confirmar podemos ver o último elemento da lista (posição -1):
+
+<div class="python_box">
+``` python3
+data_filename = 'uniprot_scerevisiae.txt'
+
+with open(filename) as uniprot_file:
+    whole_file = uniprot_file.read()
+
+records = whole_file.split('//\n')
+
+print(records[-1])
+```
+</div>
+
+```
+
+```
+
+Desta vez nada apareceu como resultado da função `print()`.
+
+Porquê?
+
+É apenas um pequeno problema que resulta do facto do ficheiro acabar com uma linha contendo `//`. (Por favor confirmar)
+
+Isto faz com que o resultado da função `split()` tenha, no final da lista, uma *string* vazia.
+
+Esta *string* vazia deve ser retirada do fim da lista.
+
+Podemos usar uma lista em compreensão para a retirar:
+
+    records = [p for p in records if len(p) != 0]
+
+isto é, mantemos todos os records, desde que o seu comprimento seja maior do que 0, isto é, não seja uma lista vazia.
+
+Outra possibiliadade é usar a função `pop()`de listas que
+retira o elemento que está numa posição:
+
+    records.pop(-1)
+
+Esta "tarefa" pode ser posta numa função, uma vez que é uma parte lógica do programa (ler o ficheiro e dividir em blocos respeitantes a diferentes proteínas).
+
+Podemos definir a função aplicar a função logo de seguida.
+
+Como curiosidade, podemos saber qual a dimensão deste proteoma anotado da levedura:
+
+<div class="python_box">
+``` python3
+def read_Uniprot_text(filename):
+    """Reads a UniProt text file and splits into a list of protein records."""
+    
+    with open(filename) as uniprot_file:
+        whole_file = uniprot_file.read()
+
+    records = whole_file.split('//\n')
+    
+    # remove empty records
+    records = [p for p in records if len(p) != 0]
+    # since we know that it is the last one only...
+    # records.pop(-1)
+    return records
+
+prots = read_Uniprot_text(data_filename)
+
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+```
+</div>
+
+```
+The number of protein records in "uniprot_scerevisiae.txt" is 6049
+```
+
+## Extração da informação
+
+O interesse agora é extrair a informação pertinente de cada
+proteína.
+
+Estamos interessados em informações sobre as PTMs. Já vamos ver onde essa informação se encontra e em que formato está. Mas para treinar a extração da informação, podemos começar por tentar obter, para cada proteína, o seu número de acesso Uniprot, umm identificador único para cada proteína e o número de aminoácidos da proteína.
+
+A ideia é conseguir criar um dicionário com estes dois "pedaços" de informação.
+
+Vejamos melhor a primeira proteína da lista, `prots[0]`:
+
+<div class="python_box">
+``` python3
+# NOTA: continuação do programa anterior!
+print(prots[0])
+```
+</div>
+
+```
+ID   AGP2_YEAST              Reviewed;         596 AA.
+AC   P38090; D6VQC9;
+DT   01-OCT-1994, integrated into UniProtKB/Swiss-Prot.
+DT   01-OCT-1994, sequence version 1.
+DT   22-APR-2020, entry version 155.
+DE   RecName: Full=General amino acid permease AGP2;
+GN   Name=AGP2; OrderedLocusNames=YBR132C; ORFNames=YBR1007;
+OS   Saccharomyces cerevisiae (strain ATCC 204508 / S288c) (Baker's yeast).
+OC   Eukaryota; Fungi; Dikarya; Ascomycota; Saccharomycotina; Saccharomycetes;
+OC   Saccharomycetales; Saccharomycetaceae; Saccharomyces.
+OX   NCBI_TaxID=559292;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+RC   STRAIN=ATCC 204508 / S288c;
+RX   PubMed=8091856; DOI=10.1002/yea.320100002;
+...
+...
+```
+
+Um primeiro lugar devemos reparar que as linhas começam com um conjunto de duas letras que identifica o tipo de informação que está no resto da linha. Por exemplo, `GN` é a linha com *Gene name*, `AC` é uma linha contendo números de acesso, etc.
+
+O documentação da UniProt contem uma descrição detalhada com estes códigos.
+
+No final de cada bloco de uma proteína encontra-se a sua sequência de amino-ácidos. São as únicas linhas sem código de duas letras (embora a linha introdutória da sequência contenha o código `SQ`):
+
+```
+...
+...
+SQ   SEQUENCE   440 AA;  49072 MW;  DCE9E5C434D51201 CRC64;
+     MESQQLSQHS PISHGSACAS VTSKEVHTNQ DPLDVSASKT EECEKASTKA NSQQTTTPAS
+     SAVPENPHHA SPQTAQSHSP QNGPYPQQCM MTQNQANPSG WSFYGHPSMI PYTPYQMSPM
+     YFPPGPQSQF PQYPSSVGTP LSTPSPESGN TFTDSSSADS DMTSTKKYVR PPPMLTSPND
+     FPNWVKTYIK FLQNSNLGGI IPTVNGKPVR QITDDELTFL YNTFQIFAPS QFLPTWVKDI
+     LSVDYTDIMK ILSKSIEKMQ SDTQEANDIV TLANLQYNGS TPADAFETKV TNIIDRLNNN
+     GIHINNKVAC QLIMRGLSGE YKFLRYTRHR HLNMTVAELF LDIHAIYEEQ QGSRNSKPNY
+     RRNPSDEKND SRSYTNTTKP KVIARNPQKT NNSKSKTARA HNVSTSNNSP STDNDSISKS
+     TTEPIQLNNK HDLHLRPETY
+```
+
+Voltando ao exemplo do princípio de cada bloco, as duas primeiras linhas têm a informação que precisamos: o número de acesso e o comprimento da proteína:
+
+```
+ID   AGP2_YEAST              Reviewed;         596 AA.
+AC   P38090; D6VQC9;
+...
+...
+```
+
+Vamos tentar extraír para um dicionário o número de aminoácidos e o número de acesso da primeira proteína da lista obtida anteriormente.
+
+Uma vez que a informação está claramente organizada linha a linha, então podemos para a primeira proteína, começar por separar o bloco de texto por linhas e obter a primeira e a segunda linhas:
+
+<div class="python_box">
+``` python3
+# NOTA: continuação do programa anterior!
+
+record = prots[0] # mais tarde aplicaremos a todos os blocos
+
+lines = record.splitlines()
+
+lineID = lines[0]
+lineAC = lines[1]
+print(lineID)
+print(lineAC)
+
+```
+</div>
+
+```
+ID   AGP2_YEAST              Reviewed;         596 AA.
+AC   P38090; D6VQC9;
+```
+
+Funciona. Vamos agora extraír o que interessa a partir destas linhas.
+
+Se separarmos os elementos da primeira linha pelos espaços o número de aminoácidos está na posição 3! 
+
+O número de acesso está na linha `AC`. O primeiro identificador é o mais atual, os outros são identificadores antigos. A estratégia será aqui separar pelos `;` e pelos espaços.
+
+<div class="python_box">
+``` python3
+# NOTA: continuação do programa anterior!
+
+record = prots[0] # mais tarde aplicaremos a todos os blocos
+
+lines = record.splitlines()
+
+lineID = lines[0]
+lineAC = lines[1]
+
+partsID = lineID.split()
+n = partsID[3]
+n = int(n) # para forçar que seja um número inteiro
+
+partsAC = lineAC.split(';')
+ac = partsAC[0] # isto é  AC   P38090, é preciso tirar a parte AC
+ac = ac.split()
+ac = ac[1]
+
+resultado = {'n': n, 'ac':ac}
+
+print(resultado)
+```
+</div>
+
+```
+{'n': 596, 'ac': 'P38090'}
+```
+Resultou. Criámos um dicionário com as duas partes que nos interessavam extraídas.
+
+Desde já um melhoramento: Poddemos aplicar muitas funções de *string* do Python em cadeia e ainda combinar com a indexação. isto pode-nos poupar o uso de nomes intermédios.
+
+Vejamos uma alternativa:
+
+
+<div class="python_box">
+``` python3
+# NOTA: continuação do programa anterior!
+
+record = prots[0] # mais tarde aplicaremos a todos os blocos
+
+lines = record.splitlines()
+
+lineID = lines[0]
+lineAC = lines[1]
+
+ac = lineAC.split(';')[0].split()[1]
+n = int(lineID.split()[3])
+
+resultado = {'n': n, 'ac':ac}
+
+print(resultado)
+```
+</div>
+
+```
+{'n': 596, 'ac': 'P38090'}
+```
+
+Vamos dissecar o processo de obter o `ac`.
+
+    ac = lineAC.split(';')[0].split()[1]
+
+*Dividir a linha `lineAC` por `;`, aproveitar o fragmento 0 e dividir este por espaços, aproveitar o fragmento 1*
+
+Podemos agora criar uma função que possa ser aplicada a qualquer bloco de texto com a informação sobre uma proteína ( e não apenas à proteína 0).
+
+Vejamos todo o programa até agora, já testando a nova função com a proteína 0 da lista `prots` resultantes da primeira função:
+
+<div class="python_box">
+``` python3
+data_filename = 'uniprot_scerevisiae.txt'
+
+def read_Uniprot_text(filename):
+    """Reads a UniProt text file and splits into a list of protein records."""
+    
+    with open(filename) as uniprot_file:
+        whole_file = uniprot_file.read()
+
+    records = whole_file.split('//\n')
+    
+    # remove empty records
+    records = [p for p in records if len(p) != 0]
+    # since we know that it is the last one only...
+    # records.pop(-1)
+    return records
+
+prots = read_Uniprot_text(data_filename)
+
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
+def extract_info(record):
+    
+    lines = record.splitlines()
+
+    IDline = lines[0]
+    ACline = lines[1]
+    
+    # Extract UniProt AC and number of amino acids
+    # Example (first two lines):
+    # ID   AB140_YEAST             Reviewed;         628 AA.
+    # AC   Q08641; D6W2U2; Q08644;
+    
+    ac = ACline.split(';',1)[0].split()[1]
+    n = int(IDline.split()[3])
+    
+    # Return dictionary of extracted information
+    return {'ac': ac, 'n': n}
+
+print('First protein:')
+print(extract_info(prots[0]))
+```
+</div>
+```
+The number of protein records in "uniprot_scerevisiae.txt" is 6049
+First protein:
+{'ac': 'P38090', 'n': 596}
+```
+
+Podemos agora aplicar a função a todas os blocos, com uma lista em compreensão.
+
+Vamos chamar ao resultado `all_prots`. Será uma **lista de dicionários**.
+
+O programa, até este ponto será:
+
+<div class="python_box">
+``` python3
+data_filename = 'uniprot_scerevisiae.txt'
+
+def read_Uniprot_text(filename):
+    """Reads a UniProt text file and splits into a list of protein records."""
+    
+    with open(filename) as uniprot_file:
+        whole_file = uniprot_file.read()
+
+    records = whole_file.split('//\n')
+    
+    # remove empty records
+    records = [p for p in records if len(p) != 0]
+    # since we know that it is the last one only...
+    # records.pop(-1)
+    return records
+
+prots = read_Uniprot_text(data_filename)
+
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
+def extract_info(record):
+    
+    lines = record.splitlines()
+
+    IDline = lines[0]
+    ACline = lines[1]
+    
+    # Extract UniProt AC and number of amino acids
+    # Example (first two lines):
+    # ID   AB140_YEAST             Reviewed;         628 AA.
+    # AC   Q08641; D6W2U2; Q08644;
+    
+    ac = ACline.split(';',1)[0].split()[1]
+    n = int(IDline.split()[3])
+    
+    # Return dictionary of extracted information
+    return {'ac': ac, 'n': n}
+
+all_prots = [extract_info(p) for p in prots]
+
+# see the first 3, as a test
+for p in all_prots[:4]:
+    print('------------------------------------------')
+    print(p)
+```
+</div>
+
+```
+The number of protein records in "uniprot_scerevisiae.txt" is 6049
+------------------------------------------
+{'ac': 'P38090', 'n': 596}
+------------------------------------------
+{'ac': 'Q12001', 'n': 544}
+------------------------------------------
+{'ac': 'P53309', 'n': 568}
+------------------------------------------
+{'ac': 'P40467', 'n': 964}
+```
+
+## Extração da informação: PTMs
+
+Vamos agora modificar a função `extract_info()` com a informação que possa existir no ficheiro da Uniprot sobre PTM.
+
+Aqui está uma pequena parte do meio do ficheiro:
+
+```
+FT   MOD_RES         223
+FT                   /note="Phosphoserine"
+FT                   /evidence="ECO:0000244|PubMed:17330950,
+FT                   ECO:0000244|PubMed:18407956, ECO:0000244|PubMed:19779198"
+FT   MOD_RES         228
+FT                   /note="Phosphoserine"
+FT                   /evidence="ECO:0000244|PubMed:19779198"
+FT   MOD_RES         232
+FT                   /note="Phosphothreonine"
+FT                   /evidence="ECO:0000244|PubMed:19779198"
+FT   MOD_RES         244
+FT                   /note="Phosphothreonine"
+FT                   /evidence="ECO:0000244|PubMed:19779198"
+FT   MOD_RES         570
+FT                   /note="Phosphothreonine; by PKH1 or PKH2"
+```
+
+Podemos consultar a [documentação da UniProt sobre as linhas FT](http://web.expasy.org/docs/userman.html#FT_keys).
+
+Parece evidente que a informação sobre resíduos modificados está em linhas começadas por `FT   MOD_RES` e nas linhas seguintes.
+
+Na linha `FT   MOD_RES` está a posição do aminoácido modificado.
+
+Na linha imediatamente a seguir está `/note=` e o nome da PTM entre `"`. E ainda, por vezes está o nome da PTM e, a seguir a `;` alguma informação adicional.
+
+Para cada proteína (na função `extract_info()`) queremos
+
+- passar por todas as linhas começadas por `FT   MOD_RES`, extraír daí a posição da PTM
+- na linha seguinte, obter o que está a seguir a `/note=`
+- tirar as `"`
+- separar por `;`
+- aproveitar a primeira parte. Isto será o nome da PTM.
+- finalmente, criar um dicionário com associação entre a posição e o nome da PTM, para todas as PTMs
+- e incluír este dicionário no return da função `extract_info()`
+
+Como fazer isto por programação?
+
+Temos vários problemas para resolver:
+
+-Como passar por todas as linhas respeitantes a uma proteína e procurar as que contêm informação sobre PTM? (fácil, `for` e ver se começam por `FT   MOD_RES`)
+- Como extraír a posição? (fácil: separar por espaços e usar o elemento na posição 2)
+- Como ir para a linha seguinte? (menos fácil, mas `enumerate()` permite ter acesso à posição da linha que estamos a tratar, logo também a posição da linha seguinte)
+- Como obter o nome da PTM? (fácil, mais uns `split()`s)
+
+Afinal é quase tudo fácil.
+
+Vamos então modificar a função `extract_info()`:
+
+<div class="python_box">
+``` python3
+# ... NOTA: continuação do programa a partir
+# da função read_Uniprot_text(filename)
+
+prots = read_Uniprot_text(data_filename)
+
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
+def extract_info(record):
+    """Reads a UniProt text record and returns a dict with extrated information.
+    
+    The returned dict has the following fields:
+    
+    'ac': the UniProt Access Id,
+    'n': the sequence length, 
+    'PTMs': a dictionary that associates the location of PTMs (int, as keys)
+               with the name of the PTM.
+    """
+    
+    lines = record.splitlines()
+
+    IDline = lines[0]
+    ACline = lines[1]
+    
+    # Extract UniProt AC and number of amino acids
+    # Example (first two lines):
+    # ID   AB140_YEAST             Reviewed;         628 AA.
+    # AC   Q08641; D6W2U2; Q08644;
+    
+    ac = ACline.split(';',1)[0].split()[1]
+    n = int(IDline.split()[3])
+    
+    # Extract FT lines and process PTM information
+    #
+    # Example of phosphorylation lines
+    # FT   MOD_RES         342
+    # FT                   /note="Phosphoserine"
+    # FT                   /evidence="ECO:0000244|PubMed:18407956,
+    # FT                   ECO:0000244|PubMed:19779198"
+
+    # NOTE: there are 3 spaces between FT and MOD_RES
+    
+    PTMs = {}
+    
+    for i, line in enumerate(lines):
+
+        if not line.startswith('FT   MOD_RES'):
+            # skip line if does not start with FT   MOD_RES
+            continue
+
+        loc = line.split()[2]
+
+        nextline = lines[i+1] # here enumerate() is very usefull
+
+        PTMtype = nextline.split('/note=')[1]
+        PTMtype = PTMtype.strip('"') # strip() takes out the ""
+        PTMtype = PTMtype.split(';')[0] # the name of the PTM is before the ;
+            
+        # add to dicionary PTMs
+        PTMs[loc] = PTMtype
+        
+    # Return dictionary of extracted information
+    # including the PTMs dicionary
+    return {'ac': ac, 'n': n, 'PTMs': PTMs}
+
+all_prots = [extract_info(p) for p in prots]
+
+# see the first 4, as a test
+for p in all_prots[:5]:
+    print('------------------------------------------')
+    print(p)
+```
+</div>
+
+```
+The number of protein records in "uniprot_scerevisiae.txt" is 6049
+------------------------------------------
+{'ac': 'P38090', 'n': 596, 'PTMs': {}}
+------------------------------------------
+{'ac': 'Q12001', 'n': 544, 'PTMs': {}}
+------------------------------------------
+{'ac': 'P53309', 'n': 568, 'PTMs': {'449': 'Phosphothreonine'}}
+------------------------------------------
+{'ac': 'P40467', 'n': 964, 'PTMs': {'166': 'Phosphoserine', '186': 'Phosphoserine', '963': 'Phosphoserine'}}
+```
+
+Aparentemente nem todas as proteínas têm anotações sobre PTMs.
+
+Note-se a utilidade da função `enumerate()`: podemos ao mesmo tempo passar com o comando `for` pelas
+linhas usando o nome `line` e pelas **posições** das linhas, usando `i` (não esquecer que `lines` é uma lista de linhas).
+
+    for i, line in enumerate(lines):
+
+isto foi útil para obter facilmente a "linha seguinte":
+
+    nextline = lines[i+1]
+
+Já se conseguiu muito: agora temos uma lista de 6049 dicionários em que cada um deles tem o número de acesso, o comprimento da proteína e um dicionário com as localizações e o nome de cada PTM da proteína.
+
+O próximo passo é contar as PTM de cada tipo, listar e fazer um gráfico de barras.
+
+**TO BE CONTINUED...**
+
