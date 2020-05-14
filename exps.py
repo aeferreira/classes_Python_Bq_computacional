@@ -1,9 +1,10 @@
-print('tabela de raÃ­zes quadradas')
+primeiro, *lixo, antepenúltimo, penúltimo, último = [7, 12, 365, 1, 3, 5, 7, 9, 11]
 
-nums = [1,2,3,4,5,6,7,8,9,10]
+print(primeiro)
+print(antepenúltimo)
+print(penúltimo)
+print(último)
 
-for n in nums:
-    root = n**0.5
-    print(n, root)
+print(lixo)
 
-print('Fim do programa!')
+

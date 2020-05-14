@@ -413,6 +413,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#interludio-atribuicoes-multiplas-com" class="md-nav__link">
+    Interlúdio: atribuições múltiplas com *
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contagem-dos-tipos-de-ptm" class="md-nav__link">
+    Contagem dos tipos de PTM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graficos" class="md-nav__link">
+    Gráficos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programa-completo_1" class="md-nav__link">
+    Programa completo
+  </a>
+  
+</li>
+      
       
       
       
@@ -523,6 +551,34 @@
         <li class="md-nav__item">
   <a href="#extracao-da-informacao-ptms" class="md-nav__link">
     Extração da informação: PTMs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interludio-atribuicoes-multiplas-com" class="md-nav__link">
+    Interlúdio: atribuições múltiplas com *
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contagem-dos-tipos-de-ptm" class="md-nav__link">
+    Contagem dos tipos de PTM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graficos" class="md-nav__link">
+    Gráficos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programa-completo_1" class="md-nav__link">
+    Programa completo
   </a>
   
 </li>
@@ -1296,7 +1352,685 @@ linhas usando o nome <code>line</code> e pelas <strong>posições</strong> das l
 
 <p>Já se conseguiu muito: agora temos uma lista de 6049 dicionários em que cada um deles tem o número de acesso, o comprimento da proteína e um dicionário com as localizações e o nome de cada PTM da proteína.</p>
 <p>O próximo passo é contar as PTM de cada tipo, listar e fazer um gráfico de barras.</p>
-<p><strong>TO BE CONTINUED...</strong></p>
+<h2 id="interludio-atribuicoes-multiplas-com">Interlúdio: atribuições múltiplas com *<a class="headerlink" href="#interludio-atribuicoes-multiplas-com" title="Permanent link">&para;</a></h2>
+<p>Antes de passarmos à fase seguinte, existe um pormenor da atribuição de nomes que pode ser útil. Trata-se da atribuição
+múltipla de nomes com a opção de utilizar <code>*</code> para captar o "restante" de uma coleção.</p>
+<p>Vejamos um pequeno exemplo de atribuições múltiplas, uma técnica já usada em problemas anteriores:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># atribuição múltipla</span>
+
+<span class="n">m</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># atribuição múltipla a partir dos</span>
+<span class="c1"># elementos de uma lista</span>
+
+<span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>12 365
+7 12 365
+</pre></div>
+
+<p>Aqui mostra-se o facto de uma atribuição poder ser feita à custa dos elementos
+de uma lista.</p>
+<p>Para todos os efeitos, conseguimos assim atribuír nomes a todos
+os elementos de uma lista:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span>
+
+<span class="c1"># é equivalente a</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+
+<p>Nesta situação, é possível usar, do lado esquerdo do sinal de igual, um <code>*</code>
+como prefixo de um dos nomes para <strong>captar</strong> um conjunto de elementos restantes nas atribuições, na forma de
+uma lista mais pequena.</p>
+<p>O melhor é ver um exemplo:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">tudo_o_resto</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tudo_o_resto</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>7
+12
+365
+[1, 3, 5, 7, 9, 11]
+</pre></div>
+
+<p>Neste exemplo, pelo facto de termos usado um <code>*</code> antes do nome <code>tudo_o_resto</code>
+fez com este nome fosse atribuído à <em>parte restante</em> da lista que serviu de atribuição.</p>
+<div class="admonition tip">
+<p class="admonition-title">Dica</p>
+<p>Esta atribuição múltipla com <code>*</code> é muito útil quando não sabemos
+exatamente qual o comprimento da lista que fornece os valores e estamos
+interessados apenas em alguns dos primeiros valores.</p>
+<p>O nome que é usado com <code>*</code> como prefixo é sempre atribuído a uma lista.</p>
+<p>Esta pode ter apenas um elemento ou até uma lista vazia.</p>
+</div>
+<p>Mas este mecanismo pode até ser usado sem ser no nome final:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">o_meio</span><span class="p">,</span> <span class="n">ultimo</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">o_meio</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ultimo</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>7
+12
+365
+[1, 3, 5, 7, 9]
+11
+</pre></div>
+
+<p>Um outro exemplo:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="o">*</span><span class="n">lixo</span><span class="p">,</span> <span class="n">antepenúltimo</span><span class="p">,</span> <span class="n">penúltimo</span><span class="p">,</span> <span class="n">último</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">antepenúltimo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">penúltimo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">último</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>7
+9
+11
+</pre></div>
+
+<p>E ainda outro...</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">primeiro</span><span class="p">,</span> <span class="o">*</span><span class="n">lixo</span><span class="p">,</span> <span class="n">antepenúltimo</span><span class="p">,</span> <span class="n">penúltimo</span><span class="p">,</span> <span class="n">último</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">primeiro</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">antepenúltimo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">penúltimo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">último</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lixo</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>7
+7
+9
+11
+[12, 365, 1, 3, 5]
+</pre></div>
+
+<p>Este mecanismo pode-nos ajudar a simplificar um pouco alguns passos da função
+<code>extract_info()</code>:</p>
+<p>Em vez de </p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">lines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="n">IDline</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ACline</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+
+<p>Podemos escrever apenas</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">IDline</span><span class="p">,</span> <span class="n">ACline</span><span class="p">,</span> <span class="o">*</span><span class="n">otherlines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+</pre></div>
+</div>
+
+<p>A função <code>.splitlines()</code> gera uma lista, logo podemos imediatamente usar
+uma atribuição múltipla para atribuír nomes a várias linhas que estejamos interessados.</p>
+<p>Note-se que <code>otherlines</code> seria um nome de uma lista contendo todas as linhas
+menos as duas primeiras. O que significa que, mais à frente, quando procuramos
+linhas começadas por <code>FT</code>, devemos fazer</p>
+<div class="codehilite"><pre><span></span><code> for line in otherlines:
+</code></pre></div>
+
+
+<div class="admonition question">
+<p class="admonition-title">problema</p>
+<p>Como poderíamos substituír a obtenção de <code>n</code> nesta parte do program</p>
+<p><div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div></p>
+<p>por uma atribuição múltipla para <em>isolar</em> o <code>n</code> no meio dos outros
+elementos na mesma linha?</p>
+<p>Repare que a linha <code>ID</code> tem o seguinte aspeto:</p>
+<div class="codehilite"><pre><span></span>ID   AB140_YEAST             Reviewed;         628 AA.
+</pre></div>
+
+</div>
+<details class="example"><summary>Solução</summary><p><div class="python_box">
+<div class="codehilite"><pre><span></span><span class="o">*</span><span class="n">useless</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">final</span> <span class="o">=</span> <span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div></p>
+<p>Não sendo mais compacto, é mais simples de entender</p>
+</details>
+<h2 id="contagem-dos-tipos-de-ptm">Contagem dos tipos de PTM<a class="headerlink" href="#contagem-dos-tipos-de-ptm" title="Permanent link">&para;</a></h2>
+<p>Vamos agora continuar o programa de forma contar os vários tipos de PTM que existem, já
+"extraídos" na lista de dicionários <code>all_prots</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Atenção</p>
+<p>Nos passos seguintes vamos ampliar o programa que já existe, até
+ao cálculo da lista <code>all_prots</code>. Esta lista já tem de existir para o resto
+funcionar.</p>
+</div>
+<p>Recorde-se que a lista <code>all_prots</code> contem dicionários.</p>
+<p>Cada dicionário contem
+uma chave <code>PTMs</code>, a qual tem como valor um outro dicionário que associa a posição
+de cada <em>PTM</em> ao seu nome.</p>
+<div class="codehilite"><pre><span></span><code>{&#39;ac&#39;: &#39;P40467&#39;, &#39;n&#39;: 964, &#39;PTMs&#39;: {&#39;166&#39;: &#39;Phosphoserine&#39;, &#39;186&#39;: &#39;Phosphoserine&#39;, &#39;963&#39;: &#39;Phosphoserine&#39;}}
+</code></pre></div>
+
+
+<p>Como contar as <em>PTM</em> em todas as proteínas pelo seu nome?</p>
+<p>Podemos criar, mais uma vez, um novo dicionário que associa o nome de cada <em>PTM</em> à sua contagem. Vamos chamar
+<code>PTM_counts</code>.</p>
+<p>A ideia será passar por toda a lista <code>all_prots</code> (com <code>for p in all_prots</code>),
+obter os nomes das <em>PTM</em> de cada proteína (com <code>p['PTMs'].values()</code>) e depois
+ir adicionando +1 à contagem existente no dicionário de contagens.</p>
+<p>Se ainda não existir o nome de uma PTM no dicionário, na primeira vez que é colocado
+deve ter o valor 1, a primeira contagem.</p>
+<p>Vejamos como fica:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">PTM_counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">:</span>
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;PTMs&#39;</span><span class="p">]</span>
+
+    <span class="c1"># just skip if no PTMs</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">PTMs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="k">for</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTMs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTM_counts</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># print(PTM_counts) </span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>{&#39;Phosphothreonine&#39;: 1027, &#39;Phosphoserine&#39;: 5170, &#39;Phosphotyrosine&#39;: 55, &#39;N-acetylserine&#39;: 325, &#39;N-formylmethionine&#39;: 1, &#39;N6-(pyridoxal phosphate)lysine&#39;: 46, &#39;Pros-8alpha-FAD histidine&#39;: 1, &#39;N-acetylmethionine&#39;: 106, &#39;N6-acetyllysine&#39;: 32, &#39;N-acetylthreonine&#39;: 12, &quot;O-(pantetheine 4&#39;-phosphoryl)serine&quot;: 3, &#39;N6-carboxylysine&#39;: 4, &#39;Cysteine methyl ester&#39;: 23, &#39;Asymmetric dimethylarginine&#39;: 26, &#39;Phosphohistidine&#39;: 4, &#39;Hypusine&#39;: 2, &#39;N-acetylalanine&#39;: 37, &#39;N6-butyryllysine&#39;: 5, &#39;N6-methyllysine&#39;: 22, &#39;N6-succinyllysine&#39;: 11, &#39;N6,N6-dimethyllysine&#39;: 6, &#39;Tele-8alpha-FAD histidine&#39;: 2, &#39;2,3-didehydroalanine (Cys)&#39;: 1, &#39;4-aspartylphosphate&#39;: 3, &#39;Lysine derivative&#39;: 3, &#39;N5-methylglutamine&#39;: 4, &#39;N6,N6,N6-trimethyllysine&#39;: 17, &#39;Omega-N-methylarginine&#39;: 15, &#39;N,N-dimethylproline&#39;: 4, &#39;N6-glutaryllysine&#39;: 1, &#39;N6-malonyllysine&#39;: 2, &#39;Diphthamide&#39;: 1, &#39;N6-biotinyllysine&#39;: 5, &#39;N5-methylarginine&#39;: 2, &#39;N6-lipoyllysine&#39;: 4, &#39;Pyruvic acid (Ser)&#39;: 3, &#39;Pros-methylhistidine&#39;: 1, &#39;S-glutathionyl cysteine&#39;: 3, &#39;Cysteine sulfinic acid (-SO2H)&#39;: 1, &#39;N6-propionyllysine&#39;: 2, &#39;S-(dipyrrolylmethanemethyl)cysteine&#39;: 1, &#39;N,N,N-trimethylglycine&#39;: 1, &#39;Lysine methyl ester&#39;: 1, &#39;Dimethylated arginine&#39;: 1, &#39;Leucine methyl ester&#39;: 2, &#39;3,4-dihydroxyproline&#39;: 2, &#39;N-acetylvaline&#39;: 2, &#39;Thiazolidine linkage to a ring-opened DNA abasic&#39;: 1, &#39;1-thioglycine&#39;: 1, &#39;S-methylcysteine&#39;: 1}
+</pre></div>
+
+<p>Funcionou, embora não seja a maneira mais elegante de apresentar as contagens.</p>
+<p>Na realidade o ideal seria ordenar por ordem decrescente, de forma a apresentar
+na forma de uma tabela em que saberíamos facilemnte quais as <em>PTM</em> mais abundantes e menos
+abundantes.</p>
+<p>O problema é que os dicionários não têm uma <strong>ordem</strong> dos seus elementos implícita.</p>
+<p>As listas têm e é fácil transformar um dicionário numa lista de pares (chave:valor):</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">PTM_counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">:</span>
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;PTMs&#39;</span><span class="p">]</span>
+
+    <span class="c1"># just skip if no PTMs</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">PTMs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="k">for</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTMs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTM_counts</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># print(PTM_counts) </span>
+
+<span class="n">list_PTM_counts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">PTM_counts</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">list_PTM_counts</span><span class="p">)</span> 
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[(&#39;Phosphothreonine&#39;, 1027), (&#39;Phosphoserine&#39;, 5170), (&#39;Phosphotyrosine&#39;, 55), (&#39;N-acetylserine&#39;, 325), (&#39;N-formylmethionine&#39;, 1), (&#39;N6-(pyridoxal phosphate)lysine&#39;, 46), (&#39;Pros-8alpha-FAD histidine&#39;, 1), (&#39;N-acetylmethionine&#39;, 106), (&#39;N6-acetyllysine&#39;, 32), (&#39;N-acetylthreonine&#39;, 12), (&quot;O-(pantetheine 4&#39;-phosphoryl)serine&quot;, 3), (&#39;N6-carboxylysine&#39;, 4), (&#39;Cysteine methyl ester&#39;, 23), (&#39;Asymmetric dimethylarginine&#39;, 26), (&#39;Phosphohistidine&#39;, 4), (&#39;Hypusine&#39;, 2), (&#39;N-acetylalanine&#39;, 37), (&#39;N6-butyryllysine&#39;, 5), (&#39;N6-methyllysine&#39;, 22), (&#39;N6-succinyllysine&#39;, 11), (&#39;N6,N6-dimethyllysine&#39;, 6), (&#39;Tele-8alpha-FAD histidine&#39;, 2), (&#39;2,3-didehydroalanine (Cys)&#39;, 1), (&#39;4-aspartylphosphate&#39;, 3), (&#39;Lysine derivative&#39;, 3), (&#39;N5-methylglutamine&#39;, 4), (&#39;N6,N6,N6-trimethyllysine&#39;, 17), (&#39;Omega-N-methylarginine&#39;, 15), (&#39;N,N-dimethylproline&#39;, 4), (&#39;N6-glutaryllysine&#39;, 1), (&#39;N6-malonyllysine&#39;, 2), (&#39;Diphthamide&#39;, 1), (&#39;N6-biotinyllysine&#39;, 5), (&#39;N5-methylarginine&#39;, 2), (&#39;N6-lipoyllysine&#39;, 4), (&#39;Pyruvic acid (Ser)&#39;, 3), (&#39;Pros-methylhistidine&#39;, 1), (&#39;S-glutathionyl cysteine&#39;, 3), (&#39;Cysteine sulfinic acid (-SO2H)&#39;, 1), (&#39;N6-propionyllysine&#39;, 2), (&#39;S-(dipyrrolylmethanemethyl)cysteine&#39;, 1), (&#39;N,N,N-trimethylglycine&#39;, 1), (&#39;Lysine methyl ester&#39;, 1), (&#39;Dimethylated arginine&#39;, 1), (&#39;Leucine methyl ester&#39;, 2), (&#39;3,4-dihydroxyproline&#39;, 2), (&#39;N-acetylvaline&#39;, 2), (&#39;Thiazolidine linkage to a ring-opened DNA abasic&#39;, 1), (&#39;1-thioglycine&#39;, 1), (&#39;S-methylcysteine&#39;, 1)]
+</pre></div>
+
+<p>Agora temos uma lista, mas não está ordenada por contagens.</p>
+<p>Como ordenar esta lista?</p>
+<p>Repare-se que os elementos da lista são pares de objetos e queremos ordenar a lista pelo
+<strong>segundo elemento do par de objetos</strong>.</p>
+<p>Existe uma função para gerar uma sequência de valores ordenados a partir de uma lista: a função
+<code>sorted()</code></p>
+<p>Mas esta função pode receber como argumento <code>key</code> uma <strong>outra função</strong> que indique
+qual exatamente o valor que deve ser ordenado, calculado a partir de cada elemento.</p>
+<p>Isto é útil, neste caso. Precisamos de uma função que "aponte" para o segundo elemento
+de cada par para que a função <code>sorted()</code> saiba o que fazer.</p>
+<p>Mas temos de escrever essa função.</p>
+<p>É uma função muito simples que recebe um par de valores
+e devolve o segundo elemento do par.</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># sort function returning the second element of a pair of values</span>
+<span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+
+<p>Vejamos como aplicar esta função:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># sort function returning the second element of a pair of values</span>
+<span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ordered_PTM_counts</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_PTM_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ordered_PTM_counts</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[(&#39;Phosphoserine&#39;, 5170), (&#39;Phosphothreonine&#39;, 1027), (&#39;N-acetylserine&#39;, 325), (&#39;N-acetylmethionine&#39;, 106), (&#39;Phosphotyrosine&#39;, 55), (&#39;N6-(pyridoxal phosphate)lysine&#39;, 46), (&#39;N-acetylalanine&#39;, 37), (&#39;N6-acetyllysine&#39;, 32), (&#39;Asymmetric dimethylarginine&#39;, 26), (&#39;Cysteine methyl ester&#39;, 23), (&#39;N6-methyllysine&#39;, 22), (&#39;N6,N6,N6-trimethyllysine&#39;, 17), (&#39;Omega-N-methylarginine&#39;, 15), (&#39;N-acetylthreonine&#39;, 12), (&#39;N6-succinyllysine&#39;, 11), (&#39;N6,N6-dimethyllysine&#39;, 6), (&#39;N6-butyryllysine&#39;, 5), (&#39;N6-biotinyllysine&#39;, 5), (&#39;N6-carboxylysine&#39;, 4), (&#39;Phosphohistidine&#39;, 4), (&#39;N5-methylglutamine&#39;, 4), (&#39;N,N-dimethylproline&#39;, 4), (&#39;N6-lipoyllysine&#39;, 4), (&quot;O-(pantetheine 4&#39;-phosphoryl)serine&quot;, 3), (&#39;4-aspartylphosphate&#39;, 3), (&#39;Lysine derivative&#39;, 3), (&#39;Pyruvic acid (Ser)&#39;, 3), (&#39;S-glutathionyl cysteine&#39;, 3), (&#39;Hypusine&#39;, 2), (&#39;Tele-8alpha-FAD histidine&#39;, 2), (&#39;N6-malonyllysine&#39;, 2), (&#39;N5-methylarginine&#39;, 2), (&#39;N6-propionyllysine&#39;, 2), (&#39;Leucine methyl ester&#39;, 2), (&#39;3,4-dihydroxyproline&#39;, 2), (&#39;N-acetylvaline&#39;, 2), (&#39;N-formylmethionine&#39;, 1), (&#39;Pros-8alpha-FAD histidine&#39;, 1), (&#39;2,3-didehydroalanine (Cys)&#39;, 1), (&#39;N6-glutaryllysine&#39;, 1), (&#39;Diphthamide&#39;, 1), (&#39;Pros-methylhistidine&#39;, 1), (&#39;Cysteine sulfinic acid (-SO2H)&#39;, 1), (&#39;S-(dipyrrolylmethanemethyl)cysteine&#39;, 1), (&#39;N,N,N-trimethylglycine&#39;, 1), (&#39;Lysine methyl ester&#39;, 1), (&#39;Dimethylated arginine&#39;, 1), (&#39;Thiazolidine linkage to a ring-opened DNA abasic&#39;, 1), (&#39;1-thioglycine&#39;, 1), (&#39;S-methylcysteine&#39;, 1)]
+</pre></div>
+
+<p>Agora sim, temos uma lista ordenada.</p>
+<p>Mas é muito mais elegante apresentar em linhas separadas:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># sort function returning the second element of a pair of values</span>
+<span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ordered_PTM_counts</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_PTM_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># let&#39;s look at the results</span>
+<span class="k">for</span> <span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>Phosphoserine 5170
+Phosphothreonine 1027
+N-acetylserine 325
+N-acetylmethionine 106
+Phosphotyrosine 55
+N6-(pyridoxal phosphate)lysine 46
+N-acetylalanine 37
+N6-acetyllysine 32
+Asymmetric dimethylarginine 26
+Cysteine methyl ester 23
+N6-methyllysine 22
+N6,N6,N6-trimethyllysine 17
+Omega-N-methylarginine 15
+N-acetylthreonine 12
+N6-succinyllysine 11
+N6,N6-dimethyllysine 6
+N6-butyryllysine 5
+N6-biotinyllysine 5
+N6-carboxylysine 4
+Phosphohistidine 4
+N5-methylglutamine 4
+N,N-dimethylproline 4
+N6-lipoyllysine 4
+O-(pantetheine 4&#39;-phosphoryl)serine 3
+4-aspartylphosphate 3
+Lysine derivative 3
+Pyruvic acid (Ser) 3
+S-glutathionyl cysteine 3
+Hypusine 2
+Tele-8alpha-FAD histidine 2
+N6-malonyllysine 2
+N5-methylarginine 2
+N6-propionyllysine 2
+Leucine methyl ester 2
+3,4-dihydroxyproline 2
+N-acetylvaline 2
+N-formylmethionine 1
+Pros-8alpha-FAD histidine 1
+2,3-didehydroalanine (Cys) 1
+N6-glutaryllysine 1
+Diphthamide 1
+Pros-methylhistidine 1
+Cysteine sulfinic acid (-SO2H) 1
+S-(dipyrrolylmethanemethyl)cysteine 1
+N,N,N-trimethylglycine 1
+Lysine methyl ester 1
+Dimethylated arginine 1
+Thiazolidine linkage to a ring-opened DNA abasic 1
+1-thioglycine 1
+S-methylcysteine 1
+</pre></div>
+
+<p>Agora sim, vemos que as fosforilações são as <em>PTM</em> mais prevalentes, pelo
+menos levando em conta as anotações na UniProtKB relativamente às proteínas 
+de levedura <em>S. cerevisiae</em>.</p>
+<p>Conseguimos extraír a informação em que estávamos interessados a partir de um
+ficheiro de texto que segue um formato rígido particular a um portal de Bioinformática.</p>
+<p>Note-se, no desenvolvimento deste programa, o papel essencial das coleções da linguagem Python,
+listas e dicionários, para armazenar a informação obtida e também o papel das funções
+associadas a <em>strings</em></p>
+<p>O programa todo até este ponto é o seguinte:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+
+<span class="k">def</span> <span class="nf">read_Uniprot_text</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reads a UniProt text file and splits into a list of protein records.&quot;&quot;&quot;</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+        <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># remove empty records</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">records</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># since we know that it is the last one only...</span>
+    <span class="c1"># records.pop(-1)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+<span class="n">prots</span> <span class="o">=</span> <span class="n">read_Uniprot_text</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of protein records in &quot;</span><span class="si">{</span><span class="n">data_filename</span><span class="si">}</span><span class="s1">&quot; is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prots</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">extract_info</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reads a UniProt text record and returns a dict with extrated information.</span>
+
+<span class="sd">    The returned dict has the following fields:</span>
+
+<span class="sd">    &#39;ac&#39;: the UniProt Access Id,</span>
+<span class="sd">    &#39;n&#39;: the sequence length, </span>
+<span class="sd">    &#39;PTMs&#39;: a dictionary that associates the location of PTMs (int, as keys)</span>
+<span class="sd">                with the name of the PTM.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">IDline</span><span class="p">,</span> <span class="n">ACline</span><span class="p">,</span> <span class="o">*</span><span class="n">otherlines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+    <span class="c1"># Extract UniProt AC and number of amino acids</span>
+    <span class="c1"># Example (first two lines):</span>
+    <span class="c1"># ID   AB140_YEAST             Reviewed;         628 AA.</span>
+    <span class="c1"># AC   Q08641; D6W2U2; Q08644;</span>
+
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">ACline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+
+    <span class="c1"># Extract FT lines and process PTM information</span>
+    <span class="c1">#</span>
+    <span class="c1"># Example of phosphorylation lines</span>
+    <span class="c1"># FT   MOD_RES         342</span>
+    <span class="c1"># FT                   /note=&quot;Phosphoserine&quot;</span>
+    <span class="c1"># FT                   /evidence=&quot;ECO:0000244|PubMed:18407956,</span>
+    <span class="c1"># FT                   ECO:0000244|PubMed:19779198&quot;</span>
+
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">otherlines</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;FT   MOD_RES&#39;</span><span class="p">):</span>
+            <span class="n">FTcode</span><span class="p">,</span> <span class="n">MOD_RES</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+            <span class="n">nextline</span> <span class="o">=</span> <span class="n">otherlines</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">nextline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/note=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="n">PTMs</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTMtype</span>
+
+    <span class="c1"># Return dictionary of extracted information</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ac&#39;</span><span class="p">:</span> <span class="n">ac</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;PTMs&#39;</span><span class="p">:</span> <span class="n">PTMs</span><span class="p">}</span>
+
+<span class="n">all_prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">extract_info</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">]</span>
+
+
+<span class="n">PTM_counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">:</span>
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;PTMs&#39;</span><span class="p">]</span>
+
+    <span class="c1"># just skip if no PTMs</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">PTMs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="k">for</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTMs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTM_counts</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="n">list_PTM_counts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">PTM_counts</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="c1"># sort function returning the second element of a pair of values</span>
+<span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ordered_PTM_counts</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_PTM_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<h2 id="graficos">Gráficos<a class="headerlink" href="#graficos" title="Permanent link">&para;</a></h2>
+<p>A tabela que conseguimos obter na secção anterior já é muito interessante.</p>
+<p>Ficámos a saber que a fosforilação de serinas tem 6049 anotações, enquanto que a
+<em>PTM</em> exótica S-metilcisteína tem uma única anotação (ela e outras 13).</p>
+<p>Mas um gráfico causaria muito mais impressão. Vamos fazer um gráfico de barras com as
+contagens de <em>PTM</em>.</p>
+<p>Para a linguagem Python existem vários módulos destinados a obter gráficos num
+program. Um dos mais conhecidos é o <code>matplotlib</code>, uma da "bibliotecas" gráficas
+mais versáteis e populares (e também um pouco intimidante) da linguagem Python.</p>
+<p>O <a href="https://matplotlib.org/"><em>site</em> oficial da matplotlib</a> dá uma ideia da versatilidade da
+biblioteca, tendo uma galeria extensa de exemplos.</p>
+<p>Uma outra biblioteca digna de nota é o projeto <a href="https://seaborn.pydata.org/">seaborn</a> que é
+baseado na <code>matplotlib</code> e inclui "melhoramentos" estéticos e novos tipos de gráficos, especialemnte da área da estatística.</p>
+<p>Ampliando o programa, vamos combinar os dois módulos, criando um gráfico de barras com as contagens
+da PTM, embora restringindo àquelas que têm pelo menos 10 contagens:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+
+<span class="n">bp</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+
+<p><img alt="" src="images/ptm_counts.png" /></p>
+<p>Embora seja uma pequena ampliação do programa, é preciso explicar um pouco a utilização destas duas bibliotecas,
+de uma forma muitíssimo sumária, uma vez que a sua funcionalidade é muito vasta.</p>
+<p>Após os dois <code>imports</code> necessários para se utilizar as bibliotecas, a função
+<code>seaborn.set()</code> introduz um <strong>estilo</strong> de gráficos particular, o "darkgrid" (existem vários).</p>
+<p>É uma questão estética (e de gosto pessoal).</p>
+<p>A função <code>subplots()</code> é uma função importante que prepara uma figura se tiver vários painéis, o que não é
+o caso e, de entre outras opções, permite controlar o tamanho total da figura, com <code>figsize</code> (unidades em polegadas).</p>
+<p>Depois disto é apenas necessário preparar duas listas, uma com os nomes das barras e
+outra com as alturas da barras e usar a função <code>seaborn.barplot()</code> usando estas duas
+listas como argumentos.</p>
+<p>As listas foram criadas como listas em compreensão a partir da lista <code>ordered_PTM_counts</code>,
+filtrando as <em>PTM</em> com mais de 10 contagens.</p>
+<p>Mais 3 pormenores finais na função <code>barplot()</code>:</p>
+<ul>
+<li><code>orient='h'</code> desenha barras horizontais e não (as mais habituais) barras verticais</li>
+<li><code>palette='tab10'</code> escolhe um mapa de cores a usar nas barras. Há inúmeras possibilidades. Ver
+por exemplo <a href="https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html">esta página</a></li>
+<li>finalmente, <em>last but not least</em>, <code>log=True</code>, faz a escala de contagens ser logarítmica. Isto é necessário, caso
+contrário as fosforilações dominariam completamente o gráfico e não conseguiríamos ver as <em>PTM</em> menos
+abundantes que teríam barras perto de 0.</li>
+</ul>
+<h2 id="programa-completo_1">Programa completo<a class="headerlink" href="#programa-completo_1" title="Permanent link">&para;</a></h2>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+
+<span class="k">def</span> <span class="nf">read_Uniprot_text</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reads a UniProt text file and splits into a list of protein records.&quot;&quot;&quot;</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+        <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># remove empty records</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">records</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># since we know that it is the last one only...</span>
+    <span class="c1"># records.pop(-1)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+<span class="n">prots</span> <span class="o">=</span> <span class="n">read_Uniprot_text</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of protein records in &quot;</span><span class="si">{</span><span class="n">data_filename</span><span class="si">}</span><span class="s1">&quot; is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prots</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">extract_info</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reads a UniProt text record and returns a dict with extrated information.</span>
+
+<span class="sd">    The returned dict has the following fields:</span>
+
+<span class="sd">    &#39;ac&#39;: the UniProt Access Id,</span>
+<span class="sd">    &#39;n&#39;: the sequence length, </span>
+<span class="sd">    &#39;PTMs&#39;: a dictionary that associates the location of PTMs (int, as keys)</span>
+<span class="sd">                with the name of the PTM.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">IDline</span><span class="p">,</span> <span class="n">ACline</span><span class="p">,</span> <span class="o">*</span><span class="n">otherlines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+    <span class="c1"># Extract UniProt AC and number of amino acids</span>
+    <span class="c1"># Example (first two lines):</span>
+    <span class="c1"># ID   AB140_YEAST             Reviewed;         628 AA.</span>
+    <span class="c1"># AC   Q08641; D6W2U2; Q08644;</span>
+
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">ACline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+
+    <span class="c1"># Extract FT lines and process PTM information</span>
+    <span class="c1">#</span>
+    <span class="c1"># Example of phosphorylation lines</span>
+    <span class="c1"># FT   MOD_RES         342</span>
+    <span class="c1"># FT                   /note=&quot;Phosphoserine&quot;</span>
+    <span class="c1"># FT                   /evidence=&quot;ECO:0000244|PubMed:18407956,</span>
+    <span class="c1"># FT                   ECO:0000244|PubMed:19779198&quot;</span>
+
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">otherlines</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;FT   MOD_RES&#39;</span><span class="p">):</span>
+            <span class="n">FTcode</span><span class="p">,</span> <span class="n">MOD_RES</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+            <span class="n">nextline</span> <span class="o">=</span> <span class="n">otherlines</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">nextline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/note=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="n">PTMs</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTMtype</span>
+
+    <span class="c1"># Return dictionary of extracted information</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ac&#39;</span><span class="p">:</span> <span class="n">ac</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;PTMs&#39;</span><span class="p">:</span> <span class="n">PTMs</span><span class="p">}</span>
+
+<span class="n">all_prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">extract_info</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">]</span>
+
+
+<span class="n">PTM_counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">:</span>
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;PTMs&#39;</span><span class="p">]</span>
+
+    <span class="c1"># just skip if no PTMs</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">PTMs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="k">for</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTMs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTM_counts</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="n">list_PTM_counts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">PTM_counts</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="c1"># sort function returning the second element of a pair of values</span>
+<span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ordered_PTM_counts</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_PTM_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+
+<span class="n">bp</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>The number of protein records in &quot;uniprot_scerevisiae.txt&quot; is 6049
+Phosphoserine 5170
+Phosphothreonine 1027
+N-acetylserine 325
+N-acetylmethionine 106
+Phosphotyrosine 55
+N6-(pyridoxal phosphate)lysine 46
+N-acetylalanine 37
+N6-acetyllysine 32
+Asymmetric dimethylarginine 26
+Cysteine methyl ester 23
+N6-methyllysine 22
+N6,N6,N6-trimethyllysine 17
+Omega-N-methylarginine 15
+N-acetylthreonine 12
+N6-succinyllysine 11
+N6,N6-dimethyllysine 6
+N6-butyryllysine 5
+N6-biotinyllysine 5
+N6-carboxylysine 4
+Phosphohistidine 4
+N5-methylglutamine 4
+N,N-dimethylproline 4
+N6-lipoyllysine 4
+O-(pantetheine 4&#39;-phosphoryl)serine 3
+4-aspartylphosphate 3
+Lysine derivative 3
+Pyruvic acid (Ser) 3
+S-glutathionyl cysteine 3
+Hypusine 2
+Tele-8alpha-FAD histidine 2
+N6-malonyllysine 2
+N5-methylarginine 2
+N6-propionyllysine 2
+Leucine methyl ester 2
+3,4-dihydroxyproline 2
+N-acetylvaline 2
+N-formylmethionine 1
+Pros-8alpha-FAD histidine 1
+2,3-didehydroalanine (Cys) 1
+N6-glutaryllysine 1
+Diphthamide 1
+Pros-methylhistidine 1
+Cysteine sulfinic acid (-SO2H) 1
+S-(dipyrrolylmethanemethyl)cysteine 1
+N,N,N-trimethylglycine 1
+Lysine methyl ester 1
+Dimethylated arginine 1
+Thiazolidine linkage to a ring-opened DNA abasic 1
+1-thioglycine 1
+S-methylcysteine 1
+</pre></div>
+
+<p><img alt="" src="images/ptm_counts.png" /></p>
                 
                   
                 
