@@ -855,5 +855,789 @@ Já se conseguiu muito: agora temos uma lista de 6049 dicionários em que cada u
 
 O próximo passo é contar as PTM de cada tipo, listar e fazer um gráfico de barras.
 
-**TO BE CONTINUED...**
+## Interlúdio: atribuições múltiplas com *
+
+Antes de passarmos à fase seguinte, existe um pormenor da atribuição de nomes que pode ser útil. Trata-se da atribuição
+múltipla de nomes com a opção de utilizar `*` para captar o "restante" de uma coleção.
+
+Vejamos um pequeno exemplo de atribuições múltiplas, uma técnica já usada em problemas anteriores:
+
+
+<div class="python_box">
+``` python3
+# atribuição múltipla
+
+m, a = 12, 365
+
+print(m, a)
+
+# atribuição múltipla a partir dos
+# elementos de uma lista
+
+s, m, a = [7, 12, 365]
+
+print(s, m, a)
+```
+</div>
+
+```
+12 365
+7 12 365
+```
+
+Aqui mostra-se o facto de uma atribuição poder ser feita à custa dos elementos
+de uma lista.
+
+Para todos os efeitos, conseguimos assim atribuír nomes a todos
+os elementos de uma lista:
+
+<div class="python_box">
+``` python3
+s, m, a = [7, 12, 365]
+
+# é equivalente a
+
+nums = [7, 12, 365]
+
+s = nums[0]
+m = nums[1]
+a = nums[2]
+```
+</div>
+
+Nesta situação, é possível usar, do lado esquerdo do sinal de igual, um `*`
+como prefixo de um dos nomes para **captar** um conjunto de elementos restantes nas atribuições, na forma de
+uma lista mais pequena.
+
+O melhor é ver um exemplo:
+
+<div class="python_box">
+``` python3
+s, m, a, *tudo_o_resto = [7, 12, 365, 1, 3, 5, 7, 9, 11]
+
+print(s)
+print(m)
+print(a)
+print(tudo_o_resto)
+```
+</div>
+
+```
+7
+12
+365
+[1, 3, 5, 7, 9, 11]
+```
+
+Neste exemplo, pelo facto de termos usado um `*` antes do nome `tudo_o_resto`
+fez com este nome fosse atribuído à *parte restante* da lista que serviu de atribuição.
+
+!!! tip "Dica"
+    Esta atribuição múltipla com `*` é muito útil quando não sabemos
+    exatamente qual o comprimento da lista que fornece os valores e estamos
+    interessados apenas em alguns dos primeiros valores.
+    
+    O nome que é usado com `*` como prefixo é sempre atribuído a uma lista.
+    
+    Esta pode ter apenas um elemento ou até uma lista vazia.
+
+Mas este mecanismo pode até ser usado sem ser no nome final:
+
+
+<div class="python_box">
+``` python3
+s, m, a, *o_meio, ultimo = [7, 12, 365, 1, 3, 5, 7, 9, 11]
+
+print(s)
+print(m)
+print(a)
+print(o_meio)
+print(ultimo)
+```
+</div>
+
+```
+7
+12
+365
+[1, 3, 5, 7, 9]
+11
+```
+
+Um outro exemplo:
+
+<div class="python_box">
+``` python3
+*lixo, antepenúltimo, penúltimo, último = [7, 12, 365, 1, 3, 5, 7, 9, 11]
+
+print(antepenúltimo)
+print(penúltimo)
+print(último)
+```
+</div>
+
+```
+7
+9
+11
+```
+
+E ainda outro...
+
+<div class="python_box">
+``` python3
+primeiro, *lixo, antepenúltimo, penúltimo, último = [7, 12, 365, 1, 3, 5, 7, 9, 11]
+
+print(primeiro)
+print(antepenúltimo)
+print(penúltimo)
+print(último)
+
+print(lixo)
+```
+</div>
+
+```
+7
+7
+9
+11
+[12, 365, 1, 3, 5]
+```
+
+Este mecanismo pode-nos ajudar a simplificar um pouco alguns passos da função
+`extract_info()`:
+
+Em vez de 
+
+<div class="python_box">
+``` python3
+lines = record.splitlines()
+
+IDline = lines[0]
+ACline = lines[1]
+```
+</div>
+
+Podemos escrever apenas
+
+<div class="python_box">
+``` python3
+IDline, ACline, *otherlines = record.splitlines()
+```
+</div>
+
+A função `.splitlines()` gera uma lista, logo podemos imediatamente usar
+uma atribuição múltipla para atribuír nomes a várias linhas que estejamos interessados.
+
+Note-se que `otherlines` seria um nome de uma lista contendo todas as linhas
+menos as duas primeiras. O que significa que, mais à frente, quando procuramos
+linhas começadas por `FT`, devemos fazer
+
+     for line in otherlines:
+     
+
+!!! question "problema"
+    Como poderíamos substituír a obtenção de `n` nesta parte do program
+    
+    <div class="python_box">
+    ``` python3
+    n = int(IDline.split()[3])
+    ```
+    </div>
+       
+    por uma atribuição múltipla para *isolar* o `n` no meio dos outros
+    elementos na mesma linha?
+    
+    Repare que a linha `ID` tem o seguinte aspeto:
+    
+    ```
+    ID   AB140_YEAST             Reviewed;         628 AA.
+    ```
+
+??? example "Solução"
+    
+    <div class="python_box">
+    ``` python3
+    *useless, n, final = IDline.split()
+    n = int(n)
+    ```
+    </div>
+    
+    Não sendo mais compacto, é mais simples de entender
+
+
+## Contagem dos tipos de PTM
+
+Vamos agora continuar o programa de forma contar os vários tipos de PTM que existem, já
+"extraídos" na lista de dicionários `all_prots`.
+
+!!! warning "Atenção"
+    Nos passos seguintes vamos ampliar o programa que já existe, até
+    ao cálculo da lista `all_prots`. Esta lista já tem de existir para o resto
+    funcionar.
+
+Recorde-se que a lista `all_prots` contem dicionários.
+
+Cada dicionário contem
+uma chave `PTMs`, a qual tem como valor um outro dicionário que associa a posição
+de cada *PTM* ao seu nome.
+
+    {'ac': 'P40467', 'n': 964, 'PTMs': {'166': 'Phosphoserine', '186': 'Phosphoserine', '963': 'Phosphoserine'}}
+
+
+Como contar as *PTM* em todas as proteínas pelo seu nome?
+
+Podemos criar, mais uma vez, um novo dicionário que associa o nome de cada *PTM* à sua contagem. Vamos chamar
+`PTM_counts`.
+
+A ideia será passar por toda a lista `all_prots` (com `for p in all_prots`),
+obter os nomes das *PTM* de cada proteína (com `p['PTMs'].values()`) e depois
+ir adicionando +1 à contagem existente no dicionário de contagens.
+
+Se ainda não existir o nome de uma PTM no dicionário, na primeira vez que é colocado
+deve ter o valor 1, a primeira contagem.
+
+Vejamos como fica:
+
+
+<div class="python_box">
+``` python3
+PTM_counts = {}
+for p in all_prots:
+    PTMs = p['PTMs']
+    
+    # just skip if no PTMs
+    if len(PTMs) == 0:
+        continue
+        
+    for ptmtype in PTMs.values():
+        if ptmtype in PTM_counts:
+            PTM_counts[ptmtype] = PTM_counts[ptmtype] + 1
+        else:
+            PTM_counts[ptmtype] = 1
+            
+# print(PTM_counts) 
+```
+</div>
+
+```
+{'Phosphothreonine': 1027, 'Phosphoserine': 5170, 'Phosphotyrosine': 55, 'N-acetylserine': 325, 'N-formylmethionine': 1, 'N6-(pyridoxal phosphate)lysine': 46, 'Pros-8alpha-FAD histidine': 1, 'N-acetylmethionine': 106, 'N6-acetyllysine': 32, 'N-acetylthreonine': 12, "O-(pantetheine 4'-phosphoryl)serine": 3, 'N6-carboxylysine': 4, 'Cysteine methyl ester': 23, 'Asymmetric dimethylarginine': 26, 'Phosphohistidine': 4, 'Hypusine': 2, 'N-acetylalanine': 37, 'N6-butyryllysine': 5, 'N6-methyllysine': 22, 'N6-succinyllysine': 11, 'N6,N6-dimethyllysine': 6, 'Tele-8alpha-FAD histidine': 2, '2,3-didehydroalanine (Cys)': 1, '4-aspartylphosphate': 3, 'Lysine derivative': 3, 'N5-methylglutamine': 4, 'N6,N6,N6-trimethyllysine': 17, 'Omega-N-methylarginine': 15, 'N,N-dimethylproline': 4, 'N6-glutaryllysine': 1, 'N6-malonyllysine': 2, 'Diphthamide': 1, 'N6-biotinyllysine': 5, 'N5-methylarginine': 2, 'N6-lipoyllysine': 4, 'Pyruvic acid (Ser)': 3, 'Pros-methylhistidine': 1, 'S-glutathionyl cysteine': 3, 'Cysteine sulfinic acid (-SO2H)': 1, 'N6-propionyllysine': 2, 'S-(dipyrrolylmethanemethyl)cysteine': 1, 'N,N,N-trimethylglycine': 1, 'Lysine methyl ester': 1, 'Dimethylated arginine': 1, 'Leucine methyl ester': 2, '3,4-dihydroxyproline': 2, 'N-acetylvaline': 2, 'Thiazolidine linkage to a ring-opened DNA abasic': 1, '1-thioglycine': 1, 'S-methylcysteine': 1}
+```
+
+Funcionou, embora não seja a maneira mais elegante de apresentar as contagens.
+
+Na realidade o ideal seria ordenar por ordem decrescente, de forma a apresentar
+na forma de uma tabela em que saberíamos facilemnte quais as *PTM* mais abundantes e menos
+abundantes.
+
+O problema é que os dicionários não têm uma **ordem** dos seus elementos implícita.
+
+As listas têm e é fácil transformar um dicionário numa lista de pares (chave:valor):
+
+
+<div class="python_box">
+``` python3
+PTM_counts = {}
+for p in all_prots:
+    PTMs = p['PTMs']
+    
+    # just skip if no PTMs
+    if len(PTMs) == 0:
+        continue
+        
+    for ptmtype in PTMs.values():
+        if ptmtype in PTM_counts:
+            PTM_counts[ptmtype] = PTM_counts[ptmtype] + 1
+        else:
+            PTM_counts[ptmtype] = 1
+
+# print(PTM_counts) 
+
+list_PTM_counts = list(PTM_counts.items())
+
+print(list_PTM_counts) 
+```
+</div>
+
+```
+[('Phosphothreonine', 1027), ('Phosphoserine', 5170), ('Phosphotyrosine', 55), ('N-acetylserine', 325), ('N-formylmethionine', 1), ('N6-(pyridoxal phosphate)lysine', 46), ('Pros-8alpha-FAD histidine', 1), ('N-acetylmethionine', 106), ('N6-acetyllysine', 32), ('N-acetylthreonine', 12), ("O-(pantetheine 4'-phosphoryl)serine", 3), ('N6-carboxylysine', 4), ('Cysteine methyl ester', 23), ('Asymmetric dimethylarginine', 26), ('Phosphohistidine', 4), ('Hypusine', 2), ('N-acetylalanine', 37), ('N6-butyryllysine', 5), ('N6-methyllysine', 22), ('N6-succinyllysine', 11), ('N6,N6-dimethyllysine', 6), ('Tele-8alpha-FAD histidine', 2), ('2,3-didehydroalanine (Cys)', 1), ('4-aspartylphosphate', 3), ('Lysine derivative', 3), ('N5-methylglutamine', 4), ('N6,N6,N6-trimethyllysine', 17), ('Omega-N-methylarginine', 15), ('N,N-dimethylproline', 4), ('N6-glutaryllysine', 1), ('N6-malonyllysine', 2), ('Diphthamide', 1), ('N6-biotinyllysine', 5), ('N5-methylarginine', 2), ('N6-lipoyllysine', 4), ('Pyruvic acid (Ser)', 3), ('Pros-methylhistidine', 1), ('S-glutathionyl cysteine', 3), ('Cysteine sulfinic acid (-SO2H)', 1), ('N6-propionyllysine', 2), ('S-(dipyrrolylmethanemethyl)cysteine', 1), ('N,N,N-trimethylglycine', 1), ('Lysine methyl ester', 1), ('Dimethylated arginine', 1), ('Leucine methyl ester', 2), ('3,4-dihydroxyproline', 2), ('N-acetylvaline', 2), ('Thiazolidine linkage to a ring-opened DNA abasic', 1), ('1-thioglycine', 1), ('S-methylcysteine', 1)]
+```
+
+Agora temos uma lista, mas não está ordenada por contagens.
+
+Como ordenar esta lista?
+
+Repare-se que os elementos da lista são pares de objetos e queremos ordenar a lista pelo
+**segundo elemento do par de objetos**.
+
+Existe uma função para gerar uma sequência de valores ordenados a partir de uma lista: a função
+`sorted()`
+
+Mas esta função pode receber como argumento `key` uma **outra função** que indique
+qual exatamente o valor que deve ser ordenado, calculado a partir de cada elemento.
+
+Isto é útil, neste caso. Precisamos de uma função que "aponte" para o segundo elemento
+de cada par para que a função `sorted()` saiba o que fazer.
+
+Mas temos de escrever essa função.
+
+É uma função muito simples que recebe um par de valores
+e devolve o segundo elemento do par.
+
+<div class="python_box">
+``` python3
+# sort function returning the second element of a pair of values
+def second(pair):
+    return pair[1]
+```
+</div>
+
+Vejamos como aplicar esta função:
+
+<div class="python_box">
+``` python3
+# sort function returning the second element of a pair of values
+def second(pair):
+    return pair[1]
+
+ordered_PTM_counts = sorted(list_PTM_counts, key=second, reverse=True)
+print(ordered_PTM_counts)
+
+```
+</div>
+
+```
+[('Phosphoserine', 5170), ('Phosphothreonine', 1027), ('N-acetylserine', 325), ('N-acetylmethionine', 106), ('Phosphotyrosine', 55), ('N6-(pyridoxal phosphate)lysine', 46), ('N-acetylalanine', 37), ('N6-acetyllysine', 32), ('Asymmetric dimethylarginine', 26), ('Cysteine methyl ester', 23), ('N6-methyllysine', 22), ('N6,N6,N6-trimethyllysine', 17), ('Omega-N-methylarginine', 15), ('N-acetylthreonine', 12), ('N6-succinyllysine', 11), ('N6,N6-dimethyllysine', 6), ('N6-butyryllysine', 5), ('N6-biotinyllysine', 5), ('N6-carboxylysine', 4), ('Phosphohistidine', 4), ('N5-methylglutamine', 4), ('N,N-dimethylproline', 4), ('N6-lipoyllysine', 4), ("O-(pantetheine 4'-phosphoryl)serine", 3), ('4-aspartylphosphate', 3), ('Lysine derivative', 3), ('Pyruvic acid (Ser)', 3), ('S-glutathionyl cysteine', 3), ('Hypusine', 2), ('Tele-8alpha-FAD histidine', 2), ('N6-malonyllysine', 2), ('N5-methylarginine', 2), ('N6-propionyllysine', 2), ('Leucine methyl ester', 2), ('3,4-dihydroxyproline', 2), ('N-acetylvaline', 2), ('N-formylmethionine', 1), ('Pros-8alpha-FAD histidine', 1), ('2,3-didehydroalanine (Cys)', 1), ('N6-glutaryllysine', 1), ('Diphthamide', 1), ('Pros-methylhistidine', 1), ('Cysteine sulfinic acid (-SO2H)', 1), ('S-(dipyrrolylmethanemethyl)cysteine', 1), ('N,N,N-trimethylglycine', 1), ('Lysine methyl ester', 1), ('Dimethylated arginine', 1), ('Thiazolidine linkage to a ring-opened DNA abasic', 1), ('1-thioglycine', 1), ('S-methylcysteine', 1)]
+```
+
+Agora sim, temos uma lista ordenada.
+
+Mas é muito mais elegante apresentar em linhas separadas:
+
+<div class="python_box">
+``` python3
+# sort function returning the second element of a pair of values
+def second(pair):
+    return pair[1]
+
+ordered_PTM_counts = sorted(list_PTM_counts, key=second, reverse=True)
+
+# let's look at the results
+for PTMtype, count in ordered_PTM_counts:
+    print(PTMtype, count)
+
+```
+</div>
+
+```
+Phosphoserine 5170
+Phosphothreonine 1027
+N-acetylserine 325
+N-acetylmethionine 106
+Phosphotyrosine 55
+N6-(pyridoxal phosphate)lysine 46
+N-acetylalanine 37
+N6-acetyllysine 32
+Asymmetric dimethylarginine 26
+Cysteine methyl ester 23
+N6-methyllysine 22
+N6,N6,N6-trimethyllysine 17
+Omega-N-methylarginine 15
+N-acetylthreonine 12
+N6-succinyllysine 11
+N6,N6-dimethyllysine 6
+N6-butyryllysine 5
+N6-biotinyllysine 5
+N6-carboxylysine 4
+Phosphohistidine 4
+N5-methylglutamine 4
+N,N-dimethylproline 4
+N6-lipoyllysine 4
+O-(pantetheine 4'-phosphoryl)serine 3
+4-aspartylphosphate 3
+Lysine derivative 3
+Pyruvic acid (Ser) 3
+S-glutathionyl cysteine 3
+Hypusine 2
+Tele-8alpha-FAD histidine 2
+N6-malonyllysine 2
+N5-methylarginine 2
+N6-propionyllysine 2
+Leucine methyl ester 2
+3,4-dihydroxyproline 2
+N-acetylvaline 2
+N-formylmethionine 1
+Pros-8alpha-FAD histidine 1
+2,3-didehydroalanine (Cys) 1
+N6-glutaryllysine 1
+Diphthamide 1
+Pros-methylhistidine 1
+Cysteine sulfinic acid (-SO2H) 1
+S-(dipyrrolylmethanemethyl)cysteine 1
+N,N,N-trimethylglycine 1
+Lysine methyl ester 1
+Dimethylated arginine 1
+Thiazolidine linkage to a ring-opened DNA abasic 1
+1-thioglycine 1
+S-methylcysteine 1
+```
+
+Agora sim, vemos que as fosforilações são as *PTM* mais prevalentes, pelo
+menos levando em conta as anotações na UniProtKB relativamente às proteínas 
+de levedura *S. cerevisiae*.
+
+Conseguimos extraír a informação em que estávamos interessados a partir de um
+ficheiro de texto que segue um formato rígido particular a um portal de Bioinformática.
+
+Note-se, no desenvolvimento deste programa, o papel essencial das coleções da linguagem Python,
+listas e dicionários, para armazenar a informação obtida e também o papel das funções
+associadas a *strings*
+
+O programa todo até este ponto é o seguinte:
+
+<div class="python_box">
+``` python3
+
+data_filename = 'uniprot_scerevisiae.txt'
+
+def read_Uniprot_text(filename):
+    """Reads a UniProt text file and splits into a list of protein records."""
+    
+    with open(filename) as uniprot_file:
+        whole_file = uniprot_file.read()
+
+    records = whole_file.split('//\n')
+    
+    # remove empty records
+    records = [p for p in records if len(p) != 0]
+    # since we know that it is the last one only...
+    # records.pop(-1)
+    return records
+
+prots = read_Uniprot_text(data_filename)
+
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
+def extract_info(record):
+    """Reads a UniProt text record and returns a dict with extrated information.
+    
+    The returned dict has the following fields:
+    
+    'ac': the UniProt Access Id,
+    'n': the sequence length, 
+    'PTMs': a dictionary that associates the location of PTMs (int, as keys)
+                with the name of the PTM.
+    """
+    
+    IDline, ACline, *otherlines = record.splitlines()
+    
+    # Extract UniProt AC and number of amino acids
+    # Example (first two lines):
+    # ID   AB140_YEAST             Reviewed;         628 AA.
+    # AC   Q08641; D6W2U2; Q08644;
+    
+    ac = ACline.split(';',1)[0].split()[1]
+    n = int(IDline.split()[3])
+    
+    # Extract FT lines and process PTM information
+    #
+    # Example of phosphorylation lines
+    # FT   MOD_RES         342
+    # FT                   /note="Phosphoserine"
+    # FT                   /evidence="ECO:0000244|PubMed:18407956,
+    # FT                   ECO:0000244|PubMed:19779198"
+    
+    PTMs = {}
+    
+    for i, line in enumerate(otherlines):
+
+        if line.startswith('FT   MOD_RES'):
+            FTcode, MOD_RES, loc, *rest = line.split()
+            
+            nextline = otherlines[i+1]
+            PTMtype = nextline.split('/note=')[1]
+            PTMtype = PTMtype.strip('"')
+            PTMtype = PTMtype.split(';')[0]
+            
+            PTMs[loc] = PTMtype
+        
+    # Return dictionary of extracted information
+    return {'ac': ac, 'n': n, 'PTMs': PTMs}
+
+all_prots = [extract_info(p) for p in prots]
+
+
+PTM_counts = {}
+for p in all_prots:
+    PTMs = p['PTMs']
+    
+    # just skip if no PTMs
+    if len(PTMs) == 0:
+        continue
+        
+    for ptmtype in PTMs.values():
+        if ptmtype in PTM_counts:
+            PTM_counts[ptmtype] = PTM_counts[ptmtype] + 1
+        else:
+            PTM_counts[ptmtype] = 1
+
+
+list_PTM_counts = list(PTM_counts.items())
+
+# sort function returning the second element of a pair of values
+def second(pair):
+    return pair[1]
+
+ordered_PTM_counts = sorted(list_PTM_counts, key=second, reverse=True)
+
+for PTMtype, count in ordered_PTM_counts:
+    print(PTMtype, count)
+
+
+```
+</div>
+
+## Gráficos
+
+A tabela que conseguimos obter na secção anterior já é muito interessante.
+
+Ficámos a saber que a fosforilação de serinas tem 6049 anotações, enquanto que a
+*PTM* exótica S-metilcisteína tem uma única anotação (ela e outras 13).
+
+Mas um gráfico causaria muito mais impressão. Vamos fazer um gráfico de barras com as
+contagens de *PTM*.
+
+Para a linguagem Python existem vários módulos destinados a obter gráficos num
+program. Um dos mais conhecidos é o `matplotlib`, uma da "bibliotecas" gráficas
+mais versáteis e populares (e também um pouco intimidante) da linguagem Python.
+
+O [*site* oficial da matplotlib](https://matplotlib.org/) dá uma ideia da versatilidade da
+biblioteca, tendo uma galeria extensa de exemplos.
+
+Uma outra biblioteca digna de nota é o projeto [seaborn](https://seaborn.pydata.org/) que é
+baseado na `matplotlib` e inclui "melhoramentos" estéticos e novos tipos de gráficos, especialemnte da área da estatística.
+
+Ampliando o programa, vamos combinar os dois módulos, criando um gráfico de barras com as contagens
+da PTM, embora restringindo àquelas que têm pelo menos 10 contagens:
+
+<div class="python_box">
+``` python3
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+
+sns.set(style="darkgrid")
+f, ax = plt.subplots(figsize=(6,9))
+
+x = [t for t,c in ordered_PTM_counts if c > 10]
+y = [c for t,c in ordered_PTM_counts if c > 10]
+
+bp = sns.barplot(y, x, orient='h', log=True, palette='tab10')
+plt.show()
+```
+</div>
+
+![](images/ptm_counts.png)
+
+Embora seja uma pequena ampliação do programa, é preciso explicar um pouco a utilização destas duas bibliotecas,
+de uma forma muitíssimo sumária, uma vez que a sua funcionalidade é muito vasta.
+
+Após os dois `imports` necessários para se utilizar as bibliotecas, a função
+`seaborn.set()` introduz um **estilo** de gráficos particular, o "darkgrid" (existem vários).
+
+É uma questão estética (e de gosto pessoal).
+
+A função `subplots()` é uma função importante que prepara uma figura se tiver vários painéis, o que não é
+o caso e, de entre outras opções, permite controlar o tamanho total da figura, com `figsize` (unidades em polegadas).
+
+Depois disto é apenas necessário preparar duas listas, uma com os nomes das barras e
+outra com as alturas da barras e usar a função `seaborn.barplot()` usando estas duas
+listas como argumentos.
+
+As listas foram criadas como listas em compreensão a partir da lista `ordered_PTM_counts`,
+filtrando as *PTM* com mais de 10 contagens.
+
+Mais 3 pormenores finais na função `barplot()`:
+
+- `orient='h'` desenha barras horizontais e não (as mais habituais) barras verticais
+- `palette='tab10'` escolhe um mapa de cores a usar nas barras. Há inúmeras possibilidades. Ver
+por exemplo [esta página](https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html)
+- finalmente, *last but not least*, `log=True`, faz a escala de contagens ser logarítmica. Isto é necessário, caso
+contrário as fosforilações dominariam completamente o gráfico e não conseguiríamos ver as *PTM* menos
+abundantes que teríam barras perto de 0.
+
+## Programa completo
+
+<div class="python_box">
+``` python3
+
+data_filename = 'uniprot_scerevisiae.txt'
+
+def read_Uniprot_text(filename):
+    """Reads a UniProt text file and splits into a list of protein records."""
+    
+    with open(filename) as uniprot_file:
+        whole_file = uniprot_file.read()
+
+    records = whole_file.split('//\n')
+    
+    # remove empty records
+    records = [p for p in records if len(p) != 0]
+    # since we know that it is the last one only...
+    # records.pop(-1)
+    return records
+
+prots = read_Uniprot_text(data_filename)
+
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
+def extract_info(record):
+    """Reads a UniProt text record and returns a dict with extrated information.
+    
+    The returned dict has the following fields:
+    
+    'ac': the UniProt Access Id,
+    'n': the sequence length, 
+    'PTMs': a dictionary that associates the location of PTMs (int, as keys)
+                with the name of the PTM.
+    """
+    
+    IDline, ACline, *otherlines = record.splitlines()
+    
+    # Extract UniProt AC and number of amino acids
+    # Example (first two lines):
+    # ID   AB140_YEAST             Reviewed;         628 AA.
+    # AC   Q08641; D6W2U2; Q08644;
+    
+    ac = ACline.split(';',1)[0].split()[1]
+    n = int(IDline.split()[3])
+    
+    # Extract FT lines and process PTM information
+    #
+    # Example of phosphorylation lines
+    # FT   MOD_RES         342
+    # FT                   /note="Phosphoserine"
+    # FT                   /evidence="ECO:0000244|PubMed:18407956,
+    # FT                   ECO:0000244|PubMed:19779198"
+    
+    PTMs = {}
+    
+    for i, line in enumerate(otherlines):
+
+        if line.startswith('FT   MOD_RES'):
+            FTcode, MOD_RES, loc, *rest = line.split()
+            
+            nextline = otherlines[i+1]
+            PTMtype = nextline.split('/note=')[1]
+            PTMtype = PTMtype.strip('"')
+            PTMtype = PTMtype.split(';')[0]
+            
+            PTMs[loc] = PTMtype
+        
+    # Return dictionary of extracted information
+    return {'ac': ac, 'n': n, 'PTMs': PTMs}
+
+all_prots = [extract_info(p) for p in prots]
+
+
+PTM_counts = {}
+for p in all_prots:
+    PTMs = p['PTMs']
+    
+    # just skip if no PTMs
+    if len(PTMs) == 0:
+        continue
+        
+    for ptmtype in PTMs.values():
+        if ptmtype in PTM_counts:
+            PTM_counts[ptmtype] = PTM_counts[ptmtype] + 1
+        else:
+            PTM_counts[ptmtype] = 1
+
+
+list_PTM_counts = list(PTM_counts.items())
+
+# sort function returning the second element of a pair of values
+def second(pair):
+    return pair[1]
+
+ordered_PTM_counts = sorted(list_PTM_counts, key=second, reverse=True)
+
+for PTMtype, count in ordered_PTM_counts:
+    print(PTMtype, count)
+
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+
+sns.set(style="darkgrid")
+f, ax = plt.subplots(figsize=(6,9))
+
+x = [t for t,c in ordered_PTM_counts if c > 10]
+y = [c for t,c in ordered_PTM_counts if c > 10]
+
+bp = sns.barplot(y, x, orient='h', log=True, palette='tab10')
+plt.show()
+
+```
+</div>
+
+```
+The number of protein records in "uniprot_scerevisiae.txt" is 6049
+Phosphoserine 5170
+Phosphothreonine 1027
+N-acetylserine 325
+N-acetylmethionine 106
+Phosphotyrosine 55
+N6-(pyridoxal phosphate)lysine 46
+N-acetylalanine 37
+N6-acetyllysine 32
+Asymmetric dimethylarginine 26
+Cysteine methyl ester 23
+N6-methyllysine 22
+N6,N6,N6-trimethyllysine 17
+Omega-N-methylarginine 15
+N-acetylthreonine 12
+N6-succinyllysine 11
+N6,N6-dimethyllysine 6
+N6-butyryllysine 5
+N6-biotinyllysine 5
+N6-carboxylysine 4
+Phosphohistidine 4
+N5-methylglutamine 4
+N,N-dimethylproline 4
+N6-lipoyllysine 4
+O-(pantetheine 4'-phosphoryl)serine 3
+4-aspartylphosphate 3
+Lysine derivative 3
+Pyruvic acid (Ser) 3
+S-glutathionyl cysteine 3
+Hypusine 2
+Tele-8alpha-FAD histidine 2
+N6-malonyllysine 2
+N5-methylarginine 2
+N6-propionyllysine 2
+Leucine methyl ester 2
+3,4-dihydroxyproline 2
+N-acetylvaline 2
+N-formylmethionine 1
+Pros-8alpha-FAD histidine 1
+2,3-didehydroalanine (Cys) 1
+N6-glutaryllysine 1
+Diphthamide 1
+Pros-methylhistidine 1
+Cysteine sulfinic acid (-SO2H) 1
+S-(dipyrrolylmethanemethyl)cysteine 1
+N,N,N-trimethylglycine 1
+Lysine methyl ester 1
+Dimethylated arginine 1
+Thiazolidine linkage to a ring-opened DNA abasic 1
+1-thioglycine 1
+S-methylcysteine 1
+```
+
+![](images/ptm_counts.png)
+
+
 
