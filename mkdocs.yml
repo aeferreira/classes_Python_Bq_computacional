@@ -14,7 +14,12 @@ nav:
 - 2 - Textos estruturados:
   - Exemplo 1 (UniProt txt): 'uniprot_txt.md'
 - 3 - Módulos científicos:
-  - Módulos de computação científica: scientific_modules.md
+  - numpy e scipy: sm_numpy_scipy.md
+  - Exemplo, regressão linear: sm_linreg.md
+  - Exemplo, curva titulação: sm_ph.md
+  - sympy: sm_sympy.md
+  - pandas: sm_pandas.md
+  - Algoritmos numéricos: sm_algorithms.md
 use_directory_urls: false
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
