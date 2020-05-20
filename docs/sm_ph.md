@@ -79,6 +79,7 @@ Make the necessary imports
 <div class="python_box">
 ``` python3
 from numpy import linspace
+import matplotlib.pyplot as plt
 ```
 </div>
 
@@ -118,20 +119,19 @@ amino acid as a function of pH.
 
 <div class="python_box">
 ``` python3
-import matplotlib.pyplot as pl
+plt.plot(pH, Gplus)
+plt.plot(pH, Gzero)
+plt.plot(pH, Gminus)
 
-pl.plot(pH, Gplus)
-pl.plot(pH, Gzero)
-pl.plot(pH, Gminus)
-
-pl.ylabel('concentration')
-pl.xlabel('$pH$')
-pl.legend(('$G^+$','$G^0$', '$G^-$'))
-t = pl.title('Species distribution')
+plt.ylabel('concentration')
+plt.xlabel('$pH$')
+plt.legend(('$G^+$','$G^0$', '$G^-$'))
+plt.title('Species distribution')
+plt.show()
 ```
 </div>
 
-![image](images/ph_forms.png)
+![image](images/aafractions.png)
 
 Plot also the amount of base necessary to change the pH of the solution,
 but **exchange the x and y axis**, so that it looks like we are
@@ -139,13 +139,14 @@ titrating the solution.
 
 <div class="python_box">
 ``` python3
-pl.plot(nOH, pH)
+plt.plot(nOH, pH)
 
-pl.ylabel('$pH$')
-pl.xlabel('$nOH^{-}$')
-pl.grid()
+plt.ylabel('$pH$')
+plt.xlabel('$nOH^{-}$')
+plt.grid()
+plt.show()
 ```
 </div>
 
-![image](images/ph_titr.png)
+![image](images/titration.png)
 

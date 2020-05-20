@@ -14,9 +14,9 @@ nav:
 - 2 - Textos estruturados:
   - Exemplo 1 (UniProt txt): 'uniprot_txt.md'
 - 3 - Módulos científicos:
-  - numpy e scipy: sm_numpy_scipy.md
-  - Exemplo, regressão linear: sm_linreg.md
+  - numpy: sm_numpy_scipy.md
   - Exemplo, curva titulação: sm_ph.md
+  - Exemplo, regressão linear: sm_linreg.md
   - sympy: sm_sympy.md
   - pandas: sm_pandas.md
   - Algoritmos numéricos: sm_algorithms.md
