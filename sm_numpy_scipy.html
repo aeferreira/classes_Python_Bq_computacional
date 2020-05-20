@@ -1,0 +1,1720 @@
+
+
+
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copiar para área de transferência">
+      
+        <meta name="lang:clipboard.copied" content="Copiado para área de transferência">
+      
+        <meta name="lang:search.language" content="pt">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="Nenhum resultado encontrado">
+      
+        <meta name="lang:search.result.one" content="1 resultado encontrado">
+      
+        <meta name="lang:search.result.other" content="# resultados encontrados">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.4.2">
+    
+    
+      
+        <title>numpy - Bq computacional (FCUL)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#os-principais-modulos-cientificos" tabindex="1" class="md-skip">
+        Ir para o conteúdo
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="." title="Bq computacional (FCUL)" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Bq computacional (FCUL)
+            </span>
+            <span class="md-header-nav__topic">
+              
+                numpy
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Digite para iniciar a busca
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="." title="Bq computacional (FCUL)" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Bq computacional (FCUL)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Prefácio" class="md-nav__link">
+      Prefácio
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="data_software.html" title="Instalação (software e dados)" class="md-nav__link">
+      Instalação (software e dados)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      1 - A linguagem Python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        1 - A linguagem Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="basics.html" title="Conceitos básicos" class="md-nav__link">
+      Conceitos básicos
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="exercises_1.html" title="Exercícios (série 1)" class="md-nav__link">
+      Exercícios (série 1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="collections_iterations.html" title="Coleções e iterações" class="md-nav__link">
+      Coleções e iterações
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="more_on_lists_dicts.html" title="Listas e dicionários" class="md-nav__link">
+      Listas e dicionários
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="strings.html" title="Strings" class="md-nav__link">
+      Strings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="funcs_modules.html" title="Funções e módulos" class="md-nav__link">
+      Funções e módulos
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="problems.html" title="Exercícios de treino" class="md-nav__link">
+      Exercícios de treino
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="files.html" title="Ficheiros de texto" class="md-nav__link">
+      Ficheiros de texto
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      2 - Textos estruturados
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        2 - Textos estruturados
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="uniprot_txt.html" title="Exemplo 1 (UniProt txt)" class="md-nav__link">
+      Exemplo 1 (UniProt txt)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      3 - Módulos científicos
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        3 - Módulos científicos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        numpy
+      </label>
+    
+    <a href="sm_numpy_scipy.html" title="numpy" class="md-nav__link md-nav__link--active">
+      numpy
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Índice</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#numpy" class="md-nav__link">
+    numpy
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operacoes-vectoriais" class="md-nav__link">
+    Operações "vectoriais"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criacao-de-arrays-com-as-funcoes-array-arange-e-linspace" class="md-nav__link">
+    Criação de arrays com as funções .array(), .arange() e .linspace()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dimensoes-shape" class="md-nav__link">
+    Dimensões (shape)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criacao-de-arrays-com-array-ones-zeros-eye-diag" class="md-nav__link">
+    Criação de arrays com .array(), .ones(), .zeros(), .eye(), .diag()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexacao-a-varias-dimensoes" class="md-nav__link">
+    Indexação a várias dimensões
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexacao-booleana" class="md-nav__link">
+    Indexação booleana
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexacao-com-listas-de-inteiros-ou-outros-arrays" class="md-nav__link">
+    Indexação com listas de inteiros ou outros arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcoes-associadas-a-arrays" class="md-nav__link">
+    Funções associadas a arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geracao-de-numeros-aleatorios-sub-modulo-numpyrandom" class="md-nav__link">
+    Geração de números aleatórios. (sub-módulo numpy.random)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrizes-e-algebra-linear" class="md-nav__link">
+    Matrizes e álgebra linear
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="sm_ph.html" title="Exemplo, curva titulação" class="md-nav__link">
+      Exemplo, curva titulação
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="sm_linreg.html" title="Exemplo, regressão linear" class="md-nav__link">
+      Exemplo, regressão linear
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="sm_sympy.html" title="sympy" class="md-nav__link">
+      sympy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="sm_pandas.html" title="pandas" class="md-nav__link">
+      pandas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="sm_algorithms.html" title="Algoritmos numéricos" class="md-nav__link">
+      Algoritmos numéricos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Índice</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#numpy" class="md-nav__link">
+    numpy
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operacoes-vectoriais" class="md-nav__link">
+    Operações "vectoriais"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criacao-de-arrays-com-as-funcoes-array-arange-e-linspace" class="md-nav__link">
+    Criação de arrays com as funções .array(), .arange() e .linspace()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dimensoes-shape" class="md-nav__link">
+    Dimensões (shape)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criacao-de-arrays-com-array-ones-zeros-eye-diag" class="md-nav__link">
+    Criação de arrays com .array(), .ones(), .zeros(), .eye(), .diag()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexacao-a-varias-dimensoes" class="md-nav__link">
+    Indexação a várias dimensões
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexacao-booleana" class="md-nav__link">
+    Indexação booleana
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexacao-com-listas-de-inteiros-ou-outros-arrays" class="md-nav__link">
+    Indexação com listas de inteiros ou outros arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcoes-associadas-a-arrays" class="md-nav__link">
+    Funções associadas a arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geracao-de-numeros-aleatorios-sub-modulo-numpyrandom" class="md-nav__link">
+    Geração de números aleatórios. (sub-módulo numpy.random)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrizes-e-algebra-linear" class="md-nav__link">
+    Matrizes e álgebra linear
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="os-principais-modulos-cientificos">Os principais módulos "científicos"<a class="headerlink" href="#os-principais-modulos-cientificos" title="Permanent link">&para;</a></h1>
+<p>Embora não incluídas na distribuição oficial, disponibilizada em
+<a href="http://www.python.org">http://www.python.org</a>, as seguintes bibliotecas foram criadas para
+adaptar (e aumentar) a linguagem Python com a funcionalidade necessária
+em muitas aplicações de natureza científica.</p>
+<p>Estas bibliotecas são:</p>
+<ul>
+<li>numpy: objetos de tipo <code>array</code>, que suportam operações vetoriais</li>
+<li>scipy: muitas funções de cálculo numérico</li>
+<li>sympy: computação simbólica</li>
+<li>ipython: deu origem ao projeto Jupyter, que contem a plataforma
+    "Jupyter notebooks"</li>
+<li>matplotlib: a principal biblioteca de gráficos científicos da linguagem
+    Python</li>
+<li>pandas: objetos adequados ao tratamento de dados em larga escala
+    (<code>Series</code> e <code>DataFrame</code>)</li>
+</ul>
+<p><img alt="" src="images/sci_python.png" /></p>
+<h2 id="numpy"><code>numpy</code><a class="headerlink" href="#numpy" title="Permanent link">&para;</a></h2>
+<p>Esta é uma biblioteca fundamental na computação científica em Python e várias das outras bibliotecas dependem dela.</p>
+<p>Apesar de introduzir muitas funcionalidades interessantes à linguagem, a principal característica da biblioteca é proporcionar <strong>operações vetoriais</strong> a partir da introdução na linguagem Python de um tipo novo de objetos: os <em>array</em>.</p>
+<h3 id="operacoes-vectoriais">Operações "vectoriais"<a class="headerlink" href="#operacoes-vectoriais" title="Permanent link">&para;</a></h3>
+<p>A funcionalidade do módulo <code>numpy</code> fica disponível após
+<code>import</code>.</p>
+<p>Por convenção, é usual criar um nome alternativo, mais abreviado: <code>np</code>:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># No princípio de um programa que use o numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+
+<p>O que é uma operação vetorial?</p>
+<p>O melhor é começar com um exemplo:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">]</span>
+
+<span class="c1"># transformar a lista num array</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># esta é uma operação vetorial</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">y = 4 * x =&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>x = 
+[ 0.   0.2  0.5  1.   1.1]
+
+y = 4 * x =
+[ 0.   0.8  2.   4.   4.4]
+</pre></div>
+
+<p>A função <code>np.array()</code> transformou a lista num objeto do tipo <em>array</em>.</p>
+<p>Estes objetos suportam operações aritméticas "vetoriais": na expressão
+<code>y = 4 * x</code> a multiplicação por 4 é <strong>aplicada a todos os elementos de
+<code>x</code></strong>.</p>
+<p>O resultado é também um <em>array</em>.</p>
+<p>Por outro lado, as operações aritméticas entre dois <em>arrays</em>, por exemplo uma soma, são realizadas elemento a elemento, usando explicitamente o operador matemático da
+operação, por exemplo, <code>+</code>:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a = &#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b = &#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">y = a + b =&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<p><div class="codehilite"><pre><span></span>a =  [ 0.   0.2 -0.5  1.   1.1]
+b =  [ 0.   0.1 -1.   1.   1. ]
+
+y = a + b =
+[ 0.   0.3 -1.5  2.   2.1]
+</pre></div>
+Repare-se que a aplicação da mesma operação a todos os elementos de uma lista, um a um, é geralmente conseguida
+através de operações num bloco de um comando <code>for</code> ou usando listas em compreensão.</p>
+<p>Com <em>arrays</em> podemos não usar <code>for</code> ou listas em compreensão.</p>
+<p>Consegue-se o mesmo efeito a partir de expressões que se assemelham muito à notação matemática aplicada a todos os elementos de um "vetor" simultaneamente.</p>
+<p>Comparemos o uso de listas com o uso de <em>arrays</em>:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="c1"># listas</span>
+<span class="n">ylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
+
+<span class="c1"># array</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ylist</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[ 0.0, 0.8, 2.0, 4.0, 4.4]
+[ 0.   0.8  2.   4.   4.4]
+</pre></div>
+
+<p>Este ganho na simplicidade da notação é muito poderoso,
+já que podemos frequentemente exprimir operações numéricas
+complexas e sucessivas de uma forma muito semelhante à notação algébrica, mas aplicando a conjuntos inteiros de
+valores numéricos "em paralelo".</p>
+<p>Mais tarde veremos um exemplo disso mesmo, em que fazemos a simulação das variações de carga de um aminoácido em solução com as variações de pH, aplicando expressões simples a toda a escala de pH, usando centenas de valores no intervalo [0, 14].</p>
+<p>Mas os <em>arrays</em> foram criados para as operações numéricas:</p>
+<p>os <em>arrays</em> são homogéneos: todos os seus elementos são números, ao contrário das listas, que são flexíveis e podem
+ser constituídas por elementos de diversos tipos, por exemplo, podemos misturar <em>strings</em> com números numa lista, ou criar listas em que os elementos são "pares" de valores.</p>
+<h3 id="criacao-de-arrays-com-as-funcoes-array-arange-e-linspace">Criação de <em>arrays</em> com as funções <code>.array()</code>, <code>.arange()</code> e <code>.linspace()</code><a class="headerlink" href="#criacao-de-arrays-com-as-funcoes-array-arange-e-linspace" title="Permanent link">&para;</a></h3>
+<p>Já vimos a função <code>array()</code> que não é mais do que uma função básica que tenta transformar o seu argumento (geralmente uma lista) num <em>array</em>:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[ 1.   1.2  3.   3.5]
+</pre></div>
+
+<p>Mas há outras maneira de criar <em>arrays</em>.</p>
+<p>Se pretendermos criar um <em>array</em> em que os elementos possuem uma certa regularidade, existem várias outras funções à nossa disposição:</p>
+<p>A função <code>arange()</code> cria <em>arrays</em> de uma forma semelhente à
+função <code>range()</code>.</p>
+<p>O resultado é um <em>array</em> que varia entre um valor numérico inicial e um valor numérico final, mas dando um valor de espaçamento entre os números.</p>
+<p>Mas, de uma forma mais flexível do que a função <code>range()</code>,
+a função <code>arange()</code> não gera apenas números inteiros:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># array entre 1.5 e 2.0 com espaçamento de 0.1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[ 1.5  1.6  1.7  1.8  1.9]
+</pre></div>
+
+<p>Como se pode ver, o valor final é <em>exclusivé</em>.</p>
+<p>Muito semelhante à função <code>arange()</code> é a função
+<code>linspace()</code>, que também gera um <em>array</em> de valores igualemnte espaçados, mas em que o terceiro argumento não
+é o espaçamento, é o número de valores pretendidos no <em>array</em>.</p>
+<p>Os extremos do intervalo, o valor inicial e o valor final estão incluídos:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># 5 números no intervalo 1 a 2</span>
+<span class="c1"># extremos incluídos</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[ 1.    1.25  1.5   1.75  2.  ]
+</pre></div>
+
+<p>Uma das várias aplicações da função <code>linspace()</code> é definir comodamente valores dentro de um intervalo a partir
+dos quais possa calcular o resultado de uma transformação, como se estivesse a transformar x -&gt; y:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span><span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">y = 4 * x**2 -3&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>x
+[ 1.   1.2  1.4  1.6  1.8  2. ]
+
+y = 4 * x**2 -3
+[  1.     2.76   4.84   7.24   9.96  13.  ]
+</pre></div>
+
+<p>As vantagens de <code>linspace()</code> sobre <code>arange()</code>é o facto de não ser necessário calcular o espaçamento entre
+valores. Dando o número de pontos total, o espaçamento é calculado. Além disso os extremos estão incluídos.</p>
+<p>É frequente ver a função <code>linspace()</code>ser usada para gerar valores das abcissas de um gráfico, aplicando uma expressão para gerar as ordenadas.</p>
+<p>Vamos traçar a função <span><span class="MathJax_Preview">f(x) = 4 x^3 -3</span><script type="math/tex">f(x) = 4 x^3 -3</script></span> no intervalo entre -2 e 2:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># só necessário em Jupyter notebooks</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+</div>
+
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># import do módulo pyplot da biblioteca matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span><span class="mi">3</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+
+<p><img alt="image" src="images/plot_func.png" /></p>
+<p>Este gráfico é feito com 100 pontos igualmente espaçados nas abcissas e traçado entre 
+-2 e 2.</p>
+<p>Gerar pontos neste intervalo é da responsabilidade da função <code>linspace()</code>.</p>
+<p>Para gerar as ordenadas, basta aplicar a expressão <code>4 * x**3 -3</code> ao <em>array</em> <code>x</code> resultante da função <code>linspace()</code>.</p>
+<p>A função <code>plot()</code> é aquela que desenha o gráfico da função.</p>
+<p>Para usa-la precisamos de indicar um <em>array</em> para as abcissar e um <em>array</em> para as ordenadas.</p>
+<p>Os cálculos vetoriais permitem exprimir de uma forma muito compacta as soluções de problemas numéricos sem escrever blocos <code>for</code> ou listas em comprensão.</p>
+<p>Vejamos alguns exemplos:</p>
+<div class="admonition example">
+<p class="admonition-title">Problema</p>
+<p>Somar os primeiros 1000 quadrados perfeitos</p>
+</div>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">sq1000</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sq1000</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>332833500
+</pre></div>
+
+<p>Repare-se o que aconteceu: a função <code>arange(1000)</code> criou um <em>array</em> (não uma lista) com 1000 elementos.</p>
+<p>Como é um <em>array</em>, podemos imediatamente elevar a 2 (fazendo <code>**2</code>) resultando daí um outro array já com os quadrados de 1000 números calculados.</p>
+<p>A função <code>sum()</code>, disponível na linguagem Python para calcular a soma de elementos de coleções dá o resultado final.</p>
+<p>Mas a funcionalidade do módulo <code>numpy</code> é extremamente vasta.
+São introduzidas muitas funções associadas a conceitos matemáticos simples.</p>
+<p>Uma pequena ilustração: a função <code>intersect1d()</code> que calcula
+um <em>array</em> resultante da <strong>interseção</strong> de dois **arrays* entendidos como conjuntos.</p>
+<div class="admonition example">
+<p class="admonition-title">Problema</p>
+<p>Encontrar os números pares até 200 que sejam também
+múltiplos de 17</p>
+</div>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">even_nums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">mult17</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+
+<span class="n">common</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">even_nums</span><span class="p">,</span> <span class="n">mult17</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">common</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[ 34  68 102 136 170]
+</pre></div>
+
+<h3 id="dimensoes-shape">Dimensões (<code>shape</code>)<a class="headerlink" href="#dimensoes-shape" title="Permanent link">&para;</a></h3>
+<p>Os <em>arrays</em> podem não ser "lineares" como uma lista.</p>
+<p>Podem assemelhar-se a uma matriz, com duas (ou mais) dimensões.</p>
+<p>Para isso, um <em>array</em> tem um atributo chamado <code>shape</code> que consiste na indicação do número de elementos em cada "dimensão".</p>
+<p>No seguinte exemplo, um <em>array</em> "linear" é forçado a tomar a
+forma de uma matriz 4 x 3:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># significa 4 linhas e 3 colunas</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Após mudar &quot;shape&quot; para (4,3)</span><span class="se">\n</span><span class="s1">x =</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[ 1  2  3  4  5  6  7  8  9 10 11 12]
+
+Após mudar &quot;shape&quot; para (4,3)
+x =
+[[ 1  2  3]
+ [ 4  5  6]
+ [ 7  8  9]
+ [10 11 12]]
+</pre></div>
+
+<p>Imagine-se as possibilidades! Operações com matrizes inteiras expressas de uma forma simples e semelhante à notação matemática.</p>
+<p>Os <em>arrays</em> com mais de 1 dimensão podem ser criados de outra formas. Vamos ver algumas delas.</p>
+<h3 id="criacao-de-arrays-com-array-ones-zeros-eye-diag">Criação de <em>arrays</em> com <code>.array()</code>, <code>.ones()</code>, <code>.zeros()</code>, <code>.eye()</code>, <code>.diag()</code><a class="headerlink" href="#criacao-de-arrays-com-array-ones-zeros-eye-diag" title="Permanent link">&para;</a></h3>
+<p>A função <code>array()</code> pode receber uma lista de listas como argumento. cada lista é usada para formar uma linha do <em>array</em> bidimensional:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># array a partir de lista de listas</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">5.1</span><span class="p">,</span><span class="mf">1.3</span><span class="p">]]</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[ 1.   1.2  3. ]
+ [ 1.3  5.1  1.3]]
+shape = (2, 3)
+</pre></div>
+
+<p>A função <code>ones()</code> cria um <em>array</em> todo preenchido com 1, com
+determinadas dimensões:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[1. 1. 1.]
+ [1. 1. 1.]
+ [1. 1. 1.]
+ [1. 1. 1.]]
+</pre></div>
+
+<p>O mesmo acontece para zeros:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[ 0.  0.]
+ [ 0.  0.]
+ [ 0.  0.]]
+</pre></div>
+
+<p>Também podemos obter uma <strong>matriz identidade</strong> a partir
+da função <code>eye()</code> em que se indica a dimensão da matriz:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[ 1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 0.  0.  1.]]
+</pre></div>
+
+<p>E também podemos gerar uma matriz diagonal, através da
+função <code>diag()</code>:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[ 1.2  0.   0.   0. ]
+ [ 0.   3.2  0.   0. ]
+ [ 0.   0.   4.1  0. ]
+ [ 0.   0.   0.   6.3]]
+</pre></div>
+
+<h3 id="indexacao-a-varias-dimensoes">Indexação a várias dimensões<a class="headerlink" href="#indexacao-a-varias-dimensoes" title="Permanent link">&para;</a></h3>
+<p>Os <em>arrays</em> têm muitas características em comuns com as listas.</p>
+<p>Em particular, um <em>array</em> linear pode ser indexado com <code>[]</code>
+indicando uma posição ou fazendo um <em>slice</em> indicando duas posições, com números inteiros. O que obtemos é, por analogia com as listas, um elemento ou um "<em>subarray</em>".</p>
+<p>Mas um <em>array</em> com mais do que uma dimensão também pode ser indexado. Usamos <code>[]</code>, como sempre, mas podemos indexar várias dimensões separadamente, separadas por <code>,</code></p>
+<p>Se as dimensões forem duas, a primeira dimensão são as linhas
+e a segunda são as colunas:</p>
+<p>Comecemos por criar um <em>array</em> 5 x 4:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[  1.   2.   3.   4.]
+ [  5.   6.   7.   8.]
+ [  9.  10.  11.  12.]
+ [ 13.  14.  15.  16.]
+ [ 17.  18.  19.  20.]]
+</pre></div>
+
+<p>Podemos obter o elelemento da linha 3 e coluna 1 da seguinte forma:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">x[3,1] =&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[  1.   2.   3.   4.]
+ [  5.   6.   7.   8.]
+ [  9.  10.  11.  12.]
+ [ 13.  14.  15.  16.]
+ [ 17.  18.  19.  20.]]
+
+x[3,1] = 14.0
+</pre></div>
+
+<p>Note-se que a numeração <strong>começa em 0</strong>, seja qual for a dimensão que está a ser indexada.</p>
+<p>Se numa dimensão indicarmos <code>:</code> isto significa uma <em>slice</em>
+do "princípio ao fim".</p>
+<p>Isto significa que podemos obter, por exemplo, uma linha inteira:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># toda a linha 3</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">x[3, :] =&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[  1.   2.   3.   4.]
+ [  5.   6.   7.   8.]
+ [  9.  10.  11.  12.]
+ [ 13.  14.  15.  16.]
+ [ 17.  18.  19.  20.]]
+
+x[3, :] = [ 13.  14.  15.  16.]
+</pre></div>
+
+<p>Mas um slice mais restritivo pode servir para obter uma 
+"submatriz".</p>
+<p>No seguinte exemplo, obtemos o que está nas linhas de 1 a 3 e nas colunas de 1 a 3:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">x[1:4, 1:4] =&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[  1.   2.   3.   4.]
+ [  5.   6.   7.   8.]
+ [  9.  10.  11.  12.]
+ [ 13.  14.  15.  16.]
+ [ 17.  18.  19.  20.]]
+
+x[1:4, 1:4] =
+[[  6.   7.   8.]
+ [ 10.  11.  12.]
+ [ 14.  15.  16.]]
+</pre></div>
+
+<p>Mas os slices de <code>arrays</code> lineares são familiares, como
+se tivessemos a trabalhar com uma lista:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[ 0.2  0.3  0.4  0.5  0.6  0.7  0.8  0.9  1. ]
+</pre></div>
+
+<p>Mas o resultado de um <em>slice</em> continua a ser um <em>array</em>.</p>
+<p>Podemos tirar partido disso com um exemplo que, parecendo complicado, pode ser resolvido de uma forma muito simples:
+as diferenças sucessivas de elementos de um <em>array</em>:</p>
+<div class="admonition example">
+<p class="admonition-title">Problema</p>
+<p>Mostrar que as diferenças entre os quadrados perfeitos sucessivos são os numeros ímpares</p>
+</div>
+<p>Gerar um <em>array</em> <code>a</code> com números ímpares será fácil, com <code>arange()</code>.</p>
+<p>Mas como fazer as diferenças sucessivas <span><span class="MathJax_Preview">a_1 - a_0</span><script type="math/tex">a_1 - a_0</script></span> , <span><span class="MathJax_Preview">a_2 - a_1</span><script type="math/tex">a_2 - a_1</script></span>, etc?</p>
+<p>E sem usar <code>for</code>?</p>
+<p>Basta que façamos a diferença entre um o <em>array</em> <span><span class="MathJax_Preview">[a_1, a_2, a_3, ..., a_n]</span><script type="math/tex">[a_1, a_2, a_3, ..., a_n]</script></span> e o array <span><span class="MathJax_Preview">[a_0, a_1, a_2, ..., a_{n-1}]</span><script type="math/tex">[a_0, a_1, a_2, ..., a_{n-1}]</script></span>.</p>
+<p>Como são <em>arrays</em> a diferença vai ser realizada elemento a elemento e obtemos diretamente as diferenças sucessivas.</p>
+<p><em>slices</em> adequadas criam os dois <em>arrays</em>:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">quads</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># diferença entre quads[1:], que não tem o</span>
+<span class="c1"># primeiro elemento</span>
+<span class="c1"># e quads[0:-1], que não tem o último</span>
+<span class="c1"># elemento</span>
+<span class="n">difs</span> <span class="o">=</span> <span class="n">quads</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">quads</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">quads</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">difs</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[  0   1   4   9  16  25  36  49  64  81 100 121 144 169 196 225 256 289 324 361]
+[ 1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37]
+</pre></div>
+
+<h3 id="indexacao-booleana">Indexação booleana<a class="headerlink" href="#indexacao-booleana" title="Permanent link">&para;</a></h3>
+<p>A flexibilidade da indexação de <em>arrays</em> não fica por aqui.</p>
+<p>Se fizermos uma operação lógica com <em>arrays</em> criamos um
+<em>array booleano</em> que contem <code>True</code>e <code>False</code> assinalando as posições em que a condição é verdadeira ou falsa:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">x &lt; 7&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>x = [  1.    2.8   4.6   6.4   8.2  10. ]
+
+x &lt; 7
+[ True  True  True  True False False]
+</pre></div>
+
+<p>Aqui o <em>array booleano</em> indica as posições em que os elementos são menores do que 7.</p>
+<p>Um <em>array booleano</em> pode indexar um outro <em>array</em>.</p>
+<p>Ao faze-lo, retemos os elementos para os quais a posição é verdadeira e descartamos os outros:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">x &lt; 7&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">x[x &lt; 7]&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>x = [  1.    2.8   4.6   6.4   8.2  10. ]
+
+x &lt; 7
+[ True  True  True  True False False]
+
+x[x &lt; 7]
+[ 1.   2.8  4.6  6.4]
+</pre></div>
+
+<div class="admonition example">
+<p class="admonition-title">Problema</p>
+<p>Encontra os números até 2000 que satisfaçam simultaneamente:</p>
+<ul>
+<li>são números ímpares</li>
+<li>o logaritmo base 2 esteja entre 3 e 5</li>
+</ul>
+</div>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2001</span><span class="p">)</span>
+
+<span class="n">restricted</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nums</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">1</span><span class="p">)]</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">restricted</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[ 9 11 13 15 17 19 21 23 25 27 29 31]
+</pre></div>
+
+<p>Este exemplo demonstra a conjunção de várias condições para <em>arrays</em>.</p>
+<p>Em vez de <code>and</code> e <code>or</code>, as operações lógicas booleanas elemento a elemento são realizadas pelos operadores <code>&amp;</code> para a conjunção e <code>|</code> para a disjunção. Fizemos a conjunção de 3 condições e indexámos o <em>array</em>  <code>nums</code> com o <em>array booleano</em> daí resultante.</p>
+<h3 id="indexacao-com-listas-de-inteiros-ou-outros-arrays">Indexação com listas de inteiros ou outros <em>arrays</em><a class="headerlink" href="#indexacao-com-listas-de-inteiros-ou-outros-arrays" title="Permanent link">&para;</a></h3>
+<p>Finalmente, uma lista de números inteiros ou um <em>array</em> de inteiros podem ser usados para indexar <em>arrays</em>.</p>
+<p>O efeito é selecionar apenas os elementos que estão em determinadas posições:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">i =&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">x[i] =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>x = [  5.   7.   9.  11.  13.  15.]
+
+i = [1, 4, 5]
+
+x[i] = [  7.  13.  15.]
+</pre></div>
+
+<div class="admonition example">
+<p class="admonition-title">Problema</p>
+<p>Obter raízes quadradas dos números até 200, mas apenas de 3 em 3, começando da raíz de 0</p>
+</div>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">roots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">201</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+
+<span class="n">locs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">roots</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">roots</span> <span class="o">=</span> <span class="n">roots</span><span class="p">[</span><span class="n">locs</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">roots</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[ 0.          1.73205081  2.44948974  3.          3.46410162  3.87298335 
+  4.24264069  4.58257569  4.89897949  5.19615242  5.47722558  5.74456265 
+  6.          6.244998    6.4807407   6.70820393  6.92820323  7.14142843 
+  7.34846923  7.54983444  7.74596669  7.93725393  8.1240384   8.30662386 
+  8.48528137  8.66025404  8.83176087  9.          9.16515139  9.32737905 
+  9.48683298  9.64365076  9.79795897  9.94987437 10.09950494 10.24695077 
+ 10.39230485 10.53565375 10.67707825 10.81665383 10.95445115 11.09053651 
+ 11.22497216 11.35781669 11.48912529 11.61895004 11.74734012 11.87434209 
+ 12.         12.12435565 12.24744871 12.36931688 12.489996   12.60952021 
+ 12.72792206 12.84523258 12.9614814  13.07669683 13.19090596 13.3041347  
+ 13.41640786 13.52774926 13.6381817  13.74772708 13.85640646 13.96424004 
+ 14.07124728]
+</pre></div>
+
+<h3 id="funcoes-associadas-a-arrays">Funções associadas a <em>arrays</em><a class="headerlink" href="#funcoes-associadas-a-arrays" title="Permanent link">&para;</a></h3>
+<p>Os objetos do tipo <em>array</em> possuem muitas funções associadas.</p>
+<p>Estas funções são acedidas seguindo a notação</p>
+<div class="codehilite"><pre><span></span><code> array.função()
+</code></pre></div>
+
+
+<p>tal como vimos para muitas funções associadas a listas, dicionários e <em>strings</em>.</p>
+<p>Algumas são:</p>
+<ul>
+<li><code>.sum()</code> que calcula a soma dos elementos</li>
+<li><code>.mean()</code> que calcula a média dos elementos</li>
+<li><code>.var()</code> que calcula a variância dos elementos</li>
+<li><code>.std()</code> que calcula o desvio padrão dos elementos</li>
+<li><code>.prod()</code> que calcula o produto dos elementos</li>
+<li><code>.ptp()</code> (<em>peak to peak</em>) que calcula o máximo - mínimo</li>
+<li><code>.cumsum()</code> que calcula a soma cumulativa dos elementos</li>
+<li><code>.cumprod()</code> que calcula o produto cumulativo dos elementos</li>
+</ul>
+<p>Repare-se na utilidade das funções <code>.cumsum()</code> e <code>.cumprod()</code>, que podem ser usadas para calcular fatoriais e somas parciais de séries matemáticas:</p>
+<div class="admonition example">
+<p class="admonition-title">Problema</p>
+<p>Mostrar (com <em>arrays</em>) que a soma dos inversos dos fatoriais
+converge (rapidamente) para <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> = 2.7182818284...</p>
+</div>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">facts</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+
+<span class="n">invfacts</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">facts</span>
+
+<span class="n">series_invfacts</span> <span class="o">=</span> <span class="n">invfacts</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fatoriais:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">facts</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Série dos inversos dos fatoriais:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">series_invfacts</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>Fatoriais:
+[         1          2          6         24        120        720
+       5040      40320     362880    3628800   39916800  479001600
+ 1932053504 1278945280]
+
+Série dos inversos dos fatoriais:
+[1.         1.5        1.66666667 1.70833333 1.71666667 1.71805556
+ 1.71825397 1.71827877 1.71828153 1.7182818  1.71828183 1.71828183
+ 1.71828183 1.71828183]
+</pre></div>
+
+<p>No caso da aplicação destas funções a <em>arrays</em> multidimensionais,
+podemos especificar um "eixo" para aplicar o cálculo.</p>
+<p>Vejamos a aplicação da função <code>.sum()</code> a um <em>array</em> unidimensional:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>210.0
+</pre></div>
+
+<p>E agora 3 maneiras de aplicar a função <code>.sum()</code> a um array com duas dimensões, 5 x 4</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># Como se fosse unidimensional</span>
+<span class="c1"># aplicando a todos os elementos</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[  1.   2.   3.   4.]
+ [  5.   6.   7.   8.]
+ [  9.  10.  11.  12.]
+ [ 13.  14.  15.  16.]
+ [ 17.  18.  19.  20.]]
+
+ 210.0
+</pre></div>
+
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># Ao longo do eixo 0, isto é, ao longo das colunas</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[  1.   2.   3.   4.]
+ [  5.   6.   7.   8.]
+ [  9.  10.  11.  12.]
+ [ 13.  14.  15.  16.]
+ [ 17.  18.  19.  20.]]
+
+ [ 45.  50.  55.  60.]
+</pre></div>
+
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># Ao longo do eixo 1, isto é, ao longo das linhas</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[[  1.   2.   3.   4.]
+ [  5.   6.   7.   8.]
+ [  9.  10.  11.  12.]
+ [ 13.  14.  15.  16.]
+ [ 17.  18.  19.  20.]]
+
+ [ 10.  26.  42.  58.  74.]
+</pre></div>
+
+<p>E agora mais um problema com séries, mas obtendo um gráfico:</p>
+<div class="admonition example">
+<p class="admonition-title">Problema</p>
+<p>Mostrar que a série alternada dos inversos dos números</p>
+<p><span><span class="MathJax_Preview">\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n}</span><script type="math/tex">\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n}</script></span></p>
+<p>converge para log 2 (embora lentamente)</p>
+</div>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># começando com apenas 80 termos na série parcial</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="n">termos</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="n">i</span> 
+<span class="n">s</span> <span class="o">=</span> <span class="n">termos</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+<span class="c1"># mostrar os últimos 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>[ 1.          0.5         0.83333333  0.58333333]
+</pre></div>
+
+<p>Parece que com 80 números ainda estamos longe da convergência...</p>
+<p>É melhor ver num gráfico:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">termos</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="n">i</span> 
+<span class="n">s</span> <span class="o">=</span> <span class="n">termos</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="c1"># draw an horizontal line on log2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="c1"># plot the series</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+
+<p><img alt="image" src="images/series.png" /></p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1"># Agora com 300 termos...</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">termos</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="n">i</span> 
+<span class="n">s</span> <span class="o">=</span> <span class="n">termos</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="c1"># draw an horizontal line on log2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="c1"># plot the series</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">s</span> <span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+
+<p><img alt="image" src="images/series300.png" /></p>
+<h3 id="geracao-de-numeros-aleatorios-sub-modulo-numpyrandom">Geração de números aleatórios. (sub-módulo <code>numpy.random</code>)<a class="headerlink" href="#geracao-de-numeros-aleatorios-sub-modulo-numpyrandom" title="Permanent link">&para;</a></h3>
+<p>O <code>numpy</code> é um módulo com alguma complexidade e contem sub-módulos dedicados
+a certas funcionalidades mais específicas.</p>
+<p>Dois exemplos são a geração de números aleatórios que seguem uma detrminada distribuição estatística e as operações com matrizes de acordo com a álgebra linear.</p>
+<p>Como exemplo, vamos obter valores aleatórios das seguintes distribuições:</p>
+<p><strong>Poisson</strong> (usada como modelo do número de ocorrências durante um intervalo)</p>
+<p><span><span class="MathJax_Preview">p(x, \lambda) = \frac{e^{-x} \lambda^x}{x!}</span><script type="math/tex">p(x, \lambda) = \frac{e^{-x} \lambda^x}{x!}</script></span> com <span><span class="MathJax_Preview">x = 0, 1, 2, ...</span><script type="math/tex">x = 0, 1, 2, ...</script></span></p>
+<p><strong>Normal (0,1)</strong></p>
+<p><span><span class="MathJax_Preview">f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2}</span><script type="math/tex">f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2}</script></span> com
+<span><span class="MathJax_Preview">x \in [-\infty, \infty]</span><script type="math/tex">x \in [-\infty, \infty]</script></span></p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;20 valores aleatórios da dist. de Poisson&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; com lambda = 3&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>20 valores aleatórios da dist. de Poisson
+ com lambda = 3
+[6 2 0 4 1 9 1 4 2 5 0 3 4 7 7 2 3 5 1 4]
+</pre></div>
+
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;5 valores aleatórios da distribuição N(0,1)&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>5 valores aleatórios da distribuição N(0,1)
+[ 1.04529894 -0.26523157  0.94498444  0.63413472 -1.38915953]
+</pre></div>
+
+<div class="admonition example">
+<p class="admonition-title">Problema</p>
+<p>"Provar" numericamente que a média e a variância da distribuição de
+Poisson são ambas iguais a <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span>.</p>
+</div>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># 100000 valores aleatórios da distribuição de</span>
+<span class="c1"># Poisson com lambda = 3</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Média = &#39;</span><span class="p">,</span> <span class="n">sample</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variância =&#39;</span><span class="p">,</span> <span class="n">sample</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>Média =  2.99868
+Variância = 3.0185382576
+</pre></div>
+
+<p>Pode-se ver que ambos os valores são quase iguais a 3, o valor de <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span>.</p>
+<p>!!! example "Problema" Mostar "numericamente" o <strong>Teorema do Limite Central</strong>
+    para uma distribuição de Poisson.</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># Distribuição de médias de amostras de 2</span>
+
+<span class="c1"># 2 x 100 000 números aleatórios com distribuição de Poisson</span>
+<span class="c1"># com lambda = 3</span>
+<span class="c1"># isto simula 100000 amostras com 2 elementos cada uma</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">100000</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="c1"># calcular as médias das 100000 amostras de 2</span>
+<span class="n">means</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># a função unique faz contagens dos diferentes resultados</span>
+<span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">counts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+
+<p><img alt="image" src="images/poisson2.png" /></p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="c1"># Distribuição de médias de amostras de 20</span>
+
+<span class="c1"># 20 x 100 000 números aleatórios com distribuição de Poisson</span>
+<span class="c1"># com lambda = 3</span>
+<span class="c1"># isto simula 100000 amostras com 2 elementos cada uma</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">100000</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="c1"># calcular as médias das 100000 amostras de 20</span>
+<span class="n">means</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># a função unique faz contagens dos diferentes resultados</span>
+<span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">counts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+
+<p><img alt="image" src="images/poisson20.png" /></p>
+<p>Parece evidente a aproximação da distribuição por uma normal</p>
+<h3 id="matrizes-e-algebra-linear">Matrizes e álgebra linear<a class="headerlink" href="#matrizes-e-algebra-linear" title="Permanent link">&para;</a></h3>
+<p>O produto de <em>arrays</em> segue a regra das operações vetoriais e é feita elemento a elemento.</p>
+<p>Mas, na álgebra linear, o produto de matrizes é feito de outra maneira.</p>
+<p>O <code>numpy</code> admite uma versão modificada dos <code>arrays</code>, chamada <code>matrix</code> que
+repeita a fórmula do produto de matrizes e também tem outras operações frequentes na
+álgebra linear.</p>
+<p>veja-se a multiplicação de matrizes e a sua transposição:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;B</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">C = A * B</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>A
+ [[1 2 3]
+ [2 1 6]
+ [1 7 4]]
+B
+ [[1]
+ [2]
+ [3]]
+
+C = A * B
+ [[14]
+ [22]
+ [27]]
+</pre></div>
+
+<p>Podemos também resolver sistemas de equações lineares
+expressos na forma A . X = B</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Solução de A*X = B&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>Solução de A*X = B
+[[-5.]
+ [ 0.]
+ [ 2.]]
+</pre></div>
+
+<p>Esta introdução ao módulo <code>numpy</code> foi muito superficial e uma seleção apenas dos aspetos mais importantes. Poderíamos continuar a explorar o módulo, mas a com a prática somos muitas vezes levados a procurar funções e sub-módulos que resolvem muitos problemas de natureza numérica de uma forma muito expressiva e simples.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="uniprot_txt.html" title="Exemplo 1 (UniProt txt)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Exemplo 1 (UniProt txt)
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="sm_ph.html" title="Exemplo, curva titulação" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Próximo
+                </span>
+                Exemplo, curva titulação
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/application.c648116f.js"></script>
+      
+        
+        
+          
+          <script src="assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+                <script src="assets/javascripts/lunr/lunr.pt.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1",url:{base:"."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
