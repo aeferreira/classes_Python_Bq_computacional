@@ -1,11 +1,7 @@
-`Pandas`
---------
+# pandas
 
-![](images/sci_python_pandas.png)
 
-*web site*: (`pandas.pydata.org`)
-
-![](images/pandas_web.png)
+[![](images/pandas.svg)](https://pandas.pydata.org/)
 
 ### `Series`
 
@@ -385,1015 +381,521 @@ colunas.
 Para ilustar o uso de uma `DataFrame`, vamos ler e processar a
 informação da UniProt sobre a levedura *S. cerevisiae*.
 
-A `DataFrame` terá as colunas "**ac**", "**rev**", "**n**" e
-"**sequence**"
+## Exemplo: Tabela com informação Uniprot txt
+
+### Preparação
+
+Ficheiro _Unitprot text_ com a informação sobre as proteínas da levedura _S. cerevisiae_. Para obter este ficheiro,
+
+- na UniProt procurar pelo "proteoma" da levedura _S. cerevisiae_ [www.uniprot.org/proteomes/UP000002311](https://www.uniprot.org/proteomes/UP000002311)
+- Passar para resultados UniProtKB em "Map to Reviewed"
+- Download -> Text
+- Se o download tiver sido em modo "compressed", extraír o ficheiro do zip.
+- Alterar o nome do ficheiro para `uniprot_scerevisiae.txt`
+
+
+### Extração dos dados
 
 <div class="python_box">
-``` python3
-def get_prots(filename):
-    with open(filename) as big:
-        tudo = big.read()
-    return [p for p in tudo.split('//\n') if len(p) != 0]
+```python3
+def read_Uniprot_text(filename):
+    """Reads a UniProt text file and splits into a list of protein records."""
+    
+    with open(filename) as uniprot_file:
+        whole_file = uniprot_file.read()
 
-prots = get_prots('uniprot_s_cerevisiae.txt')
+    records = whole_file.split('//\n')
+    
+    # remove empty records
+    records = [p for p in records if len(p) != 0]
+    # since we know that it is the last one only...
+    # records.pop(-1)
+    return records
 
-def process_prot(p):
-    linhas = p.split('\n')
-    partes = linhas[0].split()
-    reviewed = partes[2][0:-1]
-    naa = int(partes[3])
-    ac = linhas[1].split()[1][0:-1]
-    for i in range(len(linhas)-1, 0, -1):
-        if linhas[i].startswith('SQ'):
-            break
-    s = ''.join(linhas[i+1:])
-    seq = ''.join(s.split())
-    return {'ac':ac, 'rev':reviewed, 'n':naa, 'seq':seq}
+data_filename = 'uniprot_scerevisiae.txt'
+prots = read_Uniprot_text(data_filename)
 
-pinfo = [process_prot(p) for p in prots]
-print('Numero total de proteínas: {}'.format(len(pinfo)))
-print('A primeira proteína tem', pinfo[0]['n'], 'aminoácidos')
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
+def extract_info(record):
+    """Reads a UniProt text record and returns a dict with extrated information.
+    
+    The returned dict has the following fields:
+    
+    'ac': the UniProt Access Id,
+    'n': the sequence length, 
+    'PTMs': a dictionary that associates the location of PTMs (int, as keys)
+               with the name of the PTM.
+    'seq': a string with the protein sequence
+    """
+    
+    IDline, ACline, *otherlines = record.splitlines()
+      
+    ac = ACline.split(';',1)[0].split()[1]
+    n = int(IDline.split()[3])
+       
+    PTMs = []
+    seqlines = []
+    for i, line in enumerate(otherlines):
+
+        if line.startswith('FT   MOD_RES'):
+            FTcode, MOD_RES, loc, *rest = line.split()
+            
+            nextline = otherlines[i+1]
+            PTMtype = nextline.split('/note=')[1]
+            PTMtype = PTMtype.strip('"')
+            PTMtype = PTMtype.split(';')[0]
+            
+            PTMs.append((loc, PTMtype))
+        if line.startswith('  '): # two spaces
+            seqlines.append(line)
+    # build seq string from seqlines
+    seq = ''.join([line.replace(' ', '') for line in seqlines])
+        
+    # Return dictionary of extracted information
+    return {'ac': ac, 'n': n, 'PTMs': PTMs, 'seq': seq}
+
+all_prots = [extract_info(p) for p in prots]
+for p in all_prots[:4]:
+    print('-----------------------------------')
+    print(p)
 ```
 </div>
 
 ```
-Numero total de proteínas: 6816
-A primeira proteína tem 316 aminoácidos
+The number of protein records in "uniprot_scerevisiae.txt" is 6049
+-----------------------------------
+{'ac': 'P38090', 'n': 596, 'PTMs': [], 'seq': 'MTKERMTIDYENDGDFEYDKNKYKTITTRIKSIEPSEGWLEPSGSVGHINTIPEAGDVHVDEHEDRGSSIDDDSRTYLLYFTETRRKLENRHVQLIAISGVIGTALFVAIGKALYRGGPASLLLAFALWCVPILCITVSTAEMVCFFPVSSPFLRLATKCVDDSLAVMASWNFWFLECVQIPFEIVSVNTIIHYWRDDYSAGIPLAVQVVLYLLISICAVKYYGEMEFWLASFKIILALGLFTFTFITMLGGNPEHDRYGFRNYGESPFKKYFPDGNDVGKSSGYFQGFLACLIQASFTIAGGEYISMLAGEVKRPRKVLPKAFKQVFVRLTFLFLGSCLCVGIVCSPNDPDLTAAINEARPGAGSSPYVIAMNNLKIRILPDIVNIALITAAFSAGNAYTYCSSRTFYGMALDGYAPKIFTRCNRHGVPIYSVAISLVWALVSLLQLNSNSAVVLNWLINLITASQLINFVVLCIVYLFFRRAYHVQQDSLPKLPFRSWGQPYTAIIGLVSCSAMILIQGYTVFFPKLWNTQDFLFSYLMVFINIGIYVGYKFIWKRGKDHFKNPHEIDFSKELTEIENHEIESSFEKFQYYSKA'}
+-----------------------------------
+{'ac': 'Q12001', 'n': 544, 'PTMs': [], 'seq': 'MAIGKRLLVNKPAEESFYASPMYDFLYPFRPVGNQWLPEYIIFVCAVILRCTIGLGPYSGKGSPPLYGDFEAQRHWMEITQHLPLSKWYWYDLQYWGLDYPPLTAFHSYLLGLIGSFFNPSWFALEKSRGFESPDNGLKTYMRSTVIISDILFYFPAVIYFTKWLGRYRNQSPIGQSIAASAILFQPSLMLIDHGHFQYNSVMLGLTAYAINNLLDEYYAMAAVCFVLSICFKQMALYYAPIFFAYLLSRSLLFPKFNIARLTVIAFATLATFAIIFAPLYFLGGGLKNIHQCIHRIFPFARGIFEDKVANFWCVTNVFVKYKERFTIQQLQLYSLIATVIGFLPAMIMTLLHPKKHLLPYVLIACSMSFFLFSFQVHEKTILIPLLPITLLYSSTDWNVLSLVSWINNVALFTLWPLLKKDGLHLQYAVSFLLSNWLIGNFSFITPRFLPKSLTPGPSISSINSDYRRRSLLPYNVVWKSFIIGTYIAMGFYHFLDQFVAPPSKYPDLWVLLNCAVGFICFSIFWLWSYYKIFTSGSKSMKDL'}
+-----------------------------------
+{'ac': 'P53309', 'n': 568, 'PTMs': [('449', 'Phosphothreonine')], 'seq': 'MSSLYTKLVKGATKIKMAPPKQKYVDPILSGTSSARGLQEITHALDIRLSDTAWTIVYKALIVLHLMIQQGEKDVTLRHYSHNLDVFQLRKISHTTKWSSNDMRALQRYDEYLKTRCEEYGRLGMDHLRDNYSSLKLGSKNQLSMDEELDHVESLEIQINALIRNKYSVSDLENHLLLYAFQLLVQDLLGLYNALNEGVITLLESFFELSIEHAKRTLDLYKDFVDMTEYVVRYLKIGKAVGLKIPVIKHITTKLINSLEEHLREETKRQRGEPSEPQQDRKPSTAISSTSSHNNNSNDKNKSIAQKKLEQIREQKRLLEQQLQNQQLLISPTVPQDAYNPFGSQQQDLNNDTFSFEPTQPQMTAQVPQPTANPFLIPQQQQQALQLTSASTMPQPSEIQITPNLNNQQTGMYASNLQYTPNFTGSGFGGYTTTENNAIMTGTLDPTKTGSNNPFSLENIAREQQQQNFQNSPNPFTLQQAQTTPILAHSQTGNPFQAQNVVTSPMGTYMTNPVAGQLQYASTGAQQQPQMMQGQQTGYVMVPTAFVPINQQQQQQQHQQENPNLIDI'}
+-----------------------------------
+{'ac': 'P40467', 'n': 964, 'PTMs': [('166', 'Phosphoserine'), ('186', 'Phosphoserine'), ('963', 'Phosphoserine')], 'seq': 'MPEQAQQGEQSVKRRRVTRACDECRKKKVKCDGQQPCIHCTVYSYECTYKKPTKRTQNSGNSGVLTLGNVTTGPSSSTVVAAAASNPNKLLSNIKTERAILPGASTIPASNNPSKPRKYKTKSTRLQSKIDRYKQIFDEVFPQLPDIDNLDIPVFLQIFHNFKRDSQSFLDDTVKEYTLIVNDSSSPIQPVLSSNSKNSTPDEFLPNMKSDSNSASSNREQDSVDTYSNIPVGREIKIILPPKAIALQFVKSTWEHCCVLLRFYHRPSFIRQLDELYETDPNNYTSKQMQFLPLCYAAIAVGALFSKSIVSNDSSREKFLQDEGYKYFIAARKLIDITNARDLNSIQAILMLIIFLQCSARLSTCYTYIGVAMRSALRAGFHRKLSPNSGFSPIEIEMRKRLFYTIYKLDVYINAMLGLPRSISPDDFDQTLPLDLSDENITEVAYLPENQHSVLSSTGISNEHTKLFLILNEIISELYPIKKTSNIISHETVTSLELKLRNWLDSLPKELIPNAENIDPEYERANRLLHLSFLHVQIILYRPFIHYLSRNMNAENVDPLCYRRARNSIAVARTVIKLAKEMVSNNLLTGSYWYACYTIFYSVAGLLFYIHEAQLPDKDSAREYYDILKDAETGRSVLIQLKDSSMAASRTYNLLNQIFEKLNSKTIQLTALHSSPSNESAFLVTNNSSALKPHLGDSLQPPVFFSSQDTKNSFSLAKSEESTNDYAMANYLNNTPISENPLNEAQQQDQVSQGTTNMSNERDPNNFLSIDIRLDNNGQSNILDATDDVFIRNDGDIPTNSAFDFSSSKSNASNNSNPDTINNNYNNVSGKNNNNNNITNNSNNNHNNNNNDNNNNNNNNNNNNNNNNNSGNSSNNNNNNNNNKNNNDFGIKIDNNSPSYEGFPQLQIPLSQDNLNIEDKEEMSPNIEIKNEQNMTDSNDILGVFDQLDAQLFGKYLPLNYPSE'}
 ```
 
-Podemos construir uma `DataFrame` a partir de uma lista de dicionários.
-As **chaves dos dicionários serão as colunas**.
+### Transformação numa *DataFrame*
+
+
 
 <div class="python_box">
-``` python3
-prots = pd.DataFrame(pinfo)
-print(len(prots))
-prots[:3]
+```python3
+prot_table = pd.DataFrame(all_prots)
+prot_table
 ```
 </div>
 
-```
-6816
-```
 
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
+|    | ac     |   n | PTMs                                                                           | seq                      |
+|:---|:-------|:----|:-------------------------------------------------------------------------------|:-------------------------|
+|  0 | P38090 | 596 | []                                                                             | MTKERMTIDYENDGDFEYDKN... |
+|  1 | Q12001 | 544 | []                                                                             | MAIGKRLLVNKPAEESFYASP... |
+|  2 | P53309 | 568 | [('449', 'Phosphothreonine')]                                                  | MSSLYTKLVKGATKIKMAPPK... |
+|  3 | P40467 | 964 | [('166', 'Phosphoserine'), ('186', 'Phosphoserine'), ('963', 'Phosphoserine')] | MPEQAQQGEQSVKRRRVTRAC... |
+|  4 | P0CZ17 | 362 | []                                                                             | MRSLNTLLLSLFVAMSSGAPL... |
+| ... |    |    |    |    |
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ac</th>
-      <th>n</th>
-      <th>rev</th>
-      <th>seq</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>P29703</td>
-      <td>316</td>
-      <td>Reviewed</td>
-      <td>MEEYDYSDVKPLPIETDLQDELCRIMYTEDYKRLMGLARALISLNE...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>P36001</td>
-      <td>430</td>
-      <td>Reviewed</td>
-      <td>MDDISGRQTLPRINRLLEHVGNPQDSLSILHIAGTNGKETVSKFLT...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>P08524</td>
-      <td>352</td>
-      <td>Reviewed</td>
-      <td>MASEKEIRRERFLNVFPKLVEELNASLLAYGMPKEACDWYAHSLNY...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-Para inspeção rápida, as funções `.head()` e `.tail()` apresentam o
-início e o fim da `DataFrame`
+6049 rows × 4 columns
 
 <div class="python_box">
-``` python3
-prots = pd.DataFrame(pinfo)
-#prots.head()
-prots.tail()
+```python3
+prot_table = prot_table.set_index('ac')
+prot_table
 ```
 </div>
 
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
+|        | n   | PTMs                                                                           | seq                      |
+|:-------|:----|:-------------------------------------------------------------------------------|:-------------------------|
+| ac  |  |  | |
+| P38090 | 596 | []                                                                             | MTKERMTIDYENDGDFEYDKN... |
+| Q12001 | 544 | []                                                                             | MAIGKRLLVNKPAEESFYASP... |
+| P53309 | 568 | [('449', 'Phosphothreonine')]                                                  | MSSLYTKLVKGATKIKMAPPK... |
+| P40467 | 964 | [('166', 'Phosphoserine'), ('186', 'Phosphoserine'), ('963', 'Phosphoserine')] | MPEQAQQGEQSVKRRRVTRAC... |
+| P0CZ17 | 362 | []                                                                             | MRSLNTLLLSLFVAMSSGAPL... |
+| ... |    |    |      |
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ac</th>
-      <th>n</th>
-      <th>rev</th>
-      <th>seq</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>6811</th>
-      <td>A0A1S0T058</td>
-      <td>133</td>
-      <td>Unreviewed</td>
-      <td>MSETCSSSLALLHKILHIHSHTPSVYYNICISVRILTSERLQCFFF...</td>
-    </tr>
-    <tr>
-      <th>6812</th>
-      <td>A0A1S0T090</td>
-      <td>108</td>
-      <td>Unreviewed</td>
-      <td>MYKVSACGVRIMSGISEIWIGELRDYKYALRLDREEYPAVLVYEYD...</td>
-    </tr>
-    <tr>
-      <th>6813</th>
-      <td>A0A1S0T072</td>
-      <td>145</td>
-      <td>Unreviewed</td>
-      <td>MAILLPLKSILPWCCITFSFLLSSSGSISHSTASSSITLTKSSKPT...</td>
-    </tr>
-    <tr>
-      <th>6814</th>
-      <td>A0A1S0T069</td>
-      <td>239</td>
-      <td>Unreviewed</td>
-      <td>MMPTYLGKLTWSYFFTTLGLACAYNVTEQMEFDQFKSDYLACLAPE...</td>
-    </tr>
-    <tr>
-      <th>6815</th>
-      <td>A0A1S0T004</td>
-      <td>163</td>
-      <td>Unreviewed</td>
-      <td>MEMHWITLVAFIATFFNLAATSINNSSLPDVDLTNPLRFFTNIPAG...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-Podemos mudar o índice para uma das colunas.
+6049 rows × 3 columns
+
+### Uso da DataFrame
+
+#### Qual a proteína mais pequena. Qual a maior?
 
 <div class="python_box">
-``` python3
-prots = prots.set_index('ac')
-prots.head()
-```
-</div>
+```python3
+# mais pequena
 
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>n</th>
-      <th>rev</th>
-      <th>seq</th>
-    </tr>
-    <tr>
-      <th>ac</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>P29703</th>
-      <td>316</td>
-      <td>Reviewed</td>
-      <td>MEEYDYSDVKPLPIETDLQDELCRIMYTEDYKRLMGLARALISLNE...</td>
-    </tr>
-    <tr>
-      <th>P36001</th>
-      <td>430</td>
-      <td>Reviewed</td>
-      <td>MDDISGRQTLPRINRLLEHVGNPQDSLSILHIAGTNGKETVSKFLT...</td>
-    </tr>
-    <tr>
-      <th>P08524</th>
-      <td>352</td>
-      <td>Reviewed</td>
-      <td>MASEKEIRRERFLNVFPKLVEELNASLLAYGMPKEACDWYAHSLNY...</td>
-    </tr>
-    <tr>
-      <th>P28003</th>
-      <td>413</td>
-      <td>Reviewed</td>
-      <td>MGLYSPESEKSQLNMNYIGKDDSQSIFRRLNQNLKASNNNNDSNKN...</td>
-    </tr>
-    <tr>
-      <th>Q99341</th>
-      <td>161</td>
-      <td>Reviewed</td>
-      <td>MSLYQSIVFIARNVVNSITRILHDHPTNSSLITQTYFITPNHSGKN...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-A indexação com o nome de uma coluna devolve essa coluna (mas associada
-ao índice).
-
-Cada coluna comporta-se como uma Série.
-
-<div class="python_box">
-``` python3
-prots['n']
+pos = prot_table.n.idxmin()
+pos
 ```
 </div>
 
 ```
-ac
-P29703         316
-P36001         430
-P08524         352
-P28003         413
-Q99341         161
-P53913         173
-P38297         855
-P39012         614
-P22146         559
-P38631        1876
-P43557         207
-P53233         369
-Q12676         427
-P32614         470
-P32791         686
-P38310         465
-P18852         110
-P42837         879
-Q08967         793
-P23900         669
-Q05015         223
-P11710         512
-Q08559         129
-P36033         711
-Q12473         712
-Q12209         686
-Q12029         327
-P32805         299
-P36170        1169
-P39712        1322
-              ... 
-A0A1S0T076     103
-A0A1S0T0A7     110
-A0A1S0T0B4     122
-A0A1S0T0A4     124
-A0A1S0T0C1     109
-A0A1S0T0A9     120
-A0A1S0T066     135
-A0A1S0T088     113
-A0A1S0T045     103
-A0A1S0T073     164
-A0A1S0T062     147
-A0A1S0SZZ3     104
-A0A1S0SZN9     130
-A0A1S0T0D1     108
-A0A1S0T0A0     125
-A0A1S0T093     113
-A0A1S0SZW7     133
-A0A1S0T0B3     101
-A0A1S0T034     149
-A0A1S0T0B0     113
-A0A1S0T059     101
-A0A1S0T0A8     108
-A0A1S0T086     136
-A0A1S0T0B6     113
-A0A1S0T065     137
-A0A1S0T058     133
-A0A1S0T090     108
-A0A1S0T072     145
-A0A1S0T069     239
-A0A1S0T004     163
-Name: n, Length: 6816, dtype: int64
+'Q3E775'
 ```
 
 <div class="python_box">
-``` python3
-print(prots['n']['P31383'])
-print(prots['n'].max())
-print(prots['n'].min())
-print(prots['n'].mean())
+```python3
+posmin = prot_table.n.idxmin()
+posmax = prot_table.n.idxmax()
 ```
 </div>
-
-```
-635
-4910
-16
-445.49838615023475
-```
 
 <div class="python_box">
-``` python3
-print(prots['n'].describe())
+```python3
+prot_table.loc[posmin]
 ```
 </div>
 
+
 ```
-count    6816.000000
-mean      445.498386
-std       380.358091
-min        16.000000
-25%       169.000000
-50%       352.000000
-75%       585.000000
-max      4910.000000
-Name: n, dtype: float64
+n                     16
+PTMs                  []
+seq     MLSLIFYLRFPSYIRG
+Name: Q3E775, dtype: object
 ```
+
 
 <div class="python_box">
-``` python3
-desc = prots['n'].describe()
-min_aa = desc['min']
-max_aa = desc['max']
-
-print('Menor proteína:', min_aa)
-print('Maior proteína:', max_aa)
+```python3
+prot_table.loc[posmax]
 ```
 </div>
 
 ```
-Menor proteína: 16.0
-Maior proteína: 4910.0
-```
-
-Quais são as proteínas menores e maiores?
-
-<div class="python_box">
-``` python3
-min_aa = prots['n'].describe()['min']
-
-prots[prots['n'] == min_aa]
-```
-</div>
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>n</th>
-      <th>rev</th>
-      <th>seq</th>
-    </tr>
-    <tr>
-      <th>ac</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Q3E775</th>
-      <td>16</td>
-      <td>Reviewed</td>
-      <td>MLSLIFYLRFPSYIRG</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<div class="python_box">
-``` python3
-max_aa = prots['n'].describe()['max']
-
-prots[prots['n'] == max_aa]
-```
-</div>
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>n</th>
-      <th>rev</th>
-      <th>seq</th>
-    </tr>
-    <tr>
-      <th>ac</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Q12019</th>
-      <td>4910</td>
-      <td>Reviewed</td>
-      <td>MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-Para obter uma linha usamos `.loc` e indexação por um *label*.
-
-A linha obtida é uma *Series*.
-
-<div class="python_box">
-``` python3
-prots.loc['P31383']
-```
-</div>
-
-```
-n                                                    635
-rev                                             Reviewed
-seq    MSGARSTTAGAVPSAATTSTTSTTSNSKDSDSNESLYPLALLMDEL...
-Name: P31383, dtype: object
-```
-
-Quantos triptofanos tem a proteína P31383?
-
-<div class="python_box">
-``` python3
-prots.loc['P31383']['seq'].count('W')
-```
-</div>
-
-```
-7
-```
-
-A indexação com condições sobre as colunas é muito poderosa.
-
-Qauntas proteínas têm mais de 2000 aminoácidos?
-
-<div class="python_box">
-``` python3
-bigs = prots[prots['n'] > 2000]
-print(len(bigs))
-bigs
-```
-</div>
-
-```
-37
-```
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>n</th>
-      <th>rev</th>
-      <th>seq</th>
-    </tr>
-    <tr>
-      <th>ac</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Q06179</th>
-      <td>2628</td>
-      <td>Reviewed</td>
-      <td>MMFPINVLLYKWLIFAVTFLWSCKILLRKLLGINITWINLFKLEIC...</td>
-    </tr>
-    <tr>
-      <th>P33892</th>
-      <td>2672</td>
-      <td>Reviewed</td>
-      <td>MTAILNWEDISPVLEKGTRESHVSKRVPFLQDISQLVRQETLEKPQ...</td>
-    </tr>
-    <tr>
-      <th>Q12680</th>
-      <td>2145</td>
-      <td>Reviewed</td>
-      <td>MPVLKSDNFDPLEEAYEGGTIQNYNDEHHLHKSWANVIPDKRGLYD...</td>
-    </tr>
-    <tr>
-      <th>P32874</th>
-      <td>2273</td>
-      <td>Reviewed</td>
-      <td>KGKTITHGQSWGARRIHSHFYITIFTITCIRIGQYKLALYLDPYRF...</td>
-    </tr>
-    <tr>
-      <th>P19158</th>
-      <td>3079</td>
-      <td>Reviewed</td>
-      <td>MSQPTKNKKKEHGTDSKSSRMTRTLVNHILFERILPILPVESNLST...</td>
-    </tr>
-    <tr>
-      <th>P39526</th>
-      <td>2014</td>
-      <td>Reviewed</td>
-      <td>MANRSLKKVIETSSNNGHDLLTWITTNLEKLICLKEVNDNEIQEVK...</td>
-    </tr>
-    <tr>
-      <th>P18963</th>
-      <td>3092</td>
-      <td>Reviewed</td>
-      <td>MNQSDPQDKKNFPMEYSLTKHLFFDRLLLVLPIESNLKTYADVEAD...</td>
-    </tr>
-    <tr>
-      <th>Q12019</th>
-      <td>4910</td>
-      <td>Reviewed</td>
-      <td>MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...</td>
-    </tr>
-    <tr>
-      <th>P25655</th>
-      <td>2108</td>
-      <td>Reviewed</td>
-      <td>MLSATYRDLNTASNLETSKEKQAAQIVIAQISLLFTTLNNDNFESV...</td>
-    </tr>
-    <tr>
-      <th>P33334</th>
-      <td>2413</td>
-      <td>Reviewed</td>
-      <td>MSGLPPPPPGFEEDSDLALPPPPPPPPGYEIEELDNPMVPSSVNED...</td>
-    </tr>
-    <tr>
-      <th>Q00416</th>
-      <td>2231</td>
-      <td>Reviewed</td>
-      <td>MNSNNPDNNNSNNINNNNKDKDIAPNSDVQLATVYTKAKSYIPQIE...</td>
-    </tr>
-    <tr>
-      <th>P48415</th>
-      <td>2195</td>
-      <td>Reviewed</td>
-      <td>MTPEAKKRKNQKKKLKQKQKKAAEKAASHSEEPLELPESTINSSFN...</td>
-    </tr>
-    <tr>
-      <th>P32600</th>
-      <td>2474</td>
-      <td>Reviewed</td>
-      <td>MNKYINKYTTPPNLLSLRQRAEGKHRTRKKLTHKSHSHDDEMSTTS...</td>
-    </tr>
-    <tr>
-      <th>P38811</th>
-      <td>3744</td>
-      <td>Reviewed</td>
-      <td>MSLTEQIEQFASRFRDDDATLQSRYSTLSELYDIMELLNSPEDYHF...</td>
-    </tr>
-    <tr>
-      <th>Q03280</th>
-      <td>3268</td>
-      <td>Reviewed</td>
-      <td>MVLFTRCEKARKEKLAAGYKPLVDYLIDCDTPTFLERIEAIQEWDR...</td>
-    </tr>
-    <tr>
-      <th>P35169</th>
-      <td>2470</td>
-      <td>Reviewed</td>
-      <td>MEPHEEQIWKSKLLKAANNDMDMDRNVPLAPNLNVNMNMKMNASRN...</td>
-    </tr>
-    <tr>
-      <th>P35194</th>
-      <td>2493</td>
-      <td>Reviewed</td>
-      <td>MAKQRQTTKSSKRYRYSSFKARIDDLKIEPARNLEKRVHDYVESSH...</td>
-    </tr>
-    <tr>
-      <th>Q07878</th>
-      <td>3144</td>
-      <td>Reviewed</td>
-      <td>MLESLAANLLNRLLGSYVENFDPNQLNVGIWSGDVKLKNLKLRKDC...</td>
-    </tr>
-    <tr>
-      <th>Q00955</th>
-      <td>2233</td>
-      <td>Reviewed</td>
-      <td>MSEESLFESSPQKMEYEITNYSERHTELPGHFIGLNTVDKLEESPL...</td>
-    </tr>
-    <tr>
-      <th>P38111</th>
-      <td>2368</td>
-      <td>Reviewed</td>
-      <td>MESHVKYLDELILAIKDLNSGVDSKVQIKKVPTDPSSSQEYAKSLK...</td>
-    </tr>
-    <tr>
-      <th>P38110</th>
-      <td>2787</td>
-      <td>Reviewed</td>
-      <td>MEDHGIVETLNFLSSTKIKERNNALDELTTILKEDPERIPTKALST...</td>
-    </tr>
-    <tr>
-      <th>P39960</th>
-      <td>2167</td>
-      <td>Reviewed</td>
-      <td>MKGLLWSKNRKSSTASASSSSTSTSHKTTTASTASSSSPSSSSQTI...</td>
-    </tr>
-    <tr>
-      <th>P43583</th>
-      <td>2143</td>
-      <td>Reviewed</td>
-      <td>MTANNDDDIKSPIPITNKTLSQLKRFERSPGRPSSSQGEIKRKKSR...</td>
-    </tr>
-    <tr>
-      <th>P25356</th>
-      <td>2167</td>
-      <td>Reviewed</td>
-      <td>MNSIINAASKVLRLQDDVKKATIILGDILILQPINHEVEPDVENLV...</td>
-    </tr>
-    <tr>
-      <th>P32639</th>
-      <td>2163</td>
-      <td>Reviewed</td>
-      <td>MTEHETKDKAKKIREIYRYDEMSNKVLKVDKRFMNTSQNPQRDAEI...</td>
-    </tr>
-    <tr>
-      <th>P50077</th>
-      <td>2039</td>
-      <td>Reviewed</td>
-      <td>MQGRKRTLTEPFEPNTNPFGDNAAVMTENVEDNSETDGNRLESKPQ...</td>
-    </tr>
-    <tr>
-      <th>Q12150</th>
-      <td>2958</td>
-      <td>Reviewed</td>
-      <td>MEAISQLRGVPLTHQKDFSWVFLVDWILTVVVCLTMIFYMGRIYAY...</td>
-    </tr>
-    <tr>
-      <th>P08678</th>
-      <td>2026</td>
-      <td>Reviewed</td>
-      <td>MSSKPDTGSEISGPQRQEEQEQQIEQSSPTEANDRSIHDEVPKVKK...</td>
-    </tr>
-    <tr>
-      <th>P21951</th>
-      <td>2222</td>
-      <td>Reviewed</td>
-      <td>MMFGKKKNNGGSSTARYSAGNKYNTLSNNYALSAQQLLNASKIDDI...</td>
-    </tr>
-    <tr>
-      <th>P36022</th>
-      <td>4092</td>
-      <td>Reviewed</td>
-      <td>MCKNEARLANELIEFVAATVTGIKNSPKENEQAFIDYLHCQYLERF...</td>
-    </tr>
-    <tr>
-      <th>P07149</th>
-      <td>2051</td>
-      <td>Reviewed</td>
-      <td>MDAYSTRPLTLSHGSLEHVLLVPTASFFIASQLQEQFNKILPEPTE...</td>
-    </tr>
-    <tr>
-      <th>P34756</th>
-      <td>2278</td>
-      <td>Reviewed</td>
-      <td>MSSEEPHASISFPDGSHVRSSSTGTSSVNTIDATLSRPNYIKKPSL...</td>
-    </tr>
-    <tr>
-      <th>Q00402</th>
-      <td>2748</td>
-      <td>Reviewed</td>
-      <td>MSHNNRHKKNNDKDSSAGQYANSIDNSLSQESVSTNGVTRMANLKA...</td>
-    </tr>
-    <tr>
-      <th>P07259</th>
-      <td>2214</td>
-      <td>Reviewed</td>
-      <td>MATIAPTAPITPPMESTGDRLVTLELKDGTVLQGYSFGAEKSVAGE...</td>
-    </tr>
-    <tr>
-      <th>P11075</th>
-      <td>2009</td>
-      <td>Reviewed</td>
-      <td>MSEQNSVVNAEKGDGEISSNVETASSVNPSVKPQNAIKEEAKETNG...</td>
-    </tr>
-    <tr>
-      <th>P40468</th>
-      <td>2376</td>
-      <td>Reviewed</td>
-      <td>MASRFTFPPQRDQGIGFTFPPTNKAEGSSNNNQISIDIDPSGQDVL...</td>
-    </tr>
-    <tr>
-      <th>Q06116</th>
-      <td>2489</td>
-      <td>Reviewed</td>
-      <td>MSMLPWSQIRDVSKLLLGFMLFIISIQKIASILMSWILMLRHSTIR...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<div class="python_box">
-``` python3
-# Média dos comprimentos das proteínas
-# com mais de 2000 aminoácidos
-prots[prots['n'] > 2000]['n'].mean()
-```
-</div>
-
-```
-2564.4054054054054
-```
-
-De novo, qual a proteína maior?
-
-<div class="python_box">
-``` python3
-prots['n'].idxmax()
-```
-</div>
-
-```
-'Q12019'
-```
-
-<div class="python_box">
-``` python3
-prots.loc[prots['n'].idxmax()]
-```
-</div>
-
-```
-n                                                   4910
-rev                                             Reviewed
-seq    MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...
+n                                                    4910
+PTMs    [(1026, Phosphothreonine), (2971, Phosphoserin...
+seq     MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...
 Name: Q12019, dtype: object
 ```
 
-Para aplicar funções de *strings* a toda uma coluna de uma só vez,
-usamos o atributo `.str.` sobre essa coluna (o resultado é uma Série):
+Como obter a sequência da proteína maior de todas?
 
 <div class="python_box">
-``` python3
-prots['seq'].str.count('W')
+```python3
+prot_table.loc[posmax].seq
 ```
 </div>
+
+
+
+```
+'MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLDNLAGTILHSRSITGHVFLYKHIFLEIVARWIKDSKKKDYVLVIEKLASIITIFPVAMPLIEDYLDKENDHFITILQNPSTQKDSDMFKILLAYYRLLYHNKEVFARFIQPDILYQLVDLLTKEQENQVVIFLALKVLSLYLDMGEKTLNDMLDTYIKSRDSLLGHFEGDSGIDYSFLELNEAKRCANFSKLPSVPECFTIEKKSSYFIIEPQDLSTKVASICGVIVPKVHTIHDKVFYPLTFVPTHKTVSSLRQLGRKIQNSTPIMLIGKAGSGKTFLINELSKYMGCHDSIVKIHLGEQTDAKLLIGTYTSGDKPGTFEWRAGVLATAVKEGRWVLIEDIDKAPTDVLSILLSLLEKRELTIPSRGETVKAANGFQLISTVRINEDHQKDSSNKIYNLNMIGMRIWNVIELEEPSEEDLTHILAQKFPILTNLIPKLIDSYKNVKSIYMNTKFISLNKGAHTRVVSVRDLIKLCERLDILFKNNGINKPDQLIQSSVYDSIFSEAADCFAGAIGEFKALEPIIQAIGESLDIASSRISLFLTQHVPTLENLDDSIKIGRAVLLKEKLNIQKKSMNSTLFAFTNHSLRLMEQISVCIQMTEPVLLVGETGTGKTTVVQQLAKMLAKKLTVINVSQQTETGDLLGGYKPVNSKTVAVPIQENFETLFNATFSLKKNEKFHKMLHRCFNKNQWKNVVKLWNEAYKMAQSILKITNTENENENAKKKKRRLNTHEKKLLLDKWADFNDSVKKFEAQSSSIENSFVFNFVEGSLVKTIRAGEWLLLDEVNLATADTLESISDLLTEPDSRSILLSEKGDAEPIKAHPDFRIFACMNPATDVGKRDLPMGIRSRFTEIYVHSPERDITDLLSIIDKYIGKYSVSDEWVGNDIAELYLEAKKLSDNNTIVDGSNQKPHFSIRTLTRTLLYVTDIIHIYGLRRSLYDGFCMSFLTLLDQKSEAILKPVIEKFTLGRLKNVKSIMSQTPPSPGPDYVQFKHYWMKKGPNTIQEQAHYIITPFVEKNMMNLVRATSGKRFPVLIQGPTSSGKTSMIKYLADITGHKFVRINNHEHTDLQEYLGTYVTDDTGKLSFKEGVLVEALRKGYWIVLDELNLAPTDVLEALNRLLDDNRELFIPETQEVVHPHPDFLLFATQNPPGIYGGRKILSRAFRNRFLELHFDDIPQDELEIILRERCQIAPSYAKKIVEVYRQLSIERSASRLFEQKNSFATLRDLFRWALRDAVGYEQLAASGYMLLAERCRTPQEKVTVKKTLEKVMKVKLDMDQYYASLEDKSLEAIGSVTWTKGMRRLSVLVSSCLKNKEPVLLVGETGCGKTTICQLLAQFMGRELITLNAHQNTETGDILGAQRPVRNRSEIQYKLIKSLKTALNIANDQDVDLKELLQLYSKSDNKNIAEDVQLEIQKLRDSLNVLFEWSDGPLIQAMRTGNFFLLDEISLADDSVLERLNSVLEPERSLLLAEQGSSDSLVTASENFQFFATMNPGGDYGKKELSPALRNRFTEIWVPSMEDFNDVNMIVSSRLLEDLKDLANPIVKFSEWFGKKLGGGNATSGVISLRDILAWVEFINKVFPKIQNKSTALIQGASMVFIDALGTNNTAYLAENENDLKSLRTECIIQLLKLCGDDLELQQIETNEIIVTQDELQVGMFKIPRFPDAQSSSFNLTAPTTASNLVRVVRAMQVHKPILLEGSPGVGKTSLITALANITGNKLTRINLSEQTDLVDLFGADAPGERSGEFLWHDAPFLRAMKKGEWVLLDEMNLASQSVLEGLNACLDHRGEAYIPELDISFSCHPNFLVFAAQNPQYQGGGRKGLPKSFVNRFSVVFIDMLTSDDLLLIAKHLYPSIEPDIIAKMIKLMSTLEDQVCKRKLWGNSGSPWEFNLRDTLRWLKLLNQYSICEDVDVFDFVDIIVKQRFRTISDKNKAQLLIEDIFGKFSTKENFFKLTEDYVQINNEVALRNPHYRYPITQNLFPLECNVAVYESVLKAINNNWPLVLVGPSNSGKTETIRFLASILGPRVDVFSMNSDIDSMDILGGYEQVDLTRQISYITEELTNIVREIISMNMKLSPNATAIMEGLNLLKYLLNNIVTPEKFQDFRNRFNRFFSHLEGHPLLKTMSMNIEKMTEIITKEASVKFEWFDGMLVKAVEKGHWLILDNANLCSPSVLDRLNSLLEIDGSLLINECSQEDGQPRVLKPHPNFRLFLTMDPKYGELSRAMRNRGVEIYIDELHSRSTAFDRLTLGFELGENIDFVSIDDGIKKIKLNEPDMSIPLKHYVPSYLSRPCIFAQVHDILLLSDEEPIEESLAAVIPISHLGEVGKWANNVLNCTEYSEKKIAERLYVFITFLTDMGVLEKINNLYKPANLKFQKALGLHDKQLTEETVSLTLNEYVLPTVSKYSDKIKSPESLYLLSSLRLLLNSLNALKLINEKSTHGKIDELTYIELSAAAFNGRHLKNIPRIPIFCILYNILTVMSENLKTESLFCGSNQYQYYWDLLVIVIAALETAVTKDEARLRVYKELIDSWIASVKSKSDIEITPFLNINLEFTDVLQLSRGHSITLLWDIFRKNYPTTSNSWLAFEKLINLSEKFDKVRLLQFSESYNSIKDLMDVFRLLNDDVLNNKLSEFNLLLSKLEDGINELELISNKFLNKRKHYFADEFDNLIRYTFSVDTAELIKELAPASSLATQKLTKLITNKYNYPPIFDVLWTEKNAKLTSFTSTIFSSQFLEDVVRKSNNLKSFSGNQIKQSISDAELLLSSTIKCSPNLLKSQMEYYKNMLLSWLRKVIDIHVGGDCLKLTLKELCSLIEEKTASETRVTFAEYIFPALDLAESSKSLEELGEAWITFGTGLLLLFVPDSPYDPAIHDYVLYDLFLKTKTFSQNLMKSWRNVRKVISGDEEIFTEKLINTISDDDAPQSPRVYRTGMSIDSLFDEWMAFLSSTMSSRQIKELVSSYKCNSDQSDRRLEMLQQNSAHFLNRLESGYSKFADLNDILAGYIYSINFGFDLLKLQKSKDRASFQISPLWSMDPINISCAENVLSAYHELSRFFKKGDMEDTSIEKVLMYFLTLFKFHKRDTNLLEIFEAALYTLYSRWSVRRFRQEQEENEKSNMFKFNDNSDDYEADFRKLFPDYEDTALVTNEKDISSPENLDDIYFKLADTYISVFDKDHDANFSSELKSGAIITTILSEDLKNTRIEELKSGSLSAVINTLDAETQSFKNTEVFGNIDFYHDFSIPEFQKAGDIIETVLKSVLKLLKQWPEHATLKELYRVSQEFLNYPIKTPLARQLQKIEQIYTYLAEWEKYASSEVSLNNTVKLITDLIVSWRKLELRTWKGLFNSEDAKTRKSIGKWWFYLYESIVISNFVSEKKETAPNATLLVSSLNLFFSKSTLGEFNARLDLVKAFYKHIQLIGLRSSKIAGLLHNTIKFYYQFKPLIDERITNGKKSLEKEIDDIILLASWKDVNVDALKQSSRKSHNNLYKIVRKYRDLLNGDAKTIIEAGLLYSNENKLKLPTLKQHFYEDPNLEASKNLVKEISTWSMRAAPLRNIDTVASNMDSYLEKISSQEFPNFADLASDFYAEAERLRKETPNVYTKENKKRLAYLKTQKSKLLGDALKELRRIGLKVNFREDIQKVQSSTTTILANIAPFNNEYLNSSDAFFFKILDLLPKLRSAASNPSDDIPVAAIERGMALAQSLMFSLITVRHPLSEFTNDYCKINGMMLDLEHFTCLKGDIVHSSLKANVDNVRLFEKWLPSLLDYAAQTLSVISKYSATSEQQKILLDAKSTLSSFFVHFNSSRIFDSSFIESYSRFELFINELLKKLENAKETGNAFVFDIIIEWIKANKGGPIKKEQKRGPSVEDVEQAFRRTFTSIILSFQKVIGDGIESISETDDNWLSASFKKVMVNVKLLRSSVVSKNIETALSLLKDFDFTTTESIYVKSVISFTLPVITRYYNAMTVVLERSRIYYTNTSRGMYILSTILHSLAKNGFCSPQPPSEEVDDKNLQEGTGLGDGEGAQNNNKDVEQDEDLTEDAQNENKEQQDKDERDDENEDDAVEMEGDMAGELEDLSNGEENDDEDTDSEEEELDEEIDDLNEDDPNAIDDKMWDDKASDNSKEKDTDQNLDGKNQEEDVQAAENDEQQRDNKEGGDEDPNAPEDGDEEIENDENAEEENDVGEQEDEVKDEEGEDLEANVPEIETLDLPEDMNLDSEHEESDEDVDMSDGMPDDLNKEEVGNEDEEVKQESGIESDNENDEPGPEEDAGETETALDEEEGAEEDVDMTNDEGKEDEENGPEEQAMSDEEELKQDAAMEENKEKGGEQNTEGLDGVEEKADTEDIDQEAAVQQDSGSKGAGADATDTQEQDDVGGSGTTQNTYEEDQEDVTKNNEESREEATAALKQLGDSMKEYHRRRQDIKEAQTNGEEDENLEKNNERPDEFEHVEGANTETDTQALGSATQDQLQTIDEDMAIDDDREEQEVDQKELVEDADDEKMDIDEEEMLSDIDAHDANNDVDSKKSGFIGKRKSEEDFENELSNEHFSADQEDDSEIQSLIENIEDNPPDASASLTPERSLEESRELWHKSEISTADLVSRLGEQLRLILEPTLATKLKGDYKTGKRLNMKRIIPYIASQFRKDKIWLRRTKPSKRQYQIMIALDDSKSMSESKCVKLAFDSLCLVSKTLTQLEAGGLSIVKFGENIKEVHSFDQQFSNESGARAFQWFGFQETKTDVKKLVAESTKIFERARAMVHNDQWQLEIVISDGICEDHETIQKLVRRARENKIMLVFVIIDGITSNESILDMSQVNYIPDQYGNPQLKITKYLDTFPFEFYVVVHDISELPEMLSLILRQYFTDLASS'
+```
+
+
+
+<div class="python_box">
+```python3
+prot_table.loc[posmax].PTMs
+```
+</div>
+
+
+
+    [('1026', 'Phosphothreonine'),
+     ('2971', 'Phosphoserine'),
+     ('4353', 'Phosphoserine'),
+     ('4388', 'Phosphothreonine'),
+     ('4555', 'Phosphoserine')]
+
+
+
+#### Quais as 20 proteínas mais pequenas de S.cerevisiae?
+
+<div class="python_box">
+```python3
+ord_prot_table = prot_table.sort_values(by='n')
+ord_prot_table.head(20)
+```
+</div>
+
+
+|            |   n | PTMs   | seq                           |
+|:-----------|:----|:-------|:------------------------------|
+| ac         |     |        |                               |
+| Q3E775     |  16 | []     | MLSLIFYLRFPSYIRG              |
+| P08521     |  25 | []     | MFSLSNSQYTCQDYISDHIWKTSSH     |
+| P0CX86     |  25 | []     | MRAKWRKKRTRRLKRKRRKVRARSK     |
+| P0CX87     |  25 | []     | MRAKWRKKRTRRLKRKRRKVRARSK     |
+| P0C5N4     |  26 | []     | MYFHSFLDTFSKYLGSTSCPLLRLSR    |
+| P0C5S1     |  26 | []     | MVYVMSMVSLLKRLLTVTRWKLQITG    |
+| Q8TGV0     |  26 | []     | MRLNYSRCYYSSQRRRQSLPKRFPLI    |
+| Q3E7Z6     |  27 | []     | MTAFASLREPLVLANLKIKVHIYRMKR   |
+| Q3E801     |  27 | []     | MTRCISKKMLLEVDALSLIYSPHLYMS   |
+| P0C5K9     |  27 | []     | MWGLNRWLTFTMLILLITSHCCYWNKR   |
+| Q8TGN3     |  28 | []     | MPGIAFKGKDMVKAIQFLEIVVPCHCTT  |
+| A0A0B7P221 |  28 | []     | MIRQKIFVFIVKSRRNSICPAIRRKEDY  |
+| Q8TGS7     |  28 | []     | MRKPSAFHACNIIFLPLVKCASATIMLN  |
+| Q3E838     |  28 | []     | MLPRKYKPAYKKQAHRVKSNPQPAYTFQ  |
+| Q8TGT8     |  28 | []     | MNLNAYFEAYQAIFPFLLEAFLRKEQKV  |
+| Q8TGU0     |  28 | []     | MLPSISFDYIKRPNIVLFSNVLSLSSNI  |
+| Q8TGT6     |  29 | []     | MKIKFSRGARFSATFSFDKYPFLLYEVVR |
+| P0C5M8     |  29 | []     | MPLEVLGHLSKAFLFLARNNEHSHKKYNQ |
+| Q8TGS6     |  29 | []     | MFKMKFGDTLPRSDFGTGGNKQAPGLELG |
+| P0C1Z1     |  29 | []     | MKRSYKTLPTYFFSFFGPFKERAVFLLVL |
+
+#### Quais as 20 proteínas maiores de S.cerevisiae?
+
+<div class="python_box">
+```python3
+ord_prot_table.tail(20)
+```
+</div>
+
+
+|        |    n | PTMs                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | seq                      |
+|:-------|:-----|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|
+| ac |   |    |    |
+| P34756 | 2278 | [('2', 'N-acetylserine'), ('186', 'Phosphoserine'), ('1627', 'Phosphoserine'), ('1630', 'Phosphoserine'), ('1938', 'Phosphoserine'), ('1953', 'Phosphothreonine')]                                                                                                                                                                                                                                                                                                                                                           | MSSEEPHASISFPDGSHVRSS... |
+| P38111 | 2368 | []                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | MESHVKYLDELILAIKDLNSG... |
+| P40468 | 2376 | [('141', 'Phosphoserine'), ('1144', 'Phosphoserine'), ('2264', 'Phosphothreonine'), ('2267', 'Phosphoserine'), ('2355', 'Phosphoserine')]                                                                                                                                                                                                                                                                                                                                                                                    | MASRFTFPPQRDQGIGFTFPP... |
+| P33334 | 2413 | []                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | MSGLPPPPPGFEEDSDLALPP... |
+| P35169 | 2470 | []                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | MEPHEEQIWKSKLLKAANNDM... |
+| P32600 | 2474 | [('10', 'Phosphothreonine')]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | MNKYINKYTTPPNLLSLRQRA... |
+| Q06116 | 2489 | [('2254', 'Phosphoserine'), ('2278', 'Phosphoserine')]                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | MSMLPWSQIRDVSKLLLGFML... |
+| P35194 | 2493 | []                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | MAKQRQTTKSSKRYRYSSFKA... |
+| Q06179 | 2628 | []                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | MMFPINVLLYKWLIFAVTFLW... |
+| P33892 | 2672 | []                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | MTAILNWEDISPVLEKGTRES... |
+| Q00402 | 2748 | [('611', 'Phosphoserine'), ('675', 'Phosphoserine'), ('746', 'Phosphoserine'), ('881', 'Phosphoserine'), ('945', 'Phosphoserine'), ('1009', 'Phosphoserine'), ('1201', 'Phosphoserine'), ('1265', 'Phosphoserine'), ('1329', 'Phosphoserine'), ('2162', 'Phosphoserine'), ('2164', 'Phosphoserine'), ('2197', 'Phosphoserine'), ('2217', 'Phosphoserine'), ('2220', 'Phosphoserine'), ('2221', 'Phosphoserine'), ('2360', 'Phosphoserine'), ('2424', 'Phosphoserine'), ('2494', 'Phosphoserine'), ('2545', 'Phosphoserine')] | MSHNNRHKKNNDKDSSAGQYA... |
+| P38110 | 2787 | []                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | MEDHGIVETLNFLSSTKIKER... |
+| Q12150 | 2958 | []                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | MEAISQLRGVPLTHQKDFSWV... |
+| P19158 | 3079 | [('635', 'Phosphothreonine')]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | MSQPTKNKKKEHGTDSKSSRM... |
+| P18963 | 3092 | [('497', 'Phosphoserine'), ('915', 'Phosphoserine'), ('1342', 'Phosphoserine'), ('1753', 'Phosphoserine'), ('3004', 'Phosphoserine')]                                                                                                                                                                                                                                                                                                                                                                                        | MNQSDPQDKKNFPMEYSLTKH... |
+| Q07878 | 3144 | [('1364', 'Phosphoserine'), ('1382', 'Phosphoserine'), ('1715', 'Phosphoserine'), ('1729', 'Phosphoserine'), ('1731', 'Phosphoserine')]                                                                                                                                                                                                                                                                                                                                                                                      | MLESLAANLLNRLLGSYVENF... |
+| Q03280 | 3268 | [('1890', 'Phosphoserine'), ('2096', 'Phosphothreonine'), ('2119', 'Phosphoserine'), ('2376', 'Phosphoserine'), ('2406', 'Phosphoserine'), ('2418', 'Phosphoserine')]                                                                                                                                                                                                                                                                                                                                                        | MVLFTRCEKARKEKLAAGYKP... |
+| P38811 | 3744 | [('2', 'N-acetylserine'), ('172', 'Phosphoserine'), ('542', 'Phosphoserine')]                                                                                                                                                                                                                                                                                                                                                                                                                                                | MSLTEQIEQFASRFRDDDATL... |
+| P36022 | 4092 | []                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | MCKNEARLANELIEFVAATVT... |
+| Q12019 | 4910 | [('1026', 'Phosphothreonine'), ('2971', 'Phosphoserine'), ('4353', 'Phosphoserine'), ('4388', 'Phosphothreonine'), ('4555', 'Phosphoserine')]                                                                                                                                                                                                                                                                                                                                                                                | MSQDRILLDLDVVNQRLILFN... |
+
+#### Histograma da distribuição de tamanhos
+
+<div class="python_box">
+```python3
+from matplotlib import pyplot as plt
+import seaborn as sns
+f, ax = plt.subplots(figsize=(12,6))
+sns.set()
+
+sns.distplot(ord_prot_table.n, kde=False, bins=100)
+
+plt.xlim(0,2500)
+ax.tick_params(labelsize=16)
+
+ax.set_xlabel('Protein length', fontsize=16)
+plt.show()
+```
+</div>
+
+
+![](images/n_hist.png)
+
+
+#### Contagens e distribuição dos 20 aminoácidos nas proteínas
+
+<div class="python_box">
+```python3
+all_aminoacids = prot_table.seq.str.cat()
+
+
+from collections import Counter
+
+aminoacid_counts = Counter(all_aminoacids)
+
+aminoacid_counts = pd.Series(aminoacid_counts).sort_values(ascending=False)
+aminoacid_counts = aminoacid_counts / aminoacid_counts.sum()
+
+plt.subplots(figsize=(12,6))
+barplot = sns.barplot(x=aminoacid_counts.index,
+                      y=aminoacid_counts.values,
+                      palette='tab20b')
+```
+</div>
+
+
+![](images/aa_freq.png)
+
+
+#### Contagens globais das PTM
+
+<div class="python_box">
+
+```python3
+PTM_locs = prot_table.PTMs.explode()
+PTM_locs = PTM_locs.dropna()
+PTM_locs.head(30)
+```
+</div>
+
+
 
 ```
 ac
-P29703        11
-P36001         5
-P08524         4
-P28003         5
-Q99341         0
-P53913         0
-P38297         5
-P39012        15
-P22146         5
-P38631        37
-P43557         1
-P53233         7
-Q12676         4
-P32614         2
-P32791        16
-P38310         7
-P18852         1
-P42837        14
-Q08967        14
-P23900        10
-Q05015         2
-P11710         7
-Q08559         1
-P36033        11
-Q12473        15
-Q12209        11
-Q12029         4
-P32805         3
-P36170         9
-P39712        20
-              ..
-A0A1S0T076     1
-A0A1S0T0A7     0
-A0A1S0T0B4     2
-A0A1S0T0A4     0
-A0A1S0T0C1     0
-A0A1S0T0A9     2
-A0A1S0T066     1
-A0A1S0T088     1
-A0A1S0T045     0
-A0A1S0T073     4
-A0A1S0T062     4
-A0A1S0SZZ3     2
-A0A1S0SZN9     0
-A0A1S0T0D1     2
-A0A1S0T0A0     2
-A0A1S0T093     3
-A0A1S0SZW7     1
-A0A1S0T0B3     0
-A0A1S0T034     2
-A0A1S0T0B0     1
-A0A1S0T059     1
-A0A1S0T0A8     0
-A0A1S0T086     6
-A0A1S0T0B6     3
-A0A1S0T065     0
-A0A1S0T058     0
-A0A1S0T090     2
-A0A1S0T072     2
-A0A1S0T069     6
-A0A1S0T004     2
-Name: seq, Length: 6816, dtype: int64
+P53309    (449, Phosphothreonine)
+P40467       (166, Phosphoserine)
+P40467       (186, Phosphoserine)
+P40467       (963, Phosphoserine)
+P36076        (42, Phosphoserine)
+P36076       (116, Phosphoserine)
+P36076       (121, Phosphoserine)
+P36076       (124, Phosphoserine)
+P36076       (264, Phosphoserine)
+P53388        (22, Phosphoserine)
+P00431     (220, Phosphotyrosine)
+P53968    (170, Phosphothreonine)
+P53968       (175, Phosphoserine)
+P53968       (245, Phosphoserine)
+P53968       (385, Phosphoserine)
+P89105      (1015, Phosphoserine)
+P89105      (1017, Phosphoserine)
+P07262        (2, N-acetylserine)
+P38859      (4, Phosphothreonine)
+P38859        (17, Phosphoserine)
+P38859       (237, Phosphoserine)
+P38859    (962, Phosphothreonine)
+P54861       (629, Phosphoserine)
+P14020        (2, N-acetylserine)
+P14020       (141, Phosphoserine)
+P32892       (208, Phosphoserine)
+P43616       (451, Phosphoserine)
+Q00684       (467, Phosphoserine)
+Q06440       (441, Phosphoserine)
+Q06440       (454, Phosphoserine)
+Name: PTMs, dtype: object
 ```
 
-Com uma indexação por nome, podemos inserir uma coluna nova na
-`DataFrame` (no fim).
 
 <div class="python_box">
-``` python3
-prots['W'] = prots['seq'].str.count('W')
-prots.head()
+```python3
+PTMs = PTM_locs.str.get(1)
+PTMs
 ```
 </div>
 
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
+```
+ac
+P53309    Phosphothreonine
+P40467       Phosphoserine
+P40467       Phosphoserine
+P40467       Phosphoserine
+P36076       Phosphoserine
+                ...       
+Q04461       Phosphoserine
+Q04461    Phosphothreonine
+P38260       Phosphoserine
+P42837       Phosphoserine
+P32806       Phosphoserine
+Name: PTMs, Length: 7070, dtype: object
+```
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>n</th>
-      <th>rev</th>
-      <th>seq</th>
-      <th>W</th>
-    </tr>
-    <tr>
-      <th>ac</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>P29703</th>
-      <td>316</td>
-      <td>Reviewed</td>
-      <td>MEEYDYSDVKPLPIETDLQDELCRIMYTEDYKRLMGLARALISLNE...</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>P36001</th>
-      <td>430</td>
-      <td>Reviewed</td>
-      <td>MDDISGRQTLPRINRLLEHVGNPQDSLSILHIAGTNGKETVSKFLT...</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>P08524</th>
-      <td>352</td>
-      <td>Reviewed</td>
-      <td>MASEKEIRRERFLNVFPKLVEELNASLLAYGMPKEACDWYAHSLNY...</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>P28003</th>
-      <td>413</td>
-      <td>Reviewed</td>
-      <td>MGLYSPESEKSQLNMNYIGKDDSQSIFRRLNQNLKASNNNNDSNKN...</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>Q99341</th>
-      <td>161</td>
-      <td>Reviewed</td>
-      <td>MSLYQSIVFIARNVVNSITRILHDHPTNSSLITQTYFITPNHSGKN...</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-As `DataFrame`s também têm funções descritivas, mas o facto de cada
-coluna ser uma Série podemos realizar muitas análises de uma forma
-simples.
 
 <div class="python_box">
-``` python3
-prots.info()
+```python3
+PTM_counts = PTMs.value_counts(ascending=False)
+PTM_counts
 ```
 </div>
 
+
+
 ```
-<class 'pandas.core.frame.DataFrame'>
-Index: 6816 entries, P29703 to A0A1S0T004
-Data columns (total 4 columns):
-n      6816 non-null int64
-rev    6816 non-null object
-seq    6816 non-null object
-W      6816 non-null int64
-dtypes: int64(2), object(2)
-memory usage: 586.2+ KB
+Phosphoserine                                       5172
+Phosphothreonine                                    1028
+N-acetylserine                                       345
+N-acetylmethionine                                   106
+Phosphotyrosine                                       55
+N6-(pyridoxal phosphate)lysine                        46
+N6-acetyllysine                                       46
+N-acetylalanine                                       37
+Asymmetric dimethylarginine                           33
+N6-methyllysine                                       24
+Cysteine methyl ester                                 23
+N6,N6,N6-trimethyllysine                              22
+N6,N6-dimethyllysine                                  15
+Omega-N-methylarginine                                15
+N-acetylthreonine                                     12
+N6-succinyllysine                                     11
+N6-butyryllysine                                       8
+N6-biotinyllysine                                      5
+N,N-dimethylproline                                    4
+Phosphohistidine                                       4
+N5-methylglutamine                                     4
+N6-lipoyllysine                                        4
+N6-carboxylysine                                       4
+Lysine derivative                                      3
+Pyruvic acid (Ser)                                     3
+N6-malonyllysine                                       3
+S-glutathionyl cysteine                                3
+O-(pantetheine 4'-phosphoryl)serine                    3
+4-aspartylphosphate                                    3
+3,4-dihydroxyproline                                   2
+Tele-8alpha-FAD histidine                              2
+N6-propionyllysine                                     2
+Hypusine                                               2
+N5-methylarginine                                      2
+N-acetylvaline                                         2
+Leucine methyl ester                                   2
+Cysteine sulfinic acid (-SO2H)                         1
+Thiazolidine linkage to a ring-opened DNA abasic       1
+1-thioglycine                                          1
+N6-crotonyllysine                                      1
+N-formylmethionine                                     1
+Pros-8alpha-FAD histidine                              1
+Dimethylated arginine                                  1
+Pros-methylhistidine                                   1
+2,3-didehydroalanine (Cys)                             1
+S-methylcysteine                                       1
+S-(dipyrrolylmethanemethyl)cysteine                    1
+N,N,N-trimethylglycine                                 1
+Lysine methyl ester                                    1
+Diphthamide                                            1
+N6-glutaryllysine                                      1
+Name: PTMs, dtype: int64
 ```
+
 
 <div class="python_box">
-``` python3
-print(prots['rev'].value_counts())
+```python3
+more_than10 = PTM_counts[PTM_counts >= 10]
+more_than10
 ```
 </div>
 
+
+
 ```
-Reviewed      6721
-Unreviewed      95
-Name: rev, dtype: int64
+Phosphoserine                     5172
+Phosphothreonine                  1028
+N-acetylserine                     345
+N-acetylmethionine                 106
+Phosphotyrosine                     55
+N6-(pyridoxal phosphate)lysine      46
+N6-acetyllysine                     46
+N-acetylalanine                     37
+Asymmetric dimethylarginine         33
+N6-methyllysine                     24
+Cysteine methyl ester               23
+N6,N6,N6-trimethyllysine            22
+N6,N6-dimethyllysine                15
+Omega-N-methylarginine              15
+N-acetylthreonine                   12
+N6-succinyllysine                   11
+Name: PTMs, dtype: int64
 ```
+
 
 <div class="python_box">
-``` python3
-# só no IPython/Jupyter notebook
-%matplotlib inline
+```python3
+f, ax = plt.subplots(figsize=(8,12))
+
+bp = sns.barplot(x=more_than10.values, y=more_than10.index, palette='tab20', orient='h', log=True)
+ax.tick_params(labelsize=16)
+plt.show()
 ```
 </div>
 
-<div class="python_box">
-``` python3
-import matplotlib.pyplot as pl
-pl.ylabel('Proteins')
-pl.xlabel('Length (aa)')
-p = prots['n'].plot(kind='hist', bins=100)
-```
-</div>
+![](images/ptm_counts.png)
 
-![Protein-length histogram](images/pandas_hist.png)
+
+

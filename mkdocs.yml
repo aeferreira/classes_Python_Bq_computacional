@@ -16,9 +16,9 @@ nav:
 - 3 - Módulos científicos:
   - numpy: sm_numpy_scipy.md
   - Exemplo, curva titulação: sm_ph.md
+  - pandas: sm_pandas.md
   - Exemplo, regressão linear: sm_linreg.md
   - sympy: sm_sympy.md
-  - pandas: sm_pandas.md
   - Algoritmos numéricos: sm_algorithms.md
 use_directory_urls: false
 extra_javascript:
