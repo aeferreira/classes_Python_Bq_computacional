@@ -1,13 +1,49 @@
 # pandas
 
-
 [![](images/pandas.svg)](https://pandas.pydata.org/)
 
-### `Series`
+O módulo `pandas` é um dos mais populares módulos da linguagem Python para
+o tratamento de dados que não sejam de natureza exclusivamente numérica (como acontece com o módulo `numpy`).
+
+É também considerado também um dos módulos principais do chamado **"ecossistema" de módulos científicos** que, não estando disponíveis na distribuição base da linguagem Python, são geralmente incluídos nas distribuições mais "científicas" da linguagem, por exemplo a distribuição Anaconda.
+
+Tal como o módulo `numpy` introduz um tipo novo de objetos, os *arrays* com propriedades que as listas não têm (operações vetoriais e muitas funções associadas), o módulo `pandas` define outros dois tipos principais de objetos com novas propriedades (embora sejam grandes as semelhanças com os *arrays* do `numpy`):
+
+- as *Series*
+- as *DataFrames*
+
+A documentação do módulo apresenta as seguintes definições:
+
 
 > `Series` is a one-dimensional **labeled** array capable of holding any
 > data type (integers, strings, floating point numbers, Python objects,
 > etc.). The axis labels are collectively referred to as the **index**.
+
+
+> `DataFrame` is a **2-dimensional labeled data structure** with columns
+> of potentially different types. You can think of it like a spreadsheet
+> or SQL table, or a **dict of Series objects**. It is generally the
+> most commonly used pandas object.
+
+Além das dimensões (uma *Series* é unidimensional e uma *DataFrame* é bidimensional, isto é, na forma de uma tabela), o que é de sublinhar nestes dois tipos novos de objetos é o facto dos dados serem acompanhados de *labels* (etiquetas)
+
+Estes *labels* servem vários propósitos. Podendo ser basicamente entendidos como dados adicionais, eles são muito importantes na **indexação** da informação, tendo um papel análogo à chaves dos dicionários, mas com outras funcionalidades muito interessantes.
+
+Estes conjuntos de *labels* constituem um **índice**.
+
+Uma *Series* tem um único índice, chamado `index`.
+
+Uma *DataFrame*, tem dois índices, um para as linhas, chamado `index` e outro para as colunas, chamado `columns`.
+
+Comecemos pelas *Series*
+
+## Series
+
+### Construção e indexação
+
+O módulo *pandas* tem de ser importado.
+
+A convenção é importar comm a seguinte "abreviatura":
 
 <div class="python_box">
 ``` python3
@@ -16,74 +52,186 @@ import pandas as pd
 </div>
 
 Uma Série (*Series*) é um conjunto (ordenado) de valores, mas cada valor
-é associado a uma "etiqueta" (*label*).
+é associado a um *label*.
 
-Ao conjunto das etiquetas dá-se o nome de "**índice**".
+Ao conjunto dos *labels* é o `index` da *Series*
 
-Quando construímos uma Série, usando a função `Series()`, podemos
-indicar o índice.
+Uma *Series* pode ser construída, por exemplo, a partir de uma lista, usando a função `pd.Series()`:
 
 <div class="python_box">
 ``` python3
-s = pd.Series([1.4, 2.2, 3.2, 6.5, 12],
-              index=['a', 'b', 'c', 'd', 'e'])
-print(s)
+ndias = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+meses = pd.Series(ndias)
+
+print(meses)
 ```
 </div>
 
 ```
-a     1.4
-b     2.2
-c     3.2
-d     6.5
-e    12.0
-dtype: float64
+0     31
+1     28
+2     31
+3     30
+4     31
+5     30
+6     31
+7     31
+8     30
+9     31
+10    30
+11    31
+dtype: int64
 ```
+
+Os números de 0 a 11 são o `index` da *Series*.
 
 Se não indicarmos um índice, o conjunto dos inteiros sucessivos será o
 índice.
 
+Mas quando construímos uma Série, usando a função `pd.Series()`, podemos indicar o índice, explicitamente:
+
 <div class="python_box">
 ``` python3
-s = pd.Series([1.4,2.2,3.2,6.5,12])
-print(s)
+ndias = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+ind = 'Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez'.split()
+
+meses = pd.Series(ndias, index=ind)
+
+print(meses)
 ```
 </div>
 
 ```
-0     1.4
-1     2.2
-2     3.2
-3     6.5
-4    12.0
-dtype: float64
+Jan    31
+Fev    28
+Mar    31
+Abr    30
+Mai    31
+Jun    30
+Jul    31
+Ago    31
+Set    30
+Out    31
+Nov    30
+Dez    31
+dtype: int64
 ```
 
-As Séries podem ser construídas a partir de um dicionário, em que as
-chaves são o índice.
+Uma das principais razões de utilizarmos uma *Series* é que podemos
+indexar de diferentes maneiras:
+
+- usando um *label* para obter um elemento (como um dicionário)
+- usando *slices* de posições
+- usando **listas** de *labels*
 
 <div class="python_box">
 ``` python3
-d = {'a' : 0., 'b' : 1., 'c' : 2.}
+
+# ...
+# usando a Series meses criada acima...
+
+só_out = meses['Out']
+trimestre1 = meses[:3]
+férias = meses[['Jul', 'Ago', 'Set']]
+
+print(só_out)
+print('--------------')
+print(trimestre1)
+print('--------------')
+print(férias)
+```
+</div>
+
+```
+31
+--------------
+Jan    31
+Fev    28
+Mar    31
+dtype: int64
+--------------
+Jul    31
+Ago    31
+Set    30
+dtype: int64
+```
+
+Ou ainda, tal como os *arrays* do `numpy`, usar **condições lógicas** para indexar (no fundo usando *arrays booleanos*):
+
+<div class="python_box">
+``` python3
+
+# ...
+# usando a Series meses criada acima...
+
+m31 = meses[meses==31]
+
+print(m31)
+```
+</div>
+
+```
+Jan    31
+Mar    31
+Mai    31
+Jul    31
+Ago    31
+Out    31
+Dez    31
+dtype: int64
+```
+
+Também existe a função `Series.reindex()` que transforma uma *Series*
+noutra apenas com os elementos indicados e respeitando a ordem do "novo índice":
+
+<div class="python_box">
+``` python3
+ndias = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+ind = 'Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez'.split()
+meses = pd.Series(ndias, index=ind)
+
+alguns_meses = meses.reindex(['Dez', 'Set', 'Abr'])
+
+print(alguns_meses)
+```
+</div>
+
+```
+Dez    31
+Set    30
+Abr    30
+dtype: int64
+```
+
+As Séries podem também ser construídas a partir de um dicionário,
+usando `pd.Series()`. As chaves do dicionário passam a ser o `index`:
+
+<div class="python_box">
+``` python3
+d = {'a' : 0, 'b' : 1, 'c' : 2}
+
 s = pd.Series(d)
 print(s)
 ```
 </div>
 
 ```
-a    0.0
-b    1.0
-c    2.0
-dtype: float64
+a    0
+b    1
+c    2
+dtype: int64
 ```
 
-Podemos, mesmo neste caso, indicar um índice. Caso o índice tenha
-elementos para além das chaves do dicionário, haverá **valores em
-falta**.
+### Valores em falta
+
+Quando contruímos uma *Series* a partie de um dicionário podemos indicar explicitamente os valores do índice.
+
+Mas, neste caso, se índice tiver elementos que nãoo estejam nas chaves do dicionário, haverá **valores em falta** (em inglês *missing values*).
 
 <div class="python_box">
 ``` python3
-d = {'a' : 0., 'b' : 1., 'c' : 2.}
+d = {'a' : 0, 'b' : 1, 'c' : 2}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
 print(s)
 ```
@@ -97,14 +245,40 @@ a    0.0
 dtype: float64
 ```
 
-O uso do marcador `NaN` para indicar **valores em falta** e a existência
-de muitas funções de análise que levam em conta valores em falta são uma
-característica muito poderosa do módulo `pandas`.
+O `pandas` uso o marcador `NaN` para indicar **valores em falta**.
 
-### Funções descritivas dos valores
+Esta representação do conceito de *valores em falta* (que também existe no `numpy`) é muito útil: frequentemente lidamos com tabelas de dados em que não existem valores atribuídos em certas linhas e será conveniente assinalar esses valores.
 
-As Séries têm algumas funções de estatística descritiva de grande
-utilidade.
+Mais importante ainda, muitas funções de análise disponíveis no `pandas` levam em conta a existência de *valores em falta* que são pura e simplesmente ignorados. Por exemplo, o cálculo do desvio padrão de uma série ignora as entradas com *valores em falta*.
+
+Usando a função `Series.reindex()` podem aparecer valores *valores em falta*:
+
+<div class="python_box">
+``` python3
+ndias = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+ind = 'Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez'.split()
+
+meses = pd.Series(ndias, index=ind)
+
+alguns_meses = meses.reindex(['Dez', 'Set', 'não vai dar', 'Abr'])
+
+print(alguns_meses)
+```
+</div>
+
+```
+Dez            31.0
+Set            30.0
+não vai dar     NaN
+Abr            30.0
+dtype: float64
+```
+
+### Funções descritivas
+
+As Séries têm muitas [funções descritivas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html) de grande utilidade.
+
+Por exemplo, `sum()`, `mean()`, `std()` e `var()` calculam a soma, média, desvio padrão e variância dos valores da *Series*, respetivamente.
 
 Note-se que, em geral, **os valores em falta são ignorados nos
 cálculos**.
@@ -113,7 +287,9 @@ cálculos**.
 ``` python3
 d = {'a' : 0., 'b' : 1., 'c' : 2.}
 s = pd.Series(d, index=['b', 'c', 'd', 'a'])
+
 print(s)
+
 print('\nMédia =', s.mean())
 ```
 </div>
@@ -128,156 +304,103 @@ dtype: float64
 Média = 1.0
 ```
 
+`Series.value_counts()` é outra função particularmente útil. O resultado é uma contagem dos valores diferentes da *Series*:
+
 <div class="python_box">
 ``` python3
-d = {'a' : 0., 'b' : 1., 'c' : 2.}
-s = pd.Series(d, index=['b', 'c', 'd', 'a'])
-print(s)
-print('-----')
-print(s.describe())
+ndias = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+ind = 'Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez'.split()
+meses = pd.Series(ndias, index=ind)
+
+cont_dias = meses.value_counts()
+
+print(cont_dias)
 ```
 </div>
 
 ```
-b    1.0
-c    2.0
-d    NaN
-a    0.0
+31    7
+30    4
+28    1
+dtype: int64
+```
+
+Outra função interessante é a função `Series.describe()`:
+
+<div class="python_box">
+``` python3
+ndias = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+ind = 'Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez'.split()
+meses = pd.Series(ndias, index=ind)
+
+stats = meses.describe()
+
+print(stats)
+```
+</div>
+
+```
+count    12.000000
+mean     30.416667
+std       0.900337
+min      28.000000
+25%      30.000000
+50%      31.000000
+75%      31.000000
+max      31.000000
 dtype: float64
------
-count    3.0
-mean     1.0
-std      1.0
-min      0.0
-25%      0.5
-50%      1.0
-75%      1.5
-max      2.0
-dtype: float64
 ```
+
+Outra função útil é a `Series.cumsum()`, a soma acumulada ao longo da *Series*:
 
 <div class="python_box">
 ``` python3
-d = {'a' : 0., 'b' : 1., 'c' : 2.}
-s = pd.Series(d, index=['b', 'c', 'd', 'a'])
-print(s.cumsum())
+ndias = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+ind = 'Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez'.split()
+meses = pd.Series(ndias, index=ind)
+
+totais = meses.cumsum()
+
+print(totais)
 ```
 </div>
 
 ```
-b    1.0
-c    3.0
-d    NaN
-a    3.0
-dtype: float64
+Jan     31
+Fev     59
+Mar     90
+Abr    120
+Mai    151
+Jun    181
+Jul    212
+Ago    243
+Set    273
+Out    304
+Nov    334
+Dez    365
+dtype: int64
 ```
 
-<div class="python_box">
-``` python3
-d = {'a' : 0., 'b' : 1., 'c' : 2.}
-s = pd.Series(d, index=['b', 'c', 'd', 'a'])
+Repare-se num pormenor interessante: o resultado destas 3 últimas funções é
+também uma *Series*.
 
-print(s.values)
-print(s.index.values)
-```
-</div>
+Se quiser saber quantos dias do ano passaram no final de outubro podemos  simplesmente indexar a soma acumulada com `'Out'`
 
-```
-[  1.   2.  nan   0.]
-['b' 'c' 'd' 'a']
-```
+    meses.cumsum()['Out']
 
-### Indexação e operações vetoriais
+Finalmente, tal como se fossem dicionários, a função `len()`e o operador `in` também funcionam com *Series*.
 
-As Séries podem ser usadas com indexação por números inteiros,
-comportando-se como uma lista ou um *array* do `numpy`.
+### Operações vetoriais
 
-A função `len()`também funciona com séries.
-
-<div class="python_box">
-``` python3
-d = {'a' : 0., 'b' : 1., 'c' : 2.}
-s = pd.Series(d, index=['b', 'c', 'd', 'a'])
-print(len(s))
-print(s[0])
-print(s[-1])
-```
-</div>
-
-```
-4
-1.0
-0.0
-```
-
-As Séries podem ser usadas **como dicionários: as etiquetas comportam-se
-como chaves** e são usadas para indexar uma Série. para obter um valor
-(e também para modificar um valor).
-
-Tal como nos dicionários, o operador `in` **testa a existência de uma
-etiqueta**.
-
-<div class="python_box">
-``` python3
-d = {'a' : 0., 'b' : 1., 'c' : 2.}
-s = pd.Series(d, index=['b', 'c', 'd', 'a'])
-print(s)
-print('-----------')
-print(s['b'])
-print(s.c) # notação abreviada
-print('z' in s)
-print('d' in s)
-```
-</div>
-
-```
-b    1.0
-c    2.0
-d    NaN
-a    0.0
-dtype: float64
------------
-1.0
-2.0
-False
-True
-```
-
-Mas as Séries são muito mais poderosas: elas comportam-se como *arrays*
-do módulo `numpy`. Podemos usar:
-
--   *slices*
--   **operações vetoriais**.
+As Séries comportam-se como *arrays* do módulo `numpy`: podemos executar operações vetoriais:
 
 <div class="python_box">
 ``` python3
 d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
 s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
+
 print(s)
-
-print(s[:3])
-```
-</div>
-
-```
-b    1.0
-c    3.0
-d    NaN
-e    1.8
-a    0.5
-dtype: float64
-b    1.0
-c    3.0
-d    NaN
-dtype: float64
-```
-
-<div class="python_box">
-``` python3
-d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
-s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
-print(s)
-
+print('-----------------')
 print(s**2)
 ```
 </div>
@@ -289,6 +412,7 @@ d    NaN
 e    1.8
 a    0.5
 dtype: float64
+-----------------
 b    1.00
 c    9.00
 d     NaN
@@ -297,32 +421,15 @@ a    0.25
 dtype: float64
 ```
 
-<div class="python_box">
-``` python3
-d = {'a' : 0.5, 'b' : 1.0, 'c' : 3.0, 'e': 1.8}
-s = pd.Series(d, index=['b', 'c', 'd', 'e', 'a']) 
-print(s)
+Neste exemplo, elevámos a *Series* ao quadrado.
 
-print(s[s > 1.1])
-```
-</div>
-
-```
-b    1.0
-c    3.0
-d    NaN
-e    1.8
-a    0.5
-dtype: float64
-c    3.0
-e    1.8
-dtype: float64
-```
+O *valor em falta* foi ignorado.
 
 Também muito poderoso é o facto de que, quando aplicamos operações
-vetoriais sobre Séries (por exemplo, na soma de duas séries), **os
-valores são "alinhados" pelos respetivos *labels*** antes da operação.
-Vejamos estas duas séries:
+vetoriais sobre *Series* (por exemplo, na soma de duas séries), os
+valores são **alinhados** pelos respetivos *labels* antes da operação.
+
+Vejamos esta soma de duas séries:
 
 <div class="python_box">
 ``` python3
@@ -343,7 +450,7 @@ f    NaN
 dtype: float64
 ```
 
-A soma das duas Séries resulta numa Série em que todas as etiquetas
+A soma das duas Séries resulta numa Série em que todas os *labels*
 estão presentes (**união de conjuntos**).
 
 As que só existirem numa das Séries ou as que, numa das Séries, têm o
@@ -367,31 +474,89 @@ b    2.0
 dtype: float64
 ```
 
-### `DataFrame`
+## DataFrames
 
-> `DataFrame` is a **2-dimensional labeled data structure** with columns
-> of potentially different types. You can think of it like a spreadsheet
-> or SQL table, or a **dict of Series objects**. It is generally the
-> most commonly used pandas object.
+Numa definição muito simplificada:
 
 Uma *DataFrame* é um quadro bidimensional, em que cada coluna se
 comporta como uma Série, mas em que existe um índice comum a todas as
 colunas.
 
-Para ilustar o uso de uma `DataFrame`, vamos ler e processar a
-informação da UniProt sobre a levedura *S. cerevisiae*.
+Há muitas formas diferentes de criar uma *DataFrame*:
+
+- a partir de listas de dicionários
+- a partir de dicionários de listas
+- a partir de *arrays*
+
+Mas para ilustrar as possibilidades de criação de *DataFrames*, o primeiro exemplo mostra a criação
+de uma *DataFrame* a partir de dados organizados em tabela num ficheiro de texto do tipo CSV:
+
+<div class="python_box">
+``` python3
+import pandas as pd
+
+pdata = pd.read_csv('planetdata.txt', sep='\t')
+
+print(pdata)
+```
+</div>
+
+```
+    Planet  Rotation Period  Revolution Period
+0  Mercury        58.6 days         87.97 days
+1    Venus         243 days         224.7 days
+2    Earth        0.99 days        365.26 days
+3     Mars        1.03 days         1.88 years
+4  Jupiter        0.41 days        11.86 years
+5   Saturn        0.45 days        29.46 years
+6   Uranus        0.72 days        84.01 years
+7  Neptune        0.67 days       164.79 years
+```
+
+Esta *DataFrame* tem 3 colunas, cada uma delas funciona como uma *Series*. Mas, todas as *Series* partilham o mesmo `index`, neste caso os números de 0 a 8.
+
+Muitas vezes faz muito sentido que uma das colunas seja o `index`. Podemos passar uma coluna para funcionar como `index` com a função `DataFrame.set_index()`:
+
+<div class="python_box">
+``` python3
+pdata = pd.read_csv('planetdata.txt', sep='\t')
+
+pdata = pdata.set_index('Planet')
+
+print(pdata)
+```
+</div>
+
+```
+         Rotation Period Revolution Period
+Planet
+Mercury       58.6 days         87.97 days
+Venus          243 days         224.7 days
+Earth         0.99 days        365.26 days
+Mars          1.03 days         1.88 years
+Jupiter       0.41 days        11.86 years
+Saturn        0.45 days        29.46 years
+Uranus        0.72 days        84.01 years
+Neptune       0.67 days       164.79 years
+```
 
 ## Exemplo: Tabela com informação Uniprot txt
 
+Para ilustar o uso de uma `DataFrame` na oragnização e análise de dados, vamos ler a informação da UniProt sobre a levedura *S. cerevisiae* e realizar, algumas análises sobre os comprimentos das proteínas, a abundância de aminoácidos e a contagem de *modificações pós-traducionais*.
+
 ### Preparação
 
-Ficheiro _Unitprot text_ com a informação sobre as proteínas da levedura _S. cerevisiae_. Para obter este ficheiro,
+O ficheiro de partida é o mesmo usado num capítulo anterior, o ficheiro _Unitprot text_ com a informação sobre as proteínas da levedura _S. cerevisiae_.
+
+Recorde-se que Para obter este ficheiro, deve-se proceder aos seguintes passos
 
 - na UniProt procurar pelo "proteoma" da levedura _S. cerevisiae_ [www.uniprot.org/proteomes/UP000002311](https://www.uniprot.org/proteomes/UP000002311)
 - Passar para resultados UniProtKB em "Map to Reviewed"
 - Download -> Text
 - Se o download tiver sido em modo "compressed", extraír o ficheiro do zip.
 - Alterar o nome do ficheiro para `uniprot_scerevisiae.txt`
+
+O ficheiro obtido deve estar na mesma pasta que os programas exibidos até ao final deste capítulo.
 
 
 ### Extração dos dados
