@@ -502,15 +502,15 @@ print(pdata)
 </div>
 
 ```
-    Planet  Rotation Period  Revolution Period
-0  Mercury        58.6 days         87.97 days
-1    Venus         243 days         224.7 days
-2    Earth        0.99 days        365.26 days
-3     Mars        1.03 days         1.88 years
-4  Jupiter        0.41 days        11.86 years
-5   Saturn        0.45 days        29.46 years
-6   Uranus        0.72 days        84.01 years
-7  Neptune        0.67 days       164.79 years
+    Planet  rotation_days  revolution_years
+0  Mercury          58.60            0.2408
+1    Venus         243.00            0.6150
+2    Earth           0.99            1.0000
+3     Mars           1.03            1.8800
+4  Jupiter           0.41           11.8600
+5   Saturn           0.45           29.4600
+6   Uranus           0.72           84.0100
+7  Neptune           0.67          164.7900
 ```
 
 Esta *DataFrame* tem 3 colunas, cada uma delas funciona como uma *Series*. Mas, todas as *Series* partilham o mesmo `index`, neste caso os números de 0 a 8.
@@ -528,21 +528,140 @@ print(pdata)
 </div>
 
 ```
-         Rotation Period Revolution Period
+         rotation_days  revolution_years
 Planet
-Mercury       58.6 days         87.97 days
-Venus          243 days         224.7 days
-Earth         0.99 days        365.26 days
-Mars          1.03 days         1.88 years
-Jupiter       0.41 days        11.86 years
-Saturn        0.45 days        29.46 years
-Uranus        0.72 days        84.01 years
-Neptune       0.67 days       164.79 years
+Mercury          58.60            0.2408
+Venus           243.00            0.6150
+Earth             0.99            1.0000
+Mars              1.03            1.8800
+Jupiter           0.41           11.8600
+Saturn            0.45           29.4600
+Uranus            0.72           84.0100
+Neptune           0.67          164.7900
 ```
+
+Para obter uma das colunas, podemos indexar a *DataFrame* com
+o nome da coluna:
+
+<div class="python_box">
+``` python3
+pdata = pd.read_csv('planetdata.txt', sep='\t')
+pdata = pdata.set_index('Planet')
+
+rot_days = pdata['rotation_days']
+
+print(rot_days)
+```
+</div>
+
+```
+Planet
+Mercury     58.60
+Venus      243.00
+Earth        0.99
+Mars         1.03
+Jupiter      0.41
+Saturn       0.45
+Uranus       0.72
+Neptune      0.67
+Name: rotation_days, dtype: float64
+```
+
+ou, se o nome da coluna não tiver espaços, podemos simplesmente
+usar o nome na forma `.nome`:
+
+<div class="python_box">
+``` python3
+pdata = pd.read_csv('planetdata.txt', sep='\t')
+pdata = pdata.set_index('Planet')
+
+rot_days = pdata.rotation_days
+
+print(rot_days)
+```
+</div>
+
+```
+Planet
+Mercury     58.60
+Venus      243.00
+Earth        0.99
+Mars         1.03
+Jupiter      0.41
+Saturn       0.45
+Uranus       0.72
+Neptune      0.67
+Name: rotation_days, dtype: float64
+```
+
+Sendo as colunas *Series*, podemos usar toda a funcionalidade das *Series*:
+
+<div class="python_box">
+``` python3
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+
+
+pdata = pd.read_csv('planetdata.txt', sep='\t').set_index('Planet')
+
+print('Rotation:')
+rot_days = pdata.rotation_days
+
+print(rot_days.describe())
+
+logrev = np.log10(pdata.revolution_years)
+
+logrev.plot(marker='o', grid=True)
+plt.show()
+```
+</div>
+
+```
+Rotation:
+count      8.000000
+mean      38.233750
+std       85.181975
+min        0.410000
+25%        0.615000
+50%        0.855000
+75%       15.422500
+max      243.000000
+Name: rotation_days, dtype: float64
+```
+
+![planet revs](images/planetrev.png)
+
+Interessante que o log do período de revolução seja quase linear.
+
+Podemos fazer indexação por condições de toda a *DataFrame*
+
+Em que planetas o dia é maior do que um dia na Terra?
+
+<div class="python_box">
+``` python3
+pdata = pd.read_csv('planetdata.txt', sep='\t').set_index('Planet')
+
+rot_days = pdata.rotation_days
+
+longer_than1 = rot_days[rot_days > 1]
+
+print(longer_than1)
+```
+</div>
+
+```
+Planet
+Mercury     58.60
+Venus      243.00
+Mars         1.03
+Name: rotation_days, dtype: float64
+```
+
 
 ## Exemplo: Tabela com informação Uniprot txt
 
-Para ilustar o uso de uma `DataFrame` na oragnização e análise de dados, vamos ler a informação da UniProt sobre a levedura *S. cerevisiae* e realizar, algumas análises sobre os comprimentos das proteínas, a abundância de aminoácidos e a contagem de *modificações pós-traducionais*.
+Para ilustar o uso de uma `DataFrame` na organização e análise de dados, vamos ler a informação da UniProt sobre a levedura *S. cerevisiae* e realizar, algumas análises sobre os comprimentos das proteínas, a abundância de aminoácidos e a contagem de *modificações pós-traducionais*.
 
 ### Preparação
 
