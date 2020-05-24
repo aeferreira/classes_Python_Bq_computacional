@@ -327,7 +327,7 @@
       
         <li class="md-nav__item">
   <a href="#definicao-de-funcoes-def" class="md-nav__link">
-    Definição de funções (def)
+    Definição de funções (wzxhzdk:95)
   </a>
   
 </li>
@@ -369,7 +369,7 @@
       
         <li class="md-nav__item">
   <a href="#modulos-e-import" class="md-nav__link">
-    Módulos e import
+    Módulos e wzxhzdk:164
   </a>
   
 </li>
@@ -601,7 +601,7 @@
       
         <li class="md-nav__item">
   <a href="#definicao-de-funcoes-def" class="md-nav__link">
-    Definição de funções (def)
+    Definição de funções (wzxhzdk:95)
   </a>
   
 </li>
@@ -643,7 +643,7 @@
       
         <li class="md-nav__item">
   <a href="#modulos-e-import" class="md-nav__link">
-    Módulos e import
+    Módulos e wzxhzdk:164
   </a>
   
 </li>
@@ -745,9 +745,9 @@ Complemento reverso
 </pre></div>
 
 <p>A parte do programa nas linhas 17 e 18</p>
-<div class="codehilite"><pre><span></span><code>seq_cods = [seq[i:i+3] for i in range(0, len(seq), 3)]
+<div class="codehilite"><pre><span></span>seq_cods = [seq[i:i+3] for i in range(0, len(seq), 3)]
 chain_seq = &#39;-&#39;.join(seq_cods)
-</code></pre></div>
+</pre></div>
 
 
 <p>repete-se de uma forma análoga para a sequência complementar e para o
@@ -870,10 +870,10 @@ possível escrever funções que, testando condições com <code>if</code> podem
 em linhas que não são a última. Podem haver vários comandos <code>return</code> numa definição da função.</p>
 <p>Claro, à semelhança do que se passa com <code>for</code>, <code>if...else</code>, <code>with</code>, é o <strong>alinhamento interior</strong> das
 linhas que indica onde começa e acaba a definição de uma função. No exemplo acima, as linhas</p>
-<div class="codehilite"><pre><span></span><code>cods = [x[i:i+3] for i in range(0,len(x),3)]
+<div class="codehilite"><pre><span></span>cods = [x[i:i+3] for i in range(0,len(x),3)]
 comhifen = &#39;-&#39;.join(cods)
 return comhifen
-</code></pre></div>
+</pre></div>
 
 
 <p>estão alinhadas "mais dentro", usando alguns espaços (convencionou-se 4 espaços). Havendo, por exemplo,
@@ -903,8 +903,8 @@ ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
 
 <p>Chamar uma função é simples: escrevemos o nome da função, seguida do valôr/objeto/expressão ao qual queremos aplicar a função entre <code>()</code>.</p>
 <p>Havendo um resultado, é muito comum atribuír um nome ao resultado:</p>
-<div class="codehilite"><pre><span></span><code>s = seqcods(seq)
-</code></pre></div>
+<div class="codehilite"><pre><span></span>s = seqcods(seq)
+</pre></div>
 
 
 <div class="admonition note">
@@ -1250,8 +1250,8 @@ NameError: name &#39;g1&#39; is not defined
 
 <p>O que se passou aqui?
 O programa dá um erro na linha</p>
-<div class="codehilite"><pre><span></span><code>print(&#39;m*x =&#39;, g1, &#39;b =&#39;, g0)
-</code></pre></div>
+<div class="codehilite"><pre><span></span>print(&#39;m*x =&#39;, g1, &#39;b =&#39;, g0)
+</pre></div>
 
 
 <p>Os nomes usados dentro da função <code>g1</code> e <code>g0</code> são <strong>locais</strong> à função:
@@ -1323,10 +1323,10 @@ valores diferentes:</p>
 <li>O contexto global, quando estão "fora da função".</li>
 </ul>
 <p>Fora da função, os valores globais são:</p>
-<div class="codehilite"><pre><span></span><code>m = 2
+<div class="codehilite"><pre><span></span>m = 2
 b = 2
 x = 4
-</code></pre></div>
+</pre></div>
 
 
 <p>Estes valores não são modificados fora da função e são apresentados pela
@@ -1334,10 +1334,10 @@ função <code>print()</code> no final.</p>
 <p>Dentro da função estes nomes são, em primeiro lugar, usados como os
 argumentos da função.</p>
 <p>Pela <strong>maneira como a função é chamada</strong>, estes valores são:</p>
-<div class="codehilite"><pre><span></span><code>m = 5
+<div class="codehilite"><pre><span></span>m = 5
 b = 5
 x = 16
-</code></pre></div>
+</pre></div>
 
 
 <p>O nome <code>x</code> é modificado dentro da função (<code>x = m * x + b</code>) ficando com o

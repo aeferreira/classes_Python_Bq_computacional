@@ -1125,8 +1125,8 @@ dtype: int64
 <p>Repare-se num pormenor interessante: o resultado destas 3 últimas funções é
 também uma <em>Series</em>.</p>
 <p>Se quiser saber quantos dias do ano passaram no final de outubro podemos  simplesmente indexar a soma acumulada com <code>'Out'</code></p>
-<div class="codehilite"><pre><span></span><code>meses.cumsum()[&#39;Out&#39;]
-</code></pre></div>
+<div class="codehilite"><pre><span></span>meses.cumsum()[&#39;Out&#39;]
+</pre></div>
 
 
 <p>Finalmente, tal como se fossem dicionários, a função <code>len()</code>e o operador <code>in</code> também funcionam com <em>Series</em>.</p>
@@ -1221,15 +1221,15 @@ de uma <em>DataFrame</em> a partir de dados organizados em tabela num ficheiro d
 </pre></div>
 </div>
 
-<div class="codehilite"><pre><span></span>    Planet  Rotation Period  Revolution Period
-0  Mercury        58.6 days         87.97 days
-1    Venus         243 days         224.7 days
-2    Earth        0.99 days        365.26 days
-3     Mars        1.03 days         1.88 years
-4  Jupiter        0.41 days        11.86 years
-5   Saturn        0.45 days        29.46 years
-6   Uranus        0.72 days        84.01 years
-7  Neptune        0.67 days       164.79 years
+<div class="codehilite"><pre><span></span>    Planet  rotation_days  revolution_years
+0  Mercury          58.60            0.2408
+1    Venus         243.00            0.6150
+2    Earth           0.99            1.0000
+3     Mars           1.03            1.8800
+4  Jupiter           0.41           11.8600
+5   Saturn           0.45           29.4600
+6   Uranus           0.72           84.0100
+7  Neptune           0.67          164.7900
 </pre></div>
 
 <p>Esta <em>DataFrame</em> tem 3 colunas, cada uma delas funciona como uma <em>Series</em>. Mas, todas as <em>Series</em> partilham o mesmo <code>index</code>, neste caso os números de 0 a 8.</p>
@@ -1243,20 +1243,123 @@ de uma <em>DataFrame</em> a partir de dados organizados em tabela num ficheiro d
 </pre></div>
 </div>
 
-<div class="codehilite"><pre><span></span>         Rotation Period Revolution Period
+<div class="codehilite"><pre><span></span>         rotation_days  revolution_years
 Planet
-Mercury       58.6 days         87.97 days
-Venus          243 days         224.7 days
-Earth         0.99 days        365.26 days
-Mars          1.03 days         1.88 years
-Jupiter       0.41 days        11.86 years
-Saturn        0.45 days        29.46 years
-Uranus        0.72 days        84.01 years
-Neptune       0.67 days       164.79 years
+Mercury          58.60            0.2408
+Venus           243.00            0.6150
+Earth             0.99            1.0000
+Mars              1.03            1.8800
+Jupiter           0.41           11.8600
+Saturn            0.45           29.4600
+Uranus            0.72           84.0100
+Neptune           0.67          164.7900
+</pre></div>
+
+<p>Para obter uma das colunas, podemos indexar a <em>DataFrame</em> com
+o nome da coluna:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">pdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;planetdata.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">pdata</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Planet&#39;</span><span class="p">)</span>
+
+<span class="n">rot_days</span> <span class="o">=</span> <span class="n">pdata</span><span class="p">[</span><span class="s1">&#39;rotation_days&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">rot_days</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>Planet
+Mercury     58.60
+Venus      243.00
+Earth        0.99
+Mars         1.03
+Jupiter      0.41
+Saturn       0.45
+Uranus       0.72
+Neptune      0.67
+Name: rotation_days, dtype: float64
+</pre></div>
+
+<p>ou, se o nome da coluna não tiver espaços, podemos simplesmente
+usar o nome na forma <code>.nome</code>:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">pdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;planetdata.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">pdata</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Planet&#39;</span><span class="p">)</span>
+
+<span class="n">rot_days</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">rotation_days</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">rot_days</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>Planet
+Mercury     58.60
+Venus      243.00
+Earth        0.99
+Mars         1.03
+Jupiter      0.41
+Saturn       0.45
+Uranus       0.72
+Neptune      0.67
+Name: rotation_days, dtype: float64
+</pre></div>
+
+<p>Sendo as colunas <em>Series</em>, podemos usar toda a funcionalidade das <em>Series</em>:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+
+<span class="n">pdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;planetdata.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Planet&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Rotation:&#39;</span><span class="p">)</span>
+<span class="n">rot_days</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">rotation_days</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">rot_days</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+
+<span class="n">logrev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">pdata</span><span class="o">.</span><span class="n">revolution_years</span><span class="p">)</span>
+
+<span class="n">logrev</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>Rotation:
+count      8.000000
+mean      38.233750
+std       85.181975
+min        0.410000
+25%        0.615000
+50%        0.855000
+75%       15.422500
+max      243.000000
+Name: rotation_days, dtype: float64
+</pre></div>
+
+<p><img alt="planet revs" src="images/planetrev.png" /></p>
+<p>Interessante que o log do período de revolução seja quase linear.</p>
+<p>Podemos fazer indexação por condições de toda a <em>DataFrame</em></p>
+<p>Em que planetas o dia é maior do que um dia na Terra?</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">pdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;planetdata.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Planet&#39;</span><span class="p">)</span>
+
+<span class="n">rot_days</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">rotation_days</span>
+
+<span class="n">longer_than1</span> <span class="o">=</span> <span class="n">rot_days</span><span class="p">[</span><span class="n">rot_days</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">longer_than1</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="codehilite"><pre><span></span>Planet
+Mercury     58.60
+Venus      243.00
+Mars         1.03
+Name: rotation_days, dtype: float64
 </pre></div>
 
 <h2 id="exemplo-tabela-com-informacao-uniprot-txt">Exemplo: Tabela com informação Uniprot txt<a class="headerlink" href="#exemplo-tabela-com-informacao-uniprot-txt" title="Permanent link">&para;</a></h2>
-<p>Para ilustar o uso de uma <code>DataFrame</code> na oragnização e análise de dados, vamos ler a informação da UniProt sobre a levedura <em>S. cerevisiae</em> e realizar, algumas análises sobre os comprimentos das proteínas, a abundância de aminoácidos e a contagem de <em>modificações pós-traducionais</em>.</p>
+<p>Para ilustar o uso de uma <code>DataFrame</code> na organização e análise de dados, vamos ler a informação da UniProt sobre a levedura <em>S. cerevisiae</em> e realizar, algumas análises sobre os comprimentos das proteínas, a abundância de aminoácidos e a contagem de <em>modificações pós-traducionais</em>.</p>
 <h3 id="preparacao">Preparação<a class="headerlink" href="#preparacao" title="Permanent link">&para;</a></h3>
 <p>O ficheiro de partida é o mesmo usado num capítulo anterior, o ficheiro <em>Unitprot text</em> com a informação sobre as proteínas da levedura <em>S. cerevisiae</em>.</p>
 <p>Recorde-se que Para obter este ficheiro, deve-se proceder aos seguintes passos</p>
@@ -1524,12 +1627,12 @@ Name: Q12019, dtype: object
 </pre></div>
 </div>
 
-<div class="codehilite"><pre><span></span><code>[(&#39;1026&#39;, &#39;Phosphothreonine&#39;),
+<div class="codehilite"><pre><span></span>[(&#39;1026&#39;, &#39;Phosphothreonine&#39;),
  (&#39;2971&#39;, &#39;Phosphoserine&#39;),
  (&#39;4353&#39;, &#39;Phosphoserine&#39;),
  (&#39;4388&#39;, &#39;Phosphothreonine&#39;),
  (&#39;4555&#39;, &#39;Phosphoserine&#39;)]
-</code></pre></div>
+</pre></div>
 
 
 <h4 id="quais-as-20-proteinas-mais-pequenas-de-scerevisiae">Quais as 20 proteínas mais pequenas de S.cerevisiae?<a class="headerlink" href="#quais-as-20-proteinas-mais-pequenas-de-scerevisiae" title="Permanent link">&para;</a></h4>

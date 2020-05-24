@@ -997,15 +997,15 @@ OX   NCBI_TaxID=559292;
 <p>Isto faz com que o resultado da função <code>split()</code> tenha, no final da lista, uma <em>string</em> vazia.</p>
 <p>Esta <em>string</em> vazia deve ser retirada do fim da lista.</p>
 <p>Podemos usar uma lista em compreensão para a retirar:</p>
-<div class="codehilite"><pre><span></span><code>records = [p for p in records if len(p) != 0]
-</code></pre></div>
+<div class="codehilite"><pre><span></span>records = [p for p in records if len(p) != 0]
+</pre></div>
 
 
 <p>isto é, mantemos todos os records, desde que o seu comprimento seja maior do que 0, isto é, não seja uma lista vazia.</p>
 <p>Outra possibiliadade é usar a função <code>pop()</code>de listas que
 retira o elemento que está numa posição:</p>
-<div class="codehilite"><pre><span></span><code>records.pop(-1)
-</code></pre></div>
+<div class="codehilite"><pre><span></span>records.pop(-1)
+</pre></div>
 
 
 <p>Esta "tarefa" pode ser posta numa função, uma vez que é uma parte lógica do programa (ler o ficheiro e dividir em blocos respeitantes a diferentes proteínas).</p>
@@ -1165,8 +1165,8 @@ Resultou. Criámos um dicionário com as duas partes que nos interessavam extra�
 </pre></div>
 
 <p>Vamos dissecar o processo de obter o <code>ac</code>.</p>
-<div class="codehilite"><pre><span></span><code>ac = lineAC.split(&#39;;&#39;)[0].split()[1]
-</code></pre></div>
+<div class="codehilite"><pre><span></span>ac = lineAC.split(&#39;;&#39;)[0].split()[1]
+</pre></div>
 
 
 <p><em>Dividir a linha <code>lineAC</code> por <code>;</code>, aproveitar o fragmento 0 e dividir este por espaços, aproveitar o fragmento 1</em></p>
@@ -1413,13 +1413,13 @@ FT                   /note=&quot;Phosphothreonine; by PKH1 or PKH2&quot;
 <p>Aparentemente nem todas as proteínas têm anotações sobre PTMs.</p>
 <p>Note-se a utilidade da função <code>enumerate()</code>: podemos ao mesmo tempo passar com o comando <code>for</code> pelas
 linhas usando o nome <code>line</code> e pelas <strong>posições</strong> das linhas, usando <code>i</code> (não esquecer que <code>lines</code> é uma lista de linhas).</p>
-<div class="codehilite"><pre><span></span><code>for i, line in enumerate(lines):
-</code></pre></div>
+<div class="codehilite"><pre><span></span>for i, line in enumerate(lines):
+</pre></div>
 
 
 <p>isto foi útil para obter facilmente a "linha seguinte":</p>
-<div class="codehilite"><pre><span></span><code>nextline = lines[i+1]
-</code></pre></div>
+<div class="codehilite"><pre><span></span>nextline = lines[i+1]
+</pre></div>
 
 
 <p>Já se conseguiu muito: agora temos uma lista de 6049 dicionários em que cada um deles tem o número de acesso, o comprimento da proteína e um dicionário com as localizações e o nome de cada PTM da proteína.</p>
@@ -1571,8 +1571,8 @@ uma atribuição múltipla para atribuír nomes a várias linhas que estejamos i
 <p>Note-se que <code>otherlines</code> seria um nome de uma lista contendo todas as linhas
 menos as duas primeiras. O que significa que, mais à frente, quando procuramos
 linhas começadas por <code>FT</code>, devemos fazer</p>
-<div class="codehilite"><pre><span></span><code> for line in otherlines:
-</code></pre></div>
+<div class="codehilite"><pre><span></span> for line in otherlines:
+</pre></div>
 
 
 <div class="admonition question">
@@ -1609,8 +1609,8 @@ funcionar.</p>
 <p>Cada dicionário contem
 uma chave <code>PTMs</code>, a qual tem como valor um outro dicionário que associa a posição
 de cada <em>PTM</em> ao seu nome.</p>
-<div class="codehilite"><pre><span></span><code>{&#39;ac&#39;: &#39;P40467&#39;, &#39;n&#39;: 964, &#39;PTMs&#39;: {&#39;166&#39;: &#39;Phosphoserine&#39;, &#39;186&#39;: &#39;Phosphoserine&#39;, &#39;963&#39;: &#39;Phosphoserine&#39;}}
-</code></pre></div>
+<div class="codehilite"><pre><span></span>{&#39;ac&#39;: &#39;P40467&#39;, &#39;n&#39;: 964, &#39;PTMs&#39;: {&#39;166&#39;: &#39;Phosphoserine&#39;, &#39;186&#39;: &#39;Phosphoserine&#39;, &#39;963&#39;: &#39;Phosphoserine&#39;}}
+</pre></div>
 
 
 <p>Como contar as <em>PTM</em> em todas as proteínas pelo seu nome?</p>
