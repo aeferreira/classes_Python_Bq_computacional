@@ -62,7 +62,7 @@ Os programas vão ser criados como ficheiros de texto editados com o VSCode.
 - Observe o resultado do programa. Corra o programa outra vez. 
 - Note as propriedades $\phi^2 = \phi +1$ e $1 / \phi = \phi  - 1$
 
-## Exercício 4 (&deg;C para &deg;F)
+## Exercício 4 (°C para °F)
 
 Escreva um outro programa (faça *File – New File* para criar um novo programa) que calcula os graus Farenheit correspondentes a 36.5 graus Celsius. Não se esqueça de salvar o programa com um nome acabado em `.py`. A fórmula de conversão é:
 

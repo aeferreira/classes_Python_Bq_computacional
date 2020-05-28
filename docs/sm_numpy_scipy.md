@@ -19,7 +19,7 @@ Estas bibliotecas são:
 
 ![](images/sci_python.png)
 
-## `numpy`
+## numpy
 
 Esta é uma biblioteca fundamental na computação científica em Python e várias das outras bibliotecas dependem dela.
 
@@ -133,9 +133,7 @@ print(y)
 ```
 
 Este ganho na simplicidade da notação é muito poderoso,
-já que podemos frequentemente exprimir operações numéricas
-complexas e sucessivas de uma forma muito semelhante à notação algébrica, mas aplicando a conjuntos inteiros de
-valores numéricos "em paralelo".
+já que podemos frequentemente exprimir operações numéricas complexas e sucessivas de uma forma muito semelhante à notação algébrica, mas aplicando a conjuntos inteiros de valores numéricos "em paralelo".
 
 Mais tarde veremos um exemplo disso mesmo, em que fazemos a simulação das variações de carga de um aminoácido em solução com as variações de pH, aplicando expressões simples a toda a escala de pH, usando centenas de valores no intervalo [0, 14].
 
@@ -186,8 +184,7 @@ print(x)
 Como se pode ver, o valor final é *exclusivé*.
 
 Muito semelhante à função `arange()` é a função
-`linspace()`, que também gera um *array* de valores igualemnte espaçados, mas em que o terceiro argumento não
-é o espaçamento, é o número de valores pretendidos no *array*.
+`linspace()`, que também gera um *array* de valores igualemnte espaçados, mas em que o terceiro argumento não é o espaçamento, é o número de valores pretendidos no *array*.
 
 Os extremos do intervalo, o valor inicial e o valor final estão incluídos:
 
@@ -300,7 +297,7 @@ Mas a funcionalidade do módulo `numpy` é extremamente vasta.
 São introduzidas muitas funções associadas a conceitos matemáticos simples.
 
 Uma pequena ilustração: a função `intersect1d()` que calcula
-um *array* resultante da **interseção** de dois **arrays* entendidos como conjuntos.
+um *array* resultante da **interseção de dois arrays** entendidos como conjuntos.
 
 !!! example "Problema"
     Encontrar os números pares até 200 que sejam também
@@ -325,9 +322,11 @@ print(common)
 
 Os *arrays* podem não ser "lineares" como uma lista.
 
-Podem assemelhar-se a uma matriz, com duas (ou mais) dimensões.
+Podem assemelhar-se a uma matriz, com duas dimensões. Na realidade, é mesmo possível termos *arrays* com mais de dua dimensões.
 
 Para isso, um *array* tem um atributo chamado `shape` que consiste na indicação do número de elementos em cada "dimensão".
+
+Por exemplo, um *array* que representa um quadro de números 4 x 3 terá duas dimensões e `shape` igual a `(4,3)`
 
 No seguinte exemplo, um *array* "linear" é forçado a tomar a
 forma de uma matriz 4 x 3:
@@ -498,8 +497,7 @@ x[3,1] = 14.0
 
 Note-se que a numeração **começa em 0**, seja qual for a dimensão que está a ser indexada.
 
-Se numa dimensão indicarmos `:` isto significa uma *slice*
-do "princípio ao fim".
+Se numa dimensão indicarmos `:` isto significa uma *slice* do "princípio ao fim".
 
 Isto significa que podemos obter, por exemplo, uma linha inteira:
 
@@ -954,7 +952,7 @@ plt.show()
 
 ![image](images/series300.png)
 
-### Geração de números aleatórios. (sub-módulo `numpy.random`)
+### Geração de números aleatórios. (sub-módulo numpy.random)
 
 O `numpy` é um módulo com alguma complexidade e contem sub-módulos dedicados
 a certas funcionalidades mais específicas.

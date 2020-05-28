@@ -2,7 +2,7 @@
 
 ### Bioquímica computacional 2019/2020
 
-## Exercícios Numéricos, usando o comandos `for`
+## Exercícios Numéricos, usando o comandos *for*
 
 1 - Dada a seguinte lista de números (da famosa sequência de Fibonacci),
 calcule a percentagem de números pares
@@ -456,7 +456,7 @@ Transforme essa *string* numa *string* sem mudanças de linha
         MVRLGPKKPPARKGSMADVPANLMEQIHGLETLFTVSSEKMRSIVKHFISELDKGLSKKGGNIPMIPGWVVEYPTGKETGDFLALDLGGTNLRVVLVKLGGNHDFDTTQNKYRLPDHLRTGTSEQLWSFIAKCLKEFVDEWYPDGVSEPLPLGFTFSYPASQKKINSGVLQRWTKGFDIEGVEGHDVVPMLQEQIEKLNIPINVVALINDTTGTLVASLYTDPQTKMGIIIGTGVNGAYYDVVSGIEKLEGLLPEDIGPDSPMAINCEYGSFDNEHLVLPRTKYDVIIDEESPRPGQQAFEKMTSGYYLGEIMRLVLLDLYDSGFIFKDQDISKLKEAYVMDTSYPSKIEDDPFENLEDTDDLFKTNLNIETTVVERKLIRKLAELVGTRAARLTVCGVSAICDKRGYKTAHIAADGSVFNRYPGYKEKAAQALKDIYNWDVEKMEDHPIQLVAAEDGSGVGAAIIACLTQKRLAAGKSVGIKGE
         
 
-## Exercícios de criação de funções (com `def`)
+## Exercícios de criação de funções (com *def*)
 
 12 - Escreva uma função que, ao ser aplicada a um número inteiro, dá `True` ou `False` consoante
 o número começa ou não por 3. Chame à função `startswith3`.

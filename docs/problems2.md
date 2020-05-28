@@ -6,7 +6,8 @@
 
 **No programas seguintes, preencha os `??????` com expressões apropriadas de forma a garantir que o resultado da execução do programa seja aquele que está exibido**
 
-## Numéricos, sobre comandos `for`, listas em compreensão e `numpy`
+## Numéricos, sobre comandos for, listas em compreensão e numpy
+
 
 ### Programa 1
 

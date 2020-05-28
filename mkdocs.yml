@@ -43,7 +43,7 @@ markdown_extensions:
       smart_enable: all
   - pymdownx.caret
   - pymdownx.details
-  - pymdownx.inlinehilite
+  #- pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
