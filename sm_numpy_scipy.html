@@ -409,7 +409,7 @@
       
         <li class="md-nav__item">
   <a href="#numpy" class="md-nav__link">
-    wzxhzdk:126
+    numpy
   </a>
   
     <nav class="md-nav">
@@ -424,21 +424,21 @@
         
           <li class="md-nav__item">
   <a href="#criacao-de-arrays-com-as-funcoes-array-arange-e-linspace" class="md-nav__link">
-    Criação de arrays com as funções wzxhzdk:136, wzxhzdk:137 e wzxhzdk:138
+    Criação de arrays com as funções .array(), .arange() e .linspace()
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#dimensoes-shape" class="md-nav__link">
-    Dimensões (wzxhzdk:161)
+    Dimensões (shape)
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#criacao-de-arrays-com-array-ones-zeros-eye-diag" class="md-nav__link">
-    Criação de arrays com wzxhzdk:163, wzxhzdk:164, wzxhzdk:165, wzxhzdk:166, wzxhzdk:167
+    Criação de arrays com .array(), .ones(), .zeros(), .eye(), .diag()
   </a>
   
 </li>
@@ -473,7 +473,7 @@
         
           <li class="md-nav__item">
   <a href="#geracao-de-numeros-aleatorios-sub-modulo-numpyrandom" class="md-nav__link">
-    Geração de números aleatórios. (sub-módulo wzxhzdk:191)
+    Geração de números aleatórios. (sub-módulo numpy.random)
   </a>
   
 </li>
@@ -600,7 +600,7 @@
       
         <li class="md-nav__item">
   <a href="#numpy" class="md-nav__link">
-    wzxhzdk:126
+    numpy
   </a>
   
     <nav class="md-nav">
@@ -615,21 +615,21 @@
         
           <li class="md-nav__item">
   <a href="#criacao-de-arrays-com-as-funcoes-array-arange-e-linspace" class="md-nav__link">
-    Criação de arrays com as funções wzxhzdk:136, wzxhzdk:137 e wzxhzdk:138
+    Criação de arrays com as funções .array(), .arange() e .linspace()
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#dimensoes-shape" class="md-nav__link">
-    Dimensões (wzxhzdk:161)
+    Dimensões (shape)
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#criacao-de-arrays-com-array-ones-zeros-eye-diag" class="md-nav__link">
-    Criação de arrays com wzxhzdk:163, wzxhzdk:164, wzxhzdk:165, wzxhzdk:166, wzxhzdk:167
+    Criação de arrays com .array(), .ones(), .zeros(), .eye(), .diag()
   </a>
   
 </li>
@@ -664,7 +664,7 @@
         
           <li class="md-nav__item">
   <a href="#geracao-de-numeros-aleatorios-sub-modulo-numpyrandom" class="md-nav__link">
-    Geração de números aleatórios. (sub-módulo wzxhzdk:191)
+    Geração de números aleatórios. (sub-módulo numpy.random)
   </a>
   
 </li>
@@ -716,7 +716,7 @@ em muitas aplicações de natureza científica.</p>
     (<code>Series</code> e <code>DataFrame</code>)</li>
 </ul>
 <p><img alt="" src="images/sci_python.png" /></p>
-<h2 id="numpy"><code>numpy</code><a class="headerlink" href="#numpy" title="Permanent link">&para;</a></h2>
+<h2 id="numpy">numpy<a class="headerlink" href="#numpy" title="Permanent link">&para;</a></h2>
 <p>Esta é uma biblioteca fundamental na computação científica em Python e várias das outras bibliotecas dependem dela.</p>
 <p>Apesar de introduzir muitas funcionalidades interessantes à linguagem, a principal característica da biblioteca é proporcionar <strong>operações vetoriais</strong> a partir da introdução na linguagem Python de um tipo novo de objetos: os <em>array</em>.</p>
 <h3 id="operacoes-vectoriais">Operações "vectoriais"<a class="headerlink" href="#operacoes-vectoriais" title="Permanent link">&para;</a></h3>
@@ -807,9 +807,7 @@ através de operações num bloco de um comando <code>for</code> ou usando lista
 </pre></div>
 
 <p>Este ganho na simplicidade da notação é muito poderoso,
-já que podemos frequentemente exprimir operações numéricas
-complexas e sucessivas de uma forma muito semelhante à notação algébrica, mas aplicando a conjuntos inteiros de
-valores numéricos "em paralelo".</p>
+já que podemos frequentemente exprimir operações numéricas complexas e sucessivas de uma forma muito semelhante à notação algébrica, mas aplicando a conjuntos inteiros de valores numéricos "em paralelo".</p>
 <p>Mais tarde veremos um exemplo disso mesmo, em que fazemos a simulação das variações de carga de um aminoácido em solução com as variações de pH, aplicando expressões simples a toda a escala de pH, usando centenas de valores no intervalo [0, 14].</p>
 <p>Mas os <em>arrays</em> foram criados para as operações numéricas:</p>
 <p>os <em>arrays</em> são homogéneos: todos os seus elementos são números, ao contrário das listas, que são flexíveis e podem
@@ -844,8 +842,7 @@ a função <code>arange()</code> não gera apenas números inteiros:</p>
 
 <p>Como se pode ver, o valor final é <em>exclusivé</em>.</p>
 <p>Muito semelhante à função <code>arange()</code> é a função
-<code>linspace()</code>, que também gera um <em>array</em> de valores igualemnte espaçados, mas em que o terceiro argumento não
-é o espaçamento, é o número de valores pretendidos no <em>array</em>.</p>
+<code>linspace()</code>, que também gera um <em>array</em> de valores igualemnte espaçados, mas em que o terceiro argumento não é o espaçamento, é o número de valores pretendidos no <em>array</em>.</p>
 <p>Os extremos do intervalo, o valor inicial e o valor final estão incluídos:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="c1"># 5 números no intervalo 1 a 2</span>
@@ -933,7 +930,7 @@ valores. Dando o número de pontos total, o espaçamento é calculado. Além dis
 <p>Mas a funcionalidade do módulo <code>numpy</code> é extremamente vasta.
 São introduzidas muitas funções associadas a conceitos matemáticos simples.</p>
 <p>Uma pequena ilustração: a função <code>intersect1d()</code> que calcula
-um <em>array</em> resultante da <strong>interseção</strong> de dois **arrays* entendidos como conjuntos.</p>
+um <em>array</em> resultante da <strong>interseção de dois arrays</strong> entendidos como conjuntos.</p>
 <div class="admonition example">
 <p class="admonition-title">Problema</p>
 <p>Encontrar os números pares até 200 que sejam também
@@ -954,8 +951,9 @@ múltiplos de 17</p>
 
 <h3 id="dimensoes-shape">Dimensões (<code>shape</code>)<a class="headerlink" href="#dimensoes-shape" title="Permanent link">&para;</a></h3>
 <p>Os <em>arrays</em> podem não ser "lineares" como uma lista.</p>
-<p>Podem assemelhar-se a uma matriz, com duas (ou mais) dimensões.</p>
+<p>Podem assemelhar-se a uma matriz, com duas dimensões. Na realidade, é mesmo possível termos <em>arrays</em> com mais de dua dimensões.</p>
 <p>Para isso, um <em>array</em> tem um atributo chamado <code>shape</code> que consiste na indicação do número de elementos em cada "dimensão".</p>
+<p>Por exemplo, um <em>array</em> que representa um quadro de números 4 x 3 terá duas dimensões e <code>shape</code> igual a <code>(4,3)</code></p>
 <p>No seguinte exemplo, um <em>array</em> "linear" é forçado a tomar a
 forma de uma matriz 4 x 3:</p>
 <div class="python_box">
@@ -1092,8 +1090,7 @@ x[3,1] = 14.0
 </pre></div>
 
 <p>Note-se que a numeração <strong>começa em 0</strong>, seja qual for a dimensão que está a ser indexada.</p>
-<p>Se numa dimensão indicarmos <code>:</code> isto significa uma <em>slice</em>
-do "princípio ao fim".</p>
+<p>Se numa dimensão indicarmos <code>:</code> isto significa uma <em>slice</em> do "princípio ao fim".</p>
 <p>Isto significa que podemos obter, por exemplo, uma linha inteira:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="c1"># toda a linha 3</span>
@@ -1482,7 +1479,7 @@ podemos especificar um "eixo" para aplicar o cálculo.</p>
 </div>
 
 <p><img alt="image" src="images/series300.png" /></p>
-<h3 id="geracao-de-numeros-aleatorios-sub-modulo-numpyrandom">Geração de números aleatórios. (sub-módulo <code>numpy.random</code>)<a class="headerlink" href="#geracao-de-numeros-aleatorios-sub-modulo-numpyrandom" title="Permanent link">&para;</a></h3>
+<h3 id="geracao-de-numeros-aleatorios-sub-modulo-numpyrandom">Geração de números aleatórios. (sub-módulo numpy.random)<a class="headerlink" href="#geracao-de-numeros-aleatorios-sub-modulo-numpyrandom" title="Permanent link">&para;</a></h3>
 <p>O <code>numpy</code> é um módulo com alguma complexidade e contem sub-módulos dedicados
 a certas funcionalidades mais específicas.</p>
 <p>Dois exemplos são a geração de números aleatórios que seguem uma detrminada distribuição estatística e as operações com matrizes de acordo com a álgebra linear.</p>
