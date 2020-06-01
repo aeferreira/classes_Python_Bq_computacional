@@ -661,13 +661,13 @@ Name: rotation_days, dtype: float64
 
 ## Exemplo: Tabela com informação Uniprot txt
 
-Para ilustar o uso de uma `DataFrame` na organização e análise de dados, vamos ler a informação da UniProt sobre a levedura *S. cerevisiae* e realizar, algumas análises sobre os comprimentos das proteínas, a abundância de aminoácidos e a contagem de *modificações pós-traducionais*.
+Para ilustar o uso de uma `DataFrame` na organização e análise de dados, vamos ler a informação da UniProt sobre a levedura *S. cerevisiae* e realizar algumas análises sobre os comprimentos das proteínas, a abundância de aminoácidos e a contagem de *modificações pós-traducionais*.
 
 ### Preparação
 
 O ficheiro de partida é o mesmo usado num capítulo anterior, o ficheiro _Unitprot text_ com a informação sobre as proteínas da levedura _S. cerevisiae_.
 
-Recorde-se que Para obter este ficheiro, deve-se proceder aos seguintes passos
+Recorde-se que para obter este ficheiro, deve-se proceder aos seguintes passos
 
 - na UniProt procurar pelo "proteoma" da levedura _S. cerevisiae_ [www.uniprot.org/proteomes/UP000002311](https://www.uniprot.org/proteomes/UP000002311)
 - Passar para resultados UniProtKB em "Map to Reviewed"
@@ -679,6 +679,22 @@ O ficheiro obtido deve estar na mesma pasta que os programas exibidos até ao fi
 
 
 ### Extração dos dados
+
+Vamos criar uma *DataFrame* a partir de uma lista com dicionários. De toda a informação disponível no ficheiro UniProt txt, vamos extraír, para acada proteína,
+o seu *número de acesso Uniprot*, com a chave `ac`, o comprimento da proteína, com a chave `n`, uma lista de modificações pós-traducionais, com a chave `PTMs` e a sequência da proteína, com a chave `seq`.
+
+Desde que as chaves não mudem, podemos transformar uma lista de dicionários numa *DataFrame*, quase sem esforço.
+
+Mas primeiro temos de criar essa lista de dicionários.
+
+O programa seguinte cria justamente essa lista de dicionários. Grande parte deste programa repete o que foi já abordado num capítulo anterior, sobre a [extração de informação](uniprot_txt.md) a partir de ficheiros Uniprot txt.
+
+Duas diferenças em relação a esse capítulo são de sublinhar:
+
+- A sequência da proteína é agora também extraída. Num ficheiro de texto Uniprot txt, a sequência encontra-se na parte final do bloco de texto para cada proteína e é marcado por linhas que começam por, pelo menos, dois espaços em branco. Estas linhas são todas juntas numa única *string*, depois de eliminar os espaços.
+- As modificações pós-traducionais são extraídas e representadas na forma de uma **lista de pares** em que cada par é constituído pela posição da PTM e nome da PTM.
+
+
 
 <div class="python_box">
 ```python3
@@ -758,9 +774,13 @@ The number of protein records in "uniprot_scerevisiae.txt" is 6049
 {'ac': 'P40467', 'n': 964, 'PTMs': [('166', 'Phosphoserine'), ('186', 'Phosphoserine'), ('963', 'Phosphoserine')], 'seq': 'MPEQAQQGEQSVKRRRVTRACDECRKKKVKCDGQQPCIHCTVYSYECTYKKPTKRTQNSGNSGVLTLGNVTTGPSSSTVVAAAASNPNKLLSNIKTERAILPGASTIPASNNPSKPRKYKTKSTRLQSKIDRYKQIFDEVFPQLPDIDNLDIPVFLQIFHNFKRDSQSFLDDTVKEYTLIVNDSSSPIQPVLSSNSKNSTPDEFLPNMKSDSNSASSNREQDSVDTYSNIPVGREIKIILPPKAIALQFVKSTWEHCCVLLRFYHRPSFIRQLDELYETDPNNYTSKQMQFLPLCYAAIAVGALFSKSIVSNDSSREKFLQDEGYKYFIAARKLIDITNARDLNSIQAILMLIIFLQCSARLSTCYTYIGVAMRSALRAGFHRKLSPNSGFSPIEIEMRKRLFYTIYKLDVYINAMLGLPRSISPDDFDQTLPLDLSDENITEVAYLPENQHSVLSSTGISNEHTKLFLILNEIISELYPIKKTSNIISHETVTSLELKLRNWLDSLPKELIPNAENIDPEYERANRLLHLSFLHVQIILYRPFIHYLSRNMNAENVDPLCYRRARNSIAVARTVIKLAKEMVSNNLLTGSYWYACYTIFYSVAGLLFYIHEAQLPDKDSAREYYDILKDAETGRSVLIQLKDSSMAASRTYNLLNQIFEKLNSKTIQLTALHSSPSNESAFLVTNNSSALKPHLGDSLQPPVFFSSQDTKNSFSLAKSEESTNDYAMANYLNNTPISENPLNEAQQQDQVSQGTTNMSNERDPNNFLSIDIRLDNNGQSNILDATDDVFIRNDGDIPTNSAFDFSSSKSNASNNSNPDTINNNYNNVSGKNNNNNNITNNSNNNHNNNNNDNNNNNNNNNNNNNNNNNSGNSSNNNNNNNNNKNNNDFGIKIDNNSPSYEGFPQLQIPLSQDNLNIEDKEEMSPNIEIKNEQNMTDSNDILGVFDQLDAQLFGKYLPLNYPSE'}
 ```
 
+!!! warning "Nota"
+    Até ao final do capítulo considera-se que a lista de dicionários `all_prots` já foi construída pelas funções acima e não será repetida a sua construção.
+
+
 ### Transformação numa *DataFrame*
 
-
+A lista de dicionários criada pode ser transformada numa *DataFrame* através da função `pandas.DataFrame()`:
 
 <div class="python_box">
 ```python3
@@ -780,6 +800,20 @@ prot_table
 | ... |    |    |    |    |
 
 6049 rows × 4 columns
+
+!!! note "Nota"
+    Em certas plataformas de execução de código Python como, por exemplo, os *Jupyter notebooks*, existe um mecanismo de apresentação de objetos de uma forma mais flexível do que a função `print()`.
+
+    Se em qualquer célula de um *notebook* a última linha fôr apenas um objeto, geralmente o nome de um objeto, a palatforma Jupyter apresenta esse objeto num formato que pode ser visualmente muito apelativo.
+
+    É o caso das *DataFrames* que, se estiverem no final de uma célula, elas não só não necessitam da função `print()` como também são apresentadas como uma tabela do *browser* podendo ser "estilizadas" de diferentes formas.
+
+    No resto deste capítulo, as *DataFrames* (não as Series) serão apresentadas desta maneira e será evitado o uso da função `print()` para as apresentar, como no exemplo acima.
+
+
+Na *DataFrame* que acabámos de obter faz todo o sentido que o `index` seja a coluna com o número de acesso Uniprot.
+
+Para "promover a coluna `ac` ao `index`, usamos a função `.set_index()`:
 
 <div class="python_box">
 ```python3
@@ -803,7 +837,13 @@ prot_table
 
 ### Uso da DataFrame
 
+Agora que a informação está contida na *DataFrame* podemos ilustrar o uso da funcionalidade das *DataFrames* para de uma forma compacta rspondermos a certas perguntas interessantes.
+
 #### Qual a proteína mais pequena. Qual a maior?
+
+A coluna `n` da *DataFrame* tem a informação sobre os comprimentos da proteínas.
+
+Poderíamos saber qual o máximo e o mínimo desses valores, mas, ainda melhor, as *Series* têm as funções `idxmin()` e `idxmax()` que nos dão os valores do `index` correspondentes ao mínimo e máximo de uma coluna. Neste caso obtemos os números de acesso UniProt das proteínas como o comprimento mínimo e máximo.
 
 <div class="python_box">
 ```python3
@@ -825,6 +865,10 @@ posmax = prot_table.n.idxmax()
 ```
 </div>
 
+Com um valor de um `index` podemos obter a linha da *DataFrame* usando `.loc[]` (não é uma função é uma forma de indexação de *DataFrames*).
+
+A proteína menor é:
+
 <div class="python_box">
 ```python3
 prot_table.loc[posmin]
@@ -839,6 +883,7 @@ seq     MLSLIFYLRFPSYIRG
 Name: Q3E775, dtype: object
 ```
 
+E a maior é (com 4910 aminoácidos!):
 
 <div class="python_box">
 ```python3
@@ -853,7 +898,9 @@ seq     MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...
 Name: Q12019, dtype: object
 ```
 
-Como obter a sequência da proteína maior de todas?
+Como obter a apenas a sequência da proteína maior de todas?
+
+Como o resultado de `.loc` é ele próprio uma *Series* (ou uma *DataFrame* se houver mais do que um máximo) podemos voltar a indexar para obtermos apenas a sequência (uma *string*):
 
 <div class="python_box">
 ```python3
@@ -867,7 +914,16 @@ prot_table.loc[posmax].seq
 'MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLDNLAGTILHSRSITGHVFLYKHIFLEIVARWIKDSKKKDYVLVIEKLASIITIFPVAMPLIEDYLDKENDHFITILQNPSTQKDSDMFKILLAYYRLLYHNKEVFARFIQPDILYQLVDLLTKEQENQVVIFLALKVLSLYLDMGEKTLNDMLDTYIKSRDSLLGHFEGDSGIDYSFLELNEAKRCANFSKLPSVPECFTIEKKSSYFIIEPQDLSTKVASICGVIVPKVHTIHDKVFYPLTFVPTHKTVSSLRQLGRKIQNSTPIMLIGKAGSGKTFLINELSKYMGCHDSIVKIHLGEQTDAKLLIGTYTSGDKPGTFEWRAGVLATAVKEGRWVLIEDIDKAPTDVLSILLSLLEKRELTIPSRGETVKAANGFQLISTVRINEDHQKDSSNKIYNLNMIGMRIWNVIELEEPSEEDLTHILAQKFPILTNLIPKLIDSYKNVKSIYMNTKFISLNKGAHTRVVSVRDLIKLCERLDILFKNNGINKPDQLIQSSVYDSIFSEAADCFAGAIGEFKALEPIIQAIGESLDIASSRISLFLTQHVPTLENLDDSIKIGRAVLLKEKLNIQKKSMNSTLFAFTNHSLRLMEQISVCIQMTEPVLLVGETGTGKTTVVQQLAKMLAKKLTVINVSQQTETGDLLGGYKPVNSKTVAVPIQENFETLFNATFSLKKNEKFHKMLHRCFNKNQWKNVVKLWNEAYKMAQSILKITNTENENENAKKKKRRLNTHEKKLLLDKWADFNDSVKKFEAQSSSIENSFVFNFVEGSLVKTIRAGEWLLLDEVNLATADTLESISDLLTEPDSRSILLSEKGDAEPIKAHPDFRIFACMNPATDVGKRDLPMGIRSRFTEIYVHSPERDITDLLSIIDKYIGKYSVSDEWVGNDIAELYLEAKKLSDNNTIVDGSNQKPHFSIRTLTRTLLYVTDIIHIYGLRRSLYDGFCMSFLTLLDQKSEAILKPVIEKFTLGRLKNVKSIMSQTPPSPGPDYVQFKHYWMKKGPNTIQEQAHYIITPFVEKNMMNLVRATSGKRFPVLIQGPTSSGKTSMIKYLADITGHKFVRINNHEHTDLQEYLGTYVTDDTGKLSFKEGVLVEALRKGYWIVLDELNLAPTDVLEALNRLLDDNRELFIPETQEVVHPHPDFLLFATQNPPGIYGGRKILSRAFRNRFLELHFDDIPQDELEIILRERCQIAPSYAKKIVEVYRQLSIERSASRLFEQKNSFATLRDLFRWALRDAVGYEQLAASGYMLLAERCRTPQEKVTVKKTLEKVMKVKLDMDQYYASLEDKSLEAIGSVTWTKGMRRLSVLVSSCLKNKEPVLLVGETGCGKTTICQLLAQFMGRELITLNAHQNTETGDILGAQRPVRNRSEIQYKLIKSLKTALNIANDQDVDLKELLQLYSKSDNKNIAEDVQLEIQKLRDSLNVLFEWSDGPLIQAMRTGNFFLLDEISLADDSVLERLNSVLEPERSLLLAEQGSSDSLVTASENFQFFATMNPGGDYGKKELSPALRNRFTEIWVPSMEDFNDVNMIVSSRLLEDLKDLANPIVKFSEWFGKKLGGGNATSGVISLRDILAWVEFINKVFPKIQNKSTALIQGASMVFIDALGTNNTAYLAENENDLKSLRTECIIQLLKLCGDDLELQQIETNEIIVTQDELQVGMFKIPRFPDAQSSSFNLTAPTTASNLVRVVRAMQVHKPILLEGSPGVGKTSLITALANITGNKLTRINLSEQTDLVDLFGADAPGERSGEFLWHDAPFLRAMKKGEWVLLDEMNLASQSVLEGLNACLDHRGEAYIPELDISFSCHPNFLVFAAQNPQYQGGGRKGLPKSFVNRFSVVFIDMLTSDDLLLIAKHLYPSIEPDIIAKMIKLMSTLEDQVCKRKLWGNSGSPWEFNLRDTLRWLKLLNQYSICEDVDVFDFVDIIVKQRFRTISDKNKAQLLIEDIFGKFSTKENFFKLTEDYVQINNEVALRNPHYRYPITQNLFPLECNVAVYESVLKAINNNWPLVLVGPSNSGKTETIRFLASILGPRVDVFSMNSDIDSMDILGGYEQVDLTRQISYITEELTNIVREIISMNMKLSPNATAIMEGLNLLKYLLNNIVTPEKFQDFRNRFNRFFSHLEGHPLLKTMSMNIEKMTEIITKEASVKFEWFDGMLVKAVEKGHWLILDNANLCSPSVLDRLNSLLEIDGSLLINECSQEDGQPRVLKPHPNFRLFLTMDPKYGELSRAMRNRGVEIYIDELHSRSTAFDRLTLGFELGENIDFVSIDDGIKKIKLNEPDMSIPLKHYVPSYLSRPCIFAQVHDILLLSDEEPIEESLAAVIPISHLGEVGKWANNVLNCTEYSEKKIAERLYVFITFLTDMGVLEKINNLYKPANLKFQKALGLHDKQLTEETVSLTLNEYVLPTVSKYSDKIKSPESLYLLSSLRLLLNSLNALKLINEKSTHGKIDELTYIELSAAAFNGRHLKNIPRIPIFCILYNILTVMSENLKTESLFCGSNQYQYYWDLLVIVIAALETAVTKDEARLRVYKELIDSWIASVKSKSDIEITPFLNINLEFTDVLQLSRGHSITLLWDIFRKNYPTTSNSWLAFEKLINLSEKFDKVRLLQFSESYNSIKDLMDVFRLLNDDVLNNKLSEFNLLLSKLEDGINELELISNKFLNKRKHYFADEFDNLIRYTFSVDTAELIKELAPASSLATQKLTKLITNKYNYPPIFDVLWTEKNAKLTSFTSTIFSSQFLEDVVRKSNNLKSFSGNQIKQSISDAELLLSSTIKCSPNLLKSQMEYYKNMLLSWLRKVIDIHVGGDCLKLTLKELCSLIEEKTASETRVTFAEYIFPALDLAESSKSLEELGEAWITFGTGLLLLFVPDSPYDPAIHDYVLYDLFLKTKTFSQNLMKSWRNVRKVISGDEEIFTEKLINTISDDDAPQSPRVYRTGMSIDSLFDEWMAFLSSTMSSRQIKELVSSYKCNSDQSDRRLEMLQQNSAHFLNRLESGYSKFADLNDILAGYIYSINFGFDLLKLQKSKDRASFQISPLWSMDPINISCAENVLSAYHELSRFFKKGDMEDTSIEKVLMYFLTLFKFHKRDTNLLEIFEAALYTLYSRWSVRRFRQEQEENEKSNMFKFNDNSDDYEADFRKLFPDYEDTALVTNEKDISSPENLDDIYFKLADTYISVFDKDHDANFSSELKSGAIITTILSEDLKNTRIEELKSGSLSAVINTLDAETQSFKNTEVFGNIDFYHDFSIPEFQKAGDIIETVLKSVLKLLKQWPEHATLKELYRVSQEFLNYPIKTPLARQLQKIEQIYTYLAEWEKYASSEVSLNNTVKLITDLIVSWRKLELRTWKGLFNSEDAKTRKSIGKWWFYLYESIVISNFVSEKKETAPNATLLVSSLNLFFSKSTLGEFNARLDLVKAFYKHIQLIGLRSSKIAGLLHNTIKFYYQFKPLIDERITNGKKSLEKEIDDIILLASWKDVNVDALKQSSRKSHNNLYKIVRKYRDLLNGDAKTIIEAGLLYSNENKLKLPTLKQHFYEDPNLEASKNLVKEISTWSMRAAPLRNIDTVASNMDSYLEKISSQEFPNFADLASDFYAEAERLRKETPNVYTKENKKRLAYLKTQKSKLLGDALKELRRIGLKVNFREDIQKVQSSTTTILANIAPFNNEYLNSSDAFFFKILDLLPKLRSAASNPSDDIPVAAIERGMALAQSLMFSLITVRHPLSEFTNDYCKINGMMLDLEHFTCLKGDIVHSSLKANVDNVRLFEKWLPSLLDYAAQTLSVISKYSATSEQQKILLDAKSTLSSFFVHFNSSRIFDSSFIESYSRFELFINELLKKLENAKETGNAFVFDIIIEWIKANKGGPIKKEQKRGPSVEDVEQAFRRTFTSIILSFQKVIGDGIESISETDDNWLSASFKKVMVNVKLLRSSVVSKNIETALSLLKDFDFTTTESIYVKSVISFTLPVITRYYNAMTVVLERSRIYYTNTSRGMYILSTILHSLAKNGFCSPQPPSEEVDDKNLQEGTGLGDGEGAQNNNKDVEQDEDLTEDAQNENKEQQDKDERDDENEDDAVEMEGDMAGELEDLSNGEENDDEDTDSEEEELDEEIDDLNEDDPNAIDDKMWDDKASDNSKEKDTDQNLDGKNQEEDVQAAENDEQQRDNKEGGDEDPNAPEDGDEEIENDENAEEENDVGEQEDEVKDEEGEDLEANVPEIETLDLPEDMNLDSEHEESDEDVDMSDGMPDDLNKEEVGNEDEEVKQESGIESDNENDEPGPEEDAGETETALDEEEGAEEDVDMTNDEGKEDEENGPEEQAMSDEEELKQDAAMEENKEKGGEQNTEGLDGVEEKADTEDIDQEAAVQQDSGSKGAGADATDTQEQDDVGGSGTTQNTYEEDQEDVTKNNEESREEATAALKQLGDSMKEYHRRRQDIKEAQTNGEEDENLEKNNERPDEFEHVEGANTETDTQALGSATQDQLQTIDEDMAIDDDREEQEVDQKELVEDADDEKMDIDEEEMLSDIDAHDANNDVDSKKSGFIGKRKSEEDFENELSNEHFSADQEDDSEIQSLIENIEDNPPDASASLTPERSLEESRELWHKSEISTADLVSRLGEQLRLILEPTLATKLKGDYKTGKRLNMKRIIPYIASQFRKDKIWLRRTKPSKRQYQIMIALDDSKSMSESKCVKLAFDSLCLVSKTLTQLEAGGLSIVKFGENIKEVHSFDQQFSNESGARAFQWFGFQETKTDVKKLVAESTKIFERARAMVHNDQWQLEIVISDGICEDHETIQKLVRRARENKIMLVFVIIDGITSNESILDMSQVNYIPDQYGNPQLKITKYLDTFPFEFYVVVHDISELPEMLSLILRQYFTDLASS'
 ```
 
+Repare-se que não foi preciso fazer
 
+    prot_table.loc[posmax]['seq']
+
+Bastou fazer
+
+    prot_table.loc[posmax].seq
+
+
+Que PTMs existem na maior proteína?
 
 <div class="python_box">
 ```python3
@@ -875,17 +931,22 @@ prot_table.loc[posmax].PTMs
 ```
 </div>
 
-
-
-    [('1026', 'Phosphothreonine'),
-     ('2971', 'Phosphoserine'),
-     ('4353', 'Phosphoserine'),
-     ('4388', 'Phosphothreonine'),
-     ('4555', 'Phosphoserine')]
-
+```
+[('1026', 'Phosphothreonine'),
+('2971', 'Phosphoserine'),
+('4353', 'Phosphoserine'),
+('4388', 'Phosphothreonine'),
+('4555', 'Phosphoserine')]
+```
 
 
 #### Quais as 20 proteínas mais pequenas de S.cerevisiae?
+
+Para responder a esta pergunta podermos usar a possibilidade de ordenarmos as linhas de uma *DataFrame* pelos valores de uma coluna.
+
+Depois de uma *DataFrame* ordenada as funções `.head()` e `.tail()`para obtermos uma *DataFrame* com as primeiras ou últimas linhas da *DataFrame*, respetivamente (indicamos o número de linhas no argumento destas funções.)
+
+Assim, para obter as 20 proteínas mais curtas:
 
 <div class="python_box">
 ```python3
@@ -921,6 +982,8 @@ ord_prot_table.head(20)
 
 #### Quais as 20 proteínas maiores de S.cerevisiae?
 
+Para as 20 maiores usamos a função `.tail()` da *DataFrame* ordenada:
+
 <div class="python_box">
 ```python3
 ord_prot_table.tail(20)
@@ -954,6 +1017,8 @@ ord_prot_table.tail(20)
 
 #### Histograma da distribuição de tamanhos
 
+De entre várias maneiras de obter o histograma de tamanhos, podemos usar a função `distplot()` do módulo `seaborn`. A ideia é aplicar esta função à coluna `n` da *dataFrame*:
+
 <div class="python_box">
 ```python3
 from matplotlib import pyplot as plt
@@ -974,8 +1039,87 @@ plt.show()
 
 ![](images/n_hist.png)
 
+De entre os vários comandos e argumentos de natureza "cosmética" vale a pena indicar o argumanto `bins` que controla o número de intervalos em que se faz a contagem dos comprimentos.
 
 #### Contagens e distribuição dos 20 aminoácidos nas proteínas
+
+Este problema parece complicado: temos as sequências de mais de 6 000 proteínas e pretendemos contar os 20 aminoácidos em todas estas sequências.
+
+Naturalmente poderíamos escrever um bloco `for`  em que passaríamos pro todas as linhas da *DataFrame*, obtendo a sequência e adicionando a contadores as novas contagens dos 20 aminoácidos por sequência.
+
+Mas o *pandas* e um outro tipo de objetos pode-nos ajudar a resolver o problema de uma forma muito mais simples.
+
+E se não tivessemos as sequências separadas? Se tivessemos todas as sequências numa imensa *string* com todos os aminoácidos de todas as proteínas? Seria mais fácil contar os 20 aminoácidos.
+
+Comecemos por aí: juntar as sequências das 6 000 proteínas.
+
+<div class="python_box">
+```python3
+all_aminoacids = prot_table.seq.str.cat()
+```
+</div>
+
+Se uma coluna (uma *Series*) tiver informação de natureza textual (*strings*) podemos usar [muitas funções](https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html#method-summary) com o prefixo `.str` que aplicam operações sobre *strings* **de uma forma vetorial** a toda a coluna.
+
+Por exemplo, `.str.replace()` funciona como a função `replace()` das *strings* mas é aplicada a toda uma coluna de uma *DataFrame*.
+
+Neste caso usámos `.str.cat()` à coluna da sequência. Esta função junta todas as *strings* da coluna.
+
+Agora que `all_aminoacids` é uma *string* com milhões de letras, contendo todas sequências juntas, como contar os aminoácidos?
+
+Faremos uso de algo que existe disponível na linguagem Python mas não pertence ao *pandas*: os objetos `Counter` do módulo `collections`.
+
+Estes objetos `Counter` resolvem um problema que ocorre com muita frequência: contar os objetos diferentes que existem numa coleção (lista, dicionário, *string*).
+
+Se um `Counter` for criado a partir de uma *string*, as letras diferentes são contadas e o resultado comporta-se como um dicionário, em que cada elemento é associado à sua contagem.
+
+Basta criar `Counter` a partir de `all_aminoacids` e temos as contagens:
+
+<div class="python_box">
+```python3
+all_aminoacids = prot_table.seq.str.cat()
+
+print(f'There are {len(all_aminoacids)} in all proteins')
+
+from collections import Counter
+
+aminoacid_counts = Counter(all_aminoacids)
+
+# transformar o dicionário numa Series e ordenar
+
+aminoacid_counts = pd.Series(aminoacid_counts).sort_values(ascending=False)
+
+print(aminoacid_counts)
+```
+</div>
+
+```
+There are 2936363 in all proteins
+L    279286
+S    263906
+K    215472
+I    192640
+E    191475
+N    180800
+T    173669
+D    171368
+V    163152
+A    161165
+G    145859
+R    130510
+F    130230
+P    128556
+Q    115998
+Y     99420
+H     63790
+M     61252
+C     37272
+W     30543
+dtype: int64
+```
+O aminoácido mais frequente é a leucina e o menos frequente é o triptofano!
+
+Mas o melhor é fazer um gráfico com as frequências:
 
 <div class="python_box">
 ```python3
@@ -1002,6 +1146,14 @@ barplot = sns.barplot(x=aminoacid_counts.index,
 
 #### Contagens globais das PTM
 
+Finalmente, repetindo o problema do capítulo sobre a extração da informação sobre PTMs, vamos contar os tipos diferentes de PTM usando o *pandas*.
+
+A informação sobre PTMs aparentemente não está facilmente processável: está na coluna `PTMs` mas na forma de uma lista de pares.
+
+A função `explode()` trata do problema de desdobrar a lista em várias linhas diferentes, ainda que à custa de ter de repetir os valore do `index`.
+
+Vamos aplicar a função à coluna `PTMs`. Mas, já agora, descartamos as linhas para as quais não existem *PTMs* com a função `dropna()` que descarta linhas com valores em falta:
+
 <div class="python_box">
 
 ```python3
@@ -1010,8 +1162,6 @@ PTM_locs = PTM_locs.dropna()
 PTM_locs.head(30)
 ```
 </div>
-
-
 
 ```
 ac
@@ -1048,6 +1198,11 @@ Q06440       (454, Phosphoserine)
 Name: PTMs, dtype: object
 ```
 
+Como se pode ver com os primeiros 30 elementos, a função `explode()` desdobrou as listas.
+
+Agora precisamos de obter apenas os nomes das *PTMs* e não precisamos de usar as localizações. Precisamos apenas, em cada par, dos elementos da posição 1.
+
+`.str.get()` faz precisamente isso, de uma forma vetorial:
 
 <div class="python_box">
 ```python3
@@ -1073,6 +1228,9 @@ P32806       Phosphoserine
 Name: PTMs, Length: 7070, dtype: object
 ```
 
+Agora só falta contar os elementos diferentes  nesta *Series*.
+
+O *pandas* tem uma função muito semelhante aos `Counter`: a `value_counts()`:
 
 <div class="python_box">
 ```python3
@@ -1138,6 +1296,7 @@ N6-glutaryllysine                                      1
 Name: PTMs, dtype: int64
 ```
 
+Agora só as PTMs que ocorrem mais do que 10 vezes:
 
 <div class="python_box">
 ```python3
@@ -1168,12 +1327,16 @@ N6-succinyllysine                   11
 Name: PTMs, dtype: int64
 ```
 
+Finalmente, um gráfico...
 
 <div class="python_box">
 ```python3
 f, ax = plt.subplots(figsize=(8,12))
 
-bp = sns.barplot(x=more_than10.values, y=more_than10.index, palette='tab20', orient='h', log=True)
+bp = sns.barplot(x=more_than10.values,
+                 y=more_than10.index,
+                 palette='tab20', orient='h', log=True)
+
 ax.tick_params(labelsize=16)
 plt.show()
 ```
