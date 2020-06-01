@@ -1359,10 +1359,10 @@ Name: rotation_days, dtype: float64
 </pre></div>
 
 <h2 id="exemplo-tabela-com-informacao-uniprot-txt">Exemplo: Tabela com informação Uniprot txt<a class="headerlink" href="#exemplo-tabela-com-informacao-uniprot-txt" title="Permanent link">&para;</a></h2>
-<p>Para ilustar o uso de uma <code>DataFrame</code> na organização e análise de dados, vamos ler a informação da UniProt sobre a levedura <em>S. cerevisiae</em> e realizar, algumas análises sobre os comprimentos das proteínas, a abundância de aminoácidos e a contagem de <em>modificações pós-traducionais</em>.</p>
+<p>Para ilustar o uso de uma <code>DataFrame</code> na organização e análise de dados, vamos ler a informação da UniProt sobre a levedura <em>S. cerevisiae</em> e realizar algumas análises sobre os comprimentos das proteínas, a abundância de aminoácidos e a contagem de <em>modificações pós-traducionais</em>.</p>
 <h3 id="preparacao">Preparação<a class="headerlink" href="#preparacao" title="Permanent link">&para;</a></h3>
 <p>O ficheiro de partida é o mesmo usado num capítulo anterior, o ficheiro <em>Unitprot text</em> com a informação sobre as proteínas da levedura <em>S. cerevisiae</em>.</p>
-<p>Recorde-se que Para obter este ficheiro, deve-se proceder aos seguintes passos</p>
+<p>Recorde-se que para obter este ficheiro, deve-se proceder aos seguintes passos</p>
 <ul>
 <li>na UniProt procurar pelo "proteoma" da levedura <em>S. cerevisiae</em> <a href="https://www.uniprot.org/proteomes/UP000002311">www.uniprot.org/proteomes/UP000002311</a></li>
 <li>Passar para resultados UniProtKB em "Map to Reviewed"</li>
@@ -1372,6 +1372,16 @@ Name: rotation_days, dtype: float64
 </ul>
 <p>O ficheiro obtido deve estar na mesma pasta que os programas exibidos até ao final deste capítulo.</p>
 <h3 id="extracao-dos-dados">Extração dos dados<a class="headerlink" href="#extracao-dos-dados" title="Permanent link">&para;</a></h3>
+<p>Vamos criar uma <em>DataFrame</em> a partir de uma lista com dicionários. De toda a informação disponível no ficheiro UniProt txt, vamos extraír, para acada proteína,
+o seu <em>número de acesso Uniprot</em>, com a chave <code>ac</code>, o comprimento da proteína, com a chave <code>n</code>, uma lista de modificações pós-traducionais, com a chave <code>PTMs</code> e a sequência da proteína, com a chave <code>seq</code>.</p>
+<p>Desde que as chaves não mudem, podemos transformar uma lista de dicionários numa <em>DataFrame</em>, quase sem esforço.</p>
+<p>Mas primeiro temos de criar essa lista de dicionários.</p>
+<p>O programa seguinte cria justamente essa lista de dicionários. Grande parte deste programa repete o que foi já abordado num capítulo anterior, sobre a <a href="uniprot_txt.html">extração de informação</a> a partir de ficheiros Uniprot txt.</p>
+<p>Duas diferenças em relação a esse capítulo são de sublinhar:</p>
+<ul>
+<li>A sequência da proteína é agora também extraída. Num ficheiro de texto Uniprot txt, a sequência encontra-se na parte final do bloco de texto para cada proteína e é marcado por linhas que começam por, pelo menos, dois espaços em branco. Estas linhas são todas juntas numa única <em>string</em>, depois de eliminar os espaços.</li>
+<li>As modificações pós-traducionais são extraídas e representadas na forma de uma <strong>lista de pares</strong> em que cada par é constituído pela posição da PTM e nome da PTM.</li>
+</ul>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">read_Uniprot_text</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Reads a UniProt text file and splits into a list of protein records.&quot;&quot;&quot;</span>
@@ -1448,7 +1458,12 @@ Name: rotation_days, dtype: float64
 {&#39;ac&#39;: &#39;P40467&#39;, &#39;n&#39;: 964, &#39;PTMs&#39;: [(&#39;166&#39;, &#39;Phosphoserine&#39;), (&#39;186&#39;, &#39;Phosphoserine&#39;), (&#39;963&#39;, &#39;Phosphoserine&#39;)], &#39;seq&#39;: &#39;MPEQAQQGEQSVKRRRVTRACDECRKKKVKCDGQQPCIHCTVYSYECTYKKPTKRTQNSGNSGVLTLGNVTTGPSSSTVVAAAASNPNKLLSNIKTERAILPGASTIPASNNPSKPRKYKTKSTRLQSKIDRYKQIFDEVFPQLPDIDNLDIPVFLQIFHNFKRDSQSFLDDTVKEYTLIVNDSSSPIQPVLSSNSKNSTPDEFLPNMKSDSNSASSNREQDSVDTYSNIPVGREIKIILPPKAIALQFVKSTWEHCCVLLRFYHRPSFIRQLDELYETDPNNYTSKQMQFLPLCYAAIAVGALFSKSIVSNDSSREKFLQDEGYKYFIAARKLIDITNARDLNSIQAILMLIIFLQCSARLSTCYTYIGVAMRSALRAGFHRKLSPNSGFSPIEIEMRKRLFYTIYKLDVYINAMLGLPRSISPDDFDQTLPLDLSDENITEVAYLPENQHSVLSSTGISNEHTKLFLILNEIISELYPIKKTSNIISHETVTSLELKLRNWLDSLPKELIPNAENIDPEYERANRLLHLSFLHVQIILYRPFIHYLSRNMNAENVDPLCYRRARNSIAVARTVIKLAKEMVSNNLLTGSYWYACYTIFYSVAGLLFYIHEAQLPDKDSAREYYDILKDAETGRSVLIQLKDSSMAASRTYNLLNQIFEKLNSKTIQLTALHSSPSNESAFLVTNNSSALKPHLGDSLQPPVFFSSQDTKNSFSLAKSEESTNDYAMANYLNNTPISENPLNEAQQQDQVSQGTTNMSNERDPNNFLSIDIRLDNNGQSNILDATDDVFIRNDGDIPTNSAFDFSSSKSNASNNSNPDTINNNYNNVSGKNNNNNNITNNSNNNHNNNNNDNNNNNNNNNNNNNNNNNSGNSSNNNNNNNNNKNNNDFGIKIDNNSPSYEGFPQLQIPLSQDNLNIEDKEEMSPNIEIKNEQNMTDSNDILGVFDQLDAQLFGKYLPLNYPSE&#39;}
 </pre></div>
 
+<div class="admonition warning">
+<p class="admonition-title">Nota</p>
+<p>Até ao final do capítulo considera-se que a lista de dicionários <code>all_prots</code> já foi construída pelas funções acima e não será repetida a sua construção.</p>
+</div>
 <h3 id="transformacao-numa-dataframe">Transformação numa <em>DataFrame</em><a class="headerlink" href="#transformacao-numa-dataframe" title="Permanent link">&para;</a></h3>
+<p>A lista de dicionários criada pode ser transformada numa <em>DataFrame</em> através da função <code>pandas.DataFrame()</code>:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">prot_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_prots</span><span class="p">)</span>
 <span class="n">prot_table</span>
@@ -1511,6 +1526,15 @@ Name: rotation_days, dtype: float64
 </tbody>
 </table>
 <p>6049 rows × 4 columns</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Em certas plataformas de execução de código Python como, por exemplo, os <em>Jupyter notebooks</em>, existe um mecanismo de apresentação de objetos de uma forma mais flexível do que a função <code>print()</code>.</p>
+<p>Se em qualquer célula de um <em>notebook</em> a última linha fôr apenas um objeto, geralmente o nome de um objeto, a palatforma Jupyter apresenta esse objeto num formato que pode ser visualmente muito apelativo.</p>
+<p>É o caso das <em>DataFrames</em> que, se estiverem no final de uma célula, elas não só não necessitam da função <code>print()</code> como também são apresentadas como uma tabela do <em>browser</em> podendo ser "estilizadas" de diferentes formas.</p>
+<p>No resto deste capítulo, as <em>DataFrames</em> (não as Series) serão apresentadas desta maneira e será evitado o uso da função <code>print()</code> para as apresentar, como no exemplo acima.</p>
+</div>
+<p>Na <em>DataFrame</em> que acabámos de obter faz todo o sentido que o <code>index</code> seja a coluna com o número de acesso Uniprot.</p>
+<p>Para "promover a coluna <code>ac</code> ao <code>index</code>, usamos a função <code>.set_index()</code>:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">prot_table</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ac&#39;</span><span class="p">)</span>
 <span class="n">prot_table</span>
@@ -1573,7 +1597,10 @@ Name: rotation_days, dtype: float64
 </table>
 <p>6049 rows × 3 columns</p>
 <h3 id="uso-da-dataframe">Uso da DataFrame<a class="headerlink" href="#uso-da-dataframe" title="Permanent link">&para;</a></h3>
+<p>Agora que a informação está contida na <em>DataFrame</em> podemos ilustrar o uso da funcionalidade das <em>DataFrames</em> para de uma forma compacta rspondermos a certas perguntas interessantes.</p>
 <h4 id="qual-a-proteina-mais-pequena-qual-a-maior">Qual a proteína mais pequena. Qual a maior?<a class="headerlink" href="#qual-a-proteina-mais-pequena-qual-a-maior" title="Permanent link">&para;</a></h4>
+<p>A coluna <code>n</code> da <em>DataFrame</em> tem a informação sobre os comprimentos da proteínas.</p>
+<p>Poderíamos saber qual o máximo e o mínimo desses valores, mas, ainda melhor, as <em>Series</em> têm as funções <code>idxmin()</code> e <code>idxmax()</code> que nos dão os valores do <code>index</code> correspondentes ao mínimo e máximo de uma coluna. Neste caso obtemos os números de acesso UniProt das proteínas como o comprimento mínimo e máximo.</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="c1"># mais pequena</span>
 
@@ -1591,6 +1618,8 @@ Name: rotation_days, dtype: float64
 </pre></div>
 </div>
 
+<p>Com um valor de um <code>index</code> podemos obter a linha da <em>DataFrame</em> usando <code>.loc[]</code> (não é uma função é uma forma de indexação de <em>DataFrames</em>).</p>
+<p>A proteína menor é:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">prot_table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">posmin</span><span class="p">]</span>
 </pre></div>
@@ -1602,6 +1631,7 @@ seq     MLSLIFYLRFPSYIRG
 Name: Q3E775, dtype: object
 </pre></div>
 
+<p>E a maior é (com 4910 aminoácidos!):</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">prot_table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">posmax</span><span class="p">]</span>
 </pre></div>
@@ -1613,7 +1643,8 @@ seq     MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...
 Name: Q12019, dtype: object
 </pre></div>
 
-<p>Como obter a sequência da proteína maior de todas?</p>
+<p>Como obter a apenas a sequência da proteína maior de todas?</p>
+<p>Como o resultado de <code>.loc</code> é ele próprio uma <em>Series</em> (ou uma <em>DataFrame</em> se houver mais do que um máximo) podemos voltar a indexar para obtermos apenas a sequência (uma <em>string</em>):</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">prot_table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">posmax</span><span class="p">]</span><span class="o">.</span><span class="n">seq</span>
 </pre></div>
@@ -1622,20 +1653,33 @@ Name: Q12019, dtype: object
 <div class="codehilite"><pre><span></span>&#39;MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLDNLAGTILHSRSITGHVFLYKHIFLEIVARWIKDSKKKDYVLVIEKLASIITIFPVAMPLIEDYLDKENDHFITILQNPSTQKDSDMFKILLAYYRLLYHNKEVFARFIQPDILYQLVDLLTKEQENQVVIFLALKVLSLYLDMGEKTLNDMLDTYIKSRDSLLGHFEGDSGIDYSFLELNEAKRCANFSKLPSVPECFTIEKKSSYFIIEPQDLSTKVASICGVIVPKVHTIHDKVFYPLTFVPTHKTVSSLRQLGRKIQNSTPIMLIGKAGSGKTFLINELSKYMGCHDSIVKIHLGEQTDAKLLIGTYTSGDKPGTFEWRAGVLATAVKEGRWVLIEDIDKAPTDVLSILLSLLEKRELTIPSRGETVKAANGFQLISTVRINEDHQKDSSNKIYNLNMIGMRIWNVIELEEPSEEDLTHILAQKFPILTNLIPKLIDSYKNVKSIYMNTKFISLNKGAHTRVVSVRDLIKLCERLDILFKNNGINKPDQLIQSSVYDSIFSEAADCFAGAIGEFKALEPIIQAIGESLDIASSRISLFLTQHVPTLENLDDSIKIGRAVLLKEKLNIQKKSMNSTLFAFTNHSLRLMEQISVCIQMTEPVLLVGETGTGKTTVVQQLAKMLAKKLTVINVSQQTETGDLLGGYKPVNSKTVAVPIQENFETLFNATFSLKKNEKFHKMLHRCFNKNQWKNVVKLWNEAYKMAQSILKITNTENENENAKKKKRRLNTHEKKLLLDKWADFNDSVKKFEAQSSSIENSFVFNFVEGSLVKTIRAGEWLLLDEVNLATADTLESISDLLTEPDSRSILLSEKGDAEPIKAHPDFRIFACMNPATDVGKRDLPMGIRSRFTEIYVHSPERDITDLLSIIDKYIGKYSVSDEWVGNDIAELYLEAKKLSDNNTIVDGSNQKPHFSIRTLTRTLLYVTDIIHIYGLRRSLYDGFCMSFLTLLDQKSEAILKPVIEKFTLGRLKNVKSIMSQTPPSPGPDYVQFKHYWMKKGPNTIQEQAHYIITPFVEKNMMNLVRATSGKRFPVLIQGPTSSGKTSMIKYLADITGHKFVRINNHEHTDLQEYLGTYVTDDTGKLSFKEGVLVEALRKGYWIVLDELNLAPTDVLEALNRLLDDNRELFIPETQEVVHPHPDFLLFATQNPPGIYGGRKILSRAFRNRFLELHFDDIPQDELEIILRERCQIAPSYAKKIVEVYRQLSIERSASRLFEQKNSFATLRDLFRWALRDAVGYEQLAASGYMLLAERCRTPQEKVTVKKTLEKVMKVKLDMDQYYASLEDKSLEAIGSVTWTKGMRRLSVLVSSCLKNKEPVLLVGETGCGKTTICQLLAQFMGRELITLNAHQNTETGDILGAQRPVRNRSEIQYKLIKSLKTALNIANDQDVDLKELLQLYSKSDNKNIAEDVQLEIQKLRDSLNVLFEWSDGPLIQAMRTGNFFLLDEISLADDSVLERLNSVLEPERSLLLAEQGSSDSLVTASENFQFFATMNPGGDYGKKELSPALRNRFTEIWVPSMEDFNDVNMIVSSRLLEDLKDLANPIVKFSEWFGKKLGGGNATSGVISLRDILAWVEFINKVFPKIQNKSTALIQGASMVFIDALGTNNTAYLAENENDLKSLRTECIIQLLKLCGDDLELQQIETNEIIVTQDELQVGMFKIPRFPDAQSSSFNLTAPTTASNLVRVVRAMQVHKPILLEGSPGVGKTSLITALANITGNKLTRINLSEQTDLVDLFGADAPGERSGEFLWHDAPFLRAMKKGEWVLLDEMNLASQSVLEGLNACLDHRGEAYIPELDISFSCHPNFLVFAAQNPQYQGGGRKGLPKSFVNRFSVVFIDMLTSDDLLLIAKHLYPSIEPDIIAKMIKLMSTLEDQVCKRKLWGNSGSPWEFNLRDTLRWLKLLNQYSICEDVDVFDFVDIIVKQRFRTISDKNKAQLLIEDIFGKFSTKENFFKLTEDYVQINNEVALRNPHYRYPITQNLFPLECNVAVYESVLKAINNNWPLVLVGPSNSGKTETIRFLASILGPRVDVFSMNSDIDSMDILGGYEQVDLTRQISYITEELTNIVREIISMNMKLSPNATAIMEGLNLLKYLLNNIVTPEKFQDFRNRFNRFFSHLEGHPLLKTMSMNIEKMTEIITKEASVKFEWFDGMLVKAVEKGHWLILDNANLCSPSVLDRLNSLLEIDGSLLINECSQEDGQPRVLKPHPNFRLFLTMDPKYGELSRAMRNRGVEIYIDELHSRSTAFDRLTLGFELGENIDFVSIDDGIKKIKLNEPDMSIPLKHYVPSYLSRPCIFAQVHDILLLSDEEPIEESLAAVIPISHLGEVGKWANNVLNCTEYSEKKIAERLYVFITFLTDMGVLEKINNLYKPANLKFQKALGLHDKQLTEETVSLTLNEYVLPTVSKYSDKIKSPESLYLLSSLRLLLNSLNALKLINEKSTHGKIDELTYIELSAAAFNGRHLKNIPRIPIFCILYNILTVMSENLKTESLFCGSNQYQYYWDLLVIVIAALETAVTKDEARLRVYKELIDSWIASVKSKSDIEITPFLNINLEFTDVLQLSRGHSITLLWDIFRKNYPTTSNSWLAFEKLINLSEKFDKVRLLQFSESYNSIKDLMDVFRLLNDDVLNNKLSEFNLLLSKLEDGINELELISNKFLNKRKHYFADEFDNLIRYTFSVDTAELIKELAPASSLATQKLTKLITNKYNYPPIFDVLWTEKNAKLTSFTSTIFSSQFLEDVVRKSNNLKSFSGNQIKQSISDAELLLSSTIKCSPNLLKSQMEYYKNMLLSWLRKVIDIHVGGDCLKLTLKELCSLIEEKTASETRVTFAEYIFPALDLAESSKSLEELGEAWITFGTGLLLLFVPDSPYDPAIHDYVLYDLFLKTKTFSQNLMKSWRNVRKVISGDEEIFTEKLINTISDDDAPQSPRVYRTGMSIDSLFDEWMAFLSSTMSSRQIKELVSSYKCNSDQSDRRLEMLQQNSAHFLNRLESGYSKFADLNDILAGYIYSINFGFDLLKLQKSKDRASFQISPLWSMDPINISCAENVLSAYHELSRFFKKGDMEDTSIEKVLMYFLTLFKFHKRDTNLLEIFEAALYTLYSRWSVRRFRQEQEENEKSNMFKFNDNSDDYEADFRKLFPDYEDTALVTNEKDISSPENLDDIYFKLADTYISVFDKDHDANFSSELKSGAIITTILSEDLKNTRIEELKSGSLSAVINTLDAETQSFKNTEVFGNIDFYHDFSIPEFQKAGDIIETVLKSVLKLLKQWPEHATLKELYRVSQEFLNYPIKTPLARQLQKIEQIYTYLAEWEKYASSEVSLNNTVKLITDLIVSWRKLELRTWKGLFNSEDAKTRKSIGKWWFYLYESIVISNFVSEKKETAPNATLLVSSLNLFFSKSTLGEFNARLDLVKAFYKHIQLIGLRSSKIAGLLHNTIKFYYQFKPLIDERITNGKKSLEKEIDDIILLASWKDVNVDALKQSSRKSHNNLYKIVRKYRDLLNGDAKTIIEAGLLYSNENKLKLPTLKQHFYEDPNLEASKNLVKEISTWSMRAAPLRNIDTVASNMDSYLEKISSQEFPNFADLASDFYAEAERLRKETPNVYTKENKKRLAYLKTQKSKLLGDALKELRRIGLKVNFREDIQKVQSSTTTILANIAPFNNEYLNSSDAFFFKILDLLPKLRSAASNPSDDIPVAAIERGMALAQSLMFSLITVRHPLSEFTNDYCKINGMMLDLEHFTCLKGDIVHSSLKANVDNVRLFEKWLPSLLDYAAQTLSVISKYSATSEQQKILLDAKSTLSSFFVHFNSSRIFDSSFIESYSRFELFINELLKKLENAKETGNAFVFDIIIEWIKANKGGPIKKEQKRGPSVEDVEQAFRRTFTSIILSFQKVIGDGIESISETDDNWLSASFKKVMVNVKLLRSSVVSKNIETALSLLKDFDFTTTESIYVKSVISFTLPVITRYYNAMTVVLERSRIYYTNTSRGMYILSTILHSLAKNGFCSPQPPSEEVDDKNLQEGTGLGDGEGAQNNNKDVEQDEDLTEDAQNENKEQQDKDERDDENEDDAVEMEGDMAGELEDLSNGEENDDEDTDSEEEELDEEIDDLNEDDPNAIDDKMWDDKASDNSKEKDTDQNLDGKNQEEDVQAAENDEQQRDNKEGGDEDPNAPEDGDEEIENDENAEEENDVGEQEDEVKDEEGEDLEANVPEIETLDLPEDMNLDSEHEESDEDVDMSDGMPDDLNKEEVGNEDEEVKQESGIESDNENDEPGPEEDAGETETALDEEEGAEEDVDMTNDEGKEDEENGPEEQAMSDEEELKQDAAMEENKEKGGEQNTEGLDGVEEKADTEDIDQEAAVQQDSGSKGAGADATDTQEQDDVGGSGTTQNTYEEDQEDVTKNNEESREEATAALKQLGDSMKEYHRRRQDIKEAQTNGEEDENLEKNNERPDEFEHVEGANTETDTQALGSATQDQLQTIDEDMAIDDDREEQEVDQKELVEDADDEKMDIDEEEMLSDIDAHDANNDVDSKKSGFIGKRKSEEDFENELSNEHFSADQEDDSEIQSLIENIEDNPPDASASLTPERSLEESRELWHKSEISTADLVSRLGEQLRLILEPTLATKLKGDYKTGKRLNMKRIIPYIASQFRKDKIWLRRTKPSKRQYQIMIALDDSKSMSESKCVKLAFDSLCLVSKTLTQLEAGGLSIVKFGENIKEVHSFDQQFSNESGARAFQWFGFQETKTDVKKLVAESTKIFERARAMVHNDQWQLEIVISDGICEDHETIQKLVRRARENKIMLVFVIIDGITSNESILDMSQVNYIPDQYGNPQLKITKYLDTFPFEFYVVVHDISELPEMLSLILRQYFTDLASS&#39;
 </pre></div>
 
+<p>Repare-se que não foi preciso fazer</p>
+<div class="codehilite"><pre><span></span>prot_table.loc[posmax][&#39;seq&#39;]
+</pre></div>
+
+
+<p>Bastou fazer</p>
+<div class="codehilite"><pre><span></span>prot_table.loc[posmax].seq
+</pre></div>
+
+
+<p>Que PTMs existem na maior proteína?</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">prot_table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">posmax</span><span class="p">]</span><span class="o">.</span><span class="n">PTMs</span>
 </pre></div>
 </div>
 
 <div class="codehilite"><pre><span></span>[(&#39;1026&#39;, &#39;Phosphothreonine&#39;),
- (&#39;2971&#39;, &#39;Phosphoserine&#39;),
- (&#39;4353&#39;, &#39;Phosphoserine&#39;),
- (&#39;4388&#39;, &#39;Phosphothreonine&#39;),
- (&#39;4555&#39;, &#39;Phosphoserine&#39;)]
+(&#39;2971&#39;, &#39;Phosphoserine&#39;),
+(&#39;4353&#39;, &#39;Phosphoserine&#39;),
+(&#39;4388&#39;, &#39;Phosphothreonine&#39;),
+(&#39;4555&#39;, &#39;Phosphoserine&#39;)]
 </pre></div>
 
-
 <h4 id="quais-as-20-proteinas-mais-pequenas-de-scerevisiae">Quais as 20 proteínas mais pequenas de S.cerevisiae?<a class="headerlink" href="#quais-as-20-proteinas-mais-pequenas-de-scerevisiae" title="Permanent link">&para;</a></h4>
+<p>Para responder a esta pergunta podermos usar a possibilidade de ordenarmos as linhas de uma <em>DataFrame</em> pelos valores de uma coluna.</p>
+<p>Depois de uma <em>DataFrame</em> ordenada as funções <code>.head()</code> e <code>.tail()</code>para obtermos uma <em>DataFrame</em> com as primeiras ou últimas linhas da <em>DataFrame</em>, respetivamente (indicamos o número de linhas no argumento destas funções.)</p>
+<p>Assim, para obter as 20 proteínas mais curtas:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">ord_prot_table</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
 <span class="n">ord_prot_table</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
@@ -1781,6 +1825,7 @@ Name: Q12019, dtype: object
 </tbody>
 </table>
 <h4 id="quais-as-20-proteinas-maiores-de-scerevisiae">Quais as 20 proteínas maiores de S.cerevisiae?<a class="headerlink" href="#quais-as-20-proteinas-maiores-de-scerevisiae" title="Permanent link">&para;</a></h4>
+<p>Para as 20 maiores usamos a função <code>.tail()</code> da <em>DataFrame</em> ordenada:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">ord_prot_table</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
@@ -1925,6 +1970,7 @@ Name: Q12019, dtype: object
 </tbody>
 </table>
 <h4 id="histograma-da-distribuicao-de-tamanhos">Histograma da distribuição de tamanhos<a class="headerlink" href="#histograma-da-distribuicao-de-tamanhos" title="Permanent link">&para;</a></h4>
+<p>De entre várias maneiras de obter o histograma de tamanhos, podemos usar a função <code>distplot()</code> do módulo <code>seaborn</code>. A ideia é aplicar esta função à coluna <code>n</code> da <em>dataFrame</em>:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -1942,7 +1988,68 @@ Name: Q12019, dtype: object
 </div>
 
 <p><img alt="" src="images/n_hist.png" /></p>
+<p>De entre os vários comandos e argumentos de natureza "cosmética" vale a pena indicar o argumanto <code>bins</code> que controla o número de intervalos em que se faz a contagem dos comprimentos.</p>
 <h4 id="contagens-e-distribuicao-dos-20-aminoacidos-nas-proteinas">Contagens e distribuição dos 20 aminoácidos nas proteínas<a class="headerlink" href="#contagens-e-distribuicao-dos-20-aminoacidos-nas-proteinas" title="Permanent link">&para;</a></h4>
+<p>Este problema parece complicado: temos as sequências de mais de 6 000 proteínas e pretendemos contar os 20 aminoácidos em todas estas sequências.</p>
+<p>Naturalmente poderíamos escrever um bloco <code>for</code>  em que passaríamos pro todas as linhas da <em>DataFrame</em>, obtendo a sequência e adicionando a contadores as novas contagens dos 20 aminoácidos por sequência.</p>
+<p>Mas o <em>pandas</em> e um outro tipo de objetos pode-nos ajudar a resolver o problema de uma forma muito mais simples.</p>
+<p>E se não tivessemos as sequências separadas? Se tivessemos todas as sequências numa imensa <em>string</em> com todos os aminoácidos de todas as proteínas? Seria mais fácil contar os 20 aminoácidos.</p>
+<p>Comecemos por aí: juntar as sequências das 6 000 proteínas.</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">all_aminoacids</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">seq</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">()</span>
+</pre></div>
+</div>
+
+<p>Se uma coluna (uma <em>Series</em>) tiver informação de natureza textual (<em>strings</em>) podemos usar <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html#method-summary">muitas funções</a> com o prefixo <code>.str</code> que aplicam operações sobre <em>strings</em> <strong>de uma forma vetorial</strong> a toda a coluna.</p>
+<p>Por exemplo, <code>.str.replace()</code> funciona como a função <code>replace()</code> das <em>strings</em> mas é aplicada a toda uma coluna de uma <em>DataFrame</em>.</p>
+<p>Neste caso usámos <code>.str.cat()</code> à coluna da sequência. Esta função junta todas as <em>strings</em> da coluna.</p>
+<p>Agora que <code>all_aminoacids</code> é uma <em>string</em> com milhões de letras, contendo todas sequências juntas, como contar os aminoácidos?</p>
+<p>Faremos uso de algo que existe disponível na linguagem Python mas não pertence ao <em>pandas</em>: os objetos <code>Counter</code> do módulo <code>collections</code>.</p>
+<p>Estes objetos <code>Counter</code> resolvem um problema que ocorre com muita frequência: contar os objetos diferentes que existem numa coleção (lista, dicionário, <em>string</em>).</p>
+<p>Se um <code>Counter</code> for criado a partir de uma <em>string</em>, as letras diferentes são contadas e o resultado comporta-se como um dicionário, em que cada elemento é associado à sua contagem.</p>
+<p>Basta criar <code>Counter</code> a partir de <code>all_aminoacids</code> e temos as contagens:</p>
+<div class="python_box">
+<div class="codehilite"><pre><span></span><span class="n">all_aminoacids</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">seq</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_aminoacids</span><span class="p">)</span><span class="si">}</span><span class="s1"> in all proteins&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">aminoacid_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">all_aminoacids</span><span class="p">)</span>
+
+<span class="c1"># transformar o dicionário numa Series e ordenar</span>
+
+<span class="n">aminoacid_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">aminoacid_counts</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">aminoacid_counts</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<p><div class="codehilite"><pre><span></span>There are 2936363 in all proteins
+L    279286
+S    263906
+K    215472
+I    192640
+E    191475
+N    180800
+T    173669
+D    171368
+V    163152
+A    161165
+G    145859
+R    130510
+F    130230
+P    128556
+Q    115998
+Y     99420
+H     63790
+M     61252
+C     37272
+W     30543
+dtype: int64
+</pre></div>
+O aminoácido mais frequente é a leucina e o menos frequente é o triptofano!</p>
+<p>Mas o melhor é fazer um gráfico com as frequências:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">all_aminoacids</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">seq</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">()</span>
 
@@ -1963,6 +2070,10 @@ Name: Q12019, dtype: object
 
 <p><img alt="" src="images/aa_freq.png" /></p>
 <h4 id="contagens-globais-das-ptm">Contagens globais das PTM<a class="headerlink" href="#contagens-globais-das-ptm" title="Permanent link">&para;</a></h4>
+<p>Finalmente, repetindo o problema do capítulo sobre a extração da informação sobre PTMs, vamos contar os tipos diferentes de PTM usando o <em>pandas</em>.</p>
+<p>A informação sobre PTMs aparentemente não está facilmente processável: está na coluna <code>PTMs</code> mas na forma de uma lista de pares.</p>
+<p>A função <code>explode()</code> trata do problema de desdobrar a lista em várias linhas diferentes, ainda que à custa de ter de repetir os valore do <code>index</code>.</p>
+<p>Vamos aplicar a função à coluna <code>PTMs</code>. Mas, já agora, descartamos as linhas para as quais não existem <em>PTMs</em> com a função <code>dropna()</code> que descarta linhas com valores em falta:</p>
 <div class="python_box">
 
 <div class="codehilite"><pre><span></span><span class="n">PTM_locs</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">PTMs</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
@@ -2005,6 +2116,9 @@ Q06440       (454, Phosphoserine)
 Name: PTMs, dtype: object
 </pre></div>
 
+<p>Como se pode ver com os primeiros 30 elementos, a função <code>explode()</code> desdobrou as listas.</p>
+<p>Agora precisamos de obter apenas os nomes das <em>PTMs</em> e não precisamos de usar as localizações. Precisamos apenas, em cada par, dos elementos da posição 1.</p>
+<p><code>.str.get()</code> faz precisamente isso, de uma forma vetorial:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">PTMs</span> <span class="o">=</span> <span class="n">PTM_locs</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">PTMs</span>
@@ -2026,6 +2140,8 @@ P32806       Phosphoserine
 Name: PTMs, Length: 7070, dtype: object
 </pre></div>
 
+<p>Agora só falta contar os elementos diferentes  nesta <em>Series</em>.</p>
+<p>O <em>pandas</em> tem uma função muito semelhante aos <code>Counter</code>: a <code>value_counts()</code>:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">PTM_counts</span> <span class="o">=</span> <span class="n">PTMs</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">PTM_counts</span>
@@ -2086,6 +2202,7 @@ N6-glutaryllysine                                      1
 Name: PTMs, dtype: int64
 </pre></div>
 
+<p>Agora só as PTMs que ocorrem mais do que 10 vezes:</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">more_than10</span> <span class="o">=</span> <span class="n">PTM_counts</span><span class="p">[</span><span class="n">PTM_counts</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">]</span>
 <span class="n">more_than10</span>
@@ -2111,10 +2228,14 @@ N6-succinyllysine                   11
 Name: PTMs, dtype: int64
 </pre></div>
 
+<p>Finalmente, um gráfico...</p>
 <div class="python_box">
 <div class="codehilite"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 
-<span class="n">bp</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">more_than10</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">more_than10</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bp</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">more_than10</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                 <span class="n">y</span><span class="o">=</span><span class="n">more_than10</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                 <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
