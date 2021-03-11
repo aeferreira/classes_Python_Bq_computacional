@@ -1,4 +1,13 @@
 .ipynb_checkpoints
-depot/*
+depot/
 site/*
 backup/*
+.vscode/
+data_parser/
+installers/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
