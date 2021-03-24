@@ -1,3 +1,4 @@
+
 .python_box > .codehilite{
 	border-color:#2196f3;
 	border-style:solid;
@@ -5,8 +6,9 @@
 	background-color:white;
 }
 
-.codehilite{
-	border-color:#867575;
+.md-typeset .python_box code{
+	border-color:#2196f3;
 	border-style:solid;
 	border-width: thin;
+    background-color:white;
 }

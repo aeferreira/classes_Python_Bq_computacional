@@ -100,7 +100,7 @@ São usados `[]` para definir, de uma forma literal, uma lista, separando os ele
 ``` python3
 vários = [2, 4, 3.1415, 'eu aqui', "fim da lista"]
 
-print(a)
+print(vários)
 ```
 </div>
 
