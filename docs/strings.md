@@ -456,11 +456,13 @@ nA = seq.count('A')
 nC = seq.count('C')
 nT = seq.count('T')
 
-print(f'A razão (G+C) / (A+T) é {(nG + nC)/(nA + nC)}')
+print(f'A razão (G+C) / (A+T) é {(nG + nC)/(nA + nT)}')
 ```
 </div>
 
-    A razão (G+C) / (A+T) é 0.8666666666666667
+```
+A razão (G+C) / (A+T) é 0.9285714285714286
+```
 
 
 ### `.replace()`.
@@ -614,7 +616,7 @@ juntar os codões numa lista e usar `join()` para os juntar intercalados com `-`
 <div class="python_box">
 ``` python3
 seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
-print(s)
+print(seq)
 
 starts = range(0, len(seq), 3)
 
@@ -654,11 +656,11 @@ de codões:
 
 <div class="python_box">
 ``` python3
-s = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
+seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
 
-cods = [s[i] + s[i+1] + s[i+2] for i in range(0, len(s), 3)]
+cods = [seq[i] + seq[i+1] + seq[i+2] for i in range(0, len(seq), 3)]
 
-print(s)
+print(seq)
 
 print( "-".join(cods) )
 ```

@@ -1,7 +1,6 @@
 ﻿site_name: Bq computacional (FCUL)
 nav:
 - Prefácio: 'index.md'
-- Instalação (software e dados): data_software.md
 - 1 - A linguagem Python:
   - Conceitos básicos: 'basics.md'
   - Exercícios (série 1): 'exercises_1.md'
@@ -21,6 +20,8 @@ nav:
   - Exemplo, regressão linear: sm_linreg.md
   - sympy: sm_sympy.md
   - Algoritmos numéricos: sm_algorithms.md
+- Apêndices:
+  - A - Instalação (software e dados): data_software.md
 use_directory_urls: false
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
@@ -30,6 +31,9 @@ theme:
   palette:
     primary: 'blue'
     accent: 'Deep orange'
+  features:
+      - navigation.tabs
+      - navigation.top
 extra_css:
   - 'stylesheets/extra.css'
 markdown_extensions:
