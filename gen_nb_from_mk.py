@@ -3,7 +3,7 @@ import re
 
 import nbformat as nbf
 
-fname = 'collections_iterations'
+fname = 'more_on_lists_dicts'
 mks = sorted(Path().joinpath('docs').glob('*.md'))
 
 fname = Path().joinpath('docs',f'{fname}.md')
