@@ -30,12 +30,12 @@ A UniProt tem [documentação](http://web.expasy.org/docs/userman.html) com indi
 
 Instruções para obter o ficheiro de trabalho:
 
-- Na UniProt procurar pelo [ "proteoma de referência" da levedura S. cerevisiae, www.uniprot.org/proteomes/UP000002311](www.uniprot.org/proteomes/UP000002311)
-- Passar para resultados UniProtKB em "Map to Review"
-- Download -> Text , compressed (o ficheiro é grande, o download pode demorar um pouco)
-- Se o download tiver sido em modo "compressed", extraír o ficheiro do zip.
+- Na UniProt procurar pelo ["proteoma de referência" da levedura S. cerevisiae](http://www.uniprot.org/proteomes/UP000002311) (http://www.uniprot.org/proteomes/UP000002311)
+- Passar para resultados UniProtKB: em "Map To" escolher UniPortKB
+- Escolher *Download -> Text , compressed* (NOTA: o ficheiro é grande, o download pode demorar um pouco)
+- Se o download tiver sido em modo "compressed", extraír o (único) ficheiro do zip.
 - Alterar o nome do ficheiro para `uniprot_scerevisiae.txt`
-- criar uma pasta de trabalho, onde irá ser desenvolvido o programa e mover o ficheiro `uniprot_scerevisiae.txt` para essa pasta.
+- Criar uma pasta de trabalho, onde irá ser desenvolvido o programa e mover o ficheiro `uniprot_scerevisiae.txt` para essa pasta.
 
 ## Programa completo
 
