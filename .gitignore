@@ -1,6 +1,7 @@
 .ipynb_checkpoints
 depot/
 site/*
+_build/*
 backup/*
 .vscode/
 data_parser/
