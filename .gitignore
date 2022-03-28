@@ -1,5 +1,6 @@
 .ipynb_checkpoints
 depot/
+scripts/
 site/*
 _build/*
 backup/*

@@ -3,8 +3,31 @@
 
 format: jb-book
 root: index
-chapters:
-- file: basics
-- file: markdown
-- file: notebooks
-- file: intro
+parts:
+  - caption: A linguagem Python
+    numbered: true
+    chapters:
+    - file: basics
+    - file: exercises_1
+    - file: collections_iterations
+    - file: more_on_lists_dicts
+    - file: strings
+    - file: funcs_modules
+    - file: problems
+    - file: files
+
+  - caption: Textos estruturados
+    numbered: true
+    chapters:
+    - file: uniprot_txt.md
+
+  - caption: Módulos científicos
+    numbered: true
+    chapters:
+    - file: sm_numpy_scipy
+    - file: sm_ph
+    - file: problems2
+    - file: sm_pandas
+    - file: sm_linreg
+    - file: sm_sympy
+    - file: sm_algorithms

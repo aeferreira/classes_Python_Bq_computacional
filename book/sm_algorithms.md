@@ -1,11 +1,26 @@
-## Algoritmos numéricos
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.10.3
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
 
-### Introdução (algoritmo babilónico)
+# Algoritmos numéricos
+
+## Introdução (algoritmo babilónico)
 
 > Um **algoritmo** é um procedimento, indicado passo a passo, destinado
 > a resolver um problema num intervalo de tempo finito.
 
-#### Algoritmo para calcular raízes quadradas
+**Algoritmo para calcular raízes quadradas**
 
 Para calcular a raíz quadrada de um número a:
 
@@ -15,8 +30,7 @@ Para calcular a raíz quadrada de um número a:
 
 $x$ é a raíz quadrada de $a$.
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 a = 2.0
 print('a =', a)
 
@@ -27,15 +41,9 @@ for i in range(20):
 
 print('x =', x)
 ```
-</div>
 
-```
-a = 2.0
-x = 1.414213562373095
-```
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 a = 2.0
 
 x = 1.0
@@ -44,32 +52,7 @@ for i in range(20):
     novo = 0.5 * (x + a/x)
     x = novo
 
-print("A raíz quadrada de {} é {}".format(a,x))
-```
-</div>
-
-```
-1.0
-1.5
-1.4166666666666665
-1.4142156862745097
-1.4142135623746899
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-1.414213562373095
-A raíz quadrada de 2.0 é 1.414213562373095
+print(f"A raíz quadrada de {a} é {x}")
 ```
 
 **Algoritmo para calcular raízes quadradas**
@@ -82,8 +65,7 @@ Para calcular a raíz quadrada de um número a:
 
 x é a raíz quadrada de a.
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 a = 2.0
 
 x = 1.0
@@ -95,21 +77,11 @@ for i in range(100):
         break
     x = novo
 
-print("A raíz quadrada de {} é {}".format(a,x))
-```
-</div>
-
-```
-1.0
-1.5
-1.4166666666666665
-1.4142156862745097
-1.4142135623746899
-A raíz quadrada de 2.0 é 1.414213562373095
+print(f"A raíz quadrada de {a} é {x}")
 ```
 
-<div class="python_box">
-``` python3
+
+```{code-cell} ipython3
 def babilonico(a, show_iters=False):
     x = 1.0
     for i in range(100):
@@ -122,22 +94,13 @@ def babilonico(a, show_iters=False):
     return x
 
 r = babilonico(2.0, show_iters=True)
-print("A raíz quadrada de {} é {}".format(2.0,r))
-```
-</div>
-
-```
-1.0
-1.5
-1.4166666666666665
-1.4142156862745097
-1.4142135623746899
-A raíz quadrada de 2.0 é 1.414213562373095
+print(f"A raíz quadrada de 2.0 é {r}")
 ```
 
-#### Método das bisseções sucessivas (para calcular a raíz de uma função)
 
-(para calcular a raíz de uma função)
+## Bisseções sucessivas
+
+Objetivo: calcular a raíz de uma função
 
 ![](images/bissect_idea.png)
 
@@ -161,8 +124,7 @@ Para calcular a raíz de uma função $f(x)$, contínua sabendo que existe
 
 $x_m$ é a raíz da função $f(x)$, isto é $f(x_m) \approx 0$.
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def bissect(f, a, b):
     epsilon = 1e-6
 
@@ -182,18 +144,10 @@ def f(x):
 
 x = bissect(f, 1, 2)
 
-print("Raíz encontrada:")
-print(x)
-```
-</div>
-
-```
-Raíz encontrada:
-1.2599201202392578
+print(f"Raíz encontrada:\n{x}")
 ```
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def bissect(f, a, b):
     epsilon, epsilonf = 1e-6, 1e-10
     fa, fb = f(a), f(b)
@@ -215,18 +169,12 @@ def f(x):
 
 x, fx = bissect(f, 1, 2)
 
-print("x = {}, f(x) = {:9.7f}".format(x,fx))
-```
-</div>
-
-```
-x = 1.2599201202392578, f(x) = -0.0000044
+print(f"x = {x}, f(x) = {fx:9.7f}")
 ```
 
 Monitorizando as bisseções:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def bissect(f, a, b):
     epsilon, epsilonf = 1e-6, 1e-10
     fa, fb = f(a), f(b)
@@ -251,45 +199,18 @@ def f(x):
 
 x, fx, h = bissect(f, 1, 2)
 
-print("x = {}, f(x) = {:9.7f}".format(x,fx))
+print(f"x = {x}, f(x) = {fx:9.7f}")
 
 print('''
 Bisseções:
 a       b       |b-a|       f(xm)''')
 
 for a, b, fm in h:
-    print("{0:7.5f} {1:7.5f} {3:10.8f} {2:10.7f}".format(a,b,fm, abs(b-a)))
-```
-</div>
-
-```
-x = 1.2599201202392578, f(x) = -0.0000044
-
-Bisseções:
-a       b       |b-a|       f(xm)
-1.00000 2.00000 1.00000000  1.3750000
-1.00000 1.50000 0.50000000 -0.0468750
-1.25000 1.50000 0.25000000  0.5996094
-1.25000 1.37500 0.12500000  0.2609863
-1.25000 1.31250 0.06250000  0.1033020
-1.25000 1.28125 0.03125000  0.0272865
-1.25000 1.26562 0.01562500 -0.0100245
-1.25781 1.26562 0.00781250  0.0085732
-1.25781 1.26172 0.00390625 -0.0007401
-1.25977 1.26172 0.00195312  0.0039130
-1.25977 1.26074 0.00097656  0.0015855
-1.25977 1.26025 0.00048828  0.0004225
-1.25977 1.26001 0.00024414 -0.0001588
-1.25989 1.26001 0.00012207  0.0001318
-1.25989 1.25995 0.00006104 -0.0000135
-1.25992 1.25995 0.00003052  0.0000592
-1.25992 1.25993 0.00001526  0.0000228
-1.25992 1.25993 0.00000763  0.0000047
-1.25992 1.25992 0.00000381 -0.0000044
-1.25992 1.25992 0.00000191  0.0000001
+    print(f"{a:7.5f} {b:7.5f} {abs(b-a):10.7f}  {fm: 10.8f}")
 ```
 
-#### Método de newton (para calcular a raíz de uma função)
+
+### Método de newton
 
 ![](images/newton.png)
 
@@ -305,8 +226,7 @@ $x_{final}$ é a raíz da função $f(x)$, isto é $f(x_{final}) \approx 0$.
 **NOTA**: O algoritmo babilónico é um caso particular do método de
 Newton para $f(x) = x^2 -a$
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def newton(f, df, x):
     epsilon = 1e-6
     fx, dfx = f(x), df(x)
@@ -315,30 +235,10 @@ def newton(f, df, x):
         fx, dfx = f(x),df(x)
     return (x, fx)
 ```
-</div>
-
-<div class="python_box">
-``` python3
-def f(x):
-    return x**3 -2
-
-def df(x):
-    return 3 * x**2
-
-x, fx = newton(f, df, 1.5)
-
-print("x = {}, f(x) = {:9.7f}".format(x,fx))
-```
-</div>
-
-```
-x = 1.2599210498953948, f(x) = 0.0000000
-```
 
 Monitorizando as iterações:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def newton(f, df, x):
     epsilon = 1e-6
 
@@ -360,30 +260,20 @@ def df(x):
 
 x, fx, h = newton(f, df, 1.5)
 
-print("x = {}, f(x) = {:9.7f}".format(x,fx))
+print(f"x = {x}, f(x) = {fx:9.7f}")
 
 print('''
 Iterações:
 x         f(x)''')
 
 for x, fx in h:
-    print("{0:9.7f} {1:9.7f}".format(x, fx))
-```
-</div>
-
-```
-x = 1.2599210498953948, f(x) = 0.0000000
-
-Iterações:
-x         f(x)
-1.5000000 1.3750000
-1.2962963 0.1782757
-1.2609322 0.0048193
-1.2599219 0.0000039
+    print(f"{x:9.7f} {fx:9.7f}")
 ```
 
-Compare-se a rapidez da convergência dos 2 métodos, para
-$\epsilon = 10^{-6}$
+
+Compare-se a rapidez da convergência dos 2 métodos,
+
+para $\epsilon = 10^{-6}$
 
 Método das bisseções sucessivas:
 
@@ -421,8 +311,7 @@ Método de Newton:
 
 Método de Newton com a função $sin(x)$
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 from math import sin, cos, pi
 
 def f(x):
@@ -450,22 +339,11 @@ for x0 in 0.1, 1.1, 3.1, 4.1, 5.1, 6.1, 12.1:
 
     pi_x = x / pi
 
-    print("x0 = {:<7.2f} x = {:4.1f} pi".format(x0, pi_x))
-```
-</div>
-
-```
-x0 = 0.10    x =  0.0 pi
-x0 = 1.10    x =  0.0 pi
-x0 = 3.10    x =  1.0 pi
-x0 = 4.10    x =  1.0 pi
-x0 = 5.10    x = 58.0 pi
-x0 = 6.10    x =  2.0 pi
-x0 = 12.10   x =  4.0 pi
+    print(f"x0 = {x0:<7.2f} x = {pi_x:4.1f} pi")
 ```
 
-<div class="python_box">
-``` python3
+
+```{code-cell} ipython3
 def f(x):
     return sin(x)
 
@@ -494,74 +372,18 @@ for x0 in 0.1, 1.1, 3.1, 4.1, 5.1, 6.1, 12.1:
 
     pi_x = x / pi
 
-    print("para x0 = {},    x = {:4.1f} pi".format(x0, pi_x))
-```
-</div>
-
-```
-----------------
-x0 = 0.1
-x =  0.10000, f(x)= 0.09983
-x = -0.00033, f(x)=-0.00033
-para x0 = 0.1,    x = -0.0 pi
-----------------
-x0 = 1.1
-x =  1.10000, f(x)= 0.89121
-x = -0.86476, f(x)=-0.76094
-x =  0.30804, f(x)= 0.30319
-x = -0.01013, f(x)=-0.01013
-para x0 = 1.1,    x = -0.0 pi
-----------------
-x0 = 3.1
-x =  3.10000, f(x)= 0.04158
-x =  3.14162, f(x)=-0.00002
-para x0 = 3.1,    x =  1.0 pi
-----------------
-x0 = 4.1
-x =  4.10000, f(x)=-0.81828
-x =  2.67647, f(x)= 0.44853
-x =  3.17831, f(x)=-0.03671
-x =  3.14158, f(x)= 0.00002
-para x0 = 4.1,    x =  1.0 pi
-----------------
-x0 = 5.1
-x =  5.10000, f(x)=-0.92581
-x =  7.54939, f(x)= 0.95397
-x =  4.36848, f(x)=-0.94144
-x =  1.57632, f(x)= 0.99998
-x = 182.69881, f(x)= 0.46748
-x = 182.16999, f(x)=-0.04237
-x = 182.21240, f(x)= 0.00003
-para x0 = 5.1,    x = 58.0 pi
-----------------
-x0 = 6.1
-x =  6.10000, f(x)=-0.18216
-x =  6.28526, f(x)= 0.00208
-para x0 = 6.1,    x =  2.0 pi
-----------------
-x0 = 12.1
-x = 12.10000, f(x)=-0.44965
-x = 12.60341, f(x)= 0.03703
-x = 12.56635, f(x)=-0.00002
-para x0 = 12.1,    x =  4.0 pi
+    print(f"para x0 = {x0},    x = {pi_x:4.1f} pi")
 ```
 
-<div class="python_box">
-``` python3
+
+```{code-cell} ipython3
 %matplotlib inline
-```
-</div>
-
-<div class="python_box">
-``` python3
 from matplotlib import pyplot as pl
 import matplotlib as mpl
 from numpy import linspace, sin, cos
 ```
-</div>
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 x = linspace(-6, 10, 1000)
 y = sin(x)
 pl.axhline(color='black', linewidth=3)
@@ -569,13 +391,10 @@ pl.plot(x,y, color='teal', linewidth=3)
 
 for z in range(-1, 4):
     pl.axvline(x = z * pi, color='black', linestyle=':', ymin=0.25, ymax=0.75)
+pl.show()
 ```
-</div>
 
-![image](images/13_algoritmos_29_0.png)
-
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 mpl.rcParams['figure.figsize'] = (10,6)
 
 def f(x):
@@ -602,22 +421,13 @@ pl.plot(x,y, color='black', linewidth=2)
 for x0, color in [(0.5,'green'), (1.1, 'darkred'), (2.2, 'teal')]:
 
     x, fx, h = newton(f, df, x0)
-    print('Para x0 = {}, raíz = {:6.3f}'.format(x0, x))
+    print(f'Para x0 = {x0}, raíz = {x:6.3f}')
     xpoints, ypoints = newton_points(h)
     pl.plot(xpoints, ypoints, color=color, linewidth=2)
-```
-</div>
-
-```
-Para x0 = 0.5, raíz = -0.000
-Para x0 = 1.1, raíz =  0.000
-Para x0 = 2.2, raíz =  3.142
+pl.show()
 ```
 
-![image](images/13_algoritmos_30_1.png)
-
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def f(x):
     return sin(x)
 
@@ -633,21 +443,14 @@ pl.plot(x,y, color='black', linewidth=2)
 for x0, color in [(5.1,'green')]:
 
     x, fx, h = newton(f, df, x0)
-    print('Para x0 = {}, raíz = {:6.3f}'.format(x0, x))
+    print(f'Para x0 = {x0}, raíz = {x:6.3f}')
     xpoints, ypoints = newton_points(h)
     pl.plot(xpoints, ypoints, color=color, linewidth=2)
     pl.xlim(-1,10)
-```
-</div>
-
-```
-Para x0 = 5.1, raíz = 182.212
+pl.show()
 ```
 
-![image](images/13_algoritmos_31_1.png)
-
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def f(x):
     return sin(x)
 
@@ -663,21 +466,14 @@ pl.plot(x,y, color='black', linewidth=2)
 for x0, color in [(5.1,'green')]:
 
     x, fx, h = newton(f, df, x0)
-    print('Para x0 = {}, raíz = {:6.3f}'.format(x0, x))
+    print(f'Para x0 = {x0}, raíz = {x:6.3f}')
     xpoints, ypoints = newton_points(h)
     pl.plot(xpoints, ypoints, color=color, linewidth=2)
     pl.xlim(180,185)
-```
-</div>
-
-```
-Para x0 = 5.1, raíz = 182.212
+pl.show()
 ```
 
-![image](images/13_algoritmos_32_1.png)
-
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def plot_newton(x0):
     def f(x):
         return sin(x)
@@ -698,8 +494,5 @@ def plot_newton(x0):
     pl.xlim(-1,10)
     pl.grid()
     #pl.show()
-    #print('Para x0 = {}, raíz = {:4.2f} pi'.format(x0, x_pi))
+    #print(f'Para x0 = {x0}, raíz = {x_pi:4.2f} pi')
 ```
-</div>
-
-![image](images/13_algoritmos_34_0.png)

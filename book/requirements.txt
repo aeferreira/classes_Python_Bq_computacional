@@ -1,4 +1,7 @@
 jupyter-book
+requests
 matplotlib
+seaborn
 numpy
 pandas
+sympy

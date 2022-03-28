@@ -87,22 +87,28 @@ Números são uns dos objetos mais fundamentais da linguagem Python. Podemos usa
 >>>
 ```
 
-Numa expressão envolvendo números, podemos usar (vários níveis de) parêntesis curvos `()` e as cinco operações:
+Numa expressão envolvendo números, podemos usar (vários níveis de) parêntesis curvos `()` e as seguintes operações:
 
-`+` adição
-
-`-` subtração
-
-`*` multiplicação
-
-`/` divisão
-
-`**` potenciação
+| Operador   | Operação         |
+|:----------:|:-----------------|
+|`+`         | adição           |
+|`-`         | subtração        |
+|`*`         | multiplicação    |
+|`/`         | divisão          |
+|`**`        | potenciação      |
+|`%`         | resto da divisão |
 
 As regras de prioridade são: `**` tem maior prioridade do que `*` `/` que têm maior prioridade do que `+ -`. Em caso de “empate” e sem parêntesis, os cálculos são feitos da esquerda para a direita.
 
-Também útil é o operador `%`, que significa "o resto da divisão por". Por exemplo, `5 % 3` tem como
-resultado `2`.
+```{code-cell} pycon
+:tags: [remove-output]
+>>> - (4.2 * 0.01)**(1/3)
+-0.347602664488645
+>>> (1 + 5**(1/2)) / 2
+1.618033988749895
+>>> 5 % 3
+2
+```
 
 Naturalmente, podemos trabalhar com números com casas decimais, designados genericamente como *números em vírgula flutuante*. 
 
@@ -122,7 +128,7 @@ Na gíria é muitas vezes usada a designação *floats*.
 
 Note a utilização da representação “de engenharia”, por exemplo `4.2e3`, equivalente a 4.2 x 10<sup>3</sup>.
 
-```{admonition} "Atenção"
+```{admonition} Atenção
 :class: warning
 Nos números em Python usa-se sempre um ponto decimal `.` (e não uma vírgula)
 ```

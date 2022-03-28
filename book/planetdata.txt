@@ -1,0 +1,9 @@
+Planet	rotation_days	revolution_years
+Mercury	58.6	0.2408
+Venus	243	0.615
+Earth	0.99	1
+Mars	1.03	1.88
+Jupiter	0.41	11.86
+Saturn	0.45	29.46
+Uranus	0.72	84.01
+Neptune	0.67	164.79

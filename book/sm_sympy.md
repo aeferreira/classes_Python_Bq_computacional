@@ -1,11 +1,24 @@
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.10.3
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
 
-# `sympy`
+# Módulo `sympy`
 
 
-### Símbolos e álgebra básica
+## Símbolos e álgebra básica
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 from sympy import Symbol
 
 x = Symbol('x')
@@ -13,33 +26,20 @@ y = Symbol('y')
 
 print(x + y + x -y)
 ```
-</div>
 
-```
-2*x
-```
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 a = (x+y)**2
 print(a)
 print(a.expand())
 print(a.subs(x, 1).expand())
 print(a.subs(x, 1).expand().subs(y, 1))
 ```
-</div>
 
-```
-(x + y)**2
-x**2 + 2*x*y + y**2
-y**2 + 2*y + 1
-4
-```
 
-### Limites
+## Limites
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 from sympy import Symbol, limit, diff, integrate, sin, oo
 
 x = Symbol('x')
@@ -49,18 +49,11 @@ print(limit(sin(x)/x, x, 0))
 print(limit(x, x, oo))
 print(limit(1/x, x, oo))
 ```
-</div>
 
-```
-1
-oo
-0
-```
 
-### Derivadas e integrais
+## Derivadas e integrais
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 print(diff(sin(x), x))
 print(diff(sin(2*x), x))
 print('----------------')
@@ -69,23 +62,9 @@ print(expr)
 print(diff(expr, x))
 print(diff(expr, x, 3))
 ```
-</div>
 
-```
-cos(x)
-2*cos(2*x)
-----------------
-2**x + x**2 - 3
-2**x*log(2) + 2*x
-2**x*log(2)**3
-```
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 print(integrate(sin(x), x))
 ```
-</div>
 
-```
--cos(x)
-```

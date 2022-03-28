@@ -1,3 +1,18 @@
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.10.3
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
+
 # Exemplo: ficheiros UniProt txt
 
 ## Introdução
@@ -41,8 +56,8 @@ Instruções para obter o ficheiro de trabalho:
 
 Comecemos por mostrar o programa completo e o respetivo output:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
+
 # Counts of the several types of PTMs in proteins of S. cerevisiae
 
 from matplotlib import pyplot as plt
@@ -65,9 +80,6 @@ def read_Uniprot_text(filename):
     return records
 
 prots = read_Uniprot_text(data_filename)
-
-print(f'The number of protein records in "{data_filename}" is {len(prots)}')
-
 
 def extract_info(record):
     """Reads a UniProt text record and returns a dict with extrated information.
@@ -144,6 +156,8 @@ sorted_items = sorted(PTM_counts.items(), key=second, reverse=True)
 
 ordered_PTM_counts = list(sorted_items)
 
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
 # let's look at the results
 for PTMtype, count in ordered_PTM_counts:
     print(PTMtype, count)
@@ -152,71 +166,13 @@ for PTMtype, count in ordered_PTM_counts:
 sns.set(style="darkgrid")
 f, ax = plt.subplots(figsize=(6,9))
 
-x = [t for t,c in ordered_PTM_counts if c > 10]
-y = [c for t,c in ordered_PTM_counts if c > 10]
+types = [t for t,c in ordered_PTM_counts if c > 10]
+counts = [c for t,c in ordered_PTM_counts if c > 10]
 
-bp = sns.barplot(y, x, orient='h', log=True, palette='tab10')
+bp = sns.barplot(y=types, x=counts, orient='h', log=True, palette='tab10')
 plt.show()
 
 ```
-</div>
-
-```
-The number of protein records in "uniprot_scerevisiae.txt" is 6049
-
-Phosphoserine 5170
-Phosphothreonine 1027
-N-acetylserine 325
-N-acetylmethionine 106
-Phosphotyrosine 55
-N6-(pyridoxal phosphate)lysine 46
-N-acetylalanine 37
-N6-acetyllysine 32
-Asymmetric dimethylarginine 26
-Cysteine methyl ester 23
-N6-methyllysine 22
-N6,N6,N6-trimethyllysine 17
-Omega-N-methylarginine 15
-N-acetylthreonine 12
-N6-succinyllysine 11
-N6,N6-dimethyllysine 6
-N6-butyryllysine 5
-N6-biotinyllysine 5
-N6-carboxylysine 4
-Phosphohistidine 4
-N5-methylglutamine 4
-N,N-dimethylproline 4
-N6-lipoyllysine 4
-O-(pantetheine 4'-phosphoryl)serine 3
-4-aspartylphosphate 3
-Lysine derivative 3
-Pyruvic acid (Ser) 3
-S-glutathionyl cysteine 3
-Hypusine 2
-Tele-8alpha-FAD histidine 2
-N6-malonyllysine 2
-N5-methylarginine 2
-N6-propionyllysine 2
-Leucine methyl ester 2
-3,4-dihydroxyproline 2
-N-acetylvaline 2
-N-formylmethionine 1
-Pros-8alpha-FAD histidine 1
-2,3-didehydroalanine (Cys) 1
-N6-glutaryllysine 1
-Diphthamide 1
-Pros-methylhistidine 1
-Cysteine sulfinic acid (-SO2H) 1
-S-(dipyrrolylmethanemethyl)cysteine 1
-N,N,N-trimethylglycine 1
-Lysine methyl ester 1
-Dimethylated arginine 1
-Thiazolidine linkage to a ring-opened DNA abasic 1
-1-thioglycine 1
-S-methylcysteine 1
-```
-
-![](images/ptm_counts.png)
 
 De uma forma sumária, o programa realiza as seguintes *tarefas*:
 
@@ -228,7 +184,7 @@ lista `prots`
 
 As duas primeiras tarefas são implementadas em funções.
 
-Para o gráfico, são usados dois módulos de criação de gráficos da linguagem Python: `matplotlib`e `seaborn`. Eles são importados no início do programa. É prática comum que os `import`s sejam feitos no início do programa.
+Para o gráfico, são usados dois módulos de criação de gráficos da linguagem Python: `matplotlib` e `seaborn`. Eles são importados no início do programa. É prática comum que os `import`s sejam feitos no início do programa.
 
 Vejamos agora as várias partes:
 
@@ -238,14 +194,13 @@ Para o programa funcionar, o ficheiro `uniprot_scerevisiae.txt` deve estar na me
 
 Podemos começar por ler todo o seu conteúdo para uma *string*:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 data_filename = 'uniprot_scerevisiae.txt'
 
-with open(filename) as uniprot_file:
+with open(data_filename) as uniprot_file:
     whole_file = uniprot_file.read()
 ```
-</div>
+
 
 O passo seguinte será, na *string* `whole_file`, que contem toda a informação sobre todas as proteínas de levedura, separarmos a informação por proteína, pondo o resultado numa lista de *strings*, blocos de texto em que cada bloco diz respeito a uma proteína diferente.
 
@@ -258,107 +213,82 @@ nos pormenores da sua estrutura.
 
 Depressa nos apercebemos que existe uma marca para separar a informação de diferentes proteínas:
 
-```
-...
-...
-FT   CARBOHYD    103    103       N-linked (GlcNAc...) asparagine.
-FT                                {ECO:0000255}.
-SQ   SEQUENCE   411 AA;  48455 MW;  91676D56AC053F3C CRC64;
-     MTSATDKSID RLVVNAKTRR RNSSVGKIDL GDTVPGFAAM PESAASKNEA KKRMKALTGD
-     SKKDSDLLWK VWFSYREMNY RHSWLTPFFI LVCVYSAYFL SGNRTESNPL HMFVAISYQV
-     DGTDSYAKGI KDLSFVFFYM IFFTFLREFL MDVVIRPFTV YLNVTSEHRQ KRMLEQMYAI
-     FYCGVSGPFG LYIMYHSDLW LFKTKPMYRT YPVITNPFLF KIFYLGQAAF WAQQACVLVL
-     QLEKPRKDYK ELVFHHIVTL LLIWSSYVFH FTKMGLAIYI TMDVSDFFLS LSKTLNYLNS
-     VFTPFVFGLF VFFWIYLRHV VNIRILWSVL TEFRHEGNYV LNFATQQYKC WISLPIVFVL
-     IAALQLVNLY WLFLILRILY RLIWQGIQKD ERSDSDSDES AENEESKEKC E
-//
-ID   MUD2_YEAST              Reviewed;         527 AA.
-AC   P36084; D6VXL2;
-DT   01-JUN-1994, integrated into UniProtKB/Swiss-Prot.
-DT   16-AUG-2004, sequence version 3.
-DT   13-FEB-2019, entry version 153.
-DE   RecName: Full=Splicing factor MUD2;
-...
-...
-```
+    ...
+    ...
+    FT   CARBOHYD    103    103       N-linked (GlcNAc...) asparagine.
+    FT                                {ECO:0000255}.
+    SQ   SEQUENCE   411 AA;  48455 MW;  91676D56AC053F3C CRC64;
+        MTSATDKSID RLVVNAKTRR RNSSVGKIDL GDTVPGFAAM PESAASKNEA KKRMKALTGD
+        SKKDSDLLWK VWFSYREMNY RHSWLTPFFI LVCVYSAYFL SGNRTESNPL HMFVAISYQV
+        DGTDSYAKGI KDLSFVFFYM IFFTFLREFL MDVVIRPFTV YLNVTSEHRQ KRMLEQMYAI
+        FYCGVSGPFG LYIMYHSDLW LFKTKPMYRT YPVITNPFLF KIFYLGQAAF WAQQACVLVL
+        QLEKPRKDYK ELVFHHIVTL LLIWSSYVFH FTKMGLAIYI TMDVSDFFLS LSKTLNYLNS
+        VFTPFVFGLF VFFWIYLRHV VNIRILWSVL TEFRHEGNYV LNFATQQYKC WISLPIVFVL
+        IAALQLVNLY WLFLILRILY RLIWQGIQKD ERSDSDSDES AENEESKEKC E
+    //
+    ID   MUD2_YEAST              Reviewed;         527 AA.
+    AC   P36084; D6VXL2;
+    DT   01-JUN-1994, integrated into UniProtKB/Swiss-Prot.
+    DT   16-AUG-2004, sequence version 3.
+    DT   13-FEB-2019, entry version 153.
+    DE   RecName: Full=Splicing factor MUD2;
+    ...
+    ...
 
-!!! info "Informação"
-    No formato *Uniprot txt* o separador que aparece entre a informação sobre proteínas distintas é `//` numa
-    linha.
 
-    Não deve existir mais nada nessa linha, o que significa que o separador é, na realidade, `//` seguido de mudança de linha, isto é, `//\n` 
+```{admonition} Informação
+:class: info
+No formato *Uniprot txt* o separador que aparece entre a informação sobre proteínas distintas é `//` numa
+linha.
+
+Não deve existir mais nada nessa linha, o que significa que o separador é, na realidade, `//` seguido de mudança de linha, isto é, `//\n`
+
+```
 
 Portanto, podemos dividir todo o ficheiro em blocos,
 indicando `//\n` na função `.split()`:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 data_filename = 'uniprot_scerevisiae.txt'
 
-with open(filename) as uniprot_file:
+with open(data_filename) as uniprot_file:
     whole_file = uniprot_file.read()
 
 records = whole_file.split('//\n')
 ```
-</div>
 
 Podemos ver se resultou.
 
 Como `records`, o nome dado ao resultado de `split('//\n')` é uma lista, podemos ver o elemento 0, por exemplo:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
+:tags: [output_scroll]
 data_filename = 'uniprot_scerevisiae.txt'
 
-with open(filename) as uniprot_file:
+with open(data_filename) as uniprot_file:
     whole_file = uniprot_file.read()
 
 records = whole_file.split('//\n')
 
 print(records[0])
 ```
-</div>
 
-```
-D   AB140_YEAST             Reviewed;         628 AA.
-AC   Q08641; D6W2U2; Q08644;
-DT   26-SEP-2001, integrated into UniProtKB/Swiss-Prot.
-DT   23-JAN-2007, sequence version 3.
-DT   13-FEB-2019, entry version 162.
-DE   RecName: Full=tRNA(Thr) (cytosine(32)-N(3))-methyltransferase;
-DE            EC=2.1.1.268 {ECO:0000269|PubMed:21518804, ECO:0000269|PubMed:21518805};
-DE   AltName: Full=Actin-binding protein of 140 kDa;
-DE   AltName: Full=tRNA methyltransferase of 140 kDa;
-GN   Name=ABP140; Synonyms=TRM140; OrderedLocusNames=YOR239W;
-GN   ORFNames=YOR240W;
-OS   Saccharomyces cerevisiae (strain ATCC 204508 / S288c) (Baker's yeast).
-OC   Eukaryota; Fungi; Dikarya; Ascomycota; Saccharomycotina;
-OC   Saccharomycetes; Saccharomycetales; Saccharomycetaceae; Saccharomyces.
-OX   NCBI_TaxID=559292;
-...
-...
-```
 
 Parece ter resultado.
 
 Ainda para confirmar podemos ver o último elemento da lista (posição -1):
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 data_filename = 'uniprot_scerevisiae.txt'
 
-with open(filename) as uniprot_file:
+with open(data_filename) as uniprot_file:
     whole_file = uniprot_file.read()
 
 records = whole_file.split('//\n')
 
 print(records[-1])
 ```
-</div>
 
-```
-
-```
 
 Desta vez nada apareceu como resultado da função `print()`.
 
@@ -376,7 +306,7 @@ Podemos usar uma lista em compreensão para a retirar:
 
 isto é, mantemos todos os records, desde que o seu comprimento seja maior do que 0, isto é, não seja uma lista vazia.
 
-Outra possibiliadade é usar a função `pop()`de listas que
+Outra possibilidade é usar a função `pop()` de listas que
 retira o elemento que está numa posição:
 
     records.pop(-1)
@@ -387,8 +317,7 @@ Podemos definir a função aplicar a função logo de seguida.
 
 Como curiosidade, podemos saber qual a dimensão deste proteoma anotado da levedura:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def read_Uniprot_text(filename):
     """Reads a UniProt text file and splits into a list of protein records."""
     
@@ -407,16 +336,11 @@ prots = read_Uniprot_text(data_filename)
 
 print(f'The number of protein records in "{data_filename}" is {len(prots)}')
 ```
-</div>
 
-```
-The number of protein records in "uniprot_scerevisiae.txt" is 6049
-```
 
 ## Extração da informação
 
-O interesse agora é extrair a informação pertinente de cada
-proteína.
+O interesse agora é extrair a informação pertinente de cada proteína.
 
 Estamos interessados em informações sobre as PTMs. Já vamos ver onde essa informação se encontra e em que formato está. Mas para treinar a extração da informação, podemos começar por tentar obter, para cada proteína, o seu número de acesso Uniprot, umm identificador único para cada proteína e o número de aminoácidos da proteína.
 
@@ -424,31 +348,10 @@ A ideia é conseguir criar um dicionário com estes dois "pedaços" de informaç
 
 Vejamos melhor a primeira proteína da lista, `prots[0]`:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
+:tags: [output_scroll]
 # NOTA: continuação do programa anterior!
 print(prots[0])
-```
-</div>
-
-```
-ID   AGP2_YEAST              Reviewed;         596 AA.
-AC   P38090; D6VQC9;
-DT   01-OCT-1994, integrated into UniProtKB/Swiss-Prot.
-DT   01-OCT-1994, sequence version 1.
-DT   22-APR-2020, entry version 155.
-DE   RecName: Full=General amino acid permease AGP2;
-GN   Name=AGP2; OrderedLocusNames=YBR132C; ORFNames=YBR1007;
-OS   Saccharomyces cerevisiae (strain ATCC 204508 / S288c) (Baker's yeast).
-OC   Eukaryota; Fungi; Dikarya; Ascomycota; Saccharomycotina; Saccharomycetes;
-OC   Saccharomycetales; Saccharomycetaceae; Saccharomyces.
-OX   NCBI_TaxID=559292;
-RN   [1]
-RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
-RC   STRAIN=ATCC 204508 / S288c;
-RX   PubMed=8091856; DOI=10.1002/yea.320100002;
-...
-...
 ```
 
 Um primeiro lugar devemos reparar que as linhas começam com um conjunto de duas letras que identifica o tipo de informação que está no resto da linha. Por exemplo, `GN` é a linha com *Gene name*, `AC` é uma linha contendo números de acesso, etc.
@@ -457,7 +360,7 @@ O documentação da UniProt contem uma descrição detalhada com estes códigos.
 
 No final de cada bloco de uma proteína encontra-se a sua sequência de amino-ácidos. São as únicas linhas sem código de duas letras (embora a linha introdutória da sequência contenha o código `SQ`):
 
-```
+```{code-block}
 ...
 ...
 SQ   SEQUENCE   440 AA;  49072 MW;  DCE9E5C434D51201 CRC64;
@@ -473,7 +376,7 @@ SQ   SEQUENCE   440 AA;  49072 MW;  DCE9E5C434D51201 CRC64;
 
 Voltando ao exemplo do princípio de cada bloco, as duas primeiras linhas têm a informação que precisamos: o número de acesso e o comprimento da proteína:
 
-```
+```{code-block}
 ID   AGP2_YEAST              Reviewed;         596 AA.
 AC   P38090; D6VQC9;
 ...
@@ -484,8 +387,7 @@ Vamos tentar extraír para um dicionário o número de aminoácidos e o número 
 
 Uma vez que a informação está claramente organizada linha a linha, então podemos para a primeira proteína, começar por separar o bloco de texto por linhas e obter a primeira e a segunda linhas:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 # NOTA: continuação do programa anterior!
 
 record = prots[0] # mais tarde aplicaremos a todos os blocos
@@ -498,12 +400,6 @@ print(lineID)
 print(lineAC)
 
 ```
-</div>
-
-```
-ID   AGP2_YEAST              Reviewed;         596 AA.
-AC   P38090; D6VQC9;
-```
 
 Funciona. Vamos agora extraír o que interessa a partir destas linhas.
 
@@ -511,8 +407,7 @@ Se separarmos os elementos da primeira linha pelos espaços o número de aminoá
 
 O número de acesso está na linha `AC`. O primeiro identificador é o mais atual, os outros são identificadores antigos. A estratégia será aqui separar pelos `;` e pelos espaços.
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 # NOTA: continuação do programa anterior!
 
 record = prots[0] # mais tarde aplicaremos a todos os blocos
@@ -535,11 +430,7 @@ resultado = {'n': n, 'ac':ac}
 
 print(resultado)
 ```
-</div>
 
-```
-{'n': 596, 'ac': 'P38090'}
-```
 Resultou. Criámos um dicionário com as duas partes que nos interessavam extraídas.
 
 Desde já um melhoramento: Poddemos aplicar muitas funções de *string* do Python em cadeia e ainda combinar com a indexação. isto pode-nos poupar o uso de nomes intermédios.
@@ -547,8 +438,7 @@ Desde já um melhoramento: Poddemos aplicar muitas funções de *string* do Pyth
 Vejamos uma alternativa:
 
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 # NOTA: continuação do programa anterior!
 
 record = prots[0] # mais tarde aplicaremos a todos os blocos
@@ -565,24 +455,24 @@ resultado = {'n': n, 'ac':ac}
 
 print(resultado)
 ```
-</div>
 
-```
-{'n': 596, 'ac': 'P38090'}
-```
 
 Vamos dissecar o processo de obter o `ac`.
 
     ac = lineAC.split(';')[0].split()[1]
 
-*Dividir a linha `lineAC` por `;`, aproveitar o fragmento 0 e dividir este por espaços, aproveitar o fragmento 1*
+Isto significa:
 
-Podemos agora criar uma função que possa ser aplicada a qualquer bloco de texto com a informação sobre uma proteína ( e não apenas à proteína 0).
+- *Dividir a linha `lineAC` por `;`*
+- *aproveitar o fragmento 0*
+- *dividir este por espaços*
+- *aproveitar o fragmento 1*
+
+Podemos agora criar uma função que possa ser aplicada a qualquer bloco de texto com a informação sobre uma proteína (e não apenas à proteína 0).
 
 Vejamos todo o programa até agora, já testando a nova função com a proteína 0 da lista `prots` resultantes da primeira função:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 data_filename = 'uniprot_scerevisiae.txt'
 
 def read_Uniprot_text(filename):
@@ -600,8 +490,6 @@ def read_Uniprot_text(filename):
     return records
 
 prots = read_Uniprot_text(data_filename)
-
-print(f'The number of protein records in "{data_filename}" is {len(prots)}')
 
 def extract_info(record):
     
@@ -621,14 +509,10 @@ def extract_info(record):
     # Return dictionary of extracted information
     return {'ac': ac, 'n': n}
 
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
 print('First protein:')
 print(extract_info(prots[0]))
-```
-</div>
-```
-The number of protein records in "uniprot_scerevisiae.txt" is 6049
-First protein:
-{'ac': 'P38090', 'n': 596}
 ```
 
 Podemos agora aplicar a função a todas os blocos, com uma lista em compreensão.
@@ -637,8 +521,7 @@ Vamos chamar ao resultado `all_prots`. Será uma **lista de dicionários**.
 
 O programa, até este ponto será:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 data_filename = 'uniprot_scerevisiae.txt'
 
 def read_Uniprot_text(filename):
@@ -656,8 +539,6 @@ def read_Uniprot_text(filename):
     return records
 
 prots = read_Uniprot_text(data_filename)
-
-print(f'The number of protein records in "{data_filename}" is {len(prots)}')
 
 def extract_info(record):
     
@@ -679,23 +560,12 @@ def extract_info(record):
 
 all_prots = [extract_info(p) for p in prots]
 
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
 # see the first 3, as a test
 for p in all_prots[:4]:
     print('------------------------------------------')
     print(p)
-```
-</div>
-
-```
-The number of protein records in "uniprot_scerevisiae.txt" is 6049
-------------------------------------------
-{'ac': 'P38090', 'n': 596}
-------------------------------------------
-{'ac': 'Q12001', 'n': 544}
-------------------------------------------
-{'ac': 'P53309', 'n': 568}
-------------------------------------------
-{'ac': 'P40467', 'n': 964}
 ```
 
 ## Extração da informação: PTMs
@@ -744,23 +614,18 @@ Como fazer isto por programação?
 
 Temos vários problemas para resolver:
 
--Como passar por todas as linhas respeitantes a uma proteína e procurar as que contêm informação sobre PTM? (fácil, `for` e ver se começam por `FT   MOD_RES`)
+- Como passar por todas as linhas respeitantes a uma proteína e procurar as que contêm informação sobre PTM? (fácil, `for` e ver se começam por `FT   MOD_RES`)
 - Como extraír a posição? (fácil: separar por espaços e usar o elemento na posição 2)
 - Como ir para a linha seguinte? (menos fácil, mas `enumerate()` permite ter acesso à posição da linha que estamos a tratar, logo também a posição da linha seguinte)
 - Como obter o nome da PTM? (fácil, mais uns `split()`s)
 
-Afinal é quase tudo fácil.
+Vamos então modificar a função `extract_info()` e incluír estas ideias:
 
-Vamos então modificar a função `extract_info()`:
-
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 # ... NOTA: continuação do programa a partir
 # da função read_Uniprot_text(filename)
 
 prots = read_Uniprot_text(data_filename)
-
-print(f'The number of protein records in "{data_filename}" is {len(prots)}')
 
 def extract_info(record):
     """Reads a UniProt text record and returns a dict with extrated information.
@@ -821,29 +686,17 @@ def extract_info(record):
 
 all_prots = [extract_info(p) for p in prots]
 
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
 # see the first 4, as a test
 for p in all_prots[:5]:
     print('------------------------------------------')
     print(p)
 ```
-</div>
-
-```
-The number of protein records in "uniprot_scerevisiae.txt" is 6049
-------------------------------------------
-{'ac': 'P38090', 'n': 596, 'PTMs': {}}
-------------------------------------------
-{'ac': 'Q12001', 'n': 544, 'PTMs': {}}
-------------------------------------------
-{'ac': 'P53309', 'n': 568, 'PTMs': {'449': 'Phosphothreonine'}}
-------------------------------------------
-{'ac': 'P40467', 'n': 964, 'PTMs': {'166': 'Phosphoserine', '186': 'Phosphoserine', '963': 'Phosphoserine'}}
-```
 
 Aparentemente nem todas as proteínas têm anotações sobre PTMs.
 
-Note-se a utilidade da função `enumerate()`: podemos ao mesmo tempo passar com o comando `for` pelas
-linhas usando o nome `line` e pelas **posições** das linhas, usando `i` (não esquecer que `lines` é uma lista de linhas).
+Note-se a utilidade da função `enumerate()`: podemos ao mesmo tempo passar com o comando `for` pelas linhas usando o nome `line` e pelas **posições** das linhas, usando `i` (não esquecer que `lines` é uma lista de linhas).
 
     for i, line in enumerate(lines):
 
@@ -863,8 +716,7 @@ múltipla de nomes com a opção de utilizar `*` para captar o "restante" de uma
 Vejamos um pequeno exemplo de atribuições múltiplas, uma técnica já usada em problemas anteriores:
 
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 # atribuição múltipla
 
 m, a = 12, 365
@@ -878,12 +730,7 @@ s, m, a = [7, 12, 365]
 
 print(s, m, a)
 ```
-</div>
 
-```
-12 365
-7 12 365
-```
 
 Aqui mostra-se o facto de uma atribuição poder ser feita à custa dos elementos
 de uma lista.
@@ -891,8 +738,7 @@ de uma lista.
 Para todos os efeitos, conseguimos assim atribuír nomes a todos
 os elementos de uma lista:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 s, m, a = [7, 12, 365]
 
 # é equivalente a
@@ -903,7 +749,6 @@ s = nums[0]
 m = nums[1]
 a = nums[2]
 ```
-</div>
 
 Nesta situação, é possível usar, do lado esquerdo do sinal de igual, um `*`
 como prefixo de um dos nomes para **captar** um conjunto de elementos restantes nas atribuições, na forma de
@@ -911,8 +756,7 @@ uma lista mais pequena.
 
 O melhor é ver um exemplo:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 s, m, a, *tudo_o_resto = [7, 12, 365, 1, 3, 5, 7, 9, 11]
 
 print(s)
@@ -920,32 +764,27 @@ print(m)
 print(a)
 print(tudo_o_resto)
 ```
-</div>
 
-```
-7
-12
-365
-[1, 3, 5, 7, 9, 11]
-```
 
 Neste exemplo, pelo facto de termos usado um `*` antes do nome `tudo_o_resto`
 fez com este nome fosse atribuído à *parte restante* da lista que serviu de atribuição.
 
-!!! tip "Dica"
-    Esta atribuição múltipla com `*` é muito útil quando não sabemos
-    exatamente qual o comprimento da lista que fornece os valores e estamos
-    interessados apenas em alguns dos primeiros valores.
-    
-    O nome que é usado com `*` como prefixo é sempre atribuído a uma lista.
-    
-    Esta pode ter apenas um elemento ou até uma lista vazia.
+```{admonition} Dica
+:class: tip
+Esta atribuição múltipla com `*` é muito útil quando não sabemos
+exatamente qual o comprimento da lista que fornece os valores e estamos
+interessados apenas em alguns dos primeiros valores.
+
+O nome que é usado com `*` como prefixo é sempre atribuído a uma lista.
+
+Esta pode ter apenas um elemento ou até uma lista vazia.
+
+```
 
 Mas este mecanismo pode até ser usado sem ser no nome final:
 
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 s, m, a, *o_meio, ultimo = [7, 12, 365, 1, 3, 5, 7, 9, 11]
 
 print(s)
@@ -954,38 +793,22 @@ print(a)
 print(o_meio)
 print(ultimo)
 ```
-</div>
 
-```
-7
-12
-365
-[1, 3, 5, 7, 9]
-11
-```
 
 Um outro exemplo:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 *lixo, antepenúltimo, penúltimo, último = [7, 12, 365, 1, 3, 5, 7, 9, 11]
 
 print(antepenúltimo)
 print(penúltimo)
 print(último)
 ```
-</div>
 
-```
-7
-9
-11
-```
 
 E ainda outro...
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 primeiro, *lixo, antepenúltimo, penúltimo, último = [7, 12, 365, 1, 3, 5, 7, 9, 11]
 
 print(primeiro)
@@ -995,37 +818,25 @@ print(último)
 
 print(lixo)
 ```
-</div>
 
-```
-7
-7
-9
-11
-[12, 365, 1, 3, 5]
-```
 
 Este mecanismo pode-nos ajudar a simplificar um pouco alguns passos da função
 `extract_info()`:
 
 Em vez de 
 
-<div class="python_box">
-``` python3
+```{code-block} python3
 lines = record.splitlines()
 
 IDline = lines[0]
 ACline = lines[1]
 ```
-</div>
 
 Podemos escrever apenas
 
-<div class="python_box">
-``` python3
+```{code-block} python3
 IDline, ACline, *otherlines = record.splitlines()
 ```
-</div>
 
 A função `.splitlines()` gera uma lista, logo podemos imediatamente usar
 uma atribuição múltipla para atribuír nomes a várias linhas que estejamos interessados.
@@ -1034,48 +845,49 @@ Note-se que `otherlines` seria um nome de uma lista contendo todas as linhas
 menos as duas primeiras. O que significa que, mais à frente, quando procuramos
 linhas começadas por `FT`, devemos fazer
 
-     for line in otherlines:
+    for line in otherlines:
      
 
-!!! question "problema"
-    Como poderíamos substituír a obtenção de `n` nesta parte do program
-    
-    <div class="python_box">
-    ``` python3
-    n = int(IDline.split()[3])
-    ```
-    </div>
-       
-    por uma atribuição múltipla para *isolar* o `n` no meio dos outros
-    elementos na mesma linha?
-    
-    Repare que a linha `ID` tem o seguinte aspeto:
-    
-    ```
-    ID   AB140_YEAST             Reviewed;         628 AA.
-    ```
+````{admonition} Problema
+:class: question
+Como poderíamos substituír a obtenção de `n` nesta parte do program
 
-??? example "Solução"
-    
-    <div class="python_box">
-    ``` python3
-    *useless, n, final = IDline.split()
-    n = int(n)
-    ```
-    </div>
-    
-    Não sendo mais compacto, é mais simples de entender
+```{code-block} python3
+n = int(IDline.split()[3])
+```
 
+por uma atribuição múltipla para *isolar* o `n` no meio dos outros
+elementos na mesma linha?
+
+Repare que a linha `ID` tem o seguinte aspeto:
+
+```{code-block}
+ID   AB140_YEAST             Reviewed;         628 AA.
+```
+````
+
+````{admonition} Solução
+:class: tip, dropdown
+```{code-block} ipython3
+*useless, n, final = IDline.split()
+n = int(n)
+```
+
+Não sendo mais compacto, é mais simples de entender
+````
 
 ## Contagem dos tipos de PTM
 
 Vamos agora continuar o programa de forma contar os vários tipos de PTM que existem, já
 "extraídos" na lista de dicionários `all_prots`.
 
-!!! warning "Atenção"
-    Nos passos seguintes vamos ampliar o programa que já existe, até
-    ao cálculo da lista `all_prots`. Esta lista já tem de existir para o resto
-    funcionar.
+```{admonition} Atenção
+:class: warning
+Nos passos seguintes vamos ampliar o programa que já existe, até
+ao cálculo da lista `all_prots`. Esta lista já tem de existir para o resto
+funcionar.
+
+```
 
 Recorde-se que a lista `all_prots` contem dicionários.
 
@@ -1101,8 +913,8 @@ deve ter o valor 1, a primeira contagem.
 Vejamos como fica:
 
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
+:tags: [output_scroll]
 PTM_counts = {}
 for p in all_prots:
     PTMs = p['PTMs']
@@ -1117,12 +929,7 @@ for p in all_prots:
         else:
             PTM_counts[ptmtype] = 1
             
-# print(PTM_counts) 
-```
-</div>
-
-```
-{'Phosphothreonine': 1027, 'Phosphoserine': 5170, 'Phosphotyrosine': 55, 'N-acetylserine': 325, 'N-formylmethionine': 1, 'N6-(pyridoxal phosphate)lysine': 46, 'Pros-8alpha-FAD histidine': 1, 'N-acetylmethionine': 106, 'N6-acetyllysine': 32, 'N-acetylthreonine': 12, "O-(pantetheine 4'-phosphoryl)serine": 3, 'N6-carboxylysine': 4, 'Cysteine methyl ester': 23, 'Asymmetric dimethylarginine': 26, 'Phosphohistidine': 4, 'Hypusine': 2, 'N-acetylalanine': 37, 'N6-butyryllysine': 5, 'N6-methyllysine': 22, 'N6-succinyllysine': 11, 'N6,N6-dimethyllysine': 6, 'Tele-8alpha-FAD histidine': 2, '2,3-didehydroalanine (Cys)': 1, '4-aspartylphosphate': 3, 'Lysine derivative': 3, 'N5-methylglutamine': 4, 'N6,N6,N6-trimethyllysine': 17, 'Omega-N-methylarginine': 15, 'N,N-dimethylproline': 4, 'N6-glutaryllysine': 1, 'N6-malonyllysine': 2, 'Diphthamide': 1, 'N6-biotinyllysine': 5, 'N5-methylarginine': 2, 'N6-lipoyllysine': 4, 'Pyruvic acid (Ser)': 3, 'Pros-methylhistidine': 1, 'S-glutathionyl cysteine': 3, 'Cysteine sulfinic acid (-SO2H)': 1, 'N6-propionyllysine': 2, 'S-(dipyrrolylmethanemethyl)cysteine': 1, 'N,N,N-trimethylglycine': 1, 'Lysine methyl ester': 1, 'Dimethylated arginine': 1, 'Leucine methyl ester': 2, '3,4-dihydroxyproline': 2, 'N-acetylvaline': 2, 'Thiazolidine linkage to a ring-opened DNA abasic': 1, '1-thioglycine': 1, 'S-methylcysteine': 1}
+print(PTM_counts) 
 ```
 
 Funcionou, embora não seja a maneira mais elegante de apresentar as contagens.
@@ -1136,8 +943,8 @@ O problema é que os dicionários não têm uma **ordem** dos seus elementos imp
 As listas têm e é fácil transformar um dicionário numa lista de pares (chave:valor):
 
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
+:tags: [output_scroll]
 PTM_counts = {}
 for p in all_prots:
     PTMs = p['PTMs']
@@ -1158,11 +965,7 @@ list_PTM_counts = list(PTM_counts.items())
 
 print(list_PTM_counts) 
 ```
-</div>
 
-```
-[('Phosphothreonine', 1027), ('Phosphoserine', 5170), ('Phosphotyrosine', 55), ('N-acetylserine', 325), ('N-formylmethionine', 1), ('N6-(pyridoxal phosphate)lysine', 46), ('Pros-8alpha-FAD histidine', 1), ('N-acetylmethionine', 106), ('N6-acetyllysine', 32), ('N-acetylthreonine', 12), ("O-(pantetheine 4'-phosphoryl)serine", 3), ('N6-carboxylysine', 4), ('Cysteine methyl ester', 23), ('Asymmetric dimethylarginine', 26), ('Phosphohistidine', 4), ('Hypusine', 2), ('N-acetylalanine', 37), ('N6-butyryllysine', 5), ('N6-methyllysine', 22), ('N6-succinyllysine', 11), ('N6,N6-dimethyllysine', 6), ('Tele-8alpha-FAD histidine', 2), ('2,3-didehydroalanine (Cys)', 1), ('4-aspartylphosphate', 3), ('Lysine derivative', 3), ('N5-methylglutamine', 4), ('N6,N6,N6-trimethyllysine', 17), ('Omega-N-methylarginine', 15), ('N,N-dimethylproline', 4), ('N6-glutaryllysine', 1), ('N6-malonyllysine', 2), ('Diphthamide', 1), ('N6-biotinyllysine', 5), ('N5-methylarginine', 2), ('N6-lipoyllysine', 4), ('Pyruvic acid (Ser)', 3), ('Pros-methylhistidine', 1), ('S-glutathionyl cysteine', 3), ('Cysteine sulfinic acid (-SO2H)', 1), ('N6-propionyllysine', 2), ('S-(dipyrrolylmethanemethyl)cysteine', 1), ('N,N,N-trimethylglycine', 1), ('Lysine methyl ester', 1), ('Dimethylated arginine', 1), ('Leucine methyl ester', 2), ('3,4-dihydroxyproline', 2), ('N-acetylvaline', 2), ('Thiazolidine linkage to a ring-opened DNA abasic', 1), ('1-thioglycine', 1), ('S-methylcysteine', 1)]
-```
 
 Agora temos uma lista, mas não está ordenada por contagens.
 
@@ -1185,18 +988,15 @@ Mas temos de escrever essa função.
 É uma função muito simples que recebe um par de valores
 e devolve o segundo elemento do par.
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 # sort function returning the second element of a pair of values
 def second(pair):
     return pair[1]
 ```
-</div>
 
 Vejamos como aplicar esta função:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 # sort function returning the second element of a pair of values
 def second(pair):
     return pair[1]
@@ -1205,18 +1005,14 @@ ordered_PTM_counts = sorted(list_PTM_counts, key=second, reverse=True)
 print(ordered_PTM_counts)
 
 ```
-</div>
 
-```
-[('Phosphoserine', 5170), ('Phosphothreonine', 1027), ('N-acetylserine', 325), ('N-acetylmethionine', 106), ('Phosphotyrosine', 55), ('N6-(pyridoxal phosphate)lysine', 46), ('N-acetylalanine', 37), ('N6-acetyllysine', 32), ('Asymmetric dimethylarginine', 26), ('Cysteine methyl ester', 23), ('N6-methyllysine', 22), ('N6,N6,N6-trimethyllysine', 17), ('Omega-N-methylarginine', 15), ('N-acetylthreonine', 12), ('N6-succinyllysine', 11), ('N6,N6-dimethyllysine', 6), ('N6-butyryllysine', 5), ('N6-biotinyllysine', 5), ('N6-carboxylysine', 4), ('Phosphohistidine', 4), ('N5-methylglutamine', 4), ('N,N-dimethylproline', 4), ('N6-lipoyllysine', 4), ("O-(pantetheine 4'-phosphoryl)serine", 3), ('4-aspartylphosphate', 3), ('Lysine derivative', 3), ('Pyruvic acid (Ser)', 3), ('S-glutathionyl cysteine', 3), ('Hypusine', 2), ('Tele-8alpha-FAD histidine', 2), ('N6-malonyllysine', 2), ('N5-methylarginine', 2), ('N6-propionyllysine', 2), ('Leucine methyl ester', 2), ('3,4-dihydroxyproline', 2), ('N-acetylvaline', 2), ('N-formylmethionine', 1), ('Pros-8alpha-FAD histidine', 1), ('2,3-didehydroalanine (Cys)', 1), ('N6-glutaryllysine', 1), ('Diphthamide', 1), ('Pros-methylhistidine', 1), ('Cysteine sulfinic acid (-SO2H)', 1), ('S-(dipyrrolylmethanemethyl)cysteine', 1), ('N,N,N-trimethylglycine', 1), ('Lysine methyl ester', 1), ('Dimethylated arginine', 1), ('Thiazolidine linkage to a ring-opened DNA abasic', 1), ('1-thioglycine', 1), ('S-methylcysteine', 1)]
-```
 
 Agora sim, temos uma lista ordenada.
 
 Mas é muito mais elegante apresentar em linhas separadas:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
+:tags: [output_scroll]
 # sort function returning the second element of a pair of values
 def second(pair):
     return pair[1]
@@ -1228,60 +1024,7 @@ for PTMtype, count in ordered_PTM_counts:
     print(PTMtype, count)
 
 ```
-</div>
 
-```
-Phosphoserine 5170
-Phosphothreonine 1027
-N-acetylserine 325
-N-acetylmethionine 106
-Phosphotyrosine 55
-N6-(pyridoxal phosphate)lysine 46
-N-acetylalanine 37
-N6-acetyllysine 32
-Asymmetric dimethylarginine 26
-Cysteine methyl ester 23
-N6-methyllysine 22
-N6,N6,N6-trimethyllysine 17
-Omega-N-methylarginine 15
-N-acetylthreonine 12
-N6-succinyllysine 11
-N6,N6-dimethyllysine 6
-N6-butyryllysine 5
-N6-biotinyllysine 5
-N6-carboxylysine 4
-Phosphohistidine 4
-N5-methylglutamine 4
-N,N-dimethylproline 4
-N6-lipoyllysine 4
-O-(pantetheine 4'-phosphoryl)serine 3
-4-aspartylphosphate 3
-Lysine derivative 3
-Pyruvic acid (Ser) 3
-S-glutathionyl cysteine 3
-Hypusine 2
-Tele-8alpha-FAD histidine 2
-N6-malonyllysine 2
-N5-methylarginine 2
-N6-propionyllysine 2
-Leucine methyl ester 2
-3,4-dihydroxyproline 2
-N-acetylvaline 2
-N-formylmethionine 1
-Pros-8alpha-FAD histidine 1
-2,3-didehydroalanine (Cys) 1
-N6-glutaryllysine 1
-Diphthamide 1
-Pros-methylhistidine 1
-Cysteine sulfinic acid (-SO2H) 1
-S-(dipyrrolylmethanemethyl)cysteine 1
-N,N,N-trimethylglycine 1
-Lysine methyl ester 1
-Dimethylated arginine 1
-Thiazolidine linkage to a ring-opened DNA abasic 1
-1-thioglycine 1
-S-methylcysteine 1
-```
 
 Agora sim, vemos que as fosforilações são as *PTM* mais prevalentes, pelo
 menos levando em conta as anotações na UniProtKB relativamente às proteínas 
@@ -1296,8 +1039,8 @@ associadas a *strings*
 
 O programa todo até este ponto é o seguinte:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
+:tags: [output_scroll]
 
 data_filename = 'uniprot_scerevisiae.txt'
 
@@ -1316,8 +1059,6 @@ def read_Uniprot_text(filename):
     return records
 
 prots = read_Uniprot_text(data_filename)
-
-print(f'The number of protein records in "{data_filename}" is {len(prots)}')
 
 def extract_info(record):
     """Reads a UniProt text record and returns a dict with extrated information.
@@ -1367,7 +1108,6 @@ def extract_info(record):
 
 all_prots = [extract_info(p) for p in prots]
 
-
 PTM_counts = {}
 for p in all_prots:
     PTMs = p['PTMs']
@@ -1391,12 +1131,14 @@ def second(pair):
 
 ordered_PTM_counts = sorted(list_PTM_counts, key=second, reverse=True)
 
+# Output of PTM information
+
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
 for PTMtype, count in ordered_PTM_counts:
     print(PTMtype, count)
 
-
 ```
-</div>
 
 ## Gráficos
 
@@ -1421,8 +1163,7 @@ baseado na `matplotlib` e inclui "melhoramentos" estéticos e novos tipos de gr�
 Ampliando o programa, vamos combinar os dois módulos, criando um gráfico de barras com as contagens
 da PTM, embora restringindo àquelas que têm pelo menos 10 contagens:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 from matplotlib import pyplot as plt
 import seaborn as sns
 
@@ -1430,15 +1171,12 @@ import seaborn as sns
 sns.set(style="darkgrid")
 f, ax = plt.subplots(figsize=(6,9))
 
-x = [t for t,c in ordered_PTM_counts if c > 10]
-y = [c for t,c in ordered_PTM_counts if c > 10]
+types = [t for t,c in ordered_PTM_counts if c > 10]
+counts = [c for t,c in ordered_PTM_counts if c > 10]
 
-bp = sns.barplot(y, x, orient='h', log=True, palette='tab10')
+bp = sns.barplot(y=types, x=counts, orient='h', log=True, palette='tab10')
 plt.show()
 ```
-</div>
-
-![](images/ptm_counts.png)
 
 Embora seja uma pequena ampliação do programa, é preciso explicar um pouco a utilização destas duas bibliotecas,
 de uma forma muitíssimo sumária, uma vez que a sua funcionalidade é muito vasta.
@@ -1469,9 +1207,8 @@ abundantes que teríam barras perto de 0.
 
 ## Programa completo
 
-<div class="python_box">
-``` python3
-
+```{code-cell} ipython3
+:tags: [output_scroll]
 data_filename = 'uniprot_scerevisiae.txt'
 
 def read_Uniprot_text(filename):
@@ -1489,8 +1226,6 @@ def read_Uniprot_text(filename):
     return records
 
 prots = read_Uniprot_text(data_filename)
-
-print(f'The number of protein records in "{data_filename}" is {len(prots)}')
 
 def extract_info(record):
     """Reads a UniProt text record and returns a dict with extrated information.
@@ -1540,7 +1275,6 @@ def extract_info(record):
 
 all_prots = [extract_info(p) for p in prots]
 
-
 PTM_counts = {}
 for p in all_prots:
     PTMs = p['PTMs']
@@ -1564,80 +1298,29 @@ def second(pair):
 
 ordered_PTM_counts = sorted(list_PTM_counts, key=second, reverse=True)
 
+# Output of PTM information
+
+print(f'The number of protein records in "{data_filename}" is {len(prots)}')
+
 for PTMtype, count in ordered_PTM_counts:
     print(PTMtype, count)
+
+
+# Bar plot of PTM counts
 
 from matplotlib import pyplot as plt
 import seaborn as sns
 
-
 sns.set(style="darkgrid")
 f, ax = plt.subplots(figsize=(6,9))
 
-x = [t for t,c in ordered_PTM_counts if c > 10]
-y = [c for t,c in ordered_PTM_counts if c > 10]
+types = [t for t,c in ordered_PTM_counts if c > 10]
+counts = [c for t,c in ordered_PTM_counts if c > 10]
 
-bp = sns.barplot(y, x, orient='h', log=True, palette='tab10')
+bp = sns.barplot(y=types, x=counts, orient='h', log=True, palette='tab10')
 plt.show()
 
 ```
-</div>
-
-```
-The number of protein records in "uniprot_scerevisiae.txt" is 6049
-Phosphoserine 5170
-Phosphothreonine 1027
-N-acetylserine 325
-N-acetylmethionine 106
-Phosphotyrosine 55
-N6-(pyridoxal phosphate)lysine 46
-N-acetylalanine 37
-N6-acetyllysine 32
-Asymmetric dimethylarginine 26
-Cysteine methyl ester 23
-N6-methyllysine 22
-N6,N6,N6-trimethyllysine 17
-Omega-N-methylarginine 15
-N-acetylthreonine 12
-N6-succinyllysine 11
-N6,N6-dimethyllysine 6
-N6-butyryllysine 5
-N6-biotinyllysine 5
-N6-carboxylysine 4
-Phosphohistidine 4
-N5-methylglutamine 4
-N,N-dimethylproline 4
-N6-lipoyllysine 4
-O-(pantetheine 4'-phosphoryl)serine 3
-4-aspartylphosphate 3
-Lysine derivative 3
-Pyruvic acid (Ser) 3
-S-glutathionyl cysteine 3
-Hypusine 2
-Tele-8alpha-FAD histidine 2
-N6-malonyllysine 2
-N5-methylarginine 2
-N6-propionyllysine 2
-Leucine methyl ester 2
-3,4-dihydroxyproline 2
-N-acetylvaline 2
-N-formylmethionine 1
-Pros-8alpha-FAD histidine 1
-2,3-didehydroalanine (Cys) 1
-N6-glutaryllysine 1
-Diphthamide 1
-Pros-methylhistidine 1
-Cysteine sulfinic acid (-SO2H) 1
-S-(dipyrrolylmethanemethyl)cysteine 1
-N,N,N-trimethylglycine 1
-Lysine methyl ester 1
-Dimethylated arginine 1
-Thiazolidine linkage to a ring-opened DNA abasic 1
-1-thioglycine 1
-S-methylcysteine 1
-```
-
-![](images/ptm_counts.png)
 
 
 

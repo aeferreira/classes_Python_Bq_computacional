@@ -1,3 +1,18 @@
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.10.3
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
+
 # Funções e módulos
 
 ## Introdução
@@ -11,7 +26,11 @@ mas mostrada no "sentido da transcrição", isto é, a sequência complementar p
 
 Este programa é realmente uma pequena extensão do que já foi visto anteriormente.
 
-``` python3 linenums="1"
+```{code-cell} ipython3
+---
+lineno-start: 1
+emphasize-lines: 17, 18
+---
 # sequência de uma cadeia (string)
 seq = "AGCTGGATCCTGAACGCATAGACTAGCATGGGACTAAAGGTCCATTACTGA"
 
@@ -42,13 +61,6 @@ print('Complemento reverso')
 print("5'-" + chain_comp_rev + "-3'")
 ```
 
-```
-5'-AGC-TGG-ATC-CTG-AAC-GCA-TAG-ACT-AGC-ATG-GGA-CTA-AAG-GTC-CAT-TAC-TGA-3'
-3'-TCG-ACC-TAG-GAC-TTG-CGT-ATC-TGA-TCG-TAC-CCT-GAT-TTC-CAG-GTA-ATG-ACT-5'
-Complemento reverso
-5'-TCA-GTA-ATG-GAC-CTT-TAG-TCC-CAT-GCT-AGT-CTA-TGC-GTT-CAG-GAT-CCA-GCT-3'
-```
-
 A parte do programa nas linhas 17 e 18
 
     seq_cods = [seq[i:i+3] for i in range(0, len(seq), 3)]
@@ -71,8 +83,15 @@ Não seria uma função de aplicação muito genérica, uma vez que só inetress
 que trabalham com sequências biológicas. No entanto, seria altamente conveniente se existisse uma função
 chamada, por exemplo, `seqcods()`, que pudesse ser usada desta maneira:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
+:tags: ["remove-cell"]
+def seqcods(x):
+    cods = [x[i:i+3] for i in range(0,len(x),3)]
+    comhifen = '-'.join(cods)
+    return comhifen
+```
+
+```{code-cell} ipython3
 # .....
 
 # finalmente, mostrar as 3 sequências com os codões separados
@@ -88,7 +107,7 @@ chain_comp_rev = seqcods(comp_rev)
 print('Complemento reverso')
 print("5'-" + chain_comp_rev + "-3'")
 ```
-</div>
+
 
 Isto é, se esta função existisse, então ela seria aplicada a diferentes sequências mas a
 tarefa que ela iria realizar era sempre a mesma: 1 - agrupar 3 letras consecutivas numa lista e
@@ -117,8 +136,8 @@ Anteriormente já vimos várias funções em ação. Usámos funções que:
 - ficam acessíveis por importação de um módulo
 - estão *associadas* a objetos e usam-se da forma `objeto.função()`.
 
-<div class="python_box">
-``` python3
+
+```{code-cell} ipython3
 a = 'Uma pequena string'
 
 # len() e int() são funções sempre disponíveis
@@ -139,7 +158,7 @@ a.append(33)
 import math
 l = math.log(2.0)
 ```
-</div>
+
 
 ## Definição de funções (`def`)
 
@@ -162,14 +181,12 @@ objetos genéricos (`x`):
 
 Vejamos, finalmente, como criar a função `seqcods()`:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def seqcods(x):
     cods = [x[i:i+3] for i in range(0,len(x),3)]
     comhifen = '-'.join(cods)
     return comhifen
 ```
-</div>
 
 ## Anatomia de uma função
 
@@ -184,12 +201,15 @@ um número, não podem ter espaços e `.`
 Ainda na mesma linha segue-se uma indicação dos argumentos da função entre `()`. Podem ser zero, um
 ou vários argumentos. Mas, muito importante
 
-!!! important "Importante"
-    Os nomes usados nesta lista de argumentos são genéricos, tal como
-    no conceito matemático de função. Não são nenhuma referência a objetos concretos existentes no programa.
+```{admonition} Importante
+:class: important
+Os nomes usados nesta lista de argumentos são genéricos, tal como
+no conceito matemático de função. Não são nenhuma referência a objetos concretos existentes no programa.
 
-    Mas, **quando a função for usada**, estes nomes irão ser substituídos por
-    valores concretos, como iremos ver a seguir.
+Mas, **quando a função for usada**, estes nomes irão ser substituídos por
+valores concretos, como iremos ver a seguir.
+
+```
 
 Segue-se a definição daquilo que a função executa quando for chamada, a tarefa da função propriamente dita. Esta função pode *atuar* sobre os seus argumentos, executando comandos arbitrariamente complicados. A liberdade em relação ao que podemos incluír numa função é quase total. Atribuições de nome, comandos `for`, comandos `if...else`, outras funções, são exemplos do que pode ser incluído
 na definição de uma função.
@@ -220,8 +240,7 @@ A definição de uma função (`def`) não executa nada imediatamente.
 
 É necessário *chamar* (ou "*invocar*") a função para esta ser usada:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def seqcods(x):
     cods = [x[i:i+3] for i in range(0,len(x),3)]
     comhifen = '-'.join(cods)
@@ -235,12 +254,7 @@ s = seqcods(a)
 
 print(s)
 ```
-</div>
 
-```
-ATGGTTACCTAGTATTTAGGATTA
-ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
-```
 
 Chamar uma função é simples: escrevemos o nome da função, seguida do valôr/objeto/expressão ao qual queremos aplicar a função entre `()`.
 
@@ -248,15 +262,17 @@ Havendo um resultado, é muito comum atribuír um nome ao resultado:
 
     s = seqcods(seq)
 
-!!! note "Nota"
-    O comando `return` pode "devolver" uma expressão complicada
-    (não só o nome de um objeto)
+```{admonition} Nota
+:class: note
+O comando `return` pode "devolver" uma expressão complicada
+(não só o nome de um objeto)
+
+```
 
 Poderíamos condensar toda a tarefa da função `seqcods()` numa expressão à frente do comando `return`.
 Uma outra versão seria:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def seqcods(x):
     return '-'.join( [x[i:i+3] for i in range(0,len(x),3)])
 
@@ -268,12 +284,7 @@ s = seqcods(a)
 
 print(s)
 ```
-</div>
 
-```
-ATGGTTACCTAGTATTTAGGATTA
-ATG-GTT-ACC-TAG-TAT-TTA-GGA-TTA
-```
 
 **Em resumo:**
 
@@ -288,13 +299,16 @@ qualquer ponto do programa, da forma seguinte:
 
 Na realidade há uma regra:
 
-!!! note "Nota"
-    O uso de uma função só pode figurar no texto de um programa **após**
-    o programa "passar" pelo comando `def` durante a sua execução.
+```{admonition} Nota
+:class: note
+O uso de uma função só pode figurar no texto de um programa **após**
+o programa "passar" pelo comando `def` durante a sua execução.
 
-    A funções tendem a ser criadas qause no início de um programa. Mas
-    a prática corrente é incluí-las em módulos que possam ser importados
-    pelo programa, como iremos ver a seguir.
+A funções tendem a ser criadas qause no início de um programa. Mas
+a prática corrente é incluí-las em módulos que possam ser importados
+pelo programa, como iremos ver a seguir.
+
+```
 
 ## Entrada e saída de valores
 
@@ -312,8 +326,7 @@ de definir, seria algo como:
 
 Exemplo: função `factorial()`:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def factorial(n):
     res = 1
     for k in range(2,n+1):
@@ -322,11 +335,7 @@ def factorial(n):
 
 print(factorial(200))
 ```
-</div>
 
-```
-788657867364790503552363213932185062295135977687173263294742533244359449963403342920304284011984623904177212138919638830257642790242637105061926624952829931113462857270763317237396988943922445621451664240254033291864131227428294853277524242407573903240321257405579568660226031904170324062351700858796178922222789623703897374720000000000000000000000000000000000000000000000000
-```
 
 ## Vários tipos de funções
 
@@ -334,8 +343,7 @@ As funções podem ser "atípicas" quanto ao número de argumentos e resultados.
 
 Vejamos a variedade possível, usando funções já conhecidas:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 a = 'Uma pequena string'
 
 # 1 argumento, 1 resultado
@@ -347,16 +355,9 @@ print( a.count('a') )
 # 0 arg, 1 res, associada a um objeto (string a)
 print( a.upper() )
 ```
-</div>
 
-```
-18
-2
-UMA PEQUENA STRING
-```
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 # 1 arg, 0 res, associada a um objeto (lista b)
 # modifica o objeto (a lista b)
 b = [12, 24]
@@ -364,12 +365,7 @@ b = [12, 24]
 print( b.append(36) )
 print(b)
 ```
-</div>
 
-```
-None
-[12, 24, 36]
-```
 
 Portanto, podemos perfeitamente ter funções **sem argumentos**. Neste caso a função
 é invocada com `()` vazios.
@@ -384,8 +380,7 @@ Além da função `.append()`, recordar que **as listas** têm outras duas
 funções deste tipo, que modificam a lista sem produzir nenhum resultado
 (o resultado é a constante `None`): `.reverse()` e `.sort()`.
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 b = [12, 24, 36]
 print(b)
 
@@ -395,13 +390,7 @@ print(b)
 b.sort()
 print(b)
 ```
-</div>
 
-```
-[12, 24, 36]
-[36, 24, 12]
-[12, 24, 36]
-```
 
 As funções podem ter mais de um argumento (ou zero ou um).
 O número pode até ser variável, havendo argumentos que são opcionais.
@@ -419,8 +408,7 @@ Tudo depende do que estiver à frente do comando `return`.
 Por exemplo, a função `localtime()`do módulo `time` produz um
 objeto composto e vários elementos (que são necessários para definir um instante no tempo):
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 import math
 print( math.log(64, 2) )
 
@@ -428,25 +416,22 @@ import time
 x = time.localtime(time.time())
 print(x)
 ```
-</div>
 
-```
-6.0
-time.struct_time(tm_year=2018, tm_mon=4, tm_mday=8, tm_hour=18, tm_min=39, tm_sec=43, tm_wday=6, tm_yday=98, tm_isdst=1)
-```
 
 Vejamos como podemos escrever funções simples para executar algumas tarefas
 já vistas anteriormente.
 
-!!! example "Problema"
-    Eliminar valores de uma lista que pertençam a uma outra "lista negra"
+```{admonition} Problema
+:class: example
+Eliminar valores de uma lista que pertençam a uma outra "lista negra"
+
+```
 
 Escrevemos a função aceitando 2 argumentos: a lista a "limpar" e a lista "negra".
 
 Na função usamos uma lista em compreensão com `if` como vimos num capítulo anterior:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def elimin_black(uma_lista, black_list):
     res = [i for i in uma_lista if i not in black_list]
     return res
@@ -459,28 +444,23 @@ print(a)
 print ('\nA eliminar:', black)
 print(clean)
 ```
-</div>
+
+
+```{admonition} Problema
+:class: example
+Dado um **nome** de um ficheiro de texto, escrever uma função para
+ler o conteúdo do ficheiro, separar as linhas para uma lista, sem o
+`\n` no final, e excluir as linhas vazias.
 
 ```
-[1, 2, 4, 'um', 'dois', 3, 42, 'quatro']
 
-A eliminar: [1, 2, 'um', 'dois']
-[4, 3, 42, 'quatro']
-```
-
-!!! example "Problema"
-    Dado um **nome** de um ficheiro de texto, escrever uma função para
-    ler o conteúdo do ficheiro, separar as linhas para uma lista, sem o
-    `\n` no final, e excluir as linhas vazias.
-
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def ler_fich(nome):
     with open(nome) as a:
         tudo = a.read()
     linhas = []
     for linha in tudo.splitlines(): # o \n é retirado por splitlines()
-        if len(linha) > 0: só ficam as que não estão vazias
+        if len(linha) > 0: # só ficam as que não estão vazias
             linhas.append(linha)
     return linhas
 
@@ -489,22 +469,11 @@ linhas = ler_fich('gre3.txt')
 for linha in linhas:
     print(linha)
 ```
-</div>
 
-```
->sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
-MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR
-KAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVP
-FEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDL
-LRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTL
-FENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQEL
-KDISALNANIRFNDPWTWLDGKFPTFA
-```
 
 Outra versão, usando listas em compreensão:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def ler_fich(nome):
     with open(nome) as a:
         linhas = [linha for linha in a.read().splitlines() if len(linha) > 0]
@@ -515,23 +484,15 @@ linhas = ler_fich('gre3.txt')
 for linha in linhas:
     print(linha)
 ```
-</div>
+
+
+```{admonition} Problema
+:class: example
+Eliminar valores repetidos numa lista (criando uma lista nova)
 
 ```
->sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
-MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR
-KAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVP
-FEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDL
-LRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTL
-FENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQEL
-KDISALNANIRFNDPWTWLDGKFPTFA
-```
 
-!!! example "Problema"
-    Eliminar valores repetidos numa lista (criando uma lista nova)
-
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def elimin_reps(uma_lista):
     res = []
     for i in uma_lista:
@@ -545,17 +506,11 @@ print(uma_lista)
 clean = elimin_reps(uma_lista)
 print(clean)
 ```
-</div>
 
-```
-[1, 2, 4, 7, 7, 5, 8, 8, 9, 10]
-[1, 2, 4, 7, 5, 8, 9, 10]
-```
 
 Se as funções tiverem resultados é possível usá-las em composição de funções:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def elimin_reps(uma_lista):
     res = []
     for i in uma_lista:
@@ -571,18 +526,13 @@ black = [1, 2, 'um', 'dois']
 clean = elimin_reps(elimin_black(a, black))
 print(clean)
 ```
-</div>
 
-```
-[4, 3, 37, 42, 'quatro']
-```
 
 ## Âmbito dos nomes
 
 Vejamos um exemplo de uma função que mostra os seus argumentos com `print()`:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def recta(m, b, x):
     print('Para x =', x)
     print('com m =', m)
@@ -598,22 +548,15 @@ res = recta(m, b, x)
 
 print('Resultado:', res)
 ```
-</div>
 
-```
-Para x = 2.0
-com m = 3.0
-com b = 2.0
-Resultado: 8.0
-```
 
 Este programa corre sem problemas.
 
 Vejamos agora um exemplo com `print()`fora da função
 em que até procuramos mostrar os valores de `g1`e `g0`:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
+:tags: ["raises-exception"]
 def recta(m, b, x):
     g1 = m * x
     g0 = b
@@ -627,23 +570,7 @@ print('Para x =', x, 'm =', m, 'b =', b)
 print('m*x =', g1, 'b =', g0)
 print('Resultado:', res)
 ```
-</div>
 
-```
-Para x = 2.0 m = 2.0 b = 3.0
----------------------------------------------------------------------------
-
-NameError  Traceback (most recent call last):
-
-<ipython-input-17-f26c93717bbe> in <module>()
-        7 
-        8 print('Para x =', x, 'm =', m, 'b =', b)
-----> 9 print('m*x =', g1, 'b =', g0)
-        10 print('Resultado:', res)
-
-
-NameError: name 'g1' is not defined
-```
 
 O que se passou aqui?
 O programa dá um erro na linha
@@ -662,8 +589,8 @@ da função. Daí o erro durante a execução.
 
 O mesmo acontece aos próprios nomes locais dos **argumentos** da função:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
+:tags: ["raises-exception"]
 def recta(m, b, x):
     g1 = m * x
     g0 = b
@@ -676,20 +603,12 @@ res = recta(q, r, p)
 print('Para x =', x, 'm =', m, 'b =', b)
 print('Resultado:', res)
 ```
-</div>
 
-```
-Traceback (most recent call last):
-  File "c:/Users/a3nf/Desktop/py_book/docs/exp2.py", line 10, in <module>
-    print('Para x =', x, 'm =', m, 'b =', b)
-NameError: name 'x' is not defined
-```
 
 Para tornar bem claro que os nomes dentro da função podem ter valores
 diferentes dos nomes fora da função:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def recta(m, b, x):
     print('Dentro da função --------')
     print('m =', m, 'b =', b, 'x =', x)
@@ -708,17 +627,7 @@ print('Fora da função -----')
 print('m =', m, 'b =', b, 'x =', x)
 print('\nResultado:', res)
 ```
-</div>
 
-```
-Dentro da função --------
-m = 5 b = 5 x = 16
--------------------------
-Fora da função -----
-m = 2 b = 2 x = 4
-
-Resultado: 85
-```
 
 Este programa corre sem problemas!
 
@@ -772,8 +681,7 @@ os valores que os argumentos têm cada vez que a função é usada.
 A função é usada de várias maneiras diferentes e torna-se óbvio que os parâmetros são
 opcionais e qual o papel dos valores atribuídos.
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def mix(a=1, b=0):
     c = a + b
     print('a =', a, 'b =', b, '--> return =', c)
@@ -787,14 +695,7 @@ x = mix(a=2, b=3) # dando valôr a e b
 
 x = mix(2,3) # dando valôr aos dois sem usar os nomes
 ```
-</div>
 
-```
-a = 1 b = 0 --> return = 1
-a = 1 b = 3 --> return = 4
-a = 2 b = 3 --> return = 5
-a = 2 b = 3 --> return = 5
-```
 
 Os argumentos opcionais têm muito interesse e são muito usados.
 
@@ -808,8 +709,7 @@ a evolução do cálculo do fatorial.
 
 Usnado primeiro a função com o argumento  `trace` omitido, isto é, igual a `False`:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def factorial(n, trace=False):
     p = 1
     for i in range(2,n+1):
@@ -821,16 +721,11 @@ def factorial(n, trace=False):
 f20 = factorial(20) # argumento omitido
 print('O factorial de 20 é', f20)
 ```
-</div>
 
-```
-O factorial de 20 é 2432902008176640000
-```
 
 Agora usando com `trace=True`:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def factorial(n, trace=False):
     p = 1
     for i in range(2,n+1):
@@ -842,33 +737,8 @@ def factorial(n, trace=False):
 f20 = factorial(20, trace=True) # trace = True
 print('O factorial de 20 é', f20)
 ```
-</div>
 
-```
-2 2
-3 6
-4 24
-5 120
-6 720
-7 5040
-8 40320
-9 362880
-10 3628800
-11 39916800
-12 479001600
-13 6227020800
-14 87178291200
-15 1307674368000
-16 20922789888000
-17 355687428096000
-18 6402373705728000
-19 121645100408832000
-20 2432902008176640000
-O factorial de 20 é 2432902008176640000
-```
-
-Módulos e `import`
-------------------
+## Módulos e `import`
 
 Como vimos, muitas funções estão imediatamente disponíveis quando
 começamos a escrever um programa.
@@ -917,8 +787,7 @@ Vamos supor que  é útil ter uma função que lê ficheiros com
 um sequência no formato FASTA e desdobra o conteúdo no cabeçalho (`header`)
 e na sequência, na forma de duas *strings*.
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 def readFASTA(filename):
     """This function reads a FASTA format file and
     returns a pair of strings with the header and the sequence
@@ -941,15 +810,7 @@ h, s = readFASTA("gre3.txt")
 print(f'Header:\n{h}')
 print(f'\nSequence:\n{s}')
 ```
-</div>
 
-```
-Header:
->sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
-
-Sequence:
-MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
-```
 
 Uma pequena explicação sobre dois pormenores:
 
@@ -975,8 +836,7 @@ programa `.py` novo, como usar a função `readFASTA()` que se encontra no módu
 
 Através do comando `import`:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 import biosequences
 
 h, s = biosequences.readFASTA("gre3.txt")
@@ -984,15 +844,7 @@ h, s = biosequences.readFASTA("gre3.txt")
 print(f'Header:\n{h}')
 print(f'\nSequence:\n{s}')
 ```
-</div>
 
-```
-Header:
->sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
-
-Sequence:
-MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
-```
 
 Há outras duas maneiras de utilizar o comando `import`.
 
@@ -1001,45 +853,27 @@ A primeira é indicar apenas as funções que estamos interessados em utilizar.
 Neste caso, depois do `import` a função
 fica disponível como `readFASTA()` e não é necessário usar `biosequences.readFASTA()`:
 
-<div class="python_box"> 
-``` python3
+```{code-cell} ipython3
 from biosequences import readFASTA
 
 h, s = readFASTA("gre3.txt")
 
 print(f'Header:\n{h}\n\nSequence:\n{s}')
 ```
-</div>
 
-```
-Header:
->sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
-
-Sequence:
-MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
-```
 
 A outra maneira é fazer uma importação em tudo semelhante à anterior
 mas indicando com `*` que queremos importar todas as funções e outros objetos
 do módulo:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 from biosequences import *
 
 h, s = readFASTA("gre3.txt")
 
 print(f'Header:\n{h}\n\nSequence:\n{s}')
 ```
-</div>
 
-```
-Header:
->sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
-
-Sequence:
-MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
-```
 
 Esta última maneira é desaconselhada: um módulo pode conter centenas de
 funções e, por isso, podem ser importados centenas de novos *nomes* para
@@ -1052,9 +886,8 @@ A pensar em algumas operações que poderiam ser realizadas com sequências
 biológicas, o ficheiro **biosequences.py** poderia ser **ampliado** com
 as seguintes atribuições:
 
-<div class="python_box">
-``` python3
-.....
+```{code-block} ipython3
+# .....
 
 basesDNA = 'ATGC'
 basesRNA = 'AUGC'
@@ -1080,7 +913,6 @@ gencode = {
         'GGG': 'G', 'TAA': 'STOP', 'TAG': 'STOP', 'TGA': 'STOP'}
 
 ```
-</div>
 
 E ficaríamos com algumas *strings* e dicionários
 úteis que poderíamos usar no contexto da construção de um programa
@@ -1088,14 +920,16 @@ de processa sequências de macromoléculas biológicas.
 
 Uma pequena aplicação do código genético (no dicionário `genecode`):
 
-!!! example "Problema"
-    Criar (e experimentar para ver se está bem) uma função que
-    traduz uma sequência de uma cadeia de DNA para a sequência da proteína correspondente
+```{admonition} Problema
+:class: example
+Criar (e experimentar para ver se está bem) uma função que
+traduz uma sequência de uma cadeia de DNA para a sequência da proteína correspondente
+
+```
 
 Sabemos que o módulo `biosequences` tem um dicionário chamado `gencode`.
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 from biosequences import gencode
 
 def translation(seq):
@@ -1117,12 +951,7 @@ seq = 'AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA'
 print(seq)
 print(translation(seq))
 ```
-</div>
 
-```
-AGCTGGATCCTGAACGATGCATAAGCATAGCCATAGACTAGCATGGGACTAAAGGTCCATTACTGA
-SWILNDA
-```
 
 Claro que a função `translation()` seria uma boa adição ao nosso módulo
 `biosequences`...
@@ -1134,20 +963,11 @@ biológicas.
 
 Finalmente, se usarmos a primeira forma do comando `import` (`import biosequences`), é possível **mudar o nome do módulo** (para uma forma mais abreviada), um *alias*, da seguinte forma:
 
-<div class="python_box">
-``` python3
+```{code-cell} ipython3
 import biosequences as bs
 
 h, s = bs.readFASTA("gre3.txt")
 
 print(f'Header:\n{h}\n\nSequence:\n{s}')
 ```
-</div>
 
-```
-Header:
->sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
-
-Sequence:
-MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
-```
