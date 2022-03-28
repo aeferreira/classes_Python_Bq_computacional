@@ -8,7 +8,6 @@ parts:
     numbered: true
     chapters:
     - file: basics
-    - file: exercises_1
     - file: collections_iterations
     - file: more_on_lists_dicts
     - file: strings
