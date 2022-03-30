@@ -33,33 +33,16 @@ bases = 'AUCG' # string
 print(f'Existem {n_aminoácidos} e as bases do mRNA são {bases}')
 ```
 
-## Objetos booleanos
-
-No Python existem mais dois objetos que representam os conceitos de *verdadeiro* e *falso*.
-São eles `True` e `False` (começam por maiúscula).
-
-Os resultados das condições, que muitas vezes usamos em `if...elif...else` são estes objetos.
-Podemos obtê-los diretamente fazendo `print()` de condições lógicas, ou mesmo usando-os explicitamente:
-
-```{code-cell} python3
-a = 3.14
-print(a > 2)
-print(a > 5)
-print(a > 2 and a < 5)
-print(True and False)
-print(True or False)
-print(not True)
-```
-
 ## Coleções
 
 Este capítulo diz respeito a objetos designados genericamente por
 "coleções".
 
-```{admonition} "Definição"
+```{admonition} Definição
 :class: info
 Coleções são objetos que contêm mais do que um valor.
 ```
+
 As principais coleções usadas em Python são:
 
 - **listas**
@@ -157,8 +140,8 @@ print(dias_abril)
 
 Nota: os primeiros `[]` estão a definir a lista e os segundos `[]` a indexar a lista, obtendo o elemento que está na posição 3.
 
-```{admonition} "As posições variam em que intervalo?"
-:class: question
+```{admonition} As posições variam em que intervalo?
+:class: hint
 As posições **começam de zero** e vão até $n-1$ em que $n$ é o número de elementos da lista.
 
 São sempre números inteiros.
@@ -166,7 +149,7 @@ São sempre números inteiros.
 
 ### Dicionários
 
-```{admonition} "Definição"
+```{admonition} Definição
 :class: info
 Dicionários são **associações** entre _chaves_ e _valores_.
 ```
@@ -219,7 +202,7 @@ print('Número atómico do potássio é', n_K)
 
 Vimos as *strings* no capítulo anterior. Porquê introduzir aqui, num capítulo dedicado às coleções, as *strings* de novo?
 
-```{admonition} "Definição"
+```{admonition} Definição
 :class: info
 As _strings_ podem ser entendidas como uma **coleções de caracteres** (letras, símbolos, pontuação, espaços, números)
 ```
@@ -386,7 +369,7 @@ Em Python é usado o comado `for` para esse efeito.
 É melhor começar com um exemplo:
 
 ```{admonition} Problema
-:class: question
+:class: hint
 Mostrar uma tabela de raízes quadradas de 1 a 10
 ```
 
@@ -416,9 +399,10 @@ Vamos ao pormenor:
 
 Os comandos que são repetidos são aqueles que estão nas linhas a seguir à linha do comando `for`
 e "alinhadas" um pouco mais para o interior do texto do programa. No exemplo, essas linhas são
-
+:::{code-block} python3
     root = n**0.5
     print(n, root)
+:::
 
 Esse alinhamento interior (*indentação*), que, por convenção, são 4 espaços, define as linhas que contêm os
 comando a repetir. Podemos por quaisquer comandos válidos nessas linhas.
@@ -429,14 +413,14 @@ blocos `if...elif...else`.
 
 As linhas a repetir fazem um cálculo de `root`, como a raíz quadrada de `n` (e print() de `n`e `root`).
 
-O que é o `n`? De onde apareceu? Qual o seu valor?
+O que é o `n`? De onde apareceu? Qual o seu valôr?
 
 O comando `for` define o `n`: `n`é o nome que é dado a **cada elemento** da lista `nums`, um a um.
 
 **Cada vez que os comandos são repetidos, `n` toma um valor diferente**: da primeira vez é igual a 1, da segunda vez é igual a 2 e assim sucessivamente. `n` toma todos os valores da lista `nums`!
 
 Porquê a lista `nums`? A coleção à qual vão ser aplicados os comandos a repetir é aquela que estiver à frente
-de `in` e antes de `:` (naão esquecer os `:`, eles são obrigatórios, tal como o `for` e o `in`)
+de `in` e antes de `:` (não esquecer os `:`, eles são obrigatórios, tal como o `for` e o `in`)
 
 Recapitulando:
 
@@ -449,7 +433,7 @@ Em linguagem mais "humana" o comando `for` indica o seguinte procedimento:
 Vamos ver alguns exemplos da utilização de um comando `for`.
 
 ```{admonition} Problema
-:class: question
+:class: hint
 Procurar um conjunto de números numa lista maior de números
 ```
 
@@ -467,7 +451,7 @@ for n in a_procurar:
 Usando um exemplo do capítulo anterior,
 
 ```{admonition} Problema
-:class: question
+:class: hint
 Indicar quais os anos bissextos dentro de uma lista
 ```
 
@@ -497,7 +481,7 @@ for b in seq:
 Um outro exemplo de `for` com uma *string*:
 
 ```{admonition} Problema
-:class: question
+:class: hint
 Dada a sequência de uma proteína, indicar a presença de lisinas (K)
 ```
 
@@ -514,8 +498,8 @@ for aa in seq:
 
 Vamos agora supor que temos uma pequena extensão deste problema:
 
-```{admonition} "Problema"
-:class: question
+```{admonition} Problema
+:class: hint
 Dada a sequência de uma proteína, indicar a presença de lisinas (K) e leucinas (L)
 ```
 
@@ -577,11 +561,10 @@ for e in grupo1:
     print(e, grupo1[e])
 ```
 
-## "Acumulações"
-
+## Acumulações
 
 ```{admonition} Problema
-:class: question
+:class: hint
 Somar todos os numeros de 1 a 10
 ```
 
@@ -625,10 +608,10 @@ for i in nums:
 print(f'a soma é {s}')
 ```
 
-## `range()`: gerador de números inteiros
+## `range()`
 
-```{admonition} "Problema"
-:class: question
+```{admonition} Problema
+:class: hint
 Somar todos os números de 1 a 1000
 ```
 
@@ -668,8 +651,8 @@ Não esquecer que o valor do `fim` **é excluído**
 ```
 
 Para melhor compreender estas regras, podemos mostrar os
-resultados da função `range()`não num ciclo `for`, mas transformando
-os resultados do `range()`numa lista.
+resultados da função `range()` não num ciclo `for`, mas transformando
+os resultados do `range()` numa lista.
 
 Como fazê-lo? O Python tem uma outra função, `list()`, que tenta transformar
 o seu argumento numa lista, se possível.
@@ -710,7 +693,7 @@ print(nums)
 ```
 
 ```{admonition} Problema
-:class: question
+:class: hint
 Calcular o factorial de 1000
 ```
 
@@ -732,7 +715,7 @@ lado, `fact` deve multiplicar por cada valor novo de `i`, com `fact = fact * i`.
 Agora um problema análogo, mas envolvendo *strings*:
 
 ```{admonition} Problema
-:class: question
+:class: hint
 Obter a sequência da cadeia complementar de uma sequência de DNA
 ```
 
@@ -810,7 +793,7 @@ print('complementar:', seqcomp)
 Nesta versão, vamos adicionando a `seqcomp` aquilo que obtemos indexando o dicionário com
 cada uma das bases `b` da sequência. Ao indexarmos o dicionário, usando essa base `b` como chave (que é apenas uma letra), obtemos o símbolo da base complementar, como valor: `seqcomp = seqcomp + complementares[b]`.
 
-Isto começa a complicar um pouco. Repare que, neste exemplo, misturamos:
+Repare que, neste exemplo, misturamos:
 
 - a iteração de *strings*, letra a letra
 - a indexação (com `[]`) de um dicionário, que funciona como tabela para a transformação base &rarr; base complementar.
@@ -827,13 +810,13 @@ seq = 'ATGGTCAAACTT'
 complementares = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
 
 for b in seq:
-    print(b, '-', complementares[b])
+    print(f'{b}-{complementares[b]}')
 ```
 
 Agora um problema mais elaborado:
 
 ```{admonition} Problema
-:class: question
+:class: hint
 Converter uma sequência com códigos de uma letra de aminoácidos para
 códigos de 3 letras, usando um dicionário para a conversão.
 ```
@@ -855,7 +838,7 @@ for aa in seq1:
 print(seq1, 'é o mesmo que ', seq3)
 ```
 
-## Somas e fatoriais: a maneira simples
+### Somas e fatoriais: a maneira simples
 
 Os exemplos de acumulações numéricas, somas e fatorial foram resolvidos com acumuladores de
 forma a mostrar o conceito subjacente a todas as acumulações.
@@ -872,7 +855,7 @@ print('a soma dos números de 1 a 1000 é', s)
 
 Para fatoriais existe a função `factorial()`, mas pertence ao módulo `math`:
 
-```{code-cell} python3
+```{code-cell} ipython3
 :tags: [output_scroll]
 import math
 f = math.factorial(100)
@@ -880,14 +863,14 @@ f = math.factorial(100)
 print('100! =', f)
 ```
 
-## Função `enumerate()`
+## `enumerate()`
 
 Voltando agora ao problema da pesquisa de certos aminoácidos numa sequência,
 poderá ser útil indicar não só a presença de um aminoácido mas também
 a posição em que eles são encontrados:
 
-```{admonition} "Problema"
-:class: question
+```{admonition} Problema
+:class: hint
 Dada a sequência de uma proteína, indicar a presença de 
 lisinas (K) e leucinas (L), construíndo uma tabela com posições e
 códigos K ou L
@@ -916,7 +899,7 @@ Python tem uma função para combinar os dois "aos pares", a função `enumerate
 
 Vejamos o que resulta da aplicação da função `enumerate()` a uma *string*:
 
-```{code-cell} python3
+```{code-cell} ipython3
 :tags: [output_scroll]
 seq = 'ADKHLILTAVGWFHVAFKAGAHKWE'
 
@@ -931,7 +914,7 @@ O mais interessante é que, no comando `for` com a função
 `enumerate()`podemos usar um **par de nomes** para nos referirmos
 simultaneamente à posição e ao elemento. Isto é chamado *desdobramento*.
 
-```{code-cell} python3
+```{code-cell} ipython3
 :tags: [output_scroll]
 seq = 'ADKHLILTAVGWFHVAFKAGAHKWE'
 
@@ -953,6 +936,7 @@ leucinas e argininas pode ser escrito de uma forma mais compacta, sem
 usar explicitamente um "contador da posição":
 
 ```{code-cell} ipython3
+:tags: [output_scroll]
 seq = 'ADKHLILTAVGWFHVAFKAGAHKWE'
 
 for i, aa in enumerate(seq):
@@ -975,13 +959,12 @@ percorremos todos os elementos da coleção num comando `for` mais
 O melhor será ilustrar com um exemplo clássico, com três níveis de
 comandos `for`:
 
-```{admonition} "Problema"
-:class: question
+```{admonition} Problema
+:class: hint
 Gerar os 64 codões do código genético
 ```
 
-```{code-cell} python3
-:tags: [output_scroll]
+```{code-cell} ipython3
 bases = 'AUGC'
 
 for b1 in bases:
@@ -1000,9 +983,12 @@ iterada se passarmos por um comando `break`.
 Tem utilidade desde que seja utilizado com um `if` para testar uma
 condição.
 
-**Problema: obter um esquema das correspondências entre uma sequência de
+```{admonition} Problema
+:class: hint
+Obter um esquema das correspondências entre uma sequência de
 DNA e a sequência complementar, mas parar assim que for encontrado um
-par C - G.**
+par C - G.
+```
 
 ```{code-cell} ipython3
 seq = 'ATGGTTAAACTTGTTGACTGCAAATGCGTACGT'
@@ -1017,7 +1003,6 @@ for b in seq:
 
 ## Comando `continue`
 
-
 Muito semelhante ao comando `break` é o comando `continue`.
 
 Este não força uma *saída prematura* de uma iteração: o seu efeito é
@@ -1027,8 +1012,11 @@ seguinte da coleção.
 
 Vejamos com um exemplo:
 
-**Problema: obter um esquema das correspondências entre uma sequência de
-DNA e a sequência complementar. Saltar todos as ligações A - T.**
+```{admonition} Problema
+:class: hint
+Obter um esquema das correspondências entre uma sequência de
+DNA e a sequência complementar. Saltar todos as ligações A - T.
+```
 
 ```{code-cell} ipython3
 seq = 'ATGGTTAAACTTGTTGACTGCAAATGCGTACGT'

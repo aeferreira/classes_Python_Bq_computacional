@@ -30,3 +30,8 @@ parts:
     - file: sm_linreg
     - file: sm_sympy
     - file: sm_algorithms
+
+  - caption: Apendices
+    numbered: false
+    chapters:
+    - file: data_software

@@ -29,9 +29,10 @@ Quando "corremos" ou "executamos" um programa essas ordens são executadas (a gr
 
 Os comandos são executados um a um à medida que aparecem no texto ("de cima para baixo"), embora esta ordem possa ser alterada por indicações especiais capazes de **repetir comandos** ou executar **comandos em alternativa**, como veremos mais tarde.
 
+(objects_names)=
 ## Objetos e nomes
 
-### Objetos fundamentais: números e *strings*
+### Objetos fundamentais
 
 Para as primeiras impressões sobre a linguagem Python começaremos não por escrever
 e executar pequenos programas mas por usar um modo interativo chamado a *Python Shell*.
@@ -204,14 +205,63 @@ TypeError: unsupported operand type(s) for /: 'int' and 'str'
 >>>
 ```
 
+#### Objetos booleanos
+
+No Python existem dois objetos que representam os conceitos de *verdadeiro* e *falso*.
+São eles `True` e `False` (começam por maiúscula).
+
+Estes objetos surgem como resul11tado de expressões lógicas, isto é, cujo resultado pode ser considerado falso ou verdadeiro.
+
+```{code-block} pycon
+>>> 5 > 5
+False
+>>> 7 > 5
+True
+>>> 2 < 1
+False
+>>> 4.0 == 16**0.5
+True
+>>> 5 != 5
+False
+```
+
+Os símbolos `==` e `!=` são pouco usuais: eles significam **igual** e **diferente** em comparações lógicas, respetivamente.
+
+O conjunto dos operadores de comparação é o seguinte:
+
+|operador |significado|
+|---------|-----------|
+|`>`      | maior     |
+|`<`      | menor     |
+|`>=`     | maior ou igual|
+|`<=`     | menor ou igual|
+|`==`     | igual a (Nota: **são dois sinais de igual consecutivos**)|
+|`!=`     | diferente de|
+
+E podemos usar as seguintes operações lógicas:
+
+|operador |significado|
+|---------|-----------|
+|`and`    | conjunção (*e*)      |
+|`or`     | disjunção (*ou*)     |
+|`not`    | negação   (*não*)    |
+
+
+Por exemplo:
+
+```{code-block} pycon
+>>> (5 >= 5) and not (7 > 10)
+True
+```
+
+
 #### Números complexos
 
 Finalmente, o Python permite usar números complexos.
 
 Usando a letra `j` no fim de um número indicamos a parte imaginária de um número complexo:
 
-```{code-cell} pycon
-:tags: [remove-output]
+```{code-block} pycon
 >>> 1j * 1j
 (-1+0j)
 >>> 2 + 3j + 4 + 7j
@@ -221,9 +271,26 @@ Usando a letra `j` no fim de um número indicamos a parte imaginária de um núm
 >>>
 ```
 
+#### Função `type()`
+
+Por vezes é necessário saber qual o tipo de um objeto ou do resultado de uma expressão.
+
+A função `type()` dá como resultado o tipo do objeto ao qual é aplicada:
+
+:::{code-block} pycon
+>>> type(36)
+<class 'int'>
+>>> type(3.14)
+<class 'float'>
+>>> type("Ha " * 5)
+<class 'str'>
+>>> type(5 >= 5)
+<class 'bool'>
+:::
+
 ### Atribuição de nomes a "objetos"
 
-```{admonition} "Nota"
+```{admonition} Nota
 :class: note
 Este é um dos mais fundamentais comandos em programação!
 ```
@@ -234,8 +301,7 @@ A forma geral é
 
 Vejamos um exemplo:
 
-```{code-cell} pycon
-:tags: [remove-output]
+```{code-block} pycon
 >>> a = 4
 >>> b = 3.2
 >>> c = a + b
@@ -263,9 +329,7 @@ usados no cálculo de uma expressão `a + b` ao qual foi dado o nome `c`.
 
 Um exemplo com *strings*:
 
-
-```{code-cell} pycon
-:tags: [remove-output]
+```{code-block} pycon
 >>> hoje = "Hoje é quinta feira"
 >>> mês = "Março"
 >>> tudo = hoje + ' e estamos em ' + mês
@@ -292,16 +356,62 @@ As regras são:
     com estas palavras "reservadas".
 4.  Não são permitidos espaços ou símbolos como `!, @, #, %` nos nomes.
 
-### Programas e `print()`
+:::{warning}
+A partir deste ponto todos os exemplos serão baseados em programas e não numa *Python shell*.
+
+Aconselha-se a familiarização com uma aplicação de edição e execução de programas,
+por exemplo o *Visual Studio Code*.
+:::
+
+Um outro exemplo, mais útil, o cálculo do perímetro de um círculo, a partir do valôr do diâmetro:
+
+```{code-cell} ipython3
+pi = 3.1415
+diâmetro = 10
+perímetro = pi * diâmetro
+
+perímetro
+```
+
+Podemos realizar várias atribuições de nomes na mesma linha. Para isso indicamos vários nomes do lado
+esquerdo do sinal  `=` e (um mesmo número de) expressões do lado direito. Os nomes e as expressões são
+**separados por vírgulas** `,`
+
+Modificando um pouco o exemplo anterior para ilustrar esta técnica:
+
+```{code-cell} ipython3
+pi, diâmetro = 3.1415, 10
+
+perímetro = pi * diâmetro
+
+perímetro
+```
+
+
+```{code-cell} ipython3
+# Comentários começam por #
+
+# Podemos dar nomes a vários objetos
+# de uma só vez:
+a, b  =  3, "experiência"
+
+a, b
+```
+
+Mais tarde veremos uma generalização desta técnica muito útil.
+
+Já agora, linhas começadas por `#` são *comentários*.
+
+Comentários são linhas completamente ignoradas durante a execução de um programa.
+Servem como notas importantes deixadas para que o autor do programa ou outras pessoas
+possam mais tarde, ao ler o programa, melhor comprender o que um programa está a fazer.
+
+
+### `print()`
 
 Um programa em Python é, como foi dito, uma sequência de comandos
 que são executados um a um, a grande velocidade, quando o programa é
 executado.
-
-Os exemplos seguintes são baseados em programas e não numa *Python shell*.
-
-Aconselha-se a familiarização com uma aplicação de edição e execução de programas,
-por exemplo o *Visual Studio Code*.
 
 Ao contrário de uma *Python shell*, durante a execução de um programa os comandos
 **não produzem resultados imediatamente**. Por exemplo, executando este programa:
@@ -358,7 +468,6 @@ print(tudo)
 Durante a execução de um programa, os objetos associados a um mesmo nome
 podem variar:
 
-
 ```{code-cell} ipython3
 a = 2
 b = 3
@@ -398,9 +507,13 @@ print("a =", a, "b =", b, "c =", c)
 
 ````{admonition} A assimetria de uma atribuição de nome
 :class: note
-Note-se que um comando de atribuição de nome é compeltamente **assimétrico**.
-Do lado esquerdo do `=` fica apenas um nome. Do lado direito fica uma expressão
-a calcular, seja ela qual for.
+Note-se que um comando de atribuição de nome é completamente **assimétrico**:
+
+:::{tip}
+Do lado esquerdo do `=` fica apenas um nome.
+
+Do lado direito fica uma expressão a calcular, seja ela qual for.
+:::
 
 Repare que, em programação, é perfeitamente possível escrever a "falsidade matemática"
 
@@ -418,7 +531,7 @@ Mas, no Python, dá um erro escrever uma coisa como
 2 * a + 4 = a
 ```
 
-Resumo: à direita uma expressão,à esquerda o nome a dar ao resultado
+Resumo: à direita uma expressão, à esquerda o nome a dar ao resultado
 ````
 
 ### Interpolação de valores em *strings* (_"Strings f"_)
@@ -437,32 +550,7 @@ c = a + b
 print(f'a é igual a {a}, mas b = {b}, enquanto que c = {c}')
 ```
 
-## Atribuições "múltiplas"
-
-Podemos atribuir vários nomes a vários valores de uma só vez.
-
-Para isso, usamos vários nomes do lado esquerdo do `=` **separados por `,`** e 
-várias expressões do lado direito **separadas por `,`**:
-
-
-```{code-cell} ipython3
-# Comentários começam por #
-
-# Podemos dar nomes a vários objetos
-# de uma só vez:
-a, b  =  3, "experiência"
-
-print(f"a = {a} b = {b}")
-```
-
-Mais tarde veremos uma generalização desta técnica muito útil.
-
-Já agora, linhas começadas por `#` são *comentários*.
-
-Comentários são linhas completamente ignoradas durante a execução de um programa.
-Servem como notas importantes deixadas para que o autor do programa ou outras pessoas
-possam mais tarde, ao ler o programa, melhor comprender o que um programa está a fazer.
-
+Um outro exemplo, introduzindo mais pormenores:
 
 ```{code-cell} ipython3
 a, b  =  3, "experiência"
@@ -489,7 +577,7 @@ função `print()`.
 
 ### Funções "integradas" na linguagem
 
-#### `abs`, `int`
+#### `abs()`, `int()`
 
 Além da função `print()`, as funções `int()`, que calcula a parte inteira de 
 um número e `abs()`, que calcula o valor absoluto (módulo) de um número, fazem parte
@@ -513,7 +601,7 @@ linguagem Pyhton:
 
 ### Conversão entre tipos de objetos
 
-#### `int`, `float`, `complex` e `str`
+#### `int()`, `float()`, `complex()` e `str()`
 
 As funções `int()`, `float()`, `complex()` e `str()` fazem conversões
 para os vários **tipos** de objetos:
@@ -639,21 +727,20 @@ $x_1 = \frac{-b + \sqrt{b^2 -4 a c}}{2 a}$ e
 $x_2 = \frac{-b - \sqrt{b^2 -4 a c}}{2 a}$
 
 ```{code-cell} ipython3
-print('Este programa calcula x tal que a x2 + b x + c = 0')
+# Este programa calcula x tal que a x2 + b x + c = 0
 # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
 
-a = 1
-b = 4
-c = 1
+a, b, c = 1, 4, 1
 
-rdelta = (b**2.0 - 4.0 * a * c) ** 0.5
+# cálculo do discriminante
+delta = b**2 - 4.0 * a * c
+rdelta = delta**0.5
 
-x1 = (- b + rdelta) / (2.0*a)
-x2 = (- b - rdelta) / (2.0*a)
+x1 = (- b + rdelta) / (2.0 * a)
+x2 = (- b - rdelta) / (2.0 * a)
 
-print(f"Para a = {a}, b = {b}, c = {c}\n")
-print("x1 =", x1)
-print("x2 =", x2)
+print('a =', a, 'b =', b, 'c =', c, '\n')
+print(f"x1 ={x1}, x2 = {x2}")
 ```
 
 Da matemática, sabemos que uma equação do segundo grau pode ter 2
@@ -669,18 +756,21 @@ valores para `a`, `b` e `c` e voltar a executar o program.
 
 Com a = 1, b = 4, c = 1:
 
-    x1 = -0.2679491924311228
-    x2 = -3.732050807568877
+    a = 1 b = 4 c = 1 
+
+    x1 =-0.2679491924311228, x2 = -3.732050807568877
 
 Com a = 1, b = 2, c = 1:
 
-    x1 = -1.0
-    x2 = -1.0
+    a = 1 b = 2 c = 1 
+
+    x1 =-1.0, x2 = -1.0
 
 Com a = 1, b = 1, c = 1:
 
-    x1 = (-0.49999999999999994+0.8660254037844386j)
-    x2 = (-0.5-0.8660254037844386j)
+    a = 1 b = 1 c = 1 
+
+    x1 =(-0.49999999999999994+0.8660254037844386j), x2 = (-0.5-0.8660254037844386j)
 
 O programa funciona e parece dar resultados corretos para as três
 situações pretendidas (embora se note um pequeno erro no caso das duas
@@ -724,48 +814,48 @@ soluções reais ($\Delta \geqslant 0$) do caso das soluções complexas
 # Este programa calcula x tal que a x2 + b x + c = 0
 # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
 
-a, b, c = 1, 1, 1
-print(f"Para a = {a}, b = {b}, c = {c}\n")
+a, b, c = 1, 4, 1
 
 # cálculo do discriminante
 delta = b**2 - 4.0 * a * c
 
 # separar soluções reais das complexas
 if delta < 0.0:
-    r_delta = (-delta)**0.5 * 1j
+    rdelta = (-delta)**0.5 * 1j
     print('Soluções complexas:')
 else:
-    r_delta = (delta)**0.5
+    rdelta = (delta)**0.5
     print('Soluções reais:')
 
-x1 = (- b + r_delta) / (2.0 * a)
-x2 = (- b - r_delta) / (2.0 * a)
+x1 = (- b + rdelta) / (2.0 * a)
+x2 = (- b - rdelta) / (2.0 * a)
 
-print("x1 =", x1, ", x2 =", x2)
+print(f'Para a = {a}  b = {b}  c = {c}')
+print(f"x1 = {x1}\nx2 = {x2}")
 ```
 
 Testando agora o programa para as três situações possíveis:
 
 $\Delta > 0$:
 
-    a = 1 b = 4 c = 1 
-
     Soluções reais:
-    x1 = -0.2679491924311228 , x2 = -3.732050807568877
+    Para a = 1  b = 4  c = 1
+    x1 = -0.2679491924311228
+    x2 = -3.732050807568877
 
 $\Delta = 0$:
 
-    a = 1 b = 2 c = 1 
-
     Soluções reais:
-    x1 = -1.0 , x2 = -1.0
+    Para a = 1  b = 2  c = 1
+    x1 = -1.0
+    x2 = -1.0
 
 $\Delta < 0$:
 
-    a = 1 b = 1 c = 1 
-
     Soluções complexas:
-    x1 = (-0.5+0.8660254037844386j) , x2 = (-0.5-0.8660254037844386j)
+    Para a = 1  b = 1  c = 1
+    x1 = (-0.5+0.8660254037844386j)
+    x2 = (-0.5-0.8660254037844386j)
 
 O programa funciona, agora, sem problemas.
 
@@ -784,8 +874,8 @@ A forma geral de incluir **blocos alternativos** com `if...else` é:
 
 Podemos ter várias linhas no bloco `if` e no bloco `else`.
 
-É o **alinhamento** das linhas do programa (também chamada identação)
-que define define os dois blocos:
+É o **alinhamento** das linhas do programa (também chamada *indentação*)
+que define os dois blocos:
 
 ![](images/blocks_if_else.png)
 
@@ -798,36 +888,6 @@ já **não pertencem** ao bloco `else`. Isto porque o seu alinhamento é
 (de novo) igual ao de todas as outras linhas fora dos blocos `if...else`
 (e estão alinhadas com as próprias linhas dos comandos `if` e `else`)
 
-NOTA: no teste da condição podemos usar os operadores seguintes:
-
-|operador |significado|
-|---------|-----------|
-|`>`      | maior     |
-|`<`      | menor     |
-|`>=`     | maior ou igual|
-|`<=`     | menor ou igual|
-|`==`     | igual a (Nota: **são dois sinais de igual consecutivos**)|
-|`!=`     | diferente de|
-
-E podemos combinar condições com operações lógicas:
-
-NOTA: no teste da condição podemos usar:
-
-|operador |significado|
-|---------|-----------|
-|`and`    | conjunção (*e*)      |
-|`or`     | disjunção (*ou*)     |
-|`not`    | negação   (*não*)    |
-
-
-Existem também em Python duas "constantes" booleanas:
-
-|Constante |significado|
-|----------|-----------|
-|`True`    | Verdade     |
-|`False`   | Falsidade   |
-
-(note-se que `True` e `False` começam por maiúsculas)
 
 O programa está bem melhor na maneira de apresentar os resultados,
 separando o caso real do complexo.
@@ -853,27 +913,29 @@ separar os três casos associados ao valor de $\Delta$ da seguinte forma:
 # testar com os seguintes valores (1,4,1) , (1,2,1) , (1,1,1)
 
 a, b, c = 1, 4, 1
-print(f"Para a = {a}, b = {b}, c = {c}\n")
 
 # cálculo do discriminante
 delta = b**2 - 4.0 * a * c
 
 if delta < 0.0:
+    rdelta = (-delta)**0.5 * 1j
     print('Soluções complexas:')
-    r_delta = (-delta)**0.5 * 1j
-    x1 = (- b + r_delta) / (2.0 * a)
-    x2 = (- b - r_delta) / (2.0 * a)    
-    print("x1 =", x1, ", x2 =", x2)
 elif delta > 0:
+    rdelta = (delta)**0.5
     print('Soluções reais:')
-    r_delta = (delta)**0.5
-    x1 = (- b + r_delta) / (2.0 * a)
-    x2 = (- b - r_delta) / (2.0 * a)    
-    print("x1 =", x1, ", x2 =", x2)
 else:
+    x = - b / (2.0 * a)
     print('Solução real (dupla):')
-    x = -b / (2.0 * a)
+    
+x1 = (- b + rdelta) / (2.0 * a)
+x2 = (- b - rdelta) / (2.0 * a)    
+
+print(f'Para a = {a}  b = {b}  c = {c}')
+
+if delta == 0:
     print("x =", x)
+else:
+    print(f"x1 = {x1}\nx2 = {x2}")
 ```
 
 O comando `elif` é uma abreviatura de *else* + *if* e possibilita o
@@ -890,24 +952,23 @@ Testando agora o programa para as três situações possíveis:
 
 $\Delta > 0$:
 
-    a = 1 b = 4 c = 1 
-
     Soluções reais:
-    x1 = -0.2679491924311228 , x2 = -3.732050807568877
+    Para a = 1  b = 4  c = 1
+    x1 = -0.2679491924311228
+    x2 = -3.732050807568877
 
 $\Delta = 0$:
 
-    a = 1 b = 2 c = 1 
-
     Solução real (dupla):
+    Para a = 1  b = 2  c = 1
     x = -1.0
 
 $\Delta < 0$:
 
-    a = 1 b = 1 c = 1 
-
     Soluções complexas:
-    x1 = (-0.5+0.8660254037844386j) , x2 = (-0.5-0.8660254037844386j)
+    Para a = 1  b = 1  c = 1
+    x1 = (-0.5+0.8660254037844386j)
+    x2 = (-0.5-0.8660254037844386j)
 
 Pode ser usado todo um conjunto de blocos `if...else...` **"dentro"** de
 um bloco `if` ou `elif` ou `else`.
@@ -941,11 +1002,11 @@ else:
     print("x1 =", x1, ", x2 =", x2)
 ```
 
-Algumas notas:
-
-NOTA: o bloco `else` não é obrigatório. Se não fizer sentido a
+:::{note}
+O bloco `else` não é obrigatório. Se não fizer sentido a
 existência de uma condição alternativa ao `if`, este bloco pode ser
 omitido.
+:::
 
 Vejamos agora um outro exemplo da utilização de blocos alternativos.
 
@@ -1143,12 +1204,11 @@ x1 = (-0.5+0.8660254037844386j) , x2 = (-0.5-0.8660254037844386j)
 ### Exercício 1 (Números, *strings*, números complexos)
 
 1. Abra uma Python Shell ou uma Python Shell no Idle.
-1. Corra todos os comandos das secções [Objetos fundamentais números e strings](basics.md#objetos-fundamentais-numeros-e-strings) e [Atribuição de nomes a objetos](basics.md#atribuicao-de-nomes-a-objetos).
-2. Familiarize-se com
+2. Corra vários dos comandos das secção {ref}`objects_names`. Familiarize-se com
     - Números
     - Números em vírgula flutuante (com casas decimais)
     - *Strings*
-    - Números complexos
+    - Expressões booleanas, `True` e `False`
     - Dar nomes a objetos
 
 ### Exercício 2 (cálculos simples)
@@ -1173,12 +1233,10 @@ Os programas vão ser criados como ficheiros de texto editados com o VSCode.
 
 - Abra o editor de texto *Visual Studio Code*. Para isso, use o botão direito sobre a pasta e selecione "Open with Code":
 - ![](images/folder_vscode.gif)
-- Verifique que a extensão Python está instalada:
-- ![](images/python_ext_vscode.gif)
-- Caso não esteja, escreva "Python" em "Search Extensions in ...". A primeira que aparece é a extensão Python da Microsoft. Use o botão "Install" para instalar a extensão. Só precisa de o fazer uma vez!
+- Em alternativa, se o método anterior não funcionar, abra a app *Visual Studio Code* e faça
+*File – Open Folder* para a pasta que criou.
 - Inicie um ficheiro novo, com *File – New File*.
 - Escreva um programa que calcule e mostre, com `print()`, a "proporção de ouro", isto é, o número
-
     phi = (1+√5)/2 e também o seu quadrado e seu inverso.
 
 ```{admonition} Importante
@@ -1190,9 +1248,15 @@ Deve-lhe dar um nome acabado em `.py`, por exemplo `phi.py`.
 
 ```
 
+- Ao salvar o programa com o nome acabado em `.py`, a extensão Python para o VSCode será instalada:
+- ![](images/python_ext_vscode.gif)
+- Só precisa de instalar esta extensão uma vez (em cada computador que usar)!
+- Caso não fique imediatamente instalada, escreva "Python" em "Search Extensions in ...". A primeira que aparece é a extensão Python da Microsoft. Use o botão "Install" para instalar a extensão. Só precisa de o fazer uma vez!
+
+
 ```{admonition} Nota
 :class: note
-Se o VSCode indicar que falta selecionar um “Python interpreter”, deve escolher o interpretador instalado do Anaconda, clicando no canto inferior esquerdo onde diz “No Interpreter”. Depois de escolher, deve ver o seguinte no canto inferior esquerdo do VSCode:
+Se o VSCode indicar que falta selecionar um “Python interpreter”, deve escolher o interpretador instalado do Anaconda, clicando no canto inferior direito onde diz “No Interpreter”. Depois de escolher, deve ver o seguinte no canto inferior direito do VSCode:
 
 ![](images/chosen_interpreter.gif)
 

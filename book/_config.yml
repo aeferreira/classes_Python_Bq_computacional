@@ -40,3 +40,4 @@ launch_buttons:
 sphinx:
   config:
     language: "pt_PT"
+    nb_merge_streams: true
