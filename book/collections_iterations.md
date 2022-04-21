@@ -56,7 +56,7 @@ que partilham muitas das propriedades com as coleções acima referidas:
 
 Uma definição muito breve e simples destas 3 coleções:
 
-![](images/obj_colections.png)
+![](images/collections.png)
 
 Uma lista (em inglês, *list*) é uma coleção de elementos em que cada um deles tem, implicitamente, uma *posição*.
 Estas posições estão numeradas a partir de zero. A posição de um elemento chama-se *índice*.
@@ -65,6 +65,20 @@ Um dicionário (em inglês, *dictionary*) é uma coleção obtida pela associaç
 têm um papel análogo aos índices das listas.
 
 Um conjunto (em inglês, *set*) é apenas uma coleção de elementos que não se repetem, sem posições ou chaves. E, para já, não há mais nada a dizer sobre os conjuntos.
+
+A criação explícita destas coleções num programa é feita desta maneira:
+
+```{code-cell} ipython3
+uma_lista = [2, 4, 3.1415, 'eu aqui', 1j, "fim da lista"] # lista
+
+um_dict = {'H': 1 , 'Li': 3, 'Na': 11, 'K': 19}  # dicionário
+
+um_set = {'A', 'T', 'C', 'G'}  # conjunto
+
+s = 'Eu sou uma pequena string' # string
+```
+
+Vejamos particularmente cada tipo diferente de coleções.
 
 ### Listas
 
@@ -101,6 +115,17 @@ dois dos números é o resultado de uma expressão.
 Note-se, também, que na lista `c` os valores dos elementos são
 calculados usando o valor atribuído ao nome `b` para calcular os
 elementos da lista.
+
+### Função `list()`
+
+Além da criação literal e explícita de uma lista, a função `list()` permite transformar objetos de outros tipos em listas, se fôr possível:
+
+```{code-cell} python3
+# transformação de uma string numa lista
+seql = list('ATGGTCAAACTTGTT')
+
+print(seql)
+```
 
 ### Indexação de listas
 
@@ -246,41 +271,6 @@ bases = {'A', 'A', 'C', 'C', 'U', 'G'}
 print(bases)
 ```
 
-### Funções de listas, dicionários e conjuntos
-
-Nos próximos dois capítulos serão apresentadas funções "associadas" a cada um destes tipos de coleções.
-São estas funções que tornam a utilização de coleções muito poderosas.
-
-Estas funções têm a forma geral
-
-    coleção.função(argumentos)
-
-Vejamos, desde já, um pequeno exemplo: a função `.count()`, que pode ser usada com listas e *strings*, conta número de elementos (ou caracteres).
-
-```{code-cell} ipython3
-# Quantas glicinas existem nesta sequência?
-seq = 'MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR'
-nG = seq.count('G')
-print(nG, 'glicinas')
-
-# Quantos meses do ano têm 30 dias?
-n_dias = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-n30 = n_dias.count(30)
-print(n30, 'meses têm 30 dias')
-```
-
-As restantes funções serão o foco dos dois próximos capítulos (não todas) mas aqui vai a referência para as funções disponíveis na documentação do Python, em <docs.pyhton.org>:
-
-[Funções de listas](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
-
-[Funções de *strings*](https://docs.python.org/3/library/stdtypes.html#string-methods)
-
-[Funções de dicionários](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
-
-[Funções de conjuntos](https://docs.python.org/3/library/stdtypes.html#set)
-
-As funções de *strings* são, de longe, as mais numerosas.
-
 ### `len()` e operador `in`
 
 Apesar da especificidade de cada tipo de coleção, há três funcionalidades que são comuns a todas as
@@ -355,6 +345,339 @@ grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
 
 print('Mg' in grupo1)
 ```
+
+### Funções de listas, dicionários e conjuntos
+
+Nos próximos dois capítulos serão apresentadas funções "associadas" a cada um destes tipos de coleções.
+São estas funções que tornam a utilização de coleções muito poderosas.
+
+Estas funções têm a forma geral
+
+    coleção.função(argumentos)
+
+Vejamos, desde já, um pequeno exemplo: a função `.count()`, que pode ser usada com listas e *strings*, conta número de elementos (ou caracteres).
+
+```{code-cell} ipython3
+# Quantas glicinas existem nesta sequência?
+seq = 'MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR'
+nG = seq.count('G')
+print(nG, 'glicinas')
+
+# Quantos meses do ano têm 30 dias?
+n_dias = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+n30 = n_dias.count(30)
+print(n30, 'meses têm 30 dias')
+```
+
+As restantes funções serão o foco dos dois próximos capítulos (não todas) mas aqui vai a referência para as funções disponíveis na documentação do Python, em <docs.pyhton.org>:
+
+[Funções de listas](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
+
+[Funções de *strings*](https://docs.python.org/3/library/stdtypes.html#string-methods)
+
+[Funções de dicionários](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
+
+[Funções de conjuntos](https://docs.python.org/3/library/stdtypes.html#set)
+
+As funções de *strings* são, de longe, as mais numerosas.
+
+Algo trivial é comum a todas as coleções: a possibilidade de criarmos "coleções vazias"
+
+## Coleções vazias
+
+Coleções vazias são simplesmente coleções sem nenhum elemento. Podemos criá-las explicitamente
+desta forma:
+
+```{code-cell} ipython3
+# lista vazia
+a = []
+
+# string vazia
+s = ''
+
+# dicionário vazio
+d = {}
+
+# conjunto vazio
+c = set()
+
+print(a)
+print(s)
+print(d)
+print(c)
+```
+
+````{admonition} Nota
+:class: note
+O que aconteceu à *string* vazia?
+
+A função `print()` tira as aspas quando apresenta *strings*, logo, aparentemente não
+apareceu a *string* (embora haja uma mudança de linha)
+
+Porque temos de usar `set()` para o conjunto vazio?
+
+Porque `{}` já está reservado para os dicionários vazios. Mas, recorde-se que
+para definir explicitamente um conjunto usamos `{}` para delimitar o conjunto:
+
+```python3
+c = {6, 9, 'A', 'T'}
+```
+
+Mas não usamos pares chave:valôr entre `{}`. Isso seria um dicionário.
+
+````
+
+A utilidade destas versões vazias é clara: muitas vezes num programa precisamos de começar por
+com um coleção vazia para depois, ao longo do programa, ir acrescentando elementos.
+
+## Listas em compreensão
+
+Existe uma outra forma muito conveniente e compacta de construír listas num programa,
+as **listas em compreensão**.
+
+Esta forma assemelha-se à notação matemática de descrever um conjunto através do seu
+"termo geral".
+
+A ideia é obter uma lista pela transformação de uma outra lista de partida,
+indicando uma expressão para essa transformação. Essa expressão indica a operação a efectuar a cada elemento da lista de partida.
+
+Um exemplo mostra a notação a usar:
+
+```{code-cell} ipython3
+# Potências de 2 numa lista:
+potências2 = [2**n for n in [0, 1, 2, 3, 4 ,5, 6, 7, 8]]
+
+print(potências2)
+```
+
+Um outro exemplo
+
+```{code-cell} ipython3
+# Iniciais de palavras
+palavras = ['Hoje', 'é', 'quarta', 'e', 'estamos', 'em', 'Abril']
+
+iniciais = [p[0] for p in palavras]
+
+iniciais
+```
+
+## `range()`
+
+```{admonition} Problema
+:class: hint
+Somar todos os números de 1 a 1000
+```
+
+Poderíamos adaptar o programa anterior. Mas teríamos de 
+criar uma lista com 1000 números consecutivos, explicitamente
+(e manualmente).
+
+Tem de haver uma solução melhor.
+
+Usamos para o efeito a função `range()` que gera números inteiros
+consecutivos e pode ser utilizada em vez de uma coleção no comando `for`:
+
+```{code-cell} ipython3
+s = 0
+
+for i in range(1, 1001):
+    s = s + i
+
+print('a soma dos números de 1 a 1000 é', s)
+```
+
+A função `range()`, que pode ter até 3 argumentos,
+`range(início, fim, passo)`, e gera uma sequência de **números inteiros**, desde um número inteiro inicial (o
+*início*) até um número inteiro final **exclusivé** (o *fim*), com um
+determinado espaçamento (o *passo*).
+
+```{admonition} Notas
+:class: note
+O número inicial e o "passo" são opcionais.
+
+Se forem omitidos,
+
+- o início é 0
+- o passo é 1
+
+Não esquecer que o valor do `fim` **é excluído**
+```
+
+Para melhor compreender estas regras, podemos mostrar os
+resultados da função `range()` não num ciclo `for`, mas transformando
+os resultados do `range()` numa lista.
+
+Como fazê-lo? O Python tem uma outra função, `list()`, que tenta transformar
+o seu argumento numa lista, se possível.
+
+Um pequeno exemplo da função `list()` em ação:
+
+```{code-cell} python3
+seq = 'ATGGTCAAACTTGTT'
+seql = list(seq)
+print(seql)
+```
+
+Voltando agora às várias modalidades da função `range()`:
+
+
+```{code-cell} python3
+print('-- range(12) ----------')
+# começa em 0, acaba em 12 (exclusivé),  e salta de 1 em 1.
+
+nums = list(range(12))
+print(nums)
+```
+
+```{code-cell} ipython3
+print('-- range(5, 12) ----------')
+# começa em 5, acaba em 12 (exclusivé).
+
+nums = list(range(5, 12))
+print(nums)
+```
+
+```{code-cell} ipython3
+print('-- range(5, 12, 2) ----------')
+# começa em 5, acaba em 12 (exclusivé) e salta de 2 em 2.
+
+nums = list(range(5, 12, 2))
+print(nums)
+```
+
+Continuando com os exemplos das listas em compreensão:
+
+```{admonition} Problema
+:class: example
+Obter uma lista com numeros ímpares (os primeiros 10)
+
+```
+
+```{code-cell} ipython3
+ímpares = [2*i+1 for i in range(10)]
+
+print(ímpares)
+```
+
+Em resumo, entre`[]` indica-se, em primeiro lugar, um "termo geral", neste caso `2*i+1`. De seguida e um comando `for` para passar pelos elementos do `range()` ou da lista de partida. À frente do `for`, o nome `i` tem o mesmo papel que nos comandos `for` "normais", é o nome a dar a cada elemento de partida, um a um.
+
+Tudo está entre `[]`, para indicar que estamos a construír uma lista.
+
+Esta maneira pode também ser vista como uma substituição da construção de listas novas com `append()`,
+começando a partir de uma lista vazia. A lista em compreensão que acabámos de ver é equivalente
+a fazer o seguinte:
+
+```{code-cell} ipython3
+ímpares = []
+for i in range(10):
+    ímpares.append(2 * i + 1)
+```
+
+Um outro exemplo:
+
+```{admonition} Problema
+:class: example
+Obter uma lista com os quadrados perfeitos entre 400 e 800.
+```
+
+Este exemplo mostra que podemos, numa lista em compreensão, impôr condições (com `if`) aos valores
+da lista, "filtrando" certos elementos.
+
+```{code-cell} ipython3
+quads = [i**2 for i in range(30) if i**2 > 400 and i**2 < 800]
+
+print(quads)
+```
+
+Revisitando um exemplo anterior, mas agora usando listas em compreensão:
+
+```{admonition} Problema
+:class: example
+Obter uma lista com as diferenças sucessivas entre quadrados perfeitos, para mostrar que são os números ímpares
+
+```
+
+```{code-cell} ipython3
+q = [i**2 for i in range(20)]
+difs = [q[i] - q[i-1] for i in range(1, len(q))]
+
+print('Quadrados: ', q)
+print('\nDiferenças:', difs)
+```
+
+Note-se a maneira muito compacta de resolver o problema. Duas lista em compreensão foram suficientes.
+
+Note-se a analogia com a notação matemática de indicar um conjunto "em compreensão"
+
+```{code-cell} ipython3
+q = [i**2 for i in range(20)]
+```
+
+e
+
+$q = \{i^2 : i=0, 1, 2, ... ,20 \}$
+
+Mais um exemplo. A função `.remove()` retira a primeira ocorrência de um 
+elemento numa lista. Qual a maneira simples de retirar todas as ocorrências
+desse elemento de uma só vez?
+
+Usando uma lista em compreensão.
+
+```{admonition} Exemplo:
+:class: example
+Retirar todas as ocorrências de um elemento de uma lista
+
+```
+
+```{code-cell} ipython3
+# Remover todas as ocorrências de "Bad"
+a = ['Good','Nice','OK','Bad','Cool','Bad','OK']
+a_clean = [x for x in a if x != 'Bad']
+
+print(a)
+print(a_clean)
+```
+
+Neste exemplo a condição `if` é muito mais importante do que o "termo geral", daí
+a estranha construção `[x for x in ...]`. Se a lista em compreensão fosse apenas
+`a_clean = [x for x in a]` então copiaríamos a lista `a` para a lista `a_clean` sem filtrar os elementos. O `if` está a fazer o trabalho de filtrar os elementos `"Bad"`
+
+```{admonition} Exemplo:
+:class: example
+Problema: retirar todas as ocorrências dos elemento pertencentes a uma "lista negra"
+
+```
+
+```{code-cell} ipython3
+black_list = ['Bad', 'So so']
+a = ['Good','So so','OK','Bad','Cool','Bad','OK']
+a_clean = [x for x in a if x not in black_list]
+
+print(a)
+print(a_clean)
+```
+
+```{admonition} Exemplo:
+:class: example
+Obter uma lista de numeros até 300 que sejam múltiplos de 3 e de 7
+```
+
+Como testar se um número $n$ é múltiplo de outro $p$? basta que o resto da divisão de
+$n$ por $p$ seja 0. O resto da divisão pode ser obtido na linguagem Python pelo
+operador `%`:
+
+```{code-cell} ipython3
+mult_3_7 = [x for x in range(301) if x%7==0 and x%3==0]
+
+print(mult_3_7)
+```
+
+Leitura interessante:
+
+[Comprehensions in Python the Jedi
+way](https://gist.github.com/bearfrieze/a746c6f12d8bada03589)
+
+
 
 ## Iterações: comando `for`
 
@@ -606,90 +929,6 @@ for i in nums:
     print('  s depois da soma', s)
 
 print(f'a soma é {s}')
-```
-
-## `range()`
-
-```{admonition} Problema
-:class: hint
-Somar todos os números de 1 a 1000
-```
-
-Poderíamos adaptar o programa anterior. Mas teríamos de 
-criar uma lista com 1000 números consecutivos, explicitamente
-(e manualmente).
-
-Tem de haver uma solução melhor.
-
-Usamos para o efeito a função `range()` que gera números inteiros
-consecutivos e pode ser utilizada em vez de uma coleção no comando `for`:
-
-```{code-cell} ipython3
-s = 0
-
-for i in range(1, 1001):
-    s = s + i
-
-print('a soma dos números de 1 a 1000 é', s)
-```
-
-A função `range()`, que pode ter até 3 argumentos,
-`range(início, fim, passo)`, e gera uma sequência de **números inteiros**, desde um número inteiro inicial (o
-*início*) até um número inteiro final **exclusivé** (o *fim*), com um
-determinado espaçamento (o *passo*).
-
-```{admonition} Notas
-:class: note
-O número inicial e o "passo" são opcionais.
-
-Se forem omitidos,
-
-- o início é 0
-- o passo é 1
-
-Não esquecer que o valor do `fim` **é excluído**
-```
-
-Para melhor compreender estas regras, podemos mostrar os
-resultados da função `range()` não num ciclo `for`, mas transformando
-os resultados do `range()` numa lista.
-
-Como fazê-lo? O Python tem uma outra função, `list()`, que tenta transformar
-o seu argumento numa lista, se possível.
-
-Um pequeno exemplo da função `list()` em ação:
-
-```{code-cell} python3
-seq = 'ATGGTCAAACTTGTT'
-seql = list(seq)
-print(seql)
-```
-
-Voltando agora às várias modalidades da função `range()`:
-
-
-```{code-cell} python3
-print('-- range(12) ----------')
-# começa em 0, acaba em 12 (exclusivé),  e salta de 1 em 1.
-
-nums = list(range(12))
-print(nums)
-```
-
-```{code-cell} ipython3
-print('-- range(5, 12) ----------')
-# começa em 5, acaba em 12 (exclusivé).
-
-nums = list(range(5, 12))
-print(nums)
-```
-
-```{code-cell} ipython3
-print('-- range(5, 12, 2) ----------')
-# começa em 5, acaba em 12 (exclusivé) e salta de 2 em 2.
-
-nums = list(range(5, 12, 2))
-print(nums)
 ```
 
 ```{admonition} Problema

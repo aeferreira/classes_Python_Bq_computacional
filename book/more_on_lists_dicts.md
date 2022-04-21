@@ -53,54 +53,7 @@ Recorde que, usando o comando `for`:
 - Passamos pelos **elementos** de um *conjunto*.
 ```
 
-Algo trivial é comum a todas as coleções: a possibilidade de criarmos "coleções vazias"
 
-## Coleções vazias
-
-Coleções vazias são simplesmente coleções sem nenhum elemento. Podemos criá-las explicitamente
-desta forma:
-
-```{code-cell} ipython3
-# lista vazia
-a = []
-
-# string vazia
-s = ''
-
-# dicionário vazio
-d = {}
-
-# conjunto vazio
-c = set()
-
-print(a)
-print(s)
-print(d)
-print(c)
-```
-
-````{admonition} Nota
-:class: note
-O que aconteceu à *string* vazia?
-
-A função `print()` tira as aspas quando apresenta *strings*, logo, aparentemente não
-apareceu a *string* (embora haja uma mudança de linha)
-
-Porque temos de usar `set()` para o conjunto vazio?
-
-Porque `{}` já está reservado para os dicionários vazios. Mas, recorde-se que
-para definir explicitamente um conjunto usamos `{}` para delimitar o conjunto:
-
-```python3
-c = {6, 9, 'A', 'T'}
-```
-
-Mas não usamos pares chave:valôr entre `{}`. Isso seria um dicionário.
-
-````
-
-A utilidade destas versões vazias é clara: muitas vezes num programa precisamos de começar por
-com um coleção vazia para depois, ao longo do programa, ir acrescentando elementos.
 
 ## Listas
 
