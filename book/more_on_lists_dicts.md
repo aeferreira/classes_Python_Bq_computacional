@@ -53,7 +53,17 @@ Recorde que, usando o comando `for`:
 - Passamos pelos **elementos** de um *conjunto*.
 ```
 
+Vale a pena relembrar que as *listas* e os *dicionários* podem ser criados "em compreensão":
 
+```{code-cell} ipython3
+quads = [n**2 for n in range(1, 11)]
+
+n_letras = {p: len(p) for p in ['isto', 'são', 'várias', 'palavras']}
+
+
+print(quads)
+print(n_letras)
+```
 
 ## Listas
 
@@ -66,85 +76,34 @@ Vejamos algumas funções que são **específicas das listas**.
 A referência oficial destas funções pode ser consultada na [documentação da
 linguagem Python.](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
 
-### Acrescentar elementos: `.append()`, `.insert()`
+De uma forma esquemática, algumas das funções membro de listas mais usadas são as seguintes
 
-As funções `.append()`, `.insert()` acrescentam um elemento a uma lista. `.append()` acrescenta **no fim** da lista, ``.insert()` acrescenta numa determinada **posição**:
+![Funções membro de listas](images/list_functions.png)
 
-```{code-cell} ipython3
-a = [1, 2, 3, 4]
-print(a)
+Note-se que a função `.remove()` apenas remove a primeira ocorrência de um elemento numa lista e não todas as ocorrências.
 
-a.append(10)
+Por outro lado, estas outras funções, já vistas anteriormente, são também muito usadas com listas:
 
-print('\ndepois de append(10):', a)
+![Outras funções com listas](images/other_list_functions.png)
 
-a.insert(1, 20)
-
-print('\ndepois de insert(1, 20):', a)
-```
-
-### Acrescentar uma lista completa: `.extend()`
-
-A função `extend()` permite acrescentar **ao fim** da lista uma outra lista completa.
-
-A diferença (subtil) em relação à função `append()` é que a função `append()` acrescenta apenas **um** elemento novo.
+Um primeiro exemplo, ilustrando o uso das funções `.count()` e `.remove()`:
 
 ```{code-cell} ipython3
-a = [1, 2, 3, 4]
-print(a)
-
-novos = [11, 12, 13, 14]
-a.extend(novos)
-
-print('\ndepois de extend([11, 12, 13, 14]):')
-print(a)
-```
-
-### Retirar elementos: `.remove()`, `.clear()`
-
-`.remove(elem)` remove o elemento *elem* e `.clear()` remove todos os elementos.
-
-A função `.remove()`, no entanto, só remove a "primeira ocorrência" do elemento
-(considerando a ordem dos elementos na lista).
-
-```{code-cell} ipython3
+# Remover todas as ocorrências de um elemento
 a = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
 print(a)
 
-a.remove(3)
+for i in range(a.count(1)):
+    a.remove(1)
 
-print('\ndepois de remove(3):')
-print(a)
-
-a.clear()
-
-print('\ndepois de clear():')
+print('\ndepois de remover todos os 1:')
 print(a)
 ```
 
-Repare-se que `.remove(3)` só removeu a primeira ocorrência de 3 na lista. Ficou um 3 na penúltima posição.
-
-### Contar elementos: `.count()`
-
-A função `.count(elem)` conta o número de vezes que um elemento ocorre na lista (todas as ocorrências).
-
-Esta função não modifica a lista e devolve um resultado, um número inteiro.
+Um segundo exemplo, ilustrando o uso da função  `.count()` (e `list()`):
 
 ```{code-cell} ipython3
-a = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
-print(a)
-
-print('\nresultado de count(1)')
-print(a.count(1))
-```
-
-```{admonition} Problema
-:class: example
-Dada a sequência de uma proteína, quantas lisinas (K) e leucinas (L) existem na sequência?
-
-```
-
-```{code-cell} ipython3
+# Contar K e L na sequência de uma proteína
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
 seqlista = list(seq)
@@ -156,19 +115,10 @@ print(f'Existem {nK} lisinas e {nL} leucinas na sequência')
 print(seq)
 ```
 
-Relembremos que a função `list()` transforma a *string* numa lista, com as letras como
-elementos da lista.
-
-```{admonition} Nota importante
-:class: important
-A função `.count()` também funciona com *strings*.
-
-```
-
-Como a função `.count()` também funciona com *strings*, o programa anterior pode ser simplificado,
-aplicando esta função diretamente à *string*:
+No entanto, uma vez que a função `.count()` também funciona com *strings*, o programa anterior pode ser escrito exclusivamente com base em *strings*:
 
 ```{code-cell} ipython3
+# Contar K e L na sequência de uma proteína
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
 
 nK = seq.count('K')
@@ -179,25 +129,15 @@ print(seq)
 ```
 
 
-## Exemplos de `.append()` para gerar listas novas
+## `.append()`, como função geradora de listas
 
-Recordar que as listas podem ser "iteradas" com o comando `for`.
+A função `.append()` é uma das mais usadas, já que permite a construção de listas novas num programa, muits vezes com base em iteração com `for`, começando a partir de uma lista vazia.
 
-A combinação da iteração de listas com a função `.append()` começando
-por uma  **lista vazia** e acrescentando elemento a elemento, é uma maneira muito conveniente
-de gerar listas novas durante a execução de um programa.
-
-```{admonition} Problema
-:class: example
-Gerar uma lista com os 40 primeiros quadrados perfeitos $\{i^2: i=1, 2, 3,...,40\}$ .
-
-```
-
-Estratégia: passar por todos os números inteiros até ao 40, calcular o seu
-quadrado e acrescentar no final de uma lista com `append()`. No início a lista tem
-de existir e estar vazia.
+Alguns exemplos:
 
 ```{code-cell} ipython3
+# Gerar uma lista com os 40 primeiros quadrados perfeitos
+
 a = []
 for i in range(1, 41):
     a.append(i**2)
@@ -205,18 +145,10 @@ for i in range(1, 41):
 print(a)
 ```
 
-Outro exemplo:
-
-```{admonition} Problema
-:class: example
-Gerar uma lista com os 40 primeiros quadrados perfeitos
-$\{i^2: i=1, 2, 3, ... , 40\}$, que **estejam entre 400 e 800**.
-
-```
-
-Podemos combinar `.append()` com `for` e `if`:
-
 ```{code-cell} ipython3
+# Gerar uma lista com os 40 primeiros quadrados perfeitos
+# que estejam entre 400 e 800
+
 a = []
 for i in range(1, 41):
     q = i**2
@@ -226,16 +158,9 @@ for i in range(1, 41):
 print(a)
 ```
 
-```{admonition} Problema
-:class: example
-Somar os 10 primeiros números ímpares
-$\sum\limits_{i=0}^9 2i+1$
-
-```
-
-Estratégia: construir uma lista com os números ímpares. Somar com a função `sum()`.
-
 ```{code-cell} ipython3
+# Somar os 10 primeiros números ímpares
+
 ímpares = []
 for i in range(10):
     ímpares.append(2*i + 1)
@@ -248,9 +173,46 @@ print('Verificação:')
 print('Pela soma de prog. aritm.',(1+19)/2*10)
 ```
 
-## Exemplos de indexação de listas.
 
-As listas têm uma **numeração implícita, (a contar do zero)**, e podemos
+### Formas equivalentes de usar `.append()` e listas em compreensão
+
+A utilização da função `.append()` para criar uma lista nova é muitas vezes equivalente a usar uma lista em compreensão.
+
+Ilustrando com os dois últimos exemplos:
+
+```{code-cell} ipython3
+a = []
+for i in range(1, 41):
+    q = i**2
+    if q >= 400 and q <= 800:
+        a.append(q)
+
+print(a)
+
+a = [i**2 for i in range(1, 41) if 400 <= i**2 <= 800]
+
+print(a)
+```
+
+Repare-se que os dois `print()` dão o mesmo resultado.
+
+```{code-cell} ipython3
+ímpares = []
+for i in range(10):
+    ímpares.append(2*i + 1)
+resultado = sum(ímpares)
+
+# é equivalente a
+
+resultado = sum([2*i + 1 for i in range(10)])
+
+print('A soma dos 10 primeiros ímpares é', resultado)
+print('Verificação, pela soma de prog. aritm.',(1+19)/2*10)
+```
+
+## Indexação com números negativos
+
+As listas e as *string* têm uma **numeração implícita, (a contar do zero)**, e podemos
 **indexar** uma lista usando `lista[posição]`. Obtemos o elemento que está
 numa posição.
 
@@ -266,7 +228,7 @@ print(enzimas[3])
 print(enzimas[len(enzimas) -1])
 ```
 
-As listas têm também uma **numeração implícita com números negativos**:
+As listas e as *strings* têm também uma **numeração implícita com números negativos**:
 o último elemento é -1, o penúltimo -2 e assim sucessivamente.
 
 ```{code-cell} ipython3
@@ -348,7 +310,7 @@ for i in range(1, len(a)):
 
 print('Lista')
 print(a)
-print('Diferenças sucessivas')
+print('\nDiferenças sucessivas')
 print(difs)
 ```
 
@@ -363,8 +325,6 @@ d = a[i] - a[i-1]
 Repare-se que a `range()` tem de começar em 1, uma vez que, se começasse em 0, a primeira
 diferença calculada seria `d = a[0] - a[-1]` que não faria sentido, uma vez que `a[-1]`
 representa o último elemento da lista.
-
-Voltaremos a este exemplo mais tarde.
 
 ```{admonition} Exemplo
 :class: example
@@ -386,7 +346,7 @@ for i in range(1, len(quads)):
     difs.append(d)
 
 print('quadrados perfeitos', quads)
-print('diferenças sucessivas', difs)
+print('\ndiferenças sucessivas', difs)
 ```
 
 A propriedade matemática anterior foi usada por Galileu no estudo da
@@ -398,6 +358,16 @@ As distâncias sucessivas percorridas durante a queda para a mesma
 unidade de tempo estão entre si como a sucessão dos números ímpares, o
 que implica que a distância acumulada cresce segundo o quadrado do tempo
 decorrido: o movimento de queda livre é uniformemente acelerado.
+
+As listas em compreensão podem ser usadas para abreviar o programa, sem recorrer a listas vazias e `.append()`:
+
+```{code-cell} ipython3
+quads = [n**2 for n in range(20)]
+difs = [quads[i] - quads[i-1] for i in range(1, len(quads))]
+
+print('Quadrados: ', quads)
+print('\nDiferenças:', difs)
+```
 
 Uma pequena nota final sobre a utilização de indexação para passar por
 todos os elementos de uma lista:
@@ -428,154 +398,11 @@ particular os módulos `numpy` e `pandas`, em que a iteração é substituída p
 
 ````
 
-## Listas em compreensão
+## Mais algumas funções de listas
 
-Existe uma outra forma muito conveniente e compacta de construír listas num programa,
-as **listas em compreensão**.
+### `.reverse()`, `.sort()`
 
-Esta forma assemelha-se à notação matemática de descrever um conjunto através do seu
-"termo geral".
-
-A ideia é obter uma lista pela transformação de `range()` ou uma outra lista de partida
-indicando uma expressão para essa transformação. Essa expressão indica a operação a efectuar a cada elemento da `range()` ou da lista de partida.
-
-Um exemplo mostra a notação a usar.
-
-```{admonition} Problema
-:class: example
-Obter uma lista com numeros ímpares (os primeiros 10)
-
-```
-
-```{code-cell} ipython3
-ímpares = [2*i+1 for i in range(10)]
-
-print(ímpares)
-```
-
-Em resumo, entre`[]` indica-se, em primeiro lugar, um "termo geral", neste caso `2*i+1`. De seguida e um comando `for` para passar pelos elementos do `range()` ou da lista de partida. À frente do `for`, o nome `i` tem o mesmo papel que nos comandos `for` "normais", é o nome a dar a cada elemento de partida, um a um.
-
-Tudo está entre `[]`, para indicar que estamos a construír uma lista.
-
-Esta maneira pode também ser vista como uma substituição da construção de listas novas com `append()`,
-começando a partir de uma lista vazia. A lista em compreensão que acabámos de ver é equivalente
-a fazer o seguinte:
-
-```{code-cell} ipython3
-ímpares = []
-for i in range(10):
-    ímpares.append(2 * i + 1)
-```
-
-Um outro exemplo:
-
-```{admonition} Problema
-:class: example
-Obter uma lista com os quadrados perfeitos entre 400 e 800.
-```
-
-Este exemplo mostra que podemos, numa lista em compreensão, impôr condições (com `if`) aos valores
-da lista, "filtrando" certos elementos.
-
-```{code-cell} ipython3
-quads = [i**2 for i in range(30) if i**2 > 400 and i**2 < 800]
-
-print(quads)
-```
-
-Revisitando um exemplo anterior, mas agora usando listas em compreensão:
-
-```{admonition} Problema
-:class: example
-Obter uma lista com as diferenças sucessivas entre quadrados perfeitos, para mostrar que são os números ímpares
-
-```
-
-```{code-cell} ipython3
-q = [i**2 for i in range(20)]
-difs = [q[i] - q[i-1] for i in range(1, len(q))]
-
-print('Quadrados: ', q)
-print('\nDiferenças:', difs)
-```
-
-Note-se a maneira muito compacta de resolver o problema. Duas lista em compreensão foram suficientes.
-
-Note-se a analogia com a notação matemática de indicar um conjunto "em compreensão"
-
-```{code-cell} ipython3
-q = [i**2 for i in range(20)]
-```
-
-e
-
-$q = \{i^2 : i=0, 1, 2, ... ,20 \}$
-
-Mais um exemplo. A função `.remove()` retira a primeira ocorrência de um 
-elemento numa lista. Qual a maneira simples de retirar todas as ocorrências
-desse elemento de uma só vez?
-
-Usando uma lista em compreensão.
-
-```{admonition} Exemplo:
-:class: example
-Retirar todas as ocorrências de um elemento de uma lista
-
-```
-
-```{code-cell} ipython3
-# Remover todas as ocorrências de "Bad"
-a = ['Good','Nice','OK','Bad','Cool','Bad','OK']
-a_clean = [x for x in a if x != 'Bad']
-
-print(a)
-print(a_clean)
-```
-
-Neste exemplo a condição `if` é muito mais importante do que o "termo geral", daí
-a estranha construção `[x for x in ...]`. Se a lista em compreensão fosse apenas
-`a_clean = [x for x in a]` então copiaríamos a lista `a` para a lista `a_clean` sem filtrar os elementos. O `if` está a fazer o trabalho de filtrar os elementos `"Bad"`
-
-```{admonition} Exemplo:
-:class: example
-Problema: retirar todas as ocorrências dos elemento pertencentes a uma "lista negra"
-
-```
-
-```{code-cell} ipython3
-black_list = ['Bad', 'So so']
-a = ['Good','So so','OK','Bad','Cool','Bad','OK']
-a_clean = [x for x in a if x not in black_list]
-
-print(a)
-print(a_clean)
-```
-
-```{admonition} Exemplo:
-:class: example
-Obter uma lista de numeros até 300 que sejam múltiplos de 3 e de 7
-```
-
-Como testar se um número $n$ é múltiplo de outro $p$? basta que o resto da divisão de
-$n$ por $p$ seja 0. O resto da divisão pode ser obtido na linguagem Python pelo
-operador `%`:
-
-```{code-cell} ipython3
-mult_3_7 = [x for x in range(301) if x%7==0 and x%3==0]
-
-print(mult_3_7)
-```
-
-Leitura interessante:
-
-[Comprehensions in Python the Jedi
-way](https://gist.github.com/bearfrieze/a746c6f12d8bada03589)
-
-### Mais algumas funções de listas
-
-#### `.pop()`, `.reverse()`, `.sort()`
-
-As funções `.pop()`, `.reverse()`, `.sort()` também **modificam** uma lista, tal como, por exemplo, a função `.append()`.
+As funções `.reverse()`, `.sort()` também **modificam** uma lista, tal como, por exemplo, a função `.append()`.
 
 `.reverse()` coloca os elementos da lista por uma ordem contrária aquela que é dada.
 
@@ -594,24 +421,6 @@ print(a)
 a.sort()
 print('\nDepois de a.sort()')
 print(a)
-```
-
-`.pop()` é, praticamente, o contrário de `append()`, serve para retirar o **último** elemento de uma lista.
-No entanto, se se usar com uma posição, é o elemento nessa posição que é retirado. Em qualquer caso, a função
-devolve o valôr retirado, que pode ser usado mais tarde, se for necessário.
-
-```{code-cell} ipython3
-a = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom']
-print('lista original')
-print(a)
-
-a.pop()
-print('Depois de a.pop()')
-print(a)
-x = a.pop(2)
-print('\nDepois de a.pop(2)   ')
-print(a)
-print('O valor retirado foi', x)
 ```
 
 ## Dicionários
@@ -884,23 +693,6 @@ for i in d.keys():
     print(i)
 ```
 
-### Dicionários em compreensão
-
-Tal como as listas, podemos construir dicionários novos por *dicionários em compreensão*
-
-Basicamente, comparando com as listas em compreensão, usamos `{}` porque estamos a construír dicionários e
-agora temos de indicar o termo geral das chaves, depois usar `:` e finalmente indicar o termo geral dos
-valores.
-
-Por exemplo, um dicionário que associa números inteiros os seus quadrados, construído em compreensão:
-
-```{code-cell} ipython3
-d = {i:i**2 for i in range(10)}
-
-# apresentação do resultado:
-for k, v in d.items():
-    print(k, '---->', v)
-```
 
 ```{code-cell} ipython3
 # Virar um dicionário "do avesso"

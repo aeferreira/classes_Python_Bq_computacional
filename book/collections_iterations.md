@@ -30,7 +30,7 @@ já vimos os números e as *strings*.
 n_aminoácidos = 20 # número inteiro
 bases = 'AUCG' # string
 
-print(f'Existem {n_aminoácidos} e as bases do mRNA são {bases}')
+print(f'Existem {n_aminoácidos} aminoácidos e as bases do mRNA são {bases}')
 ```
 
 ## Coleções
@@ -310,7 +310,7 @@ print(f'A proteína\n{seq}')
 print('tem', len(seq), 'aminoácidos')
 ```
 
-O "operador" `in` funciona como teste de inclusão: resulta `True`ou `False` consoante um
+O "operador" `in` funciona como teste de inclusão: resulta `True` ou `False` consoante um
 elemento está ou não contido numa coleção. Funciona com qualquer tipo de coleção.
 
 ```{code-cell} ipython3
@@ -346,9 +346,94 @@ grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
 print('Mg' in grupo1)
 ```
 
+## Indexação com "_Slices_"
+
+Já vimos que podemos indexar listas e *strings*, usando `[]` e a posição
+do elemento.
+
+Os `[]` podem ser usados para um outro tipo de indexação de listas ou
+_strings_: os **slices** (em português: "fatias"). os *slices* são uma generalização
+de indexação, em que, em vez de obtermos um único elemento obtemos vários elementos pelas suas posições.
+
+A forma mais vulgar de utilização de *slices* é a extração de elementos consecutivos.
+
+Escrevemos desta forma:
+
+    string[início : fim]
+
+e obtemos todos os caracteres deste a posição `início` até à posição `fim`, **exclusivé**.
+
+```{admonition} Nota
+:class: note
+A *slice* de uma *string* dá uma *substring* nova
+
+A *slice* de uma lista dá uma "sublista" nova
+
+```
+
+```{code-cell} ipython3
+a = "O Neo tomou o comprimido vermelho"
+#    012345678901234567890123456789012
+
+print(a[2:5])
+print(a[0:5])
+print(a[6:-1])
+```
+
+Repare como a última posição é "exclusivé".
+
+```{admonition} Importante
+:class: importante
+Podemos omitir o número **antes** dos `:`  
+Isto significa que a *slice* começa **do princípio**
+
+Podemos omitir o número **depois** dos `:`  
+Isto significa que a *slice* vai até **ao fim** , inclusivé o último elemento.
+
+```
+
+```{code-cell} ipython3
+a = "O Neo tomou o comprimido vermelho"
+#    012345678901234567890123456789012
+
+print(a[ :5])
+print(a[6: ])
+print(a[ : ])
+```
+
+Repare-se como um dos exemplos resulta na cópia integral da *string*
+
+Mais um exemplo, como obter o primeiro e o último codão:
+
+```{code-cell} ipython3
+seq = "AUGUUCAAGGAGUAAUGCCCCCGACUA"
+
+c = seq[  :3]
+d = seq[-3: ]
+
+print('O primeiro codão é', c)
+print('O último codão é', d)
+```
+
+Na realidade, a forma geral de uma *slice* é 
+
+    string[início : fim(exclusivé) : passo]
+
+Isto é, opcionalmente pode ser indicado um `passo` que faz com que a *slice* "salte" de `passo` em `passo letras.
+
+No programa seguinte, obtêm-se os caracteres da *string* desde a posição 0 até à posição 12, exclusivé,
+saltando de 2 em 2:
+
+```{code-cell} ipython3
+a = "O Neo tomou o comprimido vermelho"
+#    012345678901234567890123456789012
+
+print(a[0:12:2])
+```
+
 ### Funções de listas, dicionários e conjuntos
 
-Nos próximos dois capítulos serão apresentadas funções "associadas" a cada um destes tipos de coleções.
+Um pouco mais à frente serão apresentadas funções "associadas" a cada um destes tipos de coleções.
 São estas funções que tornam a utilização de coleções muito poderosas.
 
 Estas funções têm a forma geral
@@ -369,7 +454,7 @@ n30 = n_dias.count(30)
 print(n30, 'meses têm 30 dias')
 ```
 
-As restantes funções serão o foco dos dois próximos capítulos (não todas) mas aqui vai a referência para as funções disponíveis na documentação do Python, em <docs.pyhton.org>:
+As restantes funções serão o foco deste e do próximo capítulo (não todas) mas aqui vai a referência para as funções disponíveis na documentação do Python, em <docs.pyhton.org>:
 
 [Funções de listas](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
 
@@ -430,6 +515,16 @@ Mas não usamos pares chave:valôr entre `{}`. Isso seria um dicionário.
 A utilidade destas versões vazias é clara: muitas vezes num programa precisamos de começar por
 com um coleção vazia para depois, ao longo do programa, ir acrescentando elementos.
 
+```{code-cell} ipython3
+s = ''
+
+s = s + 'qualquer'
+s = s + ' ' + 'coisa'
+
+print(s)
+
+```
+
 ## Listas em compreensão
 
 Existe uma outra forma muito conveniente e compacta de construír listas num programa,
@@ -450,6 +545,21 @@ potências2 = [2**n for n in [0, 1, 2, 3, 4 ,5, 6, 7, 8]]
 print(potências2)
 ```
 
+Em resumo, entre`[]` indica-se, em primeiro lugar, um "termo geral", neste caso `2**n`. De seguida, um comando `for` para passar pelos elementos de uma lista original de partida.
+
+À frente do `for`, o nome `n` é o nome a dar a cada elemento da lista de partida, um a um. Para construír a lista nova `n` vai tomando os valores `0...1...2... ...7...8` e, cada vez que toma um valôr novo, o resultado de `2**n` é inserido na lista que se está a construír.
+
+Tudo está entre `[]`, para indicar que estamos a construír uma lista.
+
+Note-se a analogia com a notação matemática de indicar um conjunto "em compreensão"
+
+```{code-cell} ipython3
+q = [2**n for n in [0, 1, 2, 3, 4 ,5, 6, 7, 8]]
+```
+e
+
+$q = \{n^2 : n=0, 1, 2, ... ,8 \}$
+
 Um outro exemplo
 
 ```{code-cell} ipython3
@@ -458,36 +568,124 @@ palavras = ['Hoje', 'é', 'quarta', 'e', 'estamos', 'em', 'Abril']
 
 iniciais = [p[0] for p in palavras]
 
-iniciais
+print(iniciais)
 ```
+
+As listas em compreensão é um mecanismo muito flexível para gerar listas num programa. Podemos definir funções para
+calcular o termo geral de uma lista em compreensão.
+
+Por exemplo, se quisermos indicar se os aminoácidos de uma sequência são básicos ou ácidos, podemos criar uma função para indicar o tipo de aminoácido:
+
+```{code-cell} ipython3
+def tipo_de_aa(aa):
+    if aa in 'KR':
+        tipo = 'basico'
+    elif aa in 'DE':
+        tipo = 'ácido'
+    else:
+        tipo = 'outro'
+    return tipo
+
+seq = 'MKIDKKVCANE'
+
+tipos = [tipo_de_aa(a) for a in seq]
+
+print(tipos)
+```
+
+## Listas em compreensão com filtro
+
+É possível, numa lista em compreensão, impor uma condição que os elementos gerados devem verificar para serem incluídos na lista.
+
+Os elementos gerados são, assim, "filtrados".
+
+```{code-cell} ipython3
+# Números ímpares que sejam múltiplos de 7
+
+nums = [0, 1, 2, 3, 4 ,5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+ímpares_m7 = [2 * n + 1 for n in nums if (2 * n + 1) % 7 == 0]
+
+print(ímpares_m7)
+```
+
+```{code-cell} ipython3
+# Glicinas e Valinas numa sequência
+
+seq = 'MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR'
+
+GV = [a for a in seq if a == 'G' or a == 'V']
+
+print(GV)
+```
+
+Note-se que a disjunção lógica `... if a == 'G' or a == 'V'` pode ser reescrita numa forma mais compacta usando o operador `in`:
+
+```{code-cell} ipython3
+# Glicinas e Valinas numa sequência
+
+seq = 'MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR'
+
+GV = [a for a in seq if a in 'GV']
+
+print(GV)
+```
+
+### Dicionários em compreensão
+
+Tal como as listas, podemos construir dicionários novos por *dicionários em compreensão*
+
+Basicamente, comparando com as listas em compreensão, usamos `{}` porque estamos a construír dicionários e
+agora temos de indicar o termo geral das chaves, depois usar `:` e finalmente indicar o termo geral dos
+valores.
+
+Como primeiro exemplo, o programa anterior poderia ser modificado de modo a associar cada aminoácido ao seu tipo:
+
+```{code-cell} ipython3
+def tipo_de_aa(aa):
+    if aa in 'KR':
+        tipo = 'basico'
+    elif aa in 'DE':
+        tipo = 'ácido'
+    else:
+        tipo = 'outro'
+    return tipo
+
+seq = 'MKIDKKVCANE'
+
+tipos = {a: tipo_de_aa(a) for a in seq}
+
+print(tipos)
+```
+
+repare-se na grande semelhança entre as listas em compreensão e os dicionários em compreensão.
+
+Um outro exemplo, com alguma utilidade prática, será contar cada um dos 20 aminoácidos numa sequência de uma proteína.
+
+Recorde-se que a função `.count()` usada com *strings* permite contar o número de ocorrências de uma letra dentro de uma *string*.
+
+```{code-cell} ipython3
+# contagem dos 20 aminoácidos numa sequência
+
+seq = 'MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR'
+aminoácidos = 'ACDEFGHIKLMNPQRSTVWY'
+
+contagens = {a: seq.count(a) for a in aminoácidos}
+
+print(contagens)
+```
+
 
 ## `range()`
 
-```{admonition} Problema
-:class: hint
-Somar todos os números de 1 a 1000
-```
+O primeiro exemplo das listas em compreensão obrigou a indicar explicitamente no programa a lista
+`[0, 1, 2, 3, 4 ,5, 6, 7, 8]`.
 
-Poderíamos adaptar o programa anterior. Mas teríamos de 
-criar uma lista com 1000 números consecutivos, explicitamente
-(e manualmente).
-
-Tem de haver uma solução melhor.
-
-Usamos para o efeito a função `range()` que gera números inteiros
-consecutivos e pode ser utilizada em vez de uma coleção no comando `for`:
-
-```{code-cell} ipython3
-s = 0
-
-for i in range(1, 1001):
-    s = s + i
-
-print('a soma dos números de 1 a 1000 é', s)
-```
+A linguagem Python tem disponível a função `range()` que pode ser usada em situaçãoes
+em que necessitamos de gerar **números inteiros consecutivos**.
 
 A função `range()`, que pode ter até 3 argumentos,
-`range(início, fim, passo)`, e gera uma sequência de **números inteiros**, desde um número inteiro inicial (o
+`range(início, fim, passo)`, gera uma sequência de **números inteiros**, desde um número inteiro inicial (o
 *início*) até um número inteiro final **exclusivé** (o *fim*), com um
 determinado espaçamento (o *passo*).
 
@@ -504,21 +702,8 @@ Não esquecer que o valor do `fim` **é excluído**
 ```
 
 Para melhor compreender estas regras, podemos mostrar os
-resultados da função `range()` não num ciclo `for`, mas transformando
-os resultados do `range()` numa lista.
-
-Como fazê-lo? O Python tem uma outra função, `list()`, que tenta transformar
-o seu argumento numa lista, se possível.
-
-Um pequeno exemplo da função `list()` em ação:
-
-```{code-cell} python3
-seq = 'ATGGTCAAACTTGTT'
-seql = list(seq)
-print(seql)
-```
-
-Voltando agora às várias modalidades da função `range()`:
+resultados da função `range()`, transformando
+os resultados do `range()` numa lista (com a função `list()`).
 
 
 ```{code-cell} python3
@@ -547,75 +732,68 @@ print(nums)
 
 Continuando com os exemplos das listas em compreensão:
 
-```{admonition} Problema
-:class: example
-Obter uma lista com numeros ímpares (os primeiros 10)
+```{code-cell} ipython3
+# Potências de 2 numa lista:
+# primeiros 50
 
+potências2 = [2**n for n in range(50)]
+
+print(potências2)
 ```
 
 ```{code-cell} ipython3
-ímpares = [2*i+1 for i in range(10)]
+# Números ímpares que sejam múltiplos de 7
+# (até 200)
 
-print(ímpares)
-```
+ímpares = range(1, 200, 2)
 
-Em resumo, entre`[]` indica-se, em primeiro lugar, um "termo geral", neste caso `2*i+1`. De seguida e um comando `for` para passar pelos elementos do `range()` ou da lista de partida. À frente do `for`, o nome `i` tem o mesmo papel que nos comandos `for` "normais", é o nome a dar a cada elemento de partida, um a um.
+ímpares_m7 = [n for n in ímpares if n % 7 == 0]
 
-Tudo está entre `[]`, para indicar que estamos a construír uma lista.
-
-Esta maneira pode também ser vista como uma substituição da construção de listas novas com `append()`,
-começando a partir de uma lista vazia. A lista em compreensão que acabámos de ver é equivalente
-a fazer o seguinte:
-
-```{code-cell} ipython3
-ímpares = []
-for i in range(10):
-    ímpares.append(2 * i + 1)
-```
-
-Um outro exemplo:
-
-```{admonition} Problema
-:class: example
-Obter uma lista com os quadrados perfeitos entre 400 e 800.
+print(ímpares_m7)
 ```
 
 Este exemplo mostra que podemos, numa lista em compreensão, impôr condições (com `if`) aos valores
 da lista, "filtrando" certos elementos.
 
-```{code-cell} ipython3
-quads = [i**2 for i in range(30) if i**2 > 400 and i**2 < 800]
-
-print(quads)
-```
-
-Revisitando um exemplo anterior, mas agora usando listas em compreensão:
+Um exemplo um pouco mais elaborado:
 
 ```{admonition} Problema
 :class: example
-Obter uma lista com as diferenças sucessivas entre quadrados perfeitos, para mostrar que são os números ímpares
+Dada uma sequência de ácido nucleíco, separar os codões numa lista
 
 ```
 
 ```{code-cell} ipython3
-q = [i**2 for i in range(20)]
-difs = [q[i] - q[i-1] for i in range(1, len(q))]
+seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
+#      0  3  6  9
 
-print('Quadrados: ', q)
-print('\nDiferenças:', difs)
+ínício_codões = range(0, len(seq), 3)
+
+print('Posições iniciais dos codões:\n', list(ínício_codões))
+
+codões = [seq[i] + seq[i+1] + seq[i+2] for i in ínício_codões]
+
+print('\nSequência:\n', seq)
+print('Codões:\n', codões)
 ```
 
-Note-se a maneira muito compacta de resolver o problema. Duas lista em compreensão foram suficientes.
+O comentário na segunda linha indica a posição, na *string* da sequência, do começo de cada codão.
 
-Note-se a analogia com a notação matemática de indicar um conjunto "em compreensão"
+A "soma" das 3 letras de cada codão pode-se simplificar com a indexação com um *slice*:
 
 ```{code-cell} ipython3
-q = [i**2 for i in range(20)]
+seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
+#      0  3  6  9
+
+ínício_codões = range(0, len(seq), 3)
+
+print('Posições iniciais dos codões:\n', list(ínício_codões))
+
+codões = [seq[i:i+3] for i in ínício_codões]
+
+print('\nSequência:\n', seq)
+print('Codões:\n', codões)
 ```
-
-e
-
-$q = \{i^2 : i=0, 1, 2, ... ,20 \}$
 
 Mais um exemplo. A função `.remove()` retira a primeira ocorrência de um 
 elemento numa lista. Qual a maneira simples de retirar todas as ocorrências
@@ -657,26 +835,10 @@ print(a)
 print(a_clean)
 ```
 
-```{admonition} Exemplo:
-:class: example
-Obter uma lista de numeros até 300 que sejam múltiplos de 3 e de 7
-```
-
-Como testar se um número $n$ é múltiplo de outro $p$? basta que o resto da divisão de
-$n$ por $p$ seja 0. O resto da divisão pode ser obtido na linguagem Python pelo
-operador `%`:
-
-```{code-cell} ipython3
-mult_3_7 = [x for x in range(301) if x%7==0 and x%3==0]
-
-print(mult_3_7)
-```
-
 Leitura interessante:
 
 [Comprehensions in Python the Jedi
 way](https://gist.github.com/bearfrieze/a746c6f12d8bada03589)
-
 
 
 ## Iterações: comando `for`
@@ -736,11 +898,12 @@ blocos `if...elif...else`.
 
 As linhas a repetir fazem um cálculo de `root`, como a raíz quadrada de `n` (e print() de `n`e `root`).
 
-O que é o `n`? De onde apareceu? Qual o seu valôr?
+O que é o `n`?
 
-O comando `for` define o `n`: `n`é o nome que é dado a **cada elemento** da lista `nums`, um a um.
+No comando `for` define-se `n`.  
+`n`é um nome global que é dado a **cada elemento** da lista `nums`, um a um.
 
-**Cada vez que os comandos são repetidos, `n` toma um valor diferente**: da primeira vez é igual a 1, da segunda vez é igual a 2 e assim sucessivamente. `n` toma todos os valores da lista `nums`!
+**Cada vez que os comandos são repetidos, `n` toma um valor diferente**: da primeira vez é igual a 1, da segunda vez é igual a 2 e assim sucessivamente. `n` toma todos os valores da lista `nums`.
 
 Porquê a lista `nums`? A coleção à qual vão ser aplicados os comandos a repetir é aquela que estiver à frente
 de `in` e antes de `:` (não esquecer os `:`, eles são obrigatórios, tal como o `for` e o `in`)
@@ -790,11 +953,10 @@ for a in anos:
         print(a, "nao é bissexto")
 ```
 
-A iteração de uma *string* com o comando `for` "percorre" todos os **caracteres** da `string`, incluíndo os espaços
+A iteração de uma *string* com o comando `for` "percorre" todos os **caracteres** da *string*, incluíndo os espaços
 e a pontuação:
 
 ```{code-cell} ipython3
-:tags: [output_scroll]
 seq = 'ATGGT CAAAC TTGTT'
 
 for b in seq:
@@ -827,7 +989,7 @@ Dada a sequência de uma proteína, indicar a presença de lisinas (K) e leucina
 ```
 
 Mais uma vez, percorremos os aminoácidos da sequência com `for`. Para
-testar se estamos na presença de um K ou um L, usamos `in`para testar se o aminoácido pertence à *string* "KL".
+testar se estamos na presença de um K ou um L, usamos `in` para testar se o aminoácido pertence à *string* "KL".
 
 ```{code-cell} python3
 seq = 'ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE'
@@ -881,103 +1043,22 @@ grupo1 = {'H':1, 'Li':3, 'Na':11, 'K':19}
 print('elementos do grupo 1')
 
 for e in grupo1:
-    print(e, grupo1[e])
+    print(e, '→', grupo1[e])
 ```
 
-## Acumulações
+## Iterações com "acumulações"
 
 ```{admonition} Problema
 :class: hint
-Somar todos os numeros de 1 a 10
+Dada uma sequência de uma cadeia de DNA, "calcular" a cadeia complementar
+
+Estratégia:
+
+- Obter as bases da cadeia, uma a uma (for)
+- Calcular a base complementar para cada base
+- Juntar as bases complementares (numa string)
+
 ```
-
-```{code-cell} ipython3
-nums = [1,2,3,4,5,6,7,8,9,10]
-
-s = 0
-for i in nums:
-    s = s + i
-
-print('a soma de', nums, 'é', s)
-```
-
-A novidade neste exemplo é o uso de um "acumulador" de resultados parciais de uma operação.
-
-Neste caso, o papel de `s` é o de "acumular" a soma de sucessivos
-valores obtidos da iteração dos elementos da lista `nums`.
-
-Inicialmente, antes do programa entrar no comando `for`, `s` tem o valor 0.
-Cada vez que "passamos" a um novo valor `i`, isto é, a um novo valor da lista `nums`,
-este é somado ao valor **anterior** de `s`, fazendo `s = s + i`. Assim, conseguimos
-acumular a soma de todos os `i` e, no final das repetições do comando `for`, `s` é igual
-à soma de todos os números.
-
-É interessante mostrar os valores que estão associados a `s` ao longo
-das repetições. Adaptando o programa anterior com algumas utilizações
-adicionais da função `print()` podemos ver esses valores a mudar para
-cada `i`:
-
-```{code-cell} ipython3
-:tags: [output_scroll]
-nums = [1,2,3,4,5,6,7,8,9,10]
-
-s = 0
-for i in nums:
-    print('i =', i)
-    print('  s antes da soma', s)
-    s = s + i
-    print('  s depois da soma', s)
-
-print(f'a soma é {s}')
-```
-
-```{admonition} Problema
-:class: hint
-Calcular o factorial de 1000
-```
-
-```{code-cell} python3
-:tags: [output_scroll]
-fact = 1
-for i in range(1, 1001):
-    fact = fact * i
-
-print('o factorial de 1000 é', fact)
-```
-
-Mais uma vez, temos de "acumular" os produtos parciais sucessivos. `fact` tem esse
-papel. É análogo a `s` nos exemplos anteriores. Aqui a diferença é que
-estamos a acumular produtos e, por isso, `fact` tem de ter o valor
-inicial de 1 antes de começarem as repetições do comando `for`. Por outro
-lado, `fact` deve multiplicar por cada valor novo de `i`, com `fact = fact * i`.
-
-Agora um problema análogo, mas envolvendo *strings*:
-
-```{admonition} Problema
-:class: hint
-Obter a sequência da cadeia complementar de uma sequência de DNA
-```
-
-Se num programa tivermos uma *string* contendo uma sequência de um ácido
-nucleico, então podemos percorrer todas as "bases" da sequência:
-
-```{code-cell} python3
-seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
-
-for b in seq:
-    print(b, end=' ')
-```
-
-Note-se o `end=' '` para deixar apenas um espaço no final de `print()`e não uma mudança de linha.
-
-Agora podemos resolver o problema do cálculo da sequência complementar.
-
-Parte da estratégia consiste em ir "adicionando" os símbolos das bases complementares a
-uma *string* que, inicialmente, está vazia, isto é, é igual a `''` e, no fim das repetições,
-"acumulou" todos os símbolos.
-
-Temos também de "programar" o cálculo da base complementar. Para isso podemos seguir uma das quatro alternativas
-para as quatro bases possíveis:
 
 ```{code-cell} ipython3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
@@ -999,21 +1080,47 @@ print('sequência:   ', seq)
 print('complementar:', seqcomp)
 ```
 
-Neste exemplo, as letras das bases complementares foram adicionadas, uma
-a uma, à *string* `seqcomp`.
+A novidade neste exemplo é o uso de um "acumulador" de resultados parciais de uma operação.
 
-Antes da iteração com `for`, `seqcomp` é criada como uma "*string*
-vazia". As duas aspas consecutivas na atribuição `seqcomp = ''` definem,
-precisamente, uma uma "*string* vazia".
+Neste caso, o papel de `seqcomp` é o de "acumular" as bases complementares de sucessivas
+bases obtidos da iteração dos elementos da *string* `seq`.
 
-Em cada repetição adicionamos uma base complementar nova fazendo `seqcomp = seqcomp + bcomp`.
+Inicialmente, antes do programa entrar no comando `for`, `s` tem o valor `''`, isto é, uma *string* vazia.
 
-Convém relembrar que podemos "adicionar" *strings*.
+Cada vez que "passamos" a um novo valor `b`, isto é, a um novo valor da lista `seq`,
+a base complementar é "somada" ao valor **anterior** de `seqcomp`, fazendo `seqcomp = seqcomp + bcomp`.
 
-O programa pode ser modificado (melhorado) eliminando os `if...elif...elif...else`.
+Assim, conseguimos acumular na *string* a soma de todas as bases complementares `bcomp` e, no final das repetições do comando `for`, `seqcomp` é igual à sequência.
 
-A ideia é usar um dicionário que associe cada símbolo de uma base ao símbolo da sua base
-complementar:
+Podemos, "dentro" do comando `for` monitirizar o que está a acontecer em todo o processo, com algumas funções `print()`:
+
+```{code-cell} ipython3
+seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
+
+seqcomp = ''
+
+for b in seq:
+    print('b →', b)
+    if b == 'A':
+        bcomp = 'T'
+    elif b == 'T':
+        bcomp = 'A'
+    elif b == 'G':
+        bcomp = 'C'
+    else:
+        bcomp = 'G'
+    print('bcomp →', bcomp)
+    seqcomp = seqcomp + bcomp
+    print('seqcomp →', seqcomp)
+    print('-'*30)
+
+print('sequência:   ', seq)
+print('complementar:', seqcomp)
+```
+
+Como se pode ver, a *string* `seqcomp` vai aumentando por acumulação das bases complementares.
+
+Note-se que, pelo uso de um dicionário de bases complementares, o programa pode ser simplificado:
 
 ```{code-cell} ipython3
 seq = 'ATGGTCAAACTTGTTGACTGCAAATGCGTACGT'
@@ -1029,36 +1136,13 @@ print('sequência:   ', seq)
 print('complementar:', seqcomp)
 ```
 
-Nesta versão, vamos adicionando a `seqcomp` aquilo que obtemos indexando o dicionário com
-cada uma das bases `b` da sequência. Ao indexarmos o dicionário, usando essa base `b` como chave (que é apenas uma letra), obtemos o símbolo da base complementar, como valor: `seqcomp = seqcomp + complementares[b]`.
-
-Repare que, neste exemplo, misturamos:
-
-- a iteração de *strings*, letra a letra
-- a indexação (com `[]`) de um dicionário, que funciona como tabela para a transformação base &rarr; base complementar.
-- a soma de *strings* e o truque de acumulação de resultados parciais.
-
-Sem muito esforço, podemos formatar um pouco a apresentação das duas
-cadeias, na vertical e pondo em evidência a correspondência entre as
-bases, desenhando uma *escada da dupla hélice* :
-
-```{code-cell} ipython3
-:tags: [output_scroll]
-seq = 'ATGGTCAAACTT'
-
-complementares = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
-
-for b in seq:
-    print(f'{b}-{complementares[b]}')
-```
-
-Agora um problema mais elaborado:
-
 ```{admonition} Problema
 :class: hint
-Converter uma sequência com códigos de uma letra de aminoácidos para
-códigos de 3 letras, usando um dicionário para a conversão.
+Dada uma sequência de uma proteína com códigos de uma letra, "traduzir" para códigos de 3 letras
+
 ```
+
+Desde que esteja disponível um dicionário que traduza códigos de 1 letra para códigos de 3 letras, a soução é análoga à solução anterior:
 
 ```{code-cell} ipython3
 trans = {'A': 'Ala', 'C': 'Cys', 'E': 'Glu', 'D': 'Asp',
@@ -1077,25 +1161,69 @@ for aa in seq1:
 print(seq1, 'é o mesmo que ', seq3)
 ```
 
-### Somas e fatoriais: a maneira simples
-
-Os exemplos de acumulações numéricas, somas e fatorial foram resolvidos com acumuladores de
-forma a mostrar o conceito subjacente a todas as acumulações.
-
-No entanto, o Python tem funções para calcular somas e fatoriais. Naturalmente, é muito mais simples utilizar estas funções.
-
-Para somas existe a função `sum()`:
+Esta ideia de acumulação de elementos novos num objeto que começa pro estar vazio pode ser aplicada para
+obter somas e produtos.
 
 ```{code-cell} ipython3
+# somar todos os números de 1 a 10
+nums = [1,2,3,4,5,6,7,8,9,10]
+
+s = 0
+for i in nums:
+    s = s + i
+
+print('a soma de', nums, 'é', s)
+```
+
+A novidade neste exemplo é que o acumulador `s` começa por ser 0, o elemento neutro (vazio) da soma e depois acumula somas de números (em vez de somas de *strings*).
+
+É interessante mostrar os valores que estão associados a `s` ao longo
+das repetições. Adaptando o programa anterior com algumas utilizações
+adicionais da função `print()` podemos ver esses valores a mudar para
+cada `i`:
+
+```{code-cell} ipython3
+:tags: [output_scroll]
+nums = [1,2,3,4,5,6,7,8,9,10]
+
+s = 0
+for i in nums:
+    print('i →', i)
+    print('  s antes da soma', s)
+    s = s + i
+    print('  s depois da soma', s)
+
+print(f'a soma é {s}')
+```
+
+O mesmo padrão de acumulação pode ser uusado para produtos, mas neste caso o valôr de partida do acumulador deve ser 1:
+
+```{admonition} Problema
+:class: hint
+Calcular o factorial de 1000
+```
+
+```{code-cell} python3
+:tags: [output_scroll]
+fact = 1
+for i in range(1, 1001):
+    fact = fact * i
+
+print('o factorial de 1000 é', fact)
+```
+
+Apesar de somas e fatoriais poderem ser obtidos com acumulações, existem formas mais simples de as obter:
+
+- a função `sum()` soma todos os elementos de uma lista de números.
+- a função `math.factorial()` do módulo `math` calcula o fatorial de um número.
+
+```{code-cell} python3
 s = sum(range(1, 1001))
 
 print('a soma dos números de 1 a 1000 é', s)
 ```
 
-Para fatoriais existe a função `factorial()`, mas pertence ao módulo `math`:
-
-```{code-cell} ipython3
-:tags: [output_scroll]
+```{code-cell} python3
 import math
 f = math.factorial(100)
 
@@ -1124,7 +1252,7 @@ seq = 'ADKHLILTAVGWFHVAFKAGAHKWE'
 i = 0
 for aa in seq:
     if aa in 'KL':
-        print(i, ':', aa)
+        print(i, '→', aa)
     i = i + 1
 ```
 
@@ -1158,7 +1286,7 @@ simultaneamente à posição e ao elemento. Isto é chamado *desdobramento*.
 seq = 'ADKHLILTAVGWFHVAFKAGAHKWE'
 
 for (i, a) in enumerate(seq):
-    print(i, ':', a)
+    print(i, '→', a)
 ```
 
 Na linguagem Python há várias situações em que podemos fazer
@@ -1180,9 +1308,10 @@ seq = 'ADKHLILTAVGWFHVAFKAGAHKWE'
 
 for i, aa in enumerate(seq):
     if aa in 'KL':
-        print(i, ':', aa)
+        print(i, '→', aa)
 ```
-A função `enumerate()`não se aplica só a *strings*. Ela funciona com qualquer tipo de coleção.
+A função `enumerate()` não se aplica só a *strings*. **Ela funciona com qualquer tipo de coleção**.
+Funciona também com `range()`
 
 Com listas, obtemos as posições de cada elemento da lista, como seria de esperar,
 mas com dicionários e conjuntos a função `enumerate()` também funciona, embora as posições que
@@ -1222,22 +1351,51 @@ iterada se passarmos por um comando `break`.
 Tem utilidade desde que seja utilizado com um `if` para testar uma
 condição.
 
+Um caso notável da utilização de um comando `break` é este:
+
 ```{admonition} Problema
 :class: hint
-Obter um esquema das correspondências entre uma sequência de
-DNA e a sequência complementar, mas parar assim que for encontrado um
-par C - G.
+traduzir um mRNA, mas "respeitando" o codão STOP
 ```
 
+Para resolver este problema temos de ter disponível num programa a informação sobre o código genético, incluindo os codões STOP.
+
+Mais uma vez, os dicionários são uma forma muito conveniente de estabelecer a conexão entre tripletos e aminoácidos correspondentes.
+
 ```{code-cell} ipython3
-seq = 'ATGGTTAAACTTGTTGACTGCAAATGCGTACGT'
+gencode = {
+     'UUU': 'F', 'UUC': 'F', 'UUA': 'L', 'UUG': 'L', 'UCU': 'S',
+     'UCC': 'S', 'UCA': 'S', 'UCG': 'S', 'UAU': 'Y', 'UAC': 'Y',
+     'UGU': 'C', 'UGC': 'C', 'UGG': 'W', 'CUU': 'L', 'CUC': 'L',
+     'CUA': 'L', 'CUG': 'L', 'CCU': 'P', 'CCC': 'P', 'CCA': 'P',
+     'CCG': 'P', 'CAU': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',
+     'CGU': 'R', 'CGC': 'R', 'CGA': 'R', 'CGG': 'R', 'AUU': 'I',
+     'AUC': 'I', 'AUA': 'I', 'AUG': 'M', 'ACU': 'T', 'ACC': 'T',
+     'ACA': 'T', 'ACG': 'T', 'AAU': 'N', 'AAC': 'N', 'AAA': 'K',
+     'AAG': 'K', 'AGU': 'S', 'AGC': 'S', 'AGA': 'R', 'AGG': 'R',
+     'GUU': 'V', 'GUC': 'V', 'GUA': 'V', 'GUG': 'V', 'GCU': 'A',
+     'GCC': 'A', 'GCA': 'A', 'GCG': 'A', 'GAU': 'D', 'GAC': 'D',
+     'GAA': 'E', 'GAG': 'E', 'GGU': 'G', 'GGC': 'G', 'GGA': 'G',
+     'GGG': 'G', 'UAA': 'STOP', 'UAG': 'STOP', 'UGA': 'STOP'}
+```
 
-complementares = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
+Admitindo que este dicionário já se encontra disponível, o problema resolve-se da seguinte forma:
 
-for b in seq:
-    print(b, '-', complementares[b])
-    if b == 'C':
+```{code-cell} ipython3
+seq = "AUGAGCUGGAUCCUGAACGAUGCAUAAGCAUAGCCAUAGACUAGCAUGGGACUAAAGGUCCAUUACUGA"
+
+# separar os codões para uma lista, como vimos anteriormente
+codões = [seq[i:i+3] for i in range(0, len(seq), 3)]
+
+proteína = ''
+
+for c in codões:
+    aminoácido = gencode[c]
+    if aminoácido == 'STOP':
         break
+    proteína = proteína + aminoácido
+
+print(f'Para o mRNA\n{seq}\n\nA proteína correspondente é\n{proteína}')
 ```
 
 ## Comando `continue`
