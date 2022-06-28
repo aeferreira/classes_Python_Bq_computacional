@@ -27,6 +27,7 @@ parts:
     - file: sm_ph
     - file: problems2
     - file: sm_pandas
+    - file: uniprot_csv.md
     - file: sm_linreg
     - file: sm_sympy
     - file: sm_algorithms
