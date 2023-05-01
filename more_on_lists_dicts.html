@@ -1,0 +1,1565 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="pt-PT" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Listas e dicionários &#8212; Programação em Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'more_on_lists_dicts';</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Pesquisar" href="search.html" />
+    <link rel="next" title="4. Strings e textos" href="strings.html" />
+    <link rel="prev" title="2. Coleções e iterações" href="collections_iterations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt-PT"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/newlogo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/newlogo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Prefácio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">A linguagem Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basics.html">1. Conceitos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections_iterations.html">2. Coleções e iterações</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Listas e dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">4. <em>Strings</em> e textos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcs_modules.html">5. Funções e módulos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems.html">6. Exercícios de treino</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">7. Ficheiros de texto</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Textos estruturados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="uniprot_txt.html">8. Exemplo: ficheiros UniProt txt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Módulos científicos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sm_numpy_scipy.html">9. Os principais módulos “científicos”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_ph.html">10. Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems2.html">11. Exercícios de treino, 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_pandas.html">12. pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uniprot_csv.html">13. Exemplo: ficheiros CSV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_linreg.html">14. Exemplo: regressão linear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_sympy.html">15. Módulo <code class="docutils literal notranslate"><span class="pre">sympy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_algorithms.html">16. Algoritmos numéricos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_software.html">Instalação de software</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Baixe esta página">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/more_on_lists_dicts.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Baixar arquivo fonte"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir em PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Listas e dicionários</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revisao-sobre-colecoes">3.1. Revisão sobre coleções</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listas">3.2. Listas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#append-como-funcao-geradora-de-listas">3.3. <code class="docutils literal notranslate"><span class="pre">.append()</span></code>, como função geradora de listas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formas-equivalentes-de-usar-append-e-listas-em-compreensao">3.3.1. Formas equivalentes de usar <code class="docutils literal notranslate"><span class="pre">.append()</span></code> e listas em compreensão</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexacao-com-numeros-negativos">3.4. Indexação com números negativos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mais-algumas-funcoes-de-listas">3.5. Mais algumas funções de listas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reverse-sort">3.5.1. <code class="docutils literal notranslate"><span class="pre">.reverse()</span></code>, <code class="docutils literal notranslate"><span class="pre">.sort()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dicionarios">3.6. Dicionários</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acrescentar-e-modificar-elementos-chave-valor">3.6.1. Acrescentar e modificar elementos (chave:valor)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update">3.6.2. <code class="docutils literal notranslate"><span class="pre">.update()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clear">3.6.3. <code class="docutils literal notranslate"><span class="pre">.clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iteracoes-usando-values-items-keys">3.6.4. Iterações usando <code class="docutils literal notranslate"><span class="pre">.values()</span></code>,<code class="docutils literal notranslate"><span class="pre">.items()</span></code>, <code class="docutils literal notranslate"><span class="pre">.keys()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dict">3.6.5. <code class="docutils literal notranslate"><span class="pre">dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcao-zip">3.7. Função <code class="docutils literal notranslate"><span class="pre">zip()</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="listas-e-dicionarios">
+<h1><span class="section-number">3. </span>Listas e dicionários<a class="headerlink" href="#listas-e-dicionarios" title="Permalink to this heading">#</a></h1>
+<section id="revisao-sobre-colecoes">
+<h2><span class="section-number">3.1. </span>Revisão sobre coleções<a class="headerlink" href="#revisao-sobre-colecoes" title="Permalink to this heading">#</a></h2>
+<p>No capítulo anterior, definiu-se o conceito de coleção e mostrou-se 4
+dos tipos fundamentais de coleções na linguagem Python: as listas, as
+<em>strings</em>, os dicionários e os conjuntos.</p>
+<p>A função <code class="docutils literal notranslate"><span class="pre">len()</span></code>, para calcular o número de elementos de uma coleção, e o
+operador <code class="docutils literal notranslate"><span class="pre">in</span></code>, para verificar se um elemento está contido numa coleção, podem
+ser usados em qualquer coleção.</p>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>Recorde que o operador <code class="docutils literal notranslate"><span class="pre">in</span></code>, ao ser usado com dicionários, verifica
+se um elemento está entre as <strong>chaves</strong> do dicionário.</p>
+<p>Recorde que o operador <code class="docutils literal notranslate"><span class="pre">in</span></code>, ao sr usado com <em>strings</em>, pode verificar se uma <em>substrings</em>
+está presente e não apenas uma letra:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s1">&#39;AUG&#39;</span> <span class="ow">in</span> <span class="s1">&#39;UCCAUGGCCAA&#39;</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;AUG existe na sequência&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Outra característica em comum a todas as coleções é a possibilidade de serem “iteradas”
+usando o comando <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
+<div class="info admonition">
+<p class="admonition-title">Nota</p>
+<p>Recorde que, usando o comando <code class="docutils literal notranslate"><span class="pre">for</span></code>:</p>
+<ul class="simple">
+<li><p>Passamos por todos os <strong>elementos</strong> de uma <em>lista</em> (pela sua ordem)</p></li>
+<li><p>Passamos pelas <strong>chaves</strong> de um <em>dicionário</em>.</p></li>
+<li><p>Passamos pelos <strong>caracteres</strong> de uma <em>string</em> (pela sua ordem)</p></li>
+<li><p>Passamos pelos <strong>elementos</strong> de um <em>conjunto</em>.</p></li>
+</ul>
+</div>
+<p>Vale a pena relembrar que as <em>listas</em> e os <em>dicionários</em> podem ser criados “em compreensão”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quads</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+
+<span class="n">n_letras</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;isto&#39;</span><span class="p">,</span> <span class="s1">&#39;são&#39;</span><span class="p">,</span> <span class="s1">&#39;várias&#39;</span><span class="p">,</span> <span class="s1">&#39;palavras&#39;</span><span class="p">]}</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">quads</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_letras</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+{&#39;isto&#39;: 4, &#39;são&#39;: 3, &#39;várias&#39;: 6, &#39;palavras&#39;: 8}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="listas">
+<h2><span class="section-number">3.2. </span>Listas<a class="headerlink" href="#listas" title="Permalink to this heading">#</a></h2>
+<p>Neste capítulo mostra-se algumas <strong>funções</strong> que são específicas de cada
+coleção, começando pelas <strong>listas</strong> e <strong>dicionários</strong>. As funções características
+das <em>strings</em> serão o tema do próximo capítulo.</p>
+<p>Vejamos algumas funções que são <strong>específicas das listas</strong>.</p>
+<p>A referência oficial destas funções pode ser consultada na <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">documentação da
+linguagem Python.</a></p>
+<p>De uma forma esquemática, algumas das funções membro de listas mais usadas são as seguintes</p>
+<p><img alt="Funções membro de listas" src="_images/list_functions.png" /></p>
+<p>Note-se que a função <code class="docutils literal notranslate"><span class="pre">.remove()</span></code> apenas remove a primeira ocorrência de um elemento numa lista e não todas as ocorrências.</p>
+<p>Por outro lado, estas outras funções, já vistas anteriormente, são também muito usadas com listas:</p>
+<p><img alt="Outras funções com listas" src="_images/other_list_functions.png" /></p>
+<p>Um primeiro exemplo, ilustrando o uso das funções <code class="docutils literal notranslate"><span class="pre">.count()</span></code> e <code class="docutils literal notranslate"><span class="pre">.remove()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remover todas as ocorrências de um elemento</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">depois de remover todos os 1:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+
+depois de remover todos os 1:
+[2, 3, 4, 2, 3, 4, 2, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um segundo exemplo, ilustrando o uso da função  <code class="docutils literal notranslate"><span class="pre">.count()</span></code> (e <code class="docutils literal notranslate"><span class="pre">list()</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Contar K e L na sequência de uma proteína</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE&#39;</span>
+
+<span class="n">seqlista</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+
+<span class="n">nK</span> <span class="o">=</span> <span class="n">seqlista</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">)</span>
+<span class="n">nL</span> <span class="o">=</span> <span class="n">seqlista</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Existem </span><span class="si">{</span><span class="n">nK</span><span class="si">}</span><span class="s1"> lisinas e </span><span class="si">{</span><span class="n">nL</span><span class="si">}</span><span class="s1"> leucinas na sequência&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Existem 3 lisinas e 2 leucinas na sequência
+ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE
+</pre></div>
+</div>
+</div>
+</div>
+<p>No entanto, uma vez que a função <code class="docutils literal notranslate"><span class="pre">.count()</span></code> também funciona com <em>strings</em>, o programa anterior pode ser escrito exclusivamente com base em <em>strings</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Contar K e L na sequência de uma proteína</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE&#39;</span>
+
+<span class="n">nK</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">)</span>
+<span class="n">nL</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Existem </span><span class="si">{</span><span class="n">nK</span><span class="si">}</span><span class="s1"> lisinas e </span><span class="si">{</span><span class="n">nL</span><span class="si">}</span><span class="s1"> leucinas na sequência&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Existem 3 lisinas e 2 leucinas na sequência
+ADKHLILTAVGGCWFHVAFWEVEKAGAHKWE
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="append-como-funcao-geradora-de-listas">
+<h2><span class="section-number">3.3. </span><code class="docutils literal notranslate"><span class="pre">.append()</span></code>, como função geradora de listas<a class="headerlink" href="#append-como-funcao-geradora-de-listas" title="Permalink to this heading">#</a></h2>
+<p>A função <code class="docutils literal notranslate"><span class="pre">.append()</span></code> é uma das mais usadas, já que permite a construção de listas novas num programa, muits vezes com base em iteração com <code class="docutils literal notranslate"><span class="pre">for</span></code>, começando a partir de uma lista vazia.</p>
+<p>Alguns exemplos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gerar uma lista com os 40 primeiros quadrados perfeitos</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">41</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576, 625, 676, 729, 784, 841, 900, 961, 1024, 1089, 1156, 1225, 1296, 1369, 1444, 1521, 1600]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gerar uma lista com os 40 primeiros quadrados perfeitos</span>
+<span class="c1"># que estejam entre 400 e 800</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">41</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="o">&gt;=</span> <span class="mi">400</span> <span class="ow">and</span> <span class="n">q</span> <span class="o">&lt;=</span> <span class="mi">800</span><span class="p">:</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[400, 441, 484, 529, 576, 625, 676, 729, 784]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Somar os 10 primeiros números ímpares</span>
+
+<span class="n">ímpares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">ímpares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ímpares</span><span class="p">)</span>
+
+<span class="n">resultado</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ímpares</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A soma dos 10 primeiros ímpares é&#39;</span><span class="p">,</span> <span class="n">resultado</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Verificação:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pela soma de prog. aritm.&#39;</span><span class="p">,(</span><span class="mi">1</span><span class="o">+</span><span class="mi">19</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+A soma dos 10 primeiros ímpares é 100
+Verificação:
+Pela soma de prog. aritm. 100.0
+</pre></div>
+</div>
+</div>
+</div>
+<section id="formas-equivalentes-de-usar-append-e-listas-em-compreensao">
+<h3><span class="section-number">3.3.1. </span>Formas equivalentes de usar <code class="docutils literal notranslate"><span class="pre">.append()</span></code> e listas em compreensão<a class="headerlink" href="#formas-equivalentes-de-usar-append-e-listas-em-compreensao" title="Permalink to this heading">#</a></h3>
+<p>A utilização da função <code class="docutils literal notranslate"><span class="pre">.append()</span></code> para criar uma lista nova é muitas vezes equivalente a usar uma lista em compreensão.</p>
+<p>Ilustrando com os dois últimos exemplos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">41</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="o">&gt;=</span> <span class="mi">400</span> <span class="ow">and</span> <span class="n">q</span> <span class="o">&lt;=</span> <span class="mi">800</span><span class="p">:</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">41</span><span class="p">)</span> <span class="k">if</span> <span class="mi">400</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="mi">800</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[400, 441, 484, 529, 576, 625, 676, 729, 784]
+[400, 441, 484, 529, 576, 625, 676, 729, 784]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Repare-se que os dois <code class="docutils literal notranslate"><span class="pre">print()</span></code> dão o mesmo resultado.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ímpares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">ímpares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ímpares</span><span class="p">)</span>
+
+<span class="c1"># é equivalente a</span>
+
+<span class="n">resultado</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A soma dos 10 primeiros ímpares é&#39;</span><span class="p">,</span> <span class="n">resultado</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Verificação, pela soma de prog. aritm.&#39;</span><span class="p">,(</span><span class="mi">1</span><span class="o">+</span><span class="mi">19</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A soma dos 10 primeiros ímpares é 100
+Verificação, pela soma de prog. aritm. 100.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="indexacao-com-numeros-negativos">
+<h2><span class="section-number">3.4. </span>Indexação com números negativos<a class="headerlink" href="#indexacao-com-numeros-negativos" title="Permalink to this heading">#</a></h2>
+<p>As listas e as <em>string</em> têm uma <strong>numeração implícita, (a contar do zero)</strong>, e podemos
+<strong>indexar</strong> uma lista usando <code class="docutils literal notranslate"><span class="pre">lista[posição]</span></code>. Obtemos o elemento que está
+numa posição.</p>
+<p>Mostrando, com um comentário as posições implícitas dos elementos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enzimas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;HK&#39;</span><span class="p">,</span> <span class="s1">&#39;G6PDH&#39;</span><span class="p">,</span> <span class="s1">&#39;TPI&#39;</span><span class="p">,</span> <span class="s1">&#39;Ald&#39;</span><span class="p">,</span> <span class="s1">&#39;PFK&#39;</span><span class="p">,</span> <span class="s1">&#39;PK&#39;</span><span class="p">]</span>
+<span class="c1">#           0       1       2      3      4      5   len()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">enzimas</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">enzimas</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="c1"># para obter o último elemento...</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">enzimas</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">enzimas</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HK
+Ald
+PK
+</pre></div>
+</div>
+</div>
+</div>
+<p>As listas e as <em>strings</em> têm também uma <strong>numeração implícita com números negativos</strong>:
+o último elemento é -1, o penúltimo -2 e assim sucessivamente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enzimas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;HK&#39;</span><span class="p">,</span> <span class="s1">&#39;G6PDH&#39;</span><span class="p">,</span> <span class="s1">&#39;TPI&#39;</span><span class="p">,</span> <span class="s1">&#39;Ald&#39;</span><span class="p">,</span> <span class="s1">&#39;PFK&#39;</span><span class="p">,</span> <span class="s1">&#39;PK&#39;</span><span class="p">]</span>
+<span class="c1">#                          -4     -3     -2     -1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">enzimas</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">enzimas</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">enzimas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TPI
+HK
+PK
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Dica</p>
+<p>para obter o último elemento de uma lista podemos simplesmente indexar com -1</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">último</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>A indexação permite também <strong>modificar</strong> um elemento que está numa
+posição, usando <code class="docutils literal notranslate"><span class="pre">=</span></code> como se fossemos atribuír um nome.</p>
+<p>No seguinte exemplo modificamos o elemento que está na posição 2:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="mi">10</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
+[1, 1, 4100, 2, 2, 2, 3, 3, 3, 4, 4, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos aplicar um comando <code class="docutils literal notranslate"><span class="pre">for</span></code> não diretamente aos elementos de uma lista
+mas sim aos números inteiros , geralmente gerados com <code class="docutils literal notranslate"><span class="pre">range()</span></code>, que podem funcionar como posições para indexar a lista.</p>
+<p>Vejamos estas duas alternativas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iteração direta dos elementos da lista</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+2
+1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Esta é a maneira simples e direta de aplicar comandos (neste caso <code class="docutils literal notranslate"><span class="pre">print()</span></code>) a todos os
+elementos da lista.</p>
+<p>Mas o mesmo pode ser conseguido, de uma forma indireta, passando pelas posições, não pelos próprios elementos, e usando indexação para obter os elementos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># iteração através das posições dos elementos</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+2
+1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Claro que a forma indireta é mais complicada e são raras as ocasiões onde teremos de a usar.</p>
+<p>No entanto, um exemplo:</p>
+<div class="example admonition">
+<p class="admonition-title">Problema</p>
+<p>Calcular as diferenças sucessivas entre os elementos de uma
+lista, pondo o resultado numa lista</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="n">difs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">difs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lista&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Diferenças sucessivas&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">difs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lista
+[1, 1, 1, 2, 2, 2, 3, 3, 3, 5, 5, 7]
+
+Diferenças sucessivas
+[0, 0, 1, 0, 0, 1, 0, 0, 2, 0, 2]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Neste exemplo tivemos de usar posições, os índices dos elementos, porque
+as diferenças sucessivas têm de ser calculadas por <span class="math notranslate nohighlight">\(d_i = a_i - a_{i-1}\)</span> ou,
+em Python,</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Repare-se que a <code class="docutils literal notranslate"><span class="pre">range()</span></code> tem de começar em 1, uma vez que, se começasse em 0, a primeira
+diferença calculada seria <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">a[0]</span> <span class="pre">-</span> <span class="pre">a[-1]</span></code> que não faria sentido, uma vez que <code class="docutils literal notranslate"><span class="pre">a[-1]</span></code>
+representa o último elemento da lista.</p>
+<div class="example admonition">
+<p class="admonition-title">Exemplo</p>
+<p>Mostrar que as diferenças sucessivas entre os quadrados
+perfeitos, são os números ímpares (usar os 20 primeiros)</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#calcular os quadrados perfeitos</span>
+<span class="n">quads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">quads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">#calcular as diferenças sucessivas</span>
+<span class="n">difs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">quads</span><span class="p">)):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">quads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">quads</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">difs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;quadrados perfeitos&#39;</span><span class="p">,</span> <span class="n">quads</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">diferenças sucessivas&#39;</span><span class="p">,</span> <span class="n">difs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>quadrados perfeitos [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
+
+diferenças sucessivas [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37]
+</pre></div>
+</div>
+</div>
+</div>
+<p>A propriedade matemática anterior foi usada por Galileu no estudo da
+queda livre dos corpos.</p>
+<p><img alt="" src="_images/galileu.jpg" /></p>
+<p>As distâncias sucessivas percorridas durante a queda para a mesma
+unidade de tempo estão entre si como a sucessão dos números ímpares, o
+que implica que a distância acumulada cresce segundo o quadrado do tempo
+decorrido: o movimento de queda livre é uniformemente acelerado.</p>
+<p>As listas em compreensão podem ser usadas para abreviar o programa, sem recorrer a listas vazias e <code class="docutils literal notranslate"><span class="pre">.append()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quads</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">difs</span> <span class="o">=</span> <span class="p">[</span><span class="n">quads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">quads</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">quads</span><span class="p">))]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Quadrados: &#39;</span><span class="p">,</span> <span class="n">quads</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Diferenças:&#39;</span><span class="p">,</span> <span class="n">difs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quadrados:  [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
+
+Diferenças: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Uma pequena nota final sobre a utilização de indexação para passar por
+todos os elementos de uma lista:</p>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>A maneira “indireta” de percorrer uma lista com <code class="docutils literal notranslate"><span class="pre">for</span></code></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">)):</span>
+<span class="s2">&quot;operações com lista[i]&quot;</span>
+</pre></div>
+</div>
+<p>é muito típica de outras linguagens de programação. Não na linguagem Python, onde é encorajado o uso da forma direta:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+<span class="s2">&quot;operações com e&quot;</span>
+</pre></div>
+</div>
+<p>Na linguagem Python é quase sempre possível reescrever a forma indireta na forma direta.</p>
+<p>Quando os índices dos elementos são mesmo necessários a função <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code>,
+vista no capítulo anterior, pode muitas vezes substituír a indexação.</p>
+<p>Num dos próximos capítulos abordaremos ainda o uso de módulos de computação científica, em
+particular os módulos <code class="docutils literal notranslate"><span class="pre">numpy</span></code> e <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, em que a iteração é substituída por operações “vetoriais”, que, efetivamente, prescindem o uso de comandos <code class="docutils literal notranslate"><span class="pre">for</span></code>, quer na sua forma direta quer na sua forma indireta.</p>
+</div>
+</section>
+<section id="mais-algumas-funcoes-de-listas">
+<h2><span class="section-number">3.5. </span>Mais algumas funções de listas<a class="headerlink" href="#mais-algumas-funcoes-de-listas" title="Permalink to this heading">#</a></h2>
+<section id="reverse-sort">
+<h3><span class="section-number">3.5.1. </span><code class="docutils literal notranslate"><span class="pre">.reverse()</span></code>, <code class="docutils literal notranslate"><span class="pre">.sort()</span></code><a class="headerlink" href="#reverse-sort" title="Permalink to this heading">#</a></h3>
+<p>As funções <code class="docutils literal notranslate"><span class="pre">.reverse()</span></code>, <code class="docutils literal notranslate"><span class="pre">.sort()</span></code> também <strong>modificam</strong> uma lista, tal como, por exemplo, a função <code class="docutils literal notranslate"><span class="pre">.append()</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.reverse()</span></code> coloca os elementos da lista por uma ordem contrária aquela que é dada.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.sort()</span></code> ordena os elemento da lista por ordem alfabética ou por ordem numérica.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;seg&#39;</span><span class="p">,</span> <span class="s1">&#39;ter&#39;</span><span class="p">,</span> <span class="s1">&#39;qua&#39;</span><span class="p">,</span> <span class="s1">&#39;qui&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;sab&#39;</span><span class="p">,</span> <span class="s1">&#39;dom&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;lista original&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Depois de a.reverse()&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Depois de a.sort()&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lista original
+[&#39;seg&#39;, &#39;ter&#39;, &#39;qua&#39;, &#39;qui&#39;, &#39;sex&#39;, &#39;sab&#39;, &#39;dom&#39;]
+
+Depois de a.reverse()
+[&#39;dom&#39;, &#39;sab&#39;, &#39;sex&#39;, &#39;qui&#39;, &#39;qua&#39;, &#39;ter&#39;, &#39;seg&#39;]
+
+Depois de a.sort()
+[&#39;dom&#39;, &#39;qua&#39;, &#39;qui&#39;, &#39;sab&#39;, &#39;seg&#39;, &#39;sex&#39;, &#39;ter&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dicionarios">
+<h2><span class="section-number">3.6. </span>Dicionários<a class="headerlink" href="#dicionarios" title="Permalink to this heading">#</a></h2>
+<p>Os dicionários são associações (não ordenadas) entre <strong>chaves</strong> e
+<strong>valores</strong>.</p>
+<div class="important admonition">
+<p class="admonition-title">Nota</p>
+<p>Num dicionário <strong>cada chave é única</strong>. Não pode haver chaves repetidas.</p>
+</div>
+<section id="acrescentar-e-modificar-elementos-chave-valor">
+<h3><span class="section-number">3.6.1. </span>Acrescentar e modificar elementos (chave:valor)<a class="headerlink" href="#acrescentar-e-modificar-elementos-chave-valor" title="Permalink to this heading">#</a></h3>
+<div class="info admonition">
+<p class="admonition-title">Importante</p>
+<p>A maneira de obter, inserir e modificar elementos de um dicionário é através
+das suas chaves, usando <strong>indexação</strong></p>
+</div>
+<p>De certa forma é mais fácil inserir e modificar elementos (pares chave: valor) num
+dicionário do que numa lista. Basta usar indexação pela chave. O melhor será com um exemplo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="c1"># inserir um elemento novo (par chave:valor)</span>
+
+<span class="n">d</span><span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="c1"># modificar um elemento já existente</span>
+
+<span class="n">d</span><span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19}
+{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19, &#39;O&#39;: 16}
+{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19, &#39;O&#39;: 18}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Não esquecer que o operador <code class="docutils literal notranslate"><span class="pre">in</span></code> procura se existe ou não uma <strong>chave</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">}</span>
+
+<span class="k">if</span> <span class="s1">&#39;N&#39;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Existe info sobre o azoto&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Não existe info sobre o azoto&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Não existe info sobre o azoto
+</pre></div>
+</div>
+</div>
+</div>
+<p>Não esquecer que o comando <code class="docutils literal notranslate"><span class="pre">for</span></code> aplicado a dicionários passa pelas <strong>chaves</strong>.</p>
+<p>Um exemplo, com uma mini tabela periódica:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elementos cujo símbolo tem 2 letras</span>
+<span class="n">tperiodica</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">tperiodica</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Li
+Na
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mas, percorrendo as chaves, podemos obter os valores correspondentes por indexação:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elementos com o número atómico superior a 10</span>
+<span class="n">tperiodica</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">tperiodica</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tperiodica</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;---&gt;&#39;</span><span class="p">,</span> <span class="n">tperiodica</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Na ---&gt; 11
+K ---&gt; 19
+O ---&gt; 18
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="update">
+<h3><span class="section-number">3.6.2. </span><code class="docutils literal notranslate"><span class="pre">.update()</span></code><a class="headerlink" href="#update" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">.update()</span></code> faz várias modificações de uma só vez: modifica um dicionário
+com outro dicionário. Se uma chave já existir, o seu valor é modificado. Se não existir,
+é inserido um novo elemento. Vejamos um exemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="n">novos</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">d</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">novos</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;após update&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original
+{&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2}
+após update
+{&#39;a&#39;: 1, &#39;c&#39;: 20, &#39;b&#39;: 2, &#39;p&#39;: 10, &#39;q&#39;: 15}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="clear">
+<h3><span class="section-number">3.6.3. </span><code class="docutils literal notranslate"><span class="pre">.clear()</span></code><a class="headerlink" href="#clear" title="Permalink to this heading">#</a></h3>
+<p>Uma função óbvia. (Note-se que já a vimos em listas).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="n">d</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2}
+{}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iteracoes-usando-values-items-keys">
+<h3><span class="section-number">3.6.4. </span>Iterações usando <code class="docutils literal notranslate"><span class="pre">.values()</span></code>,<code class="docutils literal notranslate"><span class="pre">.items()</span></code>, <code class="docutils literal notranslate"><span class="pre">.keys()</span></code><a class="headerlink" href="#iteracoes-usando-values-items-keys" title="Permalink to this heading">#</a></h3>
+<p>Apesar da iteração de dicionários ser feita pelas chaves <code class="docutils literal notranslate"><span class="pre">k</span></code> quando escrevemos</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for k in dicionário:
+</pre></div>
+</div>
+<p>podemos usar as funções <code class="docutils literal notranslate"><span class="pre">.values()</span></code> e <code class="docutils literal notranslate"><span class="pre">.items()</span></code> para iterar por um dicionário de outra forma.</p>
+<p>A função <code class="docutils literal notranslate"><span class="pre">.values()</span></code> faz com que a iteração seja pelos valores e não pelas chaves:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tperiodica</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tperiodica</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+3
+11
+19
+18
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mais interessante ainda é a função <code class="docutils literal notranslate"><span class="pre">.items()</span></code>. O melhor será ver um exemplo, usando sempre a mini tabela periódica:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tperiodica</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tperiodica</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;H&#39;, 1)
+(&#39;Li&#39;, 3)
+(&#39;Na&#39;, 11)
+(&#39;K&#39;, 19)
+(&#39;O&#39;, 18)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Isto é, o efeito da função <code class="docutils literal notranslate"><span class="pre">.items()</span></code> é fazer com que a iteração passe por <strong>pares</strong> do tipo <em>(chave, valor)</em>.</p>
+<p>Quando usamos <code class="docutils literal notranslate"><span class="pre">.items()</span></code> podemos dar dois nomes à frente do comando <code class="docutils literal notranslate"><span class="pre">for</span></code> (e antes do <code class="docutils literal notranslate"><span class="pre">in</span></code>).</p>
+<p>O resultado é semelhante ao que foi visto no capítulo anterior com a função <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code>:
+os pares resultantes de <code class="docutils literal notranslate"><span class="pre">.items()</span></code> são desdobrados pelos dois nomes, o que significa que
+o primeiro nome é atribuído a cada chave e o segundo nome atribuído a cada valor durante a
+iteração do dicionário.</p>
+<p>Vejamos com exemplo, repare-se no uso de dois nomes, <code class="docutils literal notranslate"><span class="pre">e</span></code> e <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elementos com o número atómico superior a 10</span>
+<span class="n">tperiodica</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tperiodica</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;---&gt;&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Na ---&gt; 11
+K ---&gt; 19
+O ---&gt; 18
+</pre></div>
+</div>
+</div>
+</div>
+<p>A última versão deste programa (sem <code class="docutils literal notranslate"><span class="pre">.items()</span></code>) usava indexação para obter os valores:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elementos com o número atómico superior a 10</span>
+<span class="n">tperiodica</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">tperiodica</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tperiodica</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;---&gt;&#39;</span><span class="p">,</span> <span class="n">tperiodica</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Na ---&gt; 11
+K ---&gt; 19
+O ---&gt; 18
+</pre></div>
+</div>
+</div>
+</div>
+<div class="example admonition">
+<p class="admonition-title">Problema</p>
+<p>Virar um dicionário “do avesso”, isto é, criar um novo dicionário
+em que as chaves “trocam” com os respetivos valores.</p>
+<p>Nota: é possível repetir valores num dicionário, mas não as chaves. O que significa
+que num problema destes podem-se “perder” chaves quando se trocam as chaves por valores.</p>
+</div>
+<p>Tentando resolver este problema usando indexação:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Trocar os elementos da T.P. pelos n. atómicos</span>
+<span class="n">tperiodica</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+
+<span class="n">num2simbs</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">tperiodica</span><span class="p">:</span>
+    <span class="n">num2simbs</span><span class="p">[</span><span class="n">tperiodica</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">k</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tperiodica</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num2simbs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19, &#39;O&#39;: 18}
+{1: &#39;H&#39;, 3: &#39;Li&#39;, 11: &#39;Na&#39;, 19: &#39;K&#39;, 18: &#39;O&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Confuso? Um pouco.</p>
+<p>Usando <code class="docutils literal notranslate"><span class="pre">.items()</span></code> tudo fica mais claro:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Trocar os elementos da T.P. pelos n. atómicos</span>
+<span class="n">tperiodica</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+
+<span class="n">num2simbs</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">elem</span><span class="p">,</span> <span class="n">na</span> <span class="ow">in</span> <span class="n">tperiodica</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">num2simbs</span><span class="p">[</span><span class="n">na</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tperiodica</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num2simbs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19, &#39;O&#39;: 18}
+{1: &#39;H&#39;, 3: &#39;Li&#39;, 11: &#39;Na&#39;, 19: &#39;K&#39;, 18: &#39;O&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="example admonition">
+<p class="admonition-title">Problema</p>
+<p>Contar os diferentes <strong>valores</strong> de um dicionário.</p>
+<p>Mais uma vez: as chaves são únicas, os valores não. Por isso
+faz sentido conta-los</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fellowship</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aragorn&#39;</span><span class="p">:</span><span class="s1">&#39;Humano&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Frodo&#39;</span><span class="p">:</span><span class="s1">&#39;Hobbit&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Sam&#39;</span><span class="p">:</span><span class="s1">&#39;Hobbit&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Boromir&#39;</span><span class="p">:</span><span class="s1">&#39;Humano&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Merry&#39;</span><span class="p">:</span><span class="s1">&#39;Hobbit&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Took&#39;</span><span class="p">:</span><span class="s1">&#39;Hobbit&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Gandalf&#39;</span><span class="p">:</span><span class="s1">&#39;Feiticeiro&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Gimli&#39;</span><span class="p">:</span><span class="s1">&#39;Anão&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Legolas&#39;</span><span class="p">:</span><span class="s1">&#39;Elfo&#39;</span><span class="p">}</span>
+
+<span class="c1"># resultado das contagens num dicionário</span>
+<span class="c1"># que associa espécie: nº personagens dessa espécie</span>
+
+<span class="n">contagens</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">espécie</span> <span class="ow">in</span> <span class="n">fellowship</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">espécie</span> <span class="ow">in</span> <span class="n">contagens</span><span class="p">:</span>
+        <span class="n">contagens</span><span class="p">[</span><span class="n">espécie</span><span class="p">]</span> <span class="o">=</span> <span class="n">contagens</span><span class="p">[</span><span class="n">espécie</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">contagens</span><span class="p">[</span><span class="n">espécie</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># apresentação das contagens</span>
+<span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">contagens</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Humano 2
+Hobbit 4
+Feiticeiro 1
+Anão 1
+Elfo 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Confuso? Talvez o uso de um <code class="docutils literal notranslate"><span class="pre">if...else</span></code> não seja claro.</p>
+<p>O dicionário <code class="docutils literal notranslate"><span class="pre">contagens</span></code>, inicialmente vazio, tem como objetivo conter as contagens
+na forma de pares <em>espécie:contagem</em>.</p>
+<p>A cada iteração dos <strong>valores</strong> do dicionário <code class="docutils literal notranslate"><span class="pre">fellowship</span></code> é obtida a “espécie” que terá de contar mais um
+para essa espécie no dicionário <code class="docutils literal notranslate"><span class="pre">contagens</span></code>. Mas só pode ser adicionado <code class="docutils literal notranslate"><span class="pre">+1</span></code> à chave correspondente a essa espécie
+se ela já existir no dicionário. Se não existir, será a primeira contagem e terá o valor 1 pela primeira vez.
+O teste <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">espécie</span> <span class="pre">in</span> <span class="pre">contagens:</span></code> trata deste problema de averiguar se podemos somar ou não a um elemento
+que pode existir ou não.</p>
+<p>A solução deste problema inclui</p>
+<ul class="simple">
+<li><p>a iteração dos valores de um dicionário com <code class="docutils literal notranslate"><span class="pre">.values()</span></code></p></li>
+<li><p>um teste de inclusão num dicionário com  <code class="docutils literal notranslate"><span class="pre">in</span></code></p></li>
+<li><p>a atribuição de valores novos ou a modificação de um já existente com <strong>indexação</strong></p></li>
+<li><p>a iteração das chaves e valores de um dicionário com desdobramento de nomes com <code class="docutils literal notranslate"><span class="pre">.items()</span></code></p></li>
+</ul>
+<p>Um exemplo a estudar…</p>
+<p>Finalmente, algo quase inútil, a função <code class="docutils literal notranslate"><span class="pre">.keys()</span></code> pode ser usada para passar pelas chaves de um dicionário.</p>
+<p>Inútil porque, se não usarmos a função o <code class="docutils literal notranslate"><span class="pre">for</span></code>, por convenção passa pelas chaves de um dicionário:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+
+<span class="c1"># isto poderia ser</span>
+<span class="c1"># for i in d:</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H
+Li
+Na
+K
+O
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Virar um dicionário &quot;do avesso&quot;</span>
+<span class="c1"># usando um dicionário em compreensão</span>
+
+<span class="n">tperiodica</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span>
+
+<span class="n">num2simbs</span> <span class="o">=</span> <span class="p">{</span><span class="n">na</span><span class="p">:</span> <span class="n">elem</span> <span class="k">for</span> <span class="n">elem</span><span class="p">,</span> <span class="n">na</span> <span class="ow">in</span> <span class="n">tperiodica</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tperiodica</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num2simbs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1, &#39;Li&#39;: 3, &#39;Na&#39;: 11, &#39;K&#39;: 19, &#39;O&#39;: 18}
+{1: &#39;H&#39;, 3: &#39;Li&#39;, 11: &#39;Na&#39;, 19: &#39;K&#39;, 18: &#39;O&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dict">
+<h3><span class="section-number">3.6.5. </span><code class="docutils literal notranslate"><span class="pre">dict()</span></code><a class="headerlink" href="#dict" title="Permalink to this heading">#</a></h3>
+<p>A função <code class="docutils literal notranslate"><span class="pre">dict()</span></code> tenta transformar o seu argumento num dicionário. É análoga à função
+<code class="docutils literal notranslate"><span class="pre">list()</span></code> que tenta transformar o seu argumento numa lista.</p>
+<p>Em particular, a função <code class="docutils literal notranslate"><span class="pre">dict()</span></code>pode aceitar uma lista de <strong>pares</strong> de objetos, interpretando-os como
+associações de chaves a valores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pares</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Li&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="mi">19</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">,</span><span class="mi">18</span><span class="p">)]</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">pares</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Li&#39;: 3, &#39;K&#39;: 19, &#39;O&#39;: 18}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="funcao-zip">
+<h2><span class="section-number">3.7. </span>Função <code class="docutils literal notranslate"><span class="pre">zip()</span></code><a class="headerlink" href="#funcao-zip" title="Permalink to this heading">#</a></h2>
+<p>Embora formalmente esta função não seja nem de dicionários nem de listas, o seu uso é frequente
+na linguagem Python e faz muito sentido introduzi-la aqui.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Enolase (S.pombe)&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Enolase (K.lactis)&#39;</span><span class="p">]</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;P00924&#39;</span><span class="p">,</span> <span class="s1">&#39;P40370&#39;</span><span class="p">,</span> <span class="s1">&#39;Q70CP7&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">nomes</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;P00924&#39;, &#39;Enolase (S.cerevisiae)&#39;)
+(&#39;P40370&#39;, &#39;Enolase (S.pombe)&#39;)
+(&#39;Q70CP7&#39;, &#39;Enolase (K.lactis)&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como se pode ver por este exemplo, a função <code class="docutils literal notranslate"><span class="pre">zip()</span></code> parece ter gerado pares de objetos a partir de duas
+listas. O primeiro par é constituídos pelos dois elementos na posição 0, o segundo pelos dois elementos na
+posição 1 e assim sucessivamente até esgotar a lista mais curta.</p>
+<p>Como o resultado são pares de valores, podemos desdobrar nomes, tal como fizemos com a função <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code>
+ou com a função <code class="docutils literal notranslate"><span class="pre">.items()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Enolase (S.pombe)&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Enolase (K.lactis)&#39;</span><span class="p">]</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;P00924&#39;</span><span class="p">,</span> <span class="s1">&#39;P40370&#39;</span><span class="p">,</span> <span class="s1">&#39;Q70CP7&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nomes</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P00924 : Enolase (S.cerevisiae)
+P40370 : Enolase (S.pombe)
+Q70CP7 : Enolase (K.lactis)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Com este exemplo (nomes de proteínas e seus <em>Uniprot accessions</em> que estão em listas diferentes) podemos
+criar uma tabela a partir das duas listas, representada como um dicionário.</p>
+<p>Começando por usar um dicionário em compreensão combinado com <code class="docutils literal notranslate"><span class="pre">zip()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Enolase (S.pombe)&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Enolase (K.lactis)&#39;</span><span class="p">]</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;P00924&#39;</span><span class="p">,</span> <span class="s1">&#39;P40370&#39;</span><span class="p">,</span> <span class="s1">&#39;Q70CP7&#39;</span><span class="p">]</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nomes</span><span class="p">,</span> <span class="n">ids</span><span class="p">)}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;P00924&#39;: &#39;Enolase (S.cerevisiae)&#39;, &#39;P40370&#39;: &#39;Enolase (S.pombe)&#39;, &#39;Q70CP7&#39;: &#39;Enolase (K.lactis)&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Combinando a função <code class="docutils literal notranslate"><span class="pre">zip()</span></code> com a função <code class="docutils literal notranslate"><span class="pre">dict()</span></code>, a criação do
+dicionário fica ainda mais sucinta:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nomes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Enolase (S.cerevisiae)&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Enolase (S.pombe)&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Enolase (K.lactis)&#39;</span><span class="p">]</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;P00924&#39;</span><span class="p">,</span> <span class="s1">&#39;P40370&#39;</span><span class="p">,</span> <span class="s1">&#39;Q70CP7&#39;</span><span class="p">]</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nomes</span><span class="p">,</span> <span class="n">ids</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Enolase (S.cerevisiae)&#39;: &#39;P00924&#39;, &#39;Enolase (S.pombe)&#39;: &#39;P40370&#39;, &#39;Enolase (K.lactis)&#39;: &#39;Q70CP7&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como é que isto resultou?</p>
+<p><code class="docutils literal notranslate"><span class="pre">zip()</span></code> gera pares de objetos vindos das duas listas. <code class="docutils literal notranslate"><span class="pre">dict()</span></code> aceita uma lista de pares de valores como argumento e tenta interpreta-los como <em>chave:valor</em>. E é tudo muito sucinto:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dict(zip(nomes, ids))
+</pre></div>
+</div>
+<p><em>juntem-se ordenadamente os elementos de cada lista aos pares e construa-se um dicionário a partir desses pares</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="collections_iterations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Coleções e iterações</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="strings.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title"><span class="section-number">4. </span><em>Strings</em> e textos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revisao-sobre-colecoes">3.1. Revisão sobre coleções</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listas">3.2. Listas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#append-como-funcao-geradora-de-listas">3.3. <code class="docutils literal notranslate"><span class="pre">.append()</span></code>, como função geradora de listas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formas-equivalentes-de-usar-append-e-listas-em-compreensao">3.3.1. Formas equivalentes de usar <code class="docutils literal notranslate"><span class="pre">.append()</span></code> e listas em compreensão</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexacao-com-numeros-negativos">3.4. Indexação com números negativos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mais-algumas-funcoes-de-listas">3.5. Mais algumas funções de listas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reverse-sort">3.5.1. <code class="docutils literal notranslate"><span class="pre">.reverse()</span></code>, <code class="docutils literal notranslate"><span class="pre">.sort()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dicionarios">3.6. Dicionários</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acrescentar-e-modificar-elementos-chave-valor">3.6.1. Acrescentar e modificar elementos (chave:valor)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update">3.6.2. <code class="docutils literal notranslate"><span class="pre">.update()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clear">3.6.3. <code class="docutils literal notranslate"><span class="pre">.clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iteracoes-usando-values-items-keys">3.6.4. Iterações usando <code class="docutils literal notranslate"><span class="pre">.values()</span></code>,<code class="docutils literal notranslate"><span class="pre">.items()</span></code>, <code class="docutils literal notranslate"><span class="pre">.keys()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dict">3.6.5. <code class="docutils literal notranslate"><span class="pre">dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcao-zip">3.7. Função <code class="docutils literal notranslate"><span class="pre">zip()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De António Ferreira
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

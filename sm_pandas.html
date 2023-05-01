@@ -1,0 +1,2264 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="pt-PT" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>12. pandas &#8212; Programação em Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sm_pandas';</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Pesquisar" href="search.html" />
+    <link rel="next" title="13. Exemplo: ficheiros CSV" href="uniprot_csv.html" />
+    <link rel="prev" title="11. Exercícios de treino, 2" href="problems2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt-PT"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/newlogo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/newlogo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Prefácio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">A linguagem Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basics.html">1. Conceitos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections_iterations.html">2. Coleções e iterações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more_on_lists_dicts.html">3. Listas e dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">4. <em>Strings</em> e textos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcs_modules.html">5. Funções e módulos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems.html">6. Exercícios de treino</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">7. Ficheiros de texto</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Textos estruturados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="uniprot_txt.html">8. Exemplo: ficheiros UniProt txt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Módulos científicos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sm_numpy_scipy.html">9. Os principais módulos “científicos”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_ph.html">10. Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems2.html">11. Exercícios de treino, 2</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uniprot_csv.html">13. Exemplo: ficheiros CSV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_linreg.html">14. Exemplo: regressão linear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_sympy.html">15. Módulo <code class="docutils literal notranslate"><span class="pre">sympy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_algorithms.html">16. Algoritmos numéricos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_software.html">Instalação de software</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Baixe esta página">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/sm_pandas.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Baixar arquivo fonte"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir em PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">12.1. Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construcao-e-indexacao">12.1.1. Construção e indexação</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-em-falta">12.1.2. Valores em falta</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes-descritivas">12.1.3. Funções descritivas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operacoes-vetoriais">12.1.4. Operações vetoriais</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes">12.2. DataFrames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-tabela-com-informacao-uniprot-txt">12.3. Exemplo: Tabela com informação Uniprot txt</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacao">12.3.1. Preparação</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracao-dos-dados">12.3.2. Extração dos dados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformacao-numa-dataframe">12.3.3. Transformação numa <em>DataFrame</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uso-da-dataframe">12.3.4. Uso da DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qual-a-proteina-mais-pequena-qual-a-maior">12.3.4.1. Qual a proteína mais pequena. Qual a maior?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quais-as-20-proteinas-mais-pequenas-de-s-cerevisiae">12.3.4.2. Quais as 20 proteínas mais pequenas de S.cerevisiae?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quais-as-20-proteinas-maiores-de-s-cerevisiae">12.3.4.3. Quais as 20 proteínas maiores de S.cerevisiae?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#histograma-da-distribuicao-de-tamanhos">12.3.4.4. Histograma da distribuição de tamanhos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#contagens-e-distribuicao-dos-20-aminoacidos-nas-proteinas">12.3.4.5. Contagens e distribuição dos 20 aminoácidos nas proteínas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#contagens-globais-das-ptm">12.3.4.6. Contagens globais das PTM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas">
+<h1><span class="section-number">12. </span>pandas<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://pandas.pydata.org/"><img alt="" src="_images/pandas.svg" /></a></p>
+<p>O módulo <code class="docutils literal notranslate"><span class="pre">pandas</span></code> é um dos mais populares módulos da linguagem Python para
+o tratamento de dados que não sejam de natureza exclusivamente numérica (como acontece com o módulo <code class="docutils literal notranslate"><span class="pre">numpy</span></code>).</p>
+<p>É também considerado também um dos módulos principais do chamado <strong>“ecossistema” de módulos científicos</strong> que, não estando disponíveis na distribuição base da linguagem Python, são geralmente incluídos nas distribuições mais “científicas” da linguagem, por exemplo a distribuição Anaconda.</p>
+<p>Tal como o módulo <code class="docutils literal notranslate"><span class="pre">numpy</span></code> introduz um tipo novo de objetos, os <em>arrays</em> com propriedades que as listas não têm (operações vetoriais e muitas funções associadas), o módulo <code class="docutils literal notranslate"><span class="pre">pandas</span></code> define outros dois tipos principais de objetos com novas propriedades (embora sejam grandes as semelhanças com os <em>arrays</em> do <code class="docutils literal notranslate"><span class="pre">numpy</span></code>):</p>
+<ul class="simple">
+<li><p>as <em>Series</em></p></li>
+<li><p>as <em>DataFrames</em></p></li>
+</ul>
+<p>A documentação do módulo apresenta as seguintes definições:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Series</span></code> is a one-dimensional <strong>labeled</strong> array capable of holding any
+data type (integers, strings, floating point numbers, Python objects,
+etc.). The axis labels are collectively referred to as the <strong>index</strong>.</p>
+</div></blockquote>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a <strong>2-dimensional labeled data structure</strong> with columns
+of potentially different types. You can think of it like a spreadsheet
+or SQL table, or a <strong>dict of Series objects</strong>. It is generally the
+most commonly used pandas object.</p>
+</div></blockquote>
+<p>Além das dimensões (uma <em>Series</em> é unidimensional e uma <em>DataFrame</em> é bidimensional, isto é, na forma de uma tabela), o que é de sublinhar nestes dois tipos novos de objetos é o facto dos dados serem acompanhados de <em>labels</em> (etiquetas)</p>
+<p>Estes <em>labels</em> servem vários propósitos. Podendo ser basicamente entendidos como dados adicionais, eles são muito importantes na <strong>indexação</strong> da informação, tendo um papel análogo à chaves dos dicionários, mas com outras funcionalidades muito interessantes.</p>
+<p>Estes conjuntos de <em>labels</em> constituem um <strong>índice</strong>.</p>
+<p>Uma <em>Series</em> tem um único índice, chamado <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p>Uma <em>DataFrame</em>, tem dois índices, um para as linhas, chamado <code class="docutils literal notranslate"><span class="pre">index</span></code> e outro para as colunas, chamado <code class="docutils literal notranslate"><span class="pre">columns</span></code>.</p>
+<p>Comecemos pelas <em>Series</em></p>
+<section id="series">
+<h2><span class="section-number">12.1. </span>Series<a class="headerlink" href="#series" title="Permalink to this heading">#</a></h2>
+<section id="construcao-e-indexacao">
+<h3><span class="section-number">12.1.1. </span>Construção e indexação<a class="headerlink" href="#construcao-e-indexacao" title="Permalink to this heading">#</a></h3>
+<p>O módulo <em>pandas</em> tem de ser importado.</p>
+<p>A convenção é importar comm a seguinte “abreviatura”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Uma Série (<em>Series</em>) é um conjunto (ordenado) de valores, mas cada valor
+é associado a um <em>label</em>.</p>
+<p>Ao conjunto dos <em>labels</em> é o <code class="docutils literal notranslate"><span class="pre">index</span></code> da <em>Series</em></p>
+<p>Uma <em>Series</em> pode ser construída, por exemplo, a partir de uma lista, usando a função <code class="docutils literal notranslate"><span class="pre">pd.Series()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndias</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+
+<span class="n">meses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ndias</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">meses</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     31
+1     28
+2     31
+3     30
+4     31
+5     30
+6     31
+7     31
+8     30
+9     31
+10    30
+11    31
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Os números de 0 a 11 são o <code class="docutils literal notranslate"><span class="pre">index</span></code> da <em>Series</em>.</p>
+<p>Se não indicarmos um índice, o conjunto dos inteiros sucessivos será o
+índice.</p>
+<p>Mas quando construímos uma Série, usando a função <code class="docutils literal notranslate"><span class="pre">pd.Series()</span></code>, podemos indicar o índice, explicitamente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndias</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="s1">&#39;Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="n">meses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ndias</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">meses</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jan    31
+Fev    28
+Mar    31
+Abr    30
+Mai    31
+Jun    30
+Jul    31
+Ago    31
+Set    30
+Out    31
+Nov    30
+Dez    31
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Uma das principais razões de utilizarmos uma <em>Series</em> é que podemos
+indexar de diferentes maneiras:</p>
+<ul class="simple">
+<li><p>usando um <em>label</em> para obter um elemento (como um dicionário)</p></li>
+<li><p>usando <em>slices</em> de posições</p></li>
+<li><p>usando <strong>listas</strong> de <em>labels</em></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+<span class="c1"># usando a Series meses criada acima...</span>
+
+<span class="n">só_out</span> <span class="o">=</span> <span class="n">meses</span><span class="p">[</span><span class="s1">&#39;Out&#39;</span><span class="p">]</span>
+<span class="n">trimestre1</span> <span class="o">=</span> <span class="n">meses</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">férias</span> <span class="o">=</span> <span class="n">meses</span><span class="p">[[</span><span class="s1">&#39;Jul&#39;</span><span class="p">,</span> <span class="s1">&#39;Ago&#39;</span><span class="p">,</span> <span class="s1">&#39;Set&#39;</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">só_out</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">trimestre1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">férias</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31
+--------------
+Jan    31
+Fev    28
+Mar    31
+dtype: int64
+--------------
+Jul    31
+Ago    31
+Set    30
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ou ainda, tal como os <em>arrays</em> do <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, usar <strong>condições lógicas</strong> para indexar (no fundo usando <em>arrays booleanos</em>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+<span class="c1"># usando a Series meses criada acima...</span>
+
+<span class="n">m31</span> <span class="o">=</span> <span class="n">meses</span><span class="p">[</span><span class="n">meses</span><span class="o">==</span><span class="mi">31</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">m31</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jan    31
+Mar    31
+Mai    31
+Jul    31
+Ago    31
+Out    31
+Dez    31
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Também existe a função <code class="docutils literal notranslate"><span class="pre">Series.reindex()</span></code> que transforma uma <em>Series</em>
+noutra apenas com os elementos indicados e respeitando a ordem do “novo índice”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndias</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="s1">&#39;Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">meses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ndias</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
+
+<span class="n">alguns_meses</span> <span class="o">=</span> <span class="n">meses</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s1">&#39;Dez&#39;</span><span class="p">,</span> <span class="s1">&#39;Set&#39;</span><span class="p">,</span> <span class="s1">&#39;Abr&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">alguns_meses</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dez    31
+Set    30
+Abr    30
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>As Séries podem também ser construídas a partir de um dicionário,
+usando <code class="docutils literal notranslate"><span class="pre">pd.Series()</span></code>. As chaves do dicionário passam a ser o <code class="docutils literal notranslate"><span class="pre">index</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    0
+b    1
+c    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="valores-em-falta">
+<h3><span class="section-number">12.1.2. </span>Valores em falta<a class="headerlink" href="#valores-em-falta" title="Permalink to this heading">#</a></h3>
+<p>Quando contruímos uma <em>Series</em> a partie de um dicionário podemos indicar explicitamente os valores do índice.</p>
+<p>Mas, neste caso, se índice tiver elementos que nãoo estejam nas chaves do dicionário, haverá <strong>valores em falta</strong> (em inglês <em>missing values</em>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b    1.0
+c    2.0
+d    NaN
+a    0.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>O <code class="docutils literal notranslate"><span class="pre">pandas</span></code> uso o marcador <code class="docutils literal notranslate"><span class="pre">NaN</span></code> para indicar <strong>valores em falta</strong>.</p>
+<p>Esta representação do conceito de <em>valores em falta</em> (que também existe no <code class="docutils literal notranslate"><span class="pre">numpy</span></code>) é muito útil: frequentemente lidamos com tabelas de dados em que não existem valores atribuídos em certas linhas e será conveniente assinalar esses valores.</p>
+<p>Mais importante ainda, muitas funções de análise disponíveis no <code class="docutils literal notranslate"><span class="pre">pandas</span></code> levam em conta a existência de <em>valores em falta</em> que são pura e simplesmente ignorados. Por exemplo, o cálculo do desvio padrão de uma série ignora as entradas com <em>valores em falta</em>.</p>
+<p>Usando a função <code class="docutils literal notranslate"><span class="pre">Series.reindex()</span></code> podem aparecer valores <em>valores em falta</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndias</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="s1">&#39;Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="n">meses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ndias</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
+
+<span class="n">alguns_meses</span> <span class="o">=</span> <span class="n">meses</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s1">&#39;Dez&#39;</span><span class="p">,</span> <span class="s1">&#39;Set&#39;</span><span class="p">,</span> <span class="s1">&#39;não vai dar&#39;</span><span class="p">,</span> <span class="s1">&#39;Abr&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">alguns_meses</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dez            31.0
+Set            30.0
+não vai dar     NaN
+Abr            30.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="funcoes-descritivas">
+<h3><span class="section-number">12.1.3. </span>Funções descritivas<a class="headerlink" href="#funcoes-descritivas" title="Permalink to this heading">#</a></h3>
+<p>As Séries têm muitas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html">funções descritivas</a> de grande utilidade.</p>
+<p>Por exemplo, <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">std()</span></code> e <code class="docutils literal notranslate"><span class="pre">var()</span></code> calculam a soma, média, desvio padrão e variância dos valores da <em>Series</em>, respetivamente.</p>
+<p>Note-se que, em geral, <strong>os valores em falta são ignorados nos
+cálculos</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">2.</span><span class="p">}</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Média =&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b    1.0
+c    2.0
+d    NaN
+a    0.0
+dtype: float64
+
+Média = 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Series.value_counts()</span></code> é outra função particularmente útil. O resultado é uma contagem dos valores diferentes da <em>Series</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndias</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="s1">&#39;Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">meses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ndias</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
+
+<span class="n">cont_dias</span> <span class="o">=</span> <span class="n">meses</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cont_dias</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31    7
+30    4
+28    1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Outra função interessante é a função <code class="docutils literal notranslate"><span class="pre">Series.describe()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndias</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="s1">&#39;Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">meses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ndias</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
+
+<span class="n">stats</span> <span class="o">=</span> <span class="n">meses</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    12.000000
+mean     30.416667
+std       0.900337
+min      28.000000
+25%      30.000000
+50%      31.000000
+75%      31.000000
+max      31.000000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Outra função útil é a <code class="docutils literal notranslate"><span class="pre">Series.cumsum()</span></code>, a soma acumulada ao longo da <em>Series</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndias</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="s1">&#39;Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">meses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ndias</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
+
+<span class="n">totais</span> <span class="o">=</span> <span class="n">meses</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">totais</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jan     31
+Fev     59
+Mar     90
+Abr    120
+Mai    151
+Jun    181
+Jul    212
+Ago    243
+Set    273
+Out    304
+Nov    334
+Dez    365
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Repare-se num pormenor interessante: o resultado destas 3 últimas funções é
+também uma <em>Series</em>.</p>
+<p>Se quiser saber quantos dias do ano passaram no final de outubro podemos  simplesmente indexar a soma acumulada com <code class="docutils literal notranslate"><span class="pre">'Out'</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>meses.cumsum()[&#39;Out&#39;]
+</pre></div>
+</div>
+<p>Finalmente, tal como se fossem dicionários, a função <code class="docutils literal notranslate"><span class="pre">len()</span></code>e o operador <code class="docutils literal notranslate"><span class="pre">in</span></code> também funcionam com <em>Series</em>.</p>
+</section>
+<section id="operacoes-vetoriais">
+<h3><span class="section-number">12.1.4. </span>Operações vetoriais<a class="headerlink" href="#operacoes-vetoriais" title="Permalink to this heading">#</a></h3>
+<p>As Séries comportam-se como <em>arrays</em> do módulo <code class="docutils literal notranslate"><span class="pre">numpy</span></code>: podemos executar operações vetoriais:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">}</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b    1.0
+c    3.0
+d    NaN
+e    1.8
+a    0.5
+dtype: float64
+-----------------
+b    1.00
+c    9.00
+d     NaN
+e    3.24
+a    0.25
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Neste exemplo, elevámos a <em>Series</em> ao quadrado.</p>
+<p>O <em>valor em falta</em> foi ignorado.</p>
+<p>Também muito poderoso é o facto de que, quando aplicamos operações
+vetoriais sobre <em>Series</em> (por exemplo, na soma de duas séries), os
+valores são <strong>alinhados</strong> pelos respetivos <em>labels</em> antes da operação.</p>
+<p>Vejamos esta soma de duas séries:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">})</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Soma&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Soma
+a    1.0
+b    2.0
+e    NaN
+f    NaN
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>A soma das duas Séries resulta numa Série em que todas os <em>labels</em>
+estão presentes (<strong>união de conjuntos</strong>).</p>
+<p>As que só existirem numa das Séries ou as que, numa das Séries, têm o
+valor <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, terão o valor <code class="docutils literal notranslate"><span class="pre">NaN</span></code> no resultado final.</p>
+<p>A função <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> permite eliminar os <em>valores em falta</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">})</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">})</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s3</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    1.0
+b    2.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dataframes">
+<h2><span class="section-number">12.2. </span>DataFrames<a class="headerlink" href="#dataframes" title="Permalink to this heading">#</a></h2>
+<p>Numa definição muito simplificada:</p>
+<p>Uma <em>DataFrame</em> é um quadro bidimensional, em que cada coluna se
+comporta como uma Série, mas em que existe um índice comum a todas as
+colunas.</p>
+<p>Há muitas formas diferentes de criar uma <em>DataFrame</em>:</p>
+<ul class="simple">
+<li><p>a partir de listas de dicionários</p></li>
+<li><p>a partir de dicionários de listas</p></li>
+<li><p>a partir de <em>arrays</em></p></li>
+</ul>
+<p>Mas para ilustrar as possibilidades de criação de <em>DataFrames</em>, o primeiro exemplo mostra a criação
+de uma <em>DataFrame</em> a partir de dados organizados em tabela num ficheiro de texto do tipo CSV:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">pdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;planetdata.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Planet  rotation_days  revolution_years
+0  Mercury          58.60            0.2408
+1    Venus         243.00            0.6150
+2    Earth           0.99            1.0000
+3     Mars           1.03            1.8800
+4  Jupiter           0.41           11.8600
+5   Saturn           0.45           29.4600
+6   Uranus           0.72           84.0100
+7  Neptune           0.67          164.7900
+</pre></div>
+</div>
+</div>
+</div>
+<p>Esta <em>DataFrame</em> tem 3 colunas, cada uma delas funciona como uma <em>Series</em>. Mas, todas as <em>Series</em> partilham o mesmo <code class="docutils literal notranslate"><span class="pre">index</span></code>, neste caso os números de 0 a 8.</p>
+<p>Muitas vezes faz muito sentido que uma das colunas seja o <code class="docutils literal notranslate"><span class="pre">index</span></code>. Podemos passar uma coluna para funcionar como <code class="docutils literal notranslate"><span class="pre">index</span></code> com a função <code class="docutils literal notranslate"><span class="pre">DataFrame.set_index()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;planetdata.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">pdata</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Planet&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         rotation_days  revolution_years
+Planet                                  
+Mercury          58.60            0.2408
+Venus           243.00            0.6150
+Earth             0.99            1.0000
+Mars              1.03            1.8800
+Jupiter           0.41           11.8600
+Saturn            0.45           29.4600
+Uranus            0.72           84.0100
+Neptune           0.67          164.7900
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para obter uma das colunas, podemos indexar a <em>DataFrame</em> com
+o nome da coluna:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;planetdata.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">pdata</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Planet&#39;</span><span class="p">)</span>
+
+<span class="n">rot_days</span> <span class="o">=</span> <span class="n">pdata</span><span class="p">[</span><span class="s1">&#39;rotation_days&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">rot_days</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Planet
+Mercury     58.60
+Venus      243.00
+Earth        0.99
+Mars         1.03
+Jupiter      0.41
+Saturn       0.45
+Uranus       0.72
+Neptune      0.67
+Name: rotation_days, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>ou, se o nome da coluna não tiver espaços, podemos simplesmente
+usar o nome na forma <code class="docutils literal notranslate"><span class="pre">.nome</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;planetdata.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">pdata</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Planet&#39;</span><span class="p">)</span>
+
+<span class="n">rot_days</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">rotation_days</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">rot_days</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Planet
+Mercury     58.60
+Venus      243.00
+Earth        0.99
+Mars         1.03
+Jupiter      0.41
+Saturn       0.45
+Uranus       0.72
+Neptune      0.67
+Name: rotation_days, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sendo as colunas <em>Series</em>, podemos usar toda a funcionalidade das <em>Series</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+
+<span class="n">pdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;planetdata.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Planet&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Rotation:&#39;</span><span class="p">)</span>
+<span class="n">rot_days</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">rotation_days</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">rot_days</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+
+<span class="n">logrev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">pdata</span><span class="o">.</span><span class="n">revolution_years</span><span class="p">)</span>
+
+<span class="n">logrev</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rotation:
+count      8.000000
+mean      38.233750
+std       85.181975
+min        0.410000
+25%        0.615000
+50%        0.855000
+75%       15.422500
+max      243.000000
+Name: rotation_days, dtype: float64
+</pre></div>
+</div>
+<img alt="_images/42aaef4e4de46342f3bc7e9e6b877154499e0c136bdfefee48fdac415aeddeac.png" src="_images/42aaef4e4de46342f3bc7e9e6b877154499e0c136bdfefee48fdac415aeddeac.png" />
+</div>
+</div>
+<p>Interessante que o log do período de revolução seja quase linear.</p>
+<p>Podemos fazer indexação por condições de toda a <em>DataFrame</em></p>
+<p>Em que planetas o dia é maior do que um dia na Terra?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;planetdata.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Planet&#39;</span><span class="p">)</span>
+
+<span class="n">rot_days</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">rotation_days</span>
+
+<span class="n">longer_than1</span> <span class="o">=</span> <span class="n">rot_days</span><span class="p">[</span><span class="n">rot_days</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">longer_than1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Planet
+Mercury     58.60
+Venus      243.00
+Mars         1.03
+Name: rotation_days, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exemplo-tabela-com-informacao-uniprot-txt">
+<h2><span class="section-number">12.3. </span>Exemplo: Tabela com informação Uniprot txt<a class="headerlink" href="#exemplo-tabela-com-informacao-uniprot-txt" title="Permalink to this heading">#</a></h2>
+<p>Para ilustar o uso de uma <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> na organização e análise de dados, vamos ler a informação da UniProt sobre a levedura <em>S. cerevisiae</em> e realizar algumas análises sobre os comprimentos das proteínas, a abundância de aminoácidos e a contagem de <em>modificações pós-traducionais</em>.</p>
+<section id="preparacao">
+<h3><span class="section-number">12.3.1. </span>Preparação<a class="headerlink" href="#preparacao" title="Permalink to this heading">#</a></h3>
+<p>O ficheiro de partida é o mesmo usado num capítulo anterior, o ficheiro <em>Unitprot text</em> com a informação sobre as proteínas da levedura <em>S. cerevisiae</em>.</p>
+<p>Recorde-se que para obter este ficheiro, deve-se proceder aos seguintes passos</p>
+<ul class="simple">
+<li><p>na UniProt procurar pelo “proteoma” da levedura <em>S. cerevisiae</em> <a class="reference external" href="https://www.uniprot.org/proteomes/UP000002311">www.uniprot.org/proteomes/UP000002311</a></p></li>
+<li><p>Passar para resultados UniProtKB em “Map to Reviewed”</p></li>
+<li><p>Download -&gt; Text</p></li>
+<li><p>Se o download tiver sido em modo “compressed”, extraír o ficheiro do zip.</p></li>
+<li><p>Alterar o nome do ficheiro para <code class="docutils literal notranslate"><span class="pre">uniprot_scerevisiae.txt</span></code></p></li>
+</ul>
+<p>O ficheiro obtido deve estar na mesma pasta que os programas exibidos até ao final deste capítulo.</p>
+</section>
+<section id="extracao-dos-dados">
+<h3><span class="section-number">12.3.2. </span>Extração dos dados<a class="headerlink" href="#extracao-dos-dados" title="Permalink to this heading">#</a></h3>
+<p>Vamos criar uma <em>DataFrame</em> a partir de uma lista com dicionários. De toda a informação disponível no ficheiro UniProt txt, vamos extraír, para acada proteína,
+o seu <em>número de acesso Uniprot</em>, com a chave <code class="docutils literal notranslate"><span class="pre">ac</span></code>, o comprimento da proteína, com a chave <code class="docutils literal notranslate"><span class="pre">n</span></code>, uma lista de modificações pós-traducionais, com a chave <code class="docutils literal notranslate"><span class="pre">PTMs</span></code> e a sequência da proteína, com a chave <code class="docutils literal notranslate"><span class="pre">seq</span></code>.</p>
+<p>Desde que as chaves não mudem, podemos transformar uma lista de dicionários numa <em>DataFrame</em>, quase sem esforço.</p>
+<p>Mas primeiro temos de criar essa lista de dicionários.</p>
+<p>O programa seguinte cria justamente essa lista de dicionários. Grande parte deste programa repete o que foi já abordado num capítulo anterior, sobre a <a class="reference internal" href="uniprot_txt.html"><span class="doc std std-doc">extração de informação</span></a> a partir de ficheiros Uniprot txt.</p>
+<p>Duas diferenças em relação a esse capítulo são de sublinhar:</p>
+<ul class="simple">
+<li><p>A sequência da proteína é agora também extraída. Num ficheiro de texto Uniprot txt, a sequência encontra-se na parte final do bloco de texto para cada proteína e é marcado por linhas que começam por, pelo menos, dois espaços em branco. Estas linhas são todas juntas numa única <em>string</em>, depois de eliminar os espaços.</p></li>
+<li><p>As modificações pós-traducionais são extraídas e representadas na forma de uma <strong>lista de pares</strong> em que cada par é constituído pela posição da PTM e nome da PTM.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_Uniprot_text</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text file and splits into a list of protein records.&quot;&quot;&quot;</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+        <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># remove empty records</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">records</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># since we know that it is the last one only...</span>
+    <span class="c1"># records.pop(-1)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+<span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+<span class="n">prots</span> <span class="o">=</span> <span class="n">read_Uniprot_text</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">extract_info</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text record and returns a dict with extrated information.</span>
+<span class="sd">    </span>
+<span class="sd">    The returned dict has the following fields:</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;ac&#39;: the UniProt Access Id,</span>
+<span class="sd">    &#39;n&#39;: the sequence length, </span>
+<span class="sd">    &#39;PTMs&#39;: a dictionary that associates the location of PTMs (int, as keys)</span>
+<span class="sd">               with the name of the PTM.</span>
+<span class="sd">    &#39;seq&#39;: a string with the protein sequence</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">IDline</span><span class="p">,</span> <span class="n">ACline</span><span class="p">,</span> <span class="o">*</span><span class="n">otherlines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+      
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">ACline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+       
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">seqlines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">otherlines</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;FT   MOD_RES&#39;</span><span class="p">):</span>
+            <span class="n">FTcode</span><span class="p">,</span> <span class="n">MOD_RES</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            
+            <span class="n">nextline</span> <span class="o">=</span> <span class="n">otherlines</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">nextline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/note=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            
+            <span class="n">PTMs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">loc</span><span class="p">,</span> <span class="n">PTMtype</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">):</span> <span class="c1"># two spaces</span>
+            <span class="n">seqlines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="c1"># build seq string from seqlines</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">seqlines</span><span class="p">])</span>
+        
+    <span class="c1"># Return dictionary of extracted information</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ac&#39;</span><span class="p">:</span> <span class="n">ac</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;PTMs&#39;</span><span class="p">:</span> <span class="n">PTMs</span><span class="p">,</span> <span class="s1">&#39;seq&#39;</span><span class="p">:</span> <span class="n">seq</span><span class="p">}</span>
+
+<span class="n">all_prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">extract_info</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">]</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of protein records in &quot;</span><span class="si">{</span><span class="n">data_filename</span><span class="si">}</span><span class="s1">&quot; is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prots</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">[:</span><span class="mi">4</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------------&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of protein records in &quot;uniprot_scerevisiae.txt&quot; is 6049
+-----------------------------------
+{&#39;ac&#39;: &#39;P38090&#39;, &#39;n&#39;: 596, &#39;PTMs&#39;: [], &#39;seq&#39;: &#39;MTKERMTIDYENDGDFEYDKNKYKTITTRIKSIEPSEGWLEPSGSVGHINTIPEAGDVHVDEHEDRGSSIDDDSRTYLLYFTETRRKLENRHVQLIAISGVIGTALFVAIGKALYRGGPASLLLAFALWCVPILCITVSTAEMVCFFPVSSPFLRLATKCVDDSLAVMASWNFWFLECVQIPFEIVSVNTIIHYWRDDYSAGIPLAVQVVLYLLISICAVKYYGEMEFWLASFKIILALGLFTFTFITMLGGNPEHDRYGFRNYGESPFKKYFPDGNDVGKSSGYFQGFLACLIQASFTIAGGEYISMLAGEVKRPRKVLPKAFKQVFVRLTFLFLGSCLCVGIVCSPNDPDLTAAINEARPGAGSSPYVIAMNNLKIRILPDIVNIALITAAFSAGNAYTYCSSRTFYGMALDGYAPKIFTRCNRHGVPIYSVAISLVWALVSLLQLNSNSAVVLNWLINLITASQLINFVVLCIVYLFFRRAYHVQQDSLPKLPFRSWGQPYTAIIGLVSCSAMILIQGYTVFFPKLWNTQDFLFSYLMVFINIGIYVGYKFIWKRGKDHFKNPHEIDFSKELTEIENHEIESSFEKFQYYSKA&#39;}
+-----------------------------------
+{&#39;ac&#39;: &#39;Q12001&#39;, &#39;n&#39;: 544, &#39;PTMs&#39;: [], &#39;seq&#39;: &#39;MAIGKRLLVNKPAEESFYASPMYDFLYPFRPVGNQWLPEYIIFVCAVILRCTIGLGPYSGKGSPPLYGDFEAQRHWMEITQHLPLSKWYWYDLQYWGLDYPPLTAFHSYLLGLIGSFFNPSWFALEKSRGFESPDNGLKTYMRSTVIISDILFYFPAVIYFTKWLGRYRNQSPIGQSIAASAILFQPSLMLIDHGHFQYNSVMLGLTAYAINNLLDEYYAMAAVCFVLSICFKQMALYYAPIFFAYLLSRSLLFPKFNIARLTVIAFATLATFAIIFAPLYFLGGGLKNIHQCIHRIFPFARGIFEDKVANFWCVTNVFVKYKERFTIQQLQLYSLIATVIGFLPAMIMTLLHPKKHLLPYVLIACSMSFFLFSFQVHEKTILIPLLPITLLYSSTDWNVLSLVSWINNVALFTLWPLLKKDGLHLQYAVSFLLSNWLIGNFSFITPRFLPKSLTPGPSISSINSDYRRRSLLPYNVVWKSFIIGTYIAMGFYHFLDQFVAPPSKYPDLWVLLNCAVGFICFSIFWLWSYYKIFTSGSKSMKDL&#39;}
+-----------------------------------
+{&#39;ac&#39;: &#39;P53309&#39;, &#39;n&#39;: 568, &#39;PTMs&#39;: [(&#39;449&#39;, &#39;Phosphothreonine&#39;)], &#39;seq&#39;: &#39;MSSLYTKLVKGATKIKMAPPKQKYVDPILSGTSSARGLQEITHALDIRLSDTAWTIVYKALIVLHLMIQQGEKDVTLRHYSHNLDVFQLRKISHTTKWSSNDMRALQRYDEYLKTRCEEYGRLGMDHLRDNYSSLKLGSKNQLSMDEELDHVESLEIQINALIRNKYSVSDLENHLLLYAFQLLVQDLLGLYNALNEGVITLLESFFELSIEHAKRTLDLYKDFVDMTEYVVRYLKIGKAVGLKIPVIKHITTKLINSLEEHLREETKRQRGEPSEPQQDRKPSTAISSTSSHNNNSNDKNKSIAQKKLEQIREQKRLLEQQLQNQQLLISPTVPQDAYNPFGSQQQDLNNDTFSFEPTQPQMTAQVPQPTANPFLIPQQQQQALQLTSASTMPQPSEIQITPNLNNQQTGMYASNLQYTPNFTGSGFGGYTTTENNAIMTGTLDPTKTGSNNPFSLENIAREQQQQNFQNSPNPFTLQQAQTTPILAHSQTGNPFQAQNVVTSPMGTYMTNPVAGQLQYASTGAQQQPQMMQGQQTGYVMVPTAFVPINQQQQQQQHQQENPNLIDI&#39;}
+-----------------------------------
+{&#39;ac&#39;: &#39;P40467&#39;, &#39;n&#39;: 964, &#39;PTMs&#39;: [(&#39;166&#39;, &#39;Phosphoserine&#39;), (&#39;186&#39;, &#39;Phosphoserine&#39;), (&#39;963&#39;, &#39;Phosphoserine&#39;)], &#39;seq&#39;: &#39;MPEQAQQGEQSVKRRRVTRACDECRKKKVKCDGQQPCIHCTVYSYECTYKKPTKRTQNSGNSGVLTLGNVTTGPSSSTVVAAAASNPNKLLSNIKTERAILPGASTIPASNNPSKPRKYKTKSTRLQSKIDRYKQIFDEVFPQLPDIDNLDIPVFLQIFHNFKRDSQSFLDDTVKEYTLIVNDSSSPIQPVLSSNSKNSTPDEFLPNMKSDSNSASSNREQDSVDTYSNIPVGREIKIILPPKAIALQFVKSTWEHCCVLLRFYHRPSFIRQLDELYETDPNNYTSKQMQFLPLCYAAIAVGALFSKSIVSNDSSREKFLQDEGYKYFIAARKLIDITNARDLNSIQAILMLIIFLQCSARLSTCYTYIGVAMRSALRAGFHRKLSPNSGFSPIEIEMRKRLFYTIYKLDVYINAMLGLPRSISPDDFDQTLPLDLSDENITEVAYLPENQHSVLSSTGISNEHTKLFLILNEIISELYPIKKTSNIISHETVTSLELKLRNWLDSLPKELIPNAENIDPEYERANRLLHLSFLHVQIILYRPFIHYLSRNMNAENVDPLCYRRARNSIAVARTVIKLAKEMVSNNLLTGSYWYACYTIFYSVAGLLFYIHEAQLPDKDSAREYYDILKDAETGRSVLIQLKDSSMAASRTYNLLNQIFEKLNSKTIQLTALHSSPSNESAFLVTNNSSALKPHLGDSLQPPVFFSSQDTKNSFSLAKSEESTNDYAMANYLNNTPISENPLNEAQQQDQVSQGTTNMSNERDPNNFLSIDIRLDNNGQSNILDATDDVFIRNDGDIPTNSAFDFSSSKSNASNNSNPDTINNNYNNVSGKNNNNNNITNNSNNNHNNNNNDNNNNNNNNNNNNNNNNNSGNSSNNNNNNNNNKNNNDFGIKIDNNSPSYEGFPQLQIPLSQDNLNIEDKEEMSPNIEIKNEQNMTDSNDILGVFDQLDAQLFGKYLPLNYPSE&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Nota</p>
+<p>Até ao final do capítulo considera-se que a lista de dicionários <code class="docutils literal notranslate"><span class="pre">all_prots</span></code> já foi construída pelas funções acima e não será repetida a sua construção.</p>
+</div>
+</section>
+<section id="transformacao-numa-dataframe">
+<h3><span class="section-number">12.3.3. </span>Transformação numa <em>DataFrame</em><a class="headerlink" href="#transformacao-numa-dataframe" title="Permalink to this heading">#</a></h3>
+<p>A lista de dicionários criada pode ser transformada numa <em>DataFrame</em> através da função <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prot_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_prots</span><span class="p">)</span>
+<span class="n">prot_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ac</th>
+      <th>n</th>
+      <th>PTMs</th>
+      <th>seq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>P38090</td>
+      <td>596</td>
+      <td>[]</td>
+      <td>MTKERMTIDYENDGDFEYDKNKYKTITTRIKSIEPSEGWLEPSGSV...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Q12001</td>
+      <td>544</td>
+      <td>[]</td>
+      <td>MAIGKRLLVNKPAEESFYASPMYDFLYPFRPVGNQWLPEYIIFVCA...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>P53309</td>
+      <td>568</td>
+      <td>[(449, Phosphothreonine)]</td>
+      <td>MSSLYTKLVKGATKIKMAPPKQKYVDPILSGTSSARGLQEITHALD...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>P40467</td>
+      <td>964</td>
+      <td>[(166, Phosphoserine), (186, Phosphoserine), (...</td>
+      <td>MPEQAQQGEQSVKRRRVTRACDECRKKKVKCDGQQPCIHCTVYSYE...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>P0CZ17</td>
+      <td>362</td>
+      <td>[]</td>
+      <td>MRSLNTLLLSLFVAMSSGAPLLKIREEKNSSLPSIKIFGTGGTIAS...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>6044</th>
+      <td>P07286</td>
+      <td>448</td>
+      <td>[]</td>
+      <td>MLRLFSLALITCLIYYSKNQGPSALVAAVGFGIAGYLATDMLIPRV...</td>
+    </tr>
+    <tr>
+      <th>6045</th>
+      <td>Q12320</td>
+      <td>285</td>
+      <td>[]</td>
+      <td>MKFLLQQIRNMHVKPIKMRWLTGGVNYSYLLSTEDRRNSWLIDPAE...</td>
+    </tr>
+    <tr>
+      <th>6046</th>
+      <td>P43570</td>
+      <td>497</td>
+      <td>[]</td>
+      <td>MPLRSLFHTNQSSHDKDALTRGGYNAYLESLSRCDSGKAEEQKGKV...</td>
+    </tr>
+    <tr>
+      <th>6047</th>
+      <td>P32806</td>
+      <td>458</td>
+      <td>[(436, Phosphoserine)]</td>
+      <td>MKDVLQWAIDHYETRDQLVQKGIWKGELYHDSIFKENSRGWLWKAL...</td>
+    </tr>
+    <tr>
+      <th>6048</th>
+      <td>P53154</td>
+      <td>560</td>
+      <td>[]</td>
+      <td>MSLISILSPLITSEGLDSRIKPSPKKDASTTTKPSLWKTTEFKFYY...</td>
+    </tr>
+  </tbody>
+</table>
+<p>6049 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>Em certas plataformas de execução de código Python como, por exemplo, os <em>Jupyter notebooks</em>, existe um mecanismo de apresentação de objetos de uma forma mais flexível do que a função <code class="docutils literal notranslate"><span class="pre">print()</span></code>.</p>
+<p>Se em qualquer célula de um <em>notebook</em> a última linha fôr apenas um objeto, geralmente o nome de um objeto, a palatforma Jupyter apresenta esse objeto num formato que pode ser visualmente muito apelativo.</p>
+<p>É o caso das <em>DataFrames</em> que, se estiverem no final de uma célula, elas não só não necessitam da função <code class="docutils literal notranslate"><span class="pre">print()</span></code> como também são apresentadas como uma tabela do <em>browser</em> podendo ser “estilizadas” de diferentes formas.</p>
+<p>No resto deste capítulo, as <em>DataFrames</em> (não as Series) serão apresentadas desta maneira e será evitado o uso da função <code class="docutils literal notranslate"><span class="pre">print()</span></code> para as apresentar, como no exemplo acima.</p>
+</div>
+<p>Na <em>DataFrame</em> que acabámos de obter faz todo o sentido que o <code class="docutils literal notranslate"><span class="pre">index</span></code> seja a coluna com o número de acesso Uniprot.</p>
+<p>Para “promover” a coluna <code class="docutils literal notranslate"><span class="pre">ac</span></code> ao <code class="docutils literal notranslate"><span class="pre">index</span></code>, usamos a função <code class="docutils literal notranslate"><span class="pre">.set_index()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prot_table</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ac&#39;</span><span class="p">)</span>
+<span class="n">prot_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n</th>
+      <th>PTMs</th>
+      <th>seq</th>
+    </tr>
+    <tr>
+      <th>ac</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>P38090</th>
+      <td>596</td>
+      <td>[]</td>
+      <td>MTKERMTIDYENDGDFEYDKNKYKTITTRIKSIEPSEGWLEPSGSV...</td>
+    </tr>
+    <tr>
+      <th>Q12001</th>
+      <td>544</td>
+      <td>[]</td>
+      <td>MAIGKRLLVNKPAEESFYASPMYDFLYPFRPVGNQWLPEYIIFVCA...</td>
+    </tr>
+    <tr>
+      <th>P53309</th>
+      <td>568</td>
+      <td>[(449, Phosphothreonine)]</td>
+      <td>MSSLYTKLVKGATKIKMAPPKQKYVDPILSGTSSARGLQEITHALD...</td>
+    </tr>
+    <tr>
+      <th>P40467</th>
+      <td>964</td>
+      <td>[(166, Phosphoserine), (186, Phosphoserine), (...</td>
+      <td>MPEQAQQGEQSVKRRRVTRACDECRKKKVKCDGQQPCIHCTVYSYE...</td>
+    </tr>
+    <tr>
+      <th>P0CZ17</th>
+      <td>362</td>
+      <td>[]</td>
+      <td>MRSLNTLLLSLFVAMSSGAPLLKIREEKNSSLPSIKIFGTGGTIAS...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>P07286</th>
+      <td>448</td>
+      <td>[]</td>
+      <td>MLRLFSLALITCLIYYSKNQGPSALVAAVGFGIAGYLATDMLIPRV...</td>
+    </tr>
+    <tr>
+      <th>Q12320</th>
+      <td>285</td>
+      <td>[]</td>
+      <td>MKFLLQQIRNMHVKPIKMRWLTGGVNYSYLLSTEDRRNSWLIDPAE...</td>
+    </tr>
+    <tr>
+      <th>P43570</th>
+      <td>497</td>
+      <td>[]</td>
+      <td>MPLRSLFHTNQSSHDKDALTRGGYNAYLESLSRCDSGKAEEQKGKV...</td>
+    </tr>
+    <tr>
+      <th>P32806</th>
+      <td>458</td>
+      <td>[(436, Phosphoserine)]</td>
+      <td>MKDVLQWAIDHYETRDQLVQKGIWKGELYHDSIFKENSRGWLWKAL...</td>
+    </tr>
+    <tr>
+      <th>P53154</th>
+      <td>560</td>
+      <td>[]</td>
+      <td>MSLISILSPLITSEGLDSRIKPSPKKDASTTTKPSLWKTTEFKFYY...</td>
+    </tr>
+  </tbody>
+</table>
+<p>6049 rows × 3 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="uso-da-dataframe">
+<h3><span class="section-number">12.3.4. </span>Uso da DataFrame<a class="headerlink" href="#uso-da-dataframe" title="Permalink to this heading">#</a></h3>
+<p>Agora que a informação está contida na <em>DataFrame</em> podemos ilustrar o uso da funcionalidade das <em>DataFrames</em> para de uma forma compacta rspondermos a certas perguntas interessantes.</p>
+<section id="qual-a-proteina-mais-pequena-qual-a-maior">
+<h4><span class="section-number">12.3.4.1. </span>Qual a proteína mais pequena. Qual a maior?<a class="headerlink" href="#qual-a-proteina-mais-pequena-qual-a-maior" title="Permalink to this heading">#</a></h4>
+<p>A coluna <code class="docutils literal notranslate"><span class="pre">n</span></code> da <em>DataFrame</em> tem a informação sobre os comprimentos da proteínas.</p>
+<p>Poderíamos saber qual o máximo e o mínimo desses valores, mas, ainda melhor, as <em>Series</em> têm as funções <code class="docutils literal notranslate"><span class="pre">idxmin()</span></code> e <code class="docutils literal notranslate"><span class="pre">idxmax()</span></code> que nos dão os valores do <code class="docutils literal notranslate"><span class="pre">index</span></code> correspondentes ao mínimo e máximo de uma coluna. Neste caso obtemos os números de acesso UniProt das proteínas como o comprimento mínimo e máximo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mais pequena</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+<span class="n">pos</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Q3E775&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">posmin</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+<span class="n">posmax</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Com um valor de um <code class="docutils literal notranslate"><span class="pre">index</span></code> podemos obter a linha da <em>DataFrame</em> usando <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> (não é uma função é uma forma de indexação de <em>DataFrames</em>).</p>
+<p>A proteína menor é:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prot_table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">posmin</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n                     16
+PTMs                  []
+seq     MLSLIFYLRFPSYIRG
+Name: Q3E775, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>E a maior é (com 4910 aminoácidos!):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prot_table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">posmax</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n                                                    4910
+PTMs    [(1026, Phosphothreonine), (2971, Phosphoserin...
+seq     MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...
+Name: Q12019, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como obter a apenas a sequência da proteína maior de todas?</p>
+<p>Como o resultado de <code class="docutils literal notranslate"><span class="pre">.loc</span></code> é ele próprio uma <em>Series</em> (ou uma <em>DataFrame</em> se houver mais do que um máximo) podemos voltar a indexar para obtermos apenas a sequência (uma <em>string</em>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prot_table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">posmax</span><span class="p">]</span><span class="o">.</span><span class="n">seq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLDNLAGTILHSRSITGHVFLYKHIFLEIVARWIKDSKKKDYVLVIEKLASIITIFPVAMPLIEDYLDKENDHFITILQNPSTQKDSDMFKILLAYYRLLYHNKEVFARFIQPDILYQLVDLLTKEQENQVVIFLALKVLSLYLDMGEKTLNDMLDTYIKSRDSLLGHFEGDSGIDYSFLELNEAKRCANFSKLPSVPECFTIEKKSSYFIIEPQDLSTKVASICGVIVPKVHTIHDKVFYPLTFVPTHKTVSSLRQLGRKIQNSTPIMLIGKAGSGKTFLINELSKYMGCHDSIVKIHLGEQTDAKLLIGTYTSGDKPGTFEWRAGVLATAVKEGRWVLIEDIDKAPTDVLSILLSLLEKRELTIPSRGETVKAANGFQLISTVRINEDHQKDSSNKIYNLNMIGMRIWNVIELEEPSEEDLTHILAQKFPILTNLIPKLIDSYKNVKSIYMNTKFISLNKGAHTRVVSVRDLIKLCERLDILFKNNGINKPDQLIQSSVYDSIFSEAADCFAGAIGEFKALEPIIQAIGESLDIASSRISLFLTQHVPTLENLDDSIKIGRAVLLKEKLNIQKKSMNSTLFAFTNHSLRLMEQISVCIQMTEPVLLVGETGTGKTTVVQQLAKMLAKKLTVINVSQQTETGDLLGGYKPVNSKTVAVPIQENFETLFNATFSLKKNEKFHKMLHRCFNKNQWKNVVKLWNEAYKMAQSILKITNTENENENAKKKKRRLNTHEKKLLLDKWADFNDSVKKFEAQSSSIENSFVFNFVEGSLVKTIRAGEWLLLDEVNLATADTLESISDLLTEPDSRSILLSEKGDAEPIKAHPDFRIFACMNPATDVGKRDLPMGIRSRFTEIYVHSPERDITDLLSIIDKYIGKYSVSDEWVGNDIAELYLEAKKLSDNNTIVDGSNQKPHFSIRTLTRTLLYVTDIIHIYGLRRSLYDGFCMSFLTLLDQKSEAILKPVIEKFTLGRLKNVKSIMSQTPPSPGPDYVQFKHYWMKKGPNTIQEQAHYIITPFVEKNMMNLVRATSGKRFPVLIQGPTSSGKTSMIKYLADITGHKFVRINNHEHTDLQEYLGTYVTDDTGKLSFKEGVLVEALRKGYWIVLDELNLAPTDVLEALNRLLDDNRELFIPETQEVVHPHPDFLLFATQNPPGIYGGRKILSRAFRNRFLELHFDDIPQDELEIILRERCQIAPSYAKKIVEVYRQLSIERSASRLFEQKNSFATLRDLFRWALRDAVGYEQLAASGYMLLAERCRTPQEKVTVKKTLEKVMKVKLDMDQYYASLEDKSLEAIGSVTWTKGMRRLSVLVSSCLKNKEPVLLVGETGCGKTTICQLLAQFMGRELITLNAHQNTETGDILGAQRPVRNRSEIQYKLIKSLKTALNIANDQDVDLKELLQLYSKSDNKNIAEDVQLEIQKLRDSLNVLFEWSDGPLIQAMRTGNFFLLDEISLADDSVLERLNSVLEPERSLLLAEQGSSDSLVTASENFQFFATMNPGGDYGKKELSPALRNRFTEIWVPSMEDFNDVNMIVSSRLLEDLKDLANPIVKFSEWFGKKLGGGNATSGVISLRDILAWVEFINKVFPKIQNKSTALIQGASMVFIDALGTNNTAYLAENENDLKSLRTECIIQLLKLCGDDLELQQIETNEIIVTQDELQVGMFKIPRFPDAQSSSFNLTAPTTASNLVRVVRAMQVHKPILLEGSPGVGKTSLITALANITGNKLTRINLSEQTDLVDLFGADAPGERSGEFLWHDAPFLRAMKKGEWVLLDEMNLASQSVLEGLNACLDHRGEAYIPELDISFSCHPNFLVFAAQNPQYQGGGRKGLPKSFVNRFSVVFIDMLTSDDLLLIAKHLYPSIEPDIIAKMIKLMSTLEDQVCKRKLWGNSGSPWEFNLRDTLRWLKLLNQYSICEDVDVFDFVDIIVKQRFRTISDKNKAQLLIEDIFGKFSTKENFFKLTEDYVQINNEVALRNPHYRYPITQNLFPLECNVAVYESVLKAINNNWPLVLVGPSNSGKTETIRFLASILGPRVDVFSMNSDIDSMDILGGYEQVDLTRQISYITEELTNIVREIISMNMKLSPNATAIMEGLNLLKYLLNNIVTPEKFQDFRNRFNRFFSHLEGHPLLKTMSMNIEKMTEIITKEASVKFEWFDGMLVKAVEKGHWLILDNANLCSPSVLDRLNSLLEIDGSLLINECSQEDGQPRVLKPHPNFRLFLTMDPKYGELSRAMRNRGVEIYIDELHSRSTAFDRLTLGFELGENIDFVSIDDGIKKIKLNEPDMSIPLKHYVPSYLSRPCIFAQVHDILLLSDEEPIEESLAAVIPISHLGEVGKWANNVLNCTEYSEKKIAERLYVFITFLTDMGVLEKINNLYKPANLKFQKALGLHDKQLTEETVSLTLNEYVLPTVSKYSDKIKSPESLYLLSSLRLLLNSLNALKLINEKSTHGKIDELTYIELSAAAFNGRHLKNIPRIPIFCILYNILTVMSENLKTESLFCGSNQYQYYWDLLVIVIAALETAVTKDEARLRVYKELIDSWIASVKSKSDIEITPFLNINLEFTDVLQLSRGHSITLLWDIFRKNYPTTSNSWLAFEKLINLSEKFDKVRLLQFSESYNSIKDLMDVFRLLNDDVLNNKLSEFNLLLSKLEDGINELELISNKFLNKRKHYFADEFDNLIRYTFSVDTAELIKELAPASSLATQKLTKLITNKYNYPPIFDVLWTEKNAKLTSFTSTIFSSQFLEDVVRKSNNLKSFSGNQIKQSISDAELLLSSTIKCSPNLLKSQMEYYKNMLLSWLRKVIDIHVGGDCLKLTLKELCSLIEEKTASETRVTFAEYIFPALDLAESSKSLEELGEAWITFGTGLLLLFVPDSPYDPAIHDYVLYDLFLKTKTFSQNLMKSWRNVRKVISGDEEIFTEKLINTISDDDAPQSPRVYRTGMSIDSLFDEWMAFLSSTMSSRQIKELVSSYKCNSDQSDRRLEMLQQNSAHFLNRLESGYSKFADLNDILAGYIYSINFGFDLLKLQKSKDRASFQISPLWSMDPINISCAENVLSAYHELSRFFKKGDMEDTSIEKVLMYFLTLFKFHKRDTNLLEIFEAALYTLYSRWSVRRFRQEQEENEKSNMFKFNDNSDDYEADFRKLFPDYEDTALVTNEKDISSPENLDDIYFKLADTYISVFDKDHDANFSSELKSGAIITTILSEDLKNTRIEELKSGSLSAVINTLDAETQSFKNTEVFGNIDFYHDFSIPEFQKAGDIIETVLKSVLKLLKQWPEHATLKELYRVSQEFLNYPIKTPLARQLQKIEQIYTYLAEWEKYASSEVSLNNTVKLITDLIVSWRKLELRTWKGLFNSEDAKTRKSIGKWWFYLYESIVISNFVSEKKETAPNATLLVSSLNLFFSKSTLGEFNARLDLVKAFYKHIQLIGLRSSKIAGLLHNTIKFYYQFKPLIDERITNGKKSLEKEIDDIILLASWKDVNVDALKQSSRKSHNNLYKIVRKYRDLLNGDAKTIIEAGLLYSNENKLKLPTLKQHFYEDPNLEASKNLVKEISTWSMRAAPLRNIDTVASNMDSYLEKISSQEFPNFADLASDFYAEAERLRKETPNVYTKENKKRLAYLKTQKSKLLGDALKELRRIGLKVNFREDIQKVQSSTTTILANIAPFNNEYLNSSDAFFFKILDLLPKLRSAASNPSDDIPVAAIERGMALAQSLMFSLITVRHPLSEFTNDYCKINGMMLDLEHFTCLKGDIVHSSLKANVDNVRLFEKWLPSLLDYAAQTLSVISKYSATSEQQKILLDAKSTLSSFFVHFNSSRIFDSSFIESYSRFELFINELLKKLENAKETGNAFVFDIIIEWIKANKGGPIKKEQKRGPSVEDVEQAFRRTFTSIILSFQKVIGDGIESISETDDNWLSASFKKVMVNVKLLRSSVVSKNIETALSLLKDFDFTTTESIYVKSVISFTLPVITRYYNAMTVVLERSRIYYTNTSRGMYILSTILHSLAKNGFCSPQPPSEEVDDKNLQEGTGLGDGEGAQNNNKDVEQDEDLTEDAQNENKEQQDKDERDDENEDDAVEMEGDMAGELEDLSNGEENDDEDTDSEEEELDEEIDDLNEDDPNAIDDKMWDDKASDNSKEKDTDQNLDGKNQEEDVQAAENDEQQRDNKEGGDEDPNAPEDGDEEIENDENAEEENDVGEQEDEVKDEEGEDLEANVPEIETLDLPEDMNLDSEHEESDEDVDMSDGMPDDLNKEEVGNEDEEVKQESGIESDNENDEPGPEEDAGETETALDEEEGAEEDVDMTNDEGKEDEENGPEEQAMSDEEELKQDAAMEENKEKGGEQNTEGLDGVEEKADTEDIDQEAAVQQDSGSKGAGADATDTQEQDDVGGSGTTQNTYEEDQEDVTKNNEESREEATAALKQLGDSMKEYHRRRQDIKEAQTNGEEDENLEKNNERPDEFEHVEGANTETDTQALGSATQDQLQTIDEDMAIDDDREEQEVDQKELVEDADDEKMDIDEEEMLSDIDAHDANNDVDSKKSGFIGKRKSEEDFENELSNEHFSADQEDDSEIQSLIENIEDNPPDASASLTPERSLEESRELWHKSEISTADLVSRLGEQLRLILEPTLATKLKGDYKTGKRLNMKRIIPYIASQFRKDKIWLRRTKPSKRQYQIMIALDDSKSMSESKCVKLAFDSLCLVSKTLTQLEAGGLSIVKFGENIKEVHSFDQQFSNESGARAFQWFGFQETKTDVKKLVAESTKIFERARAMVHNDQWQLEIVISDGICEDHETIQKLVRRARENKIMLVFVIIDGITSNESILDMSQVNYIPDQYGNPQLKITKYLDTFPFEFYVVVHDISELPEMLSLILRQYFTDLASS&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Repare-se que não foi preciso fazer</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>prot_table.loc[posmax][&#39;seq&#39;]
+</pre></div>
+</div>
+<p>Bastou fazer</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>prot_table.loc[posmax].seq
+</pre></div>
+</div>
+<p>Que PTMs existem na maior proteína?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prot_table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">posmax</span><span class="p">]</span><span class="o">.</span><span class="n">PTMs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;1026&#39;, &#39;Phosphothreonine&#39;),
+ (&#39;2971&#39;, &#39;Phosphoserine&#39;),
+ (&#39;4353&#39;, &#39;Phosphoserine&#39;),
+ (&#39;4388&#39;, &#39;Phosphothreonine&#39;),
+ (&#39;4555&#39;, &#39;Phosphoserine&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="quais-as-20-proteinas-mais-pequenas-de-s-cerevisiae">
+<h4><span class="section-number">12.3.4.2. </span>Quais as 20 proteínas mais pequenas de S.cerevisiae?<a class="headerlink" href="#quais-as-20-proteinas-mais-pequenas-de-s-cerevisiae" title="Permalink to this heading">#</a></h4>
+<p>Para responder a esta pergunta podermos usar a possibilidade de ordenarmos as linhas de uma <em>DataFrame</em> pelos valores de uma coluna.</p>
+<p>Depois de uma <em>DataFrame</em> ordenada as funções <code class="docutils literal notranslate"><span class="pre">.head()</span></code> e <code class="docutils literal notranslate"><span class="pre">.tail()</span></code>para obtermos uma <em>DataFrame</em> com as primeiras ou últimas linhas da <em>DataFrame</em>, respetivamente (indicamos o número de linhas no argumento destas funções.)</p>
+<p>Assim, para obter as 20 proteínas mais curtas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ord_prot_table</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">ord_prot_table</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n</th>
+      <th>PTMs</th>
+      <th>seq</th>
+    </tr>
+    <tr>
+      <th>ac</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Q3E775</th>
+      <td>16</td>
+      <td>[]</td>
+      <td>MLSLIFYLRFPSYIRG</td>
+    </tr>
+    <tr>
+      <th>P08521</th>
+      <td>25</td>
+      <td>[]</td>
+      <td>MFSLSNSQYTCQDYISDHIWKTSSH</td>
+    </tr>
+    <tr>
+      <th>P0CX86</th>
+      <td>25</td>
+      <td>[]</td>
+      <td>MRAKWRKKRTRRLKRKRRKVRARSK</td>
+    </tr>
+    <tr>
+      <th>P0CX87</th>
+      <td>25</td>
+      <td>[]</td>
+      <td>MRAKWRKKRTRRLKRKRRKVRARSK</td>
+    </tr>
+    <tr>
+      <th>P0C5N4</th>
+      <td>26</td>
+      <td>[]</td>
+      <td>MYFHSFLDTFSKYLGSTSCPLLRLSR</td>
+    </tr>
+    <tr>
+      <th>P0C5S1</th>
+      <td>26</td>
+      <td>[]</td>
+      <td>MVYVMSMVSLLKRLLTVTRWKLQITG</td>
+    </tr>
+    <tr>
+      <th>Q8TGV0</th>
+      <td>26</td>
+      <td>[]</td>
+      <td>MRLNYSRCYYSSQRRRQSLPKRFPLI</td>
+    </tr>
+    <tr>
+      <th>Q3E7Z6</th>
+      <td>27</td>
+      <td>[]</td>
+      <td>MTAFASLREPLVLANLKIKVHIYRMKR</td>
+    </tr>
+    <tr>
+      <th>Q3E801</th>
+      <td>27</td>
+      <td>[]</td>
+      <td>MTRCISKKMLLEVDALSLIYSPHLYMS</td>
+    </tr>
+    <tr>
+      <th>P0C5K9</th>
+      <td>27</td>
+      <td>[]</td>
+      <td>MWGLNRWLTFTMLILLITSHCCYWNKR</td>
+    </tr>
+    <tr>
+      <th>Q8TGN3</th>
+      <td>28</td>
+      <td>[]</td>
+      <td>MPGIAFKGKDMVKAIQFLEIVVPCHCTT</td>
+    </tr>
+    <tr>
+      <th>A0A0B7P221</th>
+      <td>28</td>
+      <td>[]</td>
+      <td>MIRQKIFVFIVKSRRNSICPAIRRKEDY</td>
+    </tr>
+    <tr>
+      <th>Q8TGS7</th>
+      <td>28</td>
+      <td>[]</td>
+      <td>MRKPSAFHACNIIFLPLVKCASATIMLN</td>
+    </tr>
+    <tr>
+      <th>Q3E838</th>
+      <td>28</td>
+      <td>[]</td>
+      <td>MLPRKYKPAYKKQAHRVKSNPQPAYTFQ</td>
+    </tr>
+    <tr>
+      <th>Q8TGT8</th>
+      <td>28</td>
+      <td>[]</td>
+      <td>MNLNAYFEAYQAIFPFLLEAFLRKEQKV</td>
+    </tr>
+    <tr>
+      <th>Q8TGU0</th>
+      <td>28</td>
+      <td>[]</td>
+      <td>MLPSISFDYIKRPNIVLFSNVLSLSSNI</td>
+    </tr>
+    <tr>
+      <th>Q8TGT6</th>
+      <td>29</td>
+      <td>[]</td>
+      <td>MKIKFSRGARFSATFSFDKYPFLLYEVVR</td>
+    </tr>
+    <tr>
+      <th>P0C5M8</th>
+      <td>29</td>
+      <td>[]</td>
+      <td>MPLEVLGHLSKAFLFLARNNEHSHKKYNQ</td>
+    </tr>
+    <tr>
+      <th>Q8TGS6</th>
+      <td>29</td>
+      <td>[]</td>
+      <td>MFKMKFGDTLPRSDFGTGGNKQAPGLELG</td>
+    </tr>
+    <tr>
+      <th>P0C1Z1</th>
+      <td>29</td>
+      <td>[]</td>
+      <td>MKRSYKTLPTYFFSFFGPFKERAVFLLVL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="quais-as-20-proteinas-maiores-de-s-cerevisiae">
+<h4><span class="section-number">12.3.4.3. </span>Quais as 20 proteínas maiores de S.cerevisiae?<a class="headerlink" href="#quais-as-20-proteinas-maiores-de-s-cerevisiae" title="Permalink to this heading">#</a></h4>
+<p>Para as 20 maiores usamos a função <code class="docutils literal notranslate"><span class="pre">.tail()</span></code> da <em>DataFrame</em> ordenada:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ord_prot_table</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n</th>
+      <th>PTMs</th>
+      <th>seq</th>
+    </tr>
+    <tr>
+      <th>ac</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>P34756</th>
+      <td>2278</td>
+      <td>[(2, N-acetylserine), (186, Phosphoserine), (1...</td>
+      <td>MSSEEPHASISFPDGSHVRSSSTGTSSVNTIDATLSRPNYIKKPSL...</td>
+    </tr>
+    <tr>
+      <th>P38111</th>
+      <td>2368</td>
+      <td>[]</td>
+      <td>MESHVKYLDELILAIKDLNSGVDSKVQIKKVPTDPSSSQEYAKSLK...</td>
+    </tr>
+    <tr>
+      <th>P40468</th>
+      <td>2376</td>
+      <td>[(141, Phosphoserine), (1144, Phosphoserine), ...</td>
+      <td>MASRFTFPPQRDQGIGFTFPPTNKAEGSSNNNQISIDIDPSGQDVL...</td>
+    </tr>
+    <tr>
+      <th>P33334</th>
+      <td>2413</td>
+      <td>[]</td>
+      <td>MSGLPPPPPGFEEDSDLALPPPPPPPPGYEIEELDNPMVPSSVNED...</td>
+    </tr>
+    <tr>
+      <th>P35169</th>
+      <td>2470</td>
+      <td>[]</td>
+      <td>MEPHEEQIWKSKLLKAANNDMDMDRNVPLAPNLNVNMNMKMNASRN...</td>
+    </tr>
+    <tr>
+      <th>P32600</th>
+      <td>2474</td>
+      <td>[(10, Phosphothreonine)]</td>
+      <td>MNKYINKYTTPPNLLSLRQRAEGKHRTRKKLTHKSHSHDDEMSTTS...</td>
+    </tr>
+    <tr>
+      <th>Q06116</th>
+      <td>2489</td>
+      <td>[(2254, Phosphoserine), (2278, Phosphoserine)]</td>
+      <td>MSMLPWSQIRDVSKLLLGFMLFIISIQKIASILMSWILMLRHSTIR...</td>
+    </tr>
+    <tr>
+      <th>P35194</th>
+      <td>2493</td>
+      <td>[]</td>
+      <td>MAKQRQTTKSSKRYRYSSFKARIDDLKIEPARNLEKRVHDYVESSH...</td>
+    </tr>
+    <tr>
+      <th>Q06179</th>
+      <td>2628</td>
+      <td>[]</td>
+      <td>MMFPINVLLYKWLIFAVTFLWSCKILLRKLLGINITWINLFKLEIC...</td>
+    </tr>
+    <tr>
+      <th>P33892</th>
+      <td>2672</td>
+      <td>[]</td>
+      <td>MTAILNWEDISPVLEKGTRESHVSKRVPFLQDISQLVRQETLEKPQ...</td>
+    </tr>
+    <tr>
+      <th>Q00402</th>
+      <td>2748</td>
+      <td>[(611, Phosphoserine), (675, Phosphoserine), (...</td>
+      <td>MSHNNRHKKNNDKDSSAGQYANSIDNSLSQESVSTNGVTRMANLKA...</td>
+    </tr>
+    <tr>
+      <th>P38110</th>
+      <td>2787</td>
+      <td>[]</td>
+      <td>MEDHGIVETLNFLSSTKIKERNNALDELTTILKEDPERIPTKALST...</td>
+    </tr>
+    <tr>
+      <th>Q12150</th>
+      <td>2958</td>
+      <td>[]</td>
+      <td>MEAISQLRGVPLTHQKDFSWVFLVDWILTVVVCLTMIFYMGRIYAY...</td>
+    </tr>
+    <tr>
+      <th>P19158</th>
+      <td>3079</td>
+      <td>[(635, Phosphothreonine)]</td>
+      <td>MSQPTKNKKKEHGTDSKSSRMTRTLVNHILFERILPILPVESNLST...</td>
+    </tr>
+    <tr>
+      <th>P18963</th>
+      <td>3092</td>
+      <td>[(497, Phosphoserine), (915, Phosphoserine), (...</td>
+      <td>MNQSDPQDKKNFPMEYSLTKHLFFDRLLLVLPIESNLKTYADVEAD...</td>
+    </tr>
+    <tr>
+      <th>Q07878</th>
+      <td>3144</td>
+      <td>[(1364, Phosphoserine), (1382, Phosphoserine),...</td>
+      <td>MLESLAANLLNRLLGSYVENFDPNQLNVGIWSGDVKLKNLKLRKDC...</td>
+    </tr>
+    <tr>
+      <th>Q03280</th>
+      <td>3268</td>
+      <td>[(1890, Phosphoserine), (2096, Phosphothreonin...</td>
+      <td>MVLFTRCEKARKEKLAAGYKPLVDYLIDCDTPTFLERIEAIQEWDR...</td>
+    </tr>
+    <tr>
+      <th>P38811</th>
+      <td>3744</td>
+      <td>[(2, N-acetylserine), (172, Phosphoserine), (5...</td>
+      <td>MSLTEQIEQFASRFRDDDATLQSRYSTLSELYDIMELLNSPEDYHF...</td>
+    </tr>
+    <tr>
+      <th>P36022</th>
+      <td>4092</td>
+      <td>[]</td>
+      <td>MCKNEARLANELIEFVAATVTGIKNSPKENEQAFIDYLHCQYLERF...</td>
+    </tr>
+    <tr>
+      <th>Q12019</th>
+      <td>4910</td>
+      <td>[(1026, Phosphothreonine), (2971, Phosphoserin...</td>
+      <td>MSQDRILLDLDVVNQRLILFNSAFPSDAIEAPFHFSNKESTSENLD...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="histograma-da-distribuicao-de-tamanhos">
+<h4><span class="section-number">12.3.4.4. </span>Histograma da distribuição de tamanhos<a class="headerlink" href="#histograma-da-distribuicao-de-tamanhos" title="Permalink to this heading">#</a></h4>
+<p>De entre várias maneiras de obter o histograma de tamanhos, podemos usar a função <code class="docutils literal notranslate"><span class="pre">distplot()</span></code> do módulo <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>. A ideia é aplicar esta função à coluna <code class="docutils literal notranslate"><span class="pre">n</span></code> da <em>dataFrame</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">ord_prot_table</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2500</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Protein length&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Protein count&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/741304cdabc0492d7415599c5613b5d6c93b3a4bcf24bcc84221159733ed23a4.png" src="_images/741304cdabc0492d7415599c5613b5d6c93b3a4bcf24bcc84221159733ed23a4.png" />
+</div>
+</div>
+<p>De entre os vários comandos e argumentos de natureza “cosmética” vale a pena indicar o argumanto <code class="docutils literal notranslate"><span class="pre">bins</span></code> que controla o número de intervalos em que se faz a contagem dos comprimentos.</p>
+</section>
+<section id="contagens-e-distribuicao-dos-20-aminoacidos-nas-proteinas">
+<h4><span class="section-number">12.3.4.5. </span>Contagens e distribuição dos 20 aminoácidos nas proteínas<a class="headerlink" href="#contagens-e-distribuicao-dos-20-aminoacidos-nas-proteinas" title="Permalink to this heading">#</a></h4>
+<p>Este problema parece complicado: temos as sequências de mais de 6 000 proteínas e pretendemos contar os 20 aminoácidos em todas estas sequências.</p>
+<p>Naturalmente poderíamos escrever um bloco <code class="docutils literal notranslate"><span class="pre">for</span></code>  em que passaríamos pro todas as linhas da <em>DataFrame</em>, obtendo a sequência e adicionando a contadores as novas contagens dos 20 aminoácidos por sequência.</p>
+<p>Mas o <em>pandas</em> e um outro tipo de objetos pode-nos ajudar a resolver o problema de uma forma muito mais simples.</p>
+<p>E se não tivessemos as sequências separadas? Se tivessemos todas as sequências numa imensa <em>string</em> com todos os aminoácidos de todas as proteínas? Seria mais fácil contar os 20 aminoácidos.</p>
+<p>Comecemos por aí: juntar as sequências das 6 000 proteínas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_aminoacids</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">seq</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se uma coluna (uma <em>Series</em>) tiver informação de natureza textual (<em>strings</em>) podemos usar <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html#method-summary">muitas funções</a> com o prefixo <code class="docutils literal notranslate"><span class="pre">.str</span></code> que aplicam operações sobre <em>strings</em> <strong>de uma forma vetorial</strong> a toda a coluna.</p>
+<p>Por exemplo, <code class="docutils literal notranslate"><span class="pre">.str.replace()</span></code> funciona como a função <code class="docutils literal notranslate"><span class="pre">replace()</span></code> das <em>strings</em> mas é aplicada a toda uma coluna de uma <em>DataFrame</em>.</p>
+<p>Neste caso usámos <code class="docutils literal notranslate"><span class="pre">.str.cat()</span></code> à coluna da sequência. Esta função junta todas as <em>strings</em> da coluna.</p>
+<p>Agora que <code class="docutils literal notranslate"><span class="pre">all_aminoacids</span></code> é uma <em>string</em> com milhões de letras, contendo todas sequências juntas, como contar os aminoácidos?</p>
+<p>Faremos uso de algo que existe disponível na linguagem Python mas não pertence ao <em>pandas</em>: os objetos <code class="docutils literal notranslate"><span class="pre">Counter</span></code> do módulo <code class="docutils literal notranslate"><span class="pre">collections</span></code>.</p>
+<p>Estes objetos <code class="docutils literal notranslate"><span class="pre">Counter</span></code> resolvem um problema que ocorre com muita frequência: contar os objetos diferentes que existem numa coleção (lista, dicionário, <em>string</em>).</p>
+<p>Se um <code class="docutils literal notranslate"><span class="pre">Counter</span></code> for criado a partir de uma <em>string</em>, as letras diferentes são contadas e o resultado comporta-se como um dicionário, em que cada elemento é associado à sua contagem.</p>
+<p>Basta criar <code class="docutils literal notranslate"><span class="pre">Counter</span></code> a partir de <code class="docutils literal notranslate"><span class="pre">all_aminoacids</span></code> e temos as contagens:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_aminoacids</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">seq</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_aminoacids</span><span class="p">)</span><span class="si">}</span><span class="s1"> amino acids in all proteins&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">aminoacid_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">all_aminoacids</span><span class="p">)</span>
+
+<span class="c1"># transformar o dicionário numa Series e ordenar</span>
+
+<span class="n">aminoacid_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">aminoacid_counts</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">aminoacid_counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 2936363 amino acids in all proteins
+L    279286
+S    263906
+K    215472
+I    192640
+E    191475
+N    180800
+T    173669
+D    171368
+V    163152
+A    161165
+G    145859
+R    130510
+F    130230
+P    128556
+Q    115998
+Y     99420
+H     63790
+M     61252
+C     37272
+W     30543
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mas o melhor é fazer um gráfico com as frequências:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_aminoacids</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">seq</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">()</span>
+
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">aminoacid_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">all_aminoacids</span><span class="p">)</span>
+
+<span class="n">aminoacid_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">aminoacid_counts</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">aminoacid_counts</span> <span class="o">=</span> <span class="n">aminoacid_counts</span> <span class="o">/</span> <span class="n">aminoacid_counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">barplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">aminoacid_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                      <span class="n">y</span><span class="o">=</span><span class="n">aminoacid_counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                      <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab20b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1ff4a5f9f38c575b04ddf9e0c14c4aa7fa7fca34fa9312cf052fd0ba29ec6cbe.png" src="_images/1ff4a5f9f38c575b04ddf9e0c14c4aa7fa7fca34fa9312cf052fd0ba29ec6cbe.png" />
+</div>
+</div>
+<p>O aminoácido mais frequente é a leucina e o menos frequente é o triptofano!</p>
+</section>
+<section id="contagens-globais-das-ptm">
+<h4><span class="section-number">12.3.4.6. </span>Contagens globais das PTM<a class="headerlink" href="#contagens-globais-das-ptm" title="Permalink to this heading">#</a></h4>
+<p>Finalmente, repetindo o problema do capítulo sobre a extração da informação sobre PTMs, vamos contar os tipos diferentes de PTM usando o <em>pandas</em>.</p>
+<p>A informação sobre PTMs aparentemente não está facilmente processável: está na coluna <code class="docutils literal notranslate"><span class="pre">PTMs</span></code> mas na forma de uma lista de pares.</p>
+<p>A função <code class="docutils literal notranslate"><span class="pre">explode()</span></code> trata do problema de desdobrar a lista em várias linhas diferentes, ainda que à custa de ter de repetir os valore do <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<p>Vamos aplicar a função à coluna <code class="docutils literal notranslate"><span class="pre">PTMs</span></code>. Mas, já agora, descartamos as linhas para as quais não existem <em>PTMs</em> com a função <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> que descarta linhas com valores em falta:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTM_locs</span> <span class="o">=</span> <span class="n">prot_table</span><span class="o">.</span><span class="n">PTMs</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+<span class="n">PTM_locs</span> <span class="o">=</span> <span class="n">PTM_locs</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">PTM_locs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ac
+P53309    (449, Phosphothreonine)
+P40467       (166, Phosphoserine)
+P40467       (186, Phosphoserine)
+P40467       (963, Phosphoserine)
+P36076        (42, Phosphoserine)
+P36076       (116, Phosphoserine)
+P36076       (121, Phosphoserine)
+P36076       (124, Phosphoserine)
+P36076       (264, Phosphoserine)
+P53388        (22, Phosphoserine)
+P00431     (220, Phosphotyrosine)
+P53968    (170, Phosphothreonine)
+P53968       (175, Phosphoserine)
+P53968       (245, Phosphoserine)
+P53968       (385, Phosphoserine)
+P89105      (1015, Phosphoserine)
+P89105      (1017, Phosphoserine)
+P07262        (2, N-acetylserine)
+P38859      (4, Phosphothreonine)
+P38859        (17, Phosphoserine)
+P38859       (237, Phosphoserine)
+P38859    (962, Phosphothreonine)
+P54861       (629, Phosphoserine)
+P14020        (2, N-acetylserine)
+P14020       (141, Phosphoserine)
+P32892       (208, Phosphoserine)
+P43616       (451, Phosphoserine)
+Q00684       (467, Phosphoserine)
+Q06440       (441, Phosphoserine)
+Q06440       (454, Phosphoserine)
+Name: PTMs, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como se pode ver com os primeiros 30 elementos, a função <code class="docutils literal notranslate"><span class="pre">explode()</span></code> desdobrou as listas.</p>
+<p>Agora precisamos de obter apenas os nomes das <em>PTMs</em> e não precisamos de usar as localizações. Precisamos apenas, em cada par, dos elementos da posição 1.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.str.get()</span></code> faz precisamente isso, de uma forma vetorial:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTMs</span> <span class="o">=</span> <span class="n">PTM_locs</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">PTMs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ac
+P53309    Phosphothreonine
+P40467       Phosphoserine
+P40467       Phosphoserine
+P40467       Phosphoserine
+P36076       Phosphoserine
+                ...       
+Q04461       Phosphoserine
+Q04461    Phosphothreonine
+P38260       Phosphoserine
+P42837       Phosphoserine
+P32806       Phosphoserine
+Name: PTMs, Length: 7070, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Agora só falta contar os elementos diferentes  nesta <em>Series</em>.</p>
+<p>O <em>pandas</em> tem uma função muito semelhante aos <code class="docutils literal notranslate"><span class="pre">Counter</span></code>: a <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTM_counts</span> <span class="o">=</span> <span class="n">PTMs</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">PTM_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Phosphoserine                                       5172
+Phosphothreonine                                    1028
+N-acetylserine                                       345
+N-acetylmethionine                                   106
+Phosphotyrosine                                       55
+N6-(pyridoxal phosphate)lysine                        46
+N6-acetyllysine                                       46
+N-acetylalanine                                       37
+Asymmetric dimethylarginine                           33
+N6-methyllysine                                       24
+Cysteine methyl ester                                 23
+N6,N6,N6-trimethyllysine                              22
+N6,N6-dimethyllysine                                  15
+Omega-N-methylarginine                                15
+N-acetylthreonine                                     12
+N6-succinyllysine                                     11
+N6-butyryllysine                                       8
+N6-biotinyllysine                                      5
+N6-lipoyllysine                                        4
+N,N-dimethylproline                                    4
+N5-methylglutamine                                     4
+Phosphohistidine                                       4
+N6-carboxylysine                                       4
+4-aspartylphosphate                                    3
+Lysine derivative                                      3
+S-glutathionyl cysteine                                3
+O-(pantetheine 4&#39;-phosphoryl)serine                    3
+N6-malonyllysine                                       3
+Pyruvic acid (Ser)                                     3
+Tele-8alpha-FAD histidine                              2
+N5-methylarginine                                      2
+Leucine methyl ester                                   2
+3,4-dihydroxyproline                                   2
+N6-propionyllysine                                     2
+N-acetylvaline                                         2
+Hypusine                                               2
+N,N,N-trimethylglycine                                 1
+1-thioglycine                                          1
+Dimethylated arginine                                  1
+Lysine methyl ester                                    1
+Thiazolidine linkage to a ring-opened DNA abasic       1
+Pros-methylhistidine                                   1
+S-(dipyrrolylmethanemethyl)cysteine                    1
+N6-crotonyllysine                                      1
+Cysteine sulfinic acid (-SO2H)                         1
+2,3-didehydroalanine (Cys)                             1
+N-formylmethionine                                     1
+Pros-8alpha-FAD histidine                              1
+Diphthamide                                            1
+N6-glutaryllysine                                      1
+S-methylcysteine                                       1
+Name: PTMs, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Agora só as PTMs que ocorrem mais do que 10 vezes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_than10</span> <span class="o">=</span> <span class="n">PTM_counts</span><span class="p">[</span><span class="n">PTM_counts</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">more_than10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Phosphoserine                     5172
+Phosphothreonine                  1028
+N-acetylserine                     345
+N-acetylmethionine                 106
+Phosphotyrosine                     55
+N6-(pyridoxal phosphate)lysine      46
+N6-acetyllysine                     46
+N-acetylalanine                     37
+Asymmetric dimethylarginine         33
+N6-methyllysine                     24
+Cysteine methyl ester               23
+N6,N6,N6-trimethyllysine            22
+N6,N6-dimethyllysine                15
+Omega-N-methylarginine              15
+N-acetylthreonine                   12
+N6-succinyllysine                   11
+Name: PTMs, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finalmente, um gráfico…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="n">bp</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">more_than10</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                 <span class="n">y</span><span class="o">=</span><span class="n">more_than10</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                 <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1e9556545ba7d16a986fde07fdbb391ba13ea40e66636914f20e029c571f472a.png" src="_images/1e9556545ba7d16a986fde07fdbb391ba13ea40e66636914f20e029c571f472a.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="problems2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Exercícios de treino, 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="uniprot_csv.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Exemplo: ficheiros CSV</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">12.1. Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construcao-e-indexacao">12.1.1. Construção e indexação</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-em-falta">12.1.2. Valores em falta</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes-descritivas">12.1.3. Funções descritivas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operacoes-vetoriais">12.1.4. Operações vetoriais</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes">12.2. DataFrames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-tabela-com-informacao-uniprot-txt">12.3. Exemplo: Tabela com informação Uniprot txt</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacao">12.3.1. Preparação</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracao-dos-dados">12.3.2. Extração dos dados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformacao-numa-dataframe">12.3.3. Transformação numa <em>DataFrame</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uso-da-dataframe">12.3.4. Uso da DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qual-a-proteina-mais-pequena-qual-a-maior">12.3.4.1. Qual a proteína mais pequena. Qual a maior?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quais-as-20-proteinas-mais-pequenas-de-s-cerevisiae">12.3.4.2. Quais as 20 proteínas mais pequenas de S.cerevisiae?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quais-as-20-proteinas-maiores-de-s-cerevisiae">12.3.4.3. Quais as 20 proteínas maiores de S.cerevisiae?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#histograma-da-distribuicao-de-tamanhos">12.3.4.4. Histograma da distribuição de tamanhos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#contagens-e-distribuicao-dos-20-aminoacidos-nas-proteinas">12.3.4.5. Contagens e distribuição dos 20 aminoácidos nas proteínas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#contagens-globais-das-ptm">12.3.4.6. Contagens globais das PTM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De António Ferreira
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

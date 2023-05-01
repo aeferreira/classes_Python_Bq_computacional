@@ -1,0 +1,2567 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="pt-PT" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>13. Exemplo: ficheiros CSV &#8212; Programação em Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'uniprot_csv';</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Pesquisar" href="search.html" />
+    <link rel="next" title="14. Exemplo: regressão linear" href="sm_linreg.html" />
+    <link rel="prev" title="12. pandas" href="sm_pandas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt-PT"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/newlogo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/newlogo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Prefácio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">A linguagem Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basics.html">1. Conceitos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections_iterations.html">2. Coleções e iterações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more_on_lists_dicts.html">3. Listas e dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">4. <em>Strings</em> e textos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcs_modules.html">5. Funções e módulos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems.html">6. Exercícios de treino</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">7. Ficheiros de texto</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Textos estruturados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="uniprot_txt.html">8. Exemplo: ficheiros UniProt txt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Módulos científicos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sm_numpy_scipy.html">9. Os principais módulos “científicos”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_ph.html">10. Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems2.html">11. Exercícios de treino, 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_pandas.html">12. pandas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Exemplo: ficheiros CSV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_linreg.html">14. Exemplo: regressão linear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_sympy.html">15. Módulo <code class="docutils literal notranslate"><span class="pre">sympy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_algorithms.html">16. Algoritmos numéricos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_software.html">Instalação de software</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Baixe esta página">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/uniprot_csv.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Baixar arquivo fonte"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir em PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exemplo: ficheiros CSV</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao">13.1. Introdução</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programa-completo">13.2. Programa completo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leitura-do-ficheiro-e-separacao-da-informacao-por-proteina">13.3. Leitura do ficheiro e separação da informação por proteína</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracao-da-informacao">13.4. Extração da informação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracao-da-informacao-ptms">13.5. Extração da informação: PTMs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interludio-atribuicoes-multiplas-com">13.6. Interlúdio: atribuições múltiplas com *</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contagem-dos-tipos-de-ptm">13.7. Contagem dos tipos de PTM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos">13.8. Gráficos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.9. Programa completo</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exemplo-ficheiros-csv">
+<h1><span class="section-number">13. </span>Exemplo: ficheiros CSV<a class="headerlink" href="#exemplo-ficheiros-csv" title="Permalink to this heading">#</a></h1>
+<section id="introducao">
+<h2><span class="section-number">13.1. </span>Introdução<a class="headerlink" href="#introducao" title="Permalink to this heading">#</a></h2>
+<p>Como exemplo da vasta funcionalidade oferecida pelo módulo <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, este capítulo ilustra a sua aplicação
+à extração de informação obtida do portal <a class="reference external" href="https://beta.uniprot.org/">UniProt</a>, tal como capítulo anterior, mas agora a partir de ficheiros estruturados num outro formato: o formato <strong>CSV</strong>.</p>
+<p>O formato <strong>CSV</strong> (Comma-Separated Values), muito popular em muitas áreas científicas, foi criado para conter informação que se possa representar através de uma tabela ou quadro.</p>
+<p>Geralmente, as tabelas representadas como <strong>CSV</strong> contêm os vários <em>campos</em> de informação em colunas. Cada linha é usada para representar cada <em>registo</em> de informação.</p>
+<p>Na sua forma mais simples, as linhas de uma tabela correspondem às linhas do texto em CSV e, dentro de cada linha, as várias colunas distinguem-se por existir um caractere <em>separador</em> que marca a separação entre as várias colunas. Originalmente, esse caractere era a vírgula (daí o nome <em>Comma-Separated Values</em>), mas outros caracteres são também muito usados. O <em>tab</em>, representado num programa por <code class="docutils literal notranslate"><span class="pre">\t</span></code>, é muito popular e, quando é usado, o formato é também designado por <strong>TSV</strong> (Tab-separated values).</p>
+<p>A primeira linha do texto costuma conter os nomes das colunas, usando também o <em>separador</em> para os separar.</p>
+<p>Um exemplo de um pequeno texto neste formato é</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Entry</span>\<span class="n">tReviewed</span>\<span class="n">tLength</span>
+<span class="n">A0A0B7P3V8</span>\<span class="n">treviewed</span>\<span class="n">t1104</span>
+<span class="n">O13297</span>\<span class="n">treviewed</span>\<span class="n">t549</span>
+<span class="n">O13329</span>\<span class="n">treviewed</span>\<span class="n">t566</span>
+<span class="n">O13516</span>\<span class="n">treviewed</span>\<span class="n">t197</span>
+</pre></div>
+</div>
+<p>Este é um excerto de informação sobre proteínas, obtido da UniProt, em que os campos, em colunas são o <em>ID de acesso</em> (<code class="docutils literal notranslate"><span class="pre">Entry</span></code>) , se a informação têm o estatuto de <em>reviewed</em> ou não (<code class="docutils literal notranslate"><span class="pre">Reviewed</span></code>) e o número de aminoácidos de cada proteína (<code class="docutils literal notranslate"><span class="pre">Length</span></code>).</p>
+<p>Repare-se que na presença do caractere <em>tab</em> (<code class="docutils literal notranslate"><span class="pre">\t</span></code>) para separar as várias “colunas” (campos) de informação. Cada linha é um registo para uma proteína diferente, exceto a primeira linha, que contem os nomes dos vários campos.</p>
+<p>Nesta secção será demonstrado o uso do módulo <code class="docutils literal notranslate"><span class="pre">pandas</span></code> para extraír, organizar, analisar e visualizar informação
+contida em ficheiros com o formato <strong>CSV</strong>.</p>
+<p>Como exemplo, será usado um ficheiro contendo a informação do portal UniProt sobre todas as proteínas de um determinado organismo, um dos <em>proteomas de referência</em> existentes neste portal. O proteoma usado vai ser o do organismo <em>Saccharomyces cerevisiae</em> (a levedura de padeiro, um dos organismos modelo em biociências moleculares). Os tópicos a analisar são essencialemnte os mesmos que foram abordados no capítulo anterior, mas agora a partir de um ficheiro <strong>CSV</strong></p>
+<p>Antes da programação é necessário obter esse ficheiro.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Instruções para obter o ficheiro de trabalho</p>
+<ul class="simple">
+<li><p>Na <a class="reference external" href="https://beta.uniprot.org">UniProt</a> procurar em <em>Species, proteomes</em> pelo <a class="reference external" href="https://beta.uniprot.org/proteomes/UP000002311"><em>proteoma de referência</em> da levedura S. cerevisiae</a> (<a class="reference external" href="https://beta.uniprot.org/proteomes/UP000002311">https://beta.uniprot.org/proteomes/UP000002311</a>)</p></li>
+<li><p>Passar para a <strong>lista de proteínas</strong>, seguindo o link do <a class="reference external" href="https://beta.uniprot.org/uniprotkb?query=proteome:UP000002311">número de proteínas</a>, a seguir a <em>Protein count</em>.</p></li>
+<li><p>Use o botão “Download” e escolha as seguintes opções:</p>
+<ul>
+<li><p>Download all</p></li>
+<li><p>Format: <strong>TSV</strong></p></li>
+<li><p>Compressed: <strong>No</strong></p></li>
+<li><p>Em <em>Customize columns</em> escolha as colunas seguintes (procure nas diferentes sub-secções):</p>
+<ul>
+<li><p>Reviewed</p></li>
+<li><p>Protein names</p></li>
+<li><p>Length</p></li>
+<li><p>Mass</p></li>
+<li><p>Sequence</p></li>
+<li><p>Glycosylation</p></li>
+<li><p>Lipidation</p></li>
+<li><p>Modified residue</p></li>
+</ul>
+</li>
+<li><p>Pode rejeitar <em>Entry name</em>, <em>Gene names</em> e <em>Organism</em>, se quiser.</p></li>
+</ul>
+</li>
+<li><p>Faça <strong>download</strong></p></li>
+<li><p>Altere o nome do ficheiro obtidopara <code class="docutils literal notranslate"><span class="pre">uniprot_scerevisiae.tsv</span></code></p></li>
+<li><p>Crie uma pasta de trabalho, onde irá ser desenvolvido o programa e mova o ficheiro <code class="docutils literal notranslate"><span class="pre">uniprot_scerevisiae.tsv</span></code> para essa pasta.</p></li>
+</ul>
+</div>
+</section>
+<section id="programa-completo">
+<h2><span class="section-number">13.2. </span>Programa completo<a class="headerlink" href="#programa-completo" title="Permalink to this heading">#</a></h2>
+<p>Comecemos por mostrar o programa completo e o respetivo output:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Counts of the several types of PTMs in proteins of S. cerevisiae</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+
+<span class="k">def</span> <span class="nf">read_Uniprot_text</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text file and splits into a list of protein records.&quot;&quot;&quot;</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+        <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># remove empty records</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">records</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># since we know that it is the last one only...</span>
+    <span class="c1"># records.pop(-1)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+<span class="n">prots</span> <span class="o">=</span> <span class="n">read_Uniprot_text</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">extract_info</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text record and returns a dict with extrated information.</span>
+<span class="sd">    </span>
+<span class="sd">    The returned dict has the following fields:</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;ac&#39;: the UniProt Access Id,</span>
+<span class="sd">    &#39;n&#39;: the sequence length, </span>
+<span class="sd">    &#39;PTMs&#39;: a dictionary that associates the location of PTMs (int, as keys)</span>
+<span class="sd">               with the name of the PTM.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">IDline</span><span class="p">,</span> <span class="n">ACline</span><span class="p">,</span> <span class="o">*</span><span class="n">otherlines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    
+    <span class="c1"># Extract UniProt AC and number of amino acids</span>
+    <span class="c1"># Example (first two lines):</span>
+    <span class="c1"># ID   AB140_YEAST             Reviewed;         628 AA.</span>
+    <span class="c1"># AC   Q08641; D6W2U2; Q08644;</span>
+    
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">ACline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+    
+    <span class="c1"># Extract FT lines and process PTM information</span>
+    <span class="c1">#</span>
+    <span class="c1"># Example of phosphorylation lines</span>
+    <span class="c1"># FT   MOD_RES         342</span>
+    <span class="c1"># FT                   /note=&quot;Phosphoserine&quot;</span>
+    <span class="c1"># FT                   /evidence=&quot;ECO:0000244|PubMed:18407956,</span>
+    <span class="c1"># FT                   ECO:0000244|PubMed:19779198&quot;</span>
+    
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">otherlines</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;FT   MOD_RES&#39;</span><span class="p">):</span>
+            <span class="n">FTcode</span><span class="p">,</span> <span class="n">MOD_RES</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            
+            <span class="n">nextline</span> <span class="o">=</span> <span class="n">otherlines</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">nextline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/note=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            
+            <span class="n">PTMs</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTMtype</span>
+        
+    <span class="c1"># Return dictionary of extracted information</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ac&#39;</span><span class="p">:</span> <span class="n">ac</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;PTMs&#39;</span><span class="p">:</span> <span class="n">PTMs</span><span class="p">}</span>
+
+<span class="n">all_prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">extract_info</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">]</span>
+
+<span class="n">PTM_counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">:</span>
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;PTMs&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># just skip if no PTMs</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">PTMs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+        
+    <span class="k">for</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTMs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTM_counts</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># sort function returning the second element of a pair of values</span>
+<span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># sort items, using second element (the counts) as key, decreasing order</span>
+
+<span class="n">sorted_items</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">PTM_counts</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># the result of sorted is not actually a list,</span>
+<span class="c1"># but we can transform it into a list</span>
+
+<span class="n">ordered_PTM_counts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sorted_items</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of protein records in &quot;</span><span class="si">{</span><span class="n">data_filename</span><span class="si">}</span><span class="s1">&quot; is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prots</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># let&#39;s look at the results</span>
+<span class="k">for</span> <span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+
+<span class="c1"># make a barplot, only for PTMs with count &gt; 10</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+
+<span class="n">bp</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">types</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">counts</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of protein records in &quot;uniprot_scerevisiae.txt&quot; is 6049
+Phosphoserine 5170
+Phosphothreonine 1027
+N-acetylserine 325
+N-acetylmethionine 106
+Phosphotyrosine 55
+N6-(pyridoxal phosphate)lysine 46
+N-acetylalanine 37
+N6-acetyllysine 32
+Asymmetric dimethylarginine 26
+Cysteine methyl ester 23
+N6-methyllysine 22
+N6,N6,N6-trimethyllysine 17
+Omega-N-methylarginine 15
+N-acetylthreonine 12
+N6-succinyllysine 11
+N6,N6-dimethyllysine 6
+N6-butyryllysine 5
+N6-biotinyllysine 5
+N6-carboxylysine 4
+Phosphohistidine 4
+N5-methylglutamine 4
+N,N-dimethylproline 4
+N6-lipoyllysine 4
+O-(pantetheine 4&#39;-phosphoryl)serine 3
+4-aspartylphosphate 3
+Lysine derivative 3
+Pyruvic acid (Ser) 3
+S-glutathionyl cysteine 3
+Hypusine 2
+Tele-8alpha-FAD histidine 2
+N6-malonyllysine 2
+N5-methylarginine 2
+N6-propionyllysine 2
+Leucine methyl ester 2
+3,4-dihydroxyproline 2
+N-acetylvaline 2
+N-formylmethionine 1
+Pros-8alpha-FAD histidine 1
+2,3-didehydroalanine (Cys) 1
+N6-glutaryllysine 1
+Diphthamide 1
+Pros-methylhistidine 1
+Cysteine sulfinic acid (-SO2H) 1
+S-(dipyrrolylmethanemethyl)cysteine 1
+N,N,N-trimethylglycine 1
+Lysine methyl ester 1
+Dimethylated arginine 1
+Thiazolidine linkage to a ring-opened DNA abasic 1
+1-thioglycine 1
+S-methylcysteine 1
+</pre></div>
+</div>
+<img alt="_images/fddb694b64bd2e96f57448bed81829d60fbe9903a1c0ffb33618dd8ff93d6daf.png" src="_images/fddb694b64bd2e96f57448bed81829d60fbe9903a1c0ffb33618dd8ff93d6daf.png" />
+</div>
+</div>
+<p>De uma forma sumária, o programa realiza as seguintes <em>tarefas</em>:</p>
+<ul class="simple">
+<li><p>leitura do ficheiro <code class="docutils literal notranslate"><span class="pre">uniprot_scerevisiae.txt</span></code> para uma <em>string</em> e separação da informação por proteína, criando a
+lista <code class="docutils literal notranslate"><span class="pre">prots</span></code></p></li>
+<li><p>Extração da informação, criando uma lista de dicionários, <code class="docutils literal notranslate"><span class="pre">all_prots</span></code>, em que cada dicionário tem o número de acesso, comprimento da proteína e tabela de PTMs</p></li>
+<li><p>Contagem dos diferentes tipos de PTM, ordenando as contagens por ordem decrescente</p></li>
+<li><p>Apresentação dos resultados, incluíndo um gráfico de barras</p></li>
+</ul>
+<p>As duas primeiras tarefas são implementadas em funções.</p>
+<p>Para o gráfico, são usados dois módulos de criação de gráficos da linguagem Python: <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> e <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>. Eles são importados no início do programa. É prática comum que os <code class="docutils literal notranslate"><span class="pre">import</span></code>s sejam feitos no início do programa.</p>
+<p>Vejamos agora as várias partes:</p>
+</section>
+<section id="leitura-do-ficheiro-e-separacao-da-informacao-por-proteina">
+<h2><span class="section-number">13.3. </span>Leitura do ficheiro e separação da informação por proteína<a class="headerlink" href="#leitura-do-ficheiro-e-separacao-da-informacao-por-proteina" title="Permalink to this heading">#</a></h2>
+<p>Para o programa funcionar, o ficheiro <code class="docutils literal notranslate"><span class="pre">uniprot_scerevisiae.txt</span></code> deve estar na mesma pasta que o programa.</p>
+<p>Podemos começar por ler todo o seu conteúdo para uma <em>string</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+    <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>O passo seguinte será, na <em>string</em> <code class="docutils literal notranslate"><span class="pre">whole_file</span></code>, que contem toda a informação sobre todas as proteínas de levedura, separarmos a informação por proteína, pondo o resultado numa lista de <em>strings</em>, blocos de texto em que cada bloco diz respeito a uma proteína diferente.</p>
+<p>Para isso precisamos de saber o que “divide”, o que separa no texto as proteínas umas das outras. Isto na perspetiva de usarmos a função <code class="docutils literal notranslate"><span class="pre">.split()</span></code> para separarmos a informação a partir de um separador, criando uma lista.</p>
+<p>Qual é o separador?</p>
+<p>Podemos abrir o ficheiro num editor de texto e reparamos
+nos pormenores da sua estrutura.</p>
+<p>Depressa nos apercebemos que existe uma marca para separar a informação de diferentes proteínas:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>...
+...
+FT   CARBOHYD    103    103       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+SQ   SEQUENCE   411 AA;  48455 MW;  91676D56AC053F3C CRC64;
+    MTSATDKSID RLVVNAKTRR RNSSVGKIDL GDTVPGFAAM PESAASKNEA KKRMKALTGD
+    SKKDSDLLWK VWFSYREMNY RHSWLTPFFI LVCVYSAYFL SGNRTESNPL HMFVAISYQV
+    DGTDSYAKGI KDLSFVFFYM IFFTFLREFL MDVVIRPFTV YLNVTSEHRQ KRMLEQMYAI
+    FYCGVSGPFG LYIMYHSDLW LFKTKPMYRT YPVITNPFLF KIFYLGQAAF WAQQACVLVL
+    QLEKPRKDYK ELVFHHIVTL LLIWSSYVFH FTKMGLAIYI TMDVSDFFLS LSKTLNYLNS
+    VFTPFVFGLF VFFWIYLRHV VNIRILWSVL TEFRHEGNYV LNFATQQYKC WISLPIVFVL
+    IAALQLVNLY WLFLILRILY RLIWQGIQKD ERSDSDSDES AENEESKEKC E
+//
+ID   MUD2_YEAST              Reviewed;         527 AA.
+AC   P36084; D6VXL2;
+DT   01-JUN-1994, integrated into UniProtKB/Swiss-Prot.
+DT   16-AUG-2004, sequence version 3.
+DT   13-FEB-2019, entry version 153.
+DE   RecName: Full=Splicing factor MUD2;
+...
+...
+</pre></div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">Informação</p>
+<p>No formato <em>Uniprot txt</em> o separador que aparece entre a informação sobre proteínas distintas é <code class="docutils literal notranslate"><span class="pre">//</span></code> numa
+linha.</p>
+<p>Não deve existir mais nada nessa linha, o que significa que o separador é, na realidade, <code class="docutils literal notranslate"><span class="pre">//</span></code> seguido de mudança de linha, isto é, <code class="docutils literal notranslate"><span class="pre">//\n</span></code></p>
+</div>
+<p>Portanto, podemos dividir todo o ficheiro em blocos,
+indicando <code class="docutils literal notranslate"><span class="pre">//\n</span></code> na função <code class="docutils literal notranslate"><span class="pre">.split()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+    <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos ver se resultou.</p>
+<p>Como <code class="docutils literal notranslate"><span class="pre">records</span></code>, o nome dado ao resultado de <code class="docutils literal notranslate"><span class="pre">split('//\n')</span></code> é uma lista, podemos ver o elemento 0, por exemplo:</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+    <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">records</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ID   AGP2_YEAST              Reviewed;         596 AA.
+AC   P38090; D6VQC9;
+DT   01-OCT-1994, integrated into UniProtKB/Swiss-Prot.
+DT   01-OCT-1994, sequence version 1.
+DT   22-APR-2020, entry version 155.
+DE   RecName: Full=General amino acid permease AGP2;
+GN   Name=AGP2; OrderedLocusNames=YBR132C; ORFNames=YBR1007;
+OS   Saccharomyces cerevisiae (strain ATCC 204508 / S288c) (Baker&#39;s yeast).
+OC   Eukaryota; Fungi; Dikarya; Ascomycota; Saccharomycotina; Saccharomycetes;
+OC   Saccharomycetales; Saccharomycetaceae; Saccharomyces.
+OX   NCBI_TaxID=559292;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+RC   STRAIN=ATCC 204508 / S288c;
+RX   PubMed=8091856; DOI=10.1002/yea.320100002;
+RA   Becam A.-M., Cullin C., Grzybowska E., Lacroute F., Nasr F.,
+RA   Ozier-Kalogeropoulos O., Palucha A., Slonimski P.P., Zagulski M.,
+RA   Herbert C.J.;
+RT   &quot;The sequence of 29.7 kb from the right arm of chromosome II reveals 13
+RT   complete open reading frames, of which ten correspond to new genes.&quot;;
+RL   Yeast 10:S1-S11(1994).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RC   STRAIN=ATCC 204508 / S288c;
+RX   PubMed=7813418; DOI=10.1002/j.1460-2075.1994.tb06923.x;
+RA   Feldmann H., Aigle M., Aljinovic G., Andre B., Baclet M.C., Barthe C.,
+RA   Baur A., Becam A.-M., Biteau N., Boles E., Brandt T., Brendel M.,
+RA   Brueckner M., Bussereau F., Christiansen C., Contreras R., Crouzet M.,
+RA   Cziepluch C., Demolis N., Delaveau T., Doignon F., Domdey H.,
+RA   Duesterhus S., Dubois E., Dujon B., El Bakkoury M., Entian K.-D.,
+RA   Feuermann M., Fiers W., Fobo G.M., Fritz C., Gassenhuber J., Glansdorff N.,
+RA   Goffeau A., Grivell L.A., de Haan M., Hein C., Herbert C.J.,
+RA   Hollenberg C.P., Holmstroem K., Jacq C., Jacquet M., Jauniaux J.-C.,
+RA   Jonniaux J.-L., Kallesoee T., Kiesau P., Kirchrath L., Koetter P.,
+RA   Korol S., Liebl S., Logghe M., Lohan A.J.E., Louis E.J., Li Z.Y.,
+RA   Maat M.J., Mallet L., Mannhaupt G., Messenguy F., Miosga T., Molemans F.,
+RA   Mueller S., Nasr F., Obermaier B., Perea J., Pierard A., Piravandi E.,
+RA   Pohl F.M., Pohl T.M., Potier S., Proft M., Purnelle B., Ramezani Rad M.,
+RA   Rieger M., Rose M., Schaaff-Gerstenschlaeger I., Scherens B.,
+RA   Schwarzlose C., Skala J., Slonimski P.P., Smits P.H.M., Souciet J.-L.,
+RA   Steensma H.Y., Stucka R., Urrestarazu L.A., van der Aart Q.J.M.,
+RA   Van Dyck L., Vassarotti A., Vetter I., Vierendeels F., Vissers S.,
+RA   Wagner G., de Wergifosse P., Wolfe K.H., Zagulski M., Zimmermann F.K.,
+RA   Mewes H.-W., Kleine K.;
+RT   &quot;Complete DNA sequence of yeast chromosome II.&quot;;
+RL   EMBO J. 13:5795-5809(1994).
+RN   [3]
+RP   GENOME REANNOTATION.
+RC   STRAIN=ATCC 204508 / S288c;
+RX   PubMed=24374639; DOI=10.1534/g3.113.008995;
+RA   Engel S.R., Dietrich F.S., Fisk D.G., Binkley G., Balakrishnan R.,
+RA   Costanzo M.C., Dwight S.S., Hitz B.C., Karra K., Nash R.S., Weng S.,
+RA   Wong E.D., Lloyd P., Skrzypek M.S., Miyasato S.R., Simison M., Cherry J.M.;
+RT   &quot;The reference genome sequence of Saccharomyces cerevisiae: Then and now.&quot;;
+RL   G3 (Bethesda) 4:389-398(2014).
+RN   [4]
+RP   DISCUSSION OF SEQUENCE.
+RX   PubMed=7954890; DOI=10.1007/bf00326297;
+RA   Nasr F., Becam A.-M., Grzybowska E., Zagulski M., Slonimski P.P.,
+RA   Herbert C.J.;
+RT   &quot;An analysis of the sequence of part of the right arm of chromosome II of
+RT   S. cerevisiae reveals new genes encoding an amino-acid permease and a
+RT   carboxypeptidase.&quot;;
+RL   Curr. Genet. 26:1-7(1994).
+RN   [5]
+RP   CHARACTERIZATION.
+RA   Garrett J.M., Schreve J.L.;
+RL   Unpublished observations (JUL-1997).
+RN   [6]
+RP   FUNCTION IN CARNITINE TRANSPORT.
+RX   PubMed=10545096; DOI=10.1093/emboj/18.21.5843;
+RA   van Roermund C.W., Hettema E.H., van den Berg M., Tabak H.F., Wanders R.J.;
+RT   &quot;Molecular characterization of carnitine-dependent transport of acetyl-CoA
+RT   from peroxisomes to mitochondria in Saccharomyces cerevisiae and
+RT   identification of a plasma membrane carnitine transporter, Agp2p.&quot;;
+RL   EMBO J. 18:5843-5852(1999).
+RN   [7]
+RP   FUNCTION IN CARNITINE TRANSPORT.
+RX   PubMed=12132580;
+RA   Lee J., Lee B., Shin D., Kwak S.S., Bahk J.D., Lim C.O., Yun D.J.;
+RT   &quot;Carnitine uptake by AGP2 in yeast Saccharomyces cerevisiae is dependent on
+RT   Hog1 MAP kinase pathway.&quot;;
+RL   Mol. Cells 13:407-412(2002).
+RN   [8]
+RP   TOPOLOGY [LARGE SCALE ANALYSIS].
+RC   STRAIN=ATCC 208353 / W303-1A;
+RX   PubMed=16847258; DOI=10.1073/pnas.0604075103;
+RA   Kim H., Melen K., Oesterberg M., von Heijne G.;
+RT   &quot;A global topology map of the Saccharomyces cerevisiae membrane proteome.&quot;;
+RL   Proc. Natl. Acad. Sci. U.S.A. 103:11142-11147(2006).
+RN   [9]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=19779198; DOI=10.1126/science.1172867;
+RA   Holt L.J., Tuch B.B., Villen J., Johnson A.D., Gygi S.P., Morgan D.O.;
+RT   &quot;Global analysis of Cdk1 substrate phosphorylation sites provides insights
+RT   into evolution.&quot;;
+RL   Science 325:1682-1686(2009).
+CC   -!- FUNCTION: General amino acid permease with broad substrate specificity.
+CC       Can also transport carnitine. {ECO:0000269|PubMed:10545096,
+CC       ECO:0000269|PubMed:12132580}.
+CC   -!- INTERACTION:
+CC       P38090; P43603: LSB3; NbExp=2; IntAct=EBI-2362, EBI-22980;
+CC       P38090; P32793: YSC84; NbExp=2; IntAct=EBI-2362, EBI-24460;
+CC   -!- SUBCELLULAR LOCATION: Membrane; Multi-pass membrane protein.
+CC   -!- SIMILARITY: Belongs to the amino acid-polyamine-organocation (APC)
+CC       superfamily. YAT (TC 2.A.3.10) family. {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; X75891; CAA53491.1; -; Genomic_DNA.
+DR   EMBL; Z36001; CAA85089.1; -; Genomic_DNA.
+DR   EMBL; BK006936; DAA07249.1; -; Genomic_DNA.
+DR   PIR; S46001; S46001.
+DR   RefSeq; NP_009690.1; NM_001178480.1.
+DR   BioGrid; 32833; 117.
+DR   DIP; DIP-8141N; -.
+DR   IntAct; P38090; 8.
+DR   MINT; P38090; -.
+DR   STRING; 4932.YBR132C; -.
+DR   TCDB; 2.A.3.10.19; the amino acid-polyamine-organocation (apc) family.
+DR   iPTMnet; P38090; -.
+DR   MaxQB; P38090; -.
+DR   PaxDb; P38090; -.
+DR   PRIDE; P38090; -.
+DR   EnsemblFungi; YBR132C_mRNA; YBR132C; YBR132C.
+DR   GeneID; 852429; -.
+DR   KEGG; sce:YBR132C; -.
+DR   EuPathDB; FungiDB:YBR132C; -.
+DR   SGD; S000000336; AGP2.
+DR   HOGENOM; CLU_007946_12_1_1; -.
+DR   InParanoid; P38090; -.
+DR   KO; K16261; -.
+DR   OMA; NFWFLEC; -.
+DR   BioCyc; YEAST:G3O-29087-MONOMER; -.
+DR   SABIO-RK; P38090; -.
+DR   PRO; PR:P38090; -.
+DR   Proteomes; UP000002311; Chromosome II.
+DR   RNAct; P38090; protein.
+DR   GO; GO:0005783; C:endoplasmic reticulum; HDA:SGD.
+DR   GO; GO:0005789; C:endoplasmic reticulum membrane; IDA:SGD.
+DR   GO; GO:0000329; C:fungal-type vacuole membrane; IDA:SGD.
+DR   GO; GO:0016021; C:integral component of membrane; IBA:GO_Central.
+DR   GO; GO:0005887; C:integral component of plasma membrane; IDA:SGD.
+DR   GO; GO:0015171; F:amino acid transmembrane transporter activity; IBA:GO_Central.
+DR   GO; GO:0003333; P:amino acid transmembrane transport; IBA:GO_Central.
+DR   GO; GO:1902274; P:positive regulation of (R)-carnitine transmembrane transport; IMP:SGD.
+DR   GO; GO:1902269; P:positive regulation of polyamine transmembrane transport; IMP:SGD.
+DR   InterPro; IPR004841; AA-permease/SLC12A_dom.
+DR   InterPro; IPR002293; AA/rel_permease1.
+DR   InterPro; IPR004840; Amoino_acid_permease_CS.
+DR   Pfam; PF00324; AA_permease; 1.
+DR   PIRSF; PIRSF006060; AA_transporter; 1.
+DR   PROSITE; PS00218; AMINO_ACID_PERMEASE_1; 1.
+PE   1: Evidence at protein level;
+KW   Amino-acid transport; Membrane; Reference proteome; Transmembrane;
+KW   Transmembrane helix; Transport.
+FT   CHAIN           1..596
+FT                   /note=&quot;General amino acid permease AGP2&quot;
+FT                   /id=&quot;PRO_0000054143&quot;
+FT   TOPO_DOM        1..94
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        95..115
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        116..117
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        118..138
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        139..165
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        166..186
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        187..199
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        200..220
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        221..227
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        228..248
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        249..288
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        289..309
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        310..326
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        327..347
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        348..379
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        380..400
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        401..427
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        428..448
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        449..459
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        460..480
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        481..505
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        506..526
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        527..534
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        535..555
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        556..596
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+SQ   SEQUENCE   596 AA;  67262 MW;  8658DCDA5A7D6B64 CRC64;
+     MTKERMTIDY ENDGDFEYDK NKYKTITTRI KSIEPSEGWL EPSGSVGHIN TIPEAGDVHV
+     DEHEDRGSSI DDDSRTYLLY FTETRRKLEN RHVQLIAISG VIGTALFVAI GKALYRGGPA
+     SLLLAFALWC VPILCITVST AEMVCFFPVS SPFLRLATKC VDDSLAVMAS WNFWFLECVQ
+     IPFEIVSVNT IIHYWRDDYS AGIPLAVQVV LYLLISICAV KYYGEMEFWL ASFKIILALG
+     LFTFTFITML GGNPEHDRYG FRNYGESPFK KYFPDGNDVG KSSGYFQGFL ACLIQASFTI
+     AGGEYISMLA GEVKRPRKVL PKAFKQVFVR LTFLFLGSCL CVGIVCSPND PDLTAAINEA
+     RPGAGSSPYV IAMNNLKIRI LPDIVNIALI TAAFSAGNAY TYCSSRTFYG MALDGYAPKI
+     FTRCNRHGVP IYSVAISLVW ALVSLLQLNS NSAVVLNWLI NLITASQLIN FVVLCIVYLF
+     FRRAYHVQQD SLPKLPFRSW GQPYTAIIGL VSCSAMILIQ GYTVFFPKLW NTQDFLFSYL
+     MVFINIGIYV GYKFIWKRGK DHFKNPHEID FSKELTEIEN HEIESSFEKF QYYSKA
+</pre></div>
+</div>
+</div>
+</div>
+<p>Parece ter resultado.</p>
+<p>Ainda para confirmar podemos ver o último elemento da lista (posição -1):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+    <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">records</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Desta vez nada apareceu como resultado da função <code class="docutils literal notranslate"><span class="pre">print()</span></code>.</p>
+<p>Porquê?</p>
+<p>É apenas um pequeno problema que resulta do facto do ficheiro acabar com uma linha contendo <code class="docutils literal notranslate"><span class="pre">//</span></code>. (Por favor confirmar)</p>
+<p>Isto faz com que o resultado da função <code class="docutils literal notranslate"><span class="pre">split()</span></code> tenha, no final da lista, uma <em>string</em> vazia.</p>
+<p>Esta <em>string</em> vazia deve ser retirada do fim da lista.</p>
+<p>Podemos usar uma lista em compreensão para a retirar:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>records = [p for p in records if len(p) != 0]
+</pre></div>
+</div>
+<p>isto é, mantemos todos os records, desde que o seu comprimento seja maior do que 0, isto é, não seja uma lista vazia.</p>
+<p>Outra possibilidade é usar a função <code class="docutils literal notranslate"><span class="pre">pop()</span></code> de listas que
+retira o elemento que está numa posição:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>records.pop(-1)
+</pre></div>
+</div>
+<p>Esta “tarefa” pode ser posta numa função, uma vez que é uma parte lógica do programa (ler o ficheiro e dividir em blocos respeitantes a diferentes proteínas).</p>
+<p>Podemos definir a função aplicar a função logo de seguida.</p>
+<p>Como curiosidade, podemos saber qual a dimensão deste proteoma anotado da levedura:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_Uniprot_text</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text file and splits into a list of protein records.&quot;&quot;&quot;</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+        <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># remove empty records</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">records</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># since we know that it is the last one only...</span>
+    <span class="c1"># records.pop(-1)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+<span class="n">prots</span> <span class="o">=</span> <span class="n">read_Uniprot_text</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of protein records in &quot;</span><span class="si">{</span><span class="n">data_filename</span><span class="si">}</span><span class="s1">&quot; is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prots</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of protein records in &quot;uniprot_scerevisiae.txt&quot; is 6049
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extracao-da-informacao">
+<h2><span class="section-number">13.4. </span>Extração da informação<a class="headerlink" href="#extracao-da-informacao" title="Permalink to this heading">#</a></h2>
+<p>O interesse agora é extrair a informação pertinente de cada proteína.</p>
+<p>Estamos interessados em informações sobre as PTMs. Já vamos ver onde essa informação se encontra e em que formato está. Mas para treinar a extração da informação, podemos começar por tentar obter, para cada proteína, o seu número de acesso Uniprot, umm identificador único para cada proteína e o número de aminoácidos da proteína.</p>
+<p>A ideia é conseguir criar um dicionário com estes dois “pedaços” de informação.</p>
+<p>Vejamos melhor a primeira proteína da lista, <code class="docutils literal notranslate"><span class="pre">prots[0]</span></code>:</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTA: continuação do programa anterior!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prots</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ID   AGP2_YEAST              Reviewed;         596 AA.
+AC   P38090; D6VQC9;
+DT   01-OCT-1994, integrated into UniProtKB/Swiss-Prot.
+DT   01-OCT-1994, sequence version 1.
+DT   22-APR-2020, entry version 155.
+DE   RecName: Full=General amino acid permease AGP2;
+GN   Name=AGP2; OrderedLocusNames=YBR132C; ORFNames=YBR1007;
+OS   Saccharomyces cerevisiae (strain ATCC 204508 / S288c) (Baker&#39;s yeast).
+OC   Eukaryota; Fungi; Dikarya; Ascomycota; Saccharomycotina; Saccharomycetes;
+OC   Saccharomycetales; Saccharomycetaceae; Saccharomyces.
+OX   NCBI_TaxID=559292;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+RC   STRAIN=ATCC 204508 / S288c;
+RX   PubMed=8091856; DOI=10.1002/yea.320100002;
+RA   Becam A.-M., Cullin C., Grzybowska E., Lacroute F., Nasr F.,
+RA   Ozier-Kalogeropoulos O., Palucha A., Slonimski P.P., Zagulski M.,
+RA   Herbert C.J.;
+RT   &quot;The sequence of 29.7 kb from the right arm of chromosome II reveals 13
+RT   complete open reading frames, of which ten correspond to new genes.&quot;;
+RL   Yeast 10:S1-S11(1994).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RC   STRAIN=ATCC 204508 / S288c;
+RX   PubMed=7813418; DOI=10.1002/j.1460-2075.1994.tb06923.x;
+RA   Feldmann H., Aigle M., Aljinovic G., Andre B., Baclet M.C., Barthe C.,
+RA   Baur A., Becam A.-M., Biteau N., Boles E., Brandt T., Brendel M.,
+RA   Brueckner M., Bussereau F., Christiansen C., Contreras R., Crouzet M.,
+RA   Cziepluch C., Demolis N., Delaveau T., Doignon F., Domdey H.,
+RA   Duesterhus S., Dubois E., Dujon B., El Bakkoury M., Entian K.-D.,
+RA   Feuermann M., Fiers W., Fobo G.M., Fritz C., Gassenhuber J., Glansdorff N.,
+RA   Goffeau A., Grivell L.A., de Haan M., Hein C., Herbert C.J.,
+RA   Hollenberg C.P., Holmstroem K., Jacq C., Jacquet M., Jauniaux J.-C.,
+RA   Jonniaux J.-L., Kallesoee T., Kiesau P., Kirchrath L., Koetter P.,
+RA   Korol S., Liebl S., Logghe M., Lohan A.J.E., Louis E.J., Li Z.Y.,
+RA   Maat M.J., Mallet L., Mannhaupt G., Messenguy F., Miosga T., Molemans F.,
+RA   Mueller S., Nasr F., Obermaier B., Perea J., Pierard A., Piravandi E.,
+RA   Pohl F.M., Pohl T.M., Potier S., Proft M., Purnelle B., Ramezani Rad M.,
+RA   Rieger M., Rose M., Schaaff-Gerstenschlaeger I., Scherens B.,
+RA   Schwarzlose C., Skala J., Slonimski P.P., Smits P.H.M., Souciet J.-L.,
+RA   Steensma H.Y., Stucka R., Urrestarazu L.A., van der Aart Q.J.M.,
+RA   Van Dyck L., Vassarotti A., Vetter I., Vierendeels F., Vissers S.,
+RA   Wagner G., de Wergifosse P., Wolfe K.H., Zagulski M., Zimmermann F.K.,
+RA   Mewes H.-W., Kleine K.;
+RT   &quot;Complete DNA sequence of yeast chromosome II.&quot;;
+RL   EMBO J. 13:5795-5809(1994).
+RN   [3]
+RP   GENOME REANNOTATION.
+RC   STRAIN=ATCC 204508 / S288c;
+RX   PubMed=24374639; DOI=10.1534/g3.113.008995;
+RA   Engel S.R., Dietrich F.S., Fisk D.G., Binkley G., Balakrishnan R.,
+RA   Costanzo M.C., Dwight S.S., Hitz B.C., Karra K., Nash R.S., Weng S.,
+RA   Wong E.D., Lloyd P., Skrzypek M.S., Miyasato S.R., Simison M., Cherry J.M.;
+RT   &quot;The reference genome sequence of Saccharomyces cerevisiae: Then and now.&quot;;
+RL   G3 (Bethesda) 4:389-398(2014).
+RN   [4]
+RP   DISCUSSION OF SEQUENCE.
+RX   PubMed=7954890; DOI=10.1007/bf00326297;
+RA   Nasr F., Becam A.-M., Grzybowska E., Zagulski M., Slonimski P.P.,
+RA   Herbert C.J.;
+RT   &quot;An analysis of the sequence of part of the right arm of chromosome II of
+RT   S. cerevisiae reveals new genes encoding an amino-acid permease and a
+RT   carboxypeptidase.&quot;;
+RL   Curr. Genet. 26:1-7(1994).
+RN   [5]
+RP   CHARACTERIZATION.
+RA   Garrett J.M., Schreve J.L.;
+RL   Unpublished observations (JUL-1997).
+RN   [6]
+RP   FUNCTION IN CARNITINE TRANSPORT.
+RX   PubMed=10545096; DOI=10.1093/emboj/18.21.5843;
+RA   van Roermund C.W., Hettema E.H., van den Berg M., Tabak H.F., Wanders R.J.;
+RT   &quot;Molecular characterization of carnitine-dependent transport of acetyl-CoA
+RT   from peroxisomes to mitochondria in Saccharomyces cerevisiae and
+RT   identification of a plasma membrane carnitine transporter, Agp2p.&quot;;
+RL   EMBO J. 18:5843-5852(1999).
+RN   [7]
+RP   FUNCTION IN CARNITINE TRANSPORT.
+RX   PubMed=12132580;
+RA   Lee J., Lee B., Shin D., Kwak S.S., Bahk J.D., Lim C.O., Yun D.J.;
+RT   &quot;Carnitine uptake by AGP2 in yeast Saccharomyces cerevisiae is dependent on
+RT   Hog1 MAP kinase pathway.&quot;;
+RL   Mol. Cells 13:407-412(2002).
+RN   [8]
+RP   TOPOLOGY [LARGE SCALE ANALYSIS].
+RC   STRAIN=ATCC 208353 / W303-1A;
+RX   PubMed=16847258; DOI=10.1073/pnas.0604075103;
+RA   Kim H., Melen K., Oesterberg M., von Heijne G.;
+RT   &quot;A global topology map of the Saccharomyces cerevisiae membrane proteome.&quot;;
+RL   Proc. Natl. Acad. Sci. U.S.A. 103:11142-11147(2006).
+RN   [9]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=19779198; DOI=10.1126/science.1172867;
+RA   Holt L.J., Tuch B.B., Villen J., Johnson A.D., Gygi S.P., Morgan D.O.;
+RT   &quot;Global analysis of Cdk1 substrate phosphorylation sites provides insights
+RT   into evolution.&quot;;
+RL   Science 325:1682-1686(2009).
+CC   -!- FUNCTION: General amino acid permease with broad substrate specificity.
+CC       Can also transport carnitine. {ECO:0000269|PubMed:10545096,
+CC       ECO:0000269|PubMed:12132580}.
+CC   -!- INTERACTION:
+CC       P38090; P43603: LSB3; NbExp=2; IntAct=EBI-2362, EBI-22980;
+CC       P38090; P32793: YSC84; NbExp=2; IntAct=EBI-2362, EBI-24460;
+CC   -!- SUBCELLULAR LOCATION: Membrane; Multi-pass membrane protein.
+CC   -!- SIMILARITY: Belongs to the amino acid-polyamine-organocation (APC)
+CC       superfamily. YAT (TC 2.A.3.10) family. {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; X75891; CAA53491.1; -; Genomic_DNA.
+DR   EMBL; Z36001; CAA85089.1; -; Genomic_DNA.
+DR   EMBL; BK006936; DAA07249.1; -; Genomic_DNA.
+DR   PIR; S46001; S46001.
+DR   RefSeq; NP_009690.1; NM_001178480.1.
+DR   BioGrid; 32833; 117.
+DR   DIP; DIP-8141N; -.
+DR   IntAct; P38090; 8.
+DR   MINT; P38090; -.
+DR   STRING; 4932.YBR132C; -.
+DR   TCDB; 2.A.3.10.19; the amino acid-polyamine-organocation (apc) family.
+DR   iPTMnet; P38090; -.
+DR   MaxQB; P38090; -.
+DR   PaxDb; P38090; -.
+DR   PRIDE; P38090; -.
+DR   EnsemblFungi; YBR132C_mRNA; YBR132C; YBR132C.
+DR   GeneID; 852429; -.
+DR   KEGG; sce:YBR132C; -.
+DR   EuPathDB; FungiDB:YBR132C; -.
+DR   SGD; S000000336; AGP2.
+DR   HOGENOM; CLU_007946_12_1_1; -.
+DR   InParanoid; P38090; -.
+DR   KO; K16261; -.
+DR   OMA; NFWFLEC; -.
+DR   BioCyc; YEAST:G3O-29087-MONOMER; -.
+DR   SABIO-RK; P38090; -.
+DR   PRO; PR:P38090; -.
+DR   Proteomes; UP000002311; Chromosome II.
+DR   RNAct; P38090; protein.
+DR   GO; GO:0005783; C:endoplasmic reticulum; HDA:SGD.
+DR   GO; GO:0005789; C:endoplasmic reticulum membrane; IDA:SGD.
+DR   GO; GO:0000329; C:fungal-type vacuole membrane; IDA:SGD.
+DR   GO; GO:0016021; C:integral component of membrane; IBA:GO_Central.
+DR   GO; GO:0005887; C:integral component of plasma membrane; IDA:SGD.
+DR   GO; GO:0015171; F:amino acid transmembrane transporter activity; IBA:GO_Central.
+DR   GO; GO:0003333; P:amino acid transmembrane transport; IBA:GO_Central.
+DR   GO; GO:1902274; P:positive regulation of (R)-carnitine transmembrane transport; IMP:SGD.
+DR   GO; GO:1902269; P:positive regulation of polyamine transmembrane transport; IMP:SGD.
+DR   InterPro; IPR004841; AA-permease/SLC12A_dom.
+DR   InterPro; IPR002293; AA/rel_permease1.
+DR   InterPro; IPR004840; Amoino_acid_permease_CS.
+DR   Pfam; PF00324; AA_permease; 1.
+DR   PIRSF; PIRSF006060; AA_transporter; 1.
+DR   PROSITE; PS00218; AMINO_ACID_PERMEASE_1; 1.
+PE   1: Evidence at protein level;
+KW   Amino-acid transport; Membrane; Reference proteome; Transmembrane;
+KW   Transmembrane helix; Transport.
+FT   CHAIN           1..596
+FT                   /note=&quot;General amino acid permease AGP2&quot;
+FT                   /id=&quot;PRO_0000054143&quot;
+FT   TOPO_DOM        1..94
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        95..115
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        116..117
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        118..138
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        139..165
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        166..186
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        187..199
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        200..220
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        221..227
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        228..248
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        249..288
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        289..309
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        310..326
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        327..347
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        348..379
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        380..400
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        401..427
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        428..448
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        449..459
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        460..480
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        481..505
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        506..526
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        527..534
+FT                   /note=&quot;Extracellular&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TRANSMEM        535..555
+FT                   /note=&quot;Helical&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+FT   TOPO_DOM        556..596
+FT                   /note=&quot;Cytoplasmic&quot;
+FT                   /evidence=&quot;ECO:0000255&quot;
+SQ   SEQUENCE   596 AA;  67262 MW;  8658DCDA5A7D6B64 CRC64;
+     MTKERMTIDY ENDGDFEYDK NKYKTITTRI KSIEPSEGWL EPSGSVGHIN TIPEAGDVHV
+     DEHEDRGSSI DDDSRTYLLY FTETRRKLEN RHVQLIAISG VIGTALFVAI GKALYRGGPA
+     SLLLAFALWC VPILCITVST AEMVCFFPVS SPFLRLATKC VDDSLAVMAS WNFWFLECVQ
+     IPFEIVSVNT IIHYWRDDYS AGIPLAVQVV LYLLISICAV KYYGEMEFWL ASFKIILALG
+     LFTFTFITML GGNPEHDRYG FRNYGESPFK KYFPDGNDVG KSSGYFQGFL ACLIQASFTI
+     AGGEYISMLA GEVKRPRKVL PKAFKQVFVR LTFLFLGSCL CVGIVCSPND PDLTAAINEA
+     RPGAGSSPYV IAMNNLKIRI LPDIVNIALI TAAFSAGNAY TYCSSRTFYG MALDGYAPKI
+     FTRCNRHGVP IYSVAISLVW ALVSLLQLNS NSAVVLNWLI NLITASQLIN FVVLCIVYLF
+     FRRAYHVQQD SLPKLPFRSW GQPYTAIIGL VSCSAMILIQ GYTVFFPKLW NTQDFLFSYL
+     MVFINIGIYV GYKFIWKRGK DHFKNPHEID FSKELTEIEN HEIESSFEKF QYYSKA
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um primeiro lugar devemos reparar que as linhas começam com um conjunto de duas letras que identifica o tipo de informação que está no resto da linha. Por exemplo, <code class="docutils literal notranslate"><span class="pre">GN</span></code> é a linha com <em>Gene name</em>, <code class="docutils literal notranslate"><span class="pre">AC</span></code> é uma linha contendo números de acesso, etc.</p>
+<p>O documentação da UniProt contem uma descrição detalhada com estes códigos.</p>
+<p>No final de cada bloco de uma proteína encontra-se a sua sequência de amino-ácidos. São as únicas linhas sem código de duas letras (embora a linha introdutória da sequência contenha o código <code class="docutils literal notranslate"><span class="pre">SQ</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="o">...</span>
+<span class="n">SQ</span>   <span class="n">SEQUENCE</span>   <span class="mi">440</span> <span class="n">AA</span><span class="p">;</span>  <span class="mi">49072</span> <span class="n">MW</span><span class="p">;</span>  <span class="n">DCE9E5C434D51201</span> <span class="n">CRC64</span><span class="p">;</span>
+     <span class="n">MESQQLSQHS</span> <span class="n">PISHGSACAS</span> <span class="n">VTSKEVHTNQ</span> <span class="n">DPLDVSASKT</span> <span class="n">EECEKASTKA</span> <span class="n">NSQQTTTPAS</span>
+     <span class="n">SAVPENPHHA</span> <span class="n">SPQTAQSHSP</span> <span class="n">QNGPYPQQCM</span> <span class="n">MTQNQANPSG</span> <span class="n">WSFYGHPSMI</span> <span class="n">PYTPYQMSPM</span>
+     <span class="n">YFPPGPQSQF</span> <span class="n">PQYPSSVGTP</span> <span class="n">LSTPSPESGN</span> <span class="n">TFTDSSSADS</span> <span class="n">DMTSTKKYVR</span> <span class="n">PPPMLTSPND</span>
+     <span class="n">FPNWVKTYIK</span> <span class="n">FLQNSNLGGI</span> <span class="n">IPTVNGKPVR</span> <span class="n">QITDDELTFL</span> <span class="n">YNTFQIFAPS</span> <span class="n">QFLPTWVKDI</span>
+     <span class="n">LSVDYTDIMK</span> <span class="n">ILSKSIEKMQ</span> <span class="n">SDTQEANDIV</span> <span class="n">TLANLQYNGS</span> <span class="n">TPADAFETKV</span> <span class="n">TNIIDRLNNN</span>
+     <span class="n">GIHINNKVAC</span> <span class="n">QLIMRGLSGE</span> <span class="n">YKFLRYTRHR</span> <span class="n">HLNMTVAELF</span> <span class="n">LDIHAIYEEQ</span> <span class="n">QGSRNSKPNY</span>
+     <span class="n">RRNPSDEKND</span> <span class="n">SRSYTNTTKP</span> <span class="n">KVIARNPQKT</span> <span class="n">NNSKSKTARA</span> <span class="n">HNVSTSNNSP</span> <span class="n">STDNDSISKS</span>
+     <span class="n">TTEPIQLNNK</span> <span class="n">HDLHLRPETY</span>
+</pre></div>
+</div>
+<p>Voltando ao exemplo do princípio de cada bloco, as duas primeiras linhas têm a informação que precisamos: o número de acesso e o comprimento da proteína:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ID</span>   <span class="n">AGP2_YEAST</span>              <span class="n">Reviewed</span><span class="p">;</span>         <span class="mi">596</span> <span class="n">AA</span><span class="o">.</span>
+<span class="n">AC</span>   <span class="n">P38090</span><span class="p">;</span> <span class="n">D6VQC9</span><span class="p">;</span>
+<span class="o">...</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Vamos tentar extraír para um dicionário o número de aminoácidos e o número de acesso da primeira proteína da lista obtida anteriormente.</p>
+<p>Uma vez que a informação está claramente organizada linha a linha, então podemos para a primeira proteína, começar por separar o bloco de texto por linhas e obter a primeira e a segunda linhas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTA: continuação do programa anterior!</span>
+
+<span class="n">record</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># mais tarde aplicaremos a todos os blocos</span>
+
+<span class="n">lines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="n">lineID</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">lineAC</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lineID</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lineAC</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ID   AGP2_YEAST              Reviewed;         596 AA.
+AC   P38090; D6VQC9;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Funciona. Vamos agora extraír o que interessa a partir destas linhas.</p>
+<p>Se separarmos os elementos da primeira linha pelos espaços o número de aminoácidos está na posição 3!</p>
+<p>O número de acesso está na linha <code class="docutils literal notranslate"><span class="pre">AC</span></code>. O primeiro identificador é o mais atual, os outros são identificadores antigos. A estratégia será aqui separar pelos <code class="docutils literal notranslate"><span class="pre">;</span></code> e pelos espaços.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTA: continuação do programa anterior!</span>
+
+<span class="n">record</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># mais tarde aplicaremos a todos os blocos</span>
+
+<span class="n">lines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="n">lineID</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">lineAC</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">partsID</span> <span class="o">=</span> <span class="n">lineID</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">partsID</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># para forçar que seja um número inteiro</span>
+
+<span class="n">partsAC</span> <span class="o">=</span> <span class="n">lineAC</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">partsAC</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># isto é  AC   P38090, é preciso tirar a parte AC</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">ac</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">resultado</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">:</span><span class="n">ac</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n&#39;: 596, &#39;ac&#39;: &#39;P38090&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Resultou. Criámos um dicionário com as duas partes que nos interessavam extraídas.</p>
+<p>Desde já um melhoramento: Poddemos aplicar muitas funções de <em>string</em> do Python em cadeia e ainda combinar com a indexação. isto pode-nos poupar o uso de nomes intermédios.</p>
+<p>Vejamos uma alternativa:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTA: continuação do programa anterior!</span>
+
+<span class="n">record</span> <span class="o">=</span> <span class="n">prots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># mais tarde aplicaremos a todos os blocos</span>
+
+<span class="n">lines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="n">lineID</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">lineAC</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ac</span> <span class="o">=</span> <span class="n">lineAC</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lineID</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="n">resultado</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">:</span><span class="n">ac</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n&#39;: 596, &#39;ac&#39;: &#39;P38090&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vamos dissecar o processo de obter o <code class="docutils literal notranslate"><span class="pre">ac</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ac = lineAC.split(&#39;;&#39;)[0].split()[1]
+</pre></div>
+</div>
+<p>Isto significa:</p>
+<ul class="simple">
+<li><p><em>Dividir a linha <code class="docutils literal notranslate"><span class="pre">lineAC</span></code> por <code class="docutils literal notranslate"><span class="pre">;</span></code></em></p></li>
+<li><p><em>aproveitar o fragmento 0</em></p></li>
+<li><p><em>dividir este por espaços</em></p></li>
+<li><p><em>aproveitar o fragmento 1</em></p></li>
+</ul>
+<p>Podemos agora criar uma função que possa ser aplicada a qualquer bloco de texto com a informação sobre uma proteína (e não apenas à proteína 0).</p>
+<p>Vejamos todo o programa até agora, já testando a nova função com a proteína 0 da lista <code class="docutils literal notranslate"><span class="pre">prots</span></code> resultantes da primeira função:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+
+<span class="k">def</span> <span class="nf">read_Uniprot_text</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text file and splits into a list of protein records.&quot;&quot;&quot;</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+        <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># remove empty records</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">records</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># since we know that it is the last one only...</span>
+    <span class="c1"># records.pop(-1)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+<span class="n">prots</span> <span class="o">=</span> <span class="n">read_Uniprot_text</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">extract_info</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+    
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+    <span class="n">IDline</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ACline</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># Extract UniProt AC and number of amino acids</span>
+    <span class="c1"># Example (first two lines):</span>
+    <span class="c1"># ID   AB140_YEAST             Reviewed;         628 AA.</span>
+    <span class="c1"># AC   Q08641; D6W2U2; Q08644;</span>
+    
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">ACline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+    
+    <span class="c1"># Return dictionary of extracted information</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ac&#39;</span><span class="p">:</span> <span class="n">ac</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of protein records in &quot;</span><span class="si">{</span><span class="n">data_filename</span><span class="si">}</span><span class="s1">&quot; is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prots</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First protein:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extract_info</span><span class="p">(</span><span class="n">prots</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of protein records in &quot;uniprot_scerevisiae.txt&quot; is 6049
+First protein:
+{&#39;ac&#39;: &#39;P38090&#39;, &#39;n&#39;: 596}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos agora aplicar a função a todas os blocos, com uma lista em compreensão.</p>
+<p>Vamos chamar ao resultado <code class="docutils literal notranslate"><span class="pre">all_prots</span></code>. Será uma <strong>lista de dicionários</strong>.</p>
+<p>O programa, até este ponto será:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+
+<span class="k">def</span> <span class="nf">read_Uniprot_text</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text file and splits into a list of protein records.&quot;&quot;&quot;</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+        <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># remove empty records</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">records</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># since we know that it is the last one only...</span>
+    <span class="c1"># records.pop(-1)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+<span class="n">prots</span> <span class="o">=</span> <span class="n">read_Uniprot_text</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">extract_info</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+    
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+    <span class="n">IDline</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ACline</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># Extract UniProt AC and number of amino acids</span>
+    <span class="c1"># Example (first two lines):</span>
+    <span class="c1"># ID   AB140_YEAST             Reviewed;         628 AA.</span>
+    <span class="c1"># AC   Q08641; D6W2U2; Q08644;</span>
+    
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">ACline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+    
+    <span class="c1"># Return dictionary of extracted information</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ac&#39;</span><span class="p">:</span> <span class="n">ac</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">}</span>
+
+<span class="n">all_prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">extract_info</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of protein records in &quot;</span><span class="si">{</span><span class="n">data_filename</span><span class="si">}</span><span class="s1">&quot; is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prots</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># see the first 3, as a test</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">[:</span><span class="mi">4</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------------------------------------&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of protein records in &quot;uniprot_scerevisiae.txt&quot; is 6049
+------------------------------------------
+{&#39;ac&#39;: &#39;P38090&#39;, &#39;n&#39;: 596}
+------------------------------------------
+{&#39;ac&#39;: &#39;Q12001&#39;, &#39;n&#39;: 544}
+------------------------------------------
+{&#39;ac&#39;: &#39;P53309&#39;, &#39;n&#39;: 568}
+------------------------------------------
+{&#39;ac&#39;: &#39;P40467&#39;, &#39;n&#39;: 964}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extracao-da-informacao-ptms">
+<h2><span class="section-number">13.5. </span>Extração da informação: PTMs<a class="headerlink" href="#extracao-da-informacao-ptms" title="Permalink to this heading">#</a></h2>
+<p>Vamos agora modificar a função <code class="docutils literal notranslate"><span class="pre">extract_info()</span></code> com a informação que possa existir no ficheiro da Uniprot sobre PTM.</p>
+<p>Aqui está uma pequena parte do meio do ficheiro:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FT</span>   <span class="n">MOD_RES</span>         <span class="mi">223</span>
+<span class="n">FT</span>                   <span class="o">/</span><span class="n">note</span><span class="o">=</span><span class="s2">&quot;Phosphoserine&quot;</span>
+<span class="n">FT</span>                   <span class="o">/</span><span class="n">evidence</span><span class="o">=</span><span class="s2">&quot;ECO:0000244|PubMed:17330950,</span>
+<span class="n">FT</span>                   <span class="n">ECO</span><span class="p">:</span><span class="mi">0000244</span><span class="o">|</span><span class="n">PubMed</span><span class="p">:</span><span class="mi">18407956</span><span class="p">,</span> <span class="n">ECO</span><span class="p">:</span><span class="mi">0000244</span><span class="o">|</span><span class="n">PubMed</span><span class="p">:</span><span class="mi">19779198</span><span class="s2">&quot;</span>
+<span class="n">FT</span>   <span class="n">MOD_RES</span>         <span class="mi">228</span>
+<span class="n">FT</span>                   <span class="o">/</span><span class="n">note</span><span class="o">=</span><span class="s2">&quot;Phosphoserine&quot;</span>
+<span class="n">FT</span>                   <span class="o">/</span><span class="n">evidence</span><span class="o">=</span><span class="s2">&quot;ECO:0000244|PubMed:19779198&quot;</span>
+<span class="n">FT</span>   <span class="n">MOD_RES</span>         <span class="mi">232</span>
+<span class="n">FT</span>                   <span class="o">/</span><span class="n">note</span><span class="o">=</span><span class="s2">&quot;Phosphothreonine&quot;</span>
+<span class="n">FT</span>                   <span class="o">/</span><span class="n">evidence</span><span class="o">=</span><span class="s2">&quot;ECO:0000244|PubMed:19779198&quot;</span>
+<span class="n">FT</span>   <span class="n">MOD_RES</span>         <span class="mi">244</span>
+<span class="n">FT</span>                   <span class="o">/</span><span class="n">note</span><span class="o">=</span><span class="s2">&quot;Phosphothreonine&quot;</span>
+<span class="n">FT</span>                   <span class="o">/</span><span class="n">evidence</span><span class="o">=</span><span class="s2">&quot;ECO:0000244|PubMed:19779198&quot;</span>
+<span class="n">FT</span>   <span class="n">MOD_RES</span>         <span class="mi">570</span>
+<span class="n">FT</span>                   <span class="o">/</span><span class="n">note</span><span class="o">=</span><span class="s2">&quot;Phosphothreonine; by PKH1 or PKH2&quot;</span>
+</pre></div>
+</div>
+<p>Podemos consultar a <a class="reference external" href="http://web.expasy.org/docs/userman.html#FT_keys">documentação da UniProt sobre as linhas FT</a>.</p>
+<p>Parece evidente que a informação sobre resíduos modificados está em linhas começadas por <code class="docutils literal notranslate"><span class="pre">FT</span>&#160;&#160; <span class="pre">MOD_RES</span></code> e nas linhas seguintes.</p>
+<p>Na linha <code class="docutils literal notranslate"><span class="pre">FT</span>&#160;&#160; <span class="pre">MOD_RES</span></code> está a posição do aminoácido modificado.</p>
+<p>Na linha imediatamente a seguir está <code class="docutils literal notranslate"><span class="pre">/note=</span></code> e o nome da PTM entre <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>. E ainda, por vezes está o nome da PTM e, a seguir a <code class="docutils literal notranslate"><span class="pre">;</span></code> alguma informação adicional.</p>
+<p>Para cada proteína (na função <code class="docutils literal notranslate"><span class="pre">extract_info()</span></code>) queremos</p>
+<ul class="simple">
+<li><p>passar por todas as linhas começadas por <code class="docutils literal notranslate"><span class="pre">FT</span>&#160;&#160; <span class="pre">MOD_RES</span></code>, extraír daí a posição da PTM</p></li>
+<li><p>na linha seguinte, obter o que está a seguir a <code class="docutils literal notranslate"><span class="pre">/note=</span></code></p></li>
+<li><p>tirar as <code class="docutils literal notranslate"><span class="pre">&quot;</span></code></p></li>
+<li><p>separar por <code class="docutils literal notranslate"><span class="pre">;</span></code></p></li>
+<li><p>aproveitar a primeira parte. Isto será o nome da PTM.</p></li>
+<li><p>finalmente, criar um dicionário com associação entre a posição e o nome da PTM, para todas as PTMs</p></li>
+<li><p>e incluír este dicionário no return da função <code class="docutils literal notranslate"><span class="pre">extract_info()</span></code></p></li>
+</ul>
+<p>Como fazer isto por programação?</p>
+<p>Temos vários problemas para resolver:</p>
+<ul class="simple">
+<li><p>Como passar por todas as linhas respeitantes a uma proteína e procurar as que contêm informação sobre PTM? (fácil, <code class="docutils literal notranslate"><span class="pre">for</span></code> e ver se começam por <code class="docutils literal notranslate"><span class="pre">FT</span>&#160;&#160; <span class="pre">MOD_RES</span></code>)</p></li>
+<li><p>Como extraír a posição? (fácil: separar por espaços e usar o elemento na posição 2)</p></li>
+<li><p>Como ir para a linha seguinte? (menos fácil, mas <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> permite ter acesso à posição da linha que estamos a tratar, logo também a posição da linha seguinte)</p></li>
+<li><p>Como obter o nome da PTM? (fácil, mais uns <code class="docutils literal notranslate"><span class="pre">split()</span></code>s)</p></li>
+</ul>
+<p>Vamos então modificar a função <code class="docutils literal notranslate"><span class="pre">extract_info()</span></code> e incluír estas ideias:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... NOTA: continuação do programa a partir</span>
+<span class="c1"># da função read_Uniprot_text(filename)</span>
+
+<span class="n">prots</span> <span class="o">=</span> <span class="n">read_Uniprot_text</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">extract_info</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text record and returns a dict with extrated information.</span>
+<span class="sd">    </span>
+<span class="sd">    The returned dict has the following fields:</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;ac&#39;: the UniProt Access Id,</span>
+<span class="sd">    &#39;n&#39;: the sequence length, </span>
+<span class="sd">    &#39;PTMs&#39;: a dictionary that associates the location of PTMs (int, as keys)</span>
+<span class="sd">               with the name of the PTM.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+    <span class="n">IDline</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ACline</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># Extract UniProt AC and number of amino acids</span>
+    <span class="c1"># Example (first two lines):</span>
+    <span class="c1"># ID   AB140_YEAST             Reviewed;         628 AA.</span>
+    <span class="c1"># AC   Q08641; D6W2U2; Q08644;</span>
+    
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">ACline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+    
+    <span class="c1"># Extract FT lines and process PTM information</span>
+    <span class="c1">#</span>
+    <span class="c1"># Example of phosphorylation lines</span>
+    <span class="c1"># FT   MOD_RES         342</span>
+    <span class="c1"># FT                   /note=&quot;Phosphoserine&quot;</span>
+    <span class="c1"># FT                   /evidence=&quot;ECO:0000244|PubMed:18407956,</span>
+    <span class="c1"># FT                   ECO:0000244|PubMed:19779198&quot;</span>
+
+    <span class="c1"># NOTE: there are 3 spaces between FT and MOD_RES</span>
+    
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;FT   MOD_RES&#39;</span><span class="p">):</span>
+            <span class="c1"># skip line if does not start with FT   MOD_RES</span>
+            <span class="k">continue</span>
+
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">nextline</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># here enumerate() is very usefull</span>
+
+        <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">nextline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/note=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span> <span class="c1"># strip() takes out the &quot;&quot;</span>
+        <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># the name of the PTM is before the ;</span>
+            
+        <span class="c1"># add to dicionary PTMs</span>
+        <span class="n">PTMs</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTMtype</span>
+        
+    <span class="c1"># Return dictionary of extracted information</span>
+    <span class="c1"># including the PTMs dicionary</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ac&#39;</span><span class="p">:</span> <span class="n">ac</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;PTMs&#39;</span><span class="p">:</span> <span class="n">PTMs</span><span class="p">}</span>
+
+<span class="n">all_prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">extract_info</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of protein records in &quot;</span><span class="si">{</span><span class="n">data_filename</span><span class="si">}</span><span class="s1">&quot; is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prots</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># see the first 4, as a test</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------------------------------------&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of protein records in &quot;uniprot_scerevisiae.txt&quot; is 6049
+------------------------------------------
+{&#39;ac&#39;: &#39;P38090&#39;, &#39;n&#39;: 596, &#39;PTMs&#39;: {}}
+------------------------------------------
+{&#39;ac&#39;: &#39;Q12001&#39;, &#39;n&#39;: 544, &#39;PTMs&#39;: {}}
+------------------------------------------
+{&#39;ac&#39;: &#39;P53309&#39;, &#39;n&#39;: 568, &#39;PTMs&#39;: {&#39;449&#39;: &#39;Phosphothreonine&#39;}}
+------------------------------------------
+{&#39;ac&#39;: &#39;P40467&#39;, &#39;n&#39;: 964, &#39;PTMs&#39;: {&#39;166&#39;: &#39;Phosphoserine&#39;, &#39;186&#39;: &#39;Phosphoserine&#39;, &#39;963&#39;: &#39;Phosphoserine&#39;}}
+------------------------------------------
+{&#39;ac&#39;: &#39;P0CZ17&#39;, &#39;n&#39;: 362, &#39;PTMs&#39;: {}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aparentemente nem todas as proteínas têm anotações sobre PTMs.</p>
+<p>Note-se a utilidade da função <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code>: podemos ao mesmo tempo passar com o comando <code class="docutils literal notranslate"><span class="pre">for</span></code> pelas linhas usando o nome <code class="docutils literal notranslate"><span class="pre">line</span></code> e pelas <strong>posições</strong> das linhas, usando <code class="docutils literal notranslate"><span class="pre">i</span></code> (não esquecer que <code class="docutils literal notranslate"><span class="pre">lines</span></code> é uma lista de linhas).</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for i, line in enumerate(lines):
+</pre></div>
+</div>
+<p>isto foi útil para obter facilmente a “linha seguinte”:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nextline = lines[i+1]
+</pre></div>
+</div>
+<p>Já se conseguiu muito: agora temos uma lista de 6049 dicionários em que cada um deles tem o número de acesso, o comprimento da proteína e um dicionário com as localizações e o nome de cada PTM da proteína.</p>
+<p>O próximo passo é contar as PTM de cada tipo, listar e fazer um gráfico de barras.</p>
+</section>
+<section id="interludio-atribuicoes-multiplas-com">
+<h2><span class="section-number">13.6. </span>Interlúdio: atribuições múltiplas com *<a class="headerlink" href="#interludio-atribuicoes-multiplas-com" title="Permalink to this heading">#</a></h2>
+<p>Antes de passarmos à fase seguinte, existe um pormenor da atribuição de nomes que pode ser útil. Trata-se da atribuição
+múltipla de nomes com a opção de utilizar <code class="docutils literal notranslate"><span class="pre">*</span></code> para captar o “restante” de uma coleção.</p>
+<p>Vejamos um pequeno exemplo de atribuições múltiplas, uma técnica já usada em problemas anteriores:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># atribuição múltipla</span>
+
+<span class="n">m</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># atribuição múltipla a partir dos</span>
+<span class="c1"># elementos de uma lista</span>
+
+<span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12 365
+7 12 365
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aqui mostra-se o facto de uma atribuição poder ser feita à custa dos elementos
+de uma lista.</p>
+<p>Para todos os efeitos, conseguimos assim atribuír nomes a todos
+os elementos de uma lista:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span>
+
+<span class="c1"># é equivalente a</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nesta situação, é possível usar, do lado esquerdo do sinal de igual, um <code class="docutils literal notranslate"><span class="pre">*</span></code>
+como prefixo de um dos nomes para <strong>captar</strong> um conjunto de elementos restantes nas atribuições, na forma de
+uma lista mais pequena.</p>
+<p>O melhor é ver um exemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">tudo_o_resto</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tudo_o_resto</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+12
+365
+[1, 3, 5, 7, 9, 11]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Neste exemplo, pelo facto de termos usado um <code class="docutils literal notranslate"><span class="pre">*</span></code> antes do nome <code class="docutils literal notranslate"><span class="pre">tudo_o_resto</span></code>
+fez com este nome fosse atribuído à <em>parte restante</em> da lista que serviu de atribuição.</p>
+<div class="tip admonition">
+<p class="admonition-title">Dica</p>
+<p>Esta atribuição múltipla com <code class="docutils literal notranslate"><span class="pre">*</span></code> é muito útil quando não sabemos
+exatamente qual o comprimento da lista que fornece os valores e estamos
+interessados apenas em alguns dos primeiros valores.</p>
+<p>O nome que é usado com <code class="docutils literal notranslate"><span class="pre">*</span></code> como prefixo é sempre atribuído a uma lista.</p>
+<p>Esta pode ter apenas um elemento ou até uma lista vazia.</p>
+</div>
+<p>Mas este mecanismo pode até ser usado sem ser no nome final:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">o_meio</span><span class="p">,</span> <span class="n">ultimo</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">o_meio</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ultimo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+12
+365
+[1, 3, 5, 7, 9]
+11
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um outro exemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">lixo</span><span class="p">,</span> <span class="n">antepenúltimo</span><span class="p">,</span> <span class="n">penúltimo</span><span class="p">,</span> <span class="n">último</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">antepenúltimo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">penúltimo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">último</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+9
+11
+</pre></div>
+</div>
+</div>
+</div>
+<p>E ainda outro…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primeiro</span><span class="p">,</span> <span class="o">*</span><span class="n">lixo</span><span class="p">,</span> <span class="n">antepenúltimo</span><span class="p">,</span> <span class="n">penúltimo</span><span class="p">,</span> <span class="n">último</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">primeiro</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">antepenúltimo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">penúltimo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">último</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lixo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+7
+9
+11
+[12, 365, 1, 3, 5]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Este mecanismo pode-nos ajudar a simplificar um pouco alguns passos da função
+<code class="docutils literal notranslate"><span class="pre">extract_info()</span></code>:</p>
+<p>Em vez de</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">lines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="n">IDline</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ACline</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Podemos escrever apenas</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">IDline</span><span class="p">,</span> <span class="n">ACline</span><span class="p">,</span> <span class="o">*</span><span class="n">otherlines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A função <code class="docutils literal notranslate"><span class="pre">.splitlines()</span></code> gera uma lista, logo podemos imediatamente usar
+uma atribuição múltipla para atribuír nomes a várias linhas que estejamos interessados.</p>
+<p>Note-se que <code class="docutils literal notranslate"><span class="pre">otherlines</span></code> seria um nome de uma lista contendo todas as linhas
+menos as duas primeiras. O que significa que, mais à frente, quando procuramos
+linhas começadas por <code class="docutils literal notranslate"><span class="pre">FT</span></code>, devemos fazer</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for line in otherlines:
+</pre></div>
+</div>
+<div class="question admonition">
+<p class="admonition-title">Problema</p>
+<p>Como poderíamos substituír a obtenção de <code class="docutils literal notranslate"><span class="pre">n</span></code> nesta parte do program</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>por uma atribuição múltipla para <em>isolar</em> o <code class="docutils literal notranslate"><span class="pre">n</span></code> no meio dos outros
+elementos na mesma linha?</p>
+<p>Repare que a linha <code class="docutils literal notranslate"><span class="pre">ID</span></code> tem o seguinte aspeto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ID</span>   <span class="n">AB140_YEAST</span>             <span class="n">Reviewed</span><span class="p">;</span>         <span class="mi">628</span> <span class="n">AA</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Solução</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">useless</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">final</span> <span class="o">=</span> <span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Não sendo mais compacto, é mais simples de entender</p>
+</div>
+</section>
+<section id="contagem-dos-tipos-de-ptm">
+<h2><span class="section-number">13.7. </span>Contagem dos tipos de PTM<a class="headerlink" href="#contagem-dos-tipos-de-ptm" title="Permalink to this heading">#</a></h2>
+<p>Vamos agora continuar o programa de forma contar os vários tipos de PTM que existem, já
+“extraídos” na lista de dicionários <code class="docutils literal notranslate"><span class="pre">all_prots</span></code>.</p>
+<div class="warning admonition">
+<p class="admonition-title">Atenção</p>
+<p>Nos passos seguintes vamos ampliar o programa que já existe, até
+ao cálculo da lista <code class="docutils literal notranslate"><span class="pre">all_prots</span></code>. Esta lista já tem de existir para o resto
+funcionar.</p>
+</div>
+<p>Recorde-se que a lista <code class="docutils literal notranslate"><span class="pre">all_prots</span></code> contem dicionários.</p>
+<p>Cada dicionário contem
+uma chave <code class="docutils literal notranslate"><span class="pre">PTMs</span></code>, a qual tem como valor um outro dicionário que associa a posição
+de cada <em>PTM</em> ao seu nome.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;ac&#39;: &#39;P40467&#39;, &#39;n&#39;: 964, &#39;PTMs&#39;: {&#39;166&#39;: &#39;Phosphoserine&#39;, &#39;186&#39;: &#39;Phosphoserine&#39;, &#39;963&#39;: &#39;Phosphoserine&#39;}}
+</pre></div>
+</div>
+<p>Como contar as <em>PTM</em> em todas as proteínas pelo seu nome?</p>
+<p>Podemos criar, mais uma vez, um novo dicionário que associa o nome de cada <em>PTM</em> à sua contagem. Vamos chamar
+<code class="docutils literal notranslate"><span class="pre">PTM_counts</span></code>.</p>
+<p>A ideia será passar por toda a lista <code class="docutils literal notranslate"><span class="pre">all_prots</span></code> (com <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">p</span> <span class="pre">in</span> <span class="pre">all_prots</span></code>),
+obter os nomes das <em>PTM</em> de cada proteína (com <code class="docutils literal notranslate"><span class="pre">p['PTMs'].values()</span></code>) e depois
+ir adicionando +1 à contagem existente no dicionário de contagens.</p>
+<p>Se ainda não existir o nome de uma PTM no dicionário, na primeira vez que é colocado
+deve ter o valor 1, a primeira contagem.</p>
+<p>Vejamos como fica:</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTM_counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">:</span>
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;PTMs&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># just skip if no PTMs</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">PTMs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+        
+    <span class="k">for</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTMs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTM_counts</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            
+<span class="nb">print</span><span class="p">(</span><span class="n">PTM_counts</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Phosphothreonine&#39;: 1027, &#39;Phosphoserine&#39;: 5170, &#39;Phosphotyrosine&#39;: 55, &#39;N-acetylserine&#39;: 325, &#39;N-formylmethionine&#39;: 1, &#39;N6-(pyridoxal phosphate)lysine&#39;: 46, &#39;Pros-8alpha-FAD histidine&#39;: 1, &#39;N-acetylmethionine&#39;: 106, &#39;N6-acetyllysine&#39;: 32, &#39;N-acetylthreonine&#39;: 12, &quot;O-(pantetheine 4&#39;-phosphoryl)serine&quot;: 3, &#39;N6-carboxylysine&#39;: 4, &#39;Cysteine methyl ester&#39;: 23, &#39;Asymmetric dimethylarginine&#39;: 26, &#39;Phosphohistidine&#39;: 4, &#39;Hypusine&#39;: 2, &#39;N-acetylalanine&#39;: 37, &#39;N6-butyryllysine&#39;: 5, &#39;N6-methyllysine&#39;: 22, &#39;N6-succinyllysine&#39;: 11, &#39;N6,N6-dimethyllysine&#39;: 6, &#39;Tele-8alpha-FAD histidine&#39;: 2, &#39;2,3-didehydroalanine (Cys)&#39;: 1, &#39;4-aspartylphosphate&#39;: 3, &#39;Lysine derivative&#39;: 3, &#39;N5-methylglutamine&#39;: 4, &#39;N6,N6,N6-trimethyllysine&#39;: 17, &#39;Omega-N-methylarginine&#39;: 15, &#39;N,N-dimethylproline&#39;: 4, &#39;N6-glutaryllysine&#39;: 1, &#39;N6-malonyllysine&#39;: 2, &#39;Diphthamide&#39;: 1, &#39;N6-biotinyllysine&#39;: 5, &#39;N5-methylarginine&#39;: 2, &#39;N6-lipoyllysine&#39;: 4, &#39;Pyruvic acid (Ser)&#39;: 3, &#39;Pros-methylhistidine&#39;: 1, &#39;S-glutathionyl cysteine&#39;: 3, &#39;Cysteine sulfinic acid (-SO2H)&#39;: 1, &#39;N6-propionyllysine&#39;: 2, &#39;S-(dipyrrolylmethanemethyl)cysteine&#39;: 1, &#39;N,N,N-trimethylglycine&#39;: 1, &#39;Lysine methyl ester&#39;: 1, &#39;Dimethylated arginine&#39;: 1, &#39;Leucine methyl ester&#39;: 2, &#39;3,4-dihydroxyproline&#39;: 2, &#39;N-acetylvaline&#39;: 2, &#39;Thiazolidine linkage to a ring-opened DNA abasic&#39;: 1, &#39;1-thioglycine&#39;: 1, &#39;S-methylcysteine&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Funcionou, embora não seja a maneira mais elegante de apresentar as contagens.</p>
+<p>Na realidade o ideal seria ordenar por ordem decrescente, de forma a apresentar
+na forma de uma tabela em que saberíamos facilemnte quais as <em>PTM</em> mais abundantes e menos
+abundantes.</p>
+<p>O problema é que os dicionários não têm uma <strong>ordem</strong> dos seus elementos implícita.</p>
+<p>As listas têm e é fácil transformar um dicionário numa lista de pares (chave:valor):</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTM_counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">:</span>
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;PTMs&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># just skip if no PTMs</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">PTMs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+        
+    <span class="k">for</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTMs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTM_counts</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># print(PTM_counts) </span>
+
+<span class="n">list_PTM_counts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">PTM_counts</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">list_PTM_counts</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Phosphothreonine&#39;, 1027), (&#39;Phosphoserine&#39;, 5170), (&#39;Phosphotyrosine&#39;, 55), (&#39;N-acetylserine&#39;, 325), (&#39;N-formylmethionine&#39;, 1), (&#39;N6-(pyridoxal phosphate)lysine&#39;, 46), (&#39;Pros-8alpha-FAD histidine&#39;, 1), (&#39;N-acetylmethionine&#39;, 106), (&#39;N6-acetyllysine&#39;, 32), (&#39;N-acetylthreonine&#39;, 12), (&quot;O-(pantetheine 4&#39;-phosphoryl)serine&quot;, 3), (&#39;N6-carboxylysine&#39;, 4), (&#39;Cysteine methyl ester&#39;, 23), (&#39;Asymmetric dimethylarginine&#39;, 26), (&#39;Phosphohistidine&#39;, 4), (&#39;Hypusine&#39;, 2), (&#39;N-acetylalanine&#39;, 37), (&#39;N6-butyryllysine&#39;, 5), (&#39;N6-methyllysine&#39;, 22), (&#39;N6-succinyllysine&#39;, 11), (&#39;N6,N6-dimethyllysine&#39;, 6), (&#39;Tele-8alpha-FAD histidine&#39;, 2), (&#39;2,3-didehydroalanine (Cys)&#39;, 1), (&#39;4-aspartylphosphate&#39;, 3), (&#39;Lysine derivative&#39;, 3), (&#39;N5-methylglutamine&#39;, 4), (&#39;N6,N6,N6-trimethyllysine&#39;, 17), (&#39;Omega-N-methylarginine&#39;, 15), (&#39;N,N-dimethylproline&#39;, 4), (&#39;N6-glutaryllysine&#39;, 1), (&#39;N6-malonyllysine&#39;, 2), (&#39;Diphthamide&#39;, 1), (&#39;N6-biotinyllysine&#39;, 5), (&#39;N5-methylarginine&#39;, 2), (&#39;N6-lipoyllysine&#39;, 4), (&#39;Pyruvic acid (Ser)&#39;, 3), (&#39;Pros-methylhistidine&#39;, 1), (&#39;S-glutathionyl cysteine&#39;, 3), (&#39;Cysteine sulfinic acid (-SO2H)&#39;, 1), (&#39;N6-propionyllysine&#39;, 2), (&#39;S-(dipyrrolylmethanemethyl)cysteine&#39;, 1), (&#39;N,N,N-trimethylglycine&#39;, 1), (&#39;Lysine methyl ester&#39;, 1), (&#39;Dimethylated arginine&#39;, 1), (&#39;Leucine methyl ester&#39;, 2), (&#39;3,4-dihydroxyproline&#39;, 2), (&#39;N-acetylvaline&#39;, 2), (&#39;Thiazolidine linkage to a ring-opened DNA abasic&#39;, 1), (&#39;1-thioglycine&#39;, 1), (&#39;S-methylcysteine&#39;, 1)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Agora temos uma lista, mas não está ordenada por contagens.</p>
+<p>Como ordenar esta lista?</p>
+<p>Repare-se que os elementos da lista são pares de objetos e queremos ordenar a lista pelo
+<strong>segundo elemento do par de objetos</strong>.</p>
+<p>Existe uma função para gerar uma sequência de valores ordenados a partir de uma lista: a função
+<code class="docutils literal notranslate"><span class="pre">sorted()</span></code></p>
+<p>Mas esta função pode receber como argumento <code class="docutils literal notranslate"><span class="pre">key</span></code> uma <strong>outra função</strong> que indique
+qual exatamente o valor que deve ser ordenado, calculado a partir de cada elemento.</p>
+<p>Isto é útil, neste caso. Precisamos de uma função que “aponte” para o segundo elemento
+de cada par para que a função <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> saiba o que fazer.</p>
+<p>Mas temos de escrever essa função.</p>
+<p>É uma função muito simples que recebe um par de valores
+e devolve o segundo elemento do par.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sort function returning the second element of a pair of values</span>
+<span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vejamos como aplicar esta função:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sort function returning the second element of a pair of values</span>
+<span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ordered_PTM_counts</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_PTM_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ordered_PTM_counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Phosphoserine&#39;, 5170), (&#39;Phosphothreonine&#39;, 1027), (&#39;N-acetylserine&#39;, 325), (&#39;N-acetylmethionine&#39;, 106), (&#39;Phosphotyrosine&#39;, 55), (&#39;N6-(pyridoxal phosphate)lysine&#39;, 46), (&#39;N-acetylalanine&#39;, 37), (&#39;N6-acetyllysine&#39;, 32), (&#39;Asymmetric dimethylarginine&#39;, 26), (&#39;Cysteine methyl ester&#39;, 23), (&#39;N6-methyllysine&#39;, 22), (&#39;N6,N6,N6-trimethyllysine&#39;, 17), (&#39;Omega-N-methylarginine&#39;, 15), (&#39;N-acetylthreonine&#39;, 12), (&#39;N6-succinyllysine&#39;, 11), (&#39;N6,N6-dimethyllysine&#39;, 6), (&#39;N6-butyryllysine&#39;, 5), (&#39;N6-biotinyllysine&#39;, 5), (&#39;N6-carboxylysine&#39;, 4), (&#39;Phosphohistidine&#39;, 4), (&#39;N5-methylglutamine&#39;, 4), (&#39;N,N-dimethylproline&#39;, 4), (&#39;N6-lipoyllysine&#39;, 4), (&quot;O-(pantetheine 4&#39;-phosphoryl)serine&quot;, 3), (&#39;4-aspartylphosphate&#39;, 3), (&#39;Lysine derivative&#39;, 3), (&#39;Pyruvic acid (Ser)&#39;, 3), (&#39;S-glutathionyl cysteine&#39;, 3), (&#39;Hypusine&#39;, 2), (&#39;Tele-8alpha-FAD histidine&#39;, 2), (&#39;N6-malonyllysine&#39;, 2), (&#39;N5-methylarginine&#39;, 2), (&#39;N6-propionyllysine&#39;, 2), (&#39;Leucine methyl ester&#39;, 2), (&#39;3,4-dihydroxyproline&#39;, 2), (&#39;N-acetylvaline&#39;, 2), (&#39;N-formylmethionine&#39;, 1), (&#39;Pros-8alpha-FAD histidine&#39;, 1), (&#39;2,3-didehydroalanine (Cys)&#39;, 1), (&#39;N6-glutaryllysine&#39;, 1), (&#39;Diphthamide&#39;, 1), (&#39;Pros-methylhistidine&#39;, 1), (&#39;Cysteine sulfinic acid (-SO2H)&#39;, 1), (&#39;S-(dipyrrolylmethanemethyl)cysteine&#39;, 1), (&#39;N,N,N-trimethylglycine&#39;, 1), (&#39;Lysine methyl ester&#39;, 1), (&#39;Dimethylated arginine&#39;, 1), (&#39;Thiazolidine linkage to a ring-opened DNA abasic&#39;, 1), (&#39;1-thioglycine&#39;, 1), (&#39;S-methylcysteine&#39;, 1)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Agora sim, temos uma lista ordenada.</p>
+<p>Mas é muito mais elegante apresentar em linhas separadas:</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sort function returning the second element of a pair of values</span>
+<span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ordered_PTM_counts</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_PTM_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># let&#39;s look at the results</span>
+<span class="k">for</span> <span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Phosphoserine 5170
+Phosphothreonine 1027
+N-acetylserine 325
+N-acetylmethionine 106
+Phosphotyrosine 55
+N6-(pyridoxal phosphate)lysine 46
+N-acetylalanine 37
+N6-acetyllysine 32
+Asymmetric dimethylarginine 26
+Cysteine methyl ester 23
+N6-methyllysine 22
+N6,N6,N6-trimethyllysine 17
+Omega-N-methylarginine 15
+N-acetylthreonine 12
+N6-succinyllysine 11
+N6,N6-dimethyllysine 6
+N6-butyryllysine 5
+N6-biotinyllysine 5
+N6-carboxylysine 4
+Phosphohistidine 4
+N5-methylglutamine 4
+N,N-dimethylproline 4
+N6-lipoyllysine 4
+O-(pantetheine 4&#39;-phosphoryl)serine 3
+4-aspartylphosphate 3
+Lysine derivative 3
+Pyruvic acid (Ser) 3
+S-glutathionyl cysteine 3
+Hypusine 2
+Tele-8alpha-FAD histidine 2
+N6-malonyllysine 2
+N5-methylarginine 2
+N6-propionyllysine 2
+Leucine methyl ester 2
+3,4-dihydroxyproline 2
+N-acetylvaline 2
+N-formylmethionine 1
+Pros-8alpha-FAD histidine 1
+2,3-didehydroalanine (Cys) 1
+N6-glutaryllysine 1
+Diphthamide 1
+Pros-methylhistidine 1
+Cysteine sulfinic acid (-SO2H) 1
+S-(dipyrrolylmethanemethyl)cysteine 1
+N,N,N-trimethylglycine 1
+Lysine methyl ester 1
+Dimethylated arginine 1
+Thiazolidine linkage to a ring-opened DNA abasic 1
+1-thioglycine 1
+S-methylcysteine 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Agora sim, vemos que as fosforilações são as <em>PTM</em> mais prevalentes, pelo
+menos levando em conta as anotações na UniProtKB relativamente às proteínas
+de levedura <em>S. cerevisiae</em>.</p>
+<p>Conseguimos extraír a informação em que estávamos interessados a partir de um
+ficheiro de texto que segue um formato rígido particular a um portal de Bioinformática.</p>
+<p>Note-se, no desenvolvimento deste programa, o papel essencial das coleções da linguagem Python,
+listas e dicionários, para armazenar a informação obtida e também o papel das funções
+associadas a <em>strings</em></p>
+<p>O programa todo até este ponto é o seguinte:</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+
+<span class="k">def</span> <span class="nf">read_Uniprot_text</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text file and splits into a list of protein records.&quot;&quot;&quot;</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+        <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># remove empty records</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">records</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># since we know that it is the last one only...</span>
+    <span class="c1"># records.pop(-1)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+<span class="n">prots</span> <span class="o">=</span> <span class="n">read_Uniprot_text</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">extract_info</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text record and returns a dict with extrated information.</span>
+<span class="sd">    </span>
+<span class="sd">    The returned dict has the following fields:</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;ac&#39;: the UniProt Access Id,</span>
+<span class="sd">    &#39;n&#39;: the sequence length, </span>
+<span class="sd">    &#39;PTMs&#39;: a dictionary that associates the location of PTMs (int, as keys)</span>
+<span class="sd">                with the name of the PTM.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">IDline</span><span class="p">,</span> <span class="n">ACline</span><span class="p">,</span> <span class="o">*</span><span class="n">otherlines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    
+    <span class="c1"># Extract UniProt AC and number of amino acids</span>
+    <span class="c1"># Example (first two lines):</span>
+    <span class="c1"># ID   AB140_YEAST             Reviewed;         628 AA.</span>
+    <span class="c1"># AC   Q08641; D6W2U2; Q08644;</span>
+    
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">ACline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+    
+    <span class="c1"># Extract FT lines and process PTM information</span>
+    <span class="c1">#</span>
+    <span class="c1"># Example of phosphorylation lines</span>
+    <span class="c1"># FT   MOD_RES         342</span>
+    <span class="c1"># FT                   /note=&quot;Phosphoserine&quot;</span>
+    <span class="c1"># FT                   /evidence=&quot;ECO:0000244|PubMed:18407956,</span>
+    <span class="c1"># FT                   ECO:0000244|PubMed:19779198&quot;</span>
+    
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">otherlines</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;FT   MOD_RES&#39;</span><span class="p">):</span>
+            <span class="n">FTcode</span><span class="p">,</span> <span class="n">MOD_RES</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            
+            <span class="n">nextline</span> <span class="o">=</span> <span class="n">otherlines</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">nextline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/note=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            
+            <span class="n">PTMs</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTMtype</span>
+        
+    <span class="c1"># Return dictionary of extracted information</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ac&#39;</span><span class="p">:</span> <span class="n">ac</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;PTMs&#39;</span><span class="p">:</span> <span class="n">PTMs</span><span class="p">}</span>
+
+<span class="n">all_prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">extract_info</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">]</span>
+
+<span class="n">PTM_counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">:</span>
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;PTMs&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># just skip if no PTMs</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">PTMs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+        
+    <span class="k">for</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTMs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTM_counts</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="n">list_PTM_counts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">PTM_counts</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="c1"># sort function returning the second element of a pair of values</span>
+<span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ordered_PTM_counts</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_PTM_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Output of PTM information</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of protein records in &quot;</span><span class="si">{</span><span class="n">data_filename</span><span class="si">}</span><span class="s1">&quot; is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prots</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of protein records in &quot;uniprot_scerevisiae.txt&quot; is 6049
+Phosphoserine 5170
+Phosphothreonine 1027
+N-acetylserine 325
+N-acetylmethionine 106
+Phosphotyrosine 55
+N6-(pyridoxal phosphate)lysine 46
+N-acetylalanine 37
+N6-acetyllysine 32
+Asymmetric dimethylarginine 26
+Cysteine methyl ester 23
+N6-methyllysine 22
+N6,N6,N6-trimethyllysine 17
+Omega-N-methylarginine 15
+N-acetylthreonine 12
+N6-succinyllysine 11
+N6,N6-dimethyllysine 6
+N6-butyryllysine 5
+N6-biotinyllysine 5
+N6-carboxylysine 4
+Phosphohistidine 4
+N5-methylglutamine 4
+N,N-dimethylproline 4
+N6-lipoyllysine 4
+O-(pantetheine 4&#39;-phosphoryl)serine 3
+4-aspartylphosphate 3
+Lysine derivative 3
+Pyruvic acid (Ser) 3
+S-glutathionyl cysteine 3
+Hypusine 2
+Tele-8alpha-FAD histidine 2
+N6-malonyllysine 2
+N5-methylarginine 2
+N6-propionyllysine 2
+Leucine methyl ester 2
+3,4-dihydroxyproline 2
+N-acetylvaline 2
+N-formylmethionine 1
+Pros-8alpha-FAD histidine 1
+2,3-didehydroalanine (Cys) 1
+N6-glutaryllysine 1
+Diphthamide 1
+Pros-methylhistidine 1
+Cysteine sulfinic acid (-SO2H) 1
+S-(dipyrrolylmethanemethyl)cysteine 1
+N,N,N-trimethylglycine 1
+Lysine methyl ester 1
+Dimethylated arginine 1
+Thiazolidine linkage to a ring-opened DNA abasic 1
+1-thioglycine 1
+S-methylcysteine 1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="graficos">
+<h2><span class="section-number">13.8. </span>Gráficos<a class="headerlink" href="#graficos" title="Permalink to this heading">#</a></h2>
+<p>A tabela que conseguimos obter na secção anterior já é muito interessante.</p>
+<p>Ficámos a saber que a fosforilação de serinas tem 6049 anotações, enquanto que a
+<em>PTM</em> exótica S-metilcisteína tem uma única anotação (ela e outras 13).</p>
+<p>Mas um gráfico causaria muito mais impressão. Vamos fazer um gráfico de barras com as
+contagens de <em>PTM</em>.</p>
+<p>Para a linguagem Python existem vários módulos destinados a obter gráficos num
+program. Um dos mais conhecidos é o <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, uma da “bibliotecas” gráficas
+mais versáteis e populares (e também um pouco intimidante) da linguagem Python.</p>
+<p>O <a class="reference external" href="https://matplotlib.org/"><em>site</em> oficial da matplotlib</a> dá uma ideia da versatilidade da
+biblioteca, tendo uma galeria extensa de exemplos.</p>
+<p>Uma outra biblioteca digna de nota é o projeto <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> que é
+baseado na <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> e inclui “melhoramentos” estéticos e novos tipos de gráficos, especialemnte da área da estatística.</p>
+<p>Ampliando o programa, vamos combinar os dois módulos, criando um gráfico de barras com as contagens
+da PTM, embora restringindo àquelas que têm pelo menos 10 contagens:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+
+<span class="n">bp</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">types</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">counts</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fddb694b64bd2e96f57448bed81829d60fbe9903a1c0ffb33618dd8ff93d6daf.png" src="_images/fddb694b64bd2e96f57448bed81829d60fbe9903a1c0ffb33618dd8ff93d6daf.png" />
+</div>
+</div>
+<p>Embora seja uma pequena ampliação do programa, é preciso explicar um pouco a utilização destas duas bibliotecas,
+de uma forma muitíssimo sumária, uma vez que a sua funcionalidade é muito vasta.</p>
+<p>Após os dois <code class="docutils literal notranslate"><span class="pre">imports</span></code> necessários para se utilizar as bibliotecas, a função
+<code class="docutils literal notranslate"><span class="pre">seaborn.set()</span></code> introduz um <strong>estilo</strong> de gráficos particular, o “darkgrid” (existem vários).</p>
+<p>É uma questão estética (e de gosto pessoal).</p>
+<p>A função <code class="docutils literal notranslate"><span class="pre">subplots()</span></code> é uma função importante que prepara uma figura se tiver vários painéis, o que não é
+o caso e, de entre outras opções, permite controlar o tamanho total da figura, com <code class="docutils literal notranslate"><span class="pre">figsize</span></code> (unidades em polegadas).</p>
+<p>Depois disto é apenas necessário preparar duas listas, uma com os nomes das barras e
+outra com as alturas da barras e usar a função <code class="docutils literal notranslate"><span class="pre">seaborn.barplot()</span></code> usando estas duas
+listas como argumentos.</p>
+<p>As listas foram criadas como listas em compreensão a partir da lista <code class="docutils literal notranslate"><span class="pre">ordered_PTM_counts</span></code>,
+filtrando as <em>PTM</em> com mais de 10 contagens.</p>
+<p>Mais 3 pormenores finais na função <code class="docutils literal notranslate"><span class="pre">barplot()</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">orient='h'</span></code> desenha barras horizontais e não (as mais habituais) barras verticais</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">palette='tab10'</span></code> escolhe um mapa de cores a usar nas barras. Há inúmeras possibilidades. Ver
+por exemplo <a class="reference external" href="https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html">esta página</a></p></li>
+<li><p>finalmente, <em>last but not least</em>, <code class="docutils literal notranslate"><span class="pre">log=True</span></code>, faz a escala de contagens ser logarítmica. Isto é necessário, caso
+contrário as fosforilações dominariam completamente o gráfico e não conseguiríamos ver as <em>PTM</em> menos
+abundantes que teríam barras perto de 0.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2><span class="section-number">13.9. </span>Programa completo<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;uniprot_scerevisiae.txt&#39;</span>
+
+<span class="k">def</span> <span class="nf">read_Uniprot_text</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text file and splits into a list of protein records.&quot;&quot;&quot;</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">uniprot_file</span><span class="p">:</span>
+        <span class="n">whole_file</span> <span class="o">=</span> <span class="n">uniprot_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">whole_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># remove empty records</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">records</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># since we know that it is the last one only...</span>
+    <span class="c1"># records.pop(-1)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+<span class="n">prots</span> <span class="o">=</span> <span class="n">read_Uniprot_text</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">extract_info</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads a UniProt text record and returns a dict with extrated information.</span>
+<span class="sd">    </span>
+<span class="sd">    The returned dict has the following fields:</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;ac&#39;: the UniProt Access Id,</span>
+<span class="sd">    &#39;n&#39;: the sequence length, </span>
+<span class="sd">    &#39;PTMs&#39;: a dictionary that associates the location of PTMs (int, as keys)</span>
+<span class="sd">                with the name of the PTM.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">IDline</span><span class="p">,</span> <span class="n">ACline</span><span class="p">,</span> <span class="o">*</span><span class="n">otherlines</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    
+    <span class="c1"># Extract UniProt AC and number of amino acids</span>
+    <span class="c1"># Example (first two lines):</span>
+    <span class="c1"># ID   AB140_YEAST             Reviewed;         628 AA.</span>
+    <span class="c1"># AC   Q08641; D6W2U2; Q08644;</span>
+    
+    <span class="n">ac</span> <span class="o">=</span> <span class="n">ACline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">IDline</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
+    
+    <span class="c1"># Extract FT lines and process PTM information</span>
+    <span class="c1">#</span>
+    <span class="c1"># Example of phosphorylation lines</span>
+    <span class="c1"># FT   MOD_RES         342</span>
+    <span class="c1"># FT                   /note=&quot;Phosphoserine&quot;</span>
+    <span class="c1"># FT                   /evidence=&quot;ECO:0000244|PubMed:18407956,</span>
+    <span class="c1"># FT                   ECO:0000244|PubMed:19779198&quot;</span>
+    
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">otherlines</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;FT   MOD_RES&#39;</span><span class="p">):</span>
+            <span class="n">FTcode</span><span class="p">,</span> <span class="n">MOD_RES</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            
+            <span class="n">nextline</span> <span class="o">=</span> <span class="n">otherlines</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">nextline</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/note=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+            <span class="n">PTMtype</span> <span class="o">=</span> <span class="n">PTMtype</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            
+            <span class="n">PTMs</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTMtype</span>
+        
+    <span class="c1"># Return dictionary of extracted information</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ac&#39;</span><span class="p">:</span> <span class="n">ac</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;PTMs&#39;</span><span class="p">:</span> <span class="n">PTMs</span><span class="p">}</span>
+
+<span class="n">all_prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">extract_info</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">]</span>
+
+<span class="n">PTM_counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">all_prots</span><span class="p">:</span>
+    <span class="n">PTMs</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;PTMs&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># just skip if no PTMs</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">PTMs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+        
+    <span class="k">for</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTMs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">ptmtype</span> <span class="ow">in</span> <span class="n">PTM_counts</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">PTM_counts</span><span class="p">[</span><span class="n">ptmtype</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="n">list_PTM_counts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">PTM_counts</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="c1"># sort function returning the second element of a pair of values</span>
+<span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ordered_PTM_counts</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_PTM_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Output of PTM information</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of protein records in &quot;</span><span class="si">{</span><span class="n">data_filename</span><span class="si">}</span><span class="s1">&quot; is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prots</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">PTMtype</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+
+
+<span class="c1"># Bar plot of PTM counts</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">ordered_PTM_counts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+
+<span class="n">bp</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">types</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">counts</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of protein records in &quot;uniprot_scerevisiae.txt&quot; is 6049
+Phosphoserine 5170
+Phosphothreonine 1027
+N-acetylserine 325
+N-acetylmethionine 106
+Phosphotyrosine 55
+N6-(pyridoxal phosphate)lysine 46
+N-acetylalanine 37
+N6-acetyllysine 32
+Asymmetric dimethylarginine 26
+Cysteine methyl ester 23
+N6-methyllysine 22
+N6,N6,N6-trimethyllysine 17
+Omega-N-methylarginine 15
+N-acetylthreonine 12
+N6-succinyllysine 11
+N6,N6-dimethyllysine 6
+N6-butyryllysine 5
+N6-biotinyllysine 5
+N6-carboxylysine 4
+Phosphohistidine 4
+N5-methylglutamine 4
+N,N-dimethylproline 4
+N6-lipoyllysine 4
+O-(pantetheine 4&#39;-phosphoryl)serine 3
+4-aspartylphosphate 3
+Lysine derivative 3
+Pyruvic acid (Ser) 3
+S-glutathionyl cysteine 3
+Hypusine 2
+Tele-8alpha-FAD histidine 2
+N6-malonyllysine 2
+N5-methylarginine 2
+N6-propionyllysine 2
+Leucine methyl ester 2
+3,4-dihydroxyproline 2
+N-acetylvaline 2
+N-formylmethionine 1
+Pros-8alpha-FAD histidine 1
+2,3-didehydroalanine (Cys) 1
+N6-glutaryllysine 1
+Diphthamide 1
+Pros-methylhistidine 1
+Cysteine sulfinic acid (-SO2H) 1
+S-(dipyrrolylmethanemethyl)cysteine 1
+N,N,N-trimethylglycine 1
+Lysine methyl ester 1
+Dimethylated arginine 1
+Thiazolidine linkage to a ring-opened DNA abasic 1
+1-thioglycine 1
+S-methylcysteine 1
+</pre></div>
+</div>
+<img alt="_images/fddb694b64bd2e96f57448bed81829d60fbe9903a1c0ffb33618dd8ff93d6daf.png" src="_images/fddb694b64bd2e96f57448bed81829d60fbe9903a1c0ffb33618dd8ff93d6daf.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sm_pandas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>pandas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sm_linreg.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Exemplo: regressão linear</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao">13.1. Introdução</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programa-completo">13.2. Programa completo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leitura-do-ficheiro-e-separacao-da-informacao-por-proteina">13.3. Leitura do ficheiro e separação da informação por proteína</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracao-da-informacao">13.4. Extração da informação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracao-da-informacao-ptms">13.5. Extração da informação: PTMs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interludio-atribuicoes-multiplas-com">13.6. Interlúdio: atribuições múltiplas com *</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contagem-dos-tipos-de-ptm">13.7. Contagem dos tipos de PTM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos">13.8. Gráficos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.9. Programa completo</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De António Ferreira
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

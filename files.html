@@ -1,0 +1,1753 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="pt-PT" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>7. Ficheiros de texto &#8212; Programação em Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'files';</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Pesquisar" href="search.html" />
+    <link rel="next" title="8. Exemplo: ficheiros UniProt txt" href="uniprot_txt.html" />
+    <link rel="prev" title="6. Exercícios de treino" href="problems.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt-PT"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/newlogo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/newlogo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Prefácio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">A linguagem Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basics.html">1. Conceitos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections_iterations.html">2. Coleções e iterações</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more_on_lists_dicts.html">3. Listas e dicionários</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">4. <em>Strings</em> e textos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcs_modules.html">5. Funções e módulos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems.html">6. Exercícios de treino</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Ficheiros de texto</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Textos estruturados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="uniprot_txt.html">8. Exemplo: ficheiros UniProt txt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Módulos científicos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sm_numpy_scipy.html">9. Os principais módulos “científicos”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_ph.html">10. Example: Simulation of the acid-base changes in an amino-acid solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems2.html">11. Exercícios de treino, 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_pandas.html">12. pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uniprot_csv.html">13. Exemplo: ficheiros CSV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_linreg.html">14. Exemplo: regressão linear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_sympy.html">15. Módulo <code class="docutils literal notranslate"><span class="pre">sympy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sm_algorithms.html">16. Algoritmos numéricos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_software.html">Instalação de software</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Baixe esta página">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/files.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Baixar arquivo fonte"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir em PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ficheiros de texto</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leitura">7.1. Leitura</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-com-open-e-close-explicitos">7.1.1. <code class="docutils literal notranslate"><span class="pre">.read()</span></code>, com <code class="docutils literal notranslate"><span class="pre">open()</span></code> e <code class="docutils literal notranslate"><span class="pre">close()</span></code> explícitos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-dentro-do-bloco-de-um-comando-with">7.1.2. <code class="docutils literal notranslate"><span class="pre">.read()</span></code>, dentro do bloco de um comando <code class="docutils literal notranslate"><span class="pre">with</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#readlines">7.1.3. <code class="docutils literal notranslate"><span class="pre">.readlines()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iteracao-de-ficheiros-com-for">7.1.4. Iteração de ficheiros com <code class="docutils literal notranslate"><span class="pre">for</span></code>.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-extracao-de-informacao-de-um-ficheiro-fasta-multiplo">7.2. Exemplo: Extração de informação de um ficheiro FASTA múltiplo.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escrita">7.3. Escrita</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcao-print-para-ficheiros">7.3.1. Função <code class="docutils literal notranslate"><span class="pre">print()</span></code> para ficheiros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcao-write">7.3.2. Função <code class="docutils literal notranslate"><span class="pre">.write()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-requests">7.4. Módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ficheiros-de-texto">
+<h1><span class="section-number">7. </span>Ficheiros de texto<a class="headerlink" href="#ficheiros-de-texto" title="Permalink to this heading">#</a></h1>
+<section id="leitura">
+<h2><span class="section-number">7.1. </span>Leitura<a class="headerlink" href="#leitura" title="Permalink to this heading">#</a></h2>
+<p>O modelo mais simples é ler todo o conteúdo de um ficheiro para uma
+<em>string</em>:</p>
+<p><img alt="" src="_images/fichs.png" /></p>
+<p>A leitura de um ficheiro segundo este modelo é feito através da função
+<code class="docutils literal notranslate"><span class="pre">.read()</span></code>.</p>
+<p>Mas o processo é um pouco mais complicado do que o uso simples de uma
+função.</p>
+<p>O acesso (programático) a um ficheiro existente num computador requer
+que num programa se indique que esse acesso vai começar, a <em>abertura</em> de
+um ficheiro e que o acesso vai terminar, o <em>fecho</em> de um ficheiro.</p>
+<section id="read-com-open-e-close-explicitos">
+<h3><span class="section-number">7.1.1. </span><code class="docutils literal notranslate"><span class="pre">.read()</span></code>, com <code class="docutils literal notranslate"><span class="pre">open()</span></code> e <code class="docutils literal notranslate"><span class="pre">close()</span></code> explícitos<a class="headerlink" href="#read-com-open-e-close-explicitos" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A sequência, em FASTA é&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
+A sequência, em FASTA é
+&gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
+MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGK
+GVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASR
+AAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTF
+AEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDG
+KIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFA
+EDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAA
+QDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL
+GDNAVFAGENFHHGDKL
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="read-dentro-do-bloco-de-um-comando-with">
+<h3><span class="section-number">7.1.2. </span><code class="docutils literal notranslate"><span class="pre">.read()</span></code>, dentro do bloco de um comando <code class="docutils literal notranslate"><span class="pre">with</span></code><a class="headerlink" href="#read-dentro-do-bloco-de-um-comando-with" title="Permalink to this heading">#</a></h3>
+<p>Numa versão mais “moderna” podemos abrir e <strong>automaticamente fechar</strong> o
+ficheiro é utilizar o comando <code class="docutils literal notranslate"><span class="pre">with</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A sequência, em FASTA é&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A sequência, em FASTA é
+&gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
+MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGK
+GVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASR
+AAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTF
+AEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDG
+KIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFA
+EDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAA
+QDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL
+GDNAVFAGENFHHGDKL
+</pre></div>
+</div>
+</div>
+</div>
+<p>O comando <code class="docutils literal notranslate"><span class="pre">with</span></code> faz o ficheiro permanecer <em>aberto</em> até ao fim do
+“bloco”, (também aqui) indicado pelo alinhamento mais à direita de um ou
+mais comandos a seguir à linha em que se encontra o <code class="docutils literal notranslate"><span class="pre">with</span></code>. Quando
+termina o bloco o ficheiro é fechado sem usar a função <code class="docutils literal notranslate"><span class="pre">close()</span></code>.</p>
+<p>Além de <code class="docutils literal notranslate"><span class="pre">read()</span></code>, em que todo o conteúdo de um ficheiro é lido para uma
+<em>string</em>, existem outras maneiras de ler um ficheiro.</p>
+</section>
+<section id="readlines">
+<h3><span class="section-number">7.1.3. </span><code class="docutils literal notranslate"><span class="pre">.readlines()</span></code><a class="headerlink" href="#readlines" title="Permalink to this heading">#</a></h3>
+<p>A função <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> lê e separa <strong>as linhas</strong> de um ficheiro para uma
+lista:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3\n&#39;, &#39;MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGK\n&#39;, &#39;GVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASR\n&#39;, &#39;AAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTF\n&#39;, &#39;AEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDG\n&#39;, &#39;KIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFA\n&#39;, &#39;EDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAA\n&#39;, &#39;QDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL\n&#39;, &#39;GDNAVFAGENFHHGDKL\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>O que são os <code class="docutils literal notranslate"><span class="pre">\n</span></code> no fim das <em>strings</em>?</p>
+<p><strong>Numa string,</strong> <code class="docutils literal notranslate"><span class="pre">\n</span></code> <strong>indica a mudança de linha</strong>. (Conta como apenas
+<strong>1</strong> caractere).</p>
+<p>Neste caso eles aparecem porque no ficheiro original há mudanças de
+linha.</p>
+<p>Muitas vezes, é necessário elimina-los. Para isso podemos usar a função
+<code class="docutils literal notranslate"><span class="pre">.strip()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="n">linha</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3&#39;, &#39;MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGK&#39;, &#39;GVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASR&#39;, &#39;AAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTF&#39;, &#39;AEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDG&#39;, &#39;KIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFA&#39;, &#39;EDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAA&#39;, &#39;QDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL&#39;, &#39;GDNAVFAGENFHHGDKL&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ou, de uma forma sucinta, usando uma lista em compreensão:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="n">linha</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3&#39;, &#39;MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGK&#39;, &#39;GVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASR&#39;, &#39;AAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTF&#39;, &#39;AEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDG&#39;, &#39;KIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFA&#39;, &#39;EDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAA&#39;, &#39;QDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL&#39;, &#39;GDNAVFAGENFHHGDKL&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Com ficheiros muito grandes, a leitura pelas funções <code class="docutils literal notranslate"><span class="pre">.read()</span></code> e
+<code class="docutils literal notranslate"><span class="pre">.readlines()</span></code> pode esgotar a memória de um computador e “congelar” um
+programa.</p>
+<p>Existe uma terceira maneira de ler um ficheiro (que não traz problemas
+com ficheiros grandes):</p>
+</section>
+<section id="iteracao-de-ficheiros-com-for">
+<h3><span class="section-number">7.1.4. </span>Iteração de ficheiros com <code class="docutils literal notranslate"><span class="pre">for</span></code>.<a class="headerlink" href="#iteracao-de-ficheiros-com-for" title="Permalink to this heading">#</a></h3>
+<p><strong>A iteração de um ficheiro “percorre” as linhas do ficheiro</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+        <span class="n">linha</span> <span class="o">=</span> <span class="n">linha</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Linha:&#39;</span><span class="p">,</span> <span class="n">linha</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linha: &gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
+Linha: MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGK
+Linha: GVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASR
+Linha: AAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTF
+Linha: AEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDG
+Linha: KIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFA
+Linha: EDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAA
+Linha: QDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL
+Linha: GDNAVFAGENFHHGDKL
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos até usar a função <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> com um ficheiro. São gerados os
+pares de valores</p>
+<p><code class="docutils literal notranslate"><span class="pre">(num</span> <span class="pre">linha,</span> <span class="pre">linha)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">linha</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="n">linha</span> <span class="o">=</span> <span class="n">linha</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;linha&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linha</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>linha 0 : &gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
+linha 1 : MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGK
+linha 2 : GVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASR
+linha 3 : AAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTF
+linha 4 : AEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDG
+linha 5 : KIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFA
+linha 6 : EDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAA
+linha 7 : QDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL
+linha 8 : GDNAVFAGENFHHGDKL
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Problema: ler uma ficheiro FASTA e separar o cabeçalho da sequência em
+duas strings (juntando toda a sequência numa só string)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">linhas</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
+
+<span class="n">header</span> <span class="o">=</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># usamos um slice de uma lista de 1 até ao fim</span>
+<span class="n">outras</span> <span class="o">=</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="c1"># e a funçao .join() com separador vazio para</span>
+<span class="c1"># juntá-las</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outras</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cabeçalho:&quot;</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sequência, com&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="s1">&#39;aminoácidos:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cabeçalho: &gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
+sequência, com 437 aminoácidos:
+MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEELGDNAVFAGENFHHGDKL
+</pre></div>
+</div>
+</div>
+</div>
+<p>Às vezes os ficheiros não têm cabeçalho! É melhor testar se a primeira
+linha começa por “&gt;” !</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eno1.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">linhas</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">):</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">linhas</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">linhas</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cabeçalho:&quot;</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sequência, com&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="s1">&#39;aminoácidos:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cabeçalho: &gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
+sequência, com 437 aminoácidos:
+MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEELGDNAVFAGENFHHGDKL
+</pre></div>
+</div>
+</div>
+</div>
+<p>As linhas em branco podem por vezes causar alguns problemas. Mas é fácil
+“ignora-las”.</p>
+<p>Vamos supor que o ficheiro <strong>gre3.txt</strong> tem o seguinte conteúdo:</p>
+<hr class="docutils" />
+<p>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIR
+KAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVP
+FEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDL
+LRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTL
+FENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQEL
+KDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Como separar o cabeçalho da sequência?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;gre3.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">linhas</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+
+<span class="n">linhas</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">linhas</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">):</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">linhas</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">linhas</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cabeçalho:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sequência, com&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="s1">&#39;aminoácidos:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cabeçalho:
+&gt;sp|P38715|GRE3_YEAST NADPH-dependent aldose reductase GRE3 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) GN=GRE3 PE=1 SV=1
+sequência, com 327 aminoácidos:
+MSSLVTLNNGLKMPLVGLGCWKIDKKVCANQIYEAIKLGYRLFDGACDYGNEKEVGEGIRKAISEGLVSRKDIFVVSKLWNNFHHPDHVKLALKKTLSDMGLDYLDLYYIHFPIAFKYVPFEEKYPPGFYTGADDEKKGHITEAHVPIIDTYRALEECVDEGLIKSIGVSNFQGSLIQDLLRGCRIKPVALQIEHHPYLTQEHLVEFCKLHDIQVVAYSSFGPQSFIEMDLQLAKTTPTLFENDVIKKVSQNHPGSTTSQVLLRWATQRGIAVIPKSSKKERLLGNLEIEKKFTLTEQELKDISALNANIRFNDPWTWLDGKFPTFA
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exemplo-extracao-de-informacao-de-um-ficheiro-fasta-multiplo">
+<h2><span class="section-number">7.2. </span>Exemplo: Extração de informação de um ficheiro FASTA múltiplo.<a class="headerlink" href="#exemplo-extracao-de-informacao-de-um-ficheiro-fasta-multiplo" title="Permalink to this heading">#</a></h2>
+<p><strong>Problema: extraír os cabeçalhos e as sequências de um ficheiro FASTA
+múltiplo. Mostrar o comprimento das proteínas e o número de triptofanos
+(W)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">tudo</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">prots</span> <span class="o">=</span> <span class="n">tudo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+745
+725
+726
+438
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">tudo</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">prots</span> <span class="o">=</span> <span class="n">tudo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
+<span class="n">prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">[:</span><span class="mi">30</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>745
+sp|P38090|AGP2_YEAST General a
+725
+sp|Q12001|ALG6_YEAST Dolichyl 
+726
+sp|P53309|AP18B_YEAST Clathrin
+438
+sp|P40467|ASG1_YEAST Activator
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">tudo</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">prots</span> <span class="o">=</span> <span class="n">tudo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
+<span class="n">prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">seqs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">:</span>
+    <span class="n">linhas</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)]</span>
+    <span class="n">headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">seqs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">linhas</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sp|P38090|AGP2_YEAST General amino acid permease AGP2 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=AGP2 PE=1 SV=1
+sp|Q12001|ALG6_YEAST Dolichyl pyrophosphate Man9GlcNAc2 alpha-1,3-glucosyltransferase OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ALG6 PE=1 SV=1
+sp|P53309|AP18B_YEAST Clathrin coat assembly protein AP180B OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=YAP1802 PE=1 SV=1
+sp|P40467|ASG1_YEAST Activator of stress genes 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ASG1 PE=1 SV=1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;proteins.fasta&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">tudo</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">prots</span> <span class="o">=</span> <span class="n">tudo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
+<span class="n">prots</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">seqs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prots</span><span class="p">:</span>
+    <span class="n">linhas</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)]</span>
+    <span class="n">headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">seqs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">linhas</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+
+<span class="n">ids</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+    <span class="n">separados</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+    <span class="n">ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">separados</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span>  <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">seqs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;tem&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="s1">&#39;aminoácidos,&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">),</span> <span class="s1">&#39;são triptofanos&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P38090 tem 596 aminoácidos, 11 são triptofanos
+Q12001 tem 544 aminoácidos, 16 são triptofanos
+P53309 tem 568 aminoácidos, 2 são triptofanos
+P40467 tem 300 aminoácidos, 1 são triptofanos
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="escrita">
+<h2><span class="section-number">7.3. </span>Escrita<a class="headerlink" href="#escrita" title="Permalink to this heading">#</a></h2>
+<section id="funcao-print-para-ficheiros">
+<h3><span class="section-number">7.3.1. </span>Função <code class="docutils literal notranslate"><span class="pre">print()</span></code> para ficheiros<a class="headerlink" href="#funcao-print-para-ficheiros" title="Permalink to this heading">#</a></h3>
+<p>Basta abrir o ficheiro em <em>modo de escrita</em> usando o argumento <code class="docutils literal notranslate"><span class="pre">w</span></code> na
+função <code class="docutils literal notranslate"><span class="pre">open()</span></code>. Depois, modificar a função <code class="docutils literal notranslate"><span class="pre">print()</span></code>, com o argumento
+<code class="docutils literal notranslate"><span class="pre">file</span></code>, indicando que o resultado da escrita deve ser <em>enviado</em> para o
+ficheiro.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1, 2, 3, experiência, som, som&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">**</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aparentemente não aconteceu nada, mas um ficheiro novo foi criado</p>
+<p>Vamos ler o ficheiro:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1, 2, 3, experiência, som, som
+0 0.0
+1 1.0
+2 1.4142135623730951
+3 1.7320508075688772
+4 2.0
+5 2.23606797749979
+6 2.449489742783178
+7 2.6457513110645907
+8 2.8284271247461903
+9 3.0
+10 3.1622776601683795
+11 3.3166247903554
+12 3.4641016151377544
+13 3.605551275463989
+14 3.7416573867739413
+15 3.872983346207417
+16 4.0
+17 4.123105625617661
+18 4.242640687119285
+19 4.358898943540674
+20 4.47213595499958
+21 4.58257569495584
+22 4.69041575982343
+23 4.795831523312719
+24 4.898979485566356
+25 5.0
+26 5.0990195135927845
+27 5.196152422706632
+28 5.291502622129181
+29 5.385164807134504
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="funcao-write">
+<h3><span class="section-number">7.3.2. </span>Função <code class="docutils literal notranslate"><span class="pre">.write()</span></code><a class="headerlink" href="#funcao-write" title="Permalink to this heading">#</a></h3>
+<p>Também existe a função <code class="docutils literal notranslate"><span class="pre">.write()</span></code> que funciona como o contrário de
+<code class="docutils literal notranslate"><span class="pre">.read()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tudo</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Um texto que ocupa</span>
+<span class="s2">1 linha</span>
+<span class="s2">2 linhas</span>
+<span class="s2">3 linhas</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp2.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tudo</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp2.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Um texto que ocupa
+1 linha
+2 linhas
+3 linhas
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Problema: ler uma ficheiro com dados numéricos e converter o ponto
+decimal em vírgula decimal</strong></p>
+<p>No ficheiro <code class="docutils literal notranslate"><span class="pre">exp.txt</span></code>, recentemente criado, podemos, de uma form
+sucinta, passar os <code class="docutils literal notranslate"><span class="pre">.</span></code> a <code class="docutils literal notranslate"><span class="pre">,</span></code> ?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">tudo</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tudo</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exp.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1, 2, 3, experiência, som, som
+0 0,0
+1 1,0
+2 1,4142135623730951
+3 1,7320508075688772
+4 2,0
+5 2,23606797749979
+6 2,449489742783178
+7 2,6457513110645907
+8 2,8284271247461903
+9 3,0
+10 3,1622776601683795
+11 3,3166247903554
+12 3,4641016151377544
+13 3,605551275463989
+14 3,7416573867739413
+15 3,872983346207417
+16 4,0
+17 4,123105625617661
+18 4,242640687119285
+19 4,358898943540674
+20 4,47213595499958
+21 4,58257569495584
+22 4,69041575982343
+23 4,795831523312719
+24 4,898979485566356
+25 5,0
+26 5,0990195135927845
+27 5,196152422706632
+28 5,291502622129181
+29 5,385164807134504
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="modulo-requests">
+<h2><span class="section-number">7.4. </span>Módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code><a class="headerlink" href="#modulo-requests" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.uniprot.org/uniprot/?query=proteome:UP000002407</span><span class="si">%20r</span><span class="s1">eviewed:yes&amp;format=list&#39;</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&quot;url&quot;:&quot;http://rest.uniprot.org/uniprotkb/query=proteome:UP000002407%20reviewed:yes&amp;amp;format=list&quot;,&quot;messages&quot;:[&quot;The &#39;accession&#39; value has invalid format. It should be a valid UniProtKB accession&quot;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.uniprot.org/uniprot/P00924.fasta&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
+MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGK
+GVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASR
+AAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTF
+AEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDG
+KIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFA
+EDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAA
+QDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEEL
+GDNAVFAGENFHHGDKL
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.uniprot.org/uniprot/P00924.fasta&#39;</span><span class="p">)</span>
+<span class="n">linhas</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">):</span>
+    <span class="n">cab</span> <span class="o">=</span> <span class="n">linhas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">linhas</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">cab</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">linhas</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cabeçalho: &quot;</span><span class="p">,</span> <span class="n">cab</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sequência:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cabeçalho:  &gt;sp|P00924|ENO1_YEAST Enolase 1 OS=Saccharomyces cerevisiae (strain ATCC 204508 / S288c) OX=559292 GN=ENO1 PE=1 SV=3
+sequência:
+MAVSKVYARSVYDSRGNPTVEVELTTEKGVFRSIVPSGASTGVHEALEMRDGDKSKWMGKGVLHAVKNVNDVIAPAFVKANIDVKDQKAVDDFLISLDGTANKSKLGANAILGVSLAASRAAAAEKNVPLYKHLADLSKSKTSPYVLPVPFLNVLNGGSHAGGALALQEFMIAPTGAKTFAEALRIGSEVYHNLKSLTKKRYGASAGNVGDEGGVAPNIQTAEEALDLIVDAIKAAGHDGKIKIGLDCASSEFFKDGKYDLDFKNPNSDKSKWLTGPQLADLYHSLMKRYPIVSIEDPFAEDDWEAWSHFFKTAGIQIVADDLTVTNPKRIATAIEKKAADALLLKVNQIGTLSESIKAAQDSFAAGWGVMVSHRSGETEDTFIADLVVGLRTGQIKTGAPARSERLAKLNQLLRIEEELGDNAVFAGENFHHGDKL
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.uniprot.org/uniprot/P00924.txt&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ID   ENO1_YEAST              Reviewed;         437 AA.
+AC   P00924; D6VV34; P99013;
+DT   21-JUL-1986, integrated into UniProtKB/Swiss-Prot.
+DT   05-OCT-2010, sequence version 3.
+DT   22-FEB-2023, entry version 235.
+DE   RecName: Full=Enolase 1;
+DE            EC=4.2.1.11;
+DE   AltName: Full=2-phospho-D-glycerate hydro-lyase 1;
+DE   AltName: Full=2-phosphoglycerate dehydratase 1;
+GN   Name=ENO1; Synonyms=ENOA, HSP48; OrderedLocusNames=YGR254W;
+GN   ORFNames=G9160;
+OS   Saccharomyces cerevisiae (strain ATCC 204508 / S288c) (Baker&#39;s yeast).
+OC   Eukaryota; Fungi; Dikarya; Ascomycota; Saccharomycotina; Saccharomycetes;
+OC   Saccharomycetales; Saccharomycetaceae; Saccharomyces.
+OX   NCBI_TaxID=559292;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+RX   PubMed=6256394; DOI=10.1016/s0021-9258(19)69976-x;
+RA   Holland M.J., Holland J.P., Thill G.P., Jackson K.A.;
+RT   &quot;The primary structures of two yeast enolase genes. Homology between the 5&#39;
+RT   noncoding flanking regions of yeast enolase and glyceraldehyde-3-phosphate
+RT   dehydrogenase genes.&quot;;
+RL   J. Biol. Chem. 256:1385-1395(1981).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+RC   STRAIN=ATCC 204508 / S288c;
+RX   PubMed=9133741;
+RX   DOI=10.1002/(sici)1097-0061(19970330)13:4&lt;369::aid-yea81&gt;3.0.co;2-v;
+RA   Mazzoni C., Ruzzi M., Rinaldi T., Solinas F., Montebove F., Frontali L.;
+RT   &quot;Sequence analysis of a 10.5 kb DNA fragment from the yeast chromosome VII
+RT   reveals the presence of three new open reading frames and of a tRNAThr
+RT   gene.&quot;;
+RL   Yeast 13:369-372(1997).
+RN   [3]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RC   STRAIN=ATCC 204508 / S288c;
+RX   PubMed=9169869;
+RA   Tettelin H., Agostoni-Carbone M.L., Albermann K., Albers M., Arroyo J.,
+RA   Backes U., Barreiros T., Bertani I., Bjourson A.J., Brueckner M.,
+RA   Bruschi C.V., Carignani G., Castagnoli L., Cerdan E., Clemente M.L.,
+RA   Coblenz A., Coglievina M., Coissac E., Defoor E., Del Bino S., Delius H.,
+RA   Delneri D., de Wergifosse P., Dujon B., Durand P., Entian K.-D., Eraso P.,
+RA   Escribano V., Fabiani L., Fartmann B., Feroli F., Feuermann M.,
+RA   Frontali L., Garcia-Gonzalez M., Garcia-Saez M.I., Goffeau A.,
+RA   Guerreiro P., Hani J., Hansen M., Hebling U., Hernandez K., Heumann K.,
+RA   Hilger F., Hofmann B., Indge K.J., James C.M., Klima R., Koetter P.,
+RA   Kramer B., Kramer W., Lauquin G., Leuther H., Louis E.J., Maillier E.,
+RA   Marconi A., Martegani E., Mazon M.J., Mazzoni C., McReynolds A.D.K.,
+RA   Melchioretto P., Mewes H.-W., Minenkova O., Mueller-Auer S., Nawrocki A.,
+RA   Netter P., Neu R., Nombela C., Oliver S.G., Panzeri L., Paoluzi S.,
+RA   Plevani P., Portetelle D., Portillo F., Potier S., Purnelle B., Rieger M.,
+RA   Riles L., Rinaldi T., Robben J., Rodrigues-Pousada C.,
+RA   Rodriguez-Belmonte E., Rodriguez-Torres A.M., Rose M., Ruzzi M.,
+RA   Saliola M., Sanchez-Perez M., Schaefer B., Schaefer M., Scharfe M.,
+RA   Schmidheini T., Schreer A., Skala J., Souciet J.-L., Steensma H.Y.,
+RA   Talla E., Thierry A., Vandenbol M., van der Aart Q.J.M., Van Dyck L.,
+RA   Vanoni M., Verhasselt P., Voet M., Volckaert G., Wambutt R., Watson M.D.,
+RA   Weber N., Wedler E., Wedler H., Wipfli P., Wolf K., Wright L.F.,
+RA   Zaccaria P., Zimmermann M., Zollner A., Kleine K.;
+RT   &quot;The nucleotide sequence of Saccharomyces cerevisiae chromosome VII.&quot;;
+RL   Nature 387:81-84(1997).
+RN   [4]
+RP   GENOME REANNOTATION.
+RC   STRAIN=ATCC 204508 / S288c;
+RX   PubMed=24374639; DOI=10.1534/g3.113.008995;
+RA   Engel S.R., Dietrich F.S., Fisk D.G., Binkley G., Balakrishnan R.,
+RA   Costanzo M.C., Dwight S.S., Hitz B.C., Karra K., Nash R.S., Weng S.,
+RA   Wong E.D., Lloyd P., Skrzypek M.S., Miyasato S.R., Simison M., Cherry J.M.;
+RT   &quot;The reference genome sequence of Saccharomyces cerevisiae: Then and now.&quot;;
+RL   G3 (Bethesda) 4:389-398(2014).
+RN   [5]
+RP   PROTEIN SEQUENCE OF 2-437.
+RX   PubMed=7005235; DOI=10.1016/s0021-9258(19)69975-8;
+RA   Chin C.C.Q., Brewer J.M., Wold F.;
+RT   &quot;The amino acid sequence of yeast enolase.&quot;;
+RL   J. Biol. Chem. 256:1377-1384(1981).
+RN   [6]
+RP   PROTEIN SEQUENCE OF 2-12.
+RC   STRAIN=ATCC 26786 / X2180-1A;
+RA   Sanchez J.-C., Golaz O., Schaller D., Morch F., Frutiger S., Hughes G.J.,
+RA   Appel R.D., Deshusses J., Hochstrasser D.F.;
+RL   Submitted (AUG-1995) to UniProtKB.
+RN   [7]
+RP   PROTEIN SEQUENCE OF 30-47.
+RC   STRAIN=ATCC 204508 / S288c;
+RX   PubMed=7895733; DOI=10.1002/elps.11501501210;
+RA   Garrels J.I., Futcher B., Kobayashi R., Latter G.I., Schwender B.,
+RA   Volpe T., Warner J.R., McLaughlin C.S.;
+RT   &quot;Protein identifications for a Saccharomyces cerevisiae protein database.&quot;;
+RL   Electrophoresis 15:1466-1486(1994).
+RN   [8]
+RP   PROTEIN SEQUENCE OF 69-79.
+RC   STRAIN=ATCC 38531 / Y41;
+RX   PubMed=7737086; DOI=10.1002/elps.1150160124;
+RA   Norbeck J., Blomberg A.;
+RT   &quot;Gene linkage of two-dimensional polyacrylamide gel electrophoresis
+RT   resolved proteins from isogene families in Saccharomyces cerevisiae by
+RT   microsequencing of in-gel trypsin generated peptides.&quot;;
+RL   Electrophoresis 16:149-156(1995).
+RN   [9]
+RP   MUTAGENESIS OF LYS-346, AND ACTIVE SITE.
+RX   PubMed=8634301; DOI=10.1021/bi952186y;
+RA   Poyner R.R., Laughlin L.T., Sowa G.A., Reed G.H.;
+RT   &quot;Toward identification of acid/base catalysts in the active site of
+RT   enolase: comparison of the properties of K345A, E168Q, and E211Q
+RT   variants.&quot;;
+RL   Biochemistry 35:1692-1699(1996).
+RN   [10]
+RP   MUTAGENESIS OF HIS-160.
+RX   PubMed=11027610; DOI=10.1006/bbrc.2000.3618;
+RA   Brewer J.M., Holland M.J., Lebioda L.;
+RT   &quot;The H159A mutant of yeast enolase 1 has significant activity.&quot;;
+RL   Biochem. Biophys. Res. Commun. 276:1199-1202(2000).
+RN   [11]
+RP   SUBCELLULAR LOCATION.
+RX   PubMed=11502169; DOI=10.1021/bi010277r;
+RA   Grandier-Vazeille X., Bathany K., Chaignepain S., Camougrand N., Manon S.,
+RA   Schmitter J.-M.;
+RT   &quot;Yeast mitochondrial dehydrogenases are associated in a supramolecular
+RT   complex.&quot;;
+RL   Biochemistry 40:9758-9769(2001).
+RN   [12]
+RP   MUTAGENESIS OF HIS-160 AND ASN-208.
+RX   PubMed=13678299; DOI=10.1023/a:1025390123761;
+RA   Brewer J.M., Glover C.V., Holland M.J., Lebioda L.;
+RT   &quot;Enzymatic function of loop movement in enolase: preparation and some
+RT   properties of H159N, H159A, H159F, and N207A enolases.&quot;;
+RL   J. Protein Chem. 22:353-361(2003).
+RN   [13]
+RP   LEVEL OF PROTEIN EXPRESSION [LARGE SCALE ANALYSIS].
+RX   PubMed=14562106; DOI=10.1038/nature02046;
+RA   Ghaemmaghami S., Huh W.-K., Bower K., Howson R.W., Belle A., Dephoure N.,
+RA   O&#39;Shea E.K., Weissman J.S.;
+RT   &quot;Global analysis of protein expression in yeast.&quot;;
+RL   Nature 425:737-741(2003).
+RN   [14]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-119, AND IDENTIFICATION BY
+RP   MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=17287358; DOI=10.1073/pnas.0607084104;
+RA   Chi A., Huttenhower C., Geer L.Y., Coon J.J., Syka J.E.P., Bai D.L.,
+RA   Shabanowitz J., Burke D.J., Troyanskaya O.G., Hunt D.F.;
+RT   &quot;Analysis of phosphorylation sites on proteins from Saccharomyces
+RT   cerevisiae by electron transfer dissociation (ETD) mass spectrometry.&quot;;
+RL   Proc. Natl. Acad. Sci. U.S.A. 104:2193-2198(2007).
+RN   [15]
+RP   UBIQUITINATION [LARGE SCALE ANALYSIS] AT LYS-358, AND IDENTIFICATION BY
+RP   MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=22106047; DOI=10.1002/pmic.201100166;
+RA   Starita L.M., Lo R.S., Eng J.K., von Haller P.D., Fields S.;
+RT   &quot;Sites of ubiquitin attachment in Saccharomyces cerevisiae.&quot;;
+RL   Proteomics 12:236-240(2012).
+RN   [16]
+RP   X-RAY CRYSTALLOGRAPHY (2.25 ANGSTROMS).
+RX   PubMed=3374614; DOI=10.1038/333683a0;
+RA   Lebioda L., Stec B.;
+RT   &quot;Crystal structure of enolase indicates that enolase and pyruvate kinase
+RT   evolved from a common ancestor.&quot;;
+RL   Nature 333:683-686(1988).
+RN   [17]
+RP   X-RAY CRYSTALLOGRAPHY (2.25 ANGSTROMS).
+RX   PubMed=2645275; DOI=10.2210/pdb2enl/pdb;
+RA   Lebioda L., Stec B., Brewer J.M.;
+RT   &quot;The structure of yeast enolase at 2.25-A resolution. An 8-fold beta +
+RT   alpha-barrel with a novel beta beta alpha alpha (beta alpha)6 topology.&quot;;
+RL   J. Biol. Chem. 264:3685-3693(1989).
+RN   [18]
+RP   X-RAY CRYSTALLOGRAPHY (2.25 ANGSTROMS).
+RX   PubMed=2405163; DOI=10.1016/0022-2836(90)90023-f;
+RA   Stec B., Lebioda L.;
+RT   &quot;Refined structure of yeast apo-enolase at 2.25-A resolution.&quot;;
+RL   J. Mol. Biol. 211:235-248(1990).
+RN   [19]
+RP   X-RAY CRYSTALLOGRAPHY (1.8 ANGSTROMS) IN COMPLEX WITH SUBSTRATE AND
+RP   MAGNESIUM IONS, AND COFACTOR.
+RX   PubMed=8605183; DOI=10.1021/bi952859c;
+RA   Larsen T.M., Wedekind J.E., Rayment I., Reed G.H.;
+RT   &quot;A carboxylate oxygen of the substrate bridges the magnesium ions at the
+RT   active site of enolase: structure of the yeast enzyme complexed with the
+RT   equilibrium mixture of 2-phosphoglycerate and phosphoenolpyruvate at 1.8-A
+RT   resolution.&quot;;
+RL   Biochemistry 35:4349-4358(1996).
+RN   [20]
+RP   X-RAY CRYSTALLOGRAPHY (2.0 ANGSTROMS) IN COMPLEX WITH SUBSTRATE.
+RX   PubMed=9376357; DOI=10.1021/bi9712450;
+RA   Zhang E., Brewer J.M., Minor W., Carreira L.A., Lebioda L.;
+RT   &quot;Mechanism of enolase: the crystal structure of asymmetric dimer enolase-2-
+RT   phospho-D-glycerate/enolase-phosphoenolpyruvate at 2.0-A resolution.&quot;;
+RL   Biochemistry 36:12526-12534(1997).
+RN   [21]
+RP   X-RAY CRYSTALLOGRAPHY (2.1 ANGSTROMS) OF MUTANT ALA-40 IN COMPLEX WITH
+RP   MAGNESIUM IONS AND SUBSTRATE ANALOG.
+RX   PubMed=12054465; DOI=10.1016/s0003-9861(02)00024-3;
+RA   Poyner R.R., Larsen T.M., Wong S.-W., Reed G.H.;
+RT   &quot;Functional and structural changes due to a serine to alanine mutation in
+RT   the active-site flap of enolase.&quot;;
+RL   Arch. Biochem. Biophys. 401:155-163(2002).
+RN   [22]
+RP   X-RAY CRYSTALLOGRAPHY (1.8 ANGSTROMS) OF MUTANT GLN-212 AND MUTANT GLN-169,
+RP   MUTAGENESIS OF GLU-212 AND LYS-346, AND ACTIVE SITE.
+RX   PubMed=12846578; DOI=10.1021/bi0346345;
+RA   Sims P.A., Larsen T.M., Poyner R.R., Cleland W.W., Reed G.H.;
+RT   &quot;Reverse protonation is the key to general acid-base catalysis in
+RT   enolase.&quot;;
+RL   Biochemistry 42:8298-8306(2003).
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=(2R)-2-phosphoglycerate = H2O + phosphoenolpyruvate;
+CC         Xref=Rhea:RHEA:10164, ChEBI:CHEBI:15377, ChEBI:CHEBI:58289,
+CC         ChEBI:CHEBI:58702; EC=4.2.1.11;
+CC   -!- COFACTOR:
+CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;
+CC         Evidence={ECO:0000269|PubMed:8605183};
+CC       Note=Mg(2+) is required for catalysis and for stabilizing the dimer.
+CC       {ECO:0000269|PubMed:8605183};
+CC   -!- PATHWAY: Carbohydrate degradation; glycolysis; pyruvate from D-
+CC       glyceraldehyde 3-phosphate: step 4/5.
+CC   -!- SUBUNIT: Homodimer. {ECO:0000269|PubMed:12054465,
+CC       ECO:0000269|PubMed:8605183, ECO:0000269|PubMed:9376357}.
+CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000269|PubMed:11502169}.
+CC   -!- MISCELLANEOUS: Present with 76700 molecules/cell in log phase SD
+CC       medium. {ECO:0000269|PubMed:14562106}.
+CC   -!- SIMILARITY: Belongs to the enolase family. {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; J01322; AAA88712.1; -; Genomic_DNA.
+DR   EMBL; X99228; CAA67616.1; -; Genomic_DNA.
+DR   EMBL; Z73039; CAA97283.1; -; Genomic_DNA.
+DR   EMBL; BK006941; DAA08345.1; -; Genomic_DNA.
+DR   PIR; S64586; NOBY.
+DR   RefSeq; NP_011770.3; NM_001181383.3.
+DR   PDB; 1EBG; X-ray; 2.10 A; A/B=2-437.
+DR   PDB; 1EBH; X-ray; 1.90 A; A/B=2-437.
+DR   PDB; 1ELS; X-ray; 2.40 A; A=2-437.
+DR   PDB; 1L8P; X-ray; 2.10 A; A/B/C/D=2-437.
+DR   PDB; 1NEL; X-ray; 2.60 A; A=2-437.
+DR   PDB; 1ONE; X-ray; 1.80 A; A/B=2-437.
+DR   PDB; 1P43; X-ray; 1.80 A; A/B=2-437.
+DR   PDB; 1P48; X-ray; 2.00 A; A/B=2-437.
+DR   PDB; 2AL1; X-ray; 1.50 A; A/B=2-437.
+DR   PDB; 2AL2; X-ray; 1.85 A; A/B=2-437.
+DR   PDB; 2ONE; X-ray; 2.00 A; A/B=2-437.
+DR   PDB; 2XGZ; X-ray; 1.80 A; A/B=2-437.
+DR   PDB; 2XH0; X-ray; 1.70 A; A/B/C/D=2-437.
+DR   PDB; 2XH2; X-ray; 1.80 A; A/B/C/D=2-437.
+DR   PDB; 2XH4; X-ray; 1.70 A; A/B/C/D=2-437.
+DR   PDB; 2XH7; X-ray; 1.80 A; A/B=2-437.
+DR   PDB; 3ENL; X-ray; 2.25 A; A=2-437.
+DR   PDB; 4ENL; X-ray; 1.90 A; A=2-437.
+DR   PDB; 5ENL; X-ray; 2.20 A; A=2-437.
+DR   PDB; 6ENL; X-ray; 2.20 A; A=2-437.
+DR   PDB; 7ENL; X-ray; 2.20 A; A=2-437.
+DR   PDBsum; 1EBG; -.
+DR   PDBsum; 1EBH; -.
+DR   PDBsum; 1ELS; -.
+DR   PDBsum; 1L8P; -.
+DR   PDBsum; 1NEL; -.
+DR   PDBsum; 1ONE; -.
+DR   PDBsum; 1P43; -.
+DR   PDBsum; 1P48; -.
+DR   PDBsum; 2AL1; -.
+DR   PDBsum; 2AL2; -.
+DR   PDBsum; 2ONE; -.
+DR   PDBsum; 2XGZ; -.
+DR   PDBsum; 2XH0; -.
+DR   PDBsum; 2XH2; -.
+DR   PDBsum; 2XH4; -.
+DR   PDBsum; 2XH7; -.
+DR   PDBsum; 3ENL; -.
+DR   PDBsum; 4ENL; -.
+DR   PDBsum; 5ENL; -.
+DR   PDBsum; 6ENL; -.
+DR   PDBsum; 7ENL; -.
+DR   AlphaFoldDB; P00924; -.
+DR   SMR; P00924; -.
+DR   BioGRID; 33505; 166.
+DR   DIP; DIP-5561N; -.
+DR   IntAct; P00924; 82.
+DR   MINT; P00924; -.
+DR   STRING; 4932.YGR254W; -.
+DR   Allergome; 786; Sac c Enolase.
+DR   MoonDB; P00924; Curated.
+DR   MoonProt; P00924; -.
+DR   CarbonylDB; P00924; -.
+DR   iPTMnet; P00924; -.
+DR   MetOSite; P00924; -.
+DR   COMPLUYEAST-2DPAGE; P00924; -.
+DR   SWISS-2DPAGE; P00924; -.
+DR   UCD-2DPAGE; P00924; -.
+DR   MaxQB; P00924; -.
+DR   PaxDb; P00924; -.
+DR   PeptideAtlas; P00924; -.
+DR   TopDownProteomics; P00924; -.
+DR   EnsemblFungi; YGR254W_mRNA; YGR254W; YGR254W.
+DR   GeneID; 853169; -.
+DR   KEGG; sce:YGR254W; -.
+DR   AGR; SGD:S000003486; -.
+DR   SGD; S000003486; ENO1.
+DR   VEuPathDB; FungiDB:YGR254W; -.
+DR   eggNOG; KOG2670; Eukaryota.
+DR   GeneTree; ENSGT00950000182805; -.
+DR   HOGENOM; CLU_031223_0_0_1; -.
+DR   InParanoid; P00924; -.
+DR   OMA; EFMIIPV; -.
+DR   OrthoDB; 1093250at2759; -.
+DR   BioCyc; YEAST:YGR254W-MON; -.
+DR   BRENDA; 4.2.1.11; 984.
+DR   Reactome; R-SCE-70171; Glycolysis.
+DR   Reactome; R-SCE-70263; Gluconeogenesis.
+DR   SABIO-RK; P00924; -.
+DR   UniPathway; UPA00109; UER00187.
+DR   BioGRID-ORCS; 853169; 6 hits in 10 CRISPR screens.
+DR   EvolutionaryTrace; P00924; -.
+DR   PRO; PR:P00924; -.
+DR   Proteomes; UP000002311; Chromosome VII.
+DR   RNAct; P00924; protein.
+DR   GO; GO:0005737; C:cytoplasm; HDA:SGD.
+DR   GO; GO:0005829; C:cytosol; HDA:SGD.
+DR   GO; GO:0000324; C:fungal-type vacuole; IDA:SGD.
+DR   GO; GO:0005739; C:mitochondrion; IDA:SGD.
+DR   GO; GO:0000015; C:phosphopyruvate hydratase complex; IDA:SGD.
+DR   GO; GO:0005886; C:plasma membrane; HDA:SGD.
+DR   GO; GO:0000287; F:magnesium ion binding; IEA:InterPro.
+DR   GO; GO:1904408; F:melatonin binding; IDA:SGD.
+DR   GO; GO:0004634; F:phosphopyruvate hydratase activity; IMP:SGD.
+DR   GO; GO:0006096; P:glycolytic process; IMP:SGD.
+DR   GO; GO:0032889; P:regulation of vacuole fusion, non-autophagic; IDA:SGD.
+DR   CDD; cd03313; enolase; 1.
+DR   Gene3D; 3.20.20.120; Enolase-like C-terminal domain; 1.
+DR   Gene3D; 3.30.390.10; Enolase-like, N-terminal domain; 1.
+DR   HAMAP; MF_00318; Enolase; 1.
+DR   InterPro; IPR000941; Enolase.
+DR   InterPro; IPR036849; Enolase-like_C_sf.
+DR   InterPro; IPR029017; Enolase-like_N.
+DR   InterPro; IPR020810; Enolase_C.
+DR   InterPro; IPR020809; Enolase_CS.
+DR   InterPro; IPR020811; Enolase_N.
+DR   PANTHER; PTHR11902; ENOLASE; 1.
+DR   PANTHER; PTHR11902:SF1; ENOLASE; 1.
+DR   Pfam; PF00113; Enolase_C; 1.
+DR   Pfam; PF03952; Enolase_N; 1.
+DR   PIRSF; PIRSF001400; Enolase; 1.
+DR   PRINTS; PR00148; ENOLASE.
+DR   SFLD; SFLDS00001; Enolase; 1.
+DR   SFLD; SFLDF00002; enolase; 1.
+DR   SMART; SM01192; Enolase_C; 1.
+DR   SMART; SM01193; Enolase_N; 1.
+DR   SUPFAM; SSF51604; Enolase C-terminal domain-like; 1.
+DR   SUPFAM; SSF54826; Enolase N-terminal domain-like; 1.
+DR   TIGRFAMs; TIGR01060; eno; 1.
+DR   PROSITE; PS00164; ENOLASE; 1.
+PE   1: Evidence at protein level;
+KW   3D-structure; Cytoplasm; Direct protein sequencing; Glycolysis;
+KW   Isopeptide bond; Lyase; Magnesium; Metal-binding; Phosphoprotein;
+KW   Reference proteome; Ubl conjugation.
+FT   INIT_MET        1
+FT                   /note=&quot;Removed&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:7005235, ECO:0000269|Ref.6&quot;
+FT   CHAIN           2..437
+FT                   /note=&quot;Enolase 1&quot;
+FT                   /id=&quot;PRO_0000134062&quot;
+FT   ACT_SITE        212
+FT                   /note=&quot;Proton donor&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:12846578&quot;
+FT   ACT_SITE        346
+FT                   /note=&quot;Proton acceptor&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:12846578,
+FT                   ECO:0000269|PubMed:8634301&quot;
+FT   BINDING         160
+FT                   /ligand=&quot;substrate&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:8605183,
+FT                   ECO:0000269|PubMed:9376357&quot;
+FT   BINDING         169
+FT                   /ligand=&quot;substrate&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:8605183,
+FT                   ECO:0000269|PubMed:9376357&quot;
+FT   BINDING         247
+FT                   /ligand=&quot;Mg(2+)&quot;
+FT                   /ligand_id=&quot;ChEBI:CHEBI:18420&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:8605183&quot;
+FT   BINDING         296
+FT                   /ligand=&quot;Mg(2+)&quot;
+FT                   /ligand_id=&quot;ChEBI:CHEBI:18420&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:8605183&quot;
+FT   BINDING         296
+FT                   /ligand=&quot;substrate&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:8605183,
+FT                   ECO:0000269|PubMed:9376357&quot;
+FT   BINDING         321
+FT                   /ligand=&quot;Mg(2+)&quot;
+FT                   /ligand_id=&quot;ChEBI:CHEBI:18420&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:8605183&quot;
+FT   BINDING         321
+FT                   /ligand=&quot;substrate&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:8605183,
+FT                   ECO:0000269|PubMed:9376357&quot;
+FT   BINDING         373..376
+FT                   /ligand=&quot;substrate&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:12054465,
+FT                   ECO:0000269|PubMed:8605183, ECO:0000269|PubMed:9376357&quot;
+FT   BINDING         397
+FT                   /ligand=&quot;substrate&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:8605183,
+FT                   ECO:0000269|PubMed:9376357&quot;
+FT   MOD_RES         119
+FT                   /note=&quot;Phosphoserine&quot;
+FT                   /evidence=&quot;ECO:0007744|PubMed:17287358&quot;
+FT   MOD_RES         138
+FT                   /note=&quot;Phosphoserine&quot;
+FT                   /evidence=&quot;ECO:0000250|UniProtKB:P00925&quot;
+FT   MOD_RES         188
+FT                   /note=&quot;Phosphoserine&quot;
+FT                   /evidence=&quot;ECO:0000250|UniProtKB:P00925&quot;
+FT   MOD_RES         313
+FT                   /note=&quot;Phosphothreonine&quot;
+FT                   /evidence=&quot;ECO:0000250|UniProtKB:P00925&quot;
+FT   MOD_RES         324
+FT                   /note=&quot;Phosphothreonine&quot;
+FT                   /evidence=&quot;ECO:0000250|UniProtKB:P00925&quot;
+FT   CROSSLNK        60
+FT                   /note=&quot;Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in ubiquitin)&quot;
+FT                   /evidence=&quot;ECO:0000250|UniProtKB:P00925&quot;
+FT   CROSSLNK        243
+FT                   /note=&quot;Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in ubiquitin)&quot;
+FT                   /evidence=&quot;ECO:0000250|UniProtKB:P00925&quot;
+FT   CROSSLNK        358
+FT                   /note=&quot;Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in ubiquitin)&quot;
+FT                   /evidence=&quot;ECO:0007744|PubMed:22106047&quot;
+FT   MUTAGEN         40
+FT                   /note=&quot;S-&gt;A: Reduces activity by 99.9%.&quot;
+FT   MUTAGEN         160
+FT                   /note=&quot;H-&gt;A,F,N: Reduces activity by 99%.&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:11027610,
+FT                   ECO:0000269|PubMed:13678299&quot;
+FT   MUTAGEN         169
+FT                   /note=&quot;E-&gt;Q: Reduces kcat over 100000-fold.&quot;
+FT   MUTAGEN         208
+FT                   /note=&quot;N-&gt;A: Reduces activity by 44%.&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:13678299&quot;
+FT   MUTAGEN         212
+FT                   /note=&quot;E-&gt;Q: Reduces kcat over 100000-fold.&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:12846578&quot;
+FT   MUTAGEN         346
+FT                   /note=&quot;K-&gt;A: Reduces kcat over 100000-fold. Abolishes of
+FT                   the proton exchange reaction that initiates the enzymatic
+FT                   reaction.&quot;
+FT                   /evidence=&quot;ECO:0000269|PubMed:12846578,
+FT                   ECO:0000269|PubMed:8634301&quot;
+FT   CONFLICT        242
+FT                   /note=&quot;I -&gt; V (in Ref. 1; AAA88712)&quot;
+FT                   /evidence=&quot;ECO:0000305&quot;
+FT   STRAND          5..12
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          18..26
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          29..34
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          43..45
+FT                   /evidence=&quot;ECO:0007829|PDB:1EBH&quot;
+FT   HELIX           57..59
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           63..71
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           73..80
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           87..98
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          100..102
+FT                   /evidence=&quot;ECO:0007829|PDB:1EBH&quot;
+FT   TURN            104..106
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           108..125
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           130..138
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          145..147
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          152..156
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           158..160
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          161..164
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          169..173
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           180..202
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           204..207
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          213..215
+FT                   /evidence=&quot;ECO:0007829|PDB:1P48&quot;
+FT   HELIX           222..236
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   TURN            239..241
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          243..247
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           250..253
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   TURN            261..264
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           270..272
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           276..289
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          292..296
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           304..311
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   TURN            312..314
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL2&quot;
+FT   STRAND          316..321
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   TURN            322..326
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           328..336
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          341..345
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           347..350
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           353..365
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          369..373
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           383..390
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          394..397
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           404..420
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           421..423
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   STRAND          424..426
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           428..430
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+FT   HELIX           434..436
+FT                   /evidence=&quot;ECO:0007829|PDB:2AL1&quot;
+SQ   SEQUENCE   437 AA;  46816 MW;  69F45214DBD375BE CRC64;
+     MAVSKVYARS VYDSRGNPTV EVELTTEKGV FRSIVPSGAS TGVHEALEMR DGDKSKWMGK
+     GVLHAVKNVN DVIAPAFVKA NIDVKDQKAV DDFLISLDGT ANKSKLGANA ILGVSLAASR
+     AAAAEKNVPL YKHLADLSKS KTSPYVLPVP FLNVLNGGSH AGGALALQEF MIAPTGAKTF
+     AEALRIGSEV YHNLKSLTKK RYGASAGNVG DEGGVAPNIQ TAEEALDLIV DAIKAAGHDG
+     KIKIGLDCAS SEFFKDGKYD LDFKNPNSDK SKWLTGPQLA DLYHSLMKRY PIVSIEDPFA
+     EDDWEAWSHF FKTAGIQIVA DDLTVTNPKR IATAIEKKAA DALLLKVNQI GTLSESIKAA
+     QDSFAAGWGV MVSHRSGETE DTFIADLVVG LRTGQIKTGA PARSERLAKL NQLLRIEEEL
+     GDNAVFAGEN FHHGDKL
+//
+</pre></div>
+</div>
+</div>
+</div>
+<div class="question admonition">
+<p class="admonition-title">Problema</p>
+<ul class="simple">
+<li><p>obter a informação relativa à proteína P00924</p></li>
+<li><p>filtar a linha começada por <strong>SQ</strong></p></li>
+<li><p>mostar o numero de aminoácidos e a massa molecular</p></li>
+</ul>
+</div>
+<p>A informação relativa ao formato desta linha (embora seja evidente
+olhando para um exemplo) está descrita na <a class="reference external" href="http://web.expasy.org/docs/userman.html#SQ_line">documentação da
+UniProt</a></p>
+<p>A linha tem o formato</p>
+<p><code class="docutils literal notranslate"><span class="pre">SQ</span>&#160;&#160; <span class="pre">SEQUENCE</span> <span class="pre">XXXX</span> <span class="pre">AA;</span> <span class="pre">XXXXX</span> <span class="pre">MW;</span> <span class="pre">XXXXXXXXXXXXXXXX</span> <span class="pre">CRC64;</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.uniprot.org/uniprot/P00924.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
+<span class="n">linhas</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">sq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">linhas</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;SQ&#39;</span><span class="p">):</span>
+        <span class="n">sq</span> <span class="o">=</span> <span class="n">i</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;linha SQ:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sq</span><span class="p">)</span>
+
+<span class="c1"># SQ   SEQUENCE XXXX AA; XXXXX MW; XXXXXXXXXXXXXXXX CRC64;</span>
+<span class="n">partes</span> <span class="o">=</span> <span class="n">sq</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;aminoácidos&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partes</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;Da&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>linha SQ:
+SQ   SEQUENCE   437 AA;  46816 MW;  69F45214DBD375BE CRC64;
+437 aminoácidos
+46816 Da
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na <a class="reference external" href="http://web.expasy.org/docs/userman.html#FT_keys">documentação da
+UniProt</a>, realtiva às
+linhas começadas por <code class="docutils literal notranslate"><span class="pre">FT</span></code> pode-se ler…</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>INIT_MET - Initiator methionine.
+
+This feature key is associated with a &#39;1&#39; value in the &#39;FROM&#39; and &#39;TO&#39; fields to indicate that the initiator methionine has been cleaved off:
+
+
+    FT   INIT_MET      1      1       Removed.
+
+It is not used when the initiator methionine is not cleaved off
+</pre></div>
+</div>
+<div class="question admonition">
+<p class="admonition-title">Problema</p>
+<p>Para as seguintes proteínas,</p>
+<p><code class="docutils literal notranslate"><span class="pre">Q96UH7,</span> <span class="pre">Q8J0N6,</span> <span class="pre">Q9URB4,</span> <span class="pre">Q9C2U0,</span> <span class="pre">P36580,</span> <span class="pre">P14540</span></code></p>
+<p>gerar uma tabela com</p>
+<p><code class="docutils literal notranslate"><span class="pre">AC</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">AA</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">MW</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">init</span> <span class="pre">M</span> <span class="pre">cleaved</span></code></p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="problems.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Exercícios de treino</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="uniprot_txt.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Exemplo: ficheiros UniProt txt</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leitura">7.1. Leitura</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-com-open-e-close-explicitos">7.1.1. <code class="docutils literal notranslate"><span class="pre">.read()</span></code>, com <code class="docutils literal notranslate"><span class="pre">open()</span></code> e <code class="docutils literal notranslate"><span class="pre">close()</span></code> explícitos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-dentro-do-bloco-de-um-comando-with">7.1.2. <code class="docutils literal notranslate"><span class="pre">.read()</span></code>, dentro do bloco de um comando <code class="docutils literal notranslate"><span class="pre">with</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#readlines">7.1.3. <code class="docutils literal notranslate"><span class="pre">.readlines()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iteracao-de-ficheiros-com-for">7.1.4. Iteração de ficheiros com <code class="docutils literal notranslate"><span class="pre">for</span></code>.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-extracao-de-informacao-de-um-ficheiro-fasta-multiplo">7.2. Exemplo: Extração de informação de um ficheiro FASTA múltiplo.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escrita">7.3. Escrita</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcao-print-para-ficheiros">7.3.1. Função <code class="docutils literal notranslate"><span class="pre">print()</span></code> para ficheiros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcao-write">7.3.2. Função <code class="docutils literal notranslate"><span class="pre">.write()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-requests">7.4. Módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De António Ferreira
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
