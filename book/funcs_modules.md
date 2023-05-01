@@ -79,7 +79,7 @@ Mas temos de repetir 3 vezes, apenas mudando a sequência de partida?
 E se houvesse uma função capaz de transformar uma *string* noutra *string* em que grupos de 3 letras
 eram separados por um hífen?
 
-Não seria uma função de aplicação muito genérica, uma vez que só inetressaria a programadores
+Não seria uma função de aplicação muito genérica, uma vez que só interessaria a programadores
 que trabalham com sequências biológicas. No entanto, seria altamente conveniente se existisse uma função
 chamada, por exemplo, `seqcods()`, que pudesse ser usada desta maneira:
 
@@ -108,10 +108,12 @@ print('Complemento reverso')
 print("5'-" + chain_comp_rev + "-3'")
 ```
 
-
 Isto é, se esta função existisse, então ela seria aplicada a diferentes sequências mas a
-tarefa que ela iria realizar era sempre a mesma: 1 - agrupar 3 letras consecutivas numa lista e
-2 - juntar estes grupos com um hífen.
+tarefa que ela iria realizar era sempre a mesma:
+
+1. agrupar 3 letras consecutivas numa lista e
+2. juntar estes grupos com um hífen.
+
 
 ## Funções
 
@@ -167,6 +169,68 @@ As criação (ou *definição*) de novas funções é feita com o comando
 
 Uma função típica é sob o ponto de vista lógico, em tudo análoga
 ao conceito matemático de função.
+
+Como primeiro exemplo para ilustrar a definição de funções, vamos supor que estaríamos interessados em clacular a seguinte expressão em vários pontos de um programa:
+
+$x^2 - 3 x$
+
+Poderíamos definir uma função para realizar esse cálculo da seguinte forma:
+
+```{code-cell} ipython3
+def f(x):
+    res = x**2 - 3 * x
+    return res
+```
+
+Depois desta definição, a função `f` fica disponível e, quando aplicada a um um argumento `x` concreto, dá como resultado aquela expressão. Pode ser usada várias vezes.
+
+```{code-cell} ipython3
+y = f(10.2)
+
+print(y)
+
+print(1, '→', f(1))
+print(0, '→', f(0))
+print(2, '→', f(2))
+```
+
+Podemos traçar a função numa "tabela"
+
+```{code-cell} ipython3
+def f(x):
+    return x**2 - 3 * x
+
+# 10 pontos entre -3 e 3
+abcissas = [-3.0 + 6.0 * i / 10 for i in range(11)]
+
+# usando a função f
+ordenadas = [f(x) for x in abcissas]
+
+for x, y in zip(abcissas, ordenadas):
+    print(f'{x:5.2f} → {y:5.2f}')
+```
+
+Ou mesmo usar a função para traçar o seu gráfico, aplicando-a a muitos pontos próximos uns dos outros para ser quase contínua:
+
+```{code-cell} ipython3
+:tags: ["remove-cell"]
+%matplotlib inline
+```
+
+```{code-cell} ipython3
+def f(x):
+    return x**3 - 3 * x
+
+abcissas = [-3.0 + 6.0 * i / 1000 for i in range(1001)]
+ordenadas = [f(x) for x in abcissas]
+
+from matplotlib import pyplot as plt
+plt.plot(abcissas, ordenadas, '-', c='navy')
+plt.grid()
+plt.show()
+```
+
+vejamos mais ao pormenor em que consiste a definição de uma função.
 
 Vamos supor que a função `seqcods()` foi criada.
 
@@ -455,9 +519,10 @@ ler o conteúdo do ficheiro, separar as linhas para uma lista, sem o
 ```
 
 ```{code-cell} ipython3
+from pathlib import Path
 def ler_fich(nome):
-    with open(nome) as a:
-        tudo = a.read()
+    tudo = Path(nome).read_text()
+
     linhas = []
     for linha in tudo.splitlines(): # o \n é retirado por splitlines()
         if len(linha) > 0: # só ficam as que não estão vazias
@@ -475,9 +540,7 @@ Outra versão, usando listas em compreensão:
 
 ```{code-cell} ipython3
 def ler_fich(nome):
-    with open(nome) as a:
-        linhas = [linha for linha in a.read().splitlines() if len(linha) > 0]
-    return linhas
+    return [linha for linha in Path(nome).read_text().splitlines() if len(linha) > 0]
 
 linhas = ler_fich('gre3.txt')
 

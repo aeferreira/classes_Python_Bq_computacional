@@ -87,11 +87,13 @@ Neste capítulo será abordado muito brevemente o processamento do formato FASAT
 
 As bases de dados de Bioinofrmática disponibilizam modos de acesso à informação de uma
 forma "programática", em que um programa pode solicitar informação "filtrada" ao sistema computacional
-de infraestrutura da base de dados. Neste capítulo, no entanto, começamos por uma maneira mais primitiva e simples de aceder à informação: obter o texto extruturado da base de dados, e depois processa-lo por um programa.
+de infraestrutura da base de dados.
+
+Neste capítulo, no entanto, começamos por uma maneira mais primitiva e simples de aceder à informação: obter o texto extruturado da base de dados, e depois processa-lo por um programa.
 
 Desde que a informação tenha um tamanho não muito grande, algo que depende da sua natureza, especificidade e formato, existem dois modos muito simples de usar a informação por um programa.
 
-Num primiro modo pode ser feito o acesso "manual" ao portal e, depois de realizar uma busca de interesse, ode srr obtido um ficheiro de texto contendo toda a infoemaçao não processada. Depois, um programa pode "ler" esse ficheiro e representar o seu conteúdo numa *string*.
+Num primiro modo pode ser feito o acesso "manual" ao portal e, depois de realizar uma busca de interesse, pode ser obtido um ficheiro de texto contendo toda a informaçao não processada. Depois, um programa pode "ler" esse ficheiro e representar o seu conteúdo numa *string*.
 
 ![](images/down_read.png)
 
@@ -111,6 +113,26 @@ Vamos supor que, por busca na UniProt, obtive um ficheiro chamado `c_hominis.fas
 
 Um pequeno programa que lê esse ficheiro para uma *string* chamada `seqs` é o seguinte:
 
+```{code-cell} ipython3
+:tags: [output_scroll]
+from pathlib import Path
+
+nome_ficheiro = Path('c_hominis.fasta')
+
+seqs = nome_ficheiro.read_text()
+
+print(seqs)
+```
+
+Como se pode ver pelo resultado da função `print()`, todo o ficheiro foi lido e transferido para a *string* `seqs`.
+
+O módulo `pathlib` contem a funções e classes de objetos necessárias para aceder a ficheiros existentes localmente no computador onde a linguagem Python está a ser usada.
+
+Um dos tipos de objetos mais úteis desse módulo são os `Path`, que representam um nome de um ficheiro que pode existir no computador, numa determinada pasta. Se criarmos um `Path` a partir de um nome de um ficheiro, esse `Path` representa o ficheiro e uma das muitas funções associdas a um `Path`, a função `read_text()` lê integralmente o conteúdo do ficheiro para uma *string*.
+
+Assim, neste programa, `nome_ficheiro` representa o ficheiro `c_hominis.fasta` e o resultado de se aplicar a função `read_text()` é uma *string* com o conteúdo do ficheiro, à qual foi dado o nome `seqs`.
+
+Alternativamente, a leitura integral do ficheiro para uma *string*, sem utilizar o módulo `pathlib`, épode ser realizada da forma seguinte:
 
 ```{code-cell} ipython3
 :tags: [output_scroll]
@@ -120,9 +142,7 @@ with open('c_hominis.fasta') as datafile:
 print(seqs)
 ```
 
-Como se pode ver pelo resultado da função `print()`, todo o ficheiro foi lido e transferido para a *string*  `seqs`.
-
-Embora haja muitos pormenores subjacentes a este programa, pode-se dar uma explicação muito sumária do que se está a passar:
+Embora haja muitos pormenores subjacentes a este programa, pode-se dar uma explicação muito sumária do que se está a passar.
 
 O comando `with` assinala que o programa faz o acesso a um recurso computacional de uma forma temporária, neste caso concreto, o "recurso" é umm ficheiro de texto.
 
@@ -803,8 +823,8 @@ número de sequências é igual ao número de _headers_.
 
 ```{code-cell} ipython3
 # ler o ficheiro para uma grande string
-with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
-    tudo = datafile.read()
+from pathlib import Path
+tudo = Path('c_hominis.fasta').read_text()
 
 # "tudo" tem, agora, todas as sequências!
 
@@ -823,8 +843,7 @@ print(f'O proteoma tem {len(headers)} proteínas')
 Usando uma lista em compreensão:
 
 ```{code-cell} ipython3
-with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
-    tudo = datafile.read()
+tudo = Path('c_hominis.fasta').read_text()
 
 headers = [line for line in tudo.splitlines() if line.startswith('>')]
 
@@ -865,8 +884,8 @@ KICADVVAELKKISKPVKDKKEIAQVATIS
 O programa que implementa esta estratégia poderá ser
 
 ```{code-cell} ipython3
-with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
-    tudo = datafile.read()
+from pathlib import Path
+tudo = Path('c_hominis.fasta').read_text()
 
 blocks = tudo.split('>')
 
@@ -911,10 +930,8 @@ Recorde-se que o _Número UniProt de Acesso_ está entre `|` em cada _header_
 Dseta vez, toda a informação processada fica num dicionário
 
 ```{code-cell} ipython3
-with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
-    tudo = datafile.read()
-
-blocks = tudo.split('>')
+from pathlib import Path
+blocks = Path('c_hominis.fasta').read_text().split('>')
 
 dictseqs = {}
 
@@ -933,7 +950,7 @@ for b in blocks:
 
 
 # Ver algumas proteínas...
-for ac in ['P28240','P38832','P36084']:
+for ac in ['A7HZY9','A7I3U6','A7I3S8']:
     print(f'{ac}: {dictseqs[ac]}\n')
 ```
 
@@ -943,8 +960,8 @@ vários passos de aplicação de funções de lista num único passo:
 ```{code-cell} ipython3
 dictseqs = {}
 
-with open('uniprot_scerevisiae_reviewed.fasta') as datafile:
-    blocks = datafile.read().split('>')
+from pathlib import Path
+blocks = Path('c_hominis.fasta').read_text().split('>')
 
 for b in blocks:
     if b == '':
@@ -955,7 +972,8 @@ for b in blocks:
     
     dictseqs[ac] = seq
 
-for ac in ['P28240','P38832','P36084']:
+# Ver algumas proteínas...
+for ac in ['A7HZY9','A7I3U6','A7I3S8']:
     print(f'{ac}: {dictseqs[ac]}\n')
 ```
 ## "Imutabilidade" das _strings_

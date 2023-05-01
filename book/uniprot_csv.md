@@ -17,40 +17,61 @@ kernelspec:
 
 ## Introdução
 
-Este e o próximo capítulo são dedicados a aplicar as ferramentas mostradas
-na primeira parte a pequenos projetos já com alguma elaboração.
+Como exemplo da vasta funcionalidade oferecida pelo módulo `pandas`, este capítulo ilustra a sua aplicação
+à extração de informação obtida do portal [UniProt](https://beta.uniprot.org/), tal como capítulo anterior, mas agora a partir de ficheiros estruturados num outro formato: o formato **CSV**.
 
-Os dois exemplos consistem em extraír informação relevante de ficheiros disponibilizados por portais e ferramentas de Bioinformática.
+O formato **CSV** (Comma-Separated Values), muito popular em muitas áreas científicas, foi criado para conter informação que se possa representar através de uma tabela ou quadro.
 
-O primeiro exemplo consiste em extraír a informação sobre *modificações pós-traducionais* (em inglês: Post Translational Modifications, ou **PTM**) de um
-ficheiro contendo a informação da UniProt sobre todas as proteínas de um determinado organismo, um dos *proteomas de referência* existentes neste portal.
+Geralmente, as tabelas representadas como **CSV** contêm os vários *campos* de informação em colunas. Cada linha é usada para representar cada *registo* de informação.
 
-O que são PTMs? São modificações que ocorrem nas proteínas após a sua síntese. Uma das mais conhecidas é a fosforição de grupos laterais contendo -OH, que são muitas vezes são relacionadas com a regulação da função de uma proteína. Mas existem muitas outras modificações possíveis.
+Na sua forma mais simples, as linhas de uma tabela correspondem às linhas do texto em CSV e, dentro de cada linha, as várias colunas distinguem-se por existir um caractere *separador* que marca a separação entre as várias colunas. Originalmente, esse caractere era a vírgula (daí o nome *Comma-Separated Values*), mas outros caracteres são também muito usados. O *tab*, representado num programa por `\t`, é muito popular e, quando é usado, o formato é também designado por **TSV** (Tab-separated values).
 
-O objetivo é extraír a informação sobre PTMs e fazer uma contagem  (e visualizar num gráfico) de modo a ter uma ideia da sua abundância relativa nas notações da UniProt.
+A primeira linha do texto costuma conter os nomes das colunas, usando também o *separador* para os separar.
 
-O proteoma usado vai ser o do organismo *Saccharomyces cerevisiae* (a levedura de padeiro, um dos organismos modelo em biociências moleculares)
+Um exemplo de um pequeno texto neste formato é
 
-Este exemplo irá ilustrar muitas dos conceitos introduzidos nos capítulos anteriores, especialmente sobre a transformação de *strings*
+```
+Entry\tReviewed\tLength
+A0A0B7P3V8\treviewed\t1104
+O13297\treviewed\t549
+O13329\treviewed\t566
+O13516\treviewed\t197
+```
 
-Mas antes é necessário obter e preparar a informação *total* sobre as proteínas da levedura da UniProt.
+Este é um excerto de informação sobre proteínas, obtido da UniProt, em que os campos, em colunas são o *ID de acesso* (`Entry`) , se a informação têm o estatuto de *reviewed* ou não (`Reviewed`) e o número de aminoácidos de cada proteína (`Length`).
 
-## Obtenção do ficheiro UniProt CSV
+Repare-se que na presença do caractere *tab* (`\t`) para separar as várias "colunas" (campos) de informação. Cada linha é um registo para uma proteína diferente, exceto a primeira linha, que contem os nomes dos vários campos.
 
-A UniProt disponibiliza vários tipos de ficheiros após a realização de uma busca.
+Nesta secção será demonstrado o uso do módulo `pandas` para extraír, organizar, analisar e visualizar informação
+contida em ficheiros com o formato **CSV**.
 
-Um dos mais completos são os ficheiros do tipo *UniProt txt* que contêm praticamente toda a informação que podemos visualizar quando consultamos as páginas web dedicadas a uma determinada proteína, mas num formato de texto e podendo juntar a informação de várias proteínas no mesmo ficheiro.
+Como exemplo, será usado um ficheiro contendo a informação do portal UniProt sobre todas as proteínas de um determinado organismo, um dos *proteomas de referência* existentes neste portal. O proteoma usado vai ser o do organismo *Saccharomyces cerevisiae* (a levedura de padeiro, um dos organismos modelo em biociências moleculares). Os tópicos a analisar são essencialemnte os mesmos que foram abordados no capítulo anterior, mas agora a partir de um ficheiro **CSV** 
 
-A UniProt tem [documentação](http://web.expasy.org/docs/userman.html) com indicações detalhadas sobre o formato dos seus ficheiros, em particular o *UniProt txt*:
+Antes da programação é necessário obter esse ficheiro.
 
-Instruções para obter o ficheiro de trabalho:
+```{admonition} Instruções para obter o ficheiro de trabalho
+:class: dropdown
 
-- Na UniProt procurar pelo ["proteoma de referência" da levedura S. cerevisiae](http://www.uniprot.org/proteomes/UP000002311) (http://www.uniprot.org/proteomes/UP000002311)
-- Passar para resultados UniProtKB: em "Map To" escolher UniPortKB
-- Escolher *Download -> Text , compressed* (NOTA: o ficheiro é grande, o download pode demorar um pouco)
-- Se o download tiver sido em modo "compressed", extraír o (único) ficheiro do zip.
-- Alterar o nome do ficheiro para `uniprot_scerevisiae.txt`
-- Criar uma pasta de trabalho, onde irá ser desenvolvido o programa e mover o ficheiro `uniprot_scerevisiae.txt` para essa pasta.
+- Na [UniProt](https://beta.uniprot.org) procurar em *Species, proteomes* pelo [*proteoma de referência* da levedura S. cerevisiae](https://beta.uniprot.org/proteomes/UP000002311) (https://beta.uniprot.org/proteomes/UP000002311)
+- Passar para a **lista de proteínas**, seguindo o link do [número de proteínas](https://beta.uniprot.org/uniprotkb?query=proteome:UP000002311), a seguir a *Protein count*.
+- Use o botão "Download" e escolha as seguintes opções:
+  * Download all
+  * Format: **TSV**
+  * Compressed: **No**
+  * Em *Customize columns* escolha as colunas seguintes (procure nas diferentes sub-secções):
+    + Reviewed
+    + Protein names
+    + Length
+    + Mass
+    + Sequence
+    + Glycosylation
+    + Lipidation
+    + Modified residue
+   * Pode rejeitar *Entry name*, *Gene names* e *Organism*, se quiser.
+- Faça **download**
+- Altere o nome do ficheiro obtidopara `uniprot_scerevisiae.tsv`
+- Crie uma pasta de trabalho, onde irá ser desenvolvido o programa e mova o ficheiro `uniprot_scerevisiae.tsv` para essa pasta.
+```
 
 ## Programa completo
 

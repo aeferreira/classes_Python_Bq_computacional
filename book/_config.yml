@@ -27,17 +27,26 @@ bibtex_bibfiles:
 html:
   use_issues_button: false
   use_repository_button: false
-  use_launch_button: false
-
-# Launch button settings
-launch_buttons:
-  notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
-  binderhub_url             : ""  # The URL of the BinderHub (e.g., https://mybinder.org)
-  jupyterhub_url            : ""  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
-  thebe                     : false  # Add a thebe button to pages (requires the repository to run on Binder)
-  colab_url                 : "" # The URL of Google Colab (https://colab.research.google.com)
+  launch_buttons: false
 
 sphinx:
   config:
     language: "pt_PT"
     nb_merge_streams: true
+
+parse:
+  myst_enable_extensions:
+    # - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    #- substitution
+    #- strikethrough
+    #- tasklist
+  myst_url_schemes: [mailto, http, https] # URI schemes that will be recognised as external URLs in Markdown links
+  myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
